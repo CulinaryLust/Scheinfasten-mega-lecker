@@ -5,6 +5,8 @@ import RecipeCard from '../components/RecipeCard.astro';
 import { RECIPES, PLAN } from '../lib/nutrition.js';
 import { u } from '../lib/url.js';
 const featured = ['kuerbissuppe', 'hummus-bowl', 'ofen-blumenkohl', 'zucchini-nudeln-pesto', 'rote-bete-carpaccio', 'thai-curry-bruehe'].map((s) => RECIPES.find((r) => r.slug === s));
+// CRP: Wei 2017, Tabelle 4 (Ausgangs-CRP über 1 mg/l, n = 26)
+const crp = { value: '−1,6', unit: 'mg/l' };
 // Effekte aus Wei et al. 2017 (Sci Transl Med, Tabelle 2 und 4) und Brandhorst et al. 2024
 const effects = [
   { icon: 'scale', value: '−2,6', unit: 'kg', label: 'Körpergewicht', note: 'im Schnitt nach drei Zyklen, vor allem Fett' },
@@ -24,6 +26,7 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
       <h1>Fasten, das richtig gut schmeckt.</h1>
       <p class="lead">Fünf Tage wenig Kalorien, aber jeden Tag ein echtes Essen. Unsere Rezepte halten die Vorgaben aus Longos Studien ein, und der Planer rechnet sie auf deinen Körper um.</p>
       <ul class="hfx">
+        <li class="hot"><Icon name="inflam" />Entzündungswerte runter</li>
         <li><Icon name="scale" />Ø −2,6 kg</li>
         <li><Icon name="tape" />−4 cm Taille</li>
         <li><Icon name="pulse" />Blutdruck runter</li>
@@ -45,7 +48,16 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
 
   <section class="band effects">
     <div class="in">
-      <div class="head"><p class="kicker">Was Studien zeigen</p><h2>Fünf Tage im Monat, die sich messen lassen</h2><p class="muted">In der wichtigsten Studie von Prof. Dr. Valter Longo aßen 100 gesunde Erwachsene drei Monate lang jeweils fünf Tage nach dem Scheinfasten-Prinzip. Danach normal. Das kam heraus:</p></div>
+      <div class="head"><p class="kicker">Was Studien zeigen</p><h2>Weniger Entzündung, weniger Bauchfett, bessere Werte</h2><p class="muted">In der wichtigsten Studie von Prof. Dr. Valter Longo aßen 100 gesunde Erwachsene drei Monate lang jeweils fünf Tage nach dem Scheinfasten-Prinzip. Danach normal. Das kam heraus:</p></div>
+      <div class="card crp">
+        <span class="fxi big"><Icon name="inflam" /></span>
+        <div class="crptext">
+          <p class="kicker">Im Fokus</p>
+          <h3>Entzündungswerte sinken</h3>
+          <p>Stille Entzündungen im Körper gelten als einer der Treiber von Alterung und vielen Zivilisationskrankheiten. Bei Teilnehmenden mit erhöhtem Entzündungswert CRP sank dieser nach drei Zyklen deutlich, um durchschnittlich <b>{crp.value} {crp.unit}</b>. Wer ohnehin niedrige Werte hatte, sah kaum eine Veränderung.</p>
+        </div>
+        <b class="fxv crpv"><span class="n">{crp.value}<small>{crp.unit}</small></span><span class="l">CRP</span></b>
+      </div>
       <div class="fx">
         {effects.map((e) => (
           <div class:list={['card', 'fxcard', { weak: e.weak }]}>
@@ -152,6 +164,17 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
   .hfx :global(.i) { color: var(--sun); }
   .fx { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   @media (max-width: 820px) { .fx { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .fx .card { padding: 14px; } .fxi { width: 38px; height: 38px; } }
+  .crp { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; margin-bottom: 16px; border: 2px solid var(--green); background: linear-gradient(120deg, var(--card) 55%, var(--tomato-soft)); padding: clamp(18px, 3vw, 30px); }
+  .crp h3 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); margin: 4px 0 8px; }
+  .crp p { margin: 0; }
+  .fxi.big { width: 64px; height: 64px; border-radius: 18px; }
+  .fxi.big :global(.i) { width: 34px; height: 34px; }
+  .crpv { font-size: clamp(2.6rem, 6vw, 3.6rem) !important; display: grid; justify-items: end; }
+  .crpv .n { white-space: nowrap; }
+  .crpv .l { font-family: var(--body); font-size: .9rem; color: var(--muted); font-weight: 700; letter-spacing: .08em; }
+  @media (max-width: 820px) { .crp { grid-template-columns: auto minmax(0, 1fr); gap: 14px; } .crptext { grid-column: 1 / -1; grid-row: 2; } .crpv { justify-items: end; } }
+  .hfx li.hot { background: var(--tomato); border-color: var(--tomato); }
+  .hfx li.hot :global(.i) { color: #fff; }
   .fxcard { display: grid; gap: 4px; align-content: start; }
   .fxi { width: 46px; height: 46px; border-radius: 14px; background: var(--tomato-soft); color: var(--tomato); display: grid; place-items: center; margin-bottom: 6px; }
   .fxi :global(.i) { width: 24px; height: 24px; }

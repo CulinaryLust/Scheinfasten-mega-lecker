@@ -1,5 +1,6 @@
 // Einfache Linien-Icons (24 x 24), stroke = currentColor
 export const ICONS = {
+  inflam: '<path d="M10 3.5c.6 2.6 4 4.2 4 8a4 4 0 0 1-8 0c0-1.8.9-3 1.9-3.9.1 1.3.7 2.2 1.6 2.6-.1-2.3.1-4.4.5-6.7z"/><path d="M18 9v10M15.5 16.5L18 19l2.5-2.5"/>',
   scale: '<rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M8 9.5a5.5 5.5 0 0 1 8 0l-2.2 2.2a2.5 2.5 0 0 0-3.6 0z"/>',
   tape: '<path d="M3.5 9h17v6h-17z"/><path d="M7 9v2.5M10.5 9v3.5M14 9v2.5M17.5 9v3.5"/>',
   cell: '<circle cx="12" cy="12" r="8.5"/><circle cx="12.5" cy="11" r="3"/><path d="M7.5 15.5h.01M16 16.5h.01M7.5 8h.01"/>',
