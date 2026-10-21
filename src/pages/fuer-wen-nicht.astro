@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url.js';
+---
+<Base title="Für wen nicht?" description="Wer nicht scheinfasten sollte, Warnzeichen und wann du abbrechen solltest.">
+  <div class="in page-head narrow"><p class="kicker">Sicherheit</p><h1>Für wen Scheinfasten nicht geeignet ist</h1>
+    <p class="muted">Fünf Tage mit 700 bis 1.100 kcal sind für gesunde Erwachsene in der Regel gut machbar. Für manche Menschen sind sie riskant.</p></div>
+  <section class="band" style="padding-top:20px"><div class="in narrow stack">
+    <div class="alert bad"><h2 style="font-size:1.4rem">Bitte nur mit ärztlicher Begleitung oder gar nicht</h2>
+      <ul style="margin:0;padding-left:20px;display:grid;gap:6px">
+        <li>Schwangerschaft und Stillzeit</li><li>Kinder und Jugendliche unter 18 Jahren, Menschen über 70 Jahren</li>
+        <li>Untergewicht (BMI unter 18,5) und Essstörungen, auch frühere</li><li>Diabetes, vor allem mit Insulin oder Sulfonylharnstoffen</li>
+        <li>Krebs, Nieren-, Leber- oder Herzerkrankungen</li><li>Regelmäßige Medikamente, besonders Blutdrucksenker und Entwässerungsmittel</li>
+        <li>Akute Infekte, Fieber, Operationen in den letzten Wochen</li></ul></div>
+    <div class="alert warn"><h2 style="font-size:1.4rem">Sofort abbrechen bei</h2><p>Schwindel, Herzrasen, starker Schwäche oder Verwirrtheit. Iss dann normal und lass dich ärztlich untersuchen.</p></div>
+    <div class="card"><h3>Fürs Arztgespräch</h3><ul style="margin:0;padding-left:20px;display:grid;gap:6px"><li>Ich möchte fünf Tage mit 700 bis 1.100 kcal pflanzlich essen. Spricht bei mir etwas dagegen?</li><li>Muss ich Medikamente in dieser Zeit anpassen?</li><li>Sollte ich Vitamine oder Mineralstoffe ergänzen?</li><li>Wie oft im Jahr ist das für mich sinnvoll?</li></ul></div>
+    <div class="ctas"><a class="btn soft" href={u('krebs/')}><Icon name="info" />Scheinfasten bei Krebs: Was man weiß</a></div>
+  </div></section>
+</Base>

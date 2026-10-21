@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url.js';
+---
+<Base title="E-Book" description="Das E-Book Scheinfasten mega lecker: 5-Tage-Plan, Rezepte, Einkaufsliste und Vorkochplan als PDF für 14,90 Euro.">
+  <section class="band"><div class="in book">
+    <div class="cover"><img src={u('img/ebook.jpg')} alt="" width="1800" height="1000" /><div class="t"><span>E-Book</span><b>Scheinfasten mega lecker</b><span>5 Tage zum Mitkochen</span></div></div>
+    <div class="stack">
+      <p class="kicker">Alles in einem PDF</p>
+      <h1>Dein Fastenplan zum Ausdrucken</h1>
+      <ul class="check">
+        <li><Icon name="check" />Kompletter 5-Tage-Plan, jeder Tag durchgerechnet</li>
+        <li><Icon name="check" />Alle Rezepte mit Schritt-für-Schritt-Anleitung und Nährwerten</li>
+        <li><Icon name="check" />Einkaufsliste zum Abhaken und Vorkochplan</li>
+        <li><Icon name="check" />Übergangstag und Tipps gegen Hunger</li>
+      </ul>
+      <p class="price">14,90 €</p>
+      <div class="ctas"><a class="btn" href="#kaufen" aria-disabled="true">Jetzt kaufen</a><a class="btn soft" href="#leseprobe">Gratis-Leseprobe</a></div>
+      <div class="alert info" id="kaufen"><p>Der Shop wird gerade eingerichtet. Kauf und Leseprobe sind bald hier verfügbar.</p></div>
+    </div>
+  </div></section>
+</Base>
+<style>
+  .book { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 44px; align-items: center; }
+  @media (max-width: 820px) { .book { grid-template-columns: 1fr; } }
+  .cover { position: relative; border-radius: 8px 22px 22px 8px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,.35); max-width: 380px; aspect-ratio: 3 / 4; justify-self: center; width: 100%; }
+  .cover img { width: 100%; height: 100%; object-fit: cover; }
+  .cover .t { position: absolute; inset: auto 0 0 0; padding: 24px; background: linear-gradient(0deg, rgba(20,30,15,.92), rgba(20,30,15,0)); color: #fff; display: grid; gap: 4px; }
+  .cover .t b { font-family: var(--display); font-weight: 400; font-size: 1.9rem; line-height: 1.1; }
+  .check { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .check li { display: flex; gap: 10px; align-items: center; }
+  .check :global(.i) { color: var(--green); }
+  .price { font-family: var(--display); font-size: 2.6rem; }
+</style>

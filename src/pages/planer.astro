@@ -1,0 +1,417 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url.js';
+import { icon } from '../lib/icons.js';
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swap', 'check', 'close', 'cart', 'calendar', 'time', 'arrow', 'info', 'water', 'pot'].map((k) => [k, icon(k)]));
+---
+<Base title="Dein 5-Tage-Plan" active="planer" description="Persönlicher Scheinfasten-Planer: Rezepte, Mengen und Nährwerte für jeden Tag, abgeglichen mit den Vorgaben von Prof. Dr. Valter Longo.">
+  <div class="in page-head">
+    <p class="kicker">Planer</p>
+    <h1>Dein persönlicher 5-Tage-Plan</h1>
+    <p class="muted">Drei kurze Schritte. Danach siehst du für jeden Tag, was du isst und wie viel, abgeglichen mit den Werten aus Prof. Dr. Valter Longos Studie.</p>
+  </div>
+
+  <section class="in wizard" id="wizard" data-base={u('')} data-icons={JSON.stringify(icons)}>
+    <ol class="progress" aria-label="Fortschritt">
+      <li class="on" data-s="1"><span>1</span>Über dich</li>
+      <li data-s="2"><span>2</span>Termine</li>
+      <li data-s="3"><span>3</span>Sicherheit</li>
+    </ol>
+
+    <form id="f" class="card wcard" novalidate>
+      <fieldset class="step" data-step="1">
+        <legend class="sr-only">Über dich</legend>
+        <div class="field"><span class="lbl">Geschlecht</span>
+          <div class="seg three">
+            <label><input type="radio" name="sex" value="w" checked /><span>Weiblich</span></label>
+            <label><input type="radio" name="sex" value="m" /><span>Männlich</span></label>
+            <label><input type="radio" name="sex" value="d" /><span>Divers</span></label>
+          </div>
+        </div>
+        <div class="row3">
+          <div class="field"><label for="age" class="lbl">Alter</label><div class="unit"><input id="age" name="age" type="number" inputmode="numeric" min="10" max="100" value="42" required /><span>Jahre</span></div></div>
+          <div class="field"><label for="h" class="lbl">Größe</label><div class="unit"><input id="h" name="h" type="number" inputmode="numeric" min="120" max="220" value="168" required /><span>cm</span></div></div>
+          <div class="field"><label for="w" class="lbl">Gewicht</label><div class="unit"><input id="w" name="w" type="number" inputmode="decimal" min="35" max="250" step="0.5" value="70" required /><span>kg</span></div></div>
+        </div>
+        <div class="field"><span class="lbl">Wie aktiv ist dein Alltag?</span>
+          <div class="seg three">
+            <label><input type="radio" name="pal" value="1.4" /><span>Eher sitzend<small>Büro, wenig Bewegung</small></span></label>
+            <label><input type="radio" name="pal" value="1.6" checked /><span>Normal<small>viel auf den Beinen</small></span></label>
+            <label><input type="radio" name="pal" value="1.8" /><span>Sehr aktiv<small>körperliche Arbeit, Sport</small></span></label>
+          </div>
+        </div>
+        <p class="err" id="err1" role="alert" hidden></p>
+        <div class="nav-btns"><span></span><button type="button" class="btn" data-next="2">Weiter <Icon name="arrow" /></button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="2" hidden>
+        <legend class="sr-only">Termine</legend>
+        <div class="alert info"><p><b>Fastendauer: 5 Tage.</b> Longos Protokoll ist auf genau fünf Tage ausgelegt. Dazu kommen ein Vorbereitungstag und ein Übergangstag.</p></div>
+        <div class="field"><label for="start" class="lbl">Wann startest du? (Tag 1)</label><input id="start" name="start" type="date" required /></div>
+        <div class="field"><span class="lbl">Wie viele Durchgänge planst du?</span>
+          <div class="seg three">
+            <label><input type="radio" name="cyc" value="1" /><span>1 Durchgang<small>zum Ausprobieren</small></span></label>
+            <label><input type="radio" name="cyc" value="3" checked /><span>3 Durchgänge<small>wie in der Studie</small></span></label>
+            <label><input type="radio" name="cyc" value="6" /><span>6 Durchgänge<small>übers Jahr verteilt</small></span></label>
+          </div>
+        </div>
+        <div class="field"><label for="gap" class="lbl">Abstand zwischen den Durchgängen</label>
+          <select id="gap" name="gap"><option value="1">monatlich (wie in der Studie)</option><option value="2">alle 2 Monate</option><option value="3" selected>alle 3 Monate</option><option value="4">alle 4 Monate</option></select>
+        </div>
+        <div class="nav-btns"><button type="button" class="btn soft" data-next="1">Zurück</button><button type="button" class="btn" data-next="3">Weiter <Icon name="arrow" /></button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="3" hidden>
+        <legend class="sr-only">Sicherheit</legend>
+        <div class="field"><span class="lbl">Trifft etwas davon auf dich zu?</span>
+          <div class="checks">
+            <label><input type="checkbox" class="x" value="Schwangerschaft oder Stillzeit" /><span>Ich bin schwanger oder stille</span></label>
+            <label><input type="checkbox" class="x" value="Diabetes mit Medikamenten" /><span>Ich habe Diabetes und nehme Medikamente</span></label>
+            <label><input type="checkbox" class="x" value="Essstörung" /><span>Ich habe oder hatte eine Essstörung</span></label>
+            <label><input type="checkbox" class="x" value="Krebs oder eine andere schwere Erkrankung" data-cancer="1" /><span>Ich habe Krebs oder eine andere schwere Erkrankung</span></label>
+            <label><input type="checkbox" class="x" value="regelmäßige Medikamente" /><span>Ich nehme regelmäßig Medikamente</span></label>
+          </div>
+        </div>
+        <label class="consent"><input type="checkbox" id="consent" /><span>Ich habe verstanden, dass der Plan keine ärztliche Beratung ersetzt und ich bei Schwindel, Herzrasen oder starker Schwäche abbreche.</span></label>
+        <p class="err" id="err3" role="alert" hidden></p>
+        <div class="nav-btns"><button type="button" class="btn soft" data-next="2">Zurück</button><button type="submit" class="btn">Plan erstellen <Icon name="check" /></button></div>
+      </fieldset>
+    </form>
+  </section>
+
+  <section class="in result" id="result" hidden aria-live="polite"></section>
+</Base>
+
+<style is:global>
+  .wizard { display: grid; gap: 18px; max-width: 760px; padding-bottom: 60px; }
+  .progress { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .progress li { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; color: var(--muted); padding-bottom: 10px; border-bottom: 4px solid var(--line); }
+  .progress li span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--line); color: var(--fg); font-size: .85rem; flex: none; }
+  .progress li.on { color: var(--fg); border-color: var(--tomato); }
+  .progress li.on span { background: var(--tomato); color: #fff; }
+  .wcard { padding: clamp(18px, 4vw, 30px); }
+  .step { border: 0; padding: 0; margin: 0; display: grid; gap: 20px; min-width: 0; }
+  .field { display: grid; gap: 8px; min-width: 0; }
+  .lbl { font-weight: 700; }
+  .row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 560px) { .row3 { grid-template-columns: 1fr 1fr; } .row3 .field:first-child { grid-column: 1 / -1; } }
+  .unit { position: relative; }
+  .unit input { padding-right: 56px; font-size: 1.1rem; font-weight: 700; }
+  .unit span { position: absolute; right: 14px; top: 50%; translate: 0 -50%; color: var(--muted); font-size: .9rem; pointer-events: none; }
+  .seg { display: grid; gap: 8px; }
+  .seg.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 560px) { .seg.three { grid-template-columns: 1fr; } }
+  .seg label { position: relative; cursor: pointer; }
+  .seg input { position: absolute; opacity: 0; width: 1px; height: 1px; min-height: 0; }
+  .seg label > span { display: grid; gap: 2px; text-align: center; padding: 12px 10px; min-height: 52px; align-content: center; border: 1.5px solid var(--line); border-radius: 14px; font-weight: 700; background: var(--bg); transition: border-color .15s, background .15s; }
+  .seg small { font-weight: 500; color: var(--muted); font-size: .8rem; }
+  .seg input:checked + span { border-color: var(--green); background: var(--ok-bg); color: var(--green); box-shadow: 0 0 0 2px var(--green) inset; }
+  .seg input:focus-visible + span { outline: 3px solid var(--sun); outline-offset: 2px; }
+  .checks { display: grid; gap: 6px; }
+  .checks label, .consent { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 14px; cursor: pointer; }
+  .checks input, .consent input { width: 22px; height: 22px; min-height: 0; margin: 1px 0 0; accent-color: var(--tomato); flex: none; }
+  .consent { background: var(--band); border-color: transparent; }
+  .nav-btns { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .err { color: var(--bad); font-weight: 700; }
+
+  .result { display: grid; gap: 26px; padding-bottom: 70px; }
+  .sumbar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 12px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: grid; gap: 2px; }
+  .stat b { font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .82rem; color: var(--muted); }
+  .rhead { display: flex; justify-content: space-between; align-items: end; gap: 14px; flex-wrap: wrap; }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); background: var(--bg); z-index: 5; padding-top: 8px; scrollbar-width: none; }
+  .tab { flex: none; display: grid; gap: 1px; text-align: left; font: inherit; color: var(--fg); background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px 14px; cursor: pointer; min-width: 92px; }
+  .tab b { font-size: .95rem; } .tab span { font-size: .75rem; color: var(--muted); }
+  .tab[aria-selected="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .tab[aria-selected="true"] span { color: inherit; opacity: .75; }
+  .daycard { display: grid; gap: 16px; }
+  .daytop { display: grid; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+  .daytop .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .vs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 10px; }
+  .vs div { display: grid; gap: 4px; padding: 10px 12px; border-radius: 12px; background: var(--band); }
+  .vs .k { display: flex; gap: 6px; align-items: center; font-size: .8rem; font-weight: 700; color: var(--muted); }
+  .vs b { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+  .vs small { color: var(--muted); font-size: .76rem; }
+  .vs .kcal .i { color: var(--c-kcal); } .vs .protein .i { color: var(--c-protein); } .vs .fat .i, .vs .oil .i { color: var(--c-fat); } .vs .carbs .i { color: var(--c-carbs); }
+  .meal { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+  @media (max-width: 560px) { .meal { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; } }
+  .meal img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+  .meal .when { font-size: .75rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--tomato); }
+  .meal h3 { font-size: 1.12rem; }
+  .meal h3 a { color: inherit; text-decoration: none; } .meal h3 a:hover { text-decoration: underline; }
+  .meal .info { display: grid; gap: 8px; min-width: 0; }
+  .meal .por { font-size: .8rem; color: var(--muted); }
+  .meal details summary { cursor: pointer; font-weight: 700; color: var(--green); font-size: .92rem; }
+  .meal ul { margin: 8px 0 0; padding-left: 18px; columns: 2; column-gap: 22px; font-size: .9rem; }
+  @media (max-width: 560px) { .meal ul { columns: 1; } }
+  .meal .acts { display: flex; gap: 8px; flex-wrap: wrap; }
+  .swapbox { grid-column: 1 / -1; display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 12px; }
+  .alt { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; font: inherit; color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px; cursor: pointer; }
+  .alt:hover { border-color: var(--green); }
+  .alt img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; }
+  .alt b { display: block; font-size: .95rem; } .alt small { color: var(--muted); }
+  .plain { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 12px; }
+  .plain ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+  .shop { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 28px; }
+  @media (max-width: 600px) { .shop { columns: 1; } }
+  .shop li { break-inside: avoid; border-bottom: 1px solid var(--line); }
+  .shop label { display: flex; gap: 10px; padding: 9px 0; cursor: pointer; align-items: center; }
+  .shop input { width: 20px; height: 20px; min-height: 0; accent-color: var(--green); }
+  .shop input:checked + span { opacity: .45; text-decoration: line-through; }
+  @media print {
+    .tabs, .wizard, .acts, .swapbox { display: none !important; }
+    .daycard[hidden] { display: grid !important; }
+    .meal { break-inside: avoid; }
+    .meal details { display: block; } .meal details > * { display: block; }
+  }
+</style>
+
+<script>
+  import { RECIPES, BY_SLUG, PLAN, nutrition, add, check, shares, amountLabel, fmt } from '../lib/nutrition.js';
+
+  const root = document.getElementById('wizard')!;
+  const base = root.dataset.base!;
+  const I = JSON.parse(root.dataset.icons!);
+  const form = document.getElementById('f') as HTMLFormElement;
+  const result = document.getElementById('result')!;
+  const STORE = 'smlPlaner';
+  const ZERO = nutrition({ ingredients: [] } as any);
+
+  // Startdatum: nächster Montag
+  const d0 = new Date(); d0.setDate(d0.getDate() + ((8 - d0.getDay()) % 7 || 7));
+  const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  (form.start as HTMLInputElement).value = iso(d0);
+
+  let state: any = { swaps: {} };
+  try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s) state = s; } catch {}
+  if (state.inputs) {
+    for (const [k, v] of Object.entries(state.inputs)) {
+      const el = form.elements.namedItem(k) as any;
+      if (!el) continue;
+      if (el instanceof RadioNodeList) { for (const r of Array.from(el) as HTMLInputElement[]) r.checked = r.value === v; } else el.value = v;
+    }
+  }
+  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch {} };
+
+  function go(step: number) {
+    if (step > 1 && !valid1()) return;
+    form.querySelectorAll<HTMLElement>('.step').forEach((s) => (s.hidden = s.dataset.step !== String(step)));
+    root.querySelectorAll<HTMLElement>('.progress li').forEach((li) => li.classList.toggle('on', Number(li.dataset.s) <= step));
+    root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function valid1() {
+    const age = +form.age.value, h = +form.h.value, w = +form.w.value;
+    const e = document.getElementById('err1')!;
+    let msg = '';
+    if (!age || age < 10 || age > 100) msg = 'Bitte gib ein Alter zwischen 10 und 100 Jahren ein.';
+    else if (!h || h < 120 || h > 220) msg = 'Bitte gib eine Größe zwischen 120 und 220 cm ein.';
+    else if (!w || w < 35 || w > 250) msg = 'Bitte gib ein Gewicht zwischen 35 und 250 kg ein.';
+    e.textContent = msg; e.hidden = !msg;
+    if (msg) go1();
+    return !msg;
+  }
+  function go1() { form.querySelectorAll<HTMLElement>('.step').forEach((s) => (s.hidden = s.dataset.step !== '1')); root.querySelectorAll<HTMLElement>('.progress li').forEach((li) => li.classList.toggle('on', li.dataset.s === '1')); }
+  form.querySelectorAll<HTMLButtonElement>('[data-next]').forEach((b) => b.addEventListener('click', () => go(Number(b.dataset.next))));
+
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    if (!valid1()) return;
+    const e3 = document.getElementById('err3')!;
+    if (!(document.getElementById('consent') as HTMLInputElement).checked) { e3.textContent = 'Bitte bestätige den Hinweis, dann erstellen wir deinen Plan.'; e3.hidden = false; return; }
+    e3.hidden = true;
+    const fd = new FormData(form);
+    state.inputs = Object.fromEntries(fd.entries());
+    state.flags = [...form.querySelectorAll<HTMLInputElement>('.x:checked')].map((x) => ({ v: x.value, cancer: !!x.dataset.cancer }));
+    save();
+    render();
+  });
+
+  function profile() {
+    const v = state.inputs;
+    const age = +v.age, h = +v.h, w = +v.w, pal = +v.pal;
+    const bmi = w / Math.pow(h / 100, 2);
+    const off = v.sex === 'm' ? 5 : v.sex === 'w' ? -161 : -78;
+    const bmr = 10 * w + 6.25 * h - 5 * age + off;
+    const tdee = bmr * pal;
+    const raw = tdee / 2000;
+    const f = Math.min(1.15, Math.max(0.9, raw));
+    return { age, bmi, tdee, raw, f };
+  }
+
+  // Tagesplan inkl. Tauschungen
+  function items(day: number) {
+    return PLAN.days[day].map((it: any, idx: number) => {
+      const s = state.swaps?.[day]?.[idx];
+      return s ? { ...it, recipe: s.recipe, portion: s.portion, swapped: true } : { ...it };
+    });
+  }
+  const total = (list: any[], f: number) => list.reduce((acc, it) => add(acc, nutrition(BY_SLUG[it.recipe], it.portion * f)), ZERO);
+  const r5 = (x: number) => Math.round(x * 20) / 20;
+
+  function candidates(day: number, idx: number, f: number) {
+    const list = items(day); const cur = list[idx];
+    const curK = nutrition(BY_SLUG[cur.recipe], cur.portion).kcal;
+    const used = new Set(list.map((x: any) => x.recipe));
+    const pool = RECIPES.filter((r: any) => r.slot === cur.type && !used.has(r.slug) && !['nussmix', 'oliven'].includes(r.slug));
+    return pool.map((r: any) => {
+      const portion = r5(Math.min(1.4, Math.max(0.7, cur.portion * curK / nutrition(r).kcal)));
+      const next = list.map((x: any, i: number) => (i === idx ? { ...x, recipe: r.slug, portion } : x));
+      const c = check(day, total(next, f), f);
+      const sh = c.shares; const ref = c.ref;
+      const score = Math.abs(sh.protein - ref.protein) + Math.abs(sh.fat - ref.fat) + Math.abs(sh.carbs - ref.carbs);
+      return { r, portion, ok: c.ok, score, kcal: nutrition(r, portion * f).kcal };
+    }).sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || a.score - b.score).slice(0, 8);
+  }
+
+  const addDays = (d: Date, n: number) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+  const addMonths = (d: Date, n: number) => { const x = new Date(d); x.setMonth(x.getMonth() + n); return x; };
+  const WD = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+  const ds = (d: Date) => `${WD[d.getDay()]}, ${d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' })}`;
+  const dsl = (d: Date) => `${WD[d.getDay()]}, ${d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}`;
+  const img = (r: any) => `${base}img/rezepte/${r.image}.jpg`;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+
+  let tab = 1;
+  let openSwap = '';
+
+  function render() {
+    const p = profile();
+    const flags = state.flags || [];
+    const stops: string[] = [];
+    if (p.age < 18) stops.push('Unter 18 Jahren ist Scheinfasten nicht vorgesehen.');
+    if (p.age > 70) stops.push('Ab 70 Jahren bitte nur mit ärztlicher Begleitung. Dafür erstellt der Planer keinen Plan.');
+    if (p.bmi < 18.5) stops.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei Untergewicht ist Scheinfasten nicht geeignet.`);
+    if (flags.length) stops.push(`Du hast angegeben: ${flags.map((x: any) => x.v).join(', ')}. Bitte sprich vorher mit deiner Ärztin oder deinem Arzt.`);
+    result.hidden = false;
+    root.hidden = true;
+    if (stops.length) {
+      const cancer = flags.some((x: any) => x.cancer);
+      result.innerHTML = `<div class="alert bad"><h2 style="font-size:1.5rem">Für dich erstellen wir keinen Plan</h2>${stops.map((s) => `<p>${s}</p>`).join('')}
+        ${cancer ? `<p><a href="${base}krebs/">Was man über Scheinfasten bei Krebs weiß</a></p>` : `<p><a href="${base}fuer-wen-nicht/">Alle Hinweise lesen</a></p>`}
+        <p><button class="btn soft" data-edit>Angaben ändern</button></p></div>`;
+      bindCommon(); result.scrollIntoView({ behavior: 'smooth' }); return;
+    }
+    const start = new Date((state.inputs.start || iso(d0)) + 'T12:00:00');
+    const cyc = +state.inputs.cyc, gap = +state.inputs.gap;
+    const f = p.f;
+
+    // Abgleich-Tabelle
+    let rows = '';
+    for (let d = 1; d <= 5; d++) {
+      const n = total(items(d), f); const c = check(d, n, f); const ref = c.ref;
+      rows += `<tr><td><b>Tag ${d}</b></td><td class="n">${fmt(n.kcal)}<br><small class="muted">Ziel ${fmt(c.target)}</small></td>
+        <td class="n">${fmt(n.protein)} g<br><small class="muted">${fmt(c.shares.protein)} % · Longo ${ref.protein} %</small></td>
+        <td class="n">${fmt(n.fat)} g<br><small class="muted">${fmt(c.shares.fat)} % · Longo ${ref.fat} %</small></td>
+        <td class="n">${fmt(n.oil)} g</td>
+        <td class="n">${fmt(n.carbs)} g<br><small class="muted">${fmt(c.shares.carbs)} % · Longo ${ref.carbs} %</small></td>
+        <td>${c.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span class="chip warn">knapp daneben</span>'}</td></tr>`;
+    }
+    const tabs = [[0, 'Vorbereitung', ds(addDays(start, -1))], ...[1, 2, 3, 4, 5].map((d) => [d, `Tag ${d}`, ds(addDays(start, d - 1))]), [6, 'Übergang', ds(addDays(start, 5))], [7, 'Einkauf', 'Liste'], [8, 'Termine', `${cyc}×`]];
+
+    result.innerHTML = `
+      <div class="rhead"><div class="stack" style="gap:6px"><p class="kicker">Dein Plan</p><h2>Start am ${dsl(start)}</h2></div>
+        <div class="ctas noprint"><button class="btn soft small" data-edit>Angaben ändern</button><button class="btn soft small" onclick="window.print()">Drucken</button></div></div>
+      <div class="sumbar">
+        <div class="stat"><span>BMI</span><b>${fmt(p.bmi, 1)}</b></div>
+        <div class="stat"><span>Dein Tagesbedarf, geschätzt</span><b>${fmt(p.tdee)} kcal</b></div>
+        <div class="stat"><span>Tag 1</span><b>${fmt(1090 * f)} kcal</b></div>
+        <div class="stat"><span>Tag 2 bis 5</span><b>${fmt(725 * f)} kcal</b></div>
+      </div>
+      ${p.bmi < 20 ? '<div class="alert warn"><p><b>Hinweis:</b> Dein BMI liegt knapp über der Untergrenze. Achte gut auf dich und brich bei Beschwerden ab.</p></div>' : ''}
+      ${p.raw > 1.15 ? '<div class="alert info"><p>Dein Bedarf ist hoch. Wir erhöhen die Portionen um höchstens 15 %, damit der Plan nah an Longos Vorgaben bleibt.</p></div>' : ''}
+      ${p.raw < 0.9 ? '<div class="alert info"><p>Wir verkleinern die Portionen um höchstens 10 %, damit du genug isst.</p></div>' : ''}
+      <details class="plain"><summary><b>Abgleich mit Longos Vorgaben</b> <span class="muted small">(Wei et al., Science Translational Medicine 2017)</span></summary>
+        <div class="tw"><table><thead><tr><th>Tag</th><th>kcal</th><th>Eiweiß</th><th>Fett</th><th>davon Öl</th><th>Kohlenhydrate</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+        <p class="muted small">„Passt“ heißt: Kalorien höchstens 5 % und jeder Makroanteil höchstens 5 Prozentpunkte von Longos Referenz entfernt. Die Anpassung der Portionen an deinen Bedarf (Faktor ${fmt(f, 2)}, berechnet mit der Mifflin-St-Jeor-Formel) ist unsere eigene Regel und nicht Teil von Longos Protokoll.</p>
+      </details>
+      <div class="tabs noprint" role="tablist">${tabs.map(([k, a, b]) => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k === tab}"><b>${a}</b><span>${b}</span></button>`).join('')}</div>
+      <div id="panes">${[0, 1, 2, 3, 4, 5, 6, 7, 8].map((k) => `<div class="daycard" data-pane="${k}" ${k === tab ? '' : 'hidden'}>${pane(k, f, start, cyc, gap)}</div>`).join('')}</div>
+    `;
+    bindCommon();
+    result.querySelectorAll<HTMLButtonElement>('.tab').forEach((b) => b.addEventListener('click', () => {
+      tab = Number(b.dataset.tab);
+      result.querySelectorAll<HTMLElement>('.tab').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+      result.querySelectorAll<HTMLElement>('.daycard').forEach((x) => (x.hidden = x.dataset.pane !== String(tab)));
+    }));
+    result.querySelectorAll<HTMLButtonElement>('[data-swap]').forEach((b) => b.addEventListener('click', () => { openSwap = openSwap === b.dataset.swap ? '' : b.dataset.swap!; rerender(); }));
+    result.querySelectorAll<HTMLButtonElement>('[data-pick]').forEach((b) => b.addEventListener('click', () => {
+      const [d, i] = b.dataset.pick!.split('-').map(Number);
+      state.swaps[d] = state.swaps[d] || {}; state.swaps[d][i] = { recipe: b.dataset.r, portion: Number(b.dataset.p) };
+      openSwap = ''; save(); rerender();
+    }));
+    result.querySelectorAll<HTMLButtonElement>('[data-reset]').forEach((b) => b.addEventListener('click', () => {
+      const [d, i] = b.dataset.reset!.split('-').map(Number);
+      if (state.swaps[d]) delete state.swaps[d][i]; save(); rerender();
+    }));
+  }
+  function rerender() { const y = window.scrollY; render(); window.scrollTo({ top: y }); }
+  function bindCommon() {
+    result.querySelectorAll<HTMLButtonElement>('[data-edit]').forEach((b) => b.addEventListener('click', () => { result.hidden = true; root.hidden = false; result.dataset.shown = ''; go(1); }));
+    if (!result.dataset.shown) { result.dataset.shown = '1'; window.scrollTo({ top: 0 }); }
+  }
+
+  function pane(k: number, f: number, start: Date, cyc: number, gap: number) {
+    if (k === 0) {
+      const pre = [...new Set([...items(1), ...items(2)].filter((x: any) => x.type === 'main').map((x: any) => BY_SLUG[x.recipe].title))];
+      return `<div class="plain"><h3>Vorbereitung am ${dsl(addDays(start, -1))}</h3><ul>
+        <li>Einkaufen (siehe Reiter „Einkauf“).</li><li>Vorkochen für die ersten Tage: ${pre.map(esc).join(', ')}.</li>
+        <li>Nussmix für fünf Tage abwiegen und in Dosen füllen.</li><li>Abends leicht essen: Gemüse, etwas Reis, kein Alkohol.</li>
+        <li>Kaffee schon jetzt reduzieren, das vermeidet Kopfschmerzen.</li></ul></div>`;
+    }
+    if (k === 6) {
+      return `<div class="plain"><h3>Übergangstag am ${dsl(addDays(start, 5))}</h3><ul>
+        <li>Nicht direkt zu großen Portionen zurückkehren.</li><li>Gut geeignet: Suppen, gedünstetes Gemüse, Reis, Haferbrei, kleine Mengen Eiweiß.</li>
+        <li>Ab Tag 7 wieder normal und ausgewogen essen.</li></ul></div>`;
+    }
+    if (k === 7) {
+      const tot: Record<string, number> = {};
+      for (let d = 1; d <= 5; d++) for (const it of items(d)) for (const ing of BY_SLUG[it.recipe].ingredients) tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * f;
+      return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang</h3><p class="muted small">Mengen ohne Reserve. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
+        <ul class="shop">${Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')).map(([n, g]) => `<li><label><input type="checkbox"><span><b>${amountLabel(n, g)}</b> ${esc(n)}</span></label></li>`).join('')}</ul></div>`;
+    }
+    if (k === 8) {
+      let tr = '';
+      for (let c = 0; c < cyc; c++) { const s1 = addMonths(start, c * gap); tr += `<tr><td><b>${c + 1}</b></td><td>${dsl(addDays(s1, -1))}</td><td>${dsl(s1)} bis ${dsl(addDays(s1, 4))}</td><td>${dsl(addDays(s1, 5))}</td></tr>`; }
+      return `<div class="tw"><table><thead><tr><th>Durchgang</th><th>Vorbereitung</th><th>Fasten</th><th>Übergang</th></tr></thead><tbody>${tr}</tbody></table></div>`;
+    }
+    const list = items(k); const n = total(list, f); const c = check(k, n, f);
+    const vs = (cls: string, ic: string, label: string, val: string, sub: string) => `<div class="${cls}"><span class="k">${I[ic]}${label}</span><b>${val}</b><small>${sub}</small></div>`;
+    let html = `<div class="daytop"><div class="row"><h3>Tag ${k} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Longos Vorgaben</span>` : '<span class="chip warn">knapp neben Longos Vorgaben</span>'}</div>
+      <div class="vs">
+        ${vs('kcal', 'kcal', 'Kalorien', `${fmt(n.kcal)} kcal`, `Ziel ${fmt(c.target)} · Longo ${c.ref.kcal}`)}
+        ${vs('protein', 'protein', 'Eiweiß', `${fmt(n.protein)} g`, `${fmt(c.shares.protein)} % · Longo ${c.ref.protein} %`)}
+        ${vs('fat', 'fat', 'Fett', `${fmt(n.fat)} g`, `${fmt(c.shares.fat)} % · Longo ${c.ref.fat} %`)}
+        ${vs('oil', 'oil', 'davon Öl', `${fmt(n.oil)} g`, `ca. ${fmt(n.oil / 4.6)} TL`)}
+        ${vs('carbs', 'carbs', 'Kohlenhydrate', `${fmt(n.carbs)} g`, `${fmt(c.shares.carbs)} % · Longo ${c.ref.carbs} %`)}
+      </div>
+      <div class="mbar" aria-hidden="true"><i class="p" style="width:${c.shares.protein}%"></i><i class="f" style="width:${c.shares.fat}%"></i><i class="c" style="width:${c.shares.carbs}%"></i></div>
+      <p class="muted small">${I.water} Dazu über den Tag mindestens 2 Liter Wasser oder ungesüßten Kräutertee.</p></div>`;
+    list.forEach((it: any, idx: number) => {
+      const r = BY_SLUG[it.recipe]; const por = it.portion * f; const m = nutrition(r, por);
+      const agg: Record<string, number> = {};
+      for (const ing of r.ingredients) agg[ing.name] = (agg[ing.name] || 0) + ing.amount * por;
+      const key = `${k}-${idx}`;
+      const canSwap = it.type !== 'fixed';
+      let box = '';
+      if (openSwap === key) {
+        const cands = candidates(k, idx, f);
+        box = `<div class="swapbox"><p class="small"><b>Alternative wählen.</b> Die Portion wird so angepasst, dass die Kalorien gleich bleiben.</p>
+          ${cands.map((x: any) => `<button class="alt" data-pick="${key}" data-r="${x.r.slug}" data-p="${x.portion}"><img src="${img(x.r)}" alt="" loading="lazy"><span><b>${esc(x.r.title)}</b><small>${fmt(x.kcal)} kcal · Portion ×${fmt(x.portion, 2)}</small></span>${x.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span class="chip warn">knapp</span>'}</button>`).join('')}
+        </div>`;
+      }
+      html += `<article class="meal"><img src="${img(r)}" alt="" loading="lazy"><div class="info">
+        <span class="when">${it.meal}</span>
+        <h3>${r.slot === 'main' || r.slot === 'snack' ? `<a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a>` : esc(r.title)}</h3>
+        <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.carbs)} g</b></span></div>
+        <span class="por">Portion ×${fmt(por, 2)}${it.swapped ? ' · getauscht' : ''}</span>
+        <details><summary>Zutaten in Gramm</summary><ul>${Object.entries(agg).map(([n2, g]) => `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>
+        ${canSwap ? `<div class="acts noprint"><button class="btn soft small" data-swap="${key}" aria-expanded="${openSwap === key}">${I.swap} Tauschen</button>${it.swapped ? `<button class="btn soft small" data-reset="${key}">Original</button>` : ''}</div>` : ''}
+      </div>${box}</article>`;
+    });
+    return html;
+  }
+
+  if (state.inputs && new URLSearchParams(location.search).has('plan')) render();
+</script>

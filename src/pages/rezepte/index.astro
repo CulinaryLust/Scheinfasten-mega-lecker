@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { RECIPES } from '../../lib/nutrition.js';
+const list = RECIPES.filter((r) => r.slot !== 'side');
+const cats = [...new Set(list.map((r) => r.category))];
+---
+<Base title="Rezepte" active="rezepte" description={`${list.length} pflanzliche Scheinfasten-Rezepte mit Kalorien, Eiweiß, Fett und Kohlenhydraten pro Portion.`}>
+  <div class="in page-head">
+    <p class="kicker">Rezepte</p>
+    <h1>{list.length} Rezepte für deine Fastentage</h1>
+    <p class="muted">Alle für eine Portion, rein pflanzlich und durchgerechnet. Im Planer werden die Mengen auf dich angepasst.</p>
+  </div>
+  <div class="in filters noprint">
+    <label class="search"><Icon name="search" /><span class="sr-only">Rezepte durchsuchen</span><input id="q" type="search" placeholder="Suchen, z. B. Kürbis oder Suppe" autocomplete="off" /></label>
+    <div class="chips" role="group" aria-label="Kategorie">
+      <button class="fchip" aria-pressed="true" data-cat="">Alle</button>
+      {cats.map((c) => <button class="fchip" aria-pressed="false" data-cat={c}>{c}</button>)}
+    </div>
+    <div class="chips" role="group" aria-label="Weitere Filter">
+      <button class="fchip" aria-pressed="false" id="quick"><Icon name="time" />Bis 20 Minuten</button>
+      <button class="fchip" aria-pressed="false" id="light"><Icon name="kcal" />Unter 260 kcal</button>
+    </div>
+  </div>
+  <section class="band" style="padding-top:24px">
+    <div class="in">
+      <p class="muted small" id="count" aria-live="polite"></p>
+      <div class="grid" id="list">{list.map((r) => <RecipeCard r={r} />)}</div>
+      <div class="empty" id="empty" hidden><p>Kein Rezept passt zu deiner Auswahl.</p><button class="btn soft" id="reset">Filter zurücksetzen</button></div>
+      <p class="muted small" style="margin-top:22px">Fotos: Symbolbilder von Unsplash. Sie zeigen ähnliche Gerichte, nicht die exakten Rezepte.</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .filters { display: grid; gap: 12px; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); z-index: 5; background: var(--bg); padding-block: 12px; }
+  .search { position: relative; display: block; max-width: 520px; }
+  .search :global(.i) { position: absolute; left: 14px; top: 50%; translate: 0 -50%; color: var(--muted); }
+  .search input { padding-left: 42px; border-radius: 999px; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+  .fchip { flex: none; display: inline-flex; align-items: center; gap: 6px; font: 600 .92rem var(--body); color: var(--fg); background: var(--card); border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 14px; min-height: 40px; cursor: pointer; }
+  .fchip[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #fff; }
+  .empty { display: grid; gap: 12px; justify-items: start; padding: 30px 0; }
+</style>
+<script>
+  const q = document.getElementById('q') as HTMLInputElement;
+  const cards = [...document.querySelectorAll<HTMLElement>('#list .rcard')];
+  const catBtns = [...document.querySelectorAll<HTMLButtonElement>('.fchip[data-cat]')];
+  const quick = document.getElementById('quick')!; const light = document.getElementById('light')!;
+  let cat = '';
+  function apply() {
+    const term = q.value.trim().toLowerCase();
+    const isQuick = quick.getAttribute('aria-pressed') === 'true';
+    const isLight = light.getAttribute('aria-pressed') === 'true';
+    let shown = 0;
+    for (const c of cards) {
+      const ok = (!cat || c.dataset.cat === cat) && (!term || c.dataset.name!.includes(term)) && (!isQuick || Number(c.dataset.min) <= 20) && (!isLight || Number(c.dataset.kcal) < 260);
+      c.hidden = !ok; if (ok) shown++;
+    }
+    document.getElementById('count')!.textContent = `${shown} von ${cards.length} Rezepten`;
+    document.getElementById('empty')!.hidden = shown > 0;
+  }
+  catBtns.forEach((b) => b.addEventListener('click', () => { cat = b.dataset.cat || ''; catBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b))); apply(); }));
+  [quick, light].forEach((b) => b.addEventListener('click', () => { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); apply(); }));
+  q.addEventListener('input', apply);
+  document.getElementById('reset')!.addEventListener('click', () => { q.value = ''; cat = ''; catBtns.forEach((x, i) => x.setAttribute('aria-pressed', String(i === 0))); [quick, light].forEach((b) => b.setAttribute('aria-pressed', 'false')); apply(); });
+  apply();
+</script>

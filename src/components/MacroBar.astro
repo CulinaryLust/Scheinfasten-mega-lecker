@@ -1,0 +1,11 @@
+---
+import { shares, fmt } from '../lib/nutrition.js';
+const { n, legend = true } = Astro.props;
+const s = shares(n);
+---
+<div class="stack" style="gap:6px">
+  <div class="mbar" role="img" aria-label={`Eiweiß ${fmt(s.protein)} %, Fett ${fmt(s.fat)} %, Kohlenhydrate ${fmt(s.carbs)} % der Kalorien`}>
+    <i class="p" style={`width:${s.protein}%`}></i><i class="f" style={`width:${s.fat}%`}></i><i class="c" style={`width:${s.carbs}%`}></i>
+  </div>
+  {legend && <div class="legend"><span style="--dot:var(--c-protein)">Eiweiß {fmt(s.protein)} %</span><span style="--dot:var(--c-fat)">Fett {fmt(s.fat)} %</span><span style="--dot:var(--c-carbs)">Kohlenhydrate {fmt(s.carbs)} %</span></div>}
+</div>

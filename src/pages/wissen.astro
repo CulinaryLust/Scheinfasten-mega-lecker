@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url.js';
+const studies = [
+  { lv: 'ok', tag: 'Mensch · randomisiert', title: '100 Gesunde, 3 Zyklen', text: 'Körpergewicht, Bauchfett, Blutdruck und der Wachstumsfaktor IGF-1 sanken. Bei Menschen mit erhöhten Ausgangswerten war der Effekt größer.', src: 'Wei M et al. Science Translational Medicine 2017;9:eaai8700', doi: '10.1126/scitranslmed.aai8700' },
+  { lv: 'warn', tag: 'Mensch · explorativ', title: 'Biologisches Alter', text: 'Eine Nachauswertung zweier Studien berechnete nach drei Zyklen ein im Median um 2,5 Jahre niedrigeres biologisches Alter. Ein Hinweis, noch kein Beweis.', src: 'Brandhorst S et al. Nature Communications 2024;15:1309', doi: '10.1038/s41467-024-45260-9' },
+  { lv: 'bad', tag: 'Maus und kleine Pilotstudie', title: 'Der Ursprung', text: 'Bei Mäusen verbesserten regelmäßige Fastenzyklen viele Gesundheitsmarker. Eine kleine Pilotstudie am Menschen folgte.', src: 'Brandhorst S et al. Cell Metabolism 2015;22:86-99', doi: '10.1016/j.cmet.2015.05.012' },
+  { lv: 'bad', tag: 'Tier und Zelle', title: 'Erste Spuren', text: 'Bei Mäusen regenerierten insulinbildende Zellen, und Symptome eines MS-Modells besserten sich. Ob das beim Menschen genauso ist, ist offen.', src: 'Cheng CW et al. Cell 2017 · Choi IY et al. Cell Reports 2016', doi: '10.1016/j.cell.2017.01.040' },
+];
+const faq = [
+  ['Ist Scheinfasten dasselbe wie Heilfasten?', 'Nein. Beim Heilfasten isst man tagelang fast nichts. Beim Scheinfasten isst du fünf Tage lang kleine, genau zusammengesetzte Mahlzeiten mit rund 700 bis 1.100 kcal.'],
+  ['Wie oft sollte ich scheinfasten?', 'In der wichtigsten Studie einmal im Monat, drei Monate lang. Für gesunde Menschen nennt Longo in seinem Buch weniger Durchgänge pro Jahr. Sprich die Häufigkeit am besten ärztlich ab.'],
+  ['Darf ich Kaffee trinken?', 'In Longos Protokoll sind ungesüßte Kräutertees und Wasser vorgesehen. Wer viel Kaffee trinkt, reduziert ihn schon vor dem Start, um Kopfschmerzen zu vermeiden.'],
+  ['Warum so wenig Eiweiß?', 'Wenig Eiweiß und wenig Zucker sind Kernbestandteile des Konzepts. Sie sollen die Stoffwechselsignale des Fastens nachahmen. Deshalb sind die Rezepte rein pflanzlich und die Hülsenfrüchte klein portioniert.'],
+  ['Funktioniert die selbst gekochte Variante genauso wie das Fertigprodukt?', 'Das ist nicht untersucht. Die Studien wurden mit dem Fertigprodukt ProLon gemacht. Unsere Rezepte halten dieselben Kalorien- und Nährstoffvorgaben ein, sind aber nicht in Studien getestet.'],
+  ['Brauche ich Nahrungsergänzungsmittel?', 'Das Fertigprodukt enthält ein Vitamin- und Mineralstoffpräparat sowie Omega-3. Ob du für fünf Tage etwas ergänzen solltest, klärst du am besten mit deiner Ärztin oder deinem Arzt.'],
+];
+---
+<Base title="Wissen" active="wissen" description="Was die Forschung zur Fasting Mimicking Diet von Prof. Dr. Valter Longo zeigt, mit Evidenzstufe und Quellen.">
+  <div class="in page-head narrow">
+    <p class="kicker">Wissen</p>
+    <h1>Was steckt hinter dem Scheinfasten?</h1>
+  </div>
+  <section class="band" style="padding-top:20px">
+    <div class="in person">
+      <img src={u('img/markt.jpg')} alt="Gemüsestand auf einem Markt" loading="lazy" width="1800" height="1000" />
+      <div class="prose">
+        <h2>Prof. Dr. Valter Longo</h2>
+        <p>Valter Longo ist Professor für Gerontologie und Biologie an der University of Southern California in Los Angeles und leitet dort das Longevity Institute. Er hat die Fasting Mimicking Diet entwickelt, auf Deutsch meist Scheinfasten genannt, und sie in Studien an Zellen, Tieren und Menschen untersucht. Sein Buch ist auf Deutsch unter dem Titel „Iss dich jung“ erschienen.</p>
+        <p class="muted">Gut zu wissen: Longo ist Gründer der Firma L-Nutra, die das Fertigprodukt ProLon verkauft. In den Studien wurde dieses Produkt verwendet. Diese Seite ist unabhängig.</p>
+      </div>
+    </div>
+  </section>
+  <section class="band tint">
+    <div class="in">
+      <div class="head"><h2>Die Vorgaben aus der Studie</h2><p class="muted">Diese Werte nutzt unser Planer als Referenz.</p></div>
+      <div class="grid3">
+        <div class="card"><p class="kicker">Tag 1</p><p class="big">1.090 kcal</p><div class="mbar"><i class="p" style="width:10%"></i><i class="f" style="width:56%"></i><i class="c" style="width:34%"></i></div><div class="legend"><span style="--dot:var(--c-protein)">10 % Eiweiß</span><span style="--dot:var(--c-fat)">56 % Fett</span><span style="--dot:var(--c-carbs)">34 % KH</span></div></div>
+        <div class="card"><p class="kicker">Tag 2 bis 5</p><p class="big">725 kcal</p><div class="mbar"><i class="p" style="width:9%"></i><i class="f" style="width:44%"></i><i class="c" style="width:47%"></i></div><div class="legend"><span style="--dot:var(--c-protein)">9 % Eiweiß</span><span style="--dot:var(--c-fat)">44 % Fett</span><span style="--dot:var(--c-carbs)">47 % KH</span></div></div>
+        <div class="card"><p class="kicker">Tag 6</p><p class="big">Übergang</p><p class="muted">Leichte Kost, danach wieder normal und ausgewogen essen.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="band">
+    <div class="in">
+      <div class="head"><h2>Was die Studien zeigen</h2><p class="muted">Die Farbe zeigt, wie belastbar ein Ergebnis ist: grün für randomisierte Studien am Menschen, gelb für erste Daten am Menschen, rot für Tier- und Zellversuche.</p></div>
+      <div class="grid3">
+        {studies.map((s) => (
+          <div class="card">
+            <span class={`chip ${s.lv}`} style="justify-self:start">{s.tag}</span>
+            <h3>{s.title}</h3><p>{s.text}</p>
+            <p class="muted small"><a href={`https://doi.org/${s.doi}`} target="_blank" rel="noopener">{s.src}</a></p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="band tint">
+    <div class="in narrow">
+      <div class="head"><h2>Häufige Fragen</h2></div>
+      <div class="faq">
+        {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+      </div>
+      <div class="ctas" style="margin-top:24px"><a class="btn" href={u('planer/')}><Icon name="calendar" />Plan erstellen</a><a class="btn soft" href={u('fuer-wen-nicht/')}><Icon name="shield" />Für wen nicht?</a></div>
+    </div>
+  </section>
+</Base>
+<style>
+  .person { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 40px; align-items: center; }
+  @media (max-width: 820px) { .person { grid-template-columns: 1fr; } }
+  .person img { border-radius: 24px; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+  .big { font-family: var(--display); font-size: 2rem; }
+  .faq { display: grid; gap: 10px; }
+  .faq details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+  .faq summary { cursor: pointer; font-weight: 700; }
+  .faq p { margin-top: 10px; }
+</style>

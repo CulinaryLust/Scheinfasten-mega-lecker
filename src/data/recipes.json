@@ -1,0 +1,1896 @@
+[
+ {
+  "slug": "minestrone",
+  "title": "Toskanische Minestrone mit Basilikumöl",
+  "short": "Minestrone",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 35,
+  "image": "minestrone",
+  "teaser": "Die Basis jeder Fastenwoche: viel Gemüse, wenig Bohnen, ein Löffel grünes Öl obendrauf. Schmeckt am zweiten Tag noch besser.",
+  "ingredients": [
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": "für den Topf"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 50,
+    "note": "fein gewürfelt"
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 3,
+    "note": "1 Zehe"
+   },
+   {
+    "name": "Karotten",
+    "amount": 60,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Staudensellerie",
+    "amount": 50,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Zucchini",
+    "amount": 100,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Tomaten, passiert",
+    "amount": 150,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 300,
+    "note": "salzarm"
+   },
+   {
+    "name": "Weiße Bohnen (gegart)",
+    "amount": 30,
+    "note": "aus der Dose, abgespült"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": "für das Basilikumöl"
+   },
+   {
+    "name": "Basilikum",
+    "amount": 10,
+    "note": "für das Basilikumöl"
+   }
+  ],
+  "steps": [
+   "Öl in einem Topf erhitzen. Zwiebel, Karotte und Sellerie 5 Minuten glasig dünsten.",
+   "Knoblauch und Kartoffeln zugeben, kurz mitrösten. Brühe und passierte Tomaten angießen.",
+   "15 Minuten leise köcheln lassen. Zucchini und Bohnen zugeben, weitere 8 Minuten garen.",
+   "Basilikum mit Öl und einer Prise Salz fein pürieren.",
+   "Suppe mit Pfeffer, Salz und Oregano abschmecken, Basilikumöl in Klecksen daraufgeben."
+  ],
+  "tip": "Gleich die vierfache Menge kochen. Ohne Basilikumöl hält die Suppe 3 Tage im Kühlschrank.",
+  "own": false
+ },
+ {
+  "slug": "kuerbissuppe",
+  "title": "Hokkaido-Kokos-Suppe mit Ingwer und gerösteten Kürbiskernen",
+  "short": "Kürbissuppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 30,
+  "image": "kuerbissuppe",
+  "teaser": "Samtig, leicht scharf und richtig sättigend. Die Kokosmilch liefert genau die Fette, die das Konzept vorsieht.",
+  "ingredients": [
+   {
+    "name": "Hokkaido-Kürbis",
+    "amount": 300,
+    "note": "mit Schale gewürfelt"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Ingwer",
+    "amount": 5,
+    "note": "frisch gerieben"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 250,
+    "note": ""
+   },
+   {
+    "name": "Kokosmilch (vollfett)",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Kürbiskerne",
+    "amount": 8,
+    "note": "1 EL"
+   }
+  ],
+  "steps": [
+   "Zwiebel im Öl 3 Minuten anschwitzen, Ingwer und Kürbis kurz mitrösten.",
+   "Brühe angießen und zugedeckt 15 Minuten weich kochen.",
+   "Kokosmilch einrühren (1 TL zum Garnieren zurückbehalten) und fein pürieren.",
+   "Kürbiskerne ohne Fett rösten, bis sie knacken.",
+   "Mit Salz, Pfeffer und Limette abschmecken und mit Kernen servieren."
+  ],
+  "tip": "Eine Messerspitze Kurkuma und Kreuzkümmel machen die Suppe noch runder.",
+  "own": false
+ },
+ {
+  "slug": "ofen-blumenkohl",
+  "title": "Ofen-Blumenkohl und Süßkartoffel mit Tahin-Zitronen-Sauce",
+  "short": "Ofen-Blumenkohl",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 35,
+  "image": "blumenkohl",
+  "teaser": "Röstaromen statt Verzicht. Die Tahin-Sauce macht alles cremig, ganz ohne Milchprodukte.",
+  "ingredients": [
+   {
+    "name": "Blumenkohl",
+    "amount": 200,
+    "note": "in Röschen"
+   },
+   {
+    "name": "Süßkartoffel",
+    "amount": 150,
+    "note": "in Spalten"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 6,
+    "note": ""
+   },
+   {
+    "name": "Paprikapulver, geräuchert",
+    "amount": 1,
+    "note": "½ TL"
+   },
+   {
+    "name": "Tahin",
+    "amount": 10,
+    "note": "2 TL"
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 15,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 2,
+    "note": "gerieben"
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": "gehackt"
+   }
+  ],
+  "steps": [
+   "Ofen auf 220 °C Umluft vorheizen.",
+   "Gemüse mit Öl, Paprika und Salz mischen und auf ein Blech geben.",
+   "25 Minuten rösten, nach der Hälfte wenden, bis die Ränder braun sind.",
+   "Tahin mit Zitronensaft, Knoblauch und 2 bis 3 EL warmem Wasser glatt rühren.",
+   "Gemüse anrichten, Sauce darüberträufeln, Petersilie darüberstreuen."
+  ],
+  "tip": "Die Sauce dickt nach. Einfach mit etwas Wasser wieder cremig rühren.",
+  "own": false
+ },
+ {
+  "slug": "zucchini-pfanne",
+  "title": "Mediterrane Zucchini-Tomaten-Pfanne mit Oliven, Kapern und Hirse",
+  "short": "Zucchini-Pfanne",
+  "category": "Pfanne",
+  "slot": "main",
+  "minutes": 20,
+  "image": "pfanne",
+  "teaser": "Schmeckt nach Urlaub an der Ligurischen Küste. Oliven und Kapern bringen Würze, die Hirse macht satt.",
+  "ingredients": [
+   {
+    "name": "Zucchini",
+    "amount": 200,
+    "note": "in Halbmonden"
+   },
+   {
+    "name": "Kirschtomaten",
+    "amount": 150,
+    "note": "halbiert"
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 40,
+    "note": "in Streifen"
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Grüne Oliven",
+    "amount": 15,
+    "note": "halbiert"
+   },
+   {
+    "name": "Kapern",
+    "amount": 5,
+    "note": "1 TL"
+   },
+   {
+    "name": "Basilikum",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Hirse (gegart)",
+    "amount": 120,
+    "note": "ca. 40 g roh"
+   }
+  ],
+  "steps": [
+   "Hirse garen oder vom Vortag nehmen.",
+   "Zucchini in heißem Öl scharf anbraten, bis sie Farbe nehmen.",
+   "Zwiebel und Knoblauch 2 Minuten mitbraten, dann Tomaten, Oliven und Kapern zugeben.",
+   "4 Minuten schmoren, bis die Tomaten aufplatzen.",
+   "Hirse unterheben, mit Pfeffer, Oregano und Basilikum abschmecken."
+  ],
+  "tip": "Pfanne nicht überladen, sonst kochen die Zucchini statt zu bräunen.",
+  "own": false
+ },
+ {
+  "slug": "pilz-miso-bruehe",
+  "title": "Pilz-Miso-Brühe mit Lauch, Kartoffel und Spinat",
+  "short": "Pilz-Miso-Brühe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 25,
+  "image": "pilz",
+  "teaser": "Umami für den Abend. Miso und gebratene Pilze geben Tiefe wie eine lange gekochte Brühe.",
+  "ingredients": [
+   {
+    "name": "Champignons",
+    "amount": 90,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Lauch",
+    "amount": 60,
+    "note": "in Ringen"
+   },
+   {
+    "name": "Karotten",
+    "amount": 40,
+    "note": "in Stiften"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 120,
+    "note": "klein gewürfelt"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 350,
+    "note": ""
+   },
+   {
+    "name": "Helle Misopaste",
+    "amount": 7,
+    "note": "gut 1 TL"
+   },
+   {
+    "name": "Babyspinat",
+    "amount": 30,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Pilze im Öl bei hoher Hitze braun braten.",
+   "Lauch und Karotte 2 Minuten mitbraten.",
+   "Kartoffeln und Brühe zugeben, 12 Minuten köcheln.",
+   "Vom Herd nehmen, Miso in etwas Brühe glatt rühren und einrühren (nicht mehr kochen).",
+   "Spinat in die Schale geben und mit der heißen Suppe übergießen."
+  ],
+  "tip": "Miso ist salzig. Erst danach abschmecken, meist braucht es kein Salz mehr.",
+  "own": false
+ },
+ {
+  "slug": "gruenkohl-chips",
+  "title": "Knusprige Grünkohl-Chips mit geräuchertem Paprika",
+  "short": "Grünkohl-Chips",
+  "category": "Snack",
+  "slot": "snack",
+  "minutes": 20,
+  "image": "chips",
+  "teaser": "Der Snack fürs Knabberbedürfnis. Frisch aus dem Ofen und richtig knusprig.",
+  "ingredients": [
+   {
+    "name": "Grünkohl",
+    "amount": 60,
+    "note": "ohne Strunk, gezupft"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 5,
+    "note": "1 TL"
+   },
+   {
+    "name": "Paprikapulver, geräuchert",
+    "amount": 1,
+    "note": "½ TL"
+   }
+  ],
+  "steps": [
+   "Ofen auf 140 °C Umluft vorheizen.",
+   "Grünkohl waschen und sehr gut trocken schleudern.",
+   "Mit Öl, Paprika und Salz einmassieren und mit Abstand auf ein Blech legen.",
+   "15 bis 20 Minuten backen, bis die Blätter knistern. Nach 10 Minuten wenden."
+  ],
+  "tip": "Luftdicht verpackt bleiben die Chips 2 Tage knusprig.",
+  "own": false
+ },
+ {
+  "slug": "rote-bete-carpaccio",
+  "title": "Rote-Bete-Carpaccio mit Walnüssen, Rucola und Zitronen-Hirse",
+  "short": "Rote-Bete-Carpaccio",
+  "category": "Salat",
+  "slot": "main",
+  "minutes": 15,
+  "image": "rotebete",
+  "teaser": "Das Finale für Tag 5. Sieht aus wie im Restaurant und steht in einer Viertelstunde auf dem Tisch.",
+  "ingredients": [
+   {
+    "name": "Rote Bete (vorgegart)",
+    "amount": 150,
+    "note": "hauchdünn gehobelt"
+   },
+   {
+    "name": "Rucola",
+    "amount": 30,
+    "note": ""
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 8,
+    "note": "grob gehackt"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Hirse (gegart)",
+    "amount": 80,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Rote Bete hauchdünn hobeln und auf einem Teller auslegen.",
+   "Öl, Zitronensaft, Salz und Pfeffer verrühren.",
+   "Hirse mit der Hälfte des Dressings mischen und in die Mitte setzen.",
+   "Rucola daraufgeben, Walnüsse kurz rösten und darüberstreuen.",
+   "Restliches Dressing über die Bete träufeln."
+  ],
+  "tip": "Einweghandschuhe tragen, Rote Bete färbt stark.",
+  "own": false
+ },
+ {
+  "slug": "nussmix",
+  "title": "Nussmix aus Walnüssen und Mandeln",
+  "short": "Nussmix",
+  "category": "Snack",
+  "slot": "snack",
+  "minutes": 2,
+  "image": "nuesse",
+  "teaser": "Das Frühstück der Fastentage: eine kleine Handvoll gute Fette, dazu ein großer Becher Kräutertee.",
+  "ingredients": [
+   {
+    "name": "Walnusskerne",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Mandeln",
+    "amount": 10,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Nüsse abwiegen und in kleine Dosen füllen, am besten gleich für alle fünf Tage.",
+   "Langsam essen und dazu einen großen Becher Kräutertee trinken."
+  ],
+  "tip": "Kurz in der Pfanne geröstet schmecken die Nüsse intensiver.",
+  "own": false
+ },
+ {
+  "slug": "oliven",
+  "title": "Würzige Oliven mit Zitronenabrieb",
+  "short": "Oliven",
+  "category": "Snack",
+  "slot": "snack",
+  "minutes": 2,
+  "image": "oliven",
+  "teaser": "Salzig, fettreich und sättigend. Genau der richtige Snack für den Nachmittag.",
+  "ingredients": [
+   {
+    "name": "Grüne Oliven",
+    "amount": 30,
+    "note": "ca. 8 Stück"
+   }
+  ],
+  "steps": [
+   "Oliven abtropfen lassen.",
+   "Mit etwas Zitronenabrieb, Chiliflocken und Thymian mischen."
+  ],
+  "tip": "Wer Hunger hat, isst die Oliven langsam und trinkt ein Glas Wasser dazu.",
+  "own": false
+ },
+ {
+  "slug": "beilagensalat",
+  "title": "Beilagensalat mit Gurke und Zitronen-Öl-Dressing",
+  "short": "Beilagensalat",
+  "category": "Salat",
+  "slot": "side",
+  "minutes": 5,
+  "image": "salat",
+  "teaser": "Frisch, knackig und in fünf Minuten fertig.",
+  "ingredients": [
+   {
+    "name": "Blattsalat",
+    "amount": 80,
+    "note": ""
+   },
+   {
+    "name": "Gurke",
+    "amount": 80,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 10,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Salat waschen und trocken schleudern.",
+   "Gurke in Scheiben schneiden.",
+   "Öl, Zitronensaft, Salz und Pfeffer verrühren und unterheben."
+  ],
+  "tip": "Frische Kräuter wie Dill oder Schnittlauch machen ihn besonders.",
+  "own": false
+ },
+ {
+  "slug": "fenchel-orangen-suppe",
+  "title": "Fenchel-Orangen-Suppe mit Safran",
+  "short": "Fenchelsuppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 30,
+  "image": "suppe-hell",
+  "teaser": "Fein, leicht süßlich und mit einem Hauch Safran. Ein Gericht wie im Süden Italiens.",
+  "ingredients": [
+   {
+    "name": "Fenchel",
+    "amount": 250,
+    "note": "in Streifen, Grün aufheben"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 30,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 70,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 9,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 300,
+    "note": ""
+   },
+   {
+    "name": "Orange",
+    "amount": 50,
+    "note": "Filets und Saft"
+   }
+  ],
+  "steps": [
+   "Zwiebel und Fenchel im Öl 5 Minuten dünsten.",
+   "Kartoffel, Brühe und eine Prise Safran zugeben, 18 Minuten köcheln.",
+   "Orangensaft zugeben und fein pürieren.",
+   "Mit Orangenfilets und Fenchelgrün servieren."
+  ],
+  "tip": "Statt Safran passt auch eine Prise Kurkuma.",
+  "own": false
+ },
+ {
+  "slug": "gazpacho",
+  "title": "Tomaten-Paprika-Gazpacho mit Gurke",
+  "short": "Gazpacho",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 15,
+  "image": "gazpacho",
+  "teaser": "Kalte Suppe für warme Tage. Kein Herd, nur ein Mixer.",
+  "ingredients": [
+   {
+    "name": "Tomaten",
+    "amount": 250,
+    "note": "reif"
+   },
+   {
+    "name": "Rote Paprika",
+    "amount": 100,
+    "note": ""
+   },
+   {
+    "name": "Gurke",
+    "amount": 100,
+    "note": ""
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 20,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 2,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 12,
+    "note": ""
+   },
+   {
+    "name": "Apfelessig",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 60,
+    "note": "gekocht, für die Bindung"
+   }
+  ],
+  "steps": [
+   "Gemüse grob schneiden.",
+   "Alles mit Öl, Essig, Salz und 100 ml kaltem Wasser fein pürieren.",
+   "Mindestens 1 Stunde kalt stellen.",
+   "Mit Gurkenwürfeln und einem Tropfen Öl servieren."
+  ],
+  "tip": "Je reifer die Tomaten, desto besser die Suppe.",
+  "own": false
+ },
+ {
+  "slug": "thai-curry-bruehe",
+  "title": "Thai-Curry-Brühe mit Pak Choi und Kokos",
+  "short": "Thai-Curry-Brühe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 25,
+  "image": "curry",
+  "teaser": "Aromatisch, wärmend und leicht scharf. Mit Limette und Koriander ein kleiner Urlaub.",
+  "ingredients": [
+   {
+    "name": "Pak Choi",
+    "amount": 150,
+    "note": "geviertelt"
+   },
+   {
+    "name": "Champignons",
+    "amount": 80,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Süßkartoffel",
+    "amount": 100,
+    "note": "klein gewürfelt"
+   },
+   {
+    "name": "Kokosmilch (vollfett)",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Rote Currypaste",
+    "amount": 10,
+    "note": "1 TL"
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 350,
+    "note": ""
+   },
+   {
+    "name": "Limettensaft",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Ingwer",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Currypaste und Ingwer in einem Topf kurz anrösten.",
+   "Brühe, Kokosmilch und Süßkartoffel zugeben, 10 Minuten köcheln.",
+   "Pilze und Pak Choi zugeben, 4 Minuten garen.",
+   "Mit Limettensaft und Koriander abschmecken."
+  ],
+  "tip": "Currypaste ohne Fischsauce kaufen, dann bleibt das Gericht pflanzlich.",
+  "own": false
+ },
+ {
+  "slug": "brokkoli-lauch-suppe",
+  "title": "Brokkoli-Lauch-Cremesuppe mit Mandelsplittern",
+  "short": "Brokkolisuppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 25,
+  "image": "suppe-gruen",
+  "teaser": "Grün, cremig und ohne Sahne. Die gerösteten Mandeln geben Biss.",
+  "ingredients": [
+   {
+    "name": "Brokkoli",
+    "amount": 200,
+    "note": "in Röschen"
+   },
+   {
+    "name": "Lauch",
+    "amount": 80,
+    "note": "in Ringen"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 350,
+    "note": ""
+   },
+   {
+    "name": "Mandeln",
+    "amount": 8,
+    "note": "gehobelt"
+   }
+  ],
+  "steps": [
+   "Lauch im Öl 3 Minuten dünsten.",
+   "Kartoffel und Brühe zugeben, 10 Minuten köcheln.",
+   "Brokkoli zugeben, 6 Minuten garen und fein pürieren.",
+   "Mit Muskat, Salz und Pfeffer abschmecken, Mandeln rösten und darüberstreuen."
+  ],
+  "tip": "Ein paar Brokkoliröschen vor dem Pürieren herausnehmen und als Einlage verwenden.",
+  "own": false
+ },
+ {
+  "slug": "zucchini-nudeln-pesto",
+  "title": "Zucchini-Nudeln mit Walnuss-Basilikum-Pesto",
+  "short": "Zucchini-Nudeln",
+  "category": "Pfanne",
+  "slot": "main",
+  "minutes": 15,
+  "image": "zoodles",
+  "teaser": "Pasta-Gefühl ohne Pasta. Das Pesto ist in drei Minuten gemixt.",
+  "ingredients": [
+   {
+    "name": "Zucchini",
+    "amount": 300,
+    "note": "spiralisiert"
+   },
+   {
+    "name": "Kirschtomaten",
+    "amount": 100,
+    "note": "halbiert"
+   },
+   {
+    "name": "Basilikum",
+    "amount": 15,
+    "note": ""
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 12,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 2,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": "gekocht, gewürfelt"
+   }
+  ],
+  "steps": [
+   "Basilikum, Walnüsse, Öl, Zitronensaft, Knoblauch und Salz zu Pesto mixen.",
+   "Zucchini-Nudeln 1 Minute in einer heißen Pfanne schwenken.",
+   "Pesto, Tomaten und Kartoffelwürfel unterheben.",
+   "Sofort servieren."
+  ],
+  "tip": "Zucchini-Nudeln nicht salzen, bevor sie in die Pfanne kommen, sonst ziehen sie Wasser.",
+  "own": false
+ },
+ {
+  "slug": "rotkohl-apfel-salat",
+  "title": "Rotkohl-Apfel-Salat mit gerösteten Sonnenblumenkernen",
+  "short": "Rotkohlsalat",
+  "category": "Salat",
+  "slot": "main",
+  "minutes": 15,
+  "image": "salat-bunt",
+  "teaser": "Knackig, süß-sauer und voller Farbe. Wird mit jeder Stunde im Kühlschrank besser.",
+  "ingredients": [
+   {
+    "name": "Rotkohl",
+    "amount": 200,
+    "note": "fein gehobelt"
+   },
+   {
+    "name": "Apfel",
+    "amount": 60,
+    "note": "in Stiften"
+   },
+   {
+    "name": "Sonnenblumenkerne",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Apfelessig",
+    "amount": 15,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 100,
+    "note": "gekocht, lauwarm"
+   }
+  ],
+  "steps": [
+   "Rotkohl mit Salz kräftig durchkneten, bis er weich wird.",
+   "Essig, Öl und Pfeffer zugeben, Apfel unterheben.",
+   "Sonnenblumenkerne ohne Fett rösten.",
+   "Mit lauwarmen Kartoffelwürfeln anrichten und mit Kernen bestreuen."
+  ],
+  "tip": "Am Vorabend zubereitet schmeckt der Salat noch runder.",
+  "own": false
+ },
+ {
+  "slug": "ofen-tomaten-kraeuterkruste",
+  "title": "Ofen-Tomaten mit Leinsamen-Kräuterkruste und Hirse",
+  "short": "Ofen-Tomaten",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 30,
+  "image": "ofengemuese",
+  "teaser": "Saftige Tomaten unter einer knusprigen Kruste. Schmeckt nach Sommer, auch im Winter.",
+  "ingredients": [
+   {
+    "name": "Tomaten",
+    "amount": 300,
+    "note": "halbiert"
+   },
+   {
+    "name": "Leinsamen",
+    "amount": 8,
+    "note": "geschrotet"
+   },
+   {
+    "name": "Petersilie",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Hirse (gegart)",
+    "amount": 100,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Ofen auf 200 °C vorheizen.",
+   "Leinsamen, Petersilie, Knoblauch, Öl und Salz mischen.",
+   "Tomaten mit der Schnittfläche nach oben in eine Form setzen und die Kruste daraufgeben.",
+   "20 Minuten backen und mit Hirse servieren."
+  ],
+  "tip": "Ein paar Thymianzweige in der Form geben zusätzliches Aroma.",
+  "own": false
+ },
+ {
+  "slug": "leinsamen-cracker",
+  "title": "Leinsamen-Kräuter-Cracker",
+  "short": "Leinsamen-Cracker",
+  "category": "Snack",
+  "slot": "snack",
+  "minutes": 60,
+  "image": "cracker",
+  "teaser": "Knuspriger Ersatz für Brot. Einmal backen, für die ganze Woche.",
+  "ingredients": [
+   {
+    "name": "Leinsamen",
+    "amount": 15,
+    "note": "ganz"
+   },
+   {
+    "name": "Sonnenblumenkerne",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Rote Paprika",
+    "amount": 30,
+    "note": "fein gewürfelt, als Beilage"
+   }
+  ],
+  "steps": [
+   "Für 5 Portionen 75 g Leinsamen und 25 g Sonnenblumenkerne mit 120 ml Wasser, Salz und Kräutern 20 Minuten quellen lassen.",
+   "Dünn auf Backpapier streichen und bei 150 °C 45 Minuten backen.",
+   "Abkühlen lassen und in Stücke brechen.",
+   "Pro Portion mit Paprikastreifen servieren."
+  ],
+  "tip": "Die Masse so dünn wie möglich streichen, dann werden die Cracker richtig knusprig.",
+  "own": false
+ },
+ {
+  "slug": "tapenade-gemuesesticks",
+  "title": "Oliven-Tapenade mit Gemüsesticks",
+  "short": "Tapenade",
+  "category": "Snack",
+  "slot": "snack",
+  "minutes": 10,
+  "image": "gemuesesticks",
+  "teaser": "Würziger Dip, knackiges Gemüse. Perfekt für den Nachmittag.",
+  "ingredients": [
+   {
+    "name": "Grüne Oliven",
+    "amount": 25,
+    "note": "entsteint"
+   },
+   {
+    "name": "Kapern",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Karotten",
+    "amount": 60,
+    "note": "in Sticks"
+   },
+   {
+    "name": "Gurke",
+    "amount": 60,
+    "note": "in Sticks"
+   },
+   {
+    "name": "Rote Paprika",
+    "amount": 50,
+    "note": "in Streifen"
+   }
+  ],
+  "steps": [
+   "Oliven, Kapern, Öl, etwas Zitronenabrieb und Pfeffer grob pürieren.",
+   "Gemüse in Sticks schneiden.",
+   "Zusammen servieren."
+  ],
+  "tip": "Die Tapenade hält im Glas 4 Tage im Kühlschrank.",
+  "own": false
+ },
+ {
+  "slug": "ofen-kichererbsen",
+  "title": "Gewürzte Ofen-Kichererbsen",
+  "short": "Ofen-Kichererbsen",
+  "category": "Snack",
+  "slot": "snack",
+  "minutes": 30,
+  "image": "kichererbsen",
+  "teaser": "Knusprig wie Chips, aber aus Hülsenfrüchten. Kleine Portion, großer Genuss.",
+  "ingredients": [
+   {
+    "name": "Kichererbsen (gegart)",
+    "amount": 40,
+    "note": "gut abgetrocknet"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Paprikapulver, geräuchert",
+    "amount": 1,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Ofen auf 200 °C vorheizen.",
+   "Kichererbsen trocken tupfen und mit Öl, Paprika und Salz mischen.",
+   "25 Minuten rösten, zwischendurch schütteln."
+  ],
+  "tip": "Kichererbsen vor dem Rösten gut trocknen, sonst werden sie nicht knusprig.",
+  "own": false
+ },
+ {
+  "slug": "avocado-gurken-kaltschale",
+  "title": "Avocado-Gurken-Kaltschale mit Dill",
+  "short": "Avocado-Kaltschale",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 10,
+  "image": "kaltschale",
+  "teaser": "Cremig, frisch und blitzschnell. Ideal für Tag 1, wenn es etwas mehr sein darf.",
+  "ingredients": [
+   {
+    "name": "Avocado",
+    "amount": 80,
+    "note": "½ Frucht"
+   },
+   {
+    "name": "Gurke",
+    "amount": 250,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 15,
+    "note": ""
+   },
+   {
+    "name": "Dill",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 1,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Alles mit 100 ml kaltem Wasser und Salz fein pürieren.",
+   "Abschmecken und 30 Minuten kalt stellen.",
+   "Mit Gurkenwürfeln und Dill servieren."
+  ],
+  "tip": "Ein Eiswürfel im Mixer macht die Suppe sofort kalt.",
+  "own": false
+ },
+ {
+  "slug": "hummus-bowl",
+  "title": "Hummus-Bowl mit Ofengemüse und Rucola",
+  "short": "Hummus-Bowl",
+  "category": "Bowl",
+  "slot": "main",
+  "minutes": 30,
+  "image": "bowl",
+  "teaser": "Für Tag 1: eine richtige Mahlzeit mit cremigem Hummus und geröstetem Gemüse.",
+  "ingredients": [
+   {
+    "name": "Kichererbsen (gegart)",
+    "amount": 60,
+    "note": "für den Hummus"
+   },
+   {
+    "name": "Tahin",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 15,
+    "note": ""
+   },
+   {
+    "name": "Zucchini",
+    "amount": 120,
+    "note": "in Stücken"
+   },
+   {
+    "name": "Rote Paprika",
+    "amount": 120,
+    "note": "in Stücken"
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 40,
+    "note": "in Spalten"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Rucola",
+    "amount": 20,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Gemüse mit Öl und Salz bei 220 °C 20 Minuten rösten.",
+   "Kichererbsen mit Tahin, Zitronensaft, Salz und 2 EL Wasser cremig pürieren.",
+   "Hummus in eine Schale streichen, Ofengemüse und Rucola daraufgeben."
+  ],
+  "tip": "Etwas Kreuzkümmel im Hummus macht ihn orientalischer.",
+  "own": false
+ },
+ {
+  "slug": "gemuese-lasagne",
+  "title": "Gemüse-Lasagne ohne Nudeln mit Cashew-Creme",
+  "short": "Gemüse-Lasagne",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 50,
+  "image": "lasagne",
+  "teaser": "Schichten aus Zucchini, Tomate und Pilzen mit einer cremigen Cashew-Decke. Wohlfühlessen für Tag 1.",
+  "ingredients": [
+   {
+    "name": "Zucchini",
+    "amount": 250,
+    "note": "in Längsscheiben"
+   },
+   {
+    "name": "Tomaten, passiert",
+    "amount": 200,
+    "note": ""
+   },
+   {
+    "name": "Champignons",
+    "amount": 80,
+    "note": "gehackt"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Cashewkerne",
+    "amount": 20,
+    "note": "eingeweicht"
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Zwiebel und Pilze im Öl braten, Tomaten zugeben und 10 Minuten zu einer Sauce köcheln.",
+   "Cashews mit Zitronensaft, Salz und 60 ml Wasser cremig mixen.",
+   "Zucchini und Sauce abwechselnd in eine kleine Form schichten, mit Cashew-Creme abschließen.",
+   "Bei 190 °C 30 Minuten backen."
+  ],
+  "tip": "Zucchinischeiben vorher salzen und abtupfen, dann wird die Lasagne nicht wässrig.",
+  "own": false
+ },
+ {
+  "slug": "ofen-ratatouille",
+  "title": "Ratatouille aus dem Ofen",
+  "short": "Ratatouille",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 45,
+  "image": "ratatouille",
+  "teaser": "Der Klassiker aus der Provence, langsam geschmort. Duftet nach Kräutern und Sommer.",
+  "ingredients": [
+   {
+    "name": "Aubergine",
+    "amount": 150,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Zucchini",
+    "amount": 120,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Rote Paprika",
+    "amount": 100,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Tomaten",
+    "amount": 150,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": "gewürfelt"
+   }
+  ],
+  "steps": [
+   "Ofen auf 200 °C vorheizen.",
+   "Alles mit Öl, Kräutern der Provence und Salz mischen.",
+   "In einer Form 35 Minuten schmoren, einmal umrühren."
+  ],
+  "tip": "Am nächsten Tag aufgewärmt schmeckt Ratatouille noch besser.",
+  "own": false
+ },
+ {
+  "slug": "spinat-dal",
+  "title": "Spinat-Kokos-Dal mit Tomaten",
+  "short": "Spinat-Dal",
+  "category": "Pfanne",
+  "slot": "main",
+  "minutes": 25,
+  "image": "dal",
+  "teaser": "Ein kleines, würziges Dal. Linsen in kleiner Menge, damit das Eiweiß im Rahmen bleibt.",
+  "ingredients": [
+   {
+    "name": "Rote Linsen (gegart)",
+    "amount": 50,
+    "note": "ca. 20 g roh"
+   },
+   {
+    "name": "Babyspinat",
+    "amount": 100,
+    "note": ""
+   },
+   {
+    "name": "Kokosmilch (vollfett)",
+    "amount": 30,
+    "note": ""
+   },
+   {
+    "name": "Tomaten",
+    "amount": 100,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Ingwer",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Süßkartoffel",
+    "amount": 80,
+    "note": "klein gewürfelt"
+   }
+  ],
+  "steps": [
+   "Zwiebel und Ingwer im Öl anschwitzen, Currypulver und Kreuzkümmel kurz mitrösten.",
+   "Süßkartoffel, Tomaten und 150 ml Wasser zugeben, 10 Minuten köcheln.",
+   "Linsen und Kokosmilch zugeben, 5 Minuten weiterkochen.",
+   "Spinat unterheben, bis er zusammenfällt."
+  ],
+  "tip": "Mit Limettensaft und Koriander abschmecken.",
+  "own": false
+ },
+ {
+  "slug": "blumenkohl-reis-bowl",
+  "title": "Kurkuma-Blumenkohl-Reis mit Cashews",
+  "short": "Blumenkohl-Reis",
+  "category": "Pfanne",
+  "slot": "main",
+  "minutes": 20,
+  "image": "blumenkohlreis",
+  "teaser": "Goldgelb, würzig und leicht. Der Blumenkohl übernimmt die Rolle von Reis.",
+  "ingredients": [
+   {
+    "name": "Blumenkohl",
+    "amount": 250,
+    "note": "fein gerieben"
+   },
+   {
+    "name": "Karotten",
+    "amount": 60,
+    "note": "gerieben"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 30,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Cashewkerne",
+    "amount": 8,
+    "note": "grob gehackt"
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": "gekocht, gewürfelt"
+   }
+  ],
+  "steps": [
+   "Zwiebel im Öl anschwitzen, 1 TL Kurkuma kurz mitrösten.",
+   "Blumenkohl, Karotte und Kartoffel zugeben und 6 Minuten unter Rühren braten.",
+   "Mit Salz, Pfeffer und Zitrone abschmecken.",
+   "Mit gerösteten Cashews und Petersilie servieren."
+  ],
+  "tip": "Blumenkohl in der Küchenmaschine reiben spart viel Zeit.",
+  "own": false
+ },
+ {
+  "slug": "gefuellte-paprika",
+  "title": "Gefüllte Paprika mit Kräuter-Hirse",
+  "short": "Gefüllte Paprika",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 40,
+  "image": "paprika",
+  "teaser": "Bunte Paprika, gefüllt mit Hirse, Tomate und Kräutern. Sieht toll aus und macht satt.",
+  "ingredients": [
+   {
+    "name": "Rote Paprika",
+    "amount": 200,
+    "note": "1 große Schote, halbiert"
+   },
+   {
+    "name": "Hirse (gegart)",
+    "amount": 100,
+    "note": ""
+   },
+   {
+    "name": "Tomaten",
+    "amount": 100,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 30,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Petersilie",
+    "amount": 10,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Ofen auf 200 °C vorheizen.",
+   "Zwiebel im Öl anschwitzen, Tomaten, Hirse und Petersilie unterheben und würzen.",
+   "Paprikahälften füllen und in eine Form setzen.",
+   "25 Minuten backen."
+  ],
+  "tip": "Ein Schuss Gemüsebrühe in der Form verhindert, dass die Paprika anbrennt.",
+  "own": false
+ },
+ {
+  "slug": "suesskartoffel-avocado-dip",
+  "title": "Süßkartoffel-Spalten mit Avocado-Limetten-Dip",
+  "short": "Süßkartoffel-Spalten",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 35,
+  "image": "suesskartoffel",
+  "teaser": "Außen knusprig, innen weich, dazu ein cremiger Dip. Fingerfood für Fastentage.",
+  "ingredients": [
+   {
+    "name": "Süßkartoffel",
+    "amount": 180,
+    "note": "in Spalten"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 6,
+    "note": ""
+   },
+   {
+    "name": "Avocado",
+    "amount": 50,
+    "note": ""
+   },
+   {
+    "name": "Limettensaft",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Paprikapulver, geräuchert",
+    "amount": 1,
+    "note": ""
+   },
+   {
+    "name": "Blattsalat",
+    "amount": 50,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Ofen auf 220 °C vorheizen.",
+   "Süßkartoffel mit Öl, Paprika und Salz mischen, 25 Minuten rösten.",
+   "Avocado mit Limette und Salz zerdrücken.",
+   "Mit Salat und Dip servieren."
+  ],
+  "tip": "Spalten mit Abstand legen, dann werden sie knuspriger.",
+  "own": false
+ },
+ {
+  "slug": "gurkensalat-sesam",
+  "title": "Asiatischer Gurkensalat mit Sesam",
+  "short": "Gurkensalat",
+  "category": "Salat",
+  "slot": "snack",
+  "minutes": 10,
+  "image": "gurke",
+  "teaser": "Knackig, erfrischend, leicht scharf. Passt als Snack oder zu jeder Suppe.",
+  "ingredients": [
+   {
+    "name": "Gurke",
+    "amount": 250,
+    "note": "gestückelt"
+   },
+   {
+    "name": "Sesam",
+    "amount": 5,
+    "note": "geröstet"
+   },
+   {
+    "name": "Sesamöl",
+    "amount": 4,
+    "note": ""
+   },
+   {
+    "name": "Apfelessig",
+    "amount": 10,
+    "note": "oder Reisessig"
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 1,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Gurke mit dem Messerrücken anschlagen und in Stücke brechen.",
+   "Mit Salz 10 Minuten ziehen lassen, Wasser abgießen.",
+   "Mit Essig, Sesamöl, Knoblauch und Chili mischen.",
+   "Mit Sesam bestreuen."
+  ],
+  "tip": "Ein paar Chiliflocken machen den Salat richtig spannend.",
+  "own": false
+ },
+ {
+  "slug": "erbsen-minz-suppe",
+  "title": "Erbsen-Minz-Suppe",
+  "short": "Erbsensuppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 20,
+  "image": "suppe-gruen2",
+  "teaser": "Leuchtend grün und frisch. Die Minze macht den Unterschied.",
+  "ingredients": [
+   {
+    "name": "Erbsen (TK)",
+    "amount": 120,
+    "note": ""
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 60,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 300,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Minze",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Zwiebel im Öl anschwitzen, Kartoffel und Brühe zugeben, 10 Minuten köcheln.",
+   "Erbsen zugeben, 4 Minuten garen.",
+   "Mit Minze fein pürieren und abschmecken."
+  ],
+  "tip": "Nicht zu lange kochen, damit die Farbe leuchtend bleibt.",
+  "own": false
+ },
+ {
+  "slug": "karotten-ingwer-suppe",
+  "title": "Karotten-Ingwer-Suppe mit Kokos",
+  "short": "Karottensuppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 25,
+  "image": "karottensuppe",
+  "teaser": "Süß, scharf und cremig. Eine Suppe, die durch den Winter trägt.",
+  "ingredients": [
+   {
+    "name": "Karotten",
+    "amount": 250,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Ingwer",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Kokosmilch (vollfett)",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 300,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 3,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Zwiebel und Ingwer im Öl anschwitzen.",
+   "Karotten und Brühe zugeben, 18 Minuten weich kochen.",
+   "Kokosmilch zugeben und fein pürieren.",
+   "Mit Salz, Pfeffer und Limette abschmecken."
+  ],
+  "tip": "Mit einem Klecks Kokosmilch und Chiliöl servieren.",
+  "own": false
+ },
+ {
+  "slug": "champignon-pfanne-cashew",
+  "title": "Champignon-Pfanne mit Cashew-Rahm und Kartoffeln",
+  "short": "Champignon-Pfanne",
+  "category": "Pfanne",
+  "slot": "main",
+  "minutes": 25,
+  "image": "pilzpfanne",
+  "teaser": "Rahmig wie bei Oma, nur ohne Sahne. Die Cashews machen die Sauce cremig.",
+  "ingredients": [
+   {
+    "name": "Champignons",
+    "amount": 200,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 150,
+    "note": "gekocht, in Scheiben"
+   },
+   {
+    "name": "Cashewkerne",
+    "amount": 12,
+    "note": "eingeweicht"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 6,
+    "note": ""
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Cashews mit 80 ml Wasser und Salz cremig mixen.",
+   "Pilze in heißem Öl braun braten, Zwiebel zugeben.",
+   "Kartoffeln zugeben und kurz mitbraten.",
+   "Cashew-Rahm angießen, 2 Minuten köcheln, mit Petersilie servieren."
+  ],
+  "tip": "Pilze erst salzen, wenn sie gebräunt sind.",
+  "own": false
+ },
+ {
+  "slug": "rote-bete-suppe",
+  "title": "Rote-Bete-Suppe mit Meerrettich und Walnüssen",
+  "short": "Rote-Bete-Suppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 25,
+  "image": "rote-bete-suppe",
+  "teaser": "Tiefrot, erdig und mit einem frischen Kick vom Meerrettich.",
+  "ingredients": [
+   {
+    "name": "Rote Bete (vorgegart)",
+    "amount": 200,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": ""
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 6,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 300,
+    "note": ""
+   },
+   {
+    "name": "Meerrettich",
+    "amount": 5,
+    "note": "frisch gerieben"
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Zwiebel im Öl anschwitzen, Kartoffel und Brühe zugeben, 12 Minuten köcheln.",
+   "Rote Bete zugeben und fein pürieren.",
+   "Mit Meerrettich, Salz und einem Spritzer Zitrone abschmecken.",
+   "Mit gehackten Walnüssen servieren."
+  ],
+  "tip": "Ein paar Dillspitzen passen wunderbar dazu.",
+  "own": false
+ },
+ {
+  "slug": "aubergine-salsa",
+  "title": "Gegrillte Aubergine mit Tomaten-Kräuter-Salsa",
+  "short": "Aubergine mit Salsa",
+  "category": "Pfanne",
+  "slot": "main",
+  "minutes": 25,
+  "image": "aubergine",
+  "teaser": "Rauchige Auberginenscheiben, darauf eine frische Salsa. Mediterran und leicht.",
+  "ingredients": [
+   {
+    "name": "Aubergine",
+    "amount": 250,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Tomaten",
+    "amount": 120,
+    "note": "fein gewürfelt"
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 20,
+    "note": "fein gewürfelt"
+   },
+   {
+    "name": "Petersilie",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": "gekocht"
+   }
+  ],
+  "steps": [
+   "Auberginenscheiben dünn mit Öl bestreichen und in einer Grillpfanne von beiden Seiten 4 Minuten braten.",
+   "Tomaten, Zwiebel, Petersilie, Zitronensaft und Salz mischen.",
+   "Salsa auf die Aubergine geben und mit Kartoffeln servieren."
+  ],
+  "tip": "Aubergine nicht ertränken: wenig Öl mit dem Pinsel reicht.",
+  "own": false
+ },
+ {
+  "slug": "feldsalat-ofenkuerbis",
+  "title": "Feldsalat mit Ofen-Kürbis und Kürbiskernen",
+  "short": "Kürbis-Feldsalat",
+  "category": "Salat",
+  "slot": "main",
+  "minutes": 30,
+  "image": "kuerbissalat",
+  "teaser": "Herbst auf dem Teller: süßer Ofenkürbis, nussiger Feldsalat, ein Hauch Balsamico.",
+  "ingredients": [
+   {
+    "name": "Hokkaido-Kürbis",
+    "amount": 250,
+    "note": "in Spalten"
+   },
+   {
+    "name": "Feldsalat",
+    "amount": 50,
+    "note": ""
+   },
+   {
+    "name": "Kürbiskerne",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Balsamico",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 20,
+    "note": "in Ringen"
+   }
+  ],
+  "steps": [
+   "Kürbis mit der Hälfte des Öls und Salz bei 210 °C 25 Minuten rösten.",
+   "Restliches Öl mit Balsamico und Pfeffer verrühren.",
+   "Feldsalat mit Dressing mischen, Kürbis und Zwiebel daraufgeben.",
+   "Kürbiskerne rösten und darüberstreuen."
+  ],
+  "tip": "Der Kürbis kann lauwarm oder kalt auf den Salat.",
+  "own": false
+ },
+ {
+  "slug": "pak-choi-sesam",
+  "title": "Gebratener Pak Choi mit Ingwer und Sesam",
+  "short": "Pak Choi",
+  "category": "Pfanne",
+  "slot": "main",
+  "minutes": 15,
+  "image": "pakchoi",
+  "teaser": "In zehn Minuten fertig, knackig und voller Aroma.",
+  "ingredients": [
+   {
+    "name": "Pak Choi",
+    "amount": 250,
+    "note": "halbiert"
+   },
+   {
+    "name": "Ingwer",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 2,
+    "note": ""
+   },
+   {
+    "name": "Sesamöl",
+    "amount": 6,
+    "note": ""
+   },
+   {
+    "name": "Sesam",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Süßkartoffel",
+    "amount": 120,
+    "note": "gedämpft"
+   },
+   {
+    "name": "Limettensaft",
+    "amount": 10,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Süßkartoffel in Würfeln 12 Minuten dämpfen.",
+   "Pak Choi mit der Schnittfläche nach unten im Sesamöl 3 Minuten braten.",
+   "Ingwer und Knoblauch zugeben, mit 2 EL Wasser ablöschen und 2 Minuten dünsten.",
+   "Mit Limette, Sesam und Süßkartoffel servieren."
+  ],
+  "tip": "Statt Salz einen Spritzer Sojasauce, aber sparsam.",
+  "own": false
+ },
+ {
+  "slug": "pilz-lauch-kartoffel-suppe",
+  "title": "Kartoffel-Lauch-Suppe mit gebratenen Pilzen",
+  "short": "Kartoffel-Lauch-Suppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 30,
+  "image": "suppe-hell2",
+  "teaser": "Hausmannskost in leicht: cremig gemixt, obendrauf knusprige Pilze.",
+  "ingredients": [
+   {
+    "name": "Kartoffeln",
+    "amount": 150,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Lauch",
+    "amount": 120,
+    "note": "in Ringen"
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 350,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Champignons",
+    "amount": 60,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Lauch in der Hälfte des Öls dünsten, Kartoffel und Brühe zugeben, 15 Minuten köcheln.",
+   "Fein pürieren und mit Muskat abschmecken.",
+   "Pilze im restlichen Öl knusprig braten.",
+   "Suppe mit Pilzen und Petersilie servieren."
+  ],
+  "tip": "Ein paar Lauchringe für die Garnitur aufheben.",
+  "own": false
+ }
+]

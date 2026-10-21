@@ -1,0 +1,165 @@
+{
+ "reference": {
+  "day1": {
+   "kcal": 1090,
+   "protein": 10,
+   "fat": 56,
+   "carbs": 34
+  },
+  "day2to5": {
+   "kcal": 725,
+   "protein": 9,
+   "fat": 44,
+   "carbs": 47
+  },
+  "source": "Wei M et al. Sci Transl Med 2017;9(377):eaai8700",
+  "tolerance": {
+   "kcalPercent": 5,
+   "macroPoints": 5
+  }
+ },
+ "days": {
+  "1": [
+   {
+    "meal": "Morgens",
+    "recipe": "nussmix",
+    "portion": 1.5,
+    "type": "fixed"
+   },
+   {
+    "meal": "Mittags",
+    "recipe": "minestrone",
+    "portion": 1,
+    "type": "main"
+   },
+   {
+    "meal": "Nachmittags",
+    "recipe": "gruenkohl-chips",
+    "portion": 1,
+    "type": "snack"
+   },
+   {
+    "meal": "Nachmittags",
+    "recipe": "oliven",
+    "portion": 1.5,
+    "type": "fixed"
+   },
+   {
+    "meal": "Abends",
+    "recipe": "kuerbissuppe",
+    "portion": 1,
+    "type": "main"
+   },
+   {
+    "meal": "Abends",
+    "recipe": "beilagensalat",
+    "portion": 1,
+    "type": "fixed"
+   }
+  ],
+  "2": [
+   {
+    "meal": "Morgens",
+    "recipe": "nussmix",
+    "portion": 0.5,
+    "type": "fixed"
+   },
+   {
+    "meal": "Mittags",
+    "recipe": "gefuellte-paprika",
+    "portion": 1,
+    "type": "main"
+   },
+   {
+    "meal": "Nachmittags",
+    "recipe": "ofen-kichererbsen",
+    "portion": 1,
+    "type": "snack"
+   },
+   {
+    "meal": "Abends",
+    "recipe": "kuerbissuppe",
+    "portion": 1,
+    "type": "main"
+   }
+  ],
+  "3": [
+   {
+    "meal": "Morgens",
+    "recipe": "nussmix",
+    "portion": 0.5,
+    "type": "fixed"
+   },
+   {
+    "meal": "Mittags",
+    "recipe": "hummus-bowl",
+    "portion": 1,
+    "type": "main"
+   },
+   {
+    "meal": "Nachmittags",
+    "recipe": "oliven",
+    "portion": 1,
+    "type": "fixed"
+   },
+   {
+    "meal": "Abends",
+    "recipe": "pilz-lauch-kartoffel-suppe",
+    "portion": 1,
+    "type": "main"
+   }
+  ],
+  "4": [
+   {
+    "meal": "Morgens",
+    "recipe": "nussmix",
+    "portion": 0.5,
+    "type": "fixed"
+   },
+   {
+    "meal": "Mittags",
+    "recipe": "rotkohl-apfel-salat",
+    "portion": 1,
+    "type": "main"
+   },
+   {
+    "meal": "Nachmittags",
+    "recipe": "oliven",
+    "portion": 1,
+    "type": "fixed"
+   },
+   {
+    "meal": "Abends",
+    "recipe": "zucchini-pfanne",
+    "portion": 1,
+    "type": "main"
+   }
+  ],
+  "5": [
+   {
+    "meal": "Morgens",
+    "recipe": "nussmix",
+    "portion": 0.5,
+    "type": "fixed"
+   },
+   {
+    "meal": "Mittags",
+    "recipe": "ofen-tomaten-kraeuterkruste",
+    "portion": 1,
+    "type": "main"
+   },
+   {
+    "meal": "Nachmittags",
+    "recipe": "gurkensalat-sesam",
+    "portion": 1,
+    "type": "snack"
+   },
+   {
+    "meal": "Abends",
+    "recipe": "rote-bete-carpaccio",
+    "portion": 1,
+    "type": "main"
+   }
+  ]
+ }
+}

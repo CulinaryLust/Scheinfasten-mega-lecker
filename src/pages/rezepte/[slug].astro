@@ -1,0 +1,121 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import NutritionChips from '../../components/NutritionChips.astro';
+import MacroBar from '../../components/MacroBar.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { RECIPES, nutrition, planDays, amountLabel, fmt, shares } from '../../lib/nutrition.js';
+import { u } from '../../lib/url.js';
+
+export function getStaticPaths() {
+  return RECIPES.filter((r) => r.slot !== 'side').map((r) => ({ params: { slug: r.slug }, props: { r } }));
+}
+const { r } = Astro.props;
+const n = nutrition(r);
+const s = shares(n);
+const days = planDays(r.slug);
+const related = RECIPES.filter((x) => x.slug !== r.slug && x.category === r.category && x.slot !== 'side').slice(0, 3);
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const imgUrl = new URL(u(`img/rezepte/${r.image}.jpg`), Astro.site).toString();
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Recipe', name: r.title, description: r.teaser, image: [imgUrl],
+  recipeCategory: r.category, recipeCuisine: 'Pflanzlich', recipeYield: '1 Portion', totalTime: `PT${r.minutes}M`,
+  suitableForDiet: 'https://schema.org/VeganDiet',
+  recipeIngredient: r.ingredients.map((i) => `${amountLabel(i.name, i.amount)} ${i.name}${i.note ? ', ' + i.note : ''}`),
+  recipeInstructions: r.steps.map((t) => ({ '@type': 'HowToStep', text: t })),
+  nutrition: { '@type': 'NutritionInformation', calories: `${Math.round(n.kcal)} kcal`, proteinContent: `${fmt(n.protein)} g`, fatContent: `${fmt(n.fat)} g`, carbohydrateContent: `${fmt(n.carbs)} g`, sugarContent: `${fmt(n.sugar)} g` },
+};
+const pin = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}&media=${encodeURIComponent(imgUrl)}&description=${encodeURIComponent(r.title + ' | Scheinfasten mega lecker')}`;
+---
+<Base title={r.title} description={r.teaser} active="rezepte" image={`img/rezepte/${r.image}.jpg`} jsonLd={jsonLd}>
+  <div class="in crumbs noprint" style="padding-top:20px"><a href={u('rezepte/')}><Icon name="back" />Alle Rezepte</a></div>
+  <article class="in recipe">
+    <div class="top-grid">
+      <div class="photo">
+        <img src={u(`img/rezepte/${r.image}.jpg`)} alt={`Symbolfoto: ${r.short}`} width="900" height="675" />
+        <span class="chip photo">Symbolfoto</span>
+      </div>
+      <div class="stack">
+        <p class="kicker">{r.category}{days.length > 0 && ` · im 5-Tage-Plan an Tag ${days.join(', ')}`}</p>
+        <h1>{r.title}</h1>
+        <p class="lead">{r.teaser}</p>
+        <NutritionChips n={n} minutes={r.minutes} full />
+        <MacroBar n={n} />
+        <p class="muted small">Pro Portion. Longos Referenz für die Tage 2 bis 5: 9 % Eiweiß, 44 % Fett, 47 % Kohlenhydrate über den ganzen Tag.</p>
+        <div class="ctas noprint">
+          <a class="btn" href={u('planer/')}><Icon name="calendar" />In meinen Plan</a>
+          <button class="btn soft" onclick="window.print()"><Icon name="print" />Drucken</button>
+          <a class="btn soft" href={pin} target="_blank" rel="noopener"><Icon name="pin" />Merken</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-grid">
+      <section class="card ing">
+        <div class="ing-head">
+          <h2>Zutaten</h2>
+          <div class="stepper noprint" role="group" aria-label="Portionen">
+            <button type="button" data-d="-1" aria-label="Eine Portion weniger"><Icon name="minus" /></button>
+            <output id="por" aria-live="polite">1 Portion</output>
+            <button type="button" data-d="1" aria-label="Eine Portion mehr"><Icon name="plus" /></button>
+          </div>
+        </div>
+        <ul class="ilist">
+          {r.ingredients.map((i, k) => (
+            <li><label><input type="checkbox" /><span><b class="amt" data-name={i.name} data-g={i.amount}>{amountLabel(i.name, i.amount)}</b> {i.name}{i.note && <span class="muted">, {i.note}</span>}</span></label></li>
+          ))}
+        </ul>
+        <p class="muted small">Dazu: Salz, Pfeffer, Kräuter nach Geschmack. Tipp: Abhaken, was schon bereitsteht.</p>
+      </section>
+      <section class="steps">
+        <h2>Zubereitung</h2>
+        <ol>{r.steps.map((t) => <li>{t}</li>)}</ol>
+        <div class="alert info"><p><b>Tipp:</b> {r.tip}</p></div>
+      </section>
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="band tint noprint">
+      <div class="in"><div class="head"><h2>Passt auch</h2></div><div class="grid">{related.map((x) => <RecipeCard r={x} />)}</div></div>
+    </section>
+  )}
+</Base>
+<style>
+  .recipe { display: grid; gap: 36px; padding-block: 18px 60px; }
+  .top-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+  @media (max-width: 860px) { .top-grid { grid-template-columns: 1fr; } }
+  .photo { position: relative; }
+  .photo img { width: 100%; border-radius: 24px; aspect-ratio: 4 / 3; object-fit: cover; }
+  .photo .chip { position: absolute; left: 14px; bottom: 14px; }
+  .recipe h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); }
+  .lead { font-size: 1.1rem; color: var(--muted); }
+  .body-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 36px; align-items: start; }
+  @media (max-width: 860px) { .body-grid { grid-template-columns: 1fr; } }
+  .body-grid h2 { font-size: 1.6rem; }
+  .ing-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .stepper { display: inline-flex; align-items: center; border: 1.5px solid var(--line); border-radius: 999px; }
+  .stepper button { width: 44px; height: 44px; border: 0; background: none; color: var(--fg); cursor: pointer; display: grid; place-items: center; border-radius: 999px; }
+  .stepper button:hover { background: var(--band); }
+  .stepper output { min-width: 92px; text-align: center; font-weight: 700; }
+  .ilist { list-style: none; padding: 0; margin: 0; display: grid; }
+  .ilist li { border-bottom: 1px solid var(--line); }
+  .ilist label { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; cursor: pointer; }
+  .ilist input { width: 22px; height: 22px; min-height: 0; margin-top: 2px; accent-color: var(--green); flex: none; }
+  .ilist input:checked + span { opacity: .45; text-decoration: line-through; }
+  .amt { font-variant-numeric: tabular-nums; }
+  .steps { display: grid; gap: 18px; }
+  .steps ol { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 16px; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 14px; font-size: 1.05rem; }
+  .steps li::before { content: counter(s); width: 36px; height: 36px; border-radius: 50%; background: var(--tomato-soft); color: var(--tomato); font-family: var(--display); display: grid; place-items: center; }
+</style>
+<script>
+  import { amountLabel } from '../../lib/nutrition.js';
+  let p = 1;
+  const out = document.getElementById('por');
+  document.querySelectorAll<HTMLButtonElement>('.stepper button').forEach((b) => b.addEventListener('click', () => {
+    p = Math.min(8, Math.max(1, p + Number(b.dataset.d)));
+    if (out) out.textContent = p === 1 ? '1 Portion' : `${p} Portionen`;
+    document.querySelectorAll<HTMLElement>('.amt').forEach((el) => { el.textContent = amountLabel(el.dataset.name!, Number(el.dataset.g) * p); });
+  }));
+</script>

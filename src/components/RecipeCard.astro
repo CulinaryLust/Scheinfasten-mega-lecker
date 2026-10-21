@@ -1,0 +1,46 @@
+---
+import Icon from './Icon.astro';
+import MacroBar from './MacroBar.astro';
+import { nutrition, planDays, fmt } from '../lib/nutrition.js';
+import { u } from '../lib/url.js';
+const { r } = Astro.props;
+const n = nutrition(r);
+const days = planDays(r.slug);
+---
+<article class="rcard" data-cat={r.category} data-slot={r.slot} data-min={r.minutes} data-kcal={Math.round(n.kcal)} data-name={(r.title + ' ' + r.ingredients.map((i) => i.name).join(' ')).toLowerCase()}>
+  <a href={u(`rezepte/${r.slug}/`)} class="rlink">
+    <div class="rimg">
+      <img src={u(`img/rezepte/${r.image}.jpg`)} alt="" loading="lazy" width="900" height="675" />
+      <span class="kc"><Icon name="kcal" />{fmt(n.kcal)} kcal</span>
+      {days.length > 0 && <span class="inplan">Im Plan: Tag {days.join(', ')}</span>}
+    </div>
+    <div class="rbody">
+      <p class="kicker">{r.category} · <Icon name="time" /> {r.minutes} Min.</p>
+      <h3>{r.title}</h3>
+      <div class="mini">
+        <span title="Eiweiß"><Icon name="protein" />{fmt(n.protein)} g</span>
+        <span title="Fett"><Icon name="fat" />{fmt(n.fat)} g</span>
+        <span title="Kohlenhydrate"><Icon name="carbs" />{fmt(n.carbs)} g</span>
+      </div>
+      <MacroBar n={n} legend={false} />
+    </div>
+  </a>
+</article>
+<style>
+  .rcard { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .2s, box-shadow .2s; }
+  .rcard:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .rlink { color: inherit; text-decoration: none; display: flex; flex-direction: column; height: 100%; }
+  .rimg { position: relative; }
+  .rimg img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .kc { position: absolute; top: 12px; left: 12px; display: inline-flex; align-items: center; gap: 4px; background: var(--card); color: var(--fg); font-weight: 800; font-size: .85rem; padding: 5px 11px 5px 8px; border-radius: 999px; }
+  .kc :global(.i) { color: var(--c-kcal); }
+  .inplan { position: absolute; bottom: 12px; left: 12px; background: var(--green); color: #fff; font-weight: 700; font-size: .78rem; padding: 4px 10px; border-radius: 999px; }
+  .rbody { padding: 16px 18px 18px; display: grid; gap: 10px; }
+  .rbody .kicker { display: flex; align-items: center; gap: 5px; }
+  .rbody h3 { font-size: 1.18rem; }
+  .mini { display: flex; gap: 14px; font-size: .88rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .mini span { display: inline-flex; align-items: center; gap: 4px; }
+  .mini span:nth-child(1) :global(.i) { color: var(--c-protein); }
+  .mini span:nth-child(2) :global(.i) { color: var(--c-fat); }
+  .mini span:nth-child(3) :global(.i) { color: var(--c-carbs); }
+</style>

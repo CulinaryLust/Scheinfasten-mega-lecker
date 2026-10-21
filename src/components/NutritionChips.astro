@@ -1,0 +1,15 @@
+---
+import Icon from './Icon.astro';
+import { fmt } from '../lib/nutrition.js';
+interface Props { n: { kcal: number; protein: number; fat: number; carbs: number; sugar: number; oil: number }; minutes?: number; full?: boolean }
+const { n, minutes, full = false } = Astro.props;
+---
+<div class="nut">
+  <span class="kcal" title="Kalorien"><Icon name="kcal" /><b>{fmt(n.kcal)}</b> kcal</span>
+  <span class="protein" title="Eiweiß"><Icon name="protein" /><b>{fmt(n.protein)} g</b> Eiweiß</span>
+  <span class="fat" title="Fett"><Icon name="fat" /><b>{fmt(n.fat)} g</b> Fett</span>
+  <span class="carbs" title="Kohlenhydrate"><Icon name="carbs" /><b>{fmt(n.carbs)} g</b> KH</span>
+  {full && <span class="sugar" title="davon Zucker"><Icon name="sugar" /><b>{fmt(n.sugar)} g</b> Zucker</span>}
+  {full && n.oil > 0 && <span class="oil" title="davon Öl"><Icon name="oil" /><b>{fmt(n.oil)} g</b> Öl</span>}
+  {minutes && <span class="time" title="Zubereitungszeit"><Icon name="time" /><b>{minutes}</b> Min.</span>}
+</div>
