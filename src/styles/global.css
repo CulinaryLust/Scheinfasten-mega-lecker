@@ -80,6 +80,7 @@ section.band { padding-block: clamp(52px, 8vw, 96px); }
 section.tint { background: var(--band); }
 .head { display: grid; gap: 10px; max-width: 64ch; margin-bottom: 30px; }
 .page-head { padding-block: clamp(36px, 6vw, 64px) 8px; display: grid; gap: 12px; }
+.page-head .lead { font-size: 1.15rem; max-width: 60ch; }
 .crumbs { font-size: .9rem; }
 .crumbs a { text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
 
@@ -144,6 +145,8 @@ input:focus, select:focus { border-color: var(--green); outline: none; box-shado
 .consent { background: var(--band); border-color: transparent; }
 .nav-btns { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .err { color: var(--bad); font-weight: 700; }
+.hint { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; color: var(--muted); background: var(--band); border-radius: 14px; padding: 12px 14px; }
+.hint .i { color: var(--tomato); margin-top: 2px; }
 .sumbar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 12px; }
 .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: grid; gap: 2px; }
 .stat b { font-size: 1.45rem; font-variant-numeric: tabular-nums; }
