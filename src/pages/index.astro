@@ -24,7 +24,7 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
     <div class="in">
       <p class="kicker">5 Tage Scheinfasten nach Prof. Dr. Valter Longo</p>
       <h1>Fasten, das richtig gut schmeckt.</h1>
-      <p class="lead">Fünf Tage wenig Kalorien, aber jeden Tag ein echtes Essen. Unsere Rezepte halten die Vorgaben aus Longos Studien ein, und der Planer rechnet sie auf deinen Körper um.</p>
+      <p class="lead">Sag uns, was im Kühlschrank liegt. Wir rechnen es auf das Gramm genau nach Longos Werten aus und machen leckere Gerichte daraus.</p>
       <ul class="hfx">
         <li class="hot"><Icon name="inflam" />Entzündungswerte runter</li>
         <li><Icon name="scale" />Ø −2,6 kg</li>
@@ -33,8 +33,8 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
         <li><Icon name="hourglass" />Biologisch jünger?</li>
       </ul>
       <div class="ctas">
-        <a class="btn" href={u('planer/')}><Icon name="calendar" />Meinen Plan erstellen</a>
-        <a class="btn ghost" href={u('rezepte/')}>{count} Rezepte ansehen</a>
+        <a class="btn" href={u('rechner/')}><Icon name="scale" />Zum Rechner</a>
+        <a class="btn ghost" href={u('planer/')}>5-Tage-Plan erstellen</a>
       </div>
     </div>
   </section>
@@ -77,11 +77,11 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
     <div class="in">
       <div class="head"><p class="kicker">In drei Schritten</p><h2>So einfach geht's</h2></div>
       <div class="grid3 steps">
-        <div class="card"><span class="num">1</span><h3>Daten eingeben</h3><p class="muted">Geschlecht, Alter, Größe, Gewicht und Startdatum. Dauert eine Minute.</p></div>
-        <div class="card"><span class="num">2</span><h3>Plan bekommen</h3><p class="muted">Für jeden Tag die Rezepte mit Grammangaben, Eiweiß, Fett und Kohlenhydraten, abgeglichen mit Longos Werten.</p></div>
-        <div class="card"><span class="num">3</span><h3>Kochen und genießen</h3><p class="muted">Gericht nicht dein Fall? Tausch es. Der Planer passt die Portion an, damit alles im Rahmen bleibt.</p></div>
+        <div class="card"><span class="num">1</span><h3>Kurz über dich</h3><p class="muted">Größe, Gewicht, Fastentag. Dauert eine Minute.</p></div>
+        <div class="card"><span class="num">2</span><h3>Zutaten eingeben</h3><p class="muted">Was liegt im Kühlschrank? Wir rechnen aus, wie viel davon in deinen Tag passt, genau nach Longo.</p></div>
+        <div class="card"><span class="num">3</span><h3>Kochen und genießen</h3><p class="muted">Du bekommst passende Gerichte mit Grammangaben. Etwas passt nicht? Wir schlagen dir einen leckeren Tausch vor.</p></div>
       </div>
-      <div class="ctas" style="margin-top:26px"><a class="btn" href={u('planer/')}>Jetzt Plan erstellen <Icon name="arrow" /></a></div>
+      <div class="ctas" style="margin-top:26px"><a class="btn" href={u('rechner/')}>Jetzt ausprobieren <Icon name="arrow" /></a><a class="btn soft" href={u('planer/')}>Lieber einen fertigen 5-Tage-Plan</a></div>
     </div>
   </section>
 
@@ -129,10 +129,7 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
 
   <section class="band tint">
     <div class="in">
-      <div class="alert warn safety">
-        <p><Icon name="shield" /> <b>Nicht für alle geeignet.</b> Schwangere, Stillende, Menschen unter 18 oder über 70 Jahren, mit Untergewicht, Essstörungen, Diabetes, Krebs oder anderen Erkrankungen sprechen vorher mit ihrer Ärztin oder ihrem Arzt.</p>
-        <p><a href={u('fuer-wen-nicht/')}>Alle Hinweise lesen</a> · <a href={u('krebs/')}>Scheinfasten bei Krebs: Was man weiß</a></p>
-      </div>
+      <p class="hint safety"><Icon name="heart" /><span><b>Gut zu wissen:</b> Wenn du schwanger bist, stillst, unter 18 bist, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
     </div>
   </section>
 </Base>

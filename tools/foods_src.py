@@ -20,12 +20,12 @@ GROUPS = {
 }
 
 WHY = {
-  'y': 'Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.',
-  'tier': 'Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.',
-  'milch': 'Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.',
-  'suess': 'Zucker treibt Blutzucker und Insulin hoch und hebt den Fastenstoffwechsel auf.',
-  'weissmehl': 'Viel schnell verfügbare Stärke und wenig Gemüse. Das kostet Kalorienbudget, ohne satt zu machen.',
-  'drink': 'Im Protokoll sind Wasser und ungesüßte Kräutertees vorgesehen. Kaffee, Alkohol und Säfte gehören nicht dazu.',
+  'y': 'Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.',
+  'tier': 'Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.',
+  'milch': 'Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.',
+  'suess': 'Zucker holt deinen Körper sofort aus dem Fastenmodus.',
+  'weissmehl': 'Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.',
+  'drink': 'In diesen Tagen sind Wasser und Kräutertee deine besten Freunde.',
 }
 
 ALTS = {

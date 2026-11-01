@@ -9,14 +9,13 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
   <div class="in page-head">
     <p class="kicker">Planer</p>
     <h1>Dein persönlicher 5-Tage-Plan</h1>
-    <p class="muted">Drei kurze Schritte. Danach siehst du für jeden Tag, was du isst und wie viel, abgeglichen mit den Werten aus Prof. Dr. Valter Longos Studie.</p>
+    <p class="muted">Zwei kurze Schritte, dann steht dein Plan: jeden Tag leckere Gerichte, auf das Gramm genau nach den Werten von Prof. Dr. Valter Longo berechnet.</p>
   </div>
 
   <section class="in wizard" id="wizard" data-base={u('')} data-icons={JSON.stringify(icons)}>
     <ol class="progress" aria-label="Fortschritt">
       <li class="on" data-s="1"><span>1</span>Über dich</li>
       <li data-s="2"><span>2</span>Termine</li>
-      <li data-s="3"><span>3</span>Sicherheit</li>
     </ol>
 
     <form id="f" class="card wcard" novalidate>
@@ -59,24 +58,10 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
         <div class="field"><label for="gap" class="lbl">Abstand zwischen den Durchgängen</label>
           <select id="gap" name="gap"><option value="1">monatlich (wie in der Studie)</option><option value="2">alle 2 Monate</option><option value="3" selected>alle 3 Monate</option><option value="4">alle 4 Monate</option></select>
         </div>
-        <div class="nav-btns"><button type="button" class="btn soft" data-next="1">Zurück</button><button type="button" class="btn" data-next="3">Weiter <Icon name="arrow" /></button></div>
+        <p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
+        <div class="nav-btns"><button type="button" class="btn soft" data-next="1">Zurück</button><button type="submit" class="btn">Plan erstellen <Icon name="check" /></button></div>
       </fieldset>
 
-      <fieldset class="step" data-step="3" hidden>
-        <legend class="sr-only">Sicherheit</legend>
-        <div class="field"><span class="lbl">Trifft etwas davon auf dich zu?</span>
-          <div class="checks">
-            <label><input type="checkbox" class="x" value="Schwangerschaft oder Stillzeit" /><span>Ich bin schwanger oder stille</span></label>
-            <label><input type="checkbox" class="x" value="Diabetes mit Medikamenten" /><span>Ich habe Diabetes und nehme Medikamente</span></label>
-            <label><input type="checkbox" class="x" value="Essstörung" /><span>Ich habe oder hatte eine Essstörung</span></label>
-            <label><input type="checkbox" class="x" value="Krebs oder eine andere schwere Erkrankung" data-cancer="1" /><span>Ich habe Krebs oder eine andere schwere Erkrankung</span></label>
-            <label><input type="checkbox" class="x" value="regelmäßige Medikamente" /><span>Ich nehme regelmäßig Medikamente</span></label>
-          </div>
-        </div>
-        <label class="consent"><input type="checkbox" id="consent" /><span>Ich habe verstanden, dass der Plan keine ärztliche Beratung ersetzt und ich bei Schwindel, Herzrasen oder starker Schwäche abbreche.</span></label>
-        <p class="err" id="err3" role="alert" hidden></p>
-        <div class="nav-btns"><button type="button" class="btn soft" data-next="2">Zurück</button><button type="submit" class="btn">Plan erstellen <Icon name="check" /></button></div>
-      </fieldset>
     </form>
   </section>
 
@@ -85,7 +70,7 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
 
 <style is:global>
   .wizard { display: grid; gap: 18px; max-width: 760px; padding-bottom: 60px; }
-  .progress { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .progress { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .progress li { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; color: var(--muted); padding-bottom: 10px; border-bottom: 4px solid var(--line); }
   .progress li span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--line); color: var(--fg); font-size: .85rem; flex: none; }
   .progress li.on { color: var(--fg); border-color: var(--tomato); }
@@ -186,12 +171,8 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
     if (!valid1()) return;
-    const e3 = document.getElementById('err3')!;
-    if (!(document.getElementById('consent') as HTMLInputElement).checked) { e3.textContent = 'Bitte bestätige den Hinweis, dann erstellen wir deinen Plan.'; e3.hidden = false; return; }
-    e3.hidden = true;
     const fd = new FormData(form);
     state.inputs = Object.fromEntries(fd.entries());
-    state.flags = [...form.querySelectorAll<HTMLInputElement>('.x:checked')].map((x) => ({ v: x.value, cancer: !!x.dataset.cancer }));
     save();
     render();
   });
@@ -246,21 +227,13 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
 
   function render() {
     const p = profile();
-    const flags = state.flags || [];
-    const stops: string[] = [];
-    if (p.age < 18) stops.push('Unter 18 Jahren ist Scheinfasten nicht vorgesehen.');
-    if (p.age > 70) stops.push('Ab 70 Jahren bitte nur mit ärztlicher Begleitung. Dafür erstellt der Planer keinen Plan.');
-    if (p.bmi < 18.5) stops.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei Untergewicht ist Scheinfasten nicht geeignet.`);
-    if (flags.length) stops.push(`Du hast angegeben: ${flags.map((x: any) => x.v).join(', ')}. Bitte sprich vorher mit deiner Ärztin oder deinem Arzt.`);
+    // Freundliche Hinweise statt Sperre: der Plan wird immer erstellt.
+    const notes: string[] = [];
+    if (p.age < 18) notes.push('Du bist unter 18. In diesem Alter wächst der Körper noch, deshalb ist Scheinfasten eher nichts für dich. Die Rezepte kannst du natürlich trotzdem nachkochen.');
+    if (p.age > 70) notes.push('Ab 70 lohnt sich vorher ein kurzes Gespräch mit deiner Ärztin oder deinem Arzt.');
+    if (p.bmi < 18.5) notes.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei so wenig Gewicht sprich bitte vorher mit deiner Ärztin oder deinem Arzt.`);
     result.hidden = false;
     root.hidden = true;
-    if (stops.length) {
-      const cancer = flags.some((x: any) => x.cancer);
-      result.innerHTML = `<div class="alert bad"><h2 style="font-size:1.5rem">Für dich erstellen wir keinen Plan</h2>${stops.map((s) => `<p>${s}</p>`).join('')}
-        ${cancer ? `<p><a href="${base}krebs/">Was man über Scheinfasten bei Krebs weiß</a></p>` : `<p><a href="${base}fuer-wen-nicht/">Alle Hinweise lesen</a></p>`}
-        <p><button class="btn soft" data-edit>Angaben ändern</button></p></div>`;
-      bindCommon(); result.scrollIntoView({ behavior: 'smooth' }); return;
-    }
     const start = new Date((state.inputs.start || iso(d0)) + 'T12:00:00');
     const cyc = +state.inputs.cyc, gap = +state.inputs.gap;
     const f = p.f;
@@ -287,7 +260,7 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
         <div class="stat"><span>Tag 1</span><b>${fmt(1090 * f)} kcal</b></div>
         <div class="stat"><span>Tag 2 bis 5</span><b>${fmt(725 * f)} kcal</b></div>
       </div>
-      ${p.bmi < 20 ? '<div class="alert warn"><p><b>Hinweis:</b> Dein BMI liegt knapp über der Untergrenze. Achte gut auf dich und brich bei Beschwerden ab.</p></div>' : ''}
+      ${notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : p.bmi < 20 ? '<div class="alert info"><p>Dein BMI ist eher niedrig. Hör gut auf deinen Körper und iss normal weiter, wenn du dich schlapp fühlst.</p></div>' : ''}
       ${p.raw > 1.15 ? '<div class="alert info"><p>Dein Bedarf ist hoch. Wir erhöhen die Portionen um höchstens 15 %, damit der Plan nah an Longos Vorgaben bleibt.</p></div>' : ''}
       ${p.raw < 0.9 ? '<div class="alert info"><p>Wir verkleinern die Portionen um höchstens 10 %, damit du genug isst.</p></div>' : ''}
       <details class="plain"><summary><b>Abgleich mit Longos Vorgaben</b> <span class="muted small">(Wei et al., Science Translational Medicine 2017)</span></summary>

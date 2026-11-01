@@ -8,11 +8,11 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'ch
 const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 ---
-<Base title="Lebensmittel-Rechner" active="rechner" description="Gib ein, was du zu Hause hast. Der Rechner zeigt, wie viel davon in einen Scheinfasten-Tag nach Prof. Dr. Valter Longo passt, und macht Rezeptideen daraus.">
+<Base title="Lebensmittel-Rechner" active="rechner" description="Sag uns, was in deinem Kühlschrank liegt. Wir rechnen aus, wie viel davon in deinen Scheinfasten-Tag nach Prof. Dr. Valter Longo passt, und machen leckere Gerichte daraus.">
   <div class="in page-head">
     <p class="kicker">Rechner</p>
-    <h1>Was darf ich heute essen?</h1>
-    <p class="muted">Gib ein, was in deinem Kühlschrank liegt. Der Rechner verteilt dein Tagesbudget nach Prof. Dr. Valter Longo auf diese Lebensmittel, sagt dir, wie viel Gramm von jedem passen, und baut daraus Gerichte. Was nicht ins Scheinfasten passt, bekommt einen besseren Vorschlag.</p>
+    <h1>Was koche ich heute?</h1>
+    <p class="lead">Sag uns, was in deinem Kühlschrank liegt. Wir rechnen aus, wie viel du davon essen kannst, genau nach den Werten von Prof. Dr. Valter Longo, und machen leckere Gerichte daraus.</p>
   </div>
 
   <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
@@ -48,9 +48,9 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
       </fieldset>
 
       <fieldset class="block">
-        <legend><span class="num">2</span>Was hast du da?</legend>
+        <legend><span class="num">2</span>Was liegt im Kühlschrank?</legend>
         <div class="field combo">
-          <label for="q" class="lbl">Lebensmittel suchen</label>
+          <label for="q" class="lbl">Lebensmittel hinzufügen</label>
           <div class="search">
             <Icon name="search" />
             <input id="q" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="sug" autocomplete="off" placeholder="z. B. Zucchini, Möhre, Feta" />
@@ -59,28 +59,15 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
           <p class="small muted" id="qhint" aria-live="polite"></p>
         </div>
         <div class="quick" aria-label="Schnell hinzufügen">
-          <span class="small muted">Oft im Kühlschrank:</span>
+          <span class="small muted">Schnell dazu:</span>
           {quick.map((n) => <button type="button" class="qchip" data-add={n}><Icon name="plus" />{n}</button>)}
         </div>
         <ul class="picked" id="picked" aria-label="Deine Lebensmittel"></ul>
-        <p class="small muted legendline"><span class="dot g"></span>passt gut <span class="dot y"></span>nur kleine Menge <span class="dot r"></span>passt nicht ins Scheinfasten</p>
+        <p class="small muted legendline"><span class="dot g"></span>passt gut <span class="dot y"></span>nur kleine Menge <span class="dot r"></span>lieber tauschen</p>
       </fieldset>
 
-      <fieldset class="block" id="safety">
-        <legend><span class="num">3</span>Sicherheit</legend>
-        <div class="field"><span class="lbl">Trifft etwas davon auf dich zu?</span>
-          <div class="checks">
-            <label><input type="checkbox" class="x" value="Schwangerschaft oder Stillzeit" /><span>Ich bin schwanger oder stille</span></label>
-            <label><input type="checkbox" class="x" value="Diabetes mit Medikamenten" /><span>Ich habe Diabetes und nehme Medikamente</span></label>
-            <label><input type="checkbox" class="x" value="Essstörung" /><span>Ich habe oder hatte eine Essstörung</span></label>
-            <label><input type="checkbox" class="x" value="Krebs oder eine andere schwere Erkrankung" data-cancer="1" /><span>Ich habe Krebs oder eine andere schwere Erkrankung</span></label>
-            <label><input type="checkbox" class="x" value="regelmäßige Medikamente" /><span>Ich nehme regelmäßig Medikamente</span></label>
-          </div>
-        </div>
-        <label class="consent"><input type="checkbox" id="consent" /><span>Ich habe verstanden, dass der Rechner keine ärztliche Beratung ersetzt und ich bei Schwindel, Herzrasen oder starker Schwäche abbreche.</span></label>
-      </fieldset>
       <p class="err" id="err3" role="alert" hidden></p>
-      <div class="nav-btns"><span></span><button type="submit" class="btn">Mengen berechnen <Icon name="arrow" /></button></div>
+      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="submit" class="btn">Jetzt ausrechnen <Icon name="arrow" /></button></div>
     </form>
   </section>
 
@@ -164,10 +151,10 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
   const picked = document.getElementById('picked')!;
   const STORE = 'smlRechner';
   const esc = (s: string) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
-  const LIGHT: Record<string, string> = { g: 'passt gut', y: 'nur kleine Menge', r: 'passt nicht' };
+  const LIGHT: Record<string, string> = { g: 'passt gut', y: 'nur kleine Menge', r: 'lieber tauschen' };
 
   type Pick = { name: string; g?: number };
-  let state: { inputs?: any; picks: Pick[]; flags?: any[]; consent?: boolean; shown?: boolean } = { picks: [] };
+  let state: { inputs?: any; picks: Pick[]; shown?: boolean } = { picks: [] };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && Array.isArray(s.picks)) state = s; } catch {}
   state.picks = state.picks.filter((p) => BY_NAME[p.name]);
   // Körperdaten aus dem Planer übernehmen, falls dort schon etwas eingetragen wurde
@@ -180,8 +167,6 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
       if (el instanceof RadioNodeList) { for (const r of Array.from(el) as HTMLInputElement[]) r.checked = r.value === v; } else el.value = v;
     }
   }
-  if (state.consent) (document.getElementById('consent') as HTMLInputElement).checked = true;
-  for (const fl of state.flags || []) { const el = form.querySelector<HTMLInputElement>(`.x[value="${CSS.escape(fl.v)}"]`); if (el) el.checked = true; }
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch {} };
 
   // Suche mit Vorschlagsliste
@@ -191,7 +176,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
     hits = search(q.value);
     active = hits.length ? 0 : -1;
     const t = q.value.trim();
-    qhint.textContent = t.length >= 2 && !hits.length ? `„${t}“ ist nicht in unserer Datenbank. Versuche einen anderen Begriff, z. B. die Grundzutat.` : '';
+    qhint.textContent = t.length >= 2 && !hits.length ? `„${t}“ kennen wir leider noch nicht. Probier es mit einem anderen Wort, z. B. der Grundzutat.` : '';
     sug.innerHTML = hits.map((f, i) => `<li role="option" id="s${i}" aria-selected="${i === active}" data-name="${esc(f.name)}"><span class="dot ${f.light}" aria-hidden="true"></span>${esc(f.name)}<small>${LIGHT[f.light]}</small></li>`).join('');
     sug.hidden = !hits.length;
     q.setAttribute('aria-expanded', String(!!hits.length));
@@ -257,20 +242,18 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
     const v = readInputs(); if (!v) { form.scrollIntoView({ behavior: 'smooth' }); return; }
     const e3 = document.getElementById('err3')!;
     let msg = '';
-    if (!state.picks.length) msg = 'Füge mindestens ein Lebensmittel hinzu.';
-    else if (!(document.getElementById('consent') as HTMLInputElement).checked) msg = 'Bitte bestätige den Hinweis, dann berechnen wir deine Mengen.';
+    if (!state.picks.length) msg = 'Füge noch mindestens ein Lebensmittel hinzu.';
     e3.textContent = msg; e3.hidden = !msg;
     if (msg) return;
     state.inputs = v;
-    state.flags = [...form.querySelectorAll<HTMLInputElement>('.x:checked')].map((x) => ({ v: x.value, cancer: !!x.dataset.cancer }));
-    state.consent = true; state.shown = true;
+    state.shown = true;
     save(); render();
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   // Tageswahl und Körperdaten wirken sofort, sobald ein Ergebnis da ist
   form.addEventListener('change', (e) => {
     const t = e.target as HTMLInputElement;
-    if (!state.shown || t.id === 'q' || t.classList.contains('x') || t.id === 'consent') return;
+    if (!state.shown || t.id === 'q') return;
     const v = readInputs(); if (!v) return;
     state.inputs = v; save(); render();
   });
@@ -281,19 +264,12 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
   function render() {
     const v = state.inputs;
     const p = profile({ sex: v.sex, age: +v.age, h: +v.h, w: +v.w, pal: +v.pal });
-    const flags = state.flags || [];
-    const stops: string[] = [];
-    if (p.age < 18) stops.push('Unter 18 Jahren ist Scheinfasten nicht vorgesehen.');
-    if (p.age > 70) stops.push('Ab 70 Jahren bitte nur mit ärztlicher Begleitung. Dafür rechnet der Rechner keine Mengen aus.');
-    if (p.bmi < 18.5) stops.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei Untergewicht ist Scheinfasten nicht geeignet.`);
-    if (flags.length) stops.push(`Du hast angegeben: ${flags.map((x: any) => esc(x.v)).join(', ')}. Bitte sprich vorher mit deiner Ärztin oder deinem Arzt.`);
+    // Freundliche Hinweise statt Sperre: gerechnet wird immer.
+    const notes: string[] = [];
+    if (p.age < 18) notes.push('Du bist unter 18. In diesem Alter wächst der Körper noch, deshalb ist Scheinfasten eher nichts für dich. Die Gerichte kannst du trotzdem nachkochen.');
+    if (p.age > 70) notes.push('Ab 70 lohnt sich vorher ein kurzes Gespräch mit deiner Ärztin oder deinem Arzt.');
+    if (p.bmi < 18.5) notes.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei so wenig Gewicht sprich bitte vorher mit deiner Ärztin oder deinem Arzt.`);
     result.hidden = false;
-    if (stops.length) {
-      const cancer = flags.some((x: any) => x.cancer);
-      result.innerHTML = `<div class="alert bad"><h2 style="font-size:1.5rem">Für dich rechnen wir keine Mengen aus</h2>${stops.map((s) => `<p>${s}</p>`).join('')}
-        ${cancer ? `<p><a href="${base}krebs/">Was man über Scheinfasten bei Krebs weiß</a></p>` : `<p><a href="${base}fuer-wen-nicht/">Alle Hinweise lesen</a></p>`}</div>`;
-      return;
-    }
     const day = v.day === '1' ? 1 : 2;
     const t = targets(day, p.f);
     const red = state.picks.filter((x) => BY_NAME[x.name].light === 'r');
@@ -303,35 +279,35 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
     const adds = res ? suggestAdditions(ok, t, res) : [];
     const dayLabel = day === 1 ? 'Tag 1' : 'Tag 2 bis 5';
 
-    let h = '';
+    let h = notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : '';
     // Kopf mit Abgleich
     if (res && vd) {
-      const status = vd.ok ? `<span class="chip ok">${I.check} Passt zu Longos Vorgaben</span>` : `<span class="chip warn">${I.info} Noch nicht im Rahmen</span>`;
+      const status = vd.ok ? `<span class="chip ok">${I.check} Passt genau zu Longo</span>` : `<span class="chip warn">${I.info} Fast geschafft</span>`;
       h += `<div class="rtop">
-        <div class="row"><h2 style="font-size:1.6rem">Deine Mengen für ${dayLabel}</h2>${status}</div>
+        <div class="row"><h2 style="font-size:1.6rem">Dein ${dayLabel}</h2>${status}</div>
         <div class="vs">
           <div class="kcal"><span class="k">${I.kcal} Kalorien</span><b>${fmt(res.sum.kcal)} kcal</b><small>Ziel ${fmt(t.kcal)} kcal (${devTxt(vd.dk)} %)</small></div>
           <div class="protein"><span class="k">${I.protein} Eiweiß</span><b>${pct(vd.shares.protein)}</b><small>Ziel ${t.ref.protein} %, ${fmt(res.sum.protein)} g</small></div>
           <div class="fat"><span class="k">${I.fat} Fett</span><b>${pct(vd.shares.fat)}</b><small>Ziel ${t.ref.fat} %, ${fmt(res.sum.fat)} g</small></div>
           <div class="carbs"><span class="k">${I.carbs} Kohlenhydrate</span><b>${pct(vd.shares.carbs)}</b><small>Ziel ${t.ref.carbs} %, ${fmt(res.sum.carbs)} g</small></div>
         </div>
-        <p class="small muted">„Passt“ heißt: Kalorien höchstens 5 % und jeder Makroanteil höchstens 5 Prozentpunkte von Longos Referenz entfernt. Dein Ziel ist an deinen Bedarf angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel und nicht Teil von Longos Protokoll.</p>
+        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und jeder Anteil von Eiweiß, Fett und Kohlenhydraten höchstens 5 Prozentpunkte von Longos Werten entfernt. Dein Ziel ist an deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
       </div>`;
       if (!vd.ok) {
         const why: string[] = [];
-        if (vd.dk < -5) why.push('Mit diesen Lebensmitteln allein kommst du nicht auf dein Tagesbudget, auch nicht bei den Höchstmengen.');
-        if (vd.dk > 5) why.push('Die fest eingetragenen Mengen liegen über deinem Tagesbudget.');
-        if (vd.dev.fat < -5) why.push('Es fehlt Fett. Longo setzt dafür auf Olivenöl, Nüsse und Oliven.');
-        if (vd.dev.fat > 5) why.push('Der Fettanteil ist zu hoch. Es fehlt Gemüse mit etwas mehr Kohlenhydraten.');
-        if (vd.dev.carbs < -5) why.push('Es fehlen Kohlenhydrate aus Gemüse, zum Beispiel aus Kartoffeln, Kürbis oder Karotten.');
-        if (vd.dev.carbs > 5) why.push('Der Kohlenhydratanteil ist zu hoch.');
-        if (vd.dev.protein > 5) why.push('Der Eiweißanteil ist zu hoch. Das Scheinfasten soll gerade wenig Eiweiß liefern.');
-        h += `<div class="alert warn"><p><b>Damit es zu Longos Werten passt</b></p>${why.map((w) => `<p>${w}</p>`).join('')}
-          ${adds.length ? `<p>Ergänze eines davon, der Rechner verteilt dann neu:</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' passt dann' : ''}</button>`).join('')}</div>` : ''}</div>`;
+        if (vd.dk < -5) why.push('Mit diesen Lebensmitteln wirst du noch nicht ganz satt. Da geht noch was!');
+        if (vd.dk > 5) why.push('Deine selbst eingetragenen Mengen sind etwas zu viel für heute.');
+        if (vd.dev.fat < -5) why.push('Es fehlt noch etwas gutes Fett, zum Beispiel Olivenöl, Nüsse oder Oliven.');
+        if (vd.dev.fat > 5) why.push('Etwas zu viel Fett. Mehr Gemüse gleicht das aus.');
+        if (vd.dev.carbs < -5) why.push('Es fehlt noch etwas Sättigendes, zum Beispiel Kartoffeln, Kürbis oder Karotten.');
+        if (vd.dev.carbs > 5) why.push('Etwas zu viele Kohlenhydrate. Ein Schuss Olivenöl oder ein paar Nüsse gleichen das aus.');
+        if (vd.dev.protein > 5) why.push('Etwas zu viel Eiweiß. Beim Scheinfasten darf es davon ruhig weniger sein.');
+        h += `<div class="alert warn"><p><b>Noch ein kleiner Schritt</b></p>${why.map((w) => `<p>${w}</p>`).join('')}
+          ${adds.length ? `<p>Tipp eins davon an, wir rechnen sofort neu:</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div>`;
       }
       // Mengentabelle
-      h += `<div class="stack"><h2 style="font-size:1.6rem">Wie viel du von allem essen darfst</h2>
-        <p class="muted small">Das ist deine Menge für den ganzen Tag. Du kannst jede Menge selbst ändern, der Rechner verteilt den Rest neu.</p>
+      h += `<div class="stack"><h2 style="font-size:1.6rem">So viel darfst du heute essen</h2>
+        <p class="muted small">Mengen für den ganzen Tag. Ändere ruhig eine Zahl, wir passen den Rest an.</p>
         <div class="tw"><table class="amounts"><thead><tr><th>Lebensmittel</th><th>Menge pro Tag</th><th>kcal</th></tr></thead><tbody>
         ${res.items.map((it) => {
           const f = BY_NAME[it.name];
@@ -345,19 +321,19 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
       // Gelbe Hinweise
       const yellow = ok.filter((x) => BY_NAME[x.name].light === 'y');
       if (yellow.length) {
-        h += `<div class="badlist">${yellow.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}: nur kleine Menge.</b> ${esc(a.why)}</p>${a.alts.length ? `<div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} Stattdessen ${esc(n)}</button>`).join('')}</div>` : ''}</div>`; }).join('')}</div>`;
+        h += `<div class="badlist">${yellow.map((x) => { const a = advice(x.name); return `<div class="alert info"><p><b>${esc(x.name)}: gern, aber nur ein bisschen.</b> ${esc(a.why)}</p>${a.alts.length ? `<div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} Lieber ${esc(n)}</button>`).join('')}</div>` : ''}</div>`; }).join('')}</div>`;
       }
     }
     // Rote Lebensmittel
     if (red.length) {
-      h += `<div class="stack"><h2 style="font-size:1.6rem">Passt nicht ins Scheinfasten</h2><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert bad"><p><b>${esc(x.name)}</b>. ${esc(a.why)}</p><p class="small">Besser geeignet:</p><div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} ${esc(n)}</button>`).join('')}</div></div>`; }).join('')}</div></div>`;
+      h += `<div class="stack"><h2 style="font-size:1.6rem">Lieber tauschen</h2><p class="muted small">Diese Lebensmittel heben den Fasteneffekt auf. Mit einem Tipp tauschst du sie gegen etwas, das genauso gut schmeckt.</p><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}</b>: ${esc(a.why)}</p><p class="small">Probier stattdessen:</p><div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} ${esc(n)}</button>`).join('')}</div></div>`; }).join('')}</div></div>`;
     }
     if (res) {
       // Gerichte aus den eigenen Zutaten
       const meals = buildMeals(res.items);
       if (meals.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">Rezeptideen aus deinen Lebensmitteln</h2>
-          <p class="muted small">Alle Gerichte zusammen ergeben genau deine Tagesmenge von oben. Würze mit Salz, Pfeffer und Kräutern nach Geschmack.</p>
+        h += `<div class="stack"><h2 style="font-size:1.6rem">Das kochst du heute</h2>
+          <p class="muted small">Aus deinen Zutaten, genau auf deine Tagesmenge berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune.</p>
           <div class="meals">${meals.map((m) => `<article class="card meal">
             <div class="meta"><span class="kicker">${m.slot} · ${m.kind}</span><span class="chip ok">${fmt(m.sum.kcal)} kcal</span></div>
             <h3>${esc(m.title)}</h3>
@@ -369,19 +345,19 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
       // Passende Rezepte der Seite
       const rec = matchRecipes(ok.map((x) => x.name));
       if (rec.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">Unsere Rezepte mit deinen Zutaten</h2>
-          <p class="muted small">Durchgerechnete Rezepte für eine Portion. Im Planer werden sie auf deinen Bedarf angepasst.</p>
+        h += `<div class="stack"><h2 style="font-size:1.6rem">Passt auch: unsere Rezepte</h2>
+          <p class="muted small">Fertig durchgerechnet, mit vielen deiner Zutaten.</p>
           <div class="grid">${rec.map((m) => `<a class="card rmatch" href="${base}rezepte/${m.recipe.slug}/">
             <img src="${base}img/rezepte/${m.recipe.image}.jpg" alt="" loading="lazy" width="110" height="82" />
             <div class="stack" style="gap:6px"><h3>${esc(m.recipe.title)}</h3>
             <p><b>Du hast:</b> ${m.hit.map(esc).join(', ')}</p>
-            ${m.miss.length ? `<p class="muted"><b>Es fehlt:</b> ${m.miss.map(esc).join(', ')}</p>` : '<p class="muted">Du hast alle Hauptzutaten.</p>'}
+            ${m.miss.length ? `<p class="muted"><b>Es fehlt:</b> ${m.miss.map(esc).join(', ')}</p>` : '<p class="muted">Du hast alles da!</p>'}
             <p class="small muted">${fmt(m.n.kcal)} kcal pro Portion</p></div></a>`).join('')}</div></div>`;
       }
     } else if (!red.length) {
-      h += `<div class="alert info"><p>Füge oben Lebensmittel hinzu.</p></div>`;
+      h += `<div class="alert info"><p>Füge oben ein paar Lebensmittel hinzu, dann geht's los.</p></div>`;
     }
-    h += `<div class="alert info noprint"><p>Der Rechner ersetzt keine ärztliche Beratung. Brich ab, wenn dir schwindelig wird, dein Herz rast oder du dich stark geschwächt fühlst. <a href="${base}fuer-wen-nicht/">Für wen Scheinfasten nicht geeignet ist</a></p></div>`;
+    h += `<p class="hint noprint">${I.info}<span>Fühlst du dich schwindelig oder sehr schlapp, iss einfach normal weiter. Dein Körper geht vor.</span></p>`;
     result.innerHTML = h;
   }
 
