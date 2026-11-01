@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check:plans": "node scripts/check-plans.mjs"
+    "check:plans": "node scripts/check-plans.mjs",
+    "check:rechner": "node scripts/check-rechner.mjs"
   },
   "dependencies": {
     "@fontsource-variable/figtree": "^5.1.1",

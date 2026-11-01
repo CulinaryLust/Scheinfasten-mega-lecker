@@ -1,0 +1,408 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url.js';
+import { icon } from '../lib/icons.js';
+import { PLAN, fmt } from '../lib/nutrition.js';
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search'].map((k) => [k, icon(k)]));
+const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
+const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
+---
+<Base title="Lebensmittel-Rechner" active="rechner" description="Gib ein, was du zu Hause hast. Der Rechner zeigt, wie viel davon in einen Scheinfasten-Tag nach Prof. Dr. Valter Longo passt, und macht Rezeptideen daraus.">
+  <div class="in page-head">
+    <p class="kicker">Rechner</p>
+    <h1>Was darf ich heute essen?</h1>
+    <p class="muted">Gib ein, was in deinem Kühlschrank liegt. Der Rechner verteilt dein Tagesbudget nach Prof. Dr. Valter Longo auf diese Lebensmittel, sagt dir, wie viel Gramm von jedem passen, und baut daraus Gerichte. Was nicht ins Scheinfasten passt, bekommt einen besseren Vorschlag.</p>
+  </div>
+
+  <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
+    <form id="f" class="card wcard" novalidate>
+      <fieldset class="block">
+        <legend><span class="num">1</span>Über dich</legend>
+        <div class="field"><span class="lbl">Geschlecht</span>
+          <div class="seg three">
+            <label><input type="radio" name="sex" value="w" checked /><span>Weiblich</span></label>
+            <label><input type="radio" name="sex" value="m" /><span>Männlich</span></label>
+            <label><input type="radio" name="sex" value="d" /><span>Divers</span></label>
+          </div>
+        </div>
+        <div class="row3">
+          <div class="field"><label for="age" class="lbl">Alter</label><div class="unit"><input id="age" name="age" type="number" inputmode="numeric" min="10" max="100" value="42" required /><span>Jahre</span></div></div>
+          <div class="field"><label for="h" class="lbl">Größe</label><div class="unit"><input id="h" name="h" type="number" inputmode="numeric" min="120" max="220" value="168" required /><span>cm</span></div></div>
+          <div class="field"><label for="w" class="lbl">Gewicht</label><div class="unit"><input id="w" name="w" type="number" inputmode="decimal" min="35" max="250" step="0.5" value="70" required /><span>kg</span></div></div>
+        </div>
+        <div class="field"><span class="lbl">Wie aktiv ist dein Alltag?</span>
+          <div class="seg three">
+            <label><input type="radio" name="pal" value="1.4" /><span>Eher sitzend</span></label>
+            <label><input type="radio" name="pal" value="1.6" checked /><span>Normal</span></label>
+            <label><input type="radio" name="pal" value="1.8" /><span>Sehr aktiv</span></label>
+          </div>
+        </div>
+        <div class="field"><span class="lbl">Welcher Fastentag ist heute?</span>
+          <div class="seg two">
+            <label><input type="radio" name="day" value="1" checked /><span>Tag 1<small>ca. {fmt(r1.kcal)} kcal, mehr Fett</small></span></label>
+            <label><input type="radio" name="day" value="2" /><span>Tag 2 bis 5<small>ca. {fmt(r2.kcal)} kcal</small></span></label>
+          </div>
+        </div>
+        <p class="err" id="err1" role="alert" hidden></p>
+      </fieldset>
+
+      <fieldset class="block">
+        <legend><span class="num">2</span>Was hast du da?</legend>
+        <div class="field combo">
+          <label for="q" class="lbl">Lebensmittel suchen</label>
+          <div class="search">
+            <Icon name="search" />
+            <input id="q" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="sug" autocomplete="off" placeholder="z. B. Zucchini, Möhre, Feta" />
+          </div>
+          <ul id="sug" class="sug" role="listbox" hidden></ul>
+          <p class="small muted" id="qhint" aria-live="polite"></p>
+        </div>
+        <div class="quick" aria-label="Schnell hinzufügen">
+          <span class="small muted">Oft im Kühlschrank:</span>
+          {quick.map((n) => <button type="button" class="qchip" data-add={n}><Icon name="plus" />{n}</button>)}
+        </div>
+        <ul class="picked" id="picked" aria-label="Deine Lebensmittel"></ul>
+        <p class="small muted legendline"><span class="dot g"></span>passt gut <span class="dot y"></span>nur kleine Menge <span class="dot r"></span>passt nicht ins Scheinfasten</p>
+      </fieldset>
+
+      <fieldset class="block" id="safety">
+        <legend><span class="num">3</span>Sicherheit</legend>
+        <div class="field"><span class="lbl">Trifft etwas davon auf dich zu?</span>
+          <div class="checks">
+            <label><input type="checkbox" class="x" value="Schwangerschaft oder Stillzeit" /><span>Ich bin schwanger oder stille</span></label>
+            <label><input type="checkbox" class="x" value="Diabetes mit Medikamenten" /><span>Ich habe Diabetes und nehme Medikamente</span></label>
+            <label><input type="checkbox" class="x" value="Essstörung" /><span>Ich habe oder hatte eine Essstörung</span></label>
+            <label><input type="checkbox" class="x" value="Krebs oder eine andere schwere Erkrankung" data-cancer="1" /><span>Ich habe Krebs oder eine andere schwere Erkrankung</span></label>
+            <label><input type="checkbox" class="x" value="regelmäßige Medikamente" /><span>Ich nehme regelmäßig Medikamente</span></label>
+          </div>
+        </div>
+        <label class="consent"><input type="checkbox" id="consent" /><span>Ich habe verstanden, dass der Rechner keine ärztliche Beratung ersetzt und ich bei Schwindel, Herzrasen oder starker Schwäche abbreche.</span></label>
+      </fieldset>
+      <p class="err" id="err3" role="alert" hidden></p>
+      <div class="nav-btns"><span></span><button type="submit" class="btn">Mengen berechnen <Icon name="arrow" /></button></div>
+    </form>
+  </section>
+
+  <section class="in result" id="result" hidden aria-live="polite"></section>
+
+  <div class="in narrow small muted srcnote">
+    <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben. Für Dill, Minze, Paprikapulver und Currypaste gibt es keinen BLS-Eintrag, dort nutzen wir Richtwerte aus der USDA-Datenbank.</p>
+    <p>Sollwerte: Wei M et al., Sci Transl Med 2017 (Studie von Prof. Dr. Valter Longo). Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Diese Seite wird von Prof. Dr. Valter Longo weder geprüft noch unterstützt.</p>
+  </div>
+</Base>
+
+<style is:global>
+  .calc { max-width: 820px; padding-bottom: 40px; }
+  .calc .wcard { padding: clamp(18px, 4vw, 30px); gap: 30px; }
+  .block { border: 0; padding: 0; margin: 0; display: grid; gap: 18px; min-width: 0; }
+  .block legend { font-family: var(--display); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; padding: 0; margin-bottom: 4px; }
+  .block .num { width: 32px; height: 32px; border-radius: 50%; background: var(--tomato); color: #fff; display: grid; place-items: center; font: 700 .95rem var(--body); flex: none; }
+  .seg.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .combo { position: relative; }
+  .search { position: relative; }
+  .search .i { position: absolute; left: 14px; top: 50%; translate: 0 -50%; color: var(--muted); }
+  .search input { padding-left: 42px; }
+  .sug { list-style: none; margin: 0; padding: 6px; position: absolute; left: 0; right: 0; top: calc(100% - 22px); z-index: 20; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); max-height: 340px; overflow-y: auto; }
+  .sug li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; cursor: pointer; }
+  .sug li[aria-selected="true"], .sug li:hover { background: var(--band); }
+  .sug li small { color: var(--muted); margin-left: auto; font-size: .78rem; }
+  .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; flex: none; vertical-align: -1px; }
+  .dot.g { background: var(--ok); } .dot.y { background: var(--sun); } .dot.r { background: var(--bad); }
+  .legendline { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+  .legendline .dot { margin-left: 6px; }
+  .quick { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .qchip, .pchip, .alt { display: inline-flex; align-items: center; gap: 6px; font: 600 .88rem/1.2 var(--body); padding: 8px 12px; min-height: 38px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; }
+  .qchip:hover, .alt:hover { border-color: var(--green); color: var(--green); }
+  .qchip[disabled] { opacity: .45; cursor: default; }
+  .qchip .i, .alt .i { width: 1em; height: 1em; }
+  .picked { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .picked:empty::before { content: "Noch nichts ausgewählt."; color: var(--muted); font-size: .92rem; }
+  .pchip { cursor: default; background: var(--card); }
+  .pchip button { border: 0; background: none; color: var(--muted); cursor: pointer; padding: 2px; display: grid; place-items: center; min-height: 0; }
+  .pchip button .i { width: 1em; height: 1em; }
+  .pchip.r { border-color: var(--bad); background: var(--bad-bg); }
+  .pchip.y { border-color: var(--sun); }
+
+  .result { display: grid; gap: 28px; padding-bottom: 50px; max-width: 980px; }
+  .rtop { display: grid; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(16px, 3vw, 24px); }
+  .rtop .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .amounts td input { width: 92px; min-height: 40px; padding: 6px 10px; text-align: right; font-weight: 700; }
+  .amounts td.nm { font-weight: 600; }
+  .amounts td.nm small { display: block; font-weight: 400; color: var(--muted); }
+  .amounts .zero td { color: var(--muted); }
+  .amounts .reset { border: 0; background: none; color: var(--green); font: 600 .8rem var(--body); cursor: pointer; padding: 4px; min-height: 0; }
+  .gcell { display: flex; align-items: center; gap: 6px; }
+  .alts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badlist { display: grid; gap: 12px; }
+  .badlist .alert p b { font-weight: 800; }
+  .meals { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 18px; }
+  .meal ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: .93rem; }
+  .meal ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: .93rem; }
+  .meal h3 { font-size: 1.2rem; }
+  .meal .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .rmatch { display: grid; grid-template-columns: 110px 1fr; gap: 14px; align-items: start; text-decoration: none; color: inherit; }
+  .rmatch img { width: 110px; height: 82px; object-fit: cover; border-radius: 12px; }
+  .rmatch h3 { font-size: 1.1rem; }
+  .rmatch p { font-size: .88rem; }
+  .srcnote { display: grid; gap: 8px; padding-bottom: 40px; }
+  @media print { .calc, .noprint { display: none !important; } }
+</style>
+
+<script>
+  import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, buildMeals, matchRecipes, advice, amount } from '../lib/rechner.js';
+  import { fmt } from '../lib/nutrition.js';
+
+  const root = document.getElementById('calc')!;
+  const base = root.dataset.base!;
+  const I = JSON.parse(root.dataset.icons!);
+  const form = document.getElementById('f') as HTMLFormElement;
+  const result = document.getElementById('result')!;
+  const q = document.getElementById('q') as HTMLInputElement;
+  const sug = document.getElementById('sug')!;
+  const qhint = document.getElementById('qhint')!;
+  const picked = document.getElementById('picked')!;
+  const STORE = 'smlRechner';
+  const esc = (s: string) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+  const LIGHT: Record<string, string> = { g: 'passt gut', y: 'nur kleine Menge', r: 'passt nicht' };
+
+  type Pick = { name: string; g?: number };
+  let state: { inputs?: any; picks: Pick[]; flags?: any[]; consent?: boolean; shown?: boolean } = { picks: [] };
+  try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && Array.isArray(s.picks)) state = s; } catch {}
+  state.picks = state.picks.filter((p) => BY_NAME[p.name]);
+  // Körperdaten aus dem Planer übernehmen, falls dort schon etwas eingetragen wurde
+  let inputs = state.inputs;
+  if (!inputs) { try { inputs = JSON.parse(localStorage.getItem('smlPlaner') || 'null')?.inputs; } catch {} }
+  if (inputs) {
+    for (const [k, v] of Object.entries(inputs)) {
+      const el = form.elements.namedItem(k) as any;
+      if (!el) continue;
+      if (el instanceof RadioNodeList) { for (const r of Array.from(el) as HTMLInputElement[]) r.checked = r.value === v; } else el.value = v;
+    }
+  }
+  if (state.consent) (document.getElementById('consent') as HTMLInputElement).checked = true;
+  for (const fl of state.flags || []) { const el = form.querySelector<HTMLInputElement>(`.x[value="${CSS.escape(fl.v)}"]`); if (el) el.checked = true; }
+  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch {} };
+
+  // Suche mit Vorschlagsliste
+  let hits: any[] = [];
+  let active = -1;
+  function showSug() {
+    hits = search(q.value);
+    active = hits.length ? 0 : -1;
+    const t = q.value.trim();
+    qhint.textContent = t.length >= 2 && !hits.length ? `„${t}“ ist nicht in unserer Datenbank. Versuche einen anderen Begriff, z. B. die Grundzutat.` : '';
+    sug.innerHTML = hits.map((f, i) => `<li role="option" id="s${i}" aria-selected="${i === active}" data-name="${esc(f.name)}"><span class="dot ${f.light}" aria-hidden="true"></span>${esc(f.name)}<small>${LIGHT[f.light]}</small></li>`).join('');
+    sug.hidden = !hits.length;
+    q.setAttribute('aria-expanded', String(!!hits.length));
+    q.setAttribute('aria-activedescendant', active >= 0 ? `s${active}` : '');
+  }
+  function mark() {
+    sug.querySelectorAll('li').forEach((li, i) => li.setAttribute('aria-selected', String(i === active)));
+    q.setAttribute('aria-activedescendant', active >= 0 ? `s${active}` : '');
+    sug.querySelector(`#s${active}`)?.scrollIntoView({ block: 'nearest' });
+  }
+  q.addEventListener('input', showSug);
+  q.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' && hits.length) { e.preventDefault(); active = (active + 1) % hits.length; mark(); }
+    else if (e.key === 'ArrowUp' && hits.length) { e.preventDefault(); active = (active - 1 + hits.length) % hits.length; mark(); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (active >= 0) addFood(hits[active].name); }
+    else if (e.key === 'Escape') { sug.hidden = true; q.setAttribute('aria-expanded', 'false'); }
+  });
+  sug.addEventListener('mousedown', (e) => { const li = (e.target as HTMLElement).closest('li'); if (li) { e.preventDefault(); addFood(li.dataset.name!); } });
+  q.addEventListener('blur', () => setTimeout(() => { sug.hidden = true; q.setAttribute('aria-expanded', 'false'); }, 120));
+
+  function addFood(name: string, replace?: string) {
+    if (!BY_NAME[name]) return;
+    if (replace) state.picks = state.picks.filter((p) => p.name !== replace);
+    if (!state.picks.some((p) => p.name === name)) state.picks.push({ name });
+    q.value = ''; sug.hidden = true; qhint.textContent = '';
+    save(); renderPicked();
+    if (state.shown) render();
+  }
+  function removeFood(name: string) {
+    state.picks = state.picks.filter((p) => p.name !== name);
+    save(); renderPicked();
+    if (state.shown) render();
+  }
+  function renderPicked() {
+    picked.innerHTML = state.picks.map((p) => {
+      const f = BY_NAME[p.name];
+      return `<li class="pchip ${f.light}"><span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>${esc(f.name)}<button type="button" data-remove="${esc(f.name)}" aria-label="${esc(f.name)} entfernen">${I.close}</button></li>`;
+    }).join('');
+    const have = new Set(state.picks.map((p) => p.name));
+    root.querySelectorAll<HTMLButtonElement>('[data-add]').forEach((b) => (b.disabled = have.has(b.dataset.add!)));
+  }
+  root.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    const add = t.closest<HTMLElement>('[data-add]'); if (add) addFood(add.dataset.add!);
+    const rm = t.closest<HTMLElement>('[data-remove]'); if (rm) removeFood(rm.dataset.remove!);
+  });
+  renderPicked();
+
+  function readInputs() {
+    const fd = new FormData(form);
+    const v = Object.fromEntries(fd.entries()) as any;
+    const age = +v.age, h = +v.h, w = +v.w;
+    let msg = '';
+    if (!age || age < 10 || age > 100) msg = 'Bitte gib ein Alter zwischen 10 und 100 Jahren ein.';
+    else if (!h || h < 120 || h > 220) msg = 'Bitte gib eine Größe zwischen 120 und 220 cm ein.';
+    else if (!w || w < 35 || w > 250) msg = 'Bitte gib ein Gewicht zwischen 35 und 250 kg ein.';
+    const e = document.getElementById('err1')!; e.textContent = msg; e.hidden = !msg;
+    return msg ? null : v;
+  }
+
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const v = readInputs(); if (!v) { form.scrollIntoView({ behavior: 'smooth' }); return; }
+    const e3 = document.getElementById('err3')!;
+    let msg = '';
+    if (!state.picks.length) msg = 'Füge mindestens ein Lebensmittel hinzu.';
+    else if (!(document.getElementById('consent') as HTMLInputElement).checked) msg = 'Bitte bestätige den Hinweis, dann berechnen wir deine Mengen.';
+    e3.textContent = msg; e3.hidden = !msg;
+    if (msg) return;
+    state.inputs = v;
+    state.flags = [...form.querySelectorAll<HTMLInputElement>('.x:checked')].map((x) => ({ v: x.value, cancer: !!x.dataset.cancer }));
+    state.consent = true; state.shown = true;
+    save(); render();
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  // Tageswahl und Körperdaten wirken sofort, sobald ein Ergebnis da ist
+  form.addEventListener('change', (e) => {
+    const t = e.target as HTMLInputElement;
+    if (!state.shown || t.id === 'q' || t.classList.contains('x') || t.id === 'consent') return;
+    const v = readInputs(); if (!v) return;
+    state.inputs = v; save(); render();
+  });
+
+  const pct = (x: number) => `${fmt(x)} %`;
+  const devTxt = (d: number) => (d > 0 ? `+${fmt(d)}` : fmt(d));
+
+  function render() {
+    const v = state.inputs;
+    const p = profile({ sex: v.sex, age: +v.age, h: +v.h, w: +v.w, pal: +v.pal });
+    const flags = state.flags || [];
+    const stops: string[] = [];
+    if (p.age < 18) stops.push('Unter 18 Jahren ist Scheinfasten nicht vorgesehen.');
+    if (p.age > 70) stops.push('Ab 70 Jahren bitte nur mit ärztlicher Begleitung. Dafür rechnet der Rechner keine Mengen aus.');
+    if (p.bmi < 18.5) stops.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei Untergewicht ist Scheinfasten nicht geeignet.`);
+    if (flags.length) stops.push(`Du hast angegeben: ${flags.map((x: any) => esc(x.v)).join(', ')}. Bitte sprich vorher mit deiner Ärztin oder deinem Arzt.`);
+    result.hidden = false;
+    if (stops.length) {
+      const cancer = flags.some((x: any) => x.cancer);
+      result.innerHTML = `<div class="alert bad"><h2 style="font-size:1.5rem">Für dich rechnen wir keine Mengen aus</h2>${stops.map((s) => `<p>${s}</p>`).join('')}
+        ${cancer ? `<p><a href="${base}krebs/">Was man über Scheinfasten bei Krebs weiß</a></p>` : `<p><a href="${base}fuer-wen-nicht/">Alle Hinweise lesen</a></p>`}</div>`;
+      return;
+    }
+    const day = v.day === '1' ? 1 : 2;
+    const t = targets(day, p.f);
+    const red = state.picks.filter((x) => BY_NAME[x.name].light === 'r');
+    const ok = state.picks.filter((x) => BY_NAME[x.name].light !== 'r');
+    const res = ok.length ? solve(ok, t) : null;
+    const vd = res?.verdict;
+    const adds = res ? suggestAdditions(ok, t, res) : [];
+    const dayLabel = day === 1 ? 'Tag 1' : 'Tag 2 bis 5';
+
+    let h = '';
+    // Kopf mit Abgleich
+    if (res && vd) {
+      const status = vd.ok ? `<span class="chip ok">${I.check} Passt zu Longos Vorgaben</span>` : `<span class="chip warn">${I.info} Noch nicht im Rahmen</span>`;
+      h += `<div class="rtop">
+        <div class="row"><h2 style="font-size:1.6rem">Deine Mengen für ${dayLabel}</h2>${status}</div>
+        <div class="vs">
+          <div class="kcal"><span class="k">${I.kcal} Kalorien</span><b>${fmt(res.sum.kcal)} kcal</b><small>Ziel ${fmt(t.kcal)} kcal (${devTxt(vd.dk)} %)</small></div>
+          <div class="protein"><span class="k">${I.protein} Eiweiß</span><b>${pct(vd.shares.protein)}</b><small>Ziel ${t.ref.protein} %, ${fmt(res.sum.protein)} g</small></div>
+          <div class="fat"><span class="k">${I.fat} Fett</span><b>${pct(vd.shares.fat)}</b><small>Ziel ${t.ref.fat} %, ${fmt(res.sum.fat)} g</small></div>
+          <div class="carbs"><span class="k">${I.carbs} Kohlenhydrate</span><b>${pct(vd.shares.carbs)}</b><small>Ziel ${t.ref.carbs} %, ${fmt(res.sum.carbs)} g</small></div>
+        </div>
+        <p class="small muted">„Passt“ heißt: Kalorien höchstens 5 % und jeder Makroanteil höchstens 5 Prozentpunkte von Longos Referenz entfernt. Dein Ziel ist an deinen Bedarf angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel und nicht Teil von Longos Protokoll.</p>
+      </div>`;
+      if (!vd.ok) {
+        const why: string[] = [];
+        if (vd.dk < -5) why.push('Mit diesen Lebensmitteln allein kommst du nicht auf dein Tagesbudget, auch nicht bei den Höchstmengen.');
+        if (vd.dk > 5) why.push('Die fest eingetragenen Mengen liegen über deinem Tagesbudget.');
+        if (vd.dev.fat < -5) why.push('Es fehlt Fett. Longo setzt dafür auf Olivenöl, Nüsse und Oliven.');
+        if (vd.dev.fat > 5) why.push('Der Fettanteil ist zu hoch. Es fehlt Gemüse mit etwas mehr Kohlenhydraten.');
+        if (vd.dev.carbs < -5) why.push('Es fehlen Kohlenhydrate aus Gemüse, zum Beispiel aus Kartoffeln, Kürbis oder Karotten.');
+        if (vd.dev.carbs > 5) why.push('Der Kohlenhydratanteil ist zu hoch.');
+        if (vd.dev.protein > 5) why.push('Der Eiweißanteil ist zu hoch. Das Scheinfasten soll gerade wenig Eiweiß liefern.');
+        h += `<div class="alert warn"><p><b>Damit es zu Longos Werten passt</b></p>${why.map((w) => `<p>${w}</p>`).join('')}
+          ${adds.length ? `<p>Ergänze eines davon, der Rechner verteilt dann neu:</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' passt dann' : ''}</button>`).join('')}</div>` : ''}</div>`;
+      }
+      // Mengentabelle
+      h += `<div class="stack"><h2 style="font-size:1.6rem">Wie viel du von allem essen darfst</h2>
+        <p class="muted small">Das ist deine Menge für den ganzen Tag. Du kannst jede Menge selbst ändern, der Rechner verteilt den Rest neu.</p>
+        <div class="tw"><table class="amounts"><thead><tr><th>Lebensmittel</th><th>Menge pro Tag</th><th>kcal</th></tr></thead><tbody>
+        ${res.items.map((it) => {
+          const f = BY_NAME[it.name];
+          const piece = f.piece && it.g ? `<small>etwa ${fmt(it.g / f.piece[1], it.g / f.piece[1] < 3 ? 1 : 0)} ${esc(f.piece[0])}</small>` : '';
+          const capNote = f.light === 'y' ? `<small>höchstens ${amount(f.name, f.cap)} am Tag</small>` : '';
+          const zero = f.n[0] === 0 ? '<small>so viel du magst</small>' : it.g === 0 ? '<small>heute nicht nötig</small>' : '';
+          const input = f.n[0] === 0 ? '' : `<span class="gcell"><input type="number" inputmode="numeric" min="0" max="${f.cap}" step="5" value="${it.g}" data-g="${esc(f.name)}" aria-label="Menge ${esc(f.name)} in Gramm" /> ${/saft|essig|Balsamico|brühe|drink/i.test(f.name) ? 'ml' : 'g'}</span>${it.fixed ? `<button type="button" class="reset" data-free="${esc(f.name)}">zurücksetzen</button>` : ''}`;
+          return `<tr class="${it.g === 0 && f.n[0] > 0 ? 'zero' : ''}"><td class="nm"><span class="dot ${f.light}" title="${LIGHT[f.light]}"></span> ${esc(f.name)}${piece}${capNote}${zero}</td><td>${input}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
+        }).join('')}
+        </tbody></table></div></div>`;
+      // Gelbe Hinweise
+      const yellow = ok.filter((x) => BY_NAME[x.name].light === 'y');
+      if (yellow.length) {
+        h += `<div class="badlist">${yellow.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}: nur kleine Menge.</b> ${esc(a.why)}</p>${a.alts.length ? `<div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} Stattdessen ${esc(n)}</button>`).join('')}</div>` : ''}</div>`; }).join('')}</div>`;
+      }
+    }
+    // Rote Lebensmittel
+    if (red.length) {
+      h += `<div class="stack"><h2 style="font-size:1.6rem">Passt nicht ins Scheinfasten</h2><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert bad"><p><b>${esc(x.name)}</b>. ${esc(a.why)}</p><p class="small">Besser geeignet:</p><div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} ${esc(n)}</button>`).join('')}</div></div>`; }).join('')}</div></div>`;
+    }
+    if (res) {
+      // Gerichte aus den eigenen Zutaten
+      const meals = buildMeals(res.items);
+      if (meals.length) {
+        h += `<div class="stack"><h2 style="font-size:1.6rem">Rezeptideen aus deinen Lebensmitteln</h2>
+          <p class="muted small">Alle Gerichte zusammen ergeben genau deine Tagesmenge von oben. Würze mit Salz, Pfeffer und Kräutern nach Geschmack.</p>
+          <div class="meals">${meals.map((m) => `<article class="card meal">
+            <div class="meta"><span class="kicker">${m.slot} · ${m.kind}</span><span class="chip ok">${fmt(m.sum.kcal)} kcal</span></div>
+            <h3>${esc(m.title)}</h3>
+            <ul>${m.items.map((i) => `<li>${amount(i.name, i.g)} ${esc(i.name)}</li>`).join('')}</ul>
+            <ol>${m.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
+            <p class="small muted">${I.time} etwa ${m.minutes} Minuten</p>
+          </article>`).join('')}</div></div>`;
+      }
+      // Passende Rezepte der Seite
+      const rec = matchRecipes(ok.map((x) => x.name));
+      if (rec.length) {
+        h += `<div class="stack"><h2 style="font-size:1.6rem">Unsere Rezepte mit deinen Zutaten</h2>
+          <p class="muted small">Durchgerechnete Rezepte für eine Portion. Im Planer werden sie auf deinen Bedarf angepasst.</p>
+          <div class="grid">${rec.map((m) => `<a class="card rmatch" href="${base}rezepte/${m.recipe.slug}/">
+            <img src="${base}img/rezepte/${m.recipe.image}.jpg" alt="" loading="lazy" width="110" height="82" />
+            <div class="stack" style="gap:6px"><h3>${esc(m.recipe.title)}</h3>
+            <p><b>Du hast:</b> ${m.hit.map(esc).join(', ')}</p>
+            ${m.miss.length ? `<p class="muted"><b>Es fehlt:</b> ${m.miss.map(esc).join(', ')}</p>` : '<p class="muted">Du hast alle Hauptzutaten.</p>'}
+            <p class="small muted">${fmt(m.n.kcal)} kcal pro Portion</p></div></a>`).join('')}</div></div>`;
+      }
+    } else if (!red.length) {
+      h += `<div class="alert info"><p>Füge oben Lebensmittel hinzu.</p></div>`;
+    }
+    h += `<div class="alert info noprint"><p>Der Rechner ersetzt keine ärztliche Beratung. Brich ab, wenn dir schwindelig wird, dein Herz rast oder du dich stark geschwächt fühlst. <a href="${base}fuer-wen-nicht/">Für wen Scheinfasten nicht geeignet ist</a></p></div>`;
+    result.innerHTML = h;
+  }
+
+  // Interaktion im Ergebnis
+  result.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    const b = t.closest<HTMLElement>('[data-add]');
+    if (b) { addFood(b.dataset.add!, b.dataset.replace); return; }
+    const fr = t.closest<HTMLElement>('[data-free]');
+    if (fr) { const p = state.picks.find((x) => x.name === fr.dataset.free); if (p) delete p.g; save(); render(); }
+  });
+  result.addEventListener('change', (e) => {
+    const t = e.target as HTMLInputElement;
+    if (!t.dataset.g) return;
+    const p = state.picks.find((x) => x.name === t.dataset.g);
+    if (!p) return;
+    const cap = BY_NAME[p.name].cap;
+    const g = Math.max(0, Math.min(cap, Math.round(+t.value || 0)));
+    p.g = g;
+    save(); render();
+  });
+
+  if (state.shown && state.inputs && state.picks.length) render();
+</script>

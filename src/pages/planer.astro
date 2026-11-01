@@ -92,34 +92,8 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
   .progress li.on span { background: var(--tomato); color: #fff; }
   .wcard { padding: clamp(18px, 4vw, 30px); }
   .step { border: 0; padding: 0; margin: 0; display: grid; gap: 20px; min-width: 0; }
-  .field { display: grid; gap: 8px; min-width: 0; }
-  .lbl { font-weight: 700; }
-  .row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-  @media (max-width: 560px) { .row3 { grid-template-columns: 1fr 1fr; } .row3 .field:first-child { grid-column: 1 / -1; } }
-  .unit { position: relative; }
-  .unit input { padding-right: 56px; font-size: 1.1rem; font-weight: 700; }
-  .unit span { position: absolute; right: 14px; top: 50%; translate: 0 -50%; color: var(--muted); font-size: .9rem; pointer-events: none; }
-  .seg { display: grid; gap: 8px; }
-  .seg.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  @media (max-width: 560px) { .seg.three { grid-template-columns: 1fr; } }
-  .seg label { position: relative; cursor: pointer; }
-  .seg input { position: absolute; opacity: 0; width: 1px; height: 1px; min-height: 0; }
-  .seg label > span { display: grid; gap: 2px; text-align: center; padding: 12px 10px; min-height: 52px; align-content: center; border: 1.5px solid var(--line); border-radius: 14px; font-weight: 700; background: var(--bg); transition: border-color .15s, background .15s; }
-  .seg small { font-weight: 500; color: var(--muted); font-size: .8rem; }
-  .seg input:checked + span { border-color: var(--green); background: var(--ok-bg); color: var(--green); box-shadow: 0 0 0 2px var(--green) inset; }
-  .seg input:focus-visible + span { outline: 3px solid var(--sun); outline-offset: 2px; }
-  .checks { display: grid; gap: 6px; }
-  .checks label, .consent { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 14px; cursor: pointer; }
-  .checks input, .consent input { width: 22px; height: 22px; min-height: 0; margin: 1px 0 0; accent-color: var(--tomato); flex: none; }
-  .consent { background: var(--band); border-color: transparent; }
-  .nav-btns { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .err { color: var(--bad); font-weight: 700; }
 
   .result { display: grid; gap: 26px; padding-bottom: 70px; }
-  .sumbar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 12px; }
-  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: grid; gap: 2px; }
-  .stat b { font-size: 1.45rem; font-variant-numeric: tabular-nums; }
-  .stat span { font-size: .82rem; color: var(--muted); }
   .rhead { display: flex; justify-content: space-between; align-items: end; gap: 14px; flex-wrap: wrap; }
   .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); background: var(--bg); z-index: 5; padding-top: 8px; scrollbar-width: none; }
   .tab { flex: none; display: grid; gap: 1px; text-align: left; font: inherit; color: var(--fg); background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px 14px; cursor: pointer; min-width: 92px; }
@@ -129,12 +103,6 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
   .daycard { display: grid; gap: 16px; }
   .daytop { display: grid; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
   .daytop .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .vs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 10px; }
-  .vs div { display: grid; gap: 4px; padding: 10px 12px; border-radius: 12px; background: var(--band); }
-  .vs .k { display: flex; gap: 6px; align-items: center; font-size: .8rem; font-weight: 700; color: var(--muted); }
-  .vs b { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
-  .vs small { color: var(--muted); font-size: .76rem; }
-  .vs .kcal .i { color: var(--c-kcal); } .vs .protein .i { color: var(--c-protein); } .vs .fat .i, .vs .oil .i { color: var(--c-fat); } .vs .carbs .i { color: var(--c-carbs); }
   .meal { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
   @media (max-width: 560px) { .meal { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; } }
   .meal img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }

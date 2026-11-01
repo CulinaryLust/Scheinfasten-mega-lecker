@@ -1,0 +1,4692 @@
+[
+ {
+  "name": "Zucchini",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Zucchetti"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   200
+  ],
+  "n": [
+   22.0,
+   1.3,
+   0.29,
+   4.1,
+   2.0,
+   1.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G582100",
+   "name": "Zucchini roh"
+  }
+ },
+ {
+  "name": "Tomaten",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Tomate"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   100
+  ],
+  "n": [
+   22.0,
+   0.95,
+   0.11,
+   4.55,
+   3.25,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G561100",
+   "name": "Tomate roh"
+  }
+ },
+ {
+  "name": "Kirschtomaten",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Cocktailtomaten",
+   "Cherrytomaten"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   22.0,
+   0.95,
+   0.11,
+   4.55,
+   3.25,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G561100",
+   "name": "Tomate roh"
+  }
+ },
+ {
+  "name": "Tomaten, passiert",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 300,
+  "syn": [
+   "Passata",
+   "Tomatenpüree"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   29.0,
+   1.18,
+   0.1,
+   5.75,
+   3.6,
+   1.81
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R161200",
+   "name": "Tomaten passiert/Tomatenpüree"
+  }
+ },
+ {
+  "name": "Tomatenmark",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 40,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   81.0,
+   3.4,
+   0.2,
+   17.9,
+   12.9,
+   4.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R160000",
+   "name": "Tomatenmark"
+  }
+ },
+ {
+  "name": "Karotten",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Karotte",
+   "Möhre",
+   "Möhren",
+   "Rüebli"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   80
+  ],
+  "n": [
+   40.0,
+   0.84,
+   0.4,
+   9.37,
+   6.37,
+   2.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G620100",
+   "name": "Karotte/Möhre, roh"
+  }
+ },
+ {
+  "name": "Staudensellerie",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Stangensellerie",
+   "Bleichsellerie"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   17.0,
+   1.2,
+   0.1,
+   4.05,
+   1.4,
+   2.55
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G220100",
+   "name": "Bleichsellerie roh"
+  }
+ },
+ {
+  "name": "Knollensellerie",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Sellerie",
+   "Sellerieknolle"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   30.0,
+   1.55,
+   0.33,
+   6.97,
+   2.11,
+   4.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G660100",
+   "name": "Knollensellerie roh"
+  }
+ },
+ {
+  "name": "Zwiebeln",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 150,
+  "syn": [
+   "Zwiebel",
+   "Speisezwiebel"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   80
+  ],
+  "n": [
+   34.0,
+   1.16,
+   0.15,
+   7.41,
+   6.01,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G480100",
+   "name": "Speisezwiebel roh"
+  }
+ },
+ {
+  "name": "Rote Zwiebel",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 150,
+  "syn": [
+   "rote Zwiebeln"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   34.0,
+   1.16,
+   0.15,
+   7.41,
+   6.01,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G480100",
+   "name": "Speisezwiebel roh"
+  }
+ },
+ {
+  "name": "Frühlingszwiebeln",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 150,
+  "syn": [
+   "Lauchzwiebel",
+   "Frühlingszwiebel"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   27.0,
+   1.9,
+   0.19,
+   5.6,
+   2.8,
+   2.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G482100",
+   "name": "Frühlingszwiebel/Lauchzwiebel, roh"
+  }
+ },
+ {
+  "name": "Schalotten",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 100,
+  "syn": [
+   "Schalotte"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   33.0,
+   2.0,
+   0.1,
+   8.62,
+   3.2,
+   5.42
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G485100",
+   "name": "Schalotte roh"
+  }
+ },
+ {
+  "name": "Lauch",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Porree"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   36.0,
+   2.14,
+   0.25,
+   7.2,
+   3.8,
+   2.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G470100",
+   "name": "Porree/Lauch, roh"
+  }
+ },
+ {
+  "name": "Hokkaido-Kürbis",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Kürbis",
+   "Hokkaido"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   30.0,
+   1.4,
+   0.2,
+   6.08,
+   4.59,
+   0.78
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G581000",
+   "name": "Kürbis Hokkaido (C. maxima) roh"
+  }
+ },
+ {
+  "name": "Gartenkürbis",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Butternut",
+   "Muskatkürbis",
+   "Kürbis"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   36.0,
+   1.1,
+   0.13,
+   9.24,
+   5.1,
+   3.43
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G581100",
+   "name": "Kürbis Pumpkin (C. pepo) roh"
+  }
+ },
+ {
+  "name": "Blumenkohl",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Karfiol"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   35.0,
+   2.42,
+   0.28,
+   8.23,
+   2.16,
+   2.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G311100",
+   "name": "Blumenkohl roh"
+  }
+ },
+ {
+  "name": "Brokkoli",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Broccoli"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   35.0,
+   3.62,
+   0.6,
+   5.3,
+   1.38,
+   3.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G312100",
+   "name": "Broccoli roh"
+  }
+ },
+ {
+  "name": "Rosenkohl",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Kohlsprossen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   40.0,
+   4.45,
+   0.34,
+   6.66,
+   1.58,
+   4.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G332100",
+   "name": "Rosenkohl roh"
+  }
+ },
+ {
+  "name": "Weißkohl",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Weisskohl",
+   "Kraut",
+   "Spitzkohl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   32.0,
+   1.38,
+   0.19,
+   7.54,
+   4.4,
+   3.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G342100",
+   "name": "Weißkohl roh"
+  }
+ },
+ {
+  "name": "Rotkohl",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Blaukraut",
+   "Rotkraut"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   28.0,
+   1.56,
+   0.18,
+   6.23,
+   3.66,
+   2.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G341100",
+   "name": "Rotkohl roh"
+  }
+ },
+ {
+  "name": "Wirsing",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   37.0,
+   2.78,
+   0.32,
+   6.9,
+   3.5,
+   2.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G343100",
+   "name": "Wirsing roh"
+  }
+ },
+ {
+  "name": "Chinakohl",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18.0,
+   1.8,
+   0.2,
+   3.08,
+   1.24,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G321100",
+   "name": "Chinakohl roh"
+  }
+ },
+ {
+  "name": "Pak Choi",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Pak Choy",
+   "Bok Choy"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   16.0,
+   1.8,
+   0.2,
+   2.7,
+   0.8,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G324100",
+   "name": "Pak Choi roh"
+  }
+ },
+ {
+  "name": "Grünkohl",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Federkohl",
+   "Kale"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   53.0,
+   4.16,
+   0.67,
+   11.71,
+   2.64,
+   8.39
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G322100",
+   "name": "Grünkohl roh"
+  }
+ },
+ {
+  "name": "Kohlrabi",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   250
+  ],
+  "n": [
+   28.0,
+   1.94,
+   0.16,
+   5.38,
+   3.7,
+   1.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G331100",
+   "name": "Kohlrabi roh"
+  }
+ },
+ {
+  "name": "Fenchel",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Knolle",
+   250
+  ],
+  "n": [
+   33.0,
+   2.43,
+   0.3,
+   7.43,
+   2.75,
+   4.19
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G431100",
+   "name": "Fenchelblatt/Bologneser Fenchel, roh"
+  }
+ },
+ {
+  "name": "Rote Paprika",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Paprika",
+   "Paprikaschote"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   150
+  ],
+  "n": [
+   36.0,
+   1.02,
+   0.2,
+   8.39,
+   6.19,
+   2.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G543100",
+   "name": "Gemüsepaprika rot, roh"
+  }
+ },
+ {
+  "name": "Gelbe Paprika",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Paprika"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   150
+  ],
+  "n": [
+   28.0,
+   0.8,
+   0.2,
+   6.62,
+   4.42,
+   2.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G542100",
+   "name": "Gemüsepaprika gelb, roh"
+  }
+ },
+ {
+  "name": "Grüne Paprika",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Paprika"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   150
+  ],
+  "n": [
+   38.0,
+   1.08,
+   0.24,
+   8.88,
+   6.51,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G541100",
+   "name": "Gemüsepaprika grün, roh"
+  }
+ },
+ {
+  "name": "Aubergine",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Melanzani",
+   "Auberginen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   300
+  ],
+  "n": [
+   19.0,
+   0.57,
+   0.18,
+   4.42,
+   2.69,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G510100",
+   "name": "Aubergine roh"
+  }
+ },
+ {
+  "name": "Gurke",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Salatgurke",
+   "Gurken"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   400
+  ],
+  "n": [
+   16.0,
+   1.06,
+   0.2,
+   2.87,
+   1.97,
+   0.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G520100",
+   "name": "Gurke roh"
+  }
+ },
+ {
+  "name": "Gewürzgurken",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 100,
+  "syn": [
+   "Essiggurken",
+   "saure Gurken"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   33.0,
+   0.9,
+   0.0,
+   6.4,
+   5.49,
+   0.88
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G520802",
+   "name": "Gurke gesäuert (Gewürzgurke) abgetropft"
+  }
+ },
+ {
+  "name": "Sauerkraut",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 200,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   34.0,
+   1.15,
+   0.41,
+   6.32,
+   2.15,
+   3.95
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G345902",
+   "name": "Sauerkraut Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Rote Bete (vorgegart)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Rote Bete",
+   "Rote Rübe",
+   "Randen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   43.0,
+   2.02,
+   0.1,
+   9.58,
+   7.08,
+   2.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G613152",
+   "name": "Rote Rübe/Rote Bete, gedünstet"
+  }
+ },
+ {
+  "name": "Radieschen",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18.0,
+   1.05,
+   0.14,
+   3.81,
+   2.13,
+   1.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G691100",
+   "name": "Radieschen roh"
+  }
+ },
+ {
+  "name": "Rettich",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   21.0,
+   1.05,
+   0.15,
+   4.17,
+   1.98,
+   1.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G680100",
+   "name": "Rettich roh"
+  }
+ },
+ {
+  "name": "Steckrübe",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Kohlrübe"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   22.0,
+   1.25,
+   0.16,
+   5.2,
+   1.39,
+   2.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G611100",
+   "name": "Kohlrübe/Steckrübe, roh"
+  }
+ },
+ {
+  "name": "Pastinaken",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 200,
+  "syn": [
+   "Pastinake"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   59.0,
+   2.69,
+   0.43,
+   11.83,
+   3.06,
+   2.13
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G640100",
+   "name": "Pastinake roh"
+  }
+ },
+ {
+  "name": "Spargel",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Spargel grün",
+   "Spargel weiß"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   28.0,
+   1.96,
+   0.16,
+   5.38,
+   3.8,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G450100",
+   "name": "Spargel roh"
+  }
+ },
+ {
+  "name": "Grüne Bohnen",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Bohnen grün",
+   "Brechbohnen",
+   "Fisolen",
+   "Prinzessbohnen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   28.0,
+   2.24,
+   0.24,
+   5.29,
+   2.26,
+   1.89
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G710100",
+   "name": "Bohne grün, roh"
+  }
+ },
+ {
+  "name": "Zuckerschoten",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Zuckererbsen",
+   "Kaiserschoten"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   38.0,
+   3.6,
+   0.2,
+   6.4,
+   3.16,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G761100",
+   "name": "Zuckererbse roh"
+  }
+ },
+ {
+  "name": "Erbsen (TK)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 100,
+  "syn": [
+   "Erbsen",
+   "grüne Erbsen"
+  ],
+  "alts": [
+   "Zuckerschoten",
+   "Brokkoli"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   77.0,
+   4.9,
+   0.7,
+   15.3,
+   5.4,
+   5.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G760200",
+   "name": "Erbse grün, tiefgefroren"
+  }
+ },
+ {
+  "name": "Okra",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   32.0,
+   2.1,
+   0.2,
+   7.95,
+   3.05,
+   4.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G530100",
+   "name": "Okra roh"
+  }
+ },
+ {
+  "name": "Artischocken",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "syn": [
+   "Artischocke"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   44.0,
+   2.4,
+   0.12,
+   13.48,
+   2.51,
+   10.79
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G410100",
+   "name": "Artischocke roh"
+  }
+ },
+ {
+  "name": "Mais",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "Zuckermais",
+   "Maiskörner"
+  ],
+  "alts": [
+   "Rote Paprika",
+   "Erbsen (TK)"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   79.0,
+   2.71,
+   1.94,
+   14.43,
+   6.22,
+   3.59
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G570902",
+   "name": "Zuckermais Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Babyspinat",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Spinat",
+   "Blattspinat"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18.0,
+   2.07,
+   0.3,
+   2.73,
+   0.75,
+   1.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G211100",
+   "name": "Spinat roh"
+  }
+ },
+ {
+  "name": "Mangold",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   17.0,
+   1.85,
+   0.28,
+   2.67,
+   0.69,
+   1.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G230100",
+   "name": "Mangold roh"
+  }
+ },
+ {
+  "name": "Rucola",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Rauke"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   21.0,
+   3.6,
+   0.4,
+   1.7,
+   0.0,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G130100",
+   "name": "Rucola roh"
+  }
+ },
+ {
+  "name": "Feldsalat",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Rapunzel",
+   "Nüsslisalat"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18.0,
+   1.9,
+   0.36,
+   2.61,
+   0.8,
+   1.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G104100",
+   "name": "Feldsalat/Rapunzel, roh"
+  }
+ },
+ {
+  "name": "Blattsalat",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Kopfsalat",
+   "Salat",
+   "Pflücksalat"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18.0,
+   1.5,
+   0.22,
+   3.1,
+   1.7,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G105100",
+   "name": "Kopfsalat roh"
+  }
+ },
+ {
+  "name": "Romanasalat",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Römersalat",
+   "Romana"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   14.0,
+   1.2,
+   0.13,
+   2.9,
+   1.3,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G107100",
+   "name": "Römischer Salat/Romanasalat, roh"
+  }
+ },
+ {
+  "name": "Eisbergsalat",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Eisberg"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   15.0,
+   0.8,
+   0.2,
+   3.42,
+   1.62,
+   1.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G103100",
+   "name": "Eisbergsalat roh"
+  }
+ },
+ {
+  "name": "Radicchio",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   20.0,
+   1.4,
+   0.25,
+   3.5,
+   1.6,
+   0.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G106100",
+   "name": "Radicchio roh"
+  }
+ },
+ {
+  "name": "Chicorée",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Chicoree"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   20.0,
+   2.39,
+   0.18,
+   2.6,
+   0.92,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G101100",
+   "name": "Chicoree roh"
+  }
+ },
+ {
+  "name": "Endiviensalat",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Endivie",
+   "Escariol"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   13.0,
+   1.25,
+   0.2,
+   2.05,
+   0.83,
+   1.22
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G102100",
+   "name": "Endivie/Escariol, roh"
+  }
+ },
+ {
+  "name": "Kresse",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "syn": [
+   "Gartenkresse"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   31.0,
+   4.2,
+   0.7,
+   3.75,
+   0.23,
+   3.52
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G280100",
+   "name": "Gartenkresse roh"
+  }
+ },
+ {
+  "name": "Champignons",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 300,
+  "syn": [
+   "Champignon",
+   "Pilze"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   28.0,
+   3.66,
+   0.27,
+   4.8,
+   0.2,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K701100",
+   "name": "Champignon roh"
+  }
+ },
+ {
+  "name": "Austernpilze",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 300,
+  "syn": [
+   "Austernseitling",
+   "Seitlinge",
+   "Pilze"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   32.0,
+   3.31,
+   0.22,
+   7.12,
+   1.11,
+   5.85
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K740100",
+   "name": "Austernpilz roh"
+  }
+ },
+ {
+  "name": "Shiitake",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 300,
+  "syn": [
+   "Shiitakepilze",
+   "Pilze"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   30.0,
+   2.5,
+   0.2,
+   6.55,
+   2.38,
+   4.17
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K724100",
+   "name": "Shiitakepilz roh"
+  }
+ },
+ {
+  "name": "Pfifferlinge",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 300,
+  "syn": [
+   "Eierschwammerl",
+   "Pilze"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   26.0,
+   3.91,
+   0.27,
+   3.82,
+   0.16,
+   3.27
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K713100",
+   "name": "Pfifferling roh"
+  }
+ },
+ {
+  "name": "Basilikum",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   23.0,
+   3.15,
+   0.64,
+   1.91,
+   0.31,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G061000",
+   "name": "Basilikum roh"
+  }
+ },
+ {
+  "name": "Petersilie",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   33.0,
+   4.09,
+   0.36,
+   5.56,
+   0.85,
+   4.25
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G250100",
+   "name": "Petersilienblatt roh"
+  }
+ },
+ {
+  "name": "Schnittlauch",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   29.0,
+   2.6,
+   0.74,
+   4.14,
+   1.54,
+   2.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G081100",
+   "name": "Schnittlauch roh"
+  }
+ },
+ {
+  "name": "Dill",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   43,
+   3.5,
+   1.1,
+   7,
+   0,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Minze",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "syn": [
+   "Pfefferminze"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   70,
+   3.8,
+   0.9,
+   15,
+   0,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Knoblauch",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 15,
+  "syn": [
+   "Knoblauchzehe"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Zehe",
+   3
+  ],
+  "n": [
+   97.0,
+   6.05,
+   0.42,
+   31.3,
+   2.0,
+   28.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G490100",
+   "name": "Knoblauch roh"
+  }
+ },
+ {
+  "name": "Ingwer",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 20,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   48.0,
+   1.92,
+   0.75,
+   8.7,
+   0.53,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R211200",
+   "name": "Ingwer/Ingwerwurzel, roh"
+  }
+ },
+ {
+  "name": "Meerrettich",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 20,
+  "syn": [
+   "Kren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   84.0,
+   5.88,
+   0.3,
+   15.96,
+   8.25,
+   4.29
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G630100",
+   "name": "Meerrettich roh"
+  }
+ },
+ {
+  "name": "Kapern",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 20,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   22.0,
+   2.12,
+   0.42,
+   2.4,
+   0.0,
+   2.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G012902",
+   "name": "Kapern gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Zitronensaft",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Zitrone",
+   "Zitronen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   30.0,
+   0.63,
+   0.3,
+   1.83,
+   1.7,
+   0.13
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F601600",
+   "name": "Zitronensaft"
+  }
+ },
+ {
+  "name": "Limettensaft",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Limette",
+   "Limetten"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   24.0,
+   0.45,
+   0.2,
+   1.65,
+   1.52,
+   0.13
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F602600",
+   "name": "Limettensaft"
+  }
+ },
+ {
+  "name": "Balsamico",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 15,
+  "syn": [
+   "Balsamicoessig",
+   "Aceto balsamico"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   95.0,
+   0.0,
+   0.0,
+   20.04,
+   20.04,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R125000",
+   "name": "Balsamicoessig"
+  }
+ },
+ {
+  "name": "Apfelessig",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 30,
+  "syn": [
+   "Essig"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18.0,
+   0.2,
+   0.0,
+   0.15,
+   0.15,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R123100",
+   "name": "Apfelessig"
+  }
+ },
+ {
+  "name": "Helle Misopaste",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 15,
+  "syn": [
+   "Miso"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   174.0,
+   10.6,
+   10.5,
+   12.2,
+   6.2,
+   6.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H862200",
+   "name": "Miso/Sojabohnenpaste"
+  }
+ },
+ {
+  "name": "Rote Currypaste",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 15,
+  "syn": [
+   "Currypaste",
+   "Curry"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   100,
+   2,
+   4,
+   14,
+   5,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Paprikapulver, geräuchert",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 5,
+  "syn": [
+   "Paprikapulver",
+   "Pimentón"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   282,
+   14,
+   13,
+   54,
+   10,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Gemüsebrühe",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 600,
+  "syn": [
+   "Brühe",
+   "Gemüsefond"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   4.0,
+   0.32,
+   0.1,
+   0.54,
+   0.54,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X416243",
+   "name": "Gemüsebrühe"
+  }
+ },
+ {
+  "name": "Olivenöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   899.0,
+   0.0,
+   99.9,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q120000",
+   "name": "Olivenöl"
+  }
+ },
+ {
+  "name": "Rapsöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q180000",
+   "name": "Rapsöl/Rüböl"
+  }
+ },
+ {
+  "name": "Leinöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q160000",
+   "name": "Leinöl"
+  }
+ },
+ {
+  "name": "Walnussöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   899.0,
+   0.0,
+   99.9,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q310000",
+   "name": "Walnussöl"
+  }
+ },
+ {
+  "name": "Sesamöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q230000",
+   "name": "Sesamöl"
+  }
+ },
+ {
+  "name": "Kokosöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "y",
+  "cap": 10,
+  "syn": [
+   "Kokosfett"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Besteht überwiegend aus gesättigten Fettsäuren. Longo setzt auf Olivenöl und Nüsse.",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q550000",
+   "name": "Kokosöl"
+  }
+ },
+ {
+  "name": "Walnusskerne",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Walnüsse",
+   "Walnuss"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Kern",
+   5
+  ],
+  "n": [
+   721.0,
+   16.07,
+   70.6,
+   7.6,
+   2.68,
+   4.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H120100",
+   "name": "Walnuss"
+  }
+ },
+ {
+  "name": "Mandeln",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Mandel"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   1.2
+  ],
+  "n": [
+   544.0,
+   22.33,
+   46.6,
+   13.87,
+   3.63,
+   10.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H210100",
+   "name": "Mandel süß"
+  }
+ },
+ {
+  "name": "Haselnüsse",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Haselnuss",
+   "Haselnusskerne"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   667.0,
+   16.25,
+   63.3,
+   11.8,
+   3.85,
+   7.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H130100",
+   "name": "Haselnuss"
+  }
+ },
+ {
+  "name": "Pekannüsse",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Pekannuss"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   723.0,
+   10.97,
+   72.0,
+   12.46,
+   2.68,
+   9.46
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H160100",
+   "name": "Pekannuss"
+  }
+ },
+ {
+  "name": "Macadamia",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Macadamianüsse"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   736.0,
+   8.8,
+   73.0,
+   16.63,
+   4.1,
+   11.43
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H190100",
+   "name": "Macadamianuss"
+  }
+ },
+ {
+  "name": "Paranüsse",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 10,
+  "syn": [
+   "Paranuss"
+  ],
+  "alts": [],
+  "why": "Sehr selenreich, deshalb höchstens zwei Stück am Tag.",
+  "piece": null,
+  "n": [
+   704.0,
+   16.96,
+   68.1,
+   8.6,
+   2.39,
+   5.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H180100",
+   "name": "Paranuss"
+  }
+ },
+ {
+  "name": "Pistazien",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Pistazie"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   599.0,
+   20.8,
+   51.6,
+   18.21,
+   6.62,
+   10.61
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H250100",
+   "name": "Pistazie"
+  }
+ },
+ {
+  "name": "Cashewkerne",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [
+   "Cashew",
+   "Cashews"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   618.0,
+   21.01,
+   47.1,
+   29.0,
+   6.15,
+   3.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H170100",
+   "name": "Cashewkern"
+  }
+ },
+ {
+  "name": "Erdnüsse",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 20,
+  "syn": [
+   "Erdnuss"
+  ],
+  "alts": [
+   "Mandeln",
+   "Walnusskerne"
+  ],
+  "why": "Botanisch eine Hülsenfrucht mit viel Eiweiß. Eine Handvoll ist okay, Walnüsse und Mandeln passen besser.",
+  "piece": null,
+  "n": [
+   620.0,
+   29.0,
+   49.7,
+   18.3,
+   4.9,
+   8.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H110600",
+   "name": "Erdnuss geröstet"
+  }
+ },
+ {
+  "name": "Kürbiskerne",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   588.0,
+   35.49,
+   46.34,
+   11.47,
+   1.34,
+   8.66
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H310100",
+   "name": "Kürbiskern"
+  }
+ },
+ {
+  "name": "Sonnenblumenkerne",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   564.0,
+   26.11,
+   47.6,
+   10.6,
+   3.45,
+   5.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H430100",
+   "name": "Sonnenblumenkern"
+  }
+ },
+ {
+  "name": "Sesam",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   565.0,
+   20.9,
+   50.4,
+   12.6,
+   1.2,
+   11.18
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H420100",
+   "name": "Sesam"
+  }
+ },
+ {
+  "name": "Leinsamen",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 20,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   470.0,
+   22.27,
+   36.5,
+   24.4,
+   1.21,
+   22.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H410100",
+   "name": "Leinsamen"
+  }
+ },
+ {
+  "name": "Chiasamen",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 20,
+  "syn": [
+   "Chia"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   479.0,
+   22.11,
+   32.79,
+   43.89,
+   0.47,
+   40.23
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H480100",
+   "name": "Chia-Samen"
+  }
+ },
+ {
+  "name": "Tahin",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 30,
+  "syn": [
+   "Sesammus",
+   "Tahini"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   595.0,
+   18.0,
+   56.0,
+   8.9,
+   0.3,
+   8.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q901000",
+   "name": "Tahin (Sesammus)"
+  }
+ },
+ {
+  "name": "Mandelmus",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 30,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   559.0,
+   25.3,
+   46.6,
+   14.81,
+   4.43,
+   10.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H212800",
+   "name": "Mandelmus"
+  }
+ },
+ {
+  "name": "Erdnussmus",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 15,
+  "syn": [
+   "Erdnussbutter"
+  ],
+  "alts": [
+   "Mandelmus",
+   "Tahin"
+  ],
+  "why": "Viel Eiweiß für wenig Menge. Mandelmus oder Tahin passen besser.",
+  "piece": null,
+  "n": [
+   620.0,
+   29.0,
+   49.7,
+   18.3,
+   4.9,
+   8.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H110800",
+   "name": "Erdnussmus"
+  }
+ },
+ {
+  "name": "Grüne Oliven",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 80,
+  "syn": [
+   "Oliven",
+   "Olive"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   132.0,
+   1.21,
+   13.55,
+   2.36,
+   0.0,
+   2.36
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H510802",
+   "name": "Oliven grün, gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Schwarze Oliven",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 80,
+  "syn": [
+   "Oliven",
+   "Kalamata"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   140.0,
+   0.84,
+   14.84,
+   1.6,
+   0.0,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H520800",
+   "name": "Oliven geschwärzt, in Salzlake, abgetropft"
+  }
+ },
+ {
+  "name": "Avocado",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 120,
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   150
+  ],
+  "n": [
+   132.0,
+   1.37,
+   12.5,
+   5.47,
+   1.37,
+   4.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F502100",
+   "name": "Avocado roh"
+  }
+ },
+ {
+  "name": "Kokosmilch (vollfett)",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 100,
+  "syn": [
+   "Kokosmilch"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   227.0,
+   2.77,
+   21.9,
+   7.1,
+   2.1,
+   5.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H154000",
+   "name": "Kokosmilch/Kokosnussmilch"
+  }
+ },
+ {
+  "name": "Mandeldrink ungesüßt",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 250,
+  "syn": [
+   "Mandelmilch"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   24.0,
+   0.87,
+   2.16,
+   0.33,
+   0.17,
+   0.13
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H800000",
+   "name": "Mandeldrink ungesüßt"
+  }
+ },
+ {
+  "name": "Kartoffeln",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 200,
+  "syn": [
+   "Kartoffel",
+   "Erdäpfel"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Knollensellerie"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": [
+   "Stück",
+   100
+  ],
+  "n": [
+   83.0,
+   1.94,
+   0.1,
+   19.32,
+   0.9,
+   1.42
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K110100",
+   "name": "Kartoffel geschält, roh"
+  }
+ },
+ {
+  "name": "Süßkartoffel",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 150,
+  "syn": [
+   "Süßkartoffeln",
+   "Batate"
+  ],
+  "alts": [
+   "Hokkaido-Kürbis",
+   "Karotten"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   119.0,
+   1.63,
+   0.6,
+   28.34,
+   5.5,
+   3.14
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K420100",
+   "name": "Batate/Süßkartoffel, roh"
+  }
+ },
+ {
+  "name": "Weiße Bohnen (gegart)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "weiße Bohnen",
+   "Cannellini"
+  ],
+  "alts": [
+   "Zucchini",
+   "Champignons"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   131.0,
+   9.08,
+   0.6,
+   24.75,
+   0.79,
+   6.94
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H740132",
+   "name": "Gartenbohne reif, gekocht"
+  }
+ },
+ {
+  "name": "Kichererbsen (gegart)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "Kichererbsen"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Champignons"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   151.0,
+   8.4,
+   3.0,
+   28.0,
+   1.4,
+   10.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G770432",
+   "name": "Kichererbse reif, gekocht"
+  }
+ },
+ {
+  "name": "Rote Linsen (gegart)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "rote Linsen",
+   "Linsen"
+  ],
+  "alts": [
+   "Hokkaido-Kürbis",
+   "Karotten"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   113.0,
+   8.8,
+   0.76,
+   19.3,
+   0.4,
+   3.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H730032",
+   "name": "Linse rot, reif, gekocht"
+  }
+ },
+ {
+  "name": "Linsen (gegart)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "Linsen",
+   "Tellerlinsen",
+   "Berglinsen"
+  ],
+  "alts": [],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   119.0,
+   9.08,
+   0.7,
+   22.73,
+   0.5,
+   7.23
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H730132",
+   "name": "Linse reif, gekocht"
+  }
+ },
+ {
+  "name": "Kidneybohnen (gegart)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "Kidneybohnen",
+   "rote Bohnen"
+  ],
+  "alts": [
+   "Rote Paprika",
+   "Aubergine"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   128.0,
+   8.5,
+   1.0,
+   26.33,
+   0.9,
+   11.23
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H742902",
+   "name": "Kidneybohne reif, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Edamame",
+  "group": "soja",
+  "groupLabel": "Soja",
+  "light": "y",
+  "cap": 60,
+  "syn": [
+   "Sojabohnen"
+  ],
+  "alts": [
+   "Zuckerschoten",
+   "Erbsen (TK)"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   146.0,
+   13.0,
+   6.8,
+   10.4,
+   1.3,
+   4.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G750100",
+   "name": "Sojabohne unreif (Edamame) roh"
+  }
+ },
+ {
+  "name": "Tofu",
+  "group": "soja",
+  "groupLabel": "Soja",
+  "light": "y",
+  "cap": 60,
+  "syn": [
+   "Räuchertofu"
+  ],
+  "alts": [
+   "Austernpilze",
+   "Champignons"
+  ],
+  "why": "Pflanzlich, aber sehr eiweißreich. Longos Tage 2 bis 5 sehen nur etwa 9 % Eiweiß vor.",
+  "piece": null,
+  "n": [
+   115.0,
+   15.51,
+   5.63,
+   1.3,
+   0.0,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H861000",
+   "name": "Tofu"
+  }
+ },
+ {
+  "name": "Hirse (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 100,
+  "syn": [
+   "Hirse"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Knollensellerie"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   139.0,
+   4.67,
+   1.17,
+   28.07,
+   0.22,
+   1.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C334032",
+   "name": "Hirse gekocht"
+  }
+ },
+ {
+  "name": "Quinoa (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 100,
+  "syn": [
+   "Quinoa"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Hirse (gegart)"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   104.0,
+   3.49,
+   1.8,
+   20.0,
+   0.5,
+   3.08
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C118032",
+   "name": "Quinoa weiß, gekocht"
+  }
+ },
+ {
+  "name": "Buchweizen (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 100,
+  "syn": [
+   "Buchweizen"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Hirse (gegart)"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   115.0,
+   4.43,
+   1.01,
+   22.87,
+   0.36,
+   1.88
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C320032",
+   "name": "Buchweizen gekocht"
+  }
+ },
+ {
+  "name": "Vollkornreis (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 100,
+  "syn": [
+   "Reis",
+   "Naturreis",
+   "Vollkornreis"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Hirse (gegart)"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   128.0,
+   3.01,
+   0.92,
+   27.72,
+   0.26,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C351032",
+   "name": "Reis unpoliert, gekocht"
+  }
+ },
+ {
+  "name": "Reis (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "Reis",
+   "weißer Reis",
+   "Basmati",
+   "Jasminreis"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Hirse (gegart)"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   117.0,
+   3.3,
+   0.35,
+   25.41,
+   0.1,
+   0.61
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C352032",
+   "name": "Reis poliert, gekocht"
+  }
+ },
+ {
+  "name": "Bulgur (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "Bulgur"
+  ],
+  "alts": [
+   "Hirse (gegart)",
+   "Blumenkohl"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   152.0,
+   5.5,
+   0.9,
+   32.1,
+   0.8,
+   3.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C119132",
+   "name": "Bulgur (Hartweizen) gekocht"
+  }
+ },
+ {
+  "name": "Couscous (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 80,
+  "syn": [
+   "Couscous"
+  ],
+  "alts": [
+   "Hirse (gegart)",
+   "Blumenkohl"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   156.0,
+   4.91,
+   0.68,
+   33.82,
+   0.48,
+   2.77
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C119232",
+   "name": "Couscous (Hartweizen) gekocht"
+  }
+ },
+ {
+  "name": "Haferflocken",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "syn": [
+   "Hafer",
+   "Porridge"
+  ],
+  "alts": [
+   "Leinsamen",
+   "Walnusskerne"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   348.0,
+   13.22,
+   6.65,
+   64.28,
+   0.74,
+   10.98
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C133000",
+   "name": "Hafer Flocken"
+  }
+ },
+ {
+  "name": "Vollkornbrot",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 40,
+  "syn": [
+   "Brot",
+   "Roggenbrot",
+   "Schwarzbrot"
+  ],
+  "alts": [
+   "Gurke",
+   "Kohlrabi"
+  ],
+  "why": "Eine dünne Scheibe passt an Tag 1. Für Brot sieht Longo sonst kaum Platz vor.",
+  "piece": null,
+  "n": [
+   193.0,
+   6.04,
+   1.81,
+   42.11,
+   4.58,
+   9.62
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B121000",
+   "name": "Roggenvollkornbrot"
+  }
+ },
+ {
+  "name": "Apfel",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "syn": [
+   "Äpfel"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Gurke"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": [
+   "Stück",
+   150
+  ],
+  "n": [
+   58.0,
+   0.42,
+   0.5,
+   13.97,
+   10.49,
+   2.27
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F110100",
+   "name": "Apfel roh"
+  }
+ },
+ {
+  "name": "Birne",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "syn": [
+   "Birnen"
+  ],
+  "alts": [
+   "Apfel",
+   "Heidelbeeren"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": [
+   "Stück",
+   160
+  ],
+  "n": [
+   58.0,
+   0.3,
+   0.29,
+   15.96,
+   10.08,
+   2.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F130100",
+   "name": "Birne roh"
+  }
+ },
+ {
+  "name": "Orange",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "syn": [
+   "Orangen",
+   "Apfelsine"
+  ],
+  "alts": [
+   "Zitronensaft",
+   "Heidelbeeren"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": [
+   "Stück",
+   150
+  ],
+  "n": [
+   49.0,
+   1.0,
+   0.2,
+   11.05,
+   8.85,
+   2.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F603100",
+   "name": "Orange roh"
+  }
+ },
+ {
+  "name": "Mandarine",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "syn": [
+   "Mandarinen",
+   "Clementine"
+  ],
+  "alts": [
+   "Orange",
+   "Heidelbeeren"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": [
+   "Stück",
+   70
+  ],
+  "n": [
+   53.0,
+   1.0,
+   0.3,
+   11.22,
+   10.1,
+   1.12
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F606100",
+   "name": "Mandarine roh"
+  }
+ },
+ {
+  "name": "Grapefruit",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "syn": [],
+  "alts": [
+   "Orange",
+   "Heidelbeeren"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   35.0,
+   0.5,
+   0.15,
+   7.1,
+   6.5,
+   0.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F604100",
+   "name": "Grapefruit roh"
+  }
+ },
+ {
+  "name": "Heidelbeeren",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "syn": [
+   "Blaubeeren",
+   "Beeren"
+  ],
+  "alts": [],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   61.0,
+   0.5,
+   0.6,
+   14.6,
+   9.7,
+   4.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F304100",
+   "name": "Heidelbeere roh"
+  }
+ },
+ {
+  "name": "Himbeeren",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "syn": [
+   "Beeren"
+  ],
+  "alts": [],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   43.0,
+   1.0,
+   0.3,
+   9.9,
+   5.2,
+   4.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F302100",
+   "name": "Himbeere roh"
+  }
+ },
+ {
+  "name": "Erdbeeren",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "syn": [
+   "Beeren"
+  ],
+  "alts": [],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   38.0,
+   0.82,
+   0.4,
+   7.92,
+   5.86,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F301100",
+   "name": "Erdbeere roh"
+  }
+ },
+ {
+  "name": "Kiwi",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "syn": [],
+  "alts": [
+   "Erdbeeren",
+   "Heidelbeeren"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": [
+   "Stück",
+   75
+  ],
+  "n": [
+   61.0,
+   0.9,
+   0.5,
+   14.0,
+   10.1,
+   3.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F514100",
+   "name": "Kiwi roh"
+  }
+ },
+ {
+  "name": "Banane",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 60,
+  "syn": [
+   "Bananen"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel"
+  ],
+  "why": "Viel Zucker und Stärke. Eine halbe kleine Banane passt, Beeren passen besser.",
+  "piece": [
+   "Stück",
+   120
+  ],
+  "n": [
+   79.0,
+   1.32,
+   0.4,
+   17.89,
+   13.89,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F503100",
+   "name": "Banane roh"
+  }
+ },
+ {
+  "name": "Mango",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "syn": [],
+  "alts": [
+   "Erdbeeren",
+   "Orange"
+  ],
+  "why": "Liefert viel Stärke, Zucker oder Eiweiß. Eine kleine Menge passt, mehr würde Longos Verteilung kippen.",
+  "piece": null,
+  "n": [
+   60.0,
+   0.7,
+   0.45,
+   13.7,
+   11.0,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F516100",
+   "name": "Mango roh"
+  }
+ },
+ {
+  "name": "Datteln",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Dattel",
+   "Trockenobst"
+  ],
+  "alts": [
+   "Apfel",
+   "Heidelbeeren"
+  ],
+  "why": "Getrocknetes Obst ist konzentrierter Zucker.",
+  "piece": null,
+  "n": [
+   356.0,
+   2.64,
+   0.36,
+   90.46,
+   78.92,
+   11.16
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F504400",
+   "name": "Dattel getrocknet"
+  }
+ },
+ {
+  "name": "Zucker",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Haushaltszucker",
+   "Rohrzucker"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Zucker treibt Blutzucker und Insulin hoch und hebt den Fastenstoffwechsel auf.",
+  "piece": null,
+  "n": [
+   400.0,
+   0.0,
+   0.0,
+   100.0,
+   100.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S111000",
+   "name": "Zucker weiß (Raffinadezucker/Weißzucker)"
+  }
+ },
+ {
+  "name": "Honig",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Ahornsirup",
+   "Sirup"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Zucker treibt Blutzucker und Insulin hoch und hebt den Fastenstoffwechsel auf.",
+  "piece": null,
+  "n": [
+   305.0,
+   0.4,
+   0.0,
+   74.09,
+   70.76,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S120000",
+   "name": "Honig"
+  }
+ },
+ {
+  "name": "Schokolade",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Milchschokolade",
+   "Süßigkeiten",
+   "Riegel"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Heidelbeeren",
+   "Mandeln"
+  ],
+  "why": "Zucker treibt Blutzucker und Insulin hoch und hebt den Fastenstoffwechsel auf.",
+  "piece": null,
+  "n": [
+   532.0,
+   6.83,
+   31.34,
+   57.35,
+   52.83,
+   3.32
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S530000",
+   "name": "Milchschokolade"
+  }
+ },
+ {
+  "name": "Kuchen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Rührkuchen",
+   "Gebäck",
+   "Kekse"
+  ],
+  "alts": [
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Zucker treibt Blutzucker und Insulin hoch und hebt den Fastenstoffwechsel auf.",
+  "piece": null,
+  "n": [
+   393.0,
+   7.4,
+   18.42,
+   50.44,
+   20.55,
+   2.04
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D422600",
+   "name": "Kuchen aus Rührmasse/Rührkuchen"
+  }
+ },
+ {
+  "name": "Weißbrot",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Toast",
+   "Brötchen",
+   "Semmel",
+   "Baguette"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Hirse (gegart)",
+   "Blumenkohl",
+   "Zucchini"
+  ],
+  "why": "Viel schnell verfügbare Stärke und wenig Gemüse. Das kostet Kalorienbudget, ohne satt zu machen.",
+  "piece": null,
+  "n": [
+   272.0,
+   8.69,
+   2.97,
+   54.54,
+   3.97,
+   4.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B311000",
+   "name": "Weizenbrot/Weißbrot"
+  }
+ },
+ {
+  "name": "Nudeln",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Pasta",
+   "Spaghetti",
+   "Teigwaren"
+  ],
+  "alts": [
+   "Zucchini",
+   "Kartoffeln",
+   "Hirse (gegart)"
+  ],
+  "why": "Viel Stärke auf kleinem Raum. Zucchini-Nudeln oder eine kleine Portion Kartoffeln passen besser.",
+  "piece": null,
+  "n": [
+   145.0,
+   5.4,
+   0.7,
+   30.09,
+   0.84,
+   1.49
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X432142",
+   "name": "Teigwaren eifrei (mit Salz gekocht)"
+  }
+ },
+ {
+  "name": "Croissant",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Gebäck",
+   "Plunder"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Hirse (gegart)",
+   "Blumenkohl",
+   "Zucchini"
+  ],
+  "why": "Viel schnell verfügbare Stärke und wenig Gemüse. Das kostet Kalorienbudget, ohne satt zu machen.",
+  "piece": null,
+  "n": [
+   426.0,
+   8.0,
+   23.57,
+   46.62,
+   7.2,
+   2.62
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D771600",
+   "name": "Croissant (Hefeblätterteig/Plunderteig)"
+  }
+ },
+ {
+  "name": "Kartoffelchips",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Chips"
+  ],
+  "alts": [
+   "Grünkohl",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Frittiert, gesalzen, wenig Gemüse. Grünkohl-Chips aus dem Ofen liefern das Knuspern ohne den Ballast.",
+  "piece": null,
+  "n": [
+   526.0,
+   5.5,
+   34.3,
+   50.68,
+   1.53,
+   4.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K280100",
+   "name": "Kartoffelchips/Stapelchips, diverse Sorten"
+  }
+ },
+ {
+  "name": "Pommes frites",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Pommes"
+  ],
+  "alts": [
+   "Süßkartoffel",
+   "Kartoffeln"
+  ],
+  "why": "Viel schnell verfügbare Stärke und wenig Gemüse. Das kostet Kalorienbudget, ohne satt zu machen.",
+  "piece": null,
+  "n": [
+   203.0,
+   2.9,
+   9.04,
+   29.18,
+   0.24,
+   3.24
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K130492",
+   "name": "Pommes frites tiefgefroren, frittiert"
+  }
+ },
+ {
+  "name": "Hähnchen",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Huhn",
+   "Hühnchen",
+   "Hähnchenbrust",
+   "Chicken",
+   "Pute",
+   "Geflügel"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)",
+   "Walnusskerne"
+  ],
+  "why": "Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.",
+  "piece": null,
+  "n": [
+   109.0,
+   23.25,
+   1.81,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "V416100",
+   "name": "Hähnchen Brustfilet, roh"
+  }
+ },
+ {
+  "name": "Rindfleisch",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Rind",
+   "Hackfleisch",
+   "Hack",
+   "Steak"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)",
+   "Walnusskerne"
+  ],
+  "why": "Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.",
+  "piece": null,
+  "n": [
+   224.0,
+   19.1,
+   16.39,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "U010100",
+   "name": "Rind Hackfleisch, roh"
+  }
+ },
+ {
+  "name": "Schweinefleisch",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Schwein",
+   "Schnitzel"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)",
+   "Walnusskerne"
+  ],
+  "why": "Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.",
+  "piece": null,
+  "n": [
+   106.0,
+   22.2,
+   1.9,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "U541100",
+   "name": "Schwein Schnitzel (Oberschale) roh"
+  }
+ },
+ {
+  "name": "Salami",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Wurst",
+   "Aufschnitt"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)",
+   "Walnusskerne"
+  ],
+  "why": "Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.",
+  "piece": null,
+  "n": [
+   374.0,
+   23.54,
+   30.9,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W140000",
+   "name": "Salami"
+  }
+ },
+ {
+  "name": "Kochschinken",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Schinken"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)",
+   "Walnusskerne"
+  ],
+  "why": "Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.",
+  "piece": null,
+  "n": [
+   130.0,
+   22.5,
+   3.7,
+   0.74,
+   0.74,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W424000",
+   "name": "Schwein Kochschinken, Kochpökelware"
+  }
+ },
+ {
+  "name": "Lachs",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Fisch",
+   "Räucherlachs"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Leinöl",
+   "Leinsamen"
+  ],
+  "why": "Fisch ist tierisches Eiweiß. Omega-3 bekommst du im Scheinfasten aus Walnüssen und Leinöl.",
+  "piece": null,
+  "n": [
+   180.0,
+   19.9,
+   11.2,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T410100",
+   "name": "Lachs roh"
+  }
+ },
+ {
+  "name": "Thunfisch",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Fisch",
+   "Thunfischdose"
+  ],
+  "alts": [
+   "Kichererbsen (gegart)",
+   "Walnusskerne"
+  ],
+  "why": "Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.",
+  "piece": null,
+  "n": [
+   95.0,
+   22.87,
+   0.41,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T121902",
+   "name": "Thunfisch im eigenen Saft, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Garnelen",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Shrimps",
+   "Krabben",
+   "Scampi"
+  ],
+  "alts": [
+   "Austernpilze",
+   "Champignons"
+  ],
+  "why": "Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.",
+  "piece": null,
+  "n": [
+   87.0,
+   18.6,
+   1.44,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T753100",
+   "name": "Garnele/Granat/Krabbe, roh"
+  }
+ },
+ {
+  "name": "Eier",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Ei",
+   "Hühnerei",
+   "Spiegelei",
+   "Rührei"
+  ],
+  "alts": [
+   "Kichererbsen (gegart)",
+   "Champignons",
+   "Avocado"
+  ],
+  "why": "Tierisches Eiweiß hält den Wachstumsfaktor IGF-1 hoch. Genau den will das Scheinfasten senken, deshalb ist das Protokoll rein pflanzlich.",
+  "piece": null,
+  "n": [
+   135.0,
+   13.18,
+   9.0,
+   0.34,
+   0.34,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "E111100",
+   "name": "Hühnerei roh"
+  }
+ },
+ {
+  "name": "Milch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Kuhmilch",
+   "Vollmilch"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt"
+  ],
+  "why": "Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.",
+  "piece": null,
+  "n": [
+   62.0,
+   3.55,
+   3.49,
+   4.03,
+   4.03,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M111300",
+   "name": "Vollmilch frisch, 3,5 % Fett, pasteurisiert"
+  }
+ },
+ {
+  "name": "Joghurt",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Naturjoghurt",
+   "Skyr"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Cashewkerne"
+  ],
+  "why": "Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.",
+  "piece": null,
+  "n": [
+   67.0,
+   3.98,
+   3.46,
+   4.13,
+   4.13,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M141300",
+   "name": "Joghurt mild, mind. 3,5 % Fett"
+  }
+ },
+ {
+  "name": "Quark",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Magerquark",
+   "Topfen"
+  ],
+  "alts": [
+   "Tahin",
+   "Cashewkerne"
+  ],
+  "why": "Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.",
+  "piece": null,
+  "n": [
+   66.0,
+   11.85,
+   0.18,
+   3.68,
+   3.68,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M713100",
+   "name": "Speisequark Magerstufe, Magerquark < 10 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Käse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Gouda",
+   "Bergkäse",
+   "Parmesan",
+   "Emmentaler"
+  ],
+  "alts": [
+   "Cashewkerne",
+   "Grüne Oliven",
+   "Tahin"
+  ],
+  "why": "Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.",
+  "piece": null,
+  "n": [
+   379.0,
+   22.47,
+   31.58,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M402600",
+   "name": "Gouda 48 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Mozzarella",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Burrata"
+  ],
+  "alts": [
+   "Avocado",
+   "Cashewkerne"
+  ],
+  "why": "Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.",
+  "piece": null,
+  "n": [
+   259.0,
+   17.12,
+   20.99,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M032100",
+   "name": "Mozzarella mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Feta",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Schafskäse",
+   "Hirtenkäse"
+  ],
+  "alts": [
+   "Grüne Oliven",
+   "Kapern",
+   "Cashewkerne"
+  ],
+  "why": "Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.",
+  "piece": null,
+  "n": [
+   284.0,
+   15.68,
+   24.09,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M012200",
+   "name": "Feta mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Butter",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Margarine"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.",
+  "piece": null,
+  "n": [
+   747.0,
+   1.19,
+   82.2,
+   0.57,
+   0.57,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q611000",
+   "name": "Butter mild gesäuert"
+  }
+ },
+ {
+  "name": "Sahne",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Schlagsahne",
+   "Rahm",
+   "Creme fraiche"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Cashewkerne"
+  ],
+  "why": "Milchprodukte liefern tierisches Eiweiß und Milchzucker. Longos Protokoll ist rein pflanzlich.",
+  "piece": null,
+  "n": [
+   308.0,
+   2.31,
+   31.7,
+   3.27,
+   3.27,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M173800",
+   "name": "Schlagsahne mind. 30 % Fett"
+  }
+ },
+ {
+  "name": "Kaffee",
+  "group": "drink",
+  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Espresso",
+   "Cappuccino",
+   "Latte"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Zitronensaft",
+   "Gemüsebrühe"
+  ],
+  "why": "Im Protokoll sind Wasser und ungesüßte Kräutertees vorgesehen. Kaffee, Alkohol und Säfte gehören nicht dazu.",
+  "piece": null,
+  "n": [
+   1.0,
+   0.12,
+   0.0,
+   0.31,
+   0.0,
+   0.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N410100",
+   "name": "Kaffee (Getränk)"
+  }
+ },
+ {
+  "name": "Bier",
+  "group": "drink",
+  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Pils",
+   "Alkohol"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Zitronensaft",
+   "Gemüsebrühe"
+  ],
+  "why": "Im Protokoll sind Wasser und ungesüßte Kräutertees vorgesehen. Kaffee, Alkohol und Säfte gehören nicht dazu.",
+  "piece": null,
+  "n": [
+   38.0,
+   0.42,
+   0.0,
+   2.22,
+   0.11,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "P163000",
+   "name": "Pilsner Bier"
+  }
+ },
+ {
+  "name": "Wein",
+  "group": "drink",
+  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Rotwein",
+   "Weißwein",
+   "Sekt",
+   "Alkohol"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Zitronensaft",
+   "Gemüsebrühe"
+  ],
+  "why": "Im Protokoll sind Wasser und ungesüßte Kräutertees vorgesehen. Kaffee, Alkohol und Säfte gehören nicht dazu.",
+  "piece": null,
+  "n": [
+   70.0,
+   0.22,
+   0.0,
+   0.7,
+   0.67,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "P2A3000",
+   "name": "Rotwein trocken"
+  }
+ },
+ {
+  "name": "Orangensaft",
+  "group": "drink",
+  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Saft",
+   "Fruchtsaft",
+   "Apfelsaft"
+  ],
+  "alts": [
+   "Orange",
+   "Kräutertee"
+  ],
+  "why": "Im Protokoll sind Wasser und ungesüßte Kräutertees vorgesehen. Kaffee, Alkohol und Säfte gehören nicht dazu.",
+  "piece": null,
+  "n": [
+   41.0,
+   0.75,
+   0.0,
+   8.81,
+   8.5,
+   0.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F603600",
+   "name": "Orangensaft"
+  }
+ },
+ {
+  "name": "Cola",
+  "group": "drink",
+  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "syn": [
+   "Limonade",
+   "Softdrink",
+   "Eistee"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Zitronensaft",
+   "Gemüsebrühe"
+  ],
+  "why": "Im Protokoll sind Wasser und ungesüßte Kräutertees vorgesehen. Kaffee, Alkohol und Säfte gehören nicht dazu.",
+  "piece": null,
+  "n": [
+   41.0,
+   0.0,
+   0.0,
+   10.3,
+   10.3,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N330000",
+   "name": "Colagetränk koffeinhaltig"
+  }
+ },
+ {
+  "name": "Kräutertee",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 1000,
+  "syn": [
+   "Tee",
+   "Pfefferminztee",
+   "Kamillentee",
+   "Früchtetee"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N720100",
+   "name": "Kräutertee (Getränk)"
+  }
+ }
+]

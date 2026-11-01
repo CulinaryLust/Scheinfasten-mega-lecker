@@ -10,6 +10,8 @@ Live: https://culinarylust.github.io/Scheinfasten-mega-lecker/
 - `src/data/` enthält Nährwerte, Rezepte und den Standardplan als JSON. Diese Dateien werden aus `tools/recipes_src.py` erzeugt.
 - `src/lib/nutrition.js` rechnet Nährwerte und prüft Tage gegen Longos Referenz (Tag 1: 1.090 kcal, 10/56/34 %; Tage 2 bis 5: 725 kcal, 9/44/47 %; Toleranz ±5 % kcal, ±5 Prozentpunkte je Makro).
 - Der Planer (`src/pages/planer.astro`) rechnet komplett im Browser. Eingaben bleiben im localStorage.
+- Der Lebensmittel-Rechner (`src/pages/rechner.astro`, Logik in `src/lib/rechner.js`) verteilt Longos Tagesbudget auf eingegebene Lebensmittel, zeigt Alternativen für ungeeignete und baut Gerichte daraus. Test: `npm run check:rechner`.
+- Nährwerte: BLS 4.0 (Max Rubner-Institut, CC BY 4.0). Die Lebensmittelliste mit Ampel, Obergrenzen und Alternativen steht in `tools/foods_src.py`. `tools/bls_import.py <BLS_4_0_Daten_2025_DE.xlsx>` aktualisiert `tools/bls_values.json` (Download unter https://blsdb.de).
 
 ## Ein Rezept hinzufügen
 
@@ -28,6 +30,5 @@ npm run dev
 ## Offene Punkte vor dem Start
 
 - Impressum und Datenschutzerklärung ausfüllen.
-- Nährwerte mit dem Bundeslebensmittelschlüssel (BLS) gegenrechnen.
 - Eigene Rezeptfotos statt Unsplash-Symbolbildern.
 - Shop-Anbindung für das E-Book.
