@@ -1,5 +1,8 @@
 import json, os
 exec(open('recipes_src.py').read())
+# Nährwerte aus dem BLS 4.0 ersetzen die alten Richtwerte, wo ein BLS-Eintrag existiert.
+from foods_src import bls_table
+N.update({k: v[:5] for k, v in bls_table().items() if k in N})
 def nut(rc,m=1):
     s=[0]*5
     for i in rc['ingredients']:

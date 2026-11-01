@@ -1,5 +1,6 @@
 # Quelle der Rezeptdaten. Erzeugt src/data/*.json. Nährwerte je 100 g:
-# kcal, Eiweiß, Fett, Kohlenhydrate, davon Zucker (Richtwerte, an USDA FoodData Central angelehnt; vor Veröffentlichung mit BLS prüfen)
+# kcal, Eiweiß, Fett, Kohlenhydrate, davon Zucker. Das sind nur noch Rückfallwerte (an USDA angelehnt):
+# build_data.py ersetzt sie durch BLS-4.0-Werte, wo foods_src.py einen BLS-Code hat. Ohne BLS bleiben Dill, Minze, Paprikapulver und Currypaste.
 N={
 'Olivenöl':(884,0,100,0,0),'Sesamöl':(884,0,100,0,0),'Zucchini':(17,1.2,0.3,3.1,2.5),'Tomaten':(18,0.9,0.2,3.9,2.6),
 'Kirschtomaten':(18,0.9,0.2,3.9,2.6),'Tomaten, passiert':(30,1.4,0.2,5.5,4),'Karotten':(41,0.9,0.2,9.6,4.7),
@@ -97,11 +98,11 @@ r('zucchini-nudeln-pesto','Zucchini-Nudeln mit Walnuss-Basilikum-Pesto','Zucchin
  ['Basilikum, Walnüsse, Öl, Zitronensaft, Knoblauch und Salz zu Pesto mixen.','Zucchini-Nudeln 1 Minute in einer heißen Pfanne schwenken.','Pesto, Tomaten und Kartoffelwürfel unterheben.','Sofort servieren.'],'Zucchini-Nudeln nicht salzen, bevor sie in die Pfanne kommen, sonst ziehen sie Wasser.')
 r('rotkohl-apfel-salat','Rotkohl-Apfel-Salat mit gerösteten Sonnenblumenkernen','Rotkohlsalat','Salat','main',15,'salat-bunt',
  'Knackig, süß-sauer und voller Farbe. Wird mit jeder Stunde im Kühlschrank besser.',
- [('Rotkohl',200,'fein gehobelt'),('Apfel',60,'in Stiften'),('Sonnenblumenkerne',10,''),('Olivenöl',8,''),('Apfelessig',15,''),('Kartoffeln',100,'gekocht, lauwarm')],
+ [('Rotkohl',200,'fein gehobelt'),('Apfel',60,'in Stiften'),('Sonnenblumenkerne',10,''),('Olivenöl',8,''),('Apfelessig',15,''),('Kartoffeln',80,'gekocht, lauwarm')],
  ['Rotkohl mit Salz kräftig durchkneten, bis er weich wird.','Essig, Öl und Pfeffer zugeben, Apfel unterheben.','Sonnenblumenkerne ohne Fett rösten.','Mit lauwarmen Kartoffelwürfeln anrichten und mit Kernen bestreuen.'],'Am Vorabend zubereitet schmeckt der Salat noch runder.')
 r('ofen-tomaten-kraeuterkruste','Ofen-Tomaten mit Leinsamen-Kräuterkruste und Hirse','Ofen-Tomaten','Ofengericht','main',30,'ofengemuese',
  'Saftige Tomaten unter einer knusprigen Kruste. Schmeckt nach Sommer, auch im Winter.',
- [('Tomaten',300,'halbiert'),('Leinsamen',8,'geschrotet'),('Petersilie',10,''),('Knoblauch',3,''),('Olivenöl',8,''),('Hirse (gegart)',100,'')],
+ [('Tomaten',300,'halbiert'),('Leinsamen',8,'geschrotet'),('Petersilie',10,''),('Knoblauch',3,''),('Olivenöl',8,''),('Hirse (gegart)',80,'ca. 25 g roh')],
  ['Ofen auf 200 °C vorheizen.','Leinsamen, Petersilie, Knoblauch, Öl und Salz mischen.','Tomaten mit der Schnittfläche nach oben in eine Form setzen und die Kruste daraufgeben.','20 Minuten backen und mit Hirse servieren.'],'Ein paar Thymianzweige in der Form geben zusätzliches Aroma.')
 r('leinsamen-cracker','Leinsamen-Kräuter-Cracker','Leinsamen-Cracker','Snack','snack',60,'cracker',
  'Knuspriger Ersatz für Brot. Einmal backen, für die ganze Woche.',

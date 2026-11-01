@@ -1,0 +1,1451 @@
+{
+ "B121000": {
+  "name": "Roggenvollkornbrot",
+  "kcal": 193.0,
+  "protein": 6.04,
+  "fat": 1.81,
+  "cho": 32.49,
+  "fiber": 9.62,
+  "sugar": 4.58
+ },
+ "B311000": {
+  "name": "Weizenbrot/Weißbrot",
+  "kcal": 272.0,
+  "protein": 8.69,
+  "fat": 2.97,
+  "cho": 50.54,
+  "fiber": 4.0,
+  "sugar": 3.97
+ },
+ "C118032": {
+  "name": "Quinoa weiß, gekocht",
+  "kcal": 104.0,
+  "protein": 3.49,
+  "fat": 1.8,
+  "cho": 16.92,
+  "fiber": 3.08,
+  "sugar": 0.5
+ },
+ "C119132": {
+  "name": "Bulgur (Hartweizen) gekocht",
+  "kcal": 152.0,
+  "protein": 5.5,
+  "fat": 0.9,
+  "cho": 29.1,
+  "fiber": 3.0,
+  "sugar": 0.8
+ },
+ "C119232": {
+  "name": "Couscous (Hartweizen) gekocht",
+  "kcal": 156.0,
+  "protein": 4.91,
+  "fat": 0.68,
+  "cho": 31.05,
+  "fiber": 2.77,
+  "sugar": 0.48
+ },
+ "C133000": {
+  "name": "Hafer Flocken",
+  "kcal": 348.0,
+  "protein": 13.22,
+  "fat": 6.65,
+  "cho": 53.3,
+  "fiber": 10.98,
+  "sugar": 0.74
+ },
+ "C320032": {
+  "name": "Buchweizen gekocht",
+  "kcal": 115.0,
+  "protein": 4.43,
+  "fat": 1.01,
+  "cho": 20.99,
+  "fiber": 1.88,
+  "sugar": 0.36
+ },
+ "C334032": {
+  "name": "Hirse gekocht",
+  "kcal": 139.0,
+  "protein": 4.67,
+  "fat": 1.17,
+  "cho": 26.76,
+  "fiber": 1.31,
+  "sugar": 0.22
+ },
+ "C351032": {
+  "name": "Reis unpoliert, gekocht",
+  "kcal": 128.0,
+  "protein": 3.01,
+  "fat": 0.92,
+  "cho": 26.32,
+  "fiber": 1.4,
+  "sugar": 0.26
+ },
+ "C352032": {
+  "name": "Reis poliert, gekocht",
+  "kcal": 117.0,
+  "protein": 3.3,
+  "fat": 0.35,
+  "cho": 24.8,
+  "fiber": 0.61,
+  "sugar": 0.1
+ },
+ "D422600": {
+  "name": "Kuchen aus Rührmasse/Rührkuchen",
+  "kcal": 393.0,
+  "protein": 7.4,
+  "fat": 18.42,
+  "cho": 48.4,
+  "fiber": 2.04,
+  "sugar": 20.55
+ },
+ "D771600": {
+  "name": "Croissant (Hefeblätterteig/Plunderteig)",
+  "kcal": 426.0,
+  "protein": 8.0,
+  "fat": 23.57,
+  "cho": 44.0,
+  "fiber": 2.62,
+  "sugar": 7.2
+ },
+ "E111100": {
+  "name": "Hühnerei roh",
+  "kcal": 135.0,
+  "protein": 13.18,
+  "fat": 9.0,
+  "cho": 0.34,
+  "fiber": 0.0,
+  "sugar": 0.34
+ },
+ "F110100": {
+  "name": "Apfel roh",
+  "kcal": 58.0,
+  "protein": 0.42,
+  "fat": 0.5,
+  "cho": 11.7,
+  "fiber": 2.27,
+  "sugar": 10.49
+ },
+ "F130100": {
+  "name": "Birne roh",
+  "kcal": 58.0,
+  "protein": 0.3,
+  "fat": 0.29,
+  "cho": 13.16,
+  "fiber": 2.8,
+  "sugar": 10.08
+ },
+ "F301100": {
+  "name": "Erdbeere roh",
+  "kcal": 38.0,
+  "protein": 0.82,
+  "fat": 0.4,
+  "cho": 5.92,
+  "fiber": 2.0,
+  "sugar": 5.86
+ },
+ "F302100": {
+  "name": "Himbeere roh",
+  "kcal": 43.0,
+  "protein": 1.0,
+  "fat": 0.3,
+  "cho": 5.2,
+  "fiber": 4.7,
+  "sugar": 5.2
+ },
+ "F304100": {
+  "name": "Heidelbeere roh",
+  "kcal": 61.0,
+  "protein": 0.5,
+  "fat": 0.6,
+  "cho": 9.7,
+  "fiber": 4.9,
+  "sugar": 9.7
+ },
+ "F502100": {
+  "name": "Avocado roh",
+  "kcal": 132.0,
+  "protein": 1.37,
+  "fat": 12.5,
+  "cho": 1.37,
+  "fiber": 4.1,
+  "sugar": 1.37
+ },
+ "F503100": {
+  "name": "Banane roh",
+  "kcal": 79.0,
+  "protein": 1.32,
+  "fat": 0.4,
+  "cho": 15.89,
+  "fiber": 2.0,
+  "sugar": 13.89
+ },
+ "F504400": {
+  "name": "Dattel getrocknet",
+  "kcal": 356.0,
+  "protein": 2.64,
+  "fat": 0.36,
+  "cho": 79.3,
+  "fiber": 11.16,
+  "sugar": 78.92
+ },
+ "F514100": {
+  "name": "Kiwi roh",
+  "kcal": 61.0,
+  "protein": 0.9,
+  "fat": 0.5,
+  "cho": 10.1,
+  "fiber": 3.9,
+  "sugar": 10.1
+ },
+ "F516100": {
+  "name": "Mango roh",
+  "kcal": 60.0,
+  "protein": 0.7,
+  "fat": 0.45,
+  "cho": 12.0,
+  "fiber": 1.7,
+  "sugar": 11.0
+ },
+ "F601600": {
+  "name": "Zitronensaft",
+  "kcal": 30.0,
+  "protein": 0.63,
+  "fat": 0.3,
+  "cho": 1.7,
+  "fiber": 0.13,
+  "sugar": 1.7
+ },
+ "F602600": {
+  "name": "Limettensaft",
+  "kcal": 24.0,
+  "protein": 0.45,
+  "fat": 0.2,
+  "cho": 1.52,
+  "fiber": 0.13,
+  "sugar": 1.52
+ },
+ "F603100": {
+  "name": "Orange roh",
+  "kcal": 49.0,
+  "protein": 1.0,
+  "fat": 0.2,
+  "cho": 8.85,
+  "fiber": 2.2,
+  "sugar": 8.85
+ },
+ "F603600": {
+  "name": "Orangensaft",
+  "kcal": 41.0,
+  "protein": 0.75,
+  "fat": 0.0,
+  "cho": 8.5,
+  "fiber": 0.31,
+  "sugar": 8.5
+ },
+ "F604100": {
+  "name": "Grapefruit roh",
+  "kcal": 35.0,
+  "protein": 0.5,
+  "fat": 0.15,
+  "cho": 6.5,
+  "fiber": 0.6,
+  "sugar": 6.5
+ },
+ "F606100": {
+  "name": "Mandarine roh",
+  "kcal": 53.0,
+  "protein": 1.0,
+  "fat": 0.3,
+  "cho": 10.1,
+  "fiber": 1.12,
+  "sugar": 10.1
+ },
+ "G012902": {
+  "name": "Kapern gesäuert, abgetropft",
+  "kcal": 22.0,
+  "protein": 2.12,
+  "fat": 0.42,
+  "cho": 0.0,
+  "fiber": 2.4,
+  "sugar": 0.0
+ },
+ "G061000": {
+  "name": "Basilikum roh",
+  "kcal": 23.0,
+  "protein": 3.15,
+  "fat": 0.64,
+  "cho": 0.31,
+  "fiber": 1.6,
+  "sugar": 0.31
+ },
+ "G081100": {
+  "name": "Schnittlauch roh",
+  "kcal": 29.0,
+  "protein": 2.6,
+  "fat": 0.74,
+  "cho": 1.54,
+  "fiber": 2.6,
+  "sugar": 1.54
+ },
+ "G101100": {
+  "name": "Chicoree roh",
+  "kcal": 20.0,
+  "protein": 2.39,
+  "fat": 0.18,
+  "cho": 1.3,
+  "fiber": 1.3,
+  "sugar": 0.92
+ },
+ "G102100": {
+  "name": "Endivie/Escariol, roh",
+  "kcal": 13.0,
+  "protein": 1.25,
+  "fat": 0.2,
+  "cho": 0.83,
+  "fiber": 1.22,
+  "sugar": 0.83
+ },
+ "G103100": {
+  "name": "Eisbergsalat roh",
+  "kcal": 15.0,
+  "protein": 0.8,
+  "fat": 0.2,
+  "cho": 1.62,
+  "fiber": 1.8,
+  "sugar": 1.62
+ },
+ "G104100": {
+  "name": "Feldsalat/Rapunzel, roh",
+  "kcal": 18.0,
+  "protein": 1.9,
+  "fat": 0.36,
+  "cho": 0.81,
+  "fiber": 1.8,
+  "sugar": 0.8
+ },
+ "G105100": {
+  "name": "Kopfsalat roh",
+  "kcal": 18.0,
+  "protein": 1.5,
+  "fat": 0.22,
+  "cho": 1.7,
+  "fiber": 1.4,
+  "sugar": 1.7
+ },
+ "G106100": {
+  "name": "Radicchio roh",
+  "kcal": 20.0,
+  "protein": 1.4,
+  "fat": 0.25,
+  "cho": 2.6,
+  "fiber": 0.9,
+  "sugar": 1.6
+ },
+ "G107100": {
+  "name": "Römischer Salat/Romanasalat, roh",
+  "kcal": 14.0,
+  "protein": 1.2,
+  "fat": 0.13,
+  "cho": 1.3,
+  "fiber": 1.6,
+  "sugar": 1.3
+ },
+ "G130100": {
+  "name": "Rucola roh",
+  "kcal": 21.0,
+  "protein": 3.6,
+  "fat": 0.4,
+  "cho": 0.0,
+  "fiber": 1.7,
+  "sugar": 0.0
+ },
+ "G211100": {
+  "name": "Spinat roh",
+  "kcal": 18.0,
+  "protein": 2.07,
+  "fat": 0.3,
+  "cho": 0.93,
+  "fiber": 1.8,
+  "sugar": 0.75
+ },
+ "G220100": {
+  "name": "Bleichsellerie roh",
+  "kcal": 17.0,
+  "protein": 1.2,
+  "fat": 0.1,
+  "cho": 1.5,
+  "fiber": 2.55,
+  "sugar": 1.4
+ },
+ "G230100": {
+  "name": "Mangold roh",
+  "kcal": 17.0,
+  "protein": 1.85,
+  "fat": 0.28,
+  "cho": 0.87,
+  "fiber": 1.8,
+  "sugar": 0.69
+ },
+ "G250100": {
+  "name": "Petersilienblatt roh",
+  "kcal": 33.0,
+  "protein": 4.09,
+  "fat": 0.36,
+  "cho": 1.31,
+  "fiber": 4.25,
+  "sugar": 0.85
+ },
+ "G280100": {
+  "name": "Gartenkresse roh",
+  "kcal": 31.0,
+  "protein": 4.2,
+  "fat": 0.7,
+  "cho": 0.23,
+  "fiber": 3.52,
+  "sugar": 0.23
+ },
+ "G311100": {
+  "name": "Blumenkohl roh",
+  "kcal": 35.0,
+  "protein": 2.42,
+  "fat": 0.28,
+  "cho": 5.33,
+  "fiber": 2.9,
+  "sugar": 2.16
+ },
+ "G312100": {
+  "name": "Broccoli roh",
+  "kcal": 35.0,
+  "protein": 3.62,
+  "fat": 0.6,
+  "cho": 2.3,
+  "fiber": 3.0,
+  "sugar": 1.38
+ },
+ "G321100": {
+  "name": "Chinakohl roh",
+  "kcal": 18.0,
+  "protein": 1.8,
+  "fat": 0.2,
+  "cho": 1.38,
+  "fiber": 1.7,
+  "sugar": 1.24
+ },
+ "G322100": {
+  "name": "Grünkohl roh",
+  "kcal": 53.0,
+  "protein": 4.16,
+  "fat": 0.67,
+  "cho": 3.32,
+  "fiber": 8.39,
+  "sugar": 2.64
+ },
+ "G324100": {
+  "name": "Pak Choi roh",
+  "kcal": 16.0,
+  "protein": 1.8,
+  "fat": 0.2,
+  "cho": 1.0,
+  "fiber": 1.7,
+  "sugar": 0.8
+ },
+ "G331100": {
+  "name": "Kohlrabi roh",
+  "kcal": 28.0,
+  "protein": 1.94,
+  "fat": 0.16,
+  "cho": 3.88,
+  "fiber": 1.5,
+  "sugar": 3.7
+ },
+ "G332100": {
+  "name": "Rosenkohl roh",
+  "kcal": 40.0,
+  "protein": 4.45,
+  "fat": 0.34,
+  "cho": 2.26,
+  "fiber": 4.4,
+  "sugar": 1.58
+ },
+ "G341100": {
+  "name": "Rotkohl roh",
+  "kcal": 28.0,
+  "protein": 1.56,
+  "fat": 0.18,
+  "cho": 3.73,
+  "fiber": 2.5,
+  "sugar": 3.66
+ },
+ "G342100": {
+  "name": "Weißkohl roh",
+  "kcal": 32.0,
+  "protein": 1.38,
+  "fat": 0.19,
+  "cho": 4.54,
+  "fiber": 3.0,
+  "sugar": 4.4
+ },
+ "G343100": {
+  "name": "Wirsing roh",
+  "kcal": 37.0,
+  "protein": 2.78,
+  "fat": 0.32,
+  "cho": 4.1,
+  "fiber": 2.8,
+  "sugar": 3.5
+ },
+ "G345902": {
+  "name": "Sauerkraut Konserve, abgetropft",
+  "kcal": 34.0,
+  "protein": 1.15,
+  "fat": 0.41,
+  "cho": 2.37,
+  "fiber": 3.95,
+  "sugar": 2.15
+ },
+ "G410100": {
+  "name": "Artischocke roh",
+  "kcal": 44.0,
+  "protein": 2.4,
+  "fat": 0.12,
+  "cho": 2.69,
+  "fiber": 10.79,
+  "sugar": 2.51
+ },
+ "G431100": {
+  "name": "Fenchelblatt/Bologneser Fenchel, roh",
+  "kcal": 33.0,
+  "protein": 2.43,
+  "fat": 0.3,
+  "cho": 3.24,
+  "fiber": 4.19,
+  "sugar": 2.75
+ },
+ "G450100": {
+  "name": "Spargel roh",
+  "kcal": 28.0,
+  "protein": 1.96,
+  "fat": 0.16,
+  "cho": 3.98,
+  "fiber": 1.4,
+  "sugar": 3.8
+ },
+ "G470100": {
+  "name": "Porree/Lauch, roh",
+  "kcal": 36.0,
+  "protein": 2.14,
+  "fat": 0.25,
+  "cho": 5.0,
+  "fiber": 2.2,
+  "sugar": 3.8
+ },
+ "G480100": {
+  "name": "Speisezwiebel roh",
+  "kcal": 34.0,
+  "protein": 1.16,
+  "fat": 0.15,
+  "cho": 6.01,
+  "fiber": 1.4,
+  "sugar": 6.01
+ },
+ "G482100": {
+  "name": "Frühlingszwiebel/Lauchzwiebel, roh",
+  "kcal": 27.0,
+  "protein": 1.9,
+  "fat": 0.19,
+  "cho": 3.0,
+  "fiber": 2.6,
+  "sugar": 2.8
+ },
+ "G485100": {
+  "name": "Schalotte roh",
+  "kcal": 33.0,
+  "protein": 2.0,
+  "fat": 0.1,
+  "cho": 3.2,
+  "fiber": 5.42,
+  "sugar": 3.2
+ },
+ "G490100": {
+  "name": "Knoblauch roh",
+  "kcal": 97.0,
+  "protein": 6.05,
+  "fat": 0.42,
+  "cho": 3.0,
+  "fiber": 28.3,
+  "sugar": 2.0
+ },
+ "G510100": {
+  "name": "Aubergine roh",
+  "kcal": 19.0,
+  "protein": 0.57,
+  "fat": 0.18,
+  "cho": 3.02,
+  "fiber": 1.4,
+  "sugar": 2.69
+ },
+ "G520100": {
+  "name": "Gurke roh",
+  "kcal": 16.0,
+  "protein": 1.06,
+  "fat": 0.2,
+  "cho": 1.97,
+  "fiber": 0.9,
+  "sugar": 1.97
+ },
+ "G520802": {
+  "name": "Gurke gesäuert (Gewürzgurke) abgetropft",
+  "kcal": 33.0,
+  "protein": 0.9,
+  "fat": 0.0,
+  "cho": 5.52,
+  "fiber": 0.88,
+  "sugar": 5.49
+ },
+ "G530100": {
+  "name": "Okra roh",
+  "kcal": 32.0,
+  "protein": 2.1,
+  "fat": 0.2,
+  "cho": 3.05,
+  "fiber": 4.9,
+  "sugar": 3.05
+ },
+ "G541100": {
+  "name": "Gemüsepaprika grün, roh",
+  "kcal": 38.0,
+  "protein": 1.08,
+  "fat": 0.24,
+  "cho": 6.88,
+  "fiber": 2.0,
+  "sugar": 6.51
+ },
+ "G542100": {
+  "name": "Gemüsepaprika gelb, roh",
+  "kcal": 28.0,
+  "protein": 0.8,
+  "fat": 0.2,
+  "cho": 4.42,
+  "fiber": 2.2,
+  "sugar": 4.42
+ },
+ "G543100": {
+  "name": "Gemüsepaprika rot, roh",
+  "kcal": 36.0,
+  "protein": 1.02,
+  "fat": 0.2,
+  "cho": 6.19,
+  "fiber": 2.2,
+  "sugar": 6.19
+ },
+ "G561100": {
+  "name": "Tomate roh",
+  "kcal": 22.0,
+  "protein": 0.95,
+  "fat": 0.11,
+  "cho": 3.25,
+  "fiber": 1.3,
+  "sugar": 3.25
+ },
+ "G570902": {
+  "name": "Zuckermais Konserve, abgetropft",
+  "kcal": 79.0,
+  "protein": 2.71,
+  "fat": 1.94,
+  "cho": 10.84,
+  "fiber": 3.59,
+  "sugar": 6.22
+ },
+ "G581000": {
+  "name": "Kürbis Hokkaido (C. maxima) roh",
+  "kcal": 30.0,
+  "protein": 1.4,
+  "fat": 0.2,
+  "cho": 5.3,
+  "fiber": 0.78,
+  "sugar": 4.59
+ },
+ "G581100": {
+  "name": "Kürbis Pumpkin (C. pepo) roh",
+  "kcal": 36.0,
+  "protein": 1.1,
+  "fat": 0.13,
+  "cho": 5.81,
+  "fiber": 3.43,
+  "sugar": 5.1
+ },
+ "G582100": {
+  "name": "Zucchini roh",
+  "kcal": 22.0,
+  "protein": 1.3,
+  "fat": 0.29,
+  "cho": 3.0,
+  "fiber": 1.1,
+  "sugar": 2.0
+ },
+ "G611100": {
+  "name": "Kohlrübe/Steckrübe, roh",
+  "kcal": 22.0,
+  "protein": 1.25,
+  "fat": 0.16,
+  "cho": 2.3,
+  "fiber": 2.9,
+  "sugar": 1.39
+ },
+ "G613152": {
+  "name": "Rote Rübe/Rote Bete, gedünstet",
+  "kcal": 43.0,
+  "protein": 2.02,
+  "fat": 0.1,
+  "cho": 7.08,
+  "fiber": 2.5,
+  "sugar": 7.08
+ },
+ "G620100": {
+  "name": "Karotte/Möhre, roh",
+  "kcal": 40.0,
+  "protein": 0.84,
+  "fat": 0.4,
+  "cho": 6.47,
+  "fiber": 2.9,
+  "sugar": 6.37
+ },
+ "G630100": {
+  "name": "Meerrettich roh",
+  "kcal": 84.0,
+  "protein": 5.88,
+  "fat": 0.3,
+  "cho": 11.67,
+  "fiber": 4.29,
+  "sugar": 8.25
+ },
+ "G640100": {
+  "name": "Pastinake roh",
+  "kcal": 59.0,
+  "protein": 2.69,
+  "fat": 0.43,
+  "cho": 9.7,
+  "fiber": 2.13,
+  "sugar": 3.06
+ },
+ "G660100": {
+  "name": "Knollensellerie roh",
+  "kcal": 30.0,
+  "protein": 1.55,
+  "fat": 0.33,
+  "cho": 2.77,
+  "fiber": 4.2,
+  "sugar": 2.11
+ },
+ "G680100": {
+  "name": "Rettich roh",
+  "kcal": 21.0,
+  "protein": 1.05,
+  "fat": 0.15,
+  "cho": 2.97,
+  "fiber": 1.2,
+  "sugar": 1.98
+ },
+ "G691100": {
+  "name": "Radieschen roh",
+  "kcal": 18.0,
+  "protein": 1.05,
+  "fat": 0.14,
+  "cho": 2.31,
+  "fiber": 1.5,
+  "sugar": 2.13
+ },
+ "G710100": {
+  "name": "Bohne grün, roh",
+  "kcal": 28.0,
+  "protein": 2.24,
+  "fat": 0.24,
+  "cho": 3.4,
+  "fiber": 1.89,
+  "sugar": 2.26
+ },
+ "G750100": {
+  "name": "Sojabohne unreif (Edamame) roh",
+  "kcal": 146.0,
+  "protein": 13.0,
+  "fat": 6.8,
+  "cho": 6.2,
+  "fiber": 4.2,
+  "sugar": 1.3
+ },
+ "G760200": {
+  "name": "Erbse grün, tiefgefroren",
+  "kcal": 77.0,
+  "protein": 4.9,
+  "fat": 0.7,
+  "cho": 10.0,
+  "fiber": 5.3,
+  "sugar": 5.4
+ },
+ "G761100": {
+  "name": "Zuckererbse roh",
+  "kcal": 38.0,
+  "protein": 3.6,
+  "fat": 0.2,
+  "cho": 4.4,
+  "fiber": 2.0,
+  "sugar": 3.16
+ },
+ "G770432": {
+  "name": "Kichererbse reif, gekocht",
+  "kcal": 151.0,
+  "protein": 8.4,
+  "fat": 3.0,
+  "cho": 17.4,
+  "fiber": 10.6,
+  "sugar": 1.4
+ },
+ "H110600": {
+  "name": "Erdnuss geröstet",
+  "kcal": 620.0,
+  "protein": 29.0,
+  "fat": 49.7,
+  "cho": 9.9,
+  "fiber": 8.4,
+  "sugar": 4.9
+ },
+ "H110800": {
+  "name": "Erdnussmus",
+  "kcal": 620.0,
+  "protein": 29.0,
+  "fat": 49.7,
+  "cho": 9.9,
+  "fiber": 8.4,
+  "sugar": 4.9
+ },
+ "H120100": {
+  "name": "Walnuss",
+  "kcal": 721.0,
+  "protein": 16.07,
+  "fat": 70.6,
+  "cho": 3.0,
+  "fiber": 4.6,
+  "sugar": 2.68
+ },
+ "H130100": {
+  "name": "Haselnuss",
+  "kcal": 667.0,
+  "protein": 16.25,
+  "fat": 63.3,
+  "cho": 4.2,
+  "fiber": 7.6,
+  "sugar": 3.85
+ },
+ "H154000": {
+  "name": "Kokosmilch/Kokosnussmilch",
+  "kcal": 227.0,
+  "protein": 2.77,
+  "fat": 21.9,
+  "cho": 2.1,
+  "fiber": 5.0,
+  "sugar": 2.1
+ },
+ "H160100": {
+  "name": "Pekannuss",
+  "kcal": 723.0,
+  "protein": 10.97,
+  "fat": 72.0,
+  "cho": 3.0,
+  "fiber": 9.46,
+  "sugar": 2.68
+ },
+ "H170100": {
+  "name": "Cashewkern",
+  "kcal": 618.0,
+  "protein": 21.01,
+  "fat": 47.1,
+  "cho": 26.0,
+  "fiber": 3.0,
+  "sugar": 6.15
+ },
+ "H180100": {
+  "name": "Paranuss",
+  "kcal": 704.0,
+  "protein": 16.96,
+  "fat": 68.1,
+  "cho": 2.8,
+  "fiber": 5.8,
+  "sugar": 2.39
+ },
+ "H190100": {
+  "name": "Macadamianuss",
+  "kcal": 736.0,
+  "protein": 8.8,
+  "fat": 73.0,
+  "cho": 5.2,
+  "fiber": 11.43,
+  "sugar": 4.1
+ },
+ "H210100": {
+  "name": "Mandel süß",
+  "kcal": 544.0,
+  "protein": 22.33,
+  "fat": 46.6,
+  "cho": 3.87,
+  "fiber": 10.0,
+  "sugar": 3.63
+ },
+ "H212800": {
+  "name": "Mandelmus",
+  "kcal": 559.0,
+  "protein": 25.3,
+  "fat": 46.6,
+  "cho": 4.51,
+  "fiber": 10.3,
+  "sugar": 4.43
+ },
+ "H250100": {
+  "name": "Pistazie",
+  "kcal": 599.0,
+  "protein": 20.8,
+  "fat": 51.6,
+  "cho": 7.6,
+  "fiber": 10.61,
+  "sugar": 6.62
+ },
+ "H310100": {
+  "name": "Kürbiskern",
+  "kcal": 588.0,
+  "protein": 35.49,
+  "fat": 46.34,
+  "cho": 2.81,
+  "fiber": 8.66,
+  "sugar": 1.34
+ },
+ "H410100": {
+  "name": "Leinsamen",
+  "kcal": 470.0,
+  "protein": 22.27,
+  "fat": 36.5,
+  "cho": 1.7,
+  "fiber": 22.7,
+  "sugar": 1.21
+ },
+ "H420100": {
+  "name": "Sesam",
+  "kcal": 565.0,
+  "protein": 20.9,
+  "fat": 50.4,
+  "cho": 1.42,
+  "fiber": 11.18,
+  "sugar": 1.2
+ },
+ "H430100": {
+  "name": "Sonnenblumenkern",
+  "kcal": 564.0,
+  "protein": 26.11,
+  "fat": 47.6,
+  "cho": 4.8,
+  "fiber": 5.8,
+  "sugar": 3.45
+ },
+ "H480100": {
+  "name": "Chia-Samen",
+  "kcal": 479.0,
+  "protein": 22.11,
+  "fat": 32.79,
+  "cho": 3.66,
+  "fiber": 40.23,
+  "sugar": 0.47
+ },
+ "H510802": {
+  "name": "Oliven grün, gesäuert, abgetropft",
+  "kcal": 132.0,
+  "protein": 1.21,
+  "fat": 13.55,
+  "cho": 0.0,
+  "fiber": 2.36,
+  "sugar": 0.0
+ },
+ "H520800": {
+  "name": "Oliven geschwärzt, in Salzlake, abgetropft",
+  "kcal": 140.0,
+  "protein": 0.84,
+  "fat": 14.84,
+  "cho": 0.0,
+  "fiber": 1.6,
+  "sugar": 0.0
+ },
+ "H730032": {
+  "name": "Linse rot, reif, gekocht",
+  "kcal": 113.0,
+  "protein": 8.8,
+  "fat": 0.76,
+  "cho": 16.3,
+  "fiber": 3.0,
+  "sugar": 0.4
+ },
+ "H730132": {
+  "name": "Linse reif, gekocht",
+  "kcal": 119.0,
+  "protein": 9.08,
+  "fat": 0.7,
+  "cho": 15.5,
+  "fiber": 7.23,
+  "sugar": 0.5
+ },
+ "H740132": {
+  "name": "Gartenbohne reif, gekocht",
+  "kcal": 131.0,
+  "protein": 9.08,
+  "fat": 0.6,
+  "cho": 17.81,
+  "fiber": 6.94,
+  "sugar": 0.79
+ },
+ "H742902": {
+  "name": "Kidneybohne reif, Konserve, abgetropft",
+  "kcal": 128.0,
+  "protein": 8.5,
+  "fat": 1.0,
+  "cho": 15.1,
+  "fiber": 11.23,
+  "sugar": 0.9
+ },
+ "H800000": {
+  "name": "Mandeldrink ungesüßt",
+  "kcal": 24.0,
+  "protein": 0.87,
+  "fat": 2.16,
+  "cho": 0.2,
+  "fiber": 0.13,
+  "sugar": 0.17
+ },
+ "H861000": {
+  "name": "Tofu",
+  "kcal": 115.0,
+  "protein": 15.51,
+  "fat": 5.63,
+  "cho": 0.0,
+  "fiber": 1.3,
+  "sugar": 0.0
+ },
+ "H862200": {
+  "name": "Miso/Sojabohnenpaste",
+  "kcal": 174.0,
+  "protein": 10.6,
+  "fat": 10.5,
+  "cho": 6.2,
+  "fiber": 6.0,
+  "sugar": 6.2
+ },
+ "K110100": {
+  "name": "Kartoffel geschält, roh",
+  "kcal": 83.0,
+  "protein": 1.94,
+  "fat": 0.1,
+  "cho": 17.9,
+  "fiber": 1.42,
+  "sugar": 0.9
+ },
+ "K130492": {
+  "name": "Pommes frites tiefgefroren, frittiert",
+  "kcal": 203.0,
+  "protein": 2.9,
+  "fat": 9.04,
+  "cho": 25.94,
+  "fiber": 3.24,
+  "sugar": 0.24
+ },
+ "K280100": {
+  "name": "Kartoffelchips/Stapelchips, diverse Sorten",
+  "kcal": 526.0,
+  "protein": 5.5,
+  "fat": 34.3,
+  "cho": 45.88,
+  "fiber": 4.8,
+  "sugar": 1.53
+ },
+ "K420100": {
+  "name": "Batate/Süßkartoffel, roh",
+  "kcal": 119.0,
+  "protein": 1.63,
+  "fat": 0.6,
+  "cho": 25.2,
+  "fiber": 3.14,
+  "sugar": 5.5
+ },
+ "K701100": {
+  "name": "Champignon roh",
+  "kcal": 28.0,
+  "protein": 3.66,
+  "fat": 0.27,
+  "cho": 2.9,
+  "fiber": 1.9,
+  "sugar": 0.2
+ },
+ "K713100": {
+  "name": "Pfifferling roh",
+  "kcal": 26.0,
+  "protein": 3.91,
+  "fat": 0.27,
+  "cho": 0.55,
+  "fiber": 3.27,
+  "sugar": 0.16
+ },
+ "K724100": {
+  "name": "Shiitakepilz roh",
+  "kcal": 30.0,
+  "protein": 2.5,
+  "fat": 0.2,
+  "cho": 2.38,
+  "fiber": 4.17,
+  "sugar": 2.38
+ },
+ "K740100": {
+  "name": "Austernpilz roh",
+  "kcal": 32.0,
+  "protein": 3.31,
+  "fat": 0.22,
+  "cho": 1.27,
+  "fiber": 5.85,
+  "sugar": 1.11
+ },
+ "M012200": {
+  "name": "Feta mind. 45 % Fett i. Tr.",
+  "kcal": 284.0,
+  "protein": 15.68,
+  "fat": 24.09,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "M032100": {
+  "name": "Mozzarella mind. 45 % Fett i. Tr.",
+  "kcal": 259.0,
+  "protein": 17.12,
+  "fat": 20.99,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "M111300": {
+  "name": "Vollmilch frisch, 3,5 % Fett, pasteurisiert",
+  "kcal": 62.0,
+  "protein": 3.55,
+  "fat": 3.49,
+  "cho": 4.03,
+  "fiber": 0.0,
+  "sugar": 4.03
+ },
+ "M141300": {
+  "name": "Joghurt mild, mind. 3,5 % Fett",
+  "kcal": 67.0,
+  "protein": 3.98,
+  "fat": 3.46,
+  "cho": 4.13,
+  "fiber": 0.0,
+  "sugar": 4.13
+ },
+ "M173800": {
+  "name": "Schlagsahne mind. 30 % Fett",
+  "kcal": 308.0,
+  "protein": 2.31,
+  "fat": 31.7,
+  "cho": 3.27,
+  "fiber": 0.0,
+  "sugar": 3.27
+ },
+ "M402600": {
+  "name": "Gouda 48 % Fett i. Tr.",
+  "kcal": 379.0,
+  "protein": 22.47,
+  "fat": 31.58,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "M713100": {
+  "name": "Speisequark Magerstufe, Magerquark < 10 % Fett i. Tr.",
+  "kcal": 66.0,
+  "protein": 11.85,
+  "fat": 0.18,
+  "cho": 3.68,
+  "fiber": 0.0,
+  "sugar": 3.68
+ },
+ "N330000": {
+  "name": "Colagetränk koffeinhaltig",
+  "kcal": 41.0,
+  "protein": 0.0,
+  "fat": 0.0,
+  "cho": 10.3,
+  "fiber": 0.0,
+  "sugar": 10.3
+ },
+ "N410100": {
+  "name": "Kaffee (Getränk)",
+  "kcal": 1.0,
+  "protein": 0.12,
+  "fat": 0.0,
+  "cho": 0.0,
+  "fiber": 0.31,
+  "sugar": 0.0
+ },
+ "N720100": {
+  "name": "Kräutertee (Getränk)",
+  "kcal": 0.0,
+  "protein": 0.0,
+  "fat": 0.0,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "P163000": {
+  "name": "Pilsner Bier",
+  "kcal": 38.0,
+  "protein": 0.42,
+  "fat": 0.0,
+  "cho": 2.22,
+  "fiber": 0.0,
+  "sugar": 0.11
+ },
+ "P2A3000": {
+  "name": "Rotwein trocken",
+  "kcal": 70.0,
+  "protein": 0.22,
+  "fat": 0.0,
+  "cho": 0.7,
+  "fiber": 0.0,
+  "sugar": 0.67
+ },
+ "Q120000": {
+  "name": "Olivenöl",
+  "kcal": 899.0,
+  "protein": 0.0,
+  "fat": 99.9,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "Q160000": {
+  "name": "Leinöl",
+  "kcal": 900.0,
+  "protein": 0.0,
+  "fat": 100.0,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "Q180000": {
+  "name": "Rapsöl/Rüböl",
+  "kcal": 900.0,
+  "protein": 0.0,
+  "fat": 100.0,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "Q230000": {
+  "name": "Sesamöl",
+  "kcal": 900.0,
+  "protein": 0.0,
+  "fat": 100.0,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "Q310000": {
+  "name": "Walnussöl",
+  "kcal": 899.0,
+  "protein": 0.0,
+  "fat": 99.9,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "Q550000": {
+  "name": "Kokosöl",
+  "kcal": 900.0,
+  "protein": 0.0,
+  "fat": 100.0,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "Q611000": {
+  "name": "Butter mild gesäuert",
+  "kcal": 747.0,
+  "protein": 1.19,
+  "fat": 82.2,
+  "cho": 0.57,
+  "fiber": 0.0,
+  "sugar": 0.57
+ },
+ "Q901000": {
+  "name": "Tahin (Sesammus)",
+  "kcal": 595.0,
+  "protein": 18.0,
+  "fat": 56.0,
+  "cho": 0.7,
+  "fiber": 8.2,
+  "sugar": 0.3
+ },
+ "R123100": {
+  "name": "Apfelessig",
+  "kcal": 18.0,
+  "protein": 0.2,
+  "fat": 0.0,
+  "cho": 0.15,
+  "fiber": 0.0,
+  "sugar": 0.15
+ },
+ "R125000": {
+  "name": "Balsamicoessig",
+  "kcal": 95.0,
+  "protein": 0.0,
+  "fat": 0.0,
+  "cho": 20.04,
+  "fiber": 0.0,
+  "sugar": 20.04
+ },
+ "R160000": {
+  "name": "Tomatenmark",
+  "kcal": 81.0,
+  "protein": 3.4,
+  "fat": 0.2,
+  "cho": 13.2,
+  "fiber": 4.7,
+  "sugar": 12.9
+ },
+ "R161200": {
+  "name": "Tomaten passiert/Tomatenpüree",
+  "kcal": 29.0,
+  "protein": 1.18,
+  "fat": 0.1,
+  "cho": 3.94,
+  "fiber": 1.81,
+  "sugar": 3.6
+ },
+ "R211200": {
+  "name": "Ingwer/Ingwerwurzel, roh",
+  "kcal": 48.0,
+  "protein": 1.92,
+  "fat": 0.75,
+  "cho": 6.8,
+  "fiber": 1.9,
+  "sugar": 0.53
+ },
+ "S111000": {
+  "name": "Zucker weiß (Raffinadezucker/Weißzucker)",
+  "kcal": 400.0,
+  "protein": 0.0,
+  "fat": 0.0,
+  "cho": 100.0,
+  "fiber": 0.0,
+  "sugar": 100.0
+ },
+ "S120000": {
+  "name": "Honig",
+  "kcal": 305.0,
+  "protein": 0.4,
+  "fat": 0.0,
+  "cho": 74.09,
+  "fiber": 0.0,
+  "sugar": 70.76
+ },
+ "S530000": {
+  "name": "Milchschokolade",
+  "kcal": 532.0,
+  "protein": 6.83,
+  "fat": 31.34,
+  "cho": 54.03,
+  "fiber": 3.32,
+  "sugar": 52.83
+ },
+ "T121902": {
+  "name": "Thunfisch im eigenen Saft, Konserve, abgetropft",
+  "kcal": 95.0,
+  "protein": 22.87,
+  "fat": 0.41,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "T410100": {
+  "name": "Lachs roh",
+  "kcal": 180.0,
+  "protein": 19.9,
+  "fat": 11.2,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "T753100": {
+  "name": "Garnele/Granat/Krabbe, roh",
+  "kcal": 87.0,
+  "protein": 18.6,
+  "fat": 1.44,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "U010100": {
+  "name": "Rind Hackfleisch, roh",
+  "kcal": 224.0,
+  "protein": 19.1,
+  "fat": 16.39,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "U541100": {
+  "name": "Schwein Schnitzel (Oberschale) roh",
+  "kcal": 106.0,
+  "protein": 22.2,
+  "fat": 1.9,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "V416100": {
+  "name": "Hähnchen Brustfilet, roh",
+  "kcal": 109.0,
+  "protein": 23.25,
+  "fat": 1.81,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "W140000": {
+  "name": "Salami",
+  "kcal": 374.0,
+  "protein": 23.54,
+  "fat": 30.9,
+  "cho": 0.0,
+  "fiber": 0.0,
+  "sugar": 0.0
+ },
+ "W424000": {
+  "name": "Schwein Kochschinken, Kochpökelware",
+  "kcal": 130.0,
+  "protein": 22.5,
+  "fat": 3.7,
+  "cho": 0.74,
+  "fiber": 0.0,
+  "sugar": 0.74
+ },
+ "X416243": {
+  "name": "Gemüsebrühe",
+  "kcal": 4.0,
+  "protein": 0.32,
+  "fat": 0.1,
+  "cho": 0.54,
+  "fiber": 0.0,
+  "sugar": 0.54
+ },
+ "X432142": {
+  "name": "Teigwaren eifrei (mit Salz gekocht)",
+  "kcal": 145.0,
+  "protein": 5.4,
+  "fat": 0.7,
+  "cho": 28.6,
+  "fiber": 1.49,
+  "sugar": 0.84
+ }
+}
