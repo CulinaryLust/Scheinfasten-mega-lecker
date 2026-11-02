@@ -156,7 +156,7 @@ input:focus, select:focus { border-color: var(--green); outline: none; box-shado
 .vs .k { display: flex; gap: 6px; align-items: center; font-size: .8rem; font-weight: 700; color: var(--muted); }
 .vs b { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
 .vs small { color: var(--muted); font-size: .76rem; }
-.vs .kcal .i { color: var(--c-kcal); } .vs .protein .i { color: var(--c-protein); } .vs .fat .i, .vs .oil .i { color: var(--c-fat); } .vs .carbs .i { color: var(--c-carbs); }
+.vs .kcal .i { color: var(--c-kcal); } .vs .protein .i { color: var(--c-protein); } .vs .fat .i, .vs .oil .i { color: var(--c-fat); } .vs .carbs .i { color: var(--c-carbs); } .vs .sugar .i { color: var(--c-sugar); }
 
 footer.foot { border-top: 1px solid var(--line); padding-block: 36px; font-size: .9rem; color: var(--muted); margin-top: 20px; }
 footer.foot .in { display: grid; gap: 14px; }

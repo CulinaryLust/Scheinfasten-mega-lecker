@@ -247,6 +247,7 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
         <td class="n">${fmt(n.fat)} g<br><small class="muted">${fmt(c.shares.fat)} % · Longo ${ref.fat} %</small></td>
         <td class="n">${fmt(n.oil)} g</td>
         <td class="n">${fmt(n.carbs)} g<br><small class="muted">${fmt(c.shares.carbs)} % · Longo ${ref.carbs} %</small></td>
+        <td class="n">${fmt(n.sugar)} g<br><small class="muted">${fmt(c.sugarPct)} % · max. ${PLAN.reference.sugarMaxPercent} %</small></td>
         <td>${c.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span class="chip warn">knapp daneben</span>'}</td></tr>`;
     }
     const tabs = [[0, 'Vorbereitung', ds(addDays(start, -1))], ...[1, 2, 3, 4, 5].map((d) => [d, `Tag ${d}`, ds(addDays(start, d - 1))]), [6, 'Übergang', ds(addDays(start, 5))], [7, 'Einkauf', 'Liste'], [8, 'Termine', `${cyc}×`]];
@@ -263,9 +264,9 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
       ${notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : p.bmi < 20 ? '<div class="alert info"><p>Dein BMI ist eher niedrig. Hör gut auf deinen Körper und iss normal weiter, wenn du dich schlapp fühlst.</p></div>' : ''}
       ${p.raw > 1.15 ? '<div class="alert info"><p>Dein Bedarf ist hoch. Wir erhöhen die Portionen um höchstens 15 %, damit der Plan nah an Longos Vorgaben bleibt.</p></div>' : ''}
       ${p.raw < 0.9 ? '<div class="alert info"><p>Wir verkleinern die Portionen um höchstens 10 %, damit du genug isst.</p></div>' : ''}
-      <details class="plain"><summary><b>Abgleich mit Longos Vorgaben</b> <span class="muted small">(Wei et al., Science Translational Medicine 2017)</span></summary>
-        <div class="tw"><table><thead><tr><th>Tag</th><th>kcal</th><th>Eiweiß</th><th>Fett</th><th>davon Öl</th><th>Kohlenhydrate</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
-        <p class="muted small">„Passt“ heißt: Kalorien höchstens 5 % und jeder Makroanteil höchstens 5 Prozentpunkte von Longos Referenz entfernt. Die Anpassung der Portionen an deinen Bedarf (Faktor ${fmt(f, 2)}, berechnet mit der Mifflin-St-Jeor-Formel) ist unsere eigene Regel und nicht Teil von Longos Protokoll.</p>
+      <details class="plain"><summary><b>Abgleich mit Longos Vorgaben</b> <span class="muted small">(Brandhorst et al., Cell Metabolism 2015)</span></summary>
+        <div class="tw"><table><thead><tr><th>Tag</th><th>kcal</th><th>Eiweiß</th><th>Fett</th><th>davon Öl</th><th>Kohlenhydrate</th><th>Zucker</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+        <p class="muted small">„Passt“ heißt: Kalorien höchstens 5 % und jeder Makroanteil höchstens 5 Prozentpunkte von Longos Referenz entfernt, Zucker höchstens ${PLAN.reference.sugarMaxPercent} % der Kalorien (Longo nennt dafür keine Zahl, das ist unsere Regel). Die Anpassung der Portionen an deinen Bedarf (Faktor ${fmt(f, 2)}, berechnet mit der Mifflin-St-Jeor-Formel) ist unsere eigene Regel und nicht Teil von Longos Protokoll.</p>
       </details>
       <div class="tabs noprint" role="tablist">${tabs.map(([k, a, b]) => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k === tab}"><b>${a}</b><span>${b}</span></button>`).join('')}</div>
       <div id="panes">${[0, 1, 2, 3, 4, 5, 6, 7, 8].map((k) => `<div class="daycard" data-pane="${k}" ${k === tab ? '' : 'hidden'}>${pane(k, f, start, cyc, gap)}</div>`).join('')}</div>

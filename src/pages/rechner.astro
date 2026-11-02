@@ -4,7 +4,7 @@ import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 import { icon } from '../lib/icons.js';
 import { PLAN, fmt } from '../lib/nutrition.js';
-const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search'].map((k) => [k, icon(k)]));
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search', 'sugar'].map((k) => [k, icon(k)]));
 const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 ---
@@ -75,7 +75,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 
   <div class="in narrow small muted srcnote">
     <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben. Für Dill, Minze, Paprikapulver und Currypaste gibt es keinen BLS-Eintrag, dort nutzen wir Richtwerte aus der USDA-Datenbank.</p>
-    <p>Sollwerte: Wei M et al., Sci Transl Med 2017 (Studie von Prof. Dr. Valter Longo). Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Diese Seite wird von Prof. Dr. Valter Longo weder geprüft noch unterstützt.</p>
+    <p>Sollwerte: Brandhorst S et al., Cell Metab 2015 (Labor von Prof. Dr. Valter Longo); Tage 2 bis 5 identisch in Wei M et al., Sci Transl Med 2017. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Diese Seite wird von Prof. Dr. Valter Longo weder geprüft noch unterstützt.</p>
   </div>
 </Base>
 
@@ -138,7 +138,8 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 
 <script>
   import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, buildMeals, matchRecipes, advice, amount } from '../lib/rechner.js';
-  import { fmt } from '../lib/nutrition.js';
+  import { fmt, PLAN } from '../lib/nutrition.js';
+  const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
 
   const root = document.getElementById('calc')!;
   const base = root.dataset.base!;
@@ -290,8 +291,9 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
           <div class="protein"><span class="k">${I.protein} Eiweiß</span><b>${pct(vd.shares.protein)}</b><small>Ziel ${t.ref.protein} %, ${fmt(res.sum.protein)} g</small></div>
           <div class="fat"><span class="k">${I.fat} Fett</span><b>${pct(vd.shares.fat)}</b><small>Ziel ${t.ref.fat} %, ${fmt(res.sum.fat)} g</small></div>
           <div class="carbs"><span class="k">${I.carbs} Kohlenhydrate</span><b>${pct(vd.shares.carbs)}</b><small>Ziel ${t.ref.carbs} %, ${fmt(res.sum.carbs)} g</small></div>
+          <div class="sugar"><span class="k">${I.sugar} Zucker</span><b>${fmt(res.sum.sugar)} g</b><small>höchstens ${fmt(vd.sugarMax)} g</small></div>
         </div>
-        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und jeder Anteil von Eiweiß, Fett und Kohlenhydraten höchstens 5 Prozentpunkte von Longos Werten entfernt. Dein Ziel ist an deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
+        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und jeder Anteil von Eiweiß, Fett und Kohlenhydraten höchstens 5 Prozentpunkte von Longos Werten entfernt (Brandhorst et al. 2015). Zucker höchstens ${PLAN_SUGAR} % der Kalorien: Longo verlangt „wenig Zucker“ ohne Grammzahl, die Grenze ist unsere Regel. Dein Ziel ist an deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
       </div>`;
       if (!vd.ok) {
         const why: string[] = [];
@@ -302,6 +304,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
         if (vd.dev.carbs < -5) why.push('Es fehlt noch etwas Sättigendes, zum Beispiel Kartoffeln, Kürbis oder Karotten.');
         if (vd.dev.carbs > 5) why.push('Etwas zu viele Kohlenhydrate. Ein Schuss Olivenöl oder ein paar Nüsse gleichen das aus.');
         if (vd.dev.protein > 5) why.push('Etwas zu viel Eiweiß. Beim Scheinfasten darf es davon ruhig weniger sein.');
+        if (!vd.sugarOk) why.push('Etwas zu viel Zucker, meist aus süßem Gemüse wie Kürbis, Karotten oder Roter Bete. Kartoffeln oder Hirse sättigen mit weniger Zucker.');
         h += `<div class="alert warn"><p><b>Noch ein kleiner Schritt</b></p>${why.map((w) => `<p>${w}</p>`).join('')}
           ${adds.length ? `<p>Tipp eins davon an, wir rechnen sofort neu:</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div>`;
       }

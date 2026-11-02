@@ -12,7 +12,9 @@
    "fat": 44,
    "carbs": 47
   },
-  "source": "Wei M et al. Sci Transl Med 2017;9(377):eaai8700",
+  "source": "Brandhorst S et al. Cell Metab 2015;22(1):86-99 (Methoden, Human FMD)",
+  "sourceNote": "Wei M et al. Sci Transl Med 2017 nennt für Tag 1 abweichend ca. 4.600 kJ mit 11 % Eiweiß, 46 % Fett, 43 % Kohlenhydraten; Tage 2 bis 5 identisch.",
+  "sugarMaxPercent": 15,
   "tolerance": {
    "kcalPercent": 5,
    "macroPoints": 5
@@ -28,7 +30,7 @@
    },
    {
     "meal": "Mittags",
-    "recipe": "minestrone",
+    "recipe": "ofen-blumenkohl",
     "portion": 1,
     "type": "main"
    },
@@ -66,19 +68,19 @@
    },
    {
     "meal": "Mittags",
-    "recipe": "gefuellte-paprika",
+    "recipe": "champignon-pfanne-cashew",
     "portion": 1,
     "type": "main"
    },
    {
     "meal": "Nachmittags",
-    "recipe": "ofen-kichererbsen",
+    "recipe": "gurkensalat-sesam",
     "portion": 1,
     "type": "snack"
    },
    {
     "meal": "Abends",
-    "recipe": "kuerbissuppe",
+    "recipe": "aubergine-salsa",
     "portion": 1,
     "type": "main"
    }

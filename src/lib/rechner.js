@@ -76,18 +76,22 @@ export function verdict(sum, t) {
   const dev = { protein: sh.protein - t.ref.protein, fat: sh.fat - t.ref.fat, carbs: sh.carbs - t.ref.carbs };
   const kcalOk = Math.abs(dk) <= tol.kcalPercent;
   const macrosOk = Object.values(dev).every((d) => Math.abs(d) <= tol.macroPoints);
-  return { ok: kcalOk && macrosOk, kcalOk, macrosOk, dk, dev, shares: sh };
+  // Zucker: höchstens sugarMaxPercent der Zielkalorien (eigene Regel, Longo nennt keine Grammzahl)
+  const sugarMax = t.kcal * PLAN.reference.sugarMaxPercent / 100 / 4;
+  const sugarOk = sum.sugar <= sugarMax;
+  return { ok: kcalOk && macrosOk && sugarOk, kcalOk, macrosOk, sugarOk, sugarMax, dk, dev, shares: sh };
 }
 
 /** Ein Lösungslauf: Koordinatenabstieg mit Schranken auf einer quadratischen Zielfunktion. */
 function fit(list, t, lambda, W) {
-  const free = list.filter((p) => p.g == null && !p.off && p.f.n[0] > 0);
+  const free = list.filter((p) => p.g == null && !p.off && p.f.n[0] > 5);
   const T = [t.kcal, t.protein, t.fat, t.carbs];
-  const row = (f) => [f.n[0] / 100, f.n[1] / 100, f.n[2] / 100, f.n[3] / 100];
-  const base = [0, 0, 0, 0];
+  const row = (f) => [f.n[0] / 100, f.n[1] / 100, f.n[2] / 100, f.n[3] / 100, f.n[4] / 100];
+  const SMAX = t.kcal * PLAN.reference.sugarMaxPercent / 100 / 4 * 0.98;
+  const base = [0, 0, 0, 0, 0];
   for (const p of list) {
     if (free.includes(p)) continue;
-    p.x = p.off ? 0 : p.g ?? (p.f.n[0] === 0 ? typical(p.f) : 0);
+    p.x = p.off ? 0 : p.g ?? (p.f.n[0] <= 5 ? typical(p.f) : 0);
     row(p.f).forEach((v, k) => (base[k] += v * p.x));
   }
   const A = free.map((p) => row(p.f));
@@ -107,9 +111,20 @@ function fit(list, t, lambda, W) {
         num -= W[k] * a * r / (T[k] * T[k]);
         den += W[k] * a * a / (T[k] * T[k]);
       }
+      // Zucker über der Grenze wird stark bestraft (einseitig, nur wenn die Grenze sonst überschritten wäre)
+      const sa = A[i][4];
+      if (sa) {
+        const rs = sum[4] - sa * x[i];
+        const cand = Math.min(free[i].f.cap, Math.max(0, num / den));
+        if (rs + sa * cand > SMAX) {
+          const WS = 40;
+          num -= WS * sa * (rs - SMAX) / (SMAX * SMAX);
+          den += WS * sa * sa / (SMAX * SMAX);
+        }
+      }
       const nx = Math.min(free[i].f.cap, Math.max(0, num / den));
       const d = nx - x[i];
-      if (d) { for (let k = 0; k < 4; k++) sum[k] += A[i][k] * d; x[i] = nx; moved += Math.abs(d); }
+      if (d) { for (let k = 0; k < 5; k++) sum[k] += A[i][k] * d; x[i] = nx; moved += Math.abs(d); }
     }
     if (moved < 0.01) break;
   }
@@ -135,7 +150,7 @@ export function solve(picks, t, opt = {}) {
     res = fit(list, t, lambda, W);
     // Mengen unter einem Viertel der üblichen Portion streichen und neu rechnen
     for (let round = 0; round < 3; round++) {
-      const tiny = list.filter((p, i) => p.g == null && !p.off && p.f.n[0] > 0 && res.items[i].g < typical(p.f) / 4);
+      const tiny = list.filter((p, i) => p.g == null && !p.off && p.f.n[0] > 5 && res.items[i].g < typical(p.f) / 4);
       if (!tiny.length) break;
       tiny.forEach((p) => (p.off = true));
       res = fit(list, t, lambda, W);
@@ -155,8 +170,9 @@ function roundG(f, g) {
 const FIX = {
   fat: ['Olivenöl', 'Walnusskerne', 'Grüne Oliven', 'Mandeln', 'Avocado'],
   carbs: ['Kartoffeln', 'Karotten', 'Hokkaido-Kürbis', 'Rote Bete (vorgegart)', 'Apfel'],
-  kcal: ['Olivenöl', 'Grüne Oliven', 'Mandeln', 'Kartoffeln', 'Walnusskerne', 'Hokkaido-Kürbis', 'Avocado'],
+  kcal: ['Olivenöl', 'Grüne Oliven', 'Mandeln', 'Kartoffeln', 'Hirse (gegart)', 'Walnusskerne', 'Avocado'],
   lessProtein: ['Karotten', 'Zucchini', 'Olivenöl', 'Hokkaido-Kürbis'],
+  lowSugar: ['Kartoffeln', 'Hirse (gegart)', 'Kichererbsen (gegart)', 'Zucchini', 'Blumenkohl', 'Olivenöl', 'Walnusskerne'],
 };
 
 /** Schlägt bis zu drei Lebensmittel vor, mit denen der Tag (besser) in Longos Fenster passt. */
@@ -169,8 +185,9 @@ export function suggestAdditions(picks, t, res = solve(picks, t)) {
   if (v.dev.carbs < -5) pool.push(...FIX.carbs);
   if (v.dev.protein > 5) pool.push(...FIX.lessProtein);
   if (v.dk < -5) pool.push(...FIX.kcal);
+  if (!v.sugarOk) pool.push(...FIX.lowSugar);
   if (!pool.length) pool = [...FIX.fat, ...FIX.carbs];
-  const err = (r) => Math.abs(r.verdict.dk) / 5 + Object.values(r.verdict.dev).reduce((a, d) => a + Math.abs(d), 0) / 5;
+  const err = (r) => Math.abs(r.verdict.dk) / 5 + Object.values(r.verdict.dev).reduce((a, d) => a + Math.abs(d), 0) / 5 + Math.max(0, r.sum.sugar - r.verdict.sugarMax) / 2;
   const base = err(res);
   return [...new Set(pool)].filter((n) => !have.has(n))
     .map((n) => { const r = solve([...picks, { name: n }], t); return { name: n, g: r.items.find((i) => i.name === n).g, ok: r.verdict.ok, gain: base - err(r) }; })
