@@ -37,7 +37,7 @@ r('minestrone','Toskanische Minestrone mit Basilikumöl','Minestrone','Suppe','m
  'Gleich die vierfache Menge kochen. Ohne Basilikumöl hält die Suppe 3 Tage im Kühlschrank.')
 r('kuerbissuppe','Hokkaido-Kokos-Suppe mit Ingwer und gerösteten Kürbiskernen','Kürbissuppe','Suppe','main',30,'kuerbissuppe',
  'Samtig, leicht scharf und richtig sättigend. Die Kokosmilch liefert genau die Fette, die das Konzept vorsieht.',
- [('Hokkaido-Kürbis',300,'mit Schale gewürfelt'),('Zwiebeln',40,''),('Ingwer',5,'frisch gerieben'),('Olivenöl',3,''),('Gemüsebrühe',250,''),('Kokosmilch (vollfett)',40,''),('Kürbiskerne',8,'1 EL')],
+ [('Hokkaido-Kürbis',280,'mit Schale gewürfelt'),('Zwiebeln',40,''),('Ingwer',5,'frisch gerieben'),('Olivenöl',3,''),('Gemüsebrühe',250,''),('Kokosmilch (vollfett)',40,''),('Kürbiskerne',8,'1 EL')],
  ['Zwiebel im Öl 3 Minuten anschwitzen, Ingwer und Kürbis kurz mitrösten.','Brühe angießen und zugedeckt 15 Minuten weich kochen.','Kokosmilch einrühren (1 TL zum Garnieren zurückbehalten) und fein pürieren.','Kürbiskerne ohne Fett rösten, bis sie knacken.','Mit Salz, Pfeffer und Limette abschmecken und mit Kernen servieren.'],
  'Eine Messerspitze Kurkuma und Kreuzkümmel machen die Suppe noch runder.')
 r('ofen-blumenkohl','Ofen-Blumenkohl und Süßkartoffel mit Tahin-Zitronen-Sauce','Ofen-Blumenkohl','Ofengericht','main',35,'blumenkohl',
@@ -146,7 +146,7 @@ r('gefuellte-paprika','Gefüllte Paprika mit Kräuter-Hirse','Gefüllte Paprika'
  ['Ofen auf 200 °C vorheizen.','Zwiebel im Öl anschwitzen, Tomaten, Hirse und Petersilie unterheben und würzen.','Paprikahälften füllen und in eine Form setzen.','25 Minuten backen.'],'Ein Schuss Gemüsebrühe in der Form verhindert, dass die Paprika anbrennt.')
 r('suesskartoffel-avocado-dip','Süßkartoffel-Spalten mit Avocado-Limetten-Dip','Süßkartoffel-Spalten','Ofengericht','main',35,'suesskartoffel',
  'Außen knusprig, innen weich, dazu ein cremiger Dip. Fingerfood für Fastentage.',
- [('Süßkartoffel',180,'in Spalten'),('Olivenöl',6,''),('Avocado',50,''),('Limettensaft',10,''),('Paprikapulver, geräuchert',1,''),('Blattsalat',50,'')],
+ [('Süßkartoffel',150,'in Spalten'),('Olivenöl',6,''),('Avocado',50,''),('Limettensaft',10,''),('Paprikapulver, geräuchert',1,''),('Blattsalat',50,'')],
  ['Ofen auf 220 °C vorheizen.','Süßkartoffel mit Öl, Paprika und Salz mischen, 25 Minuten rösten.','Avocado mit Limette und Salz zerdrücken.','Mit Salat und Dip servieren.'],'Spalten mit Abstand legen, dann werden sie knuspriger.')
 r('gurkensalat-sesam','Asiatischer Gurkensalat mit Sesam','Gurkensalat','Salat','snack',10,'gurke',
  'Knackig, erfrischend, leicht scharf. Passt als Snack oder zu jeder Suppe.',
@@ -158,7 +158,7 @@ r('erbsen-minz-suppe','Erbsen-Minz-Suppe','Erbsensuppe','Suppe','main',20,'suppe
  ['Zwiebel im Öl anschwitzen, Kartoffel und Brühe zugeben, 10 Minuten köcheln.','Erbsen zugeben, 4 Minuten garen.','Mit Minze fein pürieren und abschmecken.'],'Nicht zu lange kochen, damit die Farbe leuchtend bleibt.')
 r('karotten-ingwer-suppe','Karotten-Ingwer-Suppe mit Kokos','Karottensuppe','Suppe','main',25,'karottensuppe',
  'Süß, scharf und cremig. Eine Suppe, die durch den Winter trägt.',
- [('Karotten',250,'in Scheiben'),('Ingwer',8,''),('Zwiebeln',40,''),('Kokosmilch (vollfett)',40,''),('Gemüsebrühe',300,''),('Olivenöl',3,'')],
+ [('Karotten',200,'in Scheiben'),('Ingwer',8,''),('Zwiebeln',40,''),('Kokosmilch (vollfett)',40,''),('Gemüsebrühe',300,''),('Olivenöl',3,'')],
  ['Zwiebel und Ingwer im Öl anschwitzen.','Karotten und Brühe zugeben, 18 Minuten weich kochen.','Kokosmilch zugeben und fein pürieren.','Mit Salz, Pfeffer und Limette abschmecken.'],'Mit einem Klecks Kokosmilch und Chiliöl servieren.')
 r('champignon-pfanne-cashew','Champignon-Pfanne mit Cashew-Rahm und Kartoffeln','Champignon-Pfanne','Pfanne','main',25,'pilzpfanne',
  'Rahmig wie bei Oma, nur ohne Sahne. Die Cashews machen die Sauce cremig.',
@@ -166,7 +166,7 @@ r('champignon-pfanne-cashew','Champignon-Pfanne mit Cashew-Rahm und Kartoffeln',
  ['Cashews mit 80 ml Wasser und Salz cremig mixen.','Pilze in heißem Öl braun braten, Zwiebel zugeben.','Kartoffeln zugeben und kurz mitbraten.','Cashew-Rahm angießen, 2 Minuten köcheln, mit Petersilie servieren.'],'Pilze erst salzen, wenn sie gebräunt sind.')
 r('rote-bete-suppe','Rote-Bete-Suppe mit Meerrettich und Walnüssen','Rote-Bete-Suppe','Suppe','main',25,'rote-bete-suppe',
  'Tiefrot, erdig und mit einem frischen Kick vom Meerrettich.',
- [('Rote Bete (vorgegart)',200,'gewürfelt'),('Kartoffeln',80,''),('Zwiebeln',40,''),('Olivenöl',6,''),('Gemüsebrühe',300,''),('Meerrettich',5,'frisch gerieben'),('Walnusskerne',5,'')],
+ [('Rote Bete (vorgegart)',180,'gewürfelt'),('Kartoffeln',80,''),('Zwiebeln',40,''),('Olivenöl',6,''),('Gemüsebrühe',300,''),('Meerrettich',5,'frisch gerieben'),('Walnusskerne',5,'')],
  ['Zwiebel im Öl anschwitzen, Kartoffel und Brühe zugeben, 12 Minuten köcheln.','Rote Bete zugeben und fein pürieren.','Mit Meerrettich, Salz und einem Spritzer Zitrone abschmecken.','Mit gehackten Walnüssen servieren.'],'Ein paar Dillspitzen passen wunderbar dazu.')
 r('aubergine-salsa','Gegrillte Aubergine mit Tomaten-Kräuter-Salsa','Aubergine mit Salsa','Pfanne','main',25,'aubergine',
  'Rauchige Auberginenscheiben, darauf eine frische Salsa. Mediterran und leicht.',

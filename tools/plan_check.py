@@ -2,6 +2,9 @@ from build_data import *
 REF={1:(1090,10,56,34),2:(725,9,44,47)}
 # Zucker: Longo verlangt nur "wenig Zucker" ohne Grammzahl. Eigene Regel der Seite: höchstens 15 % der Kalorien.
 SUGAR_MAX_PCT=15
+# Eiweiß: engere Toleranz als Fett und Kohlenhydrate, weil Longo gerade das Eiweiß niedrig hält (eigene Regel).
+PROTEIN_TOL=3
+TOL=(PROTEIN_TOL,5,5)
 def day(items):
     s=[0]*5
     for _,k,m,_t in items:
@@ -11,7 +14,7 @@ def ok(d,items):
     s=day(items); r=REF[1 if d==1 else 2]; k=s[0]
     p=(s[1]*4/k*100,s[2]*9/k*100,s[3]*4/k*100)
     sugar_ok=s[4]*4/k*100<=SUGAR_MAX_PCT
-    return s,p,abs(k-r[0])/r[0]<=.05 and all(abs(a-b)<=5 for a,b in zip(p,r[1:])) and sugar_ok
+    return s,p,abs(k-r[0])/r[0]<=.05 and all(abs(a-b)<=t for a,b,t in zip(p,r[1:],TOL)) and sugar_ok
 PLAN={
 1:[('Morgens','nussmix',1.5,'fixed'),('Mittags','minestrone',1,'main'),('Nachmittags','gruenkohl-chips',1,'snack'),('Nachmittags','oliven',1.5,'fixed'),('Abends','kuerbissuppe',1,'main'),('Abends','beilagensalat',1,'fixed')],
 2:[('Morgens','nussmix',0.5,'fixed'),('Mittags','zucchini-pfanne',1,'main'),('Nachmittags','oliven',1,'fixed'),('Abends','kuerbissuppe',1,'main')],

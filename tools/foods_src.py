@@ -13,10 +13,11 @@ GROUPS = {
   'kraeuter': ('Kräuter', 'g', 30), 'wuerze': ('Würzen', 'g', 30), 'fett': ('Öle', 'g', 35),
   'nuss': ('Nüsse und Saaten', 'g', 40), 'fettfrucht': ('Oliven, Avocado, Kokos', 'g', 80),
   'knolle': ('Kartoffeln und Stärkegemüse', 'y', 200), 'huelsen': ('Hülsenfrüchte', 'y', 80),
-  'getreide': ('Getreide', 'y', 100), 'obst': ('Obst', 'y', 150), 'soja': ('Soja', 'y', 60),
+  'getreide': ('Getreide', 'y', 120), 'obst': ('Obst', 'y', 150), 'soja': ('Soja', 'y', 60),
   'getraenk': ('Getränke', 'g', 1000),
   'tier': ('Fleisch, Fisch und Ei', 'r', 0), 'milch': ('Milchprodukte', 'r', 0), 'suess': ('Zucker und Süßes', 'r', 0),
   'weissmehl': ('Weißmehl und Snacks', 'r', 0), 'drink': ('Kaffee, Alkohol, Softdrinks', 'r', 0),
+  'eiweiss': ('Fleischersatz und Eiweißprodukte', 'r', 0), 'knusper': ('Cracker und Waffeln', 'y', 20),
 }
 
 WHY = {
@@ -26,6 +27,8 @@ WHY = {
   'suess': 'Zucker holt deinen Körper sofort aus dem Fastenmodus.',
   'weissmehl': 'Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.',
   'drink': 'In diesen Tagen sind Wasser und Kräutertee deine besten Freunde.',
+  'eiweiss': 'Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.',
+  'knusper': 'Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.',
 }
 
 ALTS = {
@@ -34,13 +37,15 @@ ALTS = {
   'suess': ['Heidelbeeren', 'Apfel', 'Walnusskerne'],
   'weissmehl': ['Kartoffeln', 'Hirse (gegart)', 'Blumenkohl', 'Zucchini'],
   'drink': ['Kräutertee', 'Zitronensaft', 'Gemüsebrühe'],
+  'eiweiss': ['Champignons', 'Austernpilze', 'Kichererbsen (gegart)'],
 }
 
 # name, BLS-Code, Gruppe, Ampel (None = Gruppe), cap (None = Gruppe), Suchbegriffe, Alternativen, Begründung, Stück (Bezeichnung, g)
 F = []
-def f(name, bls, group, light=None, cap=None, syn='', alts='', why='', piece=None):
+def f(name, bls, group, light=None, cap=None, syn='', alts='', why='', piece=None, n=None):
+    # n: nur für Einträge ohne BLS-Code, Richtwerte (kcal, Eiweiß, Fett, Kohlenhydrate gesamt, Zucker) je 100 g nach USDA FoodData Central
     F.append(dict(name=name, bls=bls, group=group, light=light, cap=cap, syn=[s.strip() for s in syn.split(',') if s.strip()],
-                  alts=[a.strip() for a in alts.split(';') if a.strip()], why=why, piece=piece))
+                  alts=[a.strip() for a in alts.split(';') if a.strip()], why=why, piece=piece, n=n))
 
 # Gemüse
 f('Zucchini', 'G582100', 'gemuese', syn='Zucchetti', piece=('Stück', 200))
@@ -84,7 +89,7 @@ f('Pastinaken', 'G640100', 'gemuese', cap=200, syn='Pastinake')
 f('Spargel', 'G450100', 'gemuese', syn='Spargel grün, Spargel weiß')
 f('Grüne Bohnen', 'G710100', 'gemuese', syn='Bohnen grün, Brechbohnen, Fisolen, Prinzessbohnen')
 f('Zuckerschoten', 'G761100', 'gemuese', syn='Zuckererbsen, Kaiserschoten')
-f('Erbsen (TK)', 'G760200', 'huelsen', cap=100, syn='Erbsen, grüne Erbsen', alts='Zuckerschoten; Brokkoli')
+f('Erbsen (TK)', 'G760200', 'huelsen', cap=120, syn='Erbsen, grüne Erbsen', alts='Zuckerschoten; Brokkoli')
 f('Okra', 'G530100', 'gemuese')
 f('Artischocken', 'G410100', 'gemuese', syn='Artischocke')
 f('Mais', 'G570902', 'knolle', cap=80, syn='Zuckermais, Maiskörner', alts='Rote Paprika; Erbsen (TK)')
@@ -187,7 +192,7 @@ f('Reis (gegart)', 'C352032', 'getreide', cap=80, syn='Reis, weißer Reis, Basma
 f('Bulgur (gegart)', 'C119132', 'getreide', cap=80, syn='Bulgur', alts='Hirse (gegart); Blumenkohl')
 f('Couscous (gegart)', 'C119232', 'getreide', cap=80, syn='Couscous', alts='Hirse (gegart); Blumenkohl')
 f('Haferflocken', 'C133000', 'getreide', cap=30, syn='Hafer, Porridge', alts='Leinsamen; Walnusskerne')
-f('Vollkornbrot', 'B121000', 'getreide', cap=40, syn='Brot, Roggenbrot, Schwarzbrot', alts='Gurke; Kohlrabi',
+f('Vollkornbrot', 'B121000', 'getreide', cap=40, syn='Brot, Roggenbrot, Dinkelbrot, Vollkorntoast', alts='Gurke; Kohlrabi',
   why='Eine dünne Scheibe passt an Tag 1. Für Brot sieht Longo sonst kaum Platz vor.')
 
 # Obst (gelb)
@@ -210,7 +215,7 @@ f('Datteln', 'F504400', 'suess', syn='Dattel, Trockenobst', alts='Apfel; Heidelb
 f('Zucker', 'S111000', 'suess', syn='Haushaltszucker, Rohrzucker')
 f('Honig', 'S120000', 'suess', syn='Ahornsirup, Sirup')
 f('Schokolade', 'S530000', 'suess', syn='Milchschokolade, Süßigkeiten, Riegel', alts='Walnusskerne; Heidelbeeren; Mandeln')
-f('Kuchen', 'D422600', 'suess', syn='Rührkuchen, Gebäck, Kekse', alts='Apfel; Walnusskerne')
+f('Kuchen', 'D422600', 'suess', syn='Rührkuchen, Gebäck, Torte', alts='Apfel; Walnusskerne')
 f('Weißbrot', 'B311000', 'weissmehl', syn='Toast, Brötchen, Semmel, Baguette')
 f('Nudeln', 'X432142', 'weissmehl', syn='Pasta, Spaghetti, Teigwaren', alts='Zucchini; Kartoffeln; Hirse (gegart)',
   why='Viel Stärke auf kleinem Raum. Zucchini-Nudeln oder eine kleine Portion Kartoffeln passen besser.')
@@ -231,17 +236,230 @@ f('Eier', 'E111100', 'tier', syn='Ei, Hühnerei, Spiegelei, Rührei', alts='Kich
 f('Milch', 'M111300', 'milch', syn='Kuhmilch, Vollmilch', alts='Mandeldrink ungesüßt')
 f('Joghurt', 'M141300', 'milch', syn='Naturjoghurt, Skyr', alts='Kokosmilch (vollfett); Cashewkerne')
 f('Quark', 'M713100', 'milch', syn='Magerquark, Topfen', alts='Tahin; Cashewkerne')
-f('Käse', 'M402600', 'milch', syn='Gouda, Bergkäse, Parmesan, Emmentaler', alts='Cashewkerne; Grüne Oliven; Tahin')
+f('Käse', 'M402600', 'milch', syn='Gouda, Bergkäse, Emmentaler, Cheddar', alts='Cashewkerne; Grüne Oliven; Tahin')
 f('Mozzarella', 'M032100', 'milch', syn='Burrata', alts='Avocado; Cashewkerne')
 f('Feta', 'M012200', 'milch', syn='Schafskäse, Hirtenkäse', alts='Grüne Oliven; Kapern; Cashewkerne')
-f('Butter', 'Q611000', 'milch', syn='Margarine', alts='Olivenöl; Rapsöl')
+f('Butter', 'Q611000', 'milch', syn='Butterschmalz, Ghee', alts='Olivenöl; Rapsöl')
 f('Sahne', 'M173800', 'milch', syn='Schlagsahne, Rahm, Creme fraiche', alts='Kokosmilch (vollfett); Cashewkerne')
 f('Kaffee', 'N410100', 'drink', syn='Espresso, Cappuccino, Latte')
 f('Bier', 'P163000', 'drink', syn='Pils, Alkohol')
 f('Wein', 'P2A3000', 'drink', syn='Rotwein, Weißwein, Sekt, Alkohol')
 f('Orangensaft', 'F603600', 'drink', syn='Saft, Fruchtsaft, Apfelsaft', alts='Orange; Kräutertee')
-f('Cola', 'N330000', 'drink', syn='Limonade, Softdrink, Eistee')
+f('Cola', 'N330000', 'drink', syn='Limonade, Softdrink, Eistee, Energydrink')
 f('Kräutertee', 'N720100', 'getraenk', syn='Tee, Pfefferminztee, Kamillentee, Früchtetee')
+
+
+# ---- Erweiterung November 2026 ----
+# Gemüse, Sprossen, Pilze
+f('Spitzkohl', 'G344100', 'gemuese')
+f('Romanesco', 'G350100', 'gemuese')
+f('Schwarzwurzeln', 'G650100', 'gemuese', syn='Schwarzwurzel')
+f('Topinambur', 'K430100', 'gemuese', syn='Erdartischocke')
+f('Petersilienwurzel', 'G670100', 'gemuese', syn='Wurzelpetersilie')
+f('Weiße Rübe', 'G614100', 'gemuese', syn='Mairübe, Teltower Rübchen, Navet')
+f('Rote Bete (roh)', 'G613100', 'gemuese', syn='Rote Bete roh, Rote Rübe roh')
+f('Spinat (TK)', 'G211200', 'blatt', syn='Rahmspinat, Tiefkühlspinat, Spinat tiefgekühlt')
+f('Rhabarber', 'F081100', 'gemuese')
+f('Löwenzahn', 'G262100', 'blatt', syn='Löwenzahnblätter')
+f('Portulak', 'G460100', 'blatt', syn='Postelein, Winterportulak')
+f('Bambussprossen', 'H610902', 'gemuese', syn='Bambus')
+f('Mungbohnensprossen', 'H650100', 'gemuese', syn='Sprossen, Keimlinge, Sojasprossen aus Mungbohnen')
+f('Sojasprossen', 'H620100', 'gemuese', syn='Sprossen, Keimlinge')
+f('Alfalfasprossen', 'H640100', 'gemuese', cap=50, syn='Sprossen, Keimlinge, Luzerne')
+f('Chili', 'G554100', 'wuerze', cap=20, syn='Chilischote, Peperoncini, Pfefferschote, Jalapeño')
+f('Peperoni (eingelegt)', 'G550802', 'gemuese', cap=50, syn='Peperoni, Pfefferoni, Pfefferschoten eingelegt')
+f('Salzgurken', 'G890702', 'gemuese', cap=100, syn='Salzdillgurke, Dillgurke, fermentierte Gurken')
+f('Tomaten (Dose)', 'G568900', 'gemuese', cap=300, syn='geschälte Tomaten, Dosentomaten, gehackte Tomaten, Pelati')
+f('Getrocknete Tomaten', 'G560400', 'gemuese', light='y', cap=15, syn='Tomaten getrocknet, sonnengetrocknete Tomaten',
+  alts='Tomaten; Tomatenmark', why='Konzentriert: drei, vier Stück bringen schon so viel Zucker wie eine ganze Schale frischer Tomaten.')
+f('Champignons (Dose)', 'K701902', 'pilze', syn='Champignons Glas, Pilze Dose')
+f('Steinpilze', 'K718100', 'pilze', syn='Herrenpilz, Pilze')
+f('Nori', 'G995000', 'wuerze', cap=5, syn='Algen, Seetang, Noriblatt, Sushi-Algen', piece=('Blatt', 3))
+f('Bärlauch', 'G492100', 'kraeuter', syn='wilder Knoblauch')
+f('Koriander', None, 'kraeuter', syn='Koriandergrün, Cilantro', n=(23, 2.1, 0.5, 3.7, 0.9))
+f('Thymian', None, 'kraeuter', cap=10, n=(101, 5.6, 1.7, 24.5, 0))
+f('Rosmarin', None, 'kraeuter', cap=10, n=(131, 3.3, 5.9, 20.7, 0))
+f('Oregano (getrocknet)', None, 'wuerze', cap=5, syn='Oregano, Majoran, Kräuter der Provence, italienische Kräuter', n=(265, 9.0, 4.3, 68.9, 4.1))
+f('Kurkuma', None, 'wuerze', cap=5, syn='Gelbwurz, Curcuma', n=(312, 9.7, 3.3, 67.1, 3.2))
+f('Kreuzkümmel', None, 'wuerze', cap=5, syn='Cumin, Kumin', n=(375, 17.8, 22.3, 44.2, 2.3))
+f('Currypulver', None, 'wuerze', cap=5, syn='Curry, Garam Masala', n=(325, 14.3, 14.0, 55.8, 2.8))
+f('Zimt', None, 'wuerze', cap=5, syn='Zimtpulver, Ceylon-Zimt', n=(247, 4.0, 1.2, 80.6, 2.2))
+f('Chiliflocken', None, 'wuerze', cap=3, syn='Cayennepfeffer, Chilipulver, Pul Biber', n=(318, 12.0, 17.3, 56.6, 10.3))
+f('Muskatnuss', None, 'wuerze', cap=2, syn='Muskat', n=(525, 5.8, 36.3, 49.3, 28.5))
+f('Pfeffer', 'R258100', 'wuerze', cap=5, syn='schwarzer Pfeffer, Pfefferkörner')
+f('Salz', 'R114000', 'wuerze', cap=6, syn='Jodsalz, Meersalz, Speisesalz',
+  why='Etwas Salz ist okay, die Brühe bringt schon welches mit. Mehr als ein Teelöffel am Tag sollte es nicht werden.')
+f('Senf', 'R132000', 'wuerze', cap=15, syn='Dijonsenf, Senf mittelscharf')
+f('Sojasauce', 'R143000', 'wuerze', cap=15, syn='Sojasoße, Tamari, Shoyu')
+f('Hefeflocken', None, 'wuerze', cap=10, syn='Edelhefeflocken, Nährhefe',
+  why='Schmecken käsig und würzig, sind aber zur Hälfte Eiweiß. Ein Esslöffel reicht.', n=(400, 50.0, 5.0, 33.0, 0))
+f('Weinessig', 'R121000', 'wuerze', cap=30, syn='Weißweinessig, Rotweinessig, Branntweinessig, Kräuteressig')
+f('Zitrone', 'F601100', 'wuerze', cap=60, syn='Zitronen, Zitronenschale', piece=('Stück', 60))
+f('Limette', 'F602100', 'wuerze', cap=60, syn='Limetten', piece=('Stück', 45))
+f('Ketchup', 'R141100', 'suess', syn='Tomatenketchup, Curryketchup, BBQ-Sauce', alts='Tomatenmark; Tomaten, passiert',
+  why='Ein Fünftel Ketchup ist Zucker. Tomatenmark mit etwas Essig und Gewürzen schmeckt ähnlich.')
+f('Pesto', 'X372012', 'milch', syn='Pesto verde, Basilikumpesto, Pesto Genovese', alts='Basilikum; Olivenöl; Pinienkerne',
+  why='Klassisches Pesto enthält Parmesan. Basilikum mit Olivenöl und ein paar Pinienkernen gemixt passt.')
+
+# Öle
+f('Kürbiskernöl', 'Q250000', 'fett', cap=15, syn='Öl')
+f('Hanföl', 'Q170000', 'fett', cap=15, syn='Öl')
+f('Sonnenblumenöl', 'Q320000', 'fett', syn='Öl')
+f('Erdnussöl', 'Q210000', 'fett', syn='Öl')
+f('Traubenkernöl', 'Q330000', 'fett', syn='Öl')
+f('Margarine', 'Q4A4000', 'fett', light='y', cap=10, syn='vegane Margarine, Pflanzenmargarine, Streichfett', alts='Olivenöl; Rapsöl',
+  why='Pflanzlich, aber stark verarbeitet. Longo setzt auf Olivenöl und Nüsse.')
+
+# Nüsse, Saaten, Kokos
+f('Pinienkerne', 'H320100', 'nuss', syn='Pinienkern')
+f('Hanfsamen', None, 'nuss', syn='Hanfsamen geschält, Hanfherzen', n=(553, 31.6, 48.8, 8.7, 1.5))
+f('Mohn', 'H450100', 'nuss', cap=10, syn='Mohnsamen')
+f('Cashewmus', 'F960800', 'nuss', cap=30, syn='Cashewkernmus, Cashewbutter')
+f('Haselnussmus', 'H130800', 'nuss', cap=30, syn='Haselnussbutter')
+f('Kokosraspeln', 'H150400', 'fettfrucht', light='y', cap=15, syn='Kokosflocken, Kokoschips', alts='Walnusskerne; Mandeln',
+  why='Viel gesättigtes Fett wie beim Kokosöl. Als Topping okay, Nüsse passen besser.')
+f('Kokosnuss (frisch)', 'H150100', 'fettfrucht', light='y', cap=30, syn='Kokosnuss, Kokos', alts='Avocado; Walnusskerne',
+  why='Viel gesättigtes Fett wie beim Kokosöl. Ein kleines Stück ist okay.')
+
+# Hülsenfrüchte, Soja, Fleischersatz
+f('Kichererbsen (Dose)', 'H720902', 'huelsen', syn='Kichererbsen Konserve, Kichererbsen abgetropft', alts='Blumenkohl; Champignons')
+f('Mungbohnen (gegart)', 'H770132', 'huelsen', syn='Mungbohnen, Mungobohnen', alts='Zuckerschoten; Champignons')
+f('Trockenerbsen (gegart)', 'G760432', 'huelsen', syn='Schälerbsen, gelbe Erbsen, Erbsensuppe', alts='Zucchini; Kartoffeln')
+f('Hummus', 'H960000', 'huelsen', cap=50, syn='Humus, Kichererbsenmus, Kichererbsendip', alts='Tahin; Avocado',
+  why='Kichererbsen mit Tahin und Öl: lecker, aber gehaltvoll. Zwei Esslöffel passen gut.')
+f('Falafel', 'Y9A1050', 'huelsen', light='r', syn='Kichererbsenbällchen', alts='Kichererbsen (gegart); Hummus',
+  why='Frittiert. Ofen-Kichererbsen oder Hummus liefern den Geschmack ohne Fettbad.')
+f('Seidentofu', 'H861100', 'soja', cap=100, syn='Silken Tofu', alts='Kokosmilch (vollfett); Avocado')
+f('Sojajoghurt', 'H844000', 'soja', cap=100, syn='Joghurtalternative, Sojaghurt, veganer Joghurt', alts='Kokosmilch (vollfett); Avocado',
+  why='Ungesüßt eine gute Basis für Dressings. Viel davon bringt zu viel Eiweiß.')
+f('Sojadrink', 'H841100', 'soja', cap=200, syn='Sojamilch', alts='Mandeldrink ungesüßt; Haferdrink',
+  why='Ungesüßt okay, aber eiweißreicher als Mandel- oder Haferdrink.')
+f('Tempeh', None, 'eiweiss', syn='Tempe', n=(192, 20.3, 10.8, 7.6, 0))
+f('Seitan', 'C558000', 'eiweiss', syn='Weizeneiweiß, Weizengluten')
+f('Sojagranulat', 'H765000', 'eiweiss', syn='Sojaschnetzel, Sojahack, Sojafleisch, texturiertes Soja')
+f('Veggie-Wurst', 'H930000', 'eiweiss', syn='vegane Wurst, vegetarische Wurst, Wurstalternative, Fleischersatz, Veggie-Aufschnitt')
+f('Veggie-Burger', 'H910300', 'eiweiss', syn='vegetarische Bratwurst, Veggie-Bratwurst, Burger-Patty vegan, Veggie-Frikadelle')
+
+# Pflanzendrinks und Getränke
+f('Haferdrink', 'C660000', 'getraenk', light='y', cap=200, syn='Hafermilch, Haferdrink ungesüßt', alts='Mandeldrink ungesüßt',
+  why='Der Hafer bringt natürlichen Zucker mit. Ein Schuss im Tee passt, Mandeldrink ist zuckerärmer.')
+f('Reisdrink', 'C650000', 'getraenk', light='y', cap=100, syn='Reismilch', alts='Mandeldrink ungesüßt',
+  why='Schmeckt süß, weil die Stärke beim Herstellen zu Zucker wird. Mandeldrink ist die bessere Wahl.')
+f('Kokoswasser', 'H151000', 'getraenk', light='y', cap=200, alts='Wasser; Kräutertee',
+  why='Leicht süß. Ein Glas ist okay, Wasser und Kräutertee sind die Basis.')
+f('Gemüsesaft', 'G090600', 'getraenk', light='y', cap=200, syn='Tomatensaft, Möhrensaft, Karottensaft, Rote-Bete-Saft', alts='Gemüsebrühe; Kräutertee',
+  why='Ein Glas passt, im Saft fehlt aber die Sättigung vom ganzen Gemüse.')
+f('Wasser', 'N110000', 'getraenk', cap=3000, syn='Trinkwasser, Leitungswasser')
+f('Mineralwasser', 'N128000', 'getraenk', cap=3000, syn='Sprudel, Sprudelwasser, stilles Wasser')
+f('Grüner Tee', 'N610100', 'drink', syn='Grüntee, Matcha', alts='Kräutertee',
+  why='Enthält Koffein wie Kaffee. Kräutertee ist in diesen Tagen die entspanntere Wahl.')
+f('Schwarzer Tee', 'N630000', 'drink', syn='Schwarztee, Earl Grey, Chai', alts='Kräutertee',
+  why='Enthält Koffein wie Kaffee. Kräutertee ist in diesen Tagen die entspanntere Wahl.')
+f('Smoothie', 'F032600', 'drink', syn='Fruchtsmoothie, grüner Smoothie', alts='Heidelbeeren; Gurke',
+  why='Püriertes Obst ist schnell getrunkener Zucker. Ganze Beeren machen satter.')
+
+# Cracker, Waffeln, Brot, Getreide
+f('Maiswaffeln', 'C533100', 'knusper', syn='Maiscracker, Maiswaffel, Mais-Cracker, Maiskekse', piece=('Waffel', 8))
+f('Reiswaffeln', 'C532700', 'knusper', syn='Reiscracker, Reiswaffel, Puffreis, Reis-Cracker', piece=('Waffel', 8))
+f('Knäckebrot', 'B6A2100', 'knusper', syn='Roggenknäcke, Vollkornknäckebrot, Knäcke', piece=('Scheibe', 10))
+f('Knäckebrot mit Saaten', 'B6A5100', 'knusper', syn='Dinkelknäcke, Saatenknäcke, Körnerknäcke', piece=('Scheibe', 12))
+f('Popcorn', 'C533000', 'knusper', cap=15, syn='Popcorn ungesüßt, Puffmais',
+  why='Ungesüßt und selbst gepoppt ein guter Knabberersatz. Eine kleine Schale reicht.')
+f('Pumpernickel', 'B780500', 'getreide', cap=40, syn='Schwarzbrot', alts='Knäckebrot; Gurke',
+  why='Eine dünne Scheibe passt an Tag 1. Für Brot sieht Longo sonst kaum Platz vor.')
+f('Amaranth (gegart)', 'C335032', 'getreide', syn='Amaranth', alts='Hirse (gegart); Blumenkohl')
+f('Grünkern (gegart)', 'C311032', 'getreide', syn='Grünkern', alts='Hirse (gegart); Blumenkohl')
+f('Dinkel (gegart)', 'C236032', 'getreide', syn='Dinkel, Dinkelreis, Ebly', alts='Hirse (gegart); Blumenkohl')
+f('Graupen (gegart)', 'C148032', 'getreide', syn='Gerste, Perlgraupen, Rollgerste', alts='Hirse (gegart); Blumenkohl')
+f('Polenta (gegart)', 'C526000', 'getreide', syn='Polenta, Maisgrieß, Maisbrei', alts='Hirse (gegart); Kartoffeln')
+f('Vollkornnudeln (gegart)', 'E500032', 'getreide', cap=80, syn='Vollkornnudeln, Vollkornpasta, Dinkelnudeln', alts='Zucchini; Hirse (gegart)',
+  why='Eine kleine Portion passt. Zucchini-Nudeln strecken sie auf einen vollen Teller.')
+f('Reisnudeln (gegart)', 'C559032', 'getreide', cap=80, syn='Reisnudeln, Reisbandnudeln', alts='Zucchini; Glasnudeln (gegart)')
+f('Glasnudeln (gegart)', 'H030432', 'getreide', cap=80, syn='Glasnudeln, Mungbohnennudeln', alts='Zucchini; Mungbohnensprossen')
+f('Apfelmus ungesüßt', 'F923900', 'obst', cap=100, syn='Apfelmus, Apfelmark, Apfelkompott', alts='Apfel; Heidelbeeren')
+
+# Obst
+f('Wassermelone', 'F535100', 'obst', syn='Melone', alts='Erdbeeren; Gurke')
+f('Honigmelone', 'F532100', 'obst', syn='Melone, Cantaloupe, Netzmelone, Zuckermelone', alts='Erdbeeren; Gurke')
+f('Ananas', 'F501100', 'obst', cap=100, alts='Erdbeeren; Orange')
+f('Weintrauben', 'F310100', 'obst', cap=80, syn='Trauben, Weintraube', alts='Heidelbeeren; Erdbeeren')
+f('Pfirsich', 'F203100', 'obst', syn='Pfirsiche', alts='Erdbeeren; Himbeeren', piece=('Stück', 130))
+f('Nektarine', 'F202100', 'obst', syn='Nektarinen', alts='Erdbeeren; Himbeeren', piece=('Stück', 130))
+f('Pflaumen', 'F220100', 'obst', syn='Pflaume, Zwetschgen, Zwetschken', alts='Heidelbeeren; Himbeeren', piece=('Stück', 35))
+f('Kirschen', 'F211100', 'obst', cap=80, syn='Süßkirschen, Kirsche', alts='Himbeeren; Heidelbeeren')
+f('Sauerkirschen', 'F212100', 'obst', cap=80, syn='Weichseln', alts='Himbeeren; Johannisbeeren')
+f('Aprikose', 'F201100', 'obst', syn='Aprikosen, Marille, Marillen', alts='Erdbeeren; Himbeeren', piece=('Stück', 40))
+f('Johannisbeeren', 'F321100', 'obst', syn='Ribisel, Beeren')
+f('Brombeeren', 'F303100', 'obst', syn='Beeren')
+f('Stachelbeeren', 'F305100', 'obst', syn='Beeren')
+f('Granatapfel', 'F506100', 'obst', cap=60, syn='Granatapfelkerne', alts='Himbeeren; Johannisbeeren')
+f('Feigen (frisch)', 'F505100', 'obst', cap=80, syn='Feige, Feigen', alts='Himbeeren; Brombeeren')
+f('Papaya', 'F517100', 'obst', cap=100, alts='Erdbeeren; Orange')
+f('Physalis', 'F552100', 'obst', cap=50, syn='Kapstachelbeere, Andenbeere', alts='Himbeeren; Erdbeeren')
+
+# Passt nicht (rot)
+f('Rosinen', 'F840100', 'suess', syn='Sultaninen, Korinthen', alts='Heidelbeeren; Walnusskerne',
+  why='Getrocknetes Obst ist konzentrierter Zucker.')
+f('Getrocknete Aprikosen', 'F201400', 'suess', syn='Trockenaprikosen, Trockenobst, Trockenfrüchte', alts='Aprikose; Walnusskerne',
+  why='Getrocknetes Obst ist konzentrierter Zucker.')
+f('Cranberries (getrocknet)', 'F414400', 'suess', syn='Cranberries, Moosbeeren, Goji', alts='Himbeeren; Johannisbeeren',
+  why='Getrocknet und meist zusätzlich gezuckert.')
+f('Müsli', 'C512300', 'suess', syn='Früchtemüsli, Bircher Müsli', alts='Haferflocken; Heidelbeeren; Walnusskerne',
+  why='Die Trockenfrüchte machen ein Fünftel Zucker. Ein paar Haferflocken mit frischen Beeren und Nüssen passen.')
+f('Knuspermüsli', 'C514200', 'suess', syn='Granola, Crunchy Müsli, Schokomüsli', alts='Haferflocken; Walnusskerne')
+f('Cornflakes', 'C515000', 'weissmehl', syn='Frühstücksflocken, Choco Pops, Frosties', alts='Haferflocken; Heidelbeeren')
+f('Müsliriegel', 'S830000', 'suess', syn='Riegel, Fitnessriegel, Proteinriegel, Energieriegel', alts='Walnusskerne; Mandeln; Apfel')
+f('Gummibärchen', 'S361000', 'suess', syn='Fruchtgummi, Weingummi, Bonbons, Lakritz', alts='Heidelbeeren; Erdbeeren')
+f('Kekse', 'D630400', 'suess', syn='Butterkekse, Plätzchen, Cookies', alts='Maiswaffeln; Walnusskerne')
+f('Marmelade', 'S132000', 'suess', syn='Konfitüre, Gelee, Fruchtaufstrich', alts='Himbeeren; Apfelmus ungesüßt')
+f('Nuss-Nougat-Creme', 'S145000', 'suess', syn='Nutella, Schokoaufstrich', alts='Mandelmus; Haselnussmus')
+f('Speiseeis', 'S243000', 'suess', syn='Eis, Eiscreme, Softeis', alts='Heidelbeeren; Kokosmilch (vollfett)')
+f('Cracker', 'D050000', 'weissmehl', syn='Kräcker, Butterkräcker, TUC, Salzcracker', alts='Maiswaffeln; Knäckebrot; Reiswaffeln',
+  why='Weißmehl plus viel Fett. Mais- oder Reiswaffeln knuspern leichter.')
+f('Salzstangen', 'D064000', 'weissmehl', syn='Salzbrezeln, Brezeln, Laugengebäck', alts='Maiswaffeln; Grünkohl')
+f('Tortilla-Chips', 'C546000', 'weissmehl', syn='Nachos, Tortillachips, Maischips', alts='Maiswaffeln; Grünkohl',
+  why='Frittiert und gesalzen. Maiswaffeln oder Grünkohl-Chips aus dem Ofen knuspern ohne Fettbad.')
+f('Wraps', 'B783012', 'weissmehl', syn='Tortilla, Weizentortilla, Wrap, Fladenbrot', alts='Romanasalat; Chinakohl',
+  why='Weißmehlfladen. Große Salat- oder Chinakohlblätter sind die Wraps fürs Scheinfasten.')
+f('Pizza', 'X912033', 'weissmehl', syn='Pizza Margherita, Flammkuchen', alts='Zucchini; Tomaten; Champignons')
+f('Mischbrot', 'B271000', 'weissmehl', syn='Graubrot, Bauernbrot, Sauerteigbrot', alts='Knäckebrot; Vollkornbrot')
+f('Burger', 'Y911260', 'tier', syn='Hamburger, Cheeseburger, Fast Food', alts='Champignons; Kichererbsen (gegart); Avocado')
+f('Döner', 'V422072', 'tier', syn='Kebab, Gyros, Dürüm', alts='Champignons; Kichererbsen (gegart)')
+f('Bratwurst', 'Y021312', 'tier', syn='Würstchen, Wiener, Currywurst, Grillwurst', alts='Champignons; Austernpilze')
+f('Speck', 'W411300', 'tier', syn='Bacon, Schinkenspeck, Pancetta', alts='Paprikapulver, geräuchert; Champignons')
+f('Leberwurst', 'W880100', 'tier', syn='Streichwurst, Teewurst, Mettwurst', alts='Hummus; Tahin')
+f('Fischstäbchen', 'T930100', 'tier', syn='Backfisch, Fisch paniert', alts='Kichererbsen (gegart); Champignons')
+f('Frischkäse', 'M710800', 'milch', syn='Doppelrahmfrischkäse, Philadelphia, Mascarpone', alts='Hummus; Cashewmus')
+f('Parmesan', 'M306400', 'milch', syn='Grana Padano, Pecorino, Hartkäse', alts='Hefeflocken; Cashewkerne')
+f('Hüttenkäse', 'M711100', 'milch', syn='körniger Frischkäse, Cottage Cheese', alts='Sojajoghurt; Avocado')
+f('Kefir', 'M130300', 'milch', syn='Ayran, Dickmilch', alts='Mandeldrink ungesüßt; Sojajoghurt')
+f('Buttermilch', 'M150000', 'milch', syn='Molke', alts='Mandeldrink ungesüßt')
+
+
+# Obergrenze je Lebensmittel und Tag (eigene Regel der Seite, Longo nennt keine Mengen pro Lebensmittel):
+# Ein einzelnes Lebensmittel darf höchstens die Hälfte des Zucker- bzw. Eiweißbudgets von Tag 2 bis 5 belegen,
+# damit für den Rest des Tages Platz bleibt. Budget Tag 2 bis 5: 725 kcal, davon 9 % Eiweiß (Longo) und
+# höchstens 15 % Zucker (eigene Regel). Dazu kommt die Portionsgrenze der Gruppe bzw. des Eintrags (cap).
+DAY_KCAL = 725
+PROTEIN_BUDGET = DAY_KCAL * 0.09 / 4   # 16,3 g
+SUGAR_BUDGET = DAY_KCAL * 0.15 / 4     # 27,2 g
+SHARE = 0.5
+
+def _floor(g):
+    step = 10 if g >= 100 else 5 if g >= 30 else 1
+    return int(g // step * step)
+
+def limit(cap, n):
+    """Liefert (Obergrenze in g, Grund). n = (kcal, Eiweiß, Fett, Kohlenhydrate, Zucker) je 100 g.
+    Grund: 'portion' (übliche Portion), 'zucker' oder 'eiweiss' (Budgetregel)."""
+    out, why = cap, 'portion'
+    if n[4] > 0:
+        g = _floor(SHARE * SUGAR_BUDGET / n[4] * 100)
+        if g < out: out, why = g, 'zucker'
+    if n[1] > 0:
+        g = _floor(SHARE * PROTEIN_BUDGET / n[1] * 100)
+        if g < out: out, why = g, 'eiweiss'
+    return out, why
 
 
 def bls_table():

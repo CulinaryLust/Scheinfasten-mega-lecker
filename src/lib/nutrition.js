@@ -44,7 +44,8 @@ export function check(day, n, factor = 1) {
   const sh = shares(n);
   const target = ref.kcal * factor;
   const kcalOk = Math.abs(n.kcal - target) / target * 100 <= tol.kcalPercent;
-  const macrosOk = ['protein', 'fat', 'carbs'].every((k) => Math.abs(sh[k] - ref[k]) <= tol.macroPoints);
+  // Eiweiß mit engerer Toleranz (proteinPoints), Fett und Kohlenhydrate mit macroPoints
+  const macrosOk = ['protein', 'fat', 'carbs'].every((k) => Math.abs(sh[k] - ref[k]) <= (k === 'protein' ? tol.proteinPoints ?? tol.macroPoints : tol.macroPoints));
   // Zucker: eigene Regel der Seite (Longo: "wenig Zucker" ohne Grammzahl), höchstens sugarMaxPercent der Kalorien
   const sugarPct = n.kcal ? n.sugar * 4 / n.kcal * 100 : 0;
   const sugarOk = sugarPct <= PLAN.reference.sugarMaxPercent;

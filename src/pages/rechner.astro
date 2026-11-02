@@ -137,9 +137,10 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 </style>
 
 <script>
-  import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, buildMeals, matchRecipes, advice, amount } from '../lib/rechner.js';
+  import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
   import { fmt, PLAN } from '../lib/nutrition.js';
   const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
+  const TOL_P = PLAN.reference.tolerance.proteinPoints ?? PLAN.reference.tolerance.macroPoints;
 
   const root = document.getElementById('calc')!;
   const base = root.dataset.base!;
@@ -293,7 +294,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
           <div class="carbs"><span class="k">${I.carbs} Kohlenhydrate</span><b>${pct(vd.shares.carbs)}</b><small>Ziel ${t.ref.carbs} %, ${fmt(res.sum.carbs)} g</small></div>
           <div class="sugar"><span class="k">${I.sugar} Zucker</span><b>${fmt(res.sum.sugar)} g</b><small>höchstens ${fmt(vd.sugarMax)} g</small></div>
         </div>
-        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und jeder Anteil von Eiweiß, Fett und Kohlenhydraten höchstens 5 Prozentpunkte von Longos Werten entfernt (Brandhorst et al. 2015). Zucker höchstens ${PLAN_SUGAR} % der Kalorien: Longo verlangt „wenig Zucker“ ohne Grammzahl, die Grenze ist unsere Regel. Dein Ziel ist an deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
+        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und Fett und Kohlenhydrate höchstens 5 Prozentpunkte und Eiweiß höchstens ${TOL_P} Prozentpunkte von Longos Werten entfernt (Brandhorst et al. 2015). Beim Eiweiß rechnen wir bewusst enger, weil Longo gerade das Eiweiß niedrig hält. Zucker höchstens ${PLAN_SUGAR} % der Kalorien: Longo verlangt „wenig Zucker“ ohne Grammzahl, die Grenze ist unsere Regel. Dein Ziel ist an deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
       </div>`;
       if (!vd.ok) {
         const why: string[] = [];
@@ -303,7 +304,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
         if (vd.dev.fat > 5) why.push('Etwas zu viel Fett. Mehr Gemüse gleicht das aus.');
         if (vd.dev.carbs < -5) why.push('Es fehlt noch etwas Sättigendes, zum Beispiel Kartoffeln, Kürbis oder Karotten.');
         if (vd.dev.carbs > 5) why.push('Etwas zu viele Kohlenhydrate. Ein Schuss Olivenöl oder ein paar Nüsse gleichen das aus.');
-        if (vd.dev.protein > 5) why.push('Etwas zu viel Eiweiß. Beim Scheinfasten darf es davon ruhig weniger sein.');
+        if (vd.dev.protein > TOL_P) why.push('Etwas zu viel Eiweiß. Beim Scheinfasten darf es davon ruhig weniger sein.');
         if (!vd.sugarOk) why.push('Etwas zu viel Zucker, meist aus süßem Gemüse wie Kürbis, Karotten oder Roter Bete. Kartoffeln oder Hirse sättigen mit weniger Zucker.');
         h += `<div class="alert warn"><p><b>Noch ein kleiner Schritt</b></p>${why.map((w) => `<p>${w}</p>`).join('')}
           ${adds.length ? `<p>Tipp eins davon an, wir rechnen sofort neu:</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div>`;
@@ -315,9 +316,9 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
         ${res.items.map((it) => {
           const f = BY_NAME[it.name];
           const piece = f.piece && it.g ? `<small>etwa ${fmt(it.g / f.piece[1], it.g / f.piece[1] < 3 ? 1 : 0)} ${esc(f.piece[0])}</small>` : '';
-          const capNote = f.light === 'y' ? `<small>höchstens ${amount(f.name, f.cap)} am Tag</small>` : '';
+          const capNote = f.light === 'y' || f.capWhy !== 'portion' ? `<small>höchstens ${amount(f.name, f.cap)} am Tag${CAP_WHY[f.capWhy] ? `, ${CAP_WHY[f.capWhy]}` : ''}</small>` : '';
           const zero = f.n[0] === 0 ? '<small>so viel du magst</small>' : it.g === 0 ? '<small>heute nicht nötig</small>' : '';
-          const input = f.n[0] === 0 ? '' : `<span class="gcell"><input type="number" inputmode="numeric" min="0" max="${f.cap}" step="5" value="${it.g}" data-g="${esc(f.name)}" aria-label="Menge ${esc(f.name)} in Gramm" /> ${/saft|essig|Balsamico|brühe|drink/i.test(f.name) ? 'ml' : 'g'}</span>${it.fixed ? `<button type="button" class="reset" data-free="${esc(f.name)}">zurücksetzen</button>` : ''}`;
+          const input = f.n[0] === 0 ? '' : `<span class="gcell"><input type="number" inputmode="numeric" min="0" max="${f.cap}" step="5" value="${it.g}" data-g="${esc(f.name)}" aria-label="Menge ${esc(f.name)} in Gramm" /> ${unit(f.name)}</span>${it.fixed ? `<button type="button" class="reset" data-free="${esc(f.name)}">zurücksetzen</button>` : ''}`;
           return `<tr class="${it.g === 0 && f.n[0] > 0 ? 'zero' : ''}"><td class="nm"><span class="dot ${f.light}" title="${LIGHT[f.light]}"></span> ${esc(f.name)}${piece}${capNote}${zero}</td><td>${input}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
         }).join('')}
         </tbody></table></div></div>`;

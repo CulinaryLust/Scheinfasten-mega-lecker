@@ -17,7 +17,8 @@
   "sugarMaxPercent": 15,
   "tolerance": {
    "kcalPercent": 5,
-   "macroPoints": 5
+   "macroPoints": 5,
+   "proteinPoints": 3
   }
  },
  "days": {
@@ -68,15 +69,15 @@
    },
    {
     "meal": "Mittags",
-    "recipe": "champignon-pfanne-cashew",
+    "recipe": "zucchini-pfanne",
     "portion": 1,
     "type": "main"
    },
    {
     "meal": "Nachmittags",
-    "recipe": "gurkensalat-sesam",
-    "portion": 1,
-    "type": "snack"
+    "recipe": "oliven",
+    "portion": 1.5,
+    "type": "fixed"
    },
    {
     "meal": "Abends",
@@ -94,19 +95,19 @@
    },
    {
     "meal": "Mittags",
-    "recipe": "hummus-bowl",
+    "recipe": "rote-bete-carpaccio",
     "portion": 1,
     "type": "main"
    },
    {
     "meal": "Nachmittags",
     "recipe": "oliven",
-    "portion": 1,
+    "portion": 1.5,
     "type": "fixed"
    },
    {
     "meal": "Abends",
-    "recipe": "pilz-lauch-kartoffel-suppe",
+    "recipe": "suesskartoffel-avocado-dip",
     "portion": 1,
     "type": "main"
    }
@@ -132,7 +133,7 @@
    },
    {
     "meal": "Abends",
-    "recipe": "zucchini-pfanne",
+    "recipe": "spinat-dal",
     "portion": 1,
     "type": "main"
    }
@@ -146,19 +147,19 @@
    },
    {
     "meal": "Mittags",
-    "recipe": "ofen-tomaten-kraeuterkruste",
+    "recipe": "minestrone",
     "portion": 1,
     "type": "main"
    },
    {
     "meal": "Nachmittags",
-    "recipe": "gurkensalat-sesam",
+    "recipe": "oliven",
     "portion": 1,
-    "type": "snack"
+    "type": "fixed"
    },
    {
     "meal": "Abends",
-    "recipe": "rote-bete-carpaccio",
+    "recipe": "pak-choi-sesam",
     "portion": 1,
     "type": "main"
    }

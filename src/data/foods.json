@@ -5,6 +5,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Zucchetti"
   ],
@@ -34,6 +35,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Tomate"
   ],
@@ -63,6 +65,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Cocktailtomaten",
    "Cherrytomaten"
@@ -90,6 +93,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 300,
+  "capWhy": "portion",
   "syn": [
    "Passata",
    "Tomatenpüree"
@@ -117,6 +121,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 40,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -140,7 +145,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 210,
+  "capWhy": "zucker",
   "syn": [
    "Karotte",
    "Möhre",
@@ -173,6 +179,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Stangensellerie",
    "Bleichsellerie"
@@ -200,6 +207,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Sellerie",
    "Sellerieknolle"
@@ -227,6 +235,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 150,
+  "capWhy": "portion",
   "syn": [
    "Zwiebel",
    "Speisezwiebel"
@@ -257,6 +266,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 150,
+  "capWhy": "portion",
   "syn": [
    "rote Zwiebeln"
   ],
@@ -283,6 +293,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 150,
+  "capWhy": "portion",
   "syn": [
    "Lauchzwiebel",
    "Frühlingszwiebel"
@@ -310,6 +321,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 100,
+  "capWhy": "portion",
   "syn": [
    "Schalotte"
   ],
@@ -335,7 +347,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 350,
+  "capWhy": "zucker",
   "syn": [
    "Porree"
   ],
@@ -361,7 +374,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 290,
+  "capWhy": "zucker",
   "syn": [
    "Kürbis",
    "Hokkaido"
@@ -388,7 +402,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 260,
+  "capWhy": "zucker",
   "syn": [
    "Butternut",
    "Muskatkürbis",
@@ -416,7 +431,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 330,
+  "capWhy": "eiweiss",
   "syn": [
    "Karfiol"
   ],
@@ -442,7 +458,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 220,
+  "capWhy": "eiweiss",
   "syn": [
    "Broccoli"
   ],
@@ -468,7 +485,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 180,
+  "capWhy": "eiweiss",
   "syn": [
    "Kohlsprossen"
   ],
@@ -494,7 +512,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 300,
+  "capWhy": "zucker",
   "syn": [
    "Weisskohl",
    "Kraut",
@@ -522,7 +541,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 370,
+  "capWhy": "zucker",
   "syn": [
    "Blaukraut",
    "Rotkraut"
@@ -549,7 +569,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 290,
+  "capWhy": "eiweiss",
   "syn": [],
   "alts": [],
   "why": "",
@@ -574,6 +595,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -598,6 +620,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Pak Choy",
    "Bok Choy"
@@ -624,7 +647,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 190,
+  "capWhy": "eiweiss",
   "syn": [
    "Federkohl",
    "Kale"
@@ -651,7 +675,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 360,
+  "capWhy": "zucker",
   "syn": [],
   "alts": [],
   "why": "",
@@ -678,7 +703,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 330,
+  "capWhy": "eiweiss",
   "syn": [],
   "alts": [],
   "why": "",
@@ -705,7 +731,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 210,
+  "capWhy": "zucker",
   "syn": [
    "Paprika",
    "Paprikaschote"
@@ -735,7 +762,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 300,
+  "capWhy": "zucker",
   "syn": [
    "Paprika"
   ],
@@ -764,7 +792,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 200,
+  "capWhy": "zucker",
   "syn": [
    "Paprika"
   ],
@@ -794,6 +823,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Melanzani",
    "Auberginen"
@@ -824,6 +854,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Salatgurke",
    "Gurken"
@@ -854,6 +885,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 100,
+  "capWhy": "portion",
   "syn": [
    "Essiggurken",
    "saure Gurken"
@@ -881,6 +913,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 200,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -904,7 +937,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 250,
+  "cap": 190,
+  "capWhy": "zucker",
   "syn": [
    "Rote Bete",
    "Rote Rübe",
@@ -933,6 +967,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -957,6 +992,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -981,6 +1017,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 400,
+  "capWhy": "portion",
   "syn": [
    "Kohlrübe"
   ],
@@ -1007,6 +1044,7 @@
   "groupLabel": "Gemüse",
   "light": "g",
   "cap": 200,
+  "capWhy": "portion",
   "syn": [
    "Pastinake"
   ],
@@ -1032,7 +1070,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 350,
+  "capWhy": "zucker",
   "syn": [
    "Spargel grün",
    "Spargel weiß"
@@ -1059,7 +1098,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 360,
+  "capWhy": "eiweiss",
   "syn": [
    "Bohnen grün",
    "Brechbohnen",
@@ -1088,7 +1128,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 220,
+  "capWhy": "eiweiss",
   "syn": [
    "Zuckererbsen",
    "Kaiserschoten"
@@ -1115,7 +1156,8 @@
   "group": "huelsen",
   "groupLabel": "Hülsenfrüchte",
   "light": "y",
-  "cap": 100,
+  "cap": 120,
+  "capWhy": "portion",
   "syn": [
    "Erbsen",
    "grüne Erbsen"
@@ -1145,7 +1187,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 380,
+  "capWhy": "eiweiss",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1169,7 +1212,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 400,
+  "cap": 330,
+  "capWhy": "eiweiss",
   "syn": [
    "Artischocke"
   ],
@@ -1196,6 +1240,7 @@
   "groupLabel": "Kartoffeln und Stärkegemüse",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Zuckermais",
    "Maiskörner"
@@ -1226,6 +1271,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [
    "Spinat",
    "Blattspinat"
@@ -1253,6 +1299,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1276,7 +1323,8 @@
   "group": "blatt",
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
-  "cap": 250,
+  "cap": 220,
+  "capWhy": "eiweiss",
   "syn": [
    "Rauke"
   ],
@@ -1303,6 +1351,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [
    "Rapunzel",
    "Nüsslisalat"
@@ -1330,6 +1379,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [
    "Kopfsalat",
    "Salat",
@@ -1358,6 +1408,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [
    "Römersalat",
    "Romana"
@@ -1385,6 +1436,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [
    "Eisberg"
   ],
@@ -1411,6 +1463,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1435,6 +1488,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [
    "Chicoree"
   ],
@@ -1461,6 +1515,7 @@
   "groupLabel": "Salat und Blattgemüse",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [
    "Endivie",
    "Escariol"
@@ -1488,6 +1543,7 @@
   "groupLabel": "Kräuter",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [
    "Gartenkresse"
   ],
@@ -1513,7 +1569,8 @@
   "group": "pilze",
   "groupLabel": "Pilze",
   "light": "g",
-  "cap": 300,
+  "cap": 220,
+  "capWhy": "eiweiss",
   "syn": [
    "Champignon",
    "Pilze"
@@ -1540,7 +1597,8 @@
   "group": "pilze",
   "groupLabel": "Pilze",
   "light": "g",
-  "cap": 300,
+  "cap": 240,
+  "capWhy": "eiweiss",
   "syn": [
    "Austernseitling",
    "Seitlinge",
@@ -1569,6 +1627,7 @@
   "groupLabel": "Pilze",
   "light": "g",
   "cap": 300,
+  "capWhy": "portion",
   "syn": [
    "Shiitakepilze",
    "Pilze"
@@ -1595,7 +1654,8 @@
   "group": "pilze",
   "groupLabel": "Pilze",
   "light": "g",
-  "cap": 300,
+  "cap": 200,
+  "capWhy": "eiweiss",
   "syn": [
    "Eierschwammerl",
    "Pilze"
@@ -1623,6 +1683,7 @@
   "groupLabel": "Kräuter",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1647,6 +1708,7 @@
   "groupLabel": "Kräuter",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1671,6 +1733,7 @@
   "groupLabel": "Kräuter",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1695,6 +1758,7 @@
   "groupLabel": "Kräuter",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1719,6 +1783,7 @@
   "groupLabel": "Kräuter",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [
    "Pfefferminze"
   ],
@@ -1745,6 +1810,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 15,
+  "capWhy": "portion",
   "syn": [
    "Knoblauchzehe"
   ],
@@ -1774,6 +1840,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 20,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1798,6 +1865,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 20,
+  "capWhy": "portion",
   "syn": [
    "Kren"
   ],
@@ -1824,6 +1892,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 20,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -1848,6 +1917,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 40,
+  "capWhy": "portion",
   "syn": [
    "Zitrone",
    "Zitronen"
@@ -1875,6 +1945,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 40,
+  "capWhy": "portion",
   "syn": [
    "Limette",
    "Limetten"
@@ -1902,6 +1973,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 15,
+  "capWhy": "portion",
   "syn": [
    "Balsamicoessig",
    "Aceto balsamico"
@@ -1929,6 +2001,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [
    "Essig"
   ],
@@ -1955,6 +2028,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 15,
+  "capWhy": "portion",
   "syn": [
    "Miso"
   ],
@@ -1981,6 +2055,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 15,
+  "capWhy": "portion",
   "syn": [
    "Currypaste",
    "Curry"
@@ -2008,6 +2083,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 5,
+  "capWhy": "portion",
   "syn": [
    "Paprikapulver",
    "Pimentón"
@@ -2035,6 +2111,7 @@
   "groupLabel": "Würzen",
   "light": "g",
   "cap": 600,
+  "capWhy": "portion",
   "syn": [
    "Brühe",
    "Gemüsefond"
@@ -2062,6 +2139,7 @@
   "groupLabel": "Öle",
   "light": "g",
   "cap": 35,
+  "capWhy": "portion",
   "syn": [
    "Öl"
   ],
@@ -2088,6 +2166,7 @@
   "groupLabel": "Öle",
   "light": "g",
   "cap": 35,
+  "capWhy": "portion",
   "syn": [
    "Öl"
   ],
@@ -2114,6 +2193,7 @@
   "groupLabel": "Öle",
   "light": "g",
   "cap": 15,
+  "capWhy": "portion",
   "syn": [
    "Öl"
   ],
@@ -2140,6 +2220,7 @@
   "groupLabel": "Öle",
   "light": "g",
   "cap": 15,
+  "capWhy": "portion",
   "syn": [
    "Öl"
   ],
@@ -2166,6 +2247,7 @@
   "groupLabel": "Öle",
   "light": "g",
   "cap": 35,
+  "capWhy": "portion",
   "syn": [
    "Öl"
   ],
@@ -2192,6 +2274,7 @@
   "groupLabel": "Öle",
   "light": "y",
   "cap": 10,
+  "capWhy": "portion",
   "syn": [
    "Kokosfett"
   ],
@@ -2221,6 +2304,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 40,
+  "capWhy": "portion",
   "syn": [
    "Walnüsse",
    "Walnuss"
@@ -2250,7 +2334,8 @@
   "group": "nuss",
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
-  "cap": 40,
+  "cap": 35,
+  "capWhy": "eiweiss",
   "syn": [
    "Mandel"
   ],
@@ -2280,6 +2365,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 40,
+  "capWhy": "portion",
   "syn": [
    "Haselnuss",
    "Haselnusskerne"
@@ -2307,6 +2393,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 40,
+  "capWhy": "portion",
   "syn": [
    "Pekannuss"
   ],
@@ -2333,6 +2420,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 40,
+  "capWhy": "portion",
   "syn": [
    "Macadamianüsse"
   ],
@@ -2359,6 +2447,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 10,
+  "capWhy": "portion",
   "syn": [
    "Paranuss"
   ],
@@ -2384,7 +2473,8 @@
   "group": "nuss",
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
-  "cap": 40,
+  "cap": 35,
+  "capWhy": "eiweiss",
   "syn": [
    "Pistazie"
   ],
@@ -2410,7 +2500,8 @@
   "group": "nuss",
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
-  "cap": 40,
+  "cap": 35,
+  "capWhy": "eiweiss",
   "syn": [
    "Cashew",
    "Cashews"
@@ -2438,6 +2529,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "y",
   "cap": 20,
+  "capWhy": "portion",
   "syn": [
    "Erdnuss"
   ],
@@ -2466,7 +2558,8 @@
   "group": "nuss",
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
-  "cap": 40,
+  "cap": 22,
+  "capWhy": "eiweiss",
   "syn": [],
   "alts": [],
   "why": "",
@@ -2490,7 +2583,8 @@
   "group": "nuss",
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
-  "cap": 40,
+  "cap": 30,
+  "capWhy": "eiweiss",
   "syn": [],
   "alts": [],
   "why": "",
@@ -2514,7 +2608,8 @@
   "group": "nuss",
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
-  "cap": 40,
+  "cap": 35,
+  "capWhy": "eiweiss",
   "syn": [],
   "alts": [],
   "why": "",
@@ -2539,6 +2634,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 20,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -2563,6 +2659,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 20,
+  "capWhy": "portion",
   "syn": [
    "Chia"
   ],
@@ -2589,6 +2686,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [
    "Sesammus",
    "Tahini"
@@ -2616,6 +2714,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "g",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -2640,6 +2739,7 @@
   "groupLabel": "Nüsse und Saaten",
   "light": "y",
   "cap": 15,
+  "capWhy": "portion",
   "syn": [
    "Erdnussbutter"
   ],
@@ -2669,6 +2769,7 @@
   "groupLabel": "Oliven, Avocado, Kokos",
   "light": "g",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Oliven",
    "Olive"
@@ -2696,6 +2797,7 @@
   "groupLabel": "Oliven, Avocado, Kokos",
   "light": "g",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Oliven",
    "Kalamata"
@@ -2723,6 +2825,7 @@
   "groupLabel": "Oliven, Avocado, Kokos",
   "light": "g",
   "cap": 120,
+  "capWhy": "portion",
   "syn": [],
   "alts": [],
   "why": "",
@@ -2750,6 +2853,7 @@
   "groupLabel": "Oliven, Avocado, Kokos",
   "light": "g",
   "cap": 100,
+  "capWhy": "portion",
   "syn": [
    "Kokosmilch"
   ],
@@ -2776,6 +2880,7 @@
   "groupLabel": "Getränke",
   "light": "g",
   "cap": 250,
+  "capWhy": "portion",
   "syn": [
    "Mandelmilch"
   ],
@@ -2802,6 +2907,7 @@
   "groupLabel": "Kartoffeln und Stärkegemüse",
   "light": "y",
   "cap": 200,
+  "capWhy": "portion",
   "syn": [
    "Kartoffel",
    "Erdäpfel"
@@ -2835,6 +2941,7 @@
   "groupLabel": "Kartoffeln und Stärkegemüse",
   "light": "y",
   "cap": 150,
+  "capWhy": "portion",
   "syn": [
    "Süßkartoffeln",
    "Batate"
@@ -2865,6 +2972,7 @@
   "groupLabel": "Hülsenfrüchte",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "weiße Bohnen",
    "Cannellini"
@@ -2895,6 +3003,7 @@
   "groupLabel": "Hülsenfrüchte",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Kichererbsen"
   ],
@@ -2924,6 +3033,7 @@
   "groupLabel": "Hülsenfrüchte",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "rote Linsen",
    "Linsen"
@@ -2954,6 +3064,7 @@
   "groupLabel": "Hülsenfrüchte",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Linsen",
    "Tellerlinsen",
@@ -2982,6 +3093,7 @@
   "groupLabel": "Hülsenfrüchte",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Kidneybohnen",
    "rote Bohnen"
@@ -3012,6 +3124,7 @@
   "groupLabel": "Soja",
   "light": "y",
   "cap": 60,
+  "capWhy": "portion",
   "syn": [
    "Sojabohnen"
   ],
@@ -3040,7 +3153,8 @@
   "group": "soja",
   "groupLabel": "Soja",
   "light": "y",
-  "cap": 60,
+  "cap": 50,
+  "capWhy": "eiweiss",
   "syn": [
    "Räuchertofu"
   ],
@@ -3069,7 +3183,8 @@
   "group": "getreide",
   "groupLabel": "Getreide",
   "light": "y",
-  "cap": 100,
+  "cap": 120,
+  "capWhy": "portion",
   "syn": [
    "Hirse"
   ],
@@ -3098,7 +3213,8 @@
   "group": "getreide",
   "groupLabel": "Getreide",
   "light": "y",
-  "cap": 100,
+  "cap": 120,
+  "capWhy": "portion",
   "syn": [
    "Quinoa"
   ],
@@ -3127,7 +3243,8 @@
   "group": "getreide",
   "groupLabel": "Getreide",
   "light": "y",
-  "cap": 100,
+  "cap": 120,
+  "capWhy": "portion",
   "syn": [
    "Buchweizen"
   ],
@@ -3156,7 +3273,8 @@
   "group": "getreide",
   "groupLabel": "Getreide",
   "light": "y",
-  "cap": 100,
+  "cap": 120,
+  "capWhy": "portion",
   "syn": [
    "Reis",
    "Naturreis",
@@ -3188,6 +3306,7 @@
   "groupLabel": "Getreide",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Reis",
    "weißer Reis",
@@ -3220,6 +3339,7 @@
   "groupLabel": "Getreide",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Bulgur"
   ],
@@ -3249,6 +3369,7 @@
   "groupLabel": "Getreide",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [
    "Couscous"
   ],
@@ -3278,6 +3399,7 @@
   "groupLabel": "Getreide",
   "light": "y",
   "cap": 30,
+  "capWhy": "portion",
   "syn": [
    "Hafer",
    "Porridge"
@@ -3308,10 +3430,12 @@
   "groupLabel": "Getreide",
   "light": "y",
   "cap": 40,
+  "capWhy": "portion",
   "syn": [
    "Brot",
    "Roggenbrot",
-   "Schwarzbrot"
+   "Dinkelbrot",
+   "Vollkorntoast"
   ],
   "alts": [
    "Gurke",
@@ -3338,7 +3462,8 @@
   "group": "obst",
   "groupLabel": "Obst",
   "light": "y",
-  "cap": 150,
+  "cap": 120,
+  "capWhy": "zucker",
   "syn": [
    "Äpfel"
   ],
@@ -3370,7 +3495,8 @@
   "group": "obst",
   "groupLabel": "Obst",
   "light": "y",
-  "cap": 150,
+  "cap": 130,
+  "capWhy": "zucker",
   "syn": [
    "Birnen"
   ],
@@ -3403,6 +3529,7 @@
   "groupLabel": "Obst",
   "light": "y",
   "cap": 150,
+  "capWhy": "portion",
   "syn": [
    "Orangen",
    "Apfelsine"
@@ -3435,7 +3562,8 @@
   "group": "obst",
   "groupLabel": "Obst",
   "light": "y",
-  "cap": 150,
+  "cap": 130,
+  "capWhy": "zucker",
   "syn": [
    "Mandarinen",
    "Clementine"
@@ -3469,6 +3597,7 @@
   "groupLabel": "Obst",
   "light": "y",
   "cap": 150,
+  "capWhy": "portion",
   "syn": [],
   "alts": [
    "Orange",
@@ -3496,6 +3625,7 @@
   "groupLabel": "Obst",
   "light": "y",
   "cap": 100,
+  "capWhy": "portion",
   "syn": [
    "Blaubeeren",
    "Beeren"
@@ -3523,6 +3653,7 @@
   "groupLabel": "Obst",
   "light": "y",
   "cap": 100,
+  "capWhy": "portion",
   "syn": [
    "Beeren"
   ],
@@ -3549,6 +3680,7 @@
   "groupLabel": "Obst",
   "light": "y",
   "cap": 150,
+  "capWhy": "portion",
   "syn": [
    "Beeren"
   ],
@@ -3574,7 +3706,8 @@
   "group": "obst",
   "groupLabel": "Obst",
   "light": "y",
-  "cap": 150,
+  "cap": 130,
+  "capWhy": "zucker",
   "syn": [],
   "alts": [
    "Erdbeeren",
@@ -3605,6 +3738,7 @@
   "groupLabel": "Obst",
   "light": "y",
   "cap": 60,
+  "capWhy": "portion",
   "syn": [
    "Bananen"
   ],
@@ -3637,6 +3771,7 @@
   "groupLabel": "Obst",
   "light": "y",
   "cap": 80,
+  "capWhy": "portion",
   "syn": [],
   "alts": [
    "Erdbeeren",
@@ -3664,6 +3799,7 @@
   "groupLabel": "Zucker und Süßes",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Dattel",
    "Trockenobst"
@@ -3694,6 +3830,7 @@
   "groupLabel": "Zucker und Süßes",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Haushaltszucker",
    "Rohrzucker"
@@ -3725,6 +3862,7 @@
   "groupLabel": "Zucker und Süßes",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Ahornsirup",
    "Sirup"
@@ -3756,6 +3894,7 @@
   "groupLabel": "Zucker und Süßes",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Milchschokolade",
    "Süßigkeiten",
@@ -3788,10 +3927,11 @@
   "groupLabel": "Zucker und Süßes",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Rührkuchen",
    "Gebäck",
-   "Kekse"
+   "Torte"
   ],
   "alts": [
    "Apfel",
@@ -3819,6 +3959,7 @@
   "groupLabel": "Weißmehl und Snacks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Toast",
    "Brötchen",
@@ -3853,6 +3994,7 @@
   "groupLabel": "Weißmehl und Snacks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Pasta",
    "Spaghetti",
@@ -3885,6 +4027,7 @@
   "groupLabel": "Weißmehl und Snacks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Gebäck",
    "Plunder"
@@ -3917,6 +4060,7 @@
   "groupLabel": "Weißmehl und Snacks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Chips"
   ],
@@ -3946,6 +4090,7 @@
   "groupLabel": "Weißmehl und Snacks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Pommes"
   ],
@@ -3975,6 +4120,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Huhn",
    "Hühnchen",
@@ -4011,6 +4157,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Rind",
    "Hackfleisch",
@@ -4045,6 +4192,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Schwein",
    "Schnitzel"
@@ -4077,6 +4225,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Wurst",
    "Aufschnitt"
@@ -4109,6 +4258,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Schinken"
   ],
@@ -4140,6 +4290,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Fisch",
    "Räucherlachs"
@@ -4171,6 +4322,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Fisch",
    "Thunfischdose"
@@ -4201,6 +4353,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Shrimps",
    "Krabben",
@@ -4232,6 +4385,7 @@
   "groupLabel": "Fleisch, Fisch und Ei",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Ei",
    "Hühnerei",
@@ -4265,6 +4419,7 @@
   "groupLabel": "Milchprodukte",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Kuhmilch",
    "Vollmilch"
@@ -4294,6 +4449,7 @@
   "groupLabel": "Milchprodukte",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Naturjoghurt",
    "Skyr"
@@ -4324,6 +4480,7 @@
   "groupLabel": "Milchprodukte",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Magerquark",
    "Topfen"
@@ -4354,11 +4511,12 @@
   "groupLabel": "Milchprodukte",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Gouda",
    "Bergkäse",
-   "Parmesan",
-   "Emmentaler"
+   "Emmentaler",
+   "Cheddar"
   ],
   "alts": [
    "Cashewkerne",
@@ -4387,6 +4545,7 @@
   "groupLabel": "Milchprodukte",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Burrata"
   ],
@@ -4416,6 +4575,7 @@
   "groupLabel": "Milchprodukte",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Schafskäse",
    "Hirtenkäse"
@@ -4447,8 +4607,10 @@
   "groupLabel": "Milchprodukte",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
-   "Margarine"
+   "Butterschmalz",
+   "Ghee"
   ],
   "alts": [
    "Olivenöl",
@@ -4476,6 +4638,7 @@
   "groupLabel": "Milchprodukte",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Schlagsahne",
    "Rahm",
@@ -4507,6 +4670,7 @@
   "groupLabel": "Kaffee, Alkohol, Softdrinks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Espresso",
    "Cappuccino",
@@ -4539,6 +4703,7 @@
   "groupLabel": "Kaffee, Alkohol, Softdrinks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Pils",
    "Alkohol"
@@ -4570,6 +4735,7 @@
   "groupLabel": "Kaffee, Alkohol, Softdrinks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Rotwein",
    "Weißwein",
@@ -4603,6 +4769,7 @@
   "groupLabel": "Kaffee, Alkohol, Softdrinks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Saft",
    "Fruchtsaft",
@@ -4634,10 +4801,12 @@
   "groupLabel": "Kaffee, Alkohol, Softdrinks",
   "light": "r",
   "cap": 0,
+  "capWhy": "portion",
   "syn": [
    "Limonade",
    "Softdrink",
-   "Eistee"
+   "Eistee",
+   "Energydrink"
   ],
   "alts": [
    "Kräutertee",
@@ -4666,6 +4835,7 @@
   "groupLabel": "Getränke",
   "light": "g",
   "cap": 1000,
+  "capWhy": "portion",
   "syn": [
    "Tee",
    "Pfefferminztee",
@@ -4687,6 +4857,4223 @@
    "db": "BLS",
    "code": "N720100",
    "name": "Kräutertee (Getränk)"
+  }
+ },
+ {
+  "name": "Spitzkohl",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 300,
+  "capWhy": "zucker",
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   31.0,
+   1.21,
+   0.18,
+   7.54,
+   4.4,
+   3.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G344100",
+   "name": "Spitzkohl roh"
+  }
+ },
+ {
+  "name": "Romanesco",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 330,
+  "capWhy": "eiweiss",
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   35.0,
+   2.42,
+   0.28,
+   8.23,
+   2.16,
+   2.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G350100",
+   "name": "Romanesco roh"
+  }
+ },
+ {
+  "name": "Schwarzwurzeln",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 330,
+  "capWhy": "zucker",
+  "syn": [
+   "Schwarzwurzel"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   61.0,
+   1.39,
+   0.43,
+   13.8,
+   4.0,
+   5.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G650100",
+   "name": "Schwarzwurzel roh"
+  }
+ },
+ {
+  "name": "Topinambur",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 330,
+  "capWhy": "zucker",
+  "syn": [
+   "Erdartischocke"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   55.0,
+   2.44,
+   0.41,
+   16.07,
+   4.0,
+   12.07
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K430100",
+   "name": "Topinambur/Erdartischocke, roh"
+  }
+ },
+ {
+  "name": "Petersilienwurzel",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 220,
+  "capWhy": "zucker",
+  "syn": [
+   "Wurzelpetersilie"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   76.0,
+   2.88,
+   0.47,
+   15.93,
+   6.05,
+   2.13
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G670100",
+   "name": "Wurzelpetersilie roh"
+  }
+ },
+ {
+  "name": "Weiße Rübe",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 230,
+  "capWhy": "zucker",
+  "syn": [
+   "Mairübe",
+   "Teltower Rübchen",
+   "Navet"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   40.0,
+   0.99,
+   0.22,
+   10.07,
+   5.67,
+   3.49
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G614100",
+   "name": "Weiße Rübe/Wasserrübe/Herbstrübe, roh"
+  }
+ },
+ {
+  "name": "Rote Bete (roh)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 180,
+  "capWhy": "zucker",
+  "syn": [
+   "Rote Bete roh",
+   "Rote Rübe roh"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   43.0,
+   2.06,
+   0.1,
+   9.72,
+   7.22,
+   2.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G613100",
+   "name": "Rote Rübe/Rote Bete, roh"
+  }
+ },
+ {
+  "name": "Spinat (TK)",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "capWhy": "portion",
+  "syn": [
+   "Rahmspinat",
+   "Tiefkühlspinat",
+   "Spinat tiefgekühlt"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   20.0,
+   2.31,
+   0.32,
+   2.88,
+   0.79,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G211200",
+   "name": "Spinat tiefgefroren"
+  }
+ },
+ {
+  "name": "Rhabarber",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   20.0,
+   0.6,
+   0.14,
+   4.56,
+   1.13,
+   3.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F081100",
+   "name": "Rhabarber roh"
+  }
+ },
+ {
+  "name": "Löwenzahn",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "capWhy": "portion",
+  "syn": [
+   "Löwenzahnblätter"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   34.0,
+   3.13,
+   0.62,
+   5.46,
+   2.35,
+   3.02
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G262100",
+   "name": "Löwenzahn roh"
+  }
+ },
+ {
+  "name": "Portulak",
+  "group": "blatt",
+  "groupLabel": "Salat und Blattgemüse",
+  "light": "g",
+  "cap": 250,
+  "capWhy": "portion",
+  "syn": [
+   "Postelein",
+   "Winterportulak"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   14.0,
+   1.48,
+   0.34,
+   2.19,
+   0.19,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G460100",
+   "name": "Portulak roh"
+  }
+ },
+ {
+  "name": "Bambussprossen",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "capWhy": "portion",
+  "syn": [
+   "Bambus"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   11.0,
+   1.72,
+   0.21,
+   0.56,
+   0.56,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H610902",
+   "name": "Bambussprossen Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Mungbohnensprossen",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 250,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Sprossen",
+   "Keimlinge",
+   "Sojasprossen aus Mungbohnen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   19.0,
+   3.2,
+   0.3,
+   1.54,
+   0.3,
+   1.24
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H650100",
+   "name": "Mungbohnensprossen/Mungbohnenkeimlinge, roh"
+  }
+ },
+ {
+  "name": "Sojasprossen",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 120,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Sprossen",
+   "Keimlinge"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   40.0,
+   6.31,
+   1.02,
+   2.68,
+   0.3,
+   2.38
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H620100",
+   "name": "Sojabohnensprossen/Sojabohnenkeimlinge, roh"
+  }
+ },
+ {
+  "name": "Alfalfasprossen",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "Sprossen",
+   "Keimlinge",
+   "Luzerne"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   29.0,
+   4.0,
+   0.69,
+   3.1,
+   0.3,
+   2.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H640100",
+   "name": "Alfalfasprossen/Alfalfakeimlinge, roh"
+  }
+ },
+ {
+  "name": "Chili",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Chilischote",
+   "Peperoncini",
+   "Pfefferschote",
+   "Jalapeño"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   40.0,
+   1.87,
+   0.44,
+   7.69,
+   6.19,
+   1.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G554100",
+   "name": "Pfefferschote rot, roh"
+  }
+ },
+ {
+  "name": "Peperoni (eingelegt)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "Peperoni",
+   "Pfefferoni",
+   "Pfefferschoten eingelegt"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   53.0,
+   1.8,
+   0.3,
+   10.66,
+   9.02,
+   1.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G550802",
+   "name": "Pfefferschote gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Salzgurken",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Salzdillgurke",
+   "Dillgurke",
+   "fermentierte Gurken"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   12.0,
+   0.52,
+   0.0,
+   2.08,
+   1.36,
+   0.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G890702",
+   "name": "Salzgurke/Salzdillgurke, milchsauer fermentiert, abgetropft"
+  }
+ },
+ {
+  "name": "Tomaten (Dose)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "geschälte Tomaten",
+   "Dosentomaten",
+   "gehackte Tomaten",
+   "Pelati"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   24.0,
+   1.2,
+   0.3,
+   4.15,
+   3.25,
+   0.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G568900",
+   "name": "Tomate geschält, Konserve"
+  }
+ },
+ {
+  "name": "Getrocknete Tomaten",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Tomaten getrocknet",
+   "sonnengetrocknete Tomaten"
+  ],
+  "alts": [
+   "Tomaten",
+   "Tomatenmark"
+  ],
+  "why": "Konzentriert: drei, vier Stück bringen schon so viel Zucker wie eine ganze Schale frischer Tomaten.",
+  "piece": null,
+  "n": [
+   276.0,
+   12.19,
+   1.41,
+   58.36,
+   41.66,
+   16.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G560400",
+   "name": "Tomate getrocknet"
+  }
+ },
+ {
+  "name": "Champignons (Dose)",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 140,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Champignons Glas",
+   "Pilze Dose"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   43.0,
+   5.52,
+   0.82,
+   5.77,
+   0.11,
+   2.54
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K701902",
+   "name": "Champignon Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Steinpilze",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 150,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Herrenpilz",
+   "Pilze"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   46.0,
+   5.4,
+   0.4,
+   9.29,
+   0.53,
+   6.02
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K718100",
+   "name": "Steinpilz roh"
+  }
+ },
+ {
+  "name": "Nori",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 5,
+  "capWhy": "portion",
+  "syn": [
+   "Algen",
+   "Seetang",
+   "Noriblatt",
+   "Sushi-Algen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Blatt",
+   3
+  ],
+  "n": [
+   261.0,
+   38.26,
+   4.36,
+   32.36,
+   0.48,
+   30.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G995000",
+   "name": "Nori-Blatt geröstet"
+  }
+ },
+ {
+  "name": "Bärlauch",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "wilder Knoblauch"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   26.0,
+   1.9,
+   0.19,
+   5.11,
+   2.89,
+   2.18
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G492100",
+   "name": "Bärlauch roh"
+  }
+ },
+ {
+  "name": "Koriander",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Koriandergrün",
+   "Cilantro"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   23,
+   2.1,
+   0.5,
+   3.7,
+   0.9,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Thymian",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   101,
+   5.6,
+   1.7,
+   24.5,
+   0,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Rosmarin",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   131,
+   3.3,
+   5.9,
+   20.7,
+   0,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Oregano (getrocknet)",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 5,
+  "capWhy": "portion",
+  "syn": [
+   "Oregano",
+   "Majoran",
+   "Kräuter der Provence",
+   "italienische Kräuter"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   265,
+   9.0,
+   4.3,
+   68.9,
+   4.1,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kurkuma",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 5,
+  "capWhy": "portion",
+  "syn": [
+   "Gelbwurz",
+   "Curcuma"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   312,
+   9.7,
+   3.3,
+   67.1,
+   3.2,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kreuzkümmel",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 5,
+  "capWhy": "portion",
+  "syn": [
+   "Cumin",
+   "Kumin"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   375,
+   17.8,
+   22.3,
+   44.2,
+   2.3,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Currypulver",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 5,
+  "capWhy": "portion",
+  "syn": [
+   "Curry",
+   "Garam Masala"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   325,
+   14.3,
+   14.0,
+   55.8,
+   2.8,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Zimt",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 5,
+  "capWhy": "portion",
+  "syn": [
+   "Zimtpulver",
+   "Ceylon-Zimt"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   247,
+   4.0,
+   1.2,
+   80.6,
+   2.2,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Chiliflocken",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 3,
+  "capWhy": "portion",
+  "syn": [
+   "Cayennepfeffer",
+   "Chilipulver",
+   "Pul Biber"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   318,
+   12.0,
+   17.3,
+   56.6,
+   10.3,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Muskatnuss",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 2,
+  "capWhy": "portion",
+  "syn": [
+   "Muskat"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   525,
+   5.8,
+   36.3,
+   49.3,
+   28.5,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Pfeffer",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 5,
+  "capWhy": "portion",
+  "syn": [
+   "schwarzer Pfeffer",
+   "Pfefferkörner"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   304.0,
+   10.92,
+   2.77,
+   71.57,
+   0.67,
+   25.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R258100",
+   "name": "Pfeffer schwarz, getrocknet"
+  }
+ },
+ {
+  "name": "Salz",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 6,
+  "capWhy": "portion",
+  "syn": [
+   "Jodsalz",
+   "Meersalz",
+   "Speisesalz"
+  ],
+  "alts": [],
+  "why": "Etwas Salz ist okay, die Brühe bringt schon welches mit. Mehr als ein Teelöffel am Tag sollte es nicht werden.",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R114000",
+   "name": "Speisesalz jodiert/Jodsalz"
+  }
+ },
+ {
+  "name": "Senf",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Dijonsenf",
+   "Senf mittelscharf"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   111.0,
+   5.51,
+   6.96,
+   7.44,
+   2.76,
+   4.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R132000",
+   "name": "Senf mittelscharf"
+  }
+ },
+ {
+  "name": "Sojasauce",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Sojasoße",
+   "Tamari",
+   "Shoyu"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   66.0,
+   6.3,
+   0.88,
+   6.61,
+   4.89,
+   1.14
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R143000",
+   "name": "Sojasauce/Sojasoße"
+  }
+ },
+ {
+  "name": "Hefeflocken",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Edelhefeflocken",
+   "Nährhefe"
+  ],
+  "alts": [],
+  "why": "Schmecken käsig und würzig, sind aber zur Hälfte Eiweiß. Ein Esslöffel reicht.",
+  "piece": null,
+  "n": [
+   400,
+   50.0,
+   5.0,
+   33.0,
+   0,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Weinessig",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Weißweinessig",
+   "Rotweinessig",
+   "Branntweinessig",
+   "Kräuteressig"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   25.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R121000",
+   "name": "Weinessig"
+  }
+ },
+ {
+  "name": "Zitrone",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Zitronen",
+   "Zitronenschale"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   60
+  ],
+  "n": [
+   40.0,
+   0.7,
+   0.4,
+   4.45,
+   3.16,
+   1.29
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F601100",
+   "name": "Zitrone roh"
+  }
+ },
+ {
+  "name": "Limette",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Limetten"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Stück",
+   45
+  ],
+  "n": [
+   28.0,
+   0.5,
+   0.2,
+   3.19,
+   1.9,
+   1.29
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F602100",
+   "name": "Limette roh"
+  }
+ },
+ {
+  "name": "Ketchup",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Tomatenketchup",
+   "Curryketchup",
+   "BBQ-Sauce"
+  ],
+  "alts": [
+   "Tomatenmark",
+   "Tomaten, passiert"
+  ],
+  "why": "Ein Fünftel Ketchup ist Zucker. Tomatenmark mit etwas Essig und Gewürzen schmeckt ähnlich.",
+  "piece": null,
+  "n": [
+   98.0,
+   1.4,
+   0.1,
+   22.97,
+   20.82,
+   1.81
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R141100",
+   "name": "Tomatenketchup"
+  }
+ },
+ {
+  "name": "Pesto",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Pesto verde",
+   "Basilikumpesto",
+   "Pesto Genovese"
+  ],
+  "alts": [
+   "Basilikum",
+   "Olivenöl",
+   "Pinienkerne"
+  ],
+  "why": "Klassisches Pesto enthält Parmesan. Basilikum mit Olivenöl und ein paar Pinienkernen gemixt passt.",
+  "piece": null,
+  "n": [
+   542.0,
+   6.7,
+   56.5,
+   2.8,
+   0.7,
+   2.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X372012",
+   "name": "Pesto verde"
+  }
+ },
+ {
+  "name": "Kürbiskernöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q250000",
+   "name": "Kürbiskernöl"
+  }
+ },
+ {
+  "name": "Hanföl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q170000",
+   "name": "Hanföl"
+  }
+ },
+ {
+  "name": "Sonnenblumenöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q320000",
+   "name": "Sonnenblumenöl"
+  }
+ },
+ {
+  "name": "Erdnussöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   899.0,
+   0.0,
+   99.9,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q210000",
+   "name": "Erdnussöl"
+  }
+ },
+ {
+  "name": "Traubenkernöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q330000",
+   "name": "Traubenkernöl"
+  }
+ },
+ {
+  "name": "Margarine",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "vegane Margarine",
+   "Pflanzenmargarine",
+   "Streichfett"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Pflanzlich, aber stark verarbeitet. Longo setzt auf Olivenöl und Nüsse.",
+  "piece": null,
+  "n": [
+   720.0,
+   0.17,
+   79.94,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q4A4000",
+   "name": "Sonnenblumenmargarine Vollfett, angereichert mit Vitamin D"
+  }
+ },
+ {
+  "name": "Pinienkerne",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "capWhy": "portion",
+  "syn": [
+   "Pinienkern"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   660.0,
+   16.4,
+   61.9,
+   12.6,
+   4.0,
+   6.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H320100",
+   "name": "Pinienkern"
+  }
+ },
+ {
+  "name": "Hanfsamen",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 25,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Hanfsamen geschält",
+   "Hanfherzen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   553,
+   31.6,
+   48.8,
+   8.7,
+   1.5,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Mohn",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Mohnsamen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   528.0,
+   23.82,
+   42.2,
+   23.49,
+   2.99,
+   20.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H450100",
+   "name": "Mohn"
+  }
+ },
+ {
+  "name": "Cashewmus",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Cashewkernmus",
+   "Cashewbutter"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   623.0,
+   17.6,
+   49.4,
+   28.0,
+   6.15,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F960800",
+   "name": "Cashewnussmus"
+  }
+ },
+ {
+  "name": "Haselnussmus",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Haselnussbutter"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   669.0,
+   16.41,
+   63.94,
+   9.7,
+   3.89,
+   5.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H130800",
+   "name": "Haselnussmus"
+  }
+ },
+ {
+  "name": "Kokosraspeln",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Kokosflocken",
+   "Kokoschips"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Mandeln"
+  ],
+  "why": "Viel gesättigtes Fett wie beim Kokosöl. Als Topping okay, Nüsse passen besser.",
+  "piece": null,
+  "n": [
+   676.0,
+   7.38,
+   65.2,
+   22.6,
+   7.1,
+   14.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H150400",
+   "name": "Kokos Fruchtfleisch, geraspelt, getrocknet"
+  }
+ },
+ {
+  "name": "Kokosnuss (frisch)",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Kokosnuss",
+   "Kokos"
+  ],
+  "alts": [
+   "Avocado",
+   "Walnusskerne"
+  ],
+  "why": "Viel gesättigtes Fett wie beim Kokosöl. Ein kleines Stück ist okay.",
+  "piece": null,
+  "n": [
+   378.0,
+   4.62,
+   36.5,
+   11.83,
+   3.5,
+   8.33
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H150100",
+   "name": "Kokos Fruchtfleisch, roh"
+  }
+ },
+ {
+  "name": "Kichererbsen (Dose)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Kichererbsen Konserve",
+   "Kichererbsen abgetropft"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Champignons"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   136.0,
+   7.5,
+   2.7,
+   25.3,
+   1.2,
+   9.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H720902",
+   "name": "Kichererbse reif, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Mungbohnen (gegart)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Mungbohnen",
+   "Mungobohnen"
+  ],
+  "alts": [
+   "Zuckerschoten",
+   "Champignons"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   111.0,
+   8.6,
+   0.7,
+   20.6,
+   0.5,
+   6.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H770132",
+   "name": "Mungbohne reif, gekocht"
+  }
+ },
+ {
+  "name": "Trockenerbsen (gegart)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Schälerbsen",
+   "gelbe Erbsen",
+   "Erbsensuppe"
+  ],
+  "alts": [
+   "Zucchini",
+   "Kartoffeln"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   117.0,
+   8.74,
+   0.56,
+   23.44,
+   1.2,
+   8.54
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G760432",
+   "name": "Erbse reif, gekocht"
+  }
+ },
+ {
+  "name": "Hummus",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "Humus",
+   "Kichererbsenmus",
+   "Kichererbsendip"
+  ],
+  "alts": [
+   "Tahin",
+   "Avocado"
+  ],
+  "why": "Kichererbsen mit Tahin und Öl: lecker, aber gehaltvoll. Zwei Esslöffel passen gut.",
+  "piece": null,
+  "n": [
+   324.0,
+   5.9,
+   28.5,
+   13.9,
+   0.7,
+   5.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H960000",
+   "name": "Hummus/Kichererbsenmus"
+  }
+ },
+ {
+  "name": "Falafel",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "r",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Kichererbsenbällchen"
+  ],
+  "alts": [
+   "Kichererbsen (gegart)",
+   "Hummus"
+  ],
+  "why": "Frittiert. Ofen-Kichererbsen oder Hummus liefern den Geschmack ohne Fettbad.",
+  "piece": null,
+  "n": [
+   193.0,
+   8.88,
+   8.0,
+   24.5,
+   1.7,
+   7.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Y9A1050",
+   "name": "Falafel (Kichererbsenbällchen) frittiert"
+  }
+ },
+ {
+  "name": "Seidentofu",
+  "group": "soja",
+  "groupLabel": "Soja",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Silken Tofu"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Avocado"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   46.0,
+   4.57,
+   2.9,
+   0.6,
+   0.0,
+   0.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H861100",
+   "name": "Seidentofu"
+  }
+ },
+ {
+  "name": "Sojajoghurt",
+  "group": "soja",
+  "groupLabel": "Soja",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Joghurtalternative",
+   "Sojaghurt",
+   "veganer Joghurt"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Avocado"
+  ],
+  "why": "Ungesüßt eine gute Basis für Dressings. Viel davon bringt zu viel Eiweiß.",
+  "piece": null,
+  "n": [
+   44.0,
+   4.17,
+   2.67,
+   0.33,
+   0.16,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H844000",
+   "name": "Soja-Joghurtalternative ungesüßt"
+  }
+ },
+ {
+  "name": "Sojadrink",
+  "group": "soja",
+  "groupLabel": "Soja",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Sojamilch"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Haferdrink"
+  ],
+  "why": "Ungesüßt okay, aber eiweißreicher als Mandel- oder Haferdrink.",
+  "piece": null,
+  "n": [
+   30.0,
+   3.22,
+   1.3,
+   2.15,
+   0.39,
+   1.75
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H841100",
+   "name": "Sojadrink ungesüßt"
+  }
+ },
+ {
+  "name": "Tempeh",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Tempe"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   192,
+   20.3,
+   10.8,
+   7.6,
+   0,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Seitan",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Weizeneiweiß",
+   "Weizengluten"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   199.0,
+   28.4,
+   7.2,
+   6.1,
+   0.47,
+   2.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C558000",
+   "name": "Fleischersatz glutenhaltig (Seitan)"
+  }
+ },
+ {
+  "name": "Sojagranulat",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sojaschnetzel",
+   "Sojahack",
+   "Sojafleisch",
+   "texturiertes Soja"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   351.0,
+   50.2,
+   6.74,
+   31.51,
+   13.46,
+   18.05
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H765000",
+   "name": "Sojaschnetzel/Sojagranulat, texturiert, trocken"
+  }
+ },
+ {
+  "name": "Veggie-Wurst",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "vegane Wurst",
+   "vegetarische Wurst",
+   "Wurstalternative",
+   "Fleischersatz",
+   "Veggie-Aufschnitt"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   195.0,
+   16.8,
+   11.25,
+   7.47,
+   1.82,
+   2.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H930000",
+   "name": "Veganer Aufschnitt (Wurstalternative)"
+  }
+ },
+ {
+  "name": "Veggie-Burger",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "vegetarische Bratwurst",
+   "Veggie-Bratwurst",
+   "Burger-Patty vegan",
+   "Veggie-Frikadelle"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   195.0,
+   18.38,
+   9.79,
+   10.78,
+   2.66,
+   5.47
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H910300",
+   "name": "Vegetarische Bratwurst (aus Tofu und Weizenprotein)"
+  }
+ },
+ {
+  "name": "Haferdrink",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Hafermilch",
+   "Haferdrink ungesüßt"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt"
+  ],
+  "why": "Der Hafer bringt natürlichen Zucker mit. Ein Schuss im Tee passt, Mandeldrink ist zuckerärmer.",
+  "piece": null,
+  "n": [
+   29.0,
+   0.74,
+   1.01,
+   4.45,
+   3.81,
+   0.45
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C660000",
+   "name": "Haferdrink ungesüßt"
+  }
+ },
+ {
+  "name": "Reisdrink",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Reismilch"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt"
+  ],
+  "why": "Schmeckt süß, weil die Stärke beim Herstellen zu Zucker wird. Mandeldrink ist die bessere Wahl.",
+  "piece": null,
+  "n": [
+   59.0,
+   0.0,
+   1.04,
+   12.31,
+   6.58,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C650000",
+   "name": "Reisdrink ungesüßt"
+  }
+ },
+ {
+  "name": "Kokoswasser",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [
+   "Wasser",
+   "Kräutertee"
+  ],
+  "why": "Leicht süß. Ein Glas ist okay, Wasser und Kräutertee sind die Basis.",
+  "piece": null,
+  "n": [
+   10.0,
+   0.25,
+   0.4,
+   1.28,
+   1.28,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H151000",
+   "name": "Kokoswasser (Fruchtwasser)"
+  }
+ },
+ {
+  "name": "Gemüsesaft",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Tomatensaft",
+   "Möhrensaft",
+   "Karottensaft",
+   "Rote-Bete-Saft"
+  ],
+  "alts": [
+   "Gemüsebrühe",
+   "Kräutertee"
+  ],
+  "why": "Ein Glas passt, im Saft fehlt aber die Sättigung vom ganzen Gemüse.",
+  "piece": null,
+  "n": [
+   20.0,
+   0.84,
+   0.2,
+   3.4,
+   3.2,
+   0.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G090600",
+   "name": "Gemüsesaft aus Gemüsemischung"
+  }
+ },
+ {
+  "name": "Wasser",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 3000,
+  "capWhy": "portion",
+  "syn": [
+   "Trinkwasser",
+   "Leitungswasser"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N110000",
+   "name": "Trinkwasser"
+  }
+ },
+ {
+  "name": "Mineralwasser",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 3000,
+  "capWhy": "portion",
+  "syn": [
+   "Sprudel",
+   "Sprudelwasser",
+   "stilles Wasser"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N128000",
+   "name": "Natürliches Mineralwasser still"
+  }
+ },
+ {
+  "name": "Grüner Tee",
+  "group": "drink",
+  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Grüntee",
+   "Matcha"
+  ],
+  "alts": [
+   "Kräutertee"
+  ],
+  "why": "Enthält Koffein wie Kaffee. Kräutertee ist in diesen Tagen die entspanntere Wahl.",
+  "piece": null,
+  "n": [
+   0.0,
+   0.1,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N610100",
+   "name": "Grüntee (Getränk)"
+  }
+ },
+ {
+  "name": "Schwarzer Tee",
+  "group": "drink",
+  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Schwarztee",
+   "Earl Grey",
+   "Chai"
+  ],
+  "alts": [
+   "Kräutertee"
+  ],
+  "why": "Enthält Koffein wie Kaffee. Kräutertee ist in diesen Tagen die entspanntere Wahl.",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N630000",
+   "name": "Schwarztee (Getränk)"
+  }
+ },
+ {
+  "name": "Smoothie",
+  "group": "drink",
+  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Fruchtsmoothie",
+   "grüner Smoothie"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Gurke"
+  ],
+  "why": "Püriertes Obst ist schnell getrunkener Zucker. Ganze Beeren machen satter.",
+  "piece": null,
+  "n": [
+   57.0,
+   0.7,
+   0.3,
+   12.9,
+   10.3,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F032600",
+   "name": "Smoothie purpur (Früchte)"
+  }
+ },
+ {
+  "name": "Maiswaffeln",
+  "group": "knusper",
+  "groupLabel": "Cracker und Waffeln",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Maiscracker",
+   "Maiswaffel",
+   "Mais-Cracker",
+   "Maiskekse"
+  ],
+  "alts": [],
+  "why": "Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.",
+  "piece": [
+   "Waffel",
+   8
+  ],
+  "n": [
+   389.0,
+   7.98,
+   3.93,
+   81.62,
+   0.0,
+   2.22
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C533100",
+   "name": "Maiswaffeln gesalzen"
+  }
+ },
+ {
+  "name": "Reiswaffeln",
+  "group": "knusper",
+  "groupLabel": "Cracker und Waffeln",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Reiscracker",
+   "Reiswaffel",
+   "Puffreis",
+   "Reis-Cracker"
+  ],
+  "alts": [],
+  "why": "Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.",
+  "piece": [
+   "Waffel",
+   8
+  ],
+  "n": [
+   371.0,
+   8.0,
+   2.42,
+   81.1,
+   0.42,
+   3.63
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C532700",
+   "name": "Reiswaffeln ungesalzen"
+  }
+ },
+ {
+  "name": "Knäckebrot",
+  "group": "knusper",
+  "groupLabel": "Cracker und Waffeln",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Roggenknäcke",
+   "Vollkornknäckebrot",
+   "Knäcke"
+  ],
+  "alts": [],
+  "why": "Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.",
+  "piece": [
+   "Scheibe",
+   10
+  ],
+  "n": [
+   327.0,
+   9.44,
+   1.39,
+   79.23,
+   1.91,
+   19.91
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B6A2100",
+   "name": "Roggenvollkornknäckebrot"
+  }
+ },
+ {
+  "name": "Knäckebrot mit Saaten",
+  "group": "knusper",
+  "groupLabel": "Cracker und Waffeln",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Dinkelknäcke",
+   "Saatenknäcke",
+   "Körnerknäcke"
+  ],
+  "alts": [],
+  "why": "Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.",
+  "piece": [
+   "Scheibe",
+   12
+  ],
+  "n": [
+   429.0,
+   16.4,
+   18.2,
+   54.48,
+   2.2,
+   9.48
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B6A5100",
+   "name": "Dinkelvollkornknäckebrot mit Ölsamen"
+  }
+ },
+ {
+  "name": "Popcorn",
+  "group": "knusper",
+  "groupLabel": "Cracker und Waffeln",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Popcorn ungesüßt",
+   "Puffmais"
+  ],
+  "alts": [],
+  "why": "Ungesüßt und selbst gepoppt ein guter Knabberersatz. Eine kleine Schale reicht.",
+  "piece": null,
+  "n": [
+   338.0,
+   12.0,
+   4.4,
+   70.1,
+   0.86,
+   14.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C533000",
+   "name": "Popcorn ungesüßt"
+  }
+ },
+ {
+  "name": "Pumpernickel",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 40,
+  "capWhy": "portion",
+  "syn": [
+   "Schwarzbrot"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Gurke"
+  ],
+  "why": "Eine dünne Scheibe passt an Tag 1. Für Brot sieht Longo sonst kaum Platz vor.",
+  "piece": null,
+  "n": [
+   176.0,
+   4.84,
+   1.46,
+   40.45,
+   1.5,
+   9.35
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B780500",
+   "name": "Pumpernickel"
+  }
+ },
+ {
+  "name": "Amaranth (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 120,
+  "capWhy": "portion",
+  "syn": [
+   "Amaranth"
+  ],
+  "alts": [
+   "Hirse (gegart)",
+   "Blumenkohl"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   119.0,
+   4.48,
+   1.79,
+   22.67,
+   0.41,
+   2.79
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C335032",
+   "name": "Amaranth gekocht"
+  }
+ },
+ {
+  "name": "Grünkern (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 120,
+  "capWhy": "portion",
+  "syn": [
+   "Grünkern"
+  ],
+  "alts": [
+   "Hirse (gegart)",
+   "Blumenkohl"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   173.0,
+   5.84,
+   1.34,
+   37.65,
+   1.31,
+   6.42
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C311032",
+   "name": "Grünkern ganzes Korn, gekocht"
+  }
+ },
+ {
+  "name": "Dinkel (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Dinkel",
+   "Dinkelreis",
+   "Ebly"
+  ],
+  "alts": [
+   "Hirse (gegart)",
+   "Blumenkohl"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   177.0,
+   7.52,
+   1.22,
+   37.14,
+   0.55,
+   6.09
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C236032",
+   "name": "Dinkel ganzes Korn, gekocht"
+  }
+ },
+ {
+  "name": "Graupen (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 120,
+  "capWhy": "portion",
+  "syn": [
+   "Gerste",
+   "Perlgraupen",
+   "Rollgerste"
+  ],
+  "alts": [
+   "Hirse (gegart)",
+   "Blumenkohl"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   114.0,
+   3.8,
+   0.47,
+   24.6,
+   0.63,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C148032",
+   "name": "Gerste Graupen, gekocht"
+  }
+ },
+ {
+  "name": "Polenta (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 120,
+  "capWhy": "portion",
+  "syn": [
+   "Polenta",
+   "Maisgrieß",
+   "Maisbrei"
+  ],
+  "alts": [
+   "Hirse (gegart)",
+   "Kartoffeln"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   114.0,
+   1.71,
+   6.0,
+   14.22,
+   0.27,
+   1.85
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C526000",
+   "name": "Polenta (Maisgrieß mit Wasser, Fett und Salz) gekocht"
+  }
+ },
+ {
+  "name": "Vollkornnudeln (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Vollkornnudeln",
+   "Vollkornpasta",
+   "Dinkelnudeln"
+  ],
+  "alts": [
+   "Zucchini",
+   "Hirse (gegart)"
+  ],
+  "why": "Eine kleine Portion passt. Zucchini-Nudeln strecken sie auf einen vollen Teller.",
+  "piece": null,
+  "n": [
+   130.0,
+   5.4,
+   1.11,
+   26.5,
+   1.0,
+   3.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "E500032",
+   "name": "Vollkornteigwaren eifrei, gekocht"
+  }
+ },
+ {
+  "name": "Reisnudeln (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Reisnudeln",
+   "Reisbandnudeln"
+  ],
+  "alts": [
+   "Zucchini",
+   "Glasnudeln (gegart)"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   91.0,
+   1.89,
+   0.15,
+   20.8,
+   0.07,
+   0.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C559032",
+   "name": "Reisnudeln gekocht"
+  }
+ },
+ {
+  "name": "Glasnudeln (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Glasnudeln",
+   "Mungbohnennudeln"
+  ],
+  "alts": [
+   "Zucchini",
+   "Mungbohnensprossen"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   92.0,
+   0.07,
+   0.01,
+   23.81,
+   0.0,
+   1.57
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H030432",
+   "name": "Glasnudeln aus Mungbohnenstärke, gekocht"
+  }
+ },
+ {
+  "name": "Apfelmus ungesüßt",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Apfelmus",
+   "Apfelmark",
+   "Apfelkompott"
+  ],
+  "alts": [
+   "Apfel",
+   "Heidelbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   63.0,
+   0.4,
+   0.27,
+   15.21,
+   11.1,
+   1.14
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F923900",
+   "name": "Apfelkompott/Apfelmark, ungesüßt, Konserve"
+  }
+ },
+ {
+  "name": "Wassermelone",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Melone"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Gurke"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   35.0,
+   0.6,
+   0.4,
+   7.16,
+   6.72,
+   0.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F535100",
+   "name": "Wassermelone roh"
+  }
+ },
+ {
+  "name": "Honigmelone",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Melone",
+   "Cantaloupe",
+   "Netzmelone",
+   "Zuckermelone"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Gurke"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   25.0,
+   0.84,
+   0.19,
+   5.3,
+   4.5,
+   0.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F532100",
+   "name": "Netzmelone/Cantaloupmelone, roh"
+  }
+ },
+ {
+  "name": "Ananas",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [
+   "Erdbeeren",
+   "Orange"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   46.0,
+   0.5,
+   0.1,
+   10.8,
+   9.4,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F501100",
+   "name": "Ananas roh"
+  }
+ },
+ {
+  "name": "Weintrauben",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Trauben",
+   "Weintraube"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Erdbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   61.0,
+   0.75,
+   0.28,
+   13.78,
+   12.08,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F310100",
+   "name": "Weintraube roh"
+  }
+ },
+ {
+  "name": "Pfirsich",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Pfirsiche"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Himbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": [
+   "Stück",
+   130
+  ],
+  "n": [
+   39.0,
+   0.7,
+   0.11,
+   9.72,
+   6.99,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F203100",
+   "name": "Pfirsich roh"
+  }
+ },
+ {
+  "name": "Nektarine",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Nektarinen"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Himbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": [
+   "Stück",
+   130
+  ],
+  "n": [
+   48.0,
+   1.06,
+   0.2,
+   10.9,
+   8.2,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F202100",
+   "name": "Nektarine roh"
+  }
+ },
+ {
+  "name": "Pflaumen",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Pflaume",
+   "Zwetschgen",
+   "Zwetschken"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Himbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": [
+   "Stück",
+   35
+  ],
+  "n": [
+   48.0,
+   0.3,
+   0.17,
+   12.41,
+   8.1,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F220100",
+   "name": "Pflaume roh"
+  }
+ },
+ {
+  "name": "Kirschen",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Süßkirschen",
+   "Kirsche"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Heidelbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   70.0,
+   0.9,
+   0.31,
+   17.23,
+   13.66,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F211100",
+   "name": "Süßkirsche roh"
+  }
+ },
+ {
+  "name": "Sauerkirschen",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Weichseln"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Johannisbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   69.0,
+   0.9,
+   0.5,
+   14.85,
+   12.75,
+   1.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F212100",
+   "name": "Sauerkirsche roh"
+  }
+ },
+ {
+  "name": "Aprikose",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Aprikosen",
+   "Marille",
+   "Marillen"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Himbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": [
+   "Stück",
+   40
+  ],
+  "n": [
+   42.0,
+   0.8,
+   0.13,
+   9.76,
+   7.42,
+   1.54
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F201100",
+   "name": "Aprikose roh"
+  }
+ },
+ {
+  "name": "Johannisbeeren",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Ribisel",
+   "Beeren"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   39.0,
+   1.44,
+   0.2,
+   7.8,
+   4.3,
+   3.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F321100",
+   "name": "Johannisbeere rot, roh"
+  }
+ },
+ {
+  "name": "Brombeeren",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Beeren"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   49.0,
+   1.3,
+   0.2,
+   13.4,
+   5.4,
+   3.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F303100",
+   "name": "Brombeere roh"
+  }
+ },
+ {
+  "name": "Stachelbeeren",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Beeren"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   50.0,
+   0.88,
+   0.15,
+   12.79,
+   7.23,
+   2.95
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F305100",
+   "name": "Stachelbeere roh"
+  }
+ },
+ {
+  "name": "Granatapfel",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Granatapfelkerne"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Johannisbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   79.0,
+   0.7,
+   0.6,
+   18.34,
+   16.1,
+   2.24
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F506100",
+   "name": "Granatapfel roh"
+  }
+ },
+ {
+  "name": "Feigen (frisch)",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Feige",
+   "Feigen"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Brombeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   52.0,
+   1.3,
+   0.5,
+   11.62,
+   9.6,
+   2.02
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F505100",
+   "name": "Feige roh"
+  }
+ },
+ {
+  "name": "Papaya",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [
+   "Erdbeeren",
+   "Orange"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   46.0,
+   0.7,
+   0.09,
+   11.5,
+   9.6,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F517100",
+   "name": "Papaya roh"
+  }
+ },
+ {
+  "name": "Physalis",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "Kapstachelbeere",
+   "Andenbeere"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Erdbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   81.0,
+   2.3,
+   1.1,
+   16.58,
+   14.12,
+   2.46
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F552100",
+   "name": "Kapstachelbeere/Physalis, roh"
+  }
+ },
+ {
+  "name": "Rosinen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sultaninen",
+   "Korinthen"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Walnusskerne"
+  ],
+  "why": "Getrocknetes Obst ist konzentrierter Zucker.",
+  "piece": null,
+  "n": [
+   288.0,
+   2.7,
+   1.0,
+   67.2,
+   60.9,
+   5.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F840100",
+   "name": "Rosine/Sultanine (Weinbeere getrocknet)"
+  }
+ },
+ {
+  "name": "Getrocknete Aprikosen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Trockenaprikosen",
+   "Trockenobst",
+   "Trockenfrüchte"
+  ],
+  "alts": [
+   "Aprikose",
+   "Walnusskerne"
+  ],
+  "why": "Getrocknetes Obst ist konzentrierter Zucker.",
+  "piece": null,
+  "n": [
+   216.0,
+   2.66,
+   0.23,
+   50.04,
+   38.46,
+   6.04
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F201400",
+   "name": "Aprikose getrocknet"
+  }
+ },
+ {
+  "name": "Cranberries (getrocknet)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Cranberries",
+   "Moosbeeren",
+   "Goji"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Johannisbeeren"
+  ],
+  "why": "Getrocknet und meist zusätzlich gezuckert.",
+  "piece": null,
+  "n": [
+   287.0,
+   0.53,
+   0.34,
+   72.51,
+   67.46,
+   3.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F414400",
+   "name": "Cranberries getrocknet, gezuckert"
+  }
+ },
+ {
+  "name": "Müsli",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Früchtemüsli",
+   "Bircher Müsli"
+  ],
+  "alts": [
+   "Haferflocken",
+   "Heidelbeeren",
+   "Walnusskerne"
+  ],
+  "why": "Die Trockenfrüchte machen ein Fünftel Zucker. Ein paar Haferflocken mit frischen Beeren und Nüssen passen.",
+  "piece": null,
+  "n": [
+   327.0,
+   9.0,
+   4.9,
+   66.4,
+   22.3,
+   10.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C512300",
+   "name": "Müslimischung mit Trockenfrüchten, ungesüßt"
+  }
+ },
+ {
+  "name": "Knuspermüsli",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Granola",
+   "Crunchy Müsli",
+   "Schokomüsli"
+  ],
+  "alts": [
+   "Haferflocken",
+   "Walnusskerne"
+  ],
+  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "piece": null,
+  "n": [
+   421.0,
+   9.0,
+   15.95,
+   64.1,
+   19.2,
+   7.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C514200",
+   "name": "Knuspermüslimischung, klassisch, gesüßt"
+  }
+ },
+ {
+  "name": "Cornflakes",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Frühstücksflocken",
+   "Choco Pops",
+   "Frosties"
+  ],
+  "alts": [
+   "Haferflocken",
+   "Heidelbeeren"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   366.0,
+   6.24,
+   1.75,
+   83.54,
+   1.29,
+   4.19
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C515000",
+   "name": "Cornflakes gesüßt"
+  }
+ },
+ {
+  "name": "Müsliriegel",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Riegel",
+   "Fitnessriegel",
+   "Proteinriegel",
+   "Energieriegel"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Mandeln",
+   "Apfel"
+  ],
+  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "piece": null,
+  "n": [
+   428.0,
+   8.4,
+   15.4,
+   64.6,
+   18.7,
+   6.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S830000",
+   "name": "Müsli-Riegel"
+  }
+ },
+ {
+  "name": "Gummibärchen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Fruchtgummi",
+   "Weingummi",
+   "Bonbons",
+   "Lakritz"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Erdbeeren"
+  ],
+  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "piece": null,
+  "n": [
+   312.0,
+   4.8,
+   0.3,
+   71.71,
+   56.7,
+   1.01
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S361000",
+   "name": "Fruchtgummi (Gummibonbon)"
+  }
+ },
+ {
+  "name": "Kekse",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Butterkekse",
+   "Plätzchen",
+   "Cookies"
+  ],
+  "alts": [
+   "Maiswaffeln",
+   "Walnusskerne"
+  ],
+  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "piece": null,
+  "n": [
+   456.0,
+   7.54,
+   16.12,
+   71.3,
+   27.06,
+   2.41
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D630400",
+   "name": "Butterkekse/Butterplätzchen (Mürbeteig)"
+  }
+ },
+ {
+  "name": "Marmelade",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Konfitüre",
+   "Gelee",
+   "Fruchtaufstrich"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Apfelmus ungesüßt"
+  ],
+  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "piece": null,
+  "n": [
+   234.0,
+   0.4,
+   0.2,
+   57.4,
+   56.3,
+   1.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S132000",
+   "name": "Konfitüre extra"
+  }
+ },
+ {
+  "name": "Nuss-Nougat-Creme",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Nutella",
+   "Schokoaufstrich"
+  ],
+  "alts": [
+   "Mandelmus",
+   "Haselnussmus"
+  ],
+  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "piece": null,
+  "n": [
+   530.0,
+   6.9,
+   30.55,
+   58.27,
+   53.07,
+   3.52
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S145000",
+   "name": "Nuss-Nougat-Creme"
+  }
+ },
+ {
+  "name": "Speiseeis",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Eis",
+   "Eiscreme",
+   "Softeis"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Kokosmilch (vollfett)"
+  ],
+  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "piece": null,
+  "n": [
+   213.0,
+   3.0,
+   10.32,
+   27.32,
+   21.62,
+   1.38
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S243000",
+   "name": "Speiseeis (Schoko, Vanille) gemischt"
+  }
+ },
+ {
+  "name": "Cracker",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kräcker",
+   "Butterkräcker",
+   "TUC",
+   "Salzcracker"
+  ],
+  "alts": [
+   "Maiswaffeln",
+   "Knäckebrot",
+   "Reiswaffeln"
+  ],
+  "why": "Weißmehl plus viel Fett. Mais- oder Reiswaffeln knuspern leichter.",
+  "piece": null,
+  "n": [
+   495.0,
+   8.84,
+   24.13,
+   62.81,
+   0.41,
+   4.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D050000",
+   "name": "Cracker"
+  }
+ },
+ {
+  "name": "Salzstangen",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Salzbrezeln",
+   "Brezeln",
+   "Laugengebäck"
+  ],
+  "alts": [
+   "Maiswaffeln",
+   "Grünkohl"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   389.0,
+   11.54,
+   4.3,
+   77.89,
+   2.41,
+   4.17
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D064000",
+   "name": "Salzbrezeln/Salzstangen (Laugendauergebäck)"
+  }
+ },
+ {
+  "name": "Tortilla-Chips",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Nachos",
+   "Tortillachips",
+   "Maischips"
+  ],
+  "alts": [
+   "Maiswaffeln",
+   "Grünkohl"
+  ],
+  "why": "Frittiert und gesalzen. Maiswaffeln oder Grünkohl-Chips aus dem Ofen knuspern ohne Fettbad.",
+  "piece": null,
+  "n": [
+   471.0,
+   5.96,
+   21.2,
+   66.3,
+   0.6,
+   4.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C546000",
+   "name": "Tortillachips (Nachos)"
+  }
+ },
+ {
+  "name": "Wraps",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Tortilla",
+   "Weizentortilla",
+   "Wrap",
+   "Fladenbrot"
+  ],
+  "alts": [
+   "Romanasalat",
+   "Chinakohl"
+  ],
+  "why": "Weißmehlfladen. Große Salat- oder Chinakohlblätter sind die Wraps fürs Scheinfasten.",
+  "piece": null,
+  "n": [
+   296.0,
+   8.85,
+   7.85,
+   47.84,
+   1.33,
+   1.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B783012",
+   "name": "Weizentortilla"
+  }
+ },
+ {
+  "name": "Pizza",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Pizza Margherita",
+   "Flammkuchen"
+  ],
+  "alts": [
+   "Zucchini",
+   "Tomaten",
+   "Champignons"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   238.0,
+   7.77,
+   13.55,
+   21.9,
+   1.6,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X912033",
+   "name": "Pizza Margherita (mit Tomatensauce, Mozzarella)"
+  }
+ },
+ {
+  "name": "Mischbrot",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Graubrot",
+   "Bauernbrot",
+   "Sauerteigbrot"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Vollkornbrot"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   218.0,
+   7.38,
+   0.97,
+   48.06,
+   1.26,
+   6.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B271000",
+   "name": "Roggenmischbrot"
+  }
+ },
+ {
+  "name": "Burger",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Hamburger",
+   "Cheeseburger",
+   "Fast Food"
+  ],
+  "alts": [
+   "Champignons",
+   "Kichererbsen (gegart)",
+   "Avocado"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "piece": null,
+  "n": [
+   230.0,
+   13.2,
+   12.7,
+   15.9,
+   3.4,
+   1.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Y911260",
+   "name": "Cheeseburger, doppelter"
+  }
+ },
+ {
+  "name": "Döner",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kebab",
+   "Gyros",
+   "Dürüm"
+  ],
+  "alts": [
+   "Champignons",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "piece": null,
+  "n": [
+   268.0,
+   27.65,
+   17.48,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "V422072",
+   "name": "Geflügel Dönerfleisch, gegrillt"
+  }
+ },
+ {
+  "name": "Bratwurst",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Würstchen",
+   "Wiener",
+   "Currywurst",
+   "Grillwurst"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "piece": null,
+  "n": [
+   252.0,
+   12.59,
+   22.31,
+   0.14,
+   0.0,
+   0.05
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Y021312",
+   "name": "Bratwurst gebraten"
+  }
+ },
+ {
+  "name": "Speck",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Bacon",
+   "Schinkenspeck",
+   "Pancetta"
+  ],
+  "alts": [
+   "Paprikapulver, geräuchert",
+   "Champignons"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "piece": null,
+  "n": [
+   304.0,
+   16.58,
+   26.22,
+   0.49,
+   0.49,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W411300",
+   "name": "Schwein Bauchspeck, Rohpökelware, geräuchert"
+  }
+ },
+ {
+  "name": "Leberwurst",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Streichwurst",
+   "Teewurst",
+   "Mettwurst"
+  ],
+  "alts": [
+   "Hummus",
+   "Tahin"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "piece": null,
+  "n": [
+   357.0,
+   12.3,
+   33.15,
+   2.05,
+   1.92,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W880100",
+   "name": "Leberwurst Konserve"
+  }
+ },
+ {
+  "name": "Fischstäbchen",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Backfisch",
+   "Fisch paniert"
+  ],
+  "alts": [
+   "Kichererbsen (gegart)",
+   "Champignons"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "piece": null,
+  "n": [
+   181.0,
+   12.1,
+   8.21,
+   15.16,
+   0.96,
+   0.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T930100",
+   "name": "Fischstäbchen (Alaska-Seelachs) paniert, tiefgefroren"
+  }
+ },
+ {
+  "name": "Frischkäse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Doppelrahmfrischkäse",
+   "Philadelphia",
+   "Mascarpone"
+  ],
+  "alts": [
+   "Hummus",
+   "Cashewmus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   252.0,
+   6.6,
+   23.25,
+   3.69,
+   3.69,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M710800",
+   "name": "Frischkäsezubereitung Natur, mind. 60 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Parmesan",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Grana Padano",
+   "Pecorino",
+   "Hartkäse"
+  ],
+  "alts": [
+   "Hefeflocken",
+   "Cashewkerne"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   391.0,
+   35.6,
+   27.43,
+   0.06,
+   0.06,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M306400",
+   "name": "Parmesan mind. 30 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Hüttenkäse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "körniger Frischkäse",
+   "Cottage Cheese"
+  ],
+  "alts": [
+   "Sojajoghurt",
+   "Avocado"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   73.0,
+   11.8,
+   1.2,
+   3.0,
+   3.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M711100",
+   "name": "Körniger Frischkäse < 10 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Kefir",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ayran",
+   "Dickmilch"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Sojajoghurt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   63.0,
+   3.16,
+   3.5,
+   4.13,
+   4.13,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M130300",
+   "name": "Kefir mind. 3,5 % Fett"
+  }
+ },
+ {
+  "name": "Buttermilch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Molke"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   39.0,
+   3.23,
+   0.56,
+   4.73,
+   4.73,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M150000",
+   "name": "Buttermilch"
   }
  }
 ]
