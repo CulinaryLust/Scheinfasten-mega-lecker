@@ -29,7 +29,8 @@ for (const day of [1, 2]) {
   for (const [label, names] of cases) {
     const r = solve(names.map((name) => ({ name })), t);
     const v = r.verdict;
-    console.log(`Tag ${day === 1 ? '1' : '2-5'} ${label}: ${fmt(r.sum.kcal)}/${fmt(t.kcal)} kcal, E ${fmt(v.shares.protein)} F ${fmt(v.shares.fat)} KH ${fmt(v.shares.carbs)} ${v.ok ? 'ok' : 'AUSSERHALB'}`);
+    console.log(`Tag ${day === 1 ? '1' : '2-5'} ${label}: ${fmt(r.sum.kcal)}/${fmt(t.kcal)} kcal, E ${fmt(v.shares.protein)} F ${fmt(v.shares.fat)} KH ${fmt(v.shares.carbs)}, Zucker ${fmt(r.sum.sugar)}/${fmt(v.sugarMax)} g ${v.ok ? 'ok' : 'AUSSERHALB'}`);
+    must(r.sum.sugar <= v.sugarMax + 0.5 || !v.ok, `${label}: Zucker über Grenze, aber als passend markiert`);
     console.log('   ', r.items.map((i) => `${i.name} ${i.g}`).join(', '));
     if (!v.ok) {
       // Passt die Auswahl allein nicht, muss der Rechner eine Ergänzung vorschlagen, mit der es passt.
@@ -43,6 +44,14 @@ for (const day of [1, 2]) {
     must(Math.abs(back.kcal - r.sum.kcal) < 15, `Mahlzeiten ${label}: ${fmt(back.kcal)} statt ${fmt(r.sum.kcal)} kcal`);
     if (day === 2) for (const m of meals) console.log(`    ${m.slot}: ${m.title} (${fmt(m.sum.kcal)} kcal)`);
   }
+}
+// Kürbis-Fall: viel Kürbis darf die Zuckergrenze nicht sprengen
+{
+  const t = targets(2, p.f);
+  const r = solve([{ name: 'Hokkaido-Kürbis' }, { name: 'Karotten' }, { name: 'Olivenöl' }, { name: 'Walnusskerne' }, { name: 'Zucchini' }], t);
+  const k = r.items.find((i) => i.name === 'Hokkaido-Kürbis').g;
+  console.log('Kürbis-Fall Tag 2-5:', r.items.map((i) => `${i.name} ${i.g}`).join(', '), `Zucker ${fmt(r.sum.sugar)} g`, r.verdict.ok ? 'ok' : 'AUSSERHALB');
+  must(r.sum.sugar <= r.verdict.sugarMax + 0.5, 'Kürbis-Fall: Zucker über Grenze');
 }
 // Unvollständige Auswahl: nur Gemüse, kein Fett
 const t2 = targets(2, p.f);

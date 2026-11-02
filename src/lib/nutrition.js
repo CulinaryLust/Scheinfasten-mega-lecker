@@ -45,7 +45,10 @@ export function check(day, n, factor = 1) {
   const target = ref.kcal * factor;
   const kcalOk = Math.abs(n.kcal - target) / target * 100 <= tol.kcalPercent;
   const macrosOk = ['protein', 'fat', 'carbs'].every((k) => Math.abs(sh[k] - ref[k]) <= tol.macroPoints);
-  return { ok: kcalOk && macrosOk, kcalOk, macrosOk, shares: sh, target, ref };
+  // Zucker: eigene Regel der Seite (Longo: "wenig Zucker" ohne Grammzahl), höchstens sugarMaxPercent der Kalorien
+  const sugarPct = n.kcal ? n.sugar * 4 / n.kcal * 100 : 0;
+  const sugarOk = sugarPct <= PLAN.reference.sugarMaxPercent;
+  return { ok: kcalOk && macrosOk && sugarOk, kcalOk, macrosOk, sugarOk, sugarPct, shares: sh, target, ref };
 }
 
 /** Tagessumme aus einer Liste von {recipe, portion}. */

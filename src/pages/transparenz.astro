@@ -6,6 +6,21 @@ import Base from '../layouts/Base.astro';
     <h2>Wie wir rechnen</h2>
     <p>Die Nährwerte stammen aus dem Bundeslebensmittelschlüssel des Max Rubner-Instituts: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, Karlsruhe, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir nutzen daraus Kalorien, Eiweiß, Fett, Kohlenhydrate (inklusive Ballaststoffe) und Zucker. Für Dill, Minze, Paprikapulver und Currypaste gibt es keinen BLS-Eintrag, dort nutzen wir Richtwerte aus der USDA-Datenbank.</p>
     <p>Die Werte sind berechnet und nicht im Labor gemessen. Natürliche Schwankungen bei Gemüse von ±5 % sind normal.</p>
+    <h2>Woher jeder Grenzwert kommt</h2>
+    <p>Prof. Dr. Valter Longo veröffentlicht nur Tageswerte für Kalorien und die Anteile von Eiweiß, Fett und Kohlenhydraten. Mengen pro Lebensmittel oder eine Grammzahl für Zucker nennt er nicht. Was davon von Longo stammt und was unsere Regel ist:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Wert</th><th>Zahl</th><th>Quelle</th></tr></thead>
+      <tbody>
+        <tr><td>Tag 1</td><td>ca. 1.090 kcal, 10 % Eiweiß, 56 % Fett, 34 % Kohlenhydrate</td><td>Longo-Studie: Brandhorst S et al., Cell Metabolism 2015 (Methoden). Achtung: Wei M et al., Sci Transl Med 2017 nennt für Tag 1 ca. 4.600 kJ (1.100 kcal) mit 11 % Eiweiß, 46 % Fett und 43 % Kohlenhydraten. Wir nutzen die Werte von 2015, weil sie die Zusammensetzung des Produkts beschreiben.</td></tr>
+        <tr><td>Tag 2 bis 5</td><td>ca. 725 kcal, 9 % Eiweiß, 44 % Fett, 47 % Kohlenhydrate</td><td>Longo-Studien: Brandhorst 2015 und Wei 2017, identisch</td></tr>
+        <tr><td>Pflanzlich, wenig Zucker, wenig Eiweiß, viel ungesättigtes Fett</td><td>keine Zahl</td><td>Longo-Studie: Wei 2017 (Zusammenfassung)</td></tr>
+        <tr><td>Toleranz</td><td>Kalorien ±5 %, jeder Anteil ±5 Prozentpunkte</td><td>Unsere Regel</td></tr>
+        <tr><td>Zucker</td><td>höchstens 15 % der Kalorien (Tag 1 ca. 41 g, Tag 2 bis 5 ca. 27 g)</td><td>Unsere Regel, weil Longo nur „wenig Zucker“ schreibt</td></tr>
+        <tr><td>Anpassung an deinen Körper</td><td>Faktor 0,9 bis 1,15 nach Mifflin-St Jeor</td><td>Unsere Regel</td></tr>
+        <tr><td>Obergrenzen je Lebensmittel und Ampel</td><td>z. B. Gemüse bis 400 g, Nüsse bis 40 g, Kartoffeln bis 200 g</td><td>Unsere Richtwerte; Longo nennt keine Mengen pro Lebensmittel</td></tr>
+        <tr><td>Nährwerte der Lebensmittel</td><td>je 100 g</td><td>Bundeslebensmittelschlüssel 4.0 (Max Rubner-Institut)</td></tr>
+      </tbody>
+    </table></div>
     <h2>Lebensmittel-Rechner</h2>
     <p>Der Rechner verteilt Longos Tagesbudget auf die Lebensmittel, die du eingibst. Die Ampel (passt gut, nur kleine Menge, passt nicht) und die Obergrenzen je Lebensmittel sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Die Rezeptideen aus deinen Zutaten entstehen aus Grundrezepten (Salat, Suppe, Ofen, Pfanne) und sind nicht einzeln probegekocht.</p>
     <h2>Unabhängigkeit</h2>

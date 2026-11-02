@@ -6,7 +6,7 @@ for (const day of [1, 2, 3, 4, 5]) {
   const n = dayTotal(PLAN.days[day]);
   const c = check(day, n);
   const s = c.shares;
-  console.log(`Tag ${day}: ${fmt(n.kcal)} kcal, E ${fmt(s.protein)} %, F ${fmt(s.fat)} %, KH ${fmt(s.carbs)} % ${c.ok ? 'ok' : 'AUSSERHALB'}`);
+  console.log(`Tag ${day}: ${fmt(n.kcal)} kcal, E ${fmt(s.protein)} %, F ${fmt(s.fat)} %, KH ${fmt(s.carbs)} %, Zucker ${fmt(n.sugar)} g (${fmt(c.sugarPct)} %) ${c.ok ? 'ok' : 'AUSSERHALB'}`);
   if (!c.ok) failed = true;
 }
 process.exit(failed ? 1 : 0);
