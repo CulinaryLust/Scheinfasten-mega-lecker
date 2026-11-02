@@ -6,7 +6,7 @@ const must = (cond, msg) => { if (!cond) { failed++; console.log('FEHLER:', msg)
 const fmt = (x) => Math.round(x);
 
 // Datenbank
-must(FOODS.length >= 150, `nur ${FOODS.length} Lebensmittel`);
+must(FOODS.length >= 300, `nur ${FOODS.length} Lebensmittel`);
 for (const f of FOODS) {
   must(f.n.length === 6 && f.n.slice(0, 5).every((v) => typeof v === 'number' && v >= 0), `Nährwerte ${f.name}`);
   must(f.alts.every((a) => BY_NAME[a]), `Alternative fehlt bei ${f.name}`);
@@ -16,6 +16,10 @@ for (const f of FOODS) {
 must(search('möhre')[0]?.name === 'Karotten', 'Suche Möhre');
 must(search('Hack')[0]?.light === 'r', 'Suche Hack');
 must(search('kurbis').some((f) => f.name === 'Hokkaido-Kürbis'), 'Suche ohne Umlaut');
+must(search('maiscracker')[0]?.name === 'Maiswaffeln', 'Suche Maiscracker');
+must(search('reiscracker')[0]?.name === 'Reiswaffeln', 'Suche Reiscracker');
+must(search('hafermilch')[0]?.name === 'Haferdrink', 'Suche Hafermilch');
+must(search('seitan')[0]?.light === 'r', 'Seitan rot');
 
 const p = profile({ sex: 'w', age: 42, h: 168, w: 70, pal: 1.6 });
 const cases = [

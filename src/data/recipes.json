@@ -92,7 +92,7 @@
   "ingredients": [
    {
     "name": "Hokkaido-Kürbis",
-    "amount": 300,
+    "amount": 280,
     "note": "mit Schale gewürfelt"
    },
    {
@@ -1397,7 +1397,7 @@
   "ingredients": [
    {
     "name": "Süßkartoffel",
-    "amount": 180,
+    "amount": 150,
     "note": "in Spalten"
    },
    {
@@ -1541,7 +1541,7 @@
   "ingredients": [
    {
     "name": "Karotten",
-    "amount": 250,
+    "amount": 200,
     "note": "in Scheiben"
    },
    {
@@ -1641,7 +1641,7 @@
   "ingredients": [
    {
     "name": "Rote Bete (vorgegart)",
-    "amount": 200,
+    "amount": 180,
     "note": "gewürfelt"
    },
    {
