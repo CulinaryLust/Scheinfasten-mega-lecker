@@ -4,8 +4,9 @@
 import Icon from './Icon.astro';
 import { u } from '../lib/url.js';
 import foods from '../data/foods.json';
-interface Props { id?: string; tint?: boolean }
-const { id = 'weglassen', tint = false } = Astro.props;
+// compact: nur die roten Kategorien als Chipzeile (Startseite); die volle Liste steht auf „Wissen“.
+interface Props { id?: string; tint?: boolean; compact?: boolean }
+const { id = 'weglassen', tint = false, compact = false } = Astro.props;
 const BY = Object.fromEntries(foods.map((f) => [f.name, f]));
 const pick = (names: string[], light: string) => names.map((n) => {
   if (!BY[n]) throw new Error(`AvoidList: "${n}" fehlt in foods.json`);
@@ -23,6 +24,15 @@ const red = [
 const yellow = pick(['Kartoffeln', 'Kichererbsen (gegart)', 'Linsen (gegart)', 'Hirse (gegart)', 'Reis (gegart)', 'Tofu', 'Apfel', 'Heidelbeeren', 'Knäckebrot'], 'y');
 const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Avocado', 'Kräuter', 'Kräutertee', 'Wasser'];
 ---
+{compact ? (
+<section class:list={['band', 'avoid', 'compact', { tint }]} id={id}>
+  <div class="in">
+    <div class="head"><p class="kicker">Auf einen Blick</p><h2>Das lässt du fünf Tage weg</h2></div>
+    <ul class="redchips">{red.map((g) => <li><Icon name="ban" />{g.title}</li>)}</ul>
+    <p class="okline"><span class="dot g"></span><span><b>Dafür auf dem Teller:</b> {green.join(', ')}.</span> <a href={u('wissen/#weglassen')}>Ganze Liste mit Beispielen</a></p>
+  </div>
+</section>
+) : (
 <section class:list={['band', 'avoid', { tint }]} id={id}>
   <div class="in">
     <div class="head">
@@ -48,6 +58,7 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
     </div>
   </div>
 </section>
+)}
 
 <style>
   .redgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
@@ -67,4 +78,10 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
   .ltag { display: inline-flex; gap: 8px; align-items: center; font-size: .78rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
   .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
   .dot.g { background: var(--ok); } .dot.y { background: var(--sun); }
+  .compact .head { margin-bottom: 18px; }
+  .redchips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .redchips li { display: inline-flex; gap: 8px; align-items: center; background: var(--bad-bg); color: var(--bad); border: 1.5px solid color-mix(in srgb, var(--bad) 35%, transparent); border-radius: 999px; padding: 8px 14px; font-weight: 800; }
+  .redchips :global(.i) { stroke-width: 2.4; }
+  .okline { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+  .okline a { font-weight: 700; }
 </style>
