@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
+import FastCompare from '../components/FastCompare.astro';
+import AvoidList from '../components/AvoidList.astro';
 const studies = [
   { lv: 'ok', tag: 'Mensch · randomisiert', title: '100 Gesunde, 3 Zyklen', text: 'Körpergewicht, Bauchfett, Blutdruck und der Wachstumsfaktor IGF-1 sanken. Bei Menschen mit erhöhten Ausgangswerten war der Effekt größer.', src: 'Wei M et al. Science Translational Medicine 2017;9:eaai8700', doi: '10.1126/scitranslmed.aai8700' },
   { lv: 'warn', tag: 'Mensch · explorativ', title: 'Biologisches Alter', text: 'Eine Nachauswertung zweier Studien berechnete nach drei Zyklen ein im Median um 2,5 Jahre niedrigeres biologisches Alter. Ein Hinweis, noch kein Beweis.', src: 'Brandhorst S et al. Nature Communications 2024;15:1309', doi: '10.1038/s41467-024-45260-9' },
@@ -9,6 +11,7 @@ const studies = [
   { lv: 'bad', tag: 'Tier und Zelle', title: 'Erste Spuren', text: 'Bei Mäusen regenerierten insulinbildende Zellen, und Symptome eines MS-Modells besserten sich. Ob das beim Menschen genauso ist, ist offen.', src: 'Cheng CW et al. Cell 2017 · Choi IY et al. Cell Reports 2016', doi: '10.1016/j.cell.2017.01.040' },
 ];
 const faq = [
+  ['Warum kann ich essen und trotzdem fasten?', 'Der Körper merkt vor allem an Eiweiß und Zucker, ob gerade Nahrung im Überfluss da ist. Beim Scheinfasten sind beide knapp, die Kalorien kommen überwiegend aus pflanzlichem Fett und Gemüse. In Longos Studien sanken dadurch Blutzucker und der Wachstumsfaktor IGF-1, und Ketonkörper stiegen, also ähnliche Signale wie beim Fasten. Direkt mit Wasserfasten verglichen wurde das am Menschen bisher nicht.'],
   ['Ist Scheinfasten dasselbe wie Heilfasten?', 'Nein. Beim Heilfasten isst man tagelang fast nichts. Beim Scheinfasten isst du fünf Tage lang kleine, genau zusammengesetzte Mahlzeiten mit rund 700 bis 1.100 kcal.'],
   ['Wie oft sollte ich scheinfasten?', 'In der wichtigsten Studie einmal im Monat, drei Monate lang. Für gesunde Menschen nennt Longo in seinem Buch weniger Durchgänge pro Jahr. Sprich die Häufigkeit am besten ärztlich ab.'],
   ['Darf ich Kaffee trinken?', 'In Longos Protokoll sind ungesüßte Kräutertees und Wasser vorgesehen. Wer viel Kaffee trinkt, reduziert ihn schon vor dem Start, um Kopfschmerzen zu vermeiden.'],
@@ -32,7 +35,8 @@ const faq = [
       </div>
     </div>
   </section>
-  <section class="band tint">
+  <FastCompare tint />
+  <section class="band">
     <div class="in">
       <div class="head"><h2>Die Vorgaben aus Longos Studien</h2><p class="muted">Diese Werte nutzen Rechner und Planer als Referenz (Brandhorst et al., Cell Metabolism 2015). Für Tag 1 nennt die spätere Studie von Wei et al. 2017 leicht andere Anteile (11 % Eiweiß, 46 % Fett, 43 % KH). Zucker begrenzen wir zusätzlich auf höchstens 15 % der Kalorien, weil Longo nur „wenig Zucker“ ohne Zahl angibt. <a href={u('transparenz/')}>Alle Quellen</a></p></div>
       <div class="grid3">
@@ -42,6 +46,7 @@ const faq = [
       </div>
     </div>
   </section>
+  <AvoidList tint />
   <section class="band">
     <div class="in">
       <div class="head"><h2>Was die Studien zeigen</h2><p class="muted">Die Farbe zeigt, wie belastbar ein Ergebnis ist: grün für randomisierte Studien am Menschen, gelb für erste Daten am Menschen, rot für Tier- und Zellversuche.</p></div>

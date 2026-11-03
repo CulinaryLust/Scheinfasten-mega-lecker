@@ -168,3 +168,11 @@ footer.foot a { color: var(--muted); }
   body { padding: 0; font-size: 11pt; background: #fff; color: #000; }
   section.band { padding-block: 10px; }
 }
+
+/* Symbol für den Hauptnährstoff eines Lebensmittels (Rechner und Einkaufsliste) */
+.mac { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; flex: none; }
+.mac .i { width: 15px; height: 15px; }
+.mac.carbs { background: color-mix(in srgb, var(--c-carbs) 18%, transparent); color: var(--c-carbs); }
+.mac.protein { background: color-mix(in srgb, var(--c-protein) 18%, transparent); color: var(--c-protein); }
+.mac.fat { background: color-mix(in srgb, var(--c-fat) 20%, transparent); color: var(--c-fat); }
+.mac.none { background: transparent; }

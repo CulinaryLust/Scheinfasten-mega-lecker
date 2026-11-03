@@ -3,7 +3,12 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 import { icon } from '../lib/icons.js';
-const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swap', 'check', 'close', 'cart', 'calendar', 'time', 'arrow', 'info', 'water', 'pot'].map((k) => [k, icon(k)]));
+import foods from '../data/foods.json';
+import { RECIPES } from '../lib/nutrition.js';
+// Gruppe und Nährwerte nur für Zutaten, die in Rezepten vorkommen (für Kategorien und Makro-Symbole der Einkaufsliste)
+const used = new Set(RECIPES.flatMap((r) => r.ingredients.map((i) => i.name)));
+const foodMeta = Object.fromEntries(foods.filter((f) => used.has(f.name)).map((f) => [f.name, { group: f.group, n: f.n.slice(0, 4) }]));
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swap', 'check', 'close', 'cart', 'calendar', 'time', 'arrow', 'info', 'water', 'pot', 'leaf', 'nut', 'apple', 'herb', 'cup', 'ban'].map((k) => [k, icon(k)]));
 ---
 <Base title="Dein 5-Tage-Plan" active="planer" description="Persönlicher Scheinfasten-Planer: Rezepte, Mengen und Nährwerte für jeden Tag, abgeglichen mit den Vorgaben von Prof. Dr. Valter Longo.">
   <div class="in page-head">
@@ -12,7 +17,7 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
     <p class="muted">Zwei kurze Schritte, dann steht dein Plan: jeden Tag leckere Gerichte, auf das Gramm genau nach den Werten von Prof. Dr. Valter Longo berechnet.</p>
   </div>
 
-  <section class="in wizard" id="wizard" data-base={u('')} data-icons={JSON.stringify(icons)}>
+  <section class="in wizard" id="wizard" data-base={u('')} data-icons={JSON.stringify(icons)} data-foods={JSON.stringify(foodMeta)}>
     <ol class="progress" aria-label="Fortschritt">
       <li class="on" data-s="1"><span>1</span>Über dich</li>
       <li data-s="2"><span>2</span>Termine</li>
@@ -107,8 +112,14 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
   .alt b { display: block; font-size: .95rem; } .alt small { color: var(--muted); }
   .plain { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 12px; }
   .plain ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
-  .shop { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 28px; }
-  @media (max-width: 600px) { .shop { columns: 1; } }
+  .shopcats { columns: 2; column-gap: 28px; margin-top: 10px; }
+  @media (max-width: 600px) { .shopcats { columns: 1; } }
+  .shopcat { break-inside: avoid; margin-bottom: 18px; }
+  .shopcat h4 { display: flex; gap: 8px; align-items: center; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-bottom: 6px; border-bottom: 2px solid var(--line); margin: 0; }
+  .shopcat h4 .i { color: var(--green); }
+  .maclegend { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .maclegend .mac:not(:first-child) { margin-left: 6px; }
+  .shop { list-style: none; padding: 0; margin: 0; }
   .shop li { break-inside: avoid; border-bottom: 1px solid var(--line); }
   .shop label { display: flex; gap: 10px; padding: 9px 0; cursor: pointer; align-items: center; }
   .shop input { width: 20px; height: 20px; min-height: 0; accent-color: var(--green); }
@@ -123,10 +134,18 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
 
 <script>
   import { RECIPES, BY_SLUG, PLAN, nutrition, add, check, shares, amountLabel, fmt } from '../lib/nutrition.js';
+  import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
 
   const root = document.getElementById('wizard')!;
   const base = root.dataset.base!;
   const I = JSON.parse(root.dataset.icons!);
+  const FM: Record<string, any> = JSON.parse(root.dataset.foods!);
+  const mac = (name: string) => {
+    const m = macroOf(FM[name]);
+    if (!m) return '<span class="mac none" aria-hidden="true"></span>';
+    const lbl = MACROS[m.key as keyof typeof MACROS];
+    return `<span class="mac ${m.key}" title="Liefert vor allem ${lbl} (${m.share} % der Kalorien)">${I[m.key]}<span class="sr-only">${lbl}:</span></span>`;
+  };
   const form = document.getElementById('f') as HTMLFormElement;
   const result = document.getElementById('result')!;
   const STORE = 'smlPlaner';
@@ -311,7 +330,9 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
       const tot: Record<string, number> = {};
       for (let d = 1; d <= 5; d++) for (const it of items(d)) for (const ing of BY_SLUG[it.recipe].ingredients) tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * f;
       return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang</h3><p class="muted small">Mengen ohne Reserve. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
-        <ul class="shop">${Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')).map(([n, g]) => `<li><label><input type="checkbox"><span><b>${amountLabel(n, g)}</b> ${esc(n)}</span></label></li>`).join('')}</ul></div>`;
+        <p class="small muted maclegend">Hauptnährstoff: <span class="mac carbs">${I.carbs}</span>Kohlenhydrate <span class="mac protein">${I.protein}</span>Eiweiß <span class="mac fat">${I.fat}</span>Fett</p>
+        <div class="shopcats">${groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')), ([n]: [string, number]) => FM[n]).map((c) => `<div class="shopcat"><h4>${I[c.icon]}${c.label}</h4>
+        <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
     }
     if (k === 8) {
       let tr = '';
