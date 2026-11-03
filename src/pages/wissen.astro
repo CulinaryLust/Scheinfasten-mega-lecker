@@ -16,11 +16,11 @@ const studies = [
 const faq = [
   ['Warum kann ich essen und trotzdem fasten?', 'Der Körper merkt vor allem an Eiweiß und Zucker, ob gerade Nahrung im Überfluss da ist. Beim Scheinfasten sind beide knapp, die Kalorien kommen überwiegend aus pflanzlichem Fett und Gemüse. In Longos Studien sanken dadurch Blutzucker und der Wachstumsfaktor IGF-1, und Ketonkörper stiegen, also ähnliche Signale wie beim Fasten. Direkt mit Wasserfasten verglichen wurde das am Menschen bisher nicht.'],
   ['Ist Scheinfasten dasselbe wie Heilfasten?', 'Nein. Beim Heilfasten isst man tagelang fast nichts. Beim Scheinfasten isst du fünf Tage lang kleine, genau zusammengesetzte Mahlzeiten mit rund 700 bis 1.100 kcal.'],
-  ['Wie oft sollte ich scheinfasten?', 'In der wichtigsten Studie einmal im Monat, drei Monate lang. Für gesunde Menschen nennt Longo in seinem Buch weniger Durchgänge pro Jahr. Sprich die Häufigkeit am besten ärztlich ab.'],
-  ['Darf ich Kaffee trinken?', 'In Longos Protokoll sind ungesüßte Kräutertees und Wasser vorgesehen. Wer viel Kaffee trinkt, reduziert ihn schon vor dem Start, um Kopfschmerzen zu vermeiden.'],
+  ['Wie oft sollte ich scheinfasten?', 'In der wichtigsten Studie einmal im Monat, drei Monate lang (Wei 2017). Für gesunde Menschen nennt Longo in seinem Buch weniger Durchgänge pro Jahr; die genaue Zahl haben wir noch nicht am Originaltext geprüft. Sprich die Häufigkeit am besten ärztlich ab.'],
+  ['Darf ich Kaffee trinken?', 'Eine kleine Tasse schwarz am Tag ist okay, wenn es ohne nicht geht. Das empfiehlt der Hersteller des Fertigprodukts ProLon: außer Wasser nichts zusätzlich, höchstens eine kleine Tasse Kaffee ohne Zucker oder Zusätze. In den Studienpaketen war Tee enthalten (Brandhorst 2015: Kamillentee), zu Kaffee sagen die Studien nichts. Unser Tipp, ohne Studienbeleg: Wer sonst viel Kaffee trinkt, reduziert schon vor dem Start, damit Kopfschmerzen ausbleiben.'],
   ['Warum so wenig Eiweiß?', 'Wenig Eiweiß und wenig Zucker sind Kernbestandteile des Konzepts. Sie sollen die Stoffwechselsignale des Fastens nachahmen. Deshalb sind die Rezepte rein pflanzlich und die Hülsenfrüchte klein portioniert.'],
   ['Funktioniert die selbst gekochte Variante genauso wie das Fertigprodukt?', 'Das ist nicht untersucht. Die Studien wurden mit dem Fertigprodukt ProLon gemacht. Unsere Rezepte halten dieselben Kalorien- und Nährstoffvorgaben ein, sind aber nicht in Studien getestet.'],
-  ['Brauche ich Nahrungsergänzungsmittel?', 'Das Fertigprodukt enthält ein Vitamin- und Mineralstoffpräparat sowie Omega-3. Ob du für fünf Tage etwas ergänzen solltest, klärst du am besten mit deiner Ärztin oder deinem Arzt.'],
+  ['Brauche ich Nahrungsergänzungsmittel?', 'Das Fertigprodukt der Studien enthielt ein Präparat mit Vitaminen, Mineralstoffen und essenziellen Fettsäuren (Wei 2017). Ob du für fünf Tage etwas ergänzen solltest, klärst du am besten mit deiner Ärztin oder deinem Arzt.'],
 ];
 ---
 <Base title="Wissen" active="wissen" description="Was die Forschung zur Fasting Mimicking Diet von Prof. Dr. Valter Longo zeigt, mit Evidenzstufe und Quellen.">
@@ -41,11 +41,11 @@ const faq = [
   <FastCompare tint />
   <section class="band">
     <div class="in">
-      <div class="head"><h2>Die Vorgaben aus Longos Studien</h2><p class="muted">Diese Werte nutzen Rechner und Planer als Referenz (Brandhorst et al., Cell Metabolism 2015). Für Tag 1 nennt die spätere Studie von Wei et al. 2017 leicht andere Anteile (11 % Eiweiß, 46 % Fett, 43 % KH). Zucker begrenzen wir zusätzlich auf höchstens 15 % der Kalorien, weil Longo nur „wenig Zucker“ ohne Zahl angibt. <a href={u('transparenz/')}>Alle Quellen</a></p></div>
+      <div class="head"><h2>Die Vorgaben aus Longos Studien</h2><p class="muted">Diese Werte nutzen Rechner und Planer als Referenz (Brandhorst et al., Cell Metabolism 2015, Methoden). Die spätere Studie von Wei et al. 2017 nennt für Tag 1 ca. 1.100 kcal mit leicht anderen Anteilen (11 % Eiweiß, 46 % Fett, 43 % KH) und für Tag 2 bis 5 ca. 717 kcal mit denselben Anteilen. Zucker begrenzen wir zusätzlich auf höchstens 15 % der Kalorien, weil Longo nur „wenig Zucker“ ohne Zahl angibt. <a href={u('transparenz/')}>Alle Quellen</a></p></div>
       <div class="grid3">
         <div class="card"><p class="kicker">Tag 1</p><p class="big">1.090 kcal</p><div class="mbar"><i class="p" style="width:10%"></i><i class="f" style="width:56%"></i><i class="c" style="width:34%"></i></div><div class="legend"><span style="--dot:var(--c-protein)">10 % Eiweiß</span><span style="--dot:var(--c-fat)">56 % Fett</span><span style="--dot:var(--c-carbs)">34 % KH</span></div></div>
         <div class="card"><p class="kicker">Tag 2 bis 5</p><p class="big">725 kcal</p><div class="mbar"><i class="p" style="width:9%"></i><i class="f" style="width:44%"></i><i class="c" style="width:47%"></i></div><div class="legend"><span style="--dot:var(--c-protein)">9 % Eiweiß</span><span style="--dot:var(--c-fat)">44 % Fett</span><span style="--dot:var(--c-carbs)">47 % KH</span></div></div>
-        <div class="card"><p class="kicker">Tag 6</p><p class="big">Übergang</p><p class="muted">Leichte Kost, danach wieder normal und ausgewogen essen.</p></div>
+        <div class="card"><p class="kicker">Tag 6</p><p class="big">Übergang</p><p class="muted">In den Studien ging es danach direkt mit normaler Ernährung weiter. Unser Tipp: am ersten Tag leicht und pflanzlich starten.</p></div>
       </div>
     </div>
   </section>

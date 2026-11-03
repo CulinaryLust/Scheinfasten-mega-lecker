@@ -16,17 +16,17 @@ GROUPS = {
   'getreide': ('Getreide', 'y', 120), 'obst': ('Obst', 'y', 150), 'soja': ('Soja', 'y', 60),
   'getraenk': ('Getränke', 'g', 1000),
   'tier': ('Fleisch, Fisch und Ei', 'r', 0), 'milch': ('Milchprodukte', 'r', 0), 'suess': ('Zucker und Süßes', 'r', 0),
-  'weissmehl': ('Weißmehl und Snacks', 'r', 0), 'drink': ('Kaffee, Alkohol, Softdrinks', 'r', 0),
+  'weissmehl': ('Weißmehl und Snacks', 'r', 0), 'drink': ('Alkohol, Säfte, Softdrinks', 'r', 0),
   'eiweiss': ('Fleischersatz und Eiweißprodukte', 'r', 0), 'knusper': ('Cracker und Waffeln', 'y', 20),
 }
 
 WHY = {
   'y': 'Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.',
-  'tier': 'Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.',
+  'tier': 'Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.',
   'milch': 'Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.',
-  'suess': 'Zucker holt deinen Körper sofort aus dem Fastenmodus.',
+  'suess': 'Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.',
   'weissmehl': 'Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.',
-  'drink': 'In diesen Tagen sind Wasser und Kräutertee deine besten Freunde.',
+  'drink': 'Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.',
   'eiweiss': 'Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.',
   'knusper': 'Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.',
 }
@@ -233,7 +233,7 @@ f('Lachs', 'T410100', 'tier', syn='Fisch, Räucherlachs', alts='Walnusskerne; Le
 f('Thunfisch', 'T121902', 'tier', syn='Fisch, Thunfischdose', alts='Kichererbsen (gegart); Walnusskerne')
 f('Garnelen', 'T753100', 'tier', syn='Shrimps, Krabben, Scampi', alts='Austernpilze; Champignons')
 f('Eier', 'E111100', 'tier', syn='Ei, Hühnerei, Spiegelei, Rührei', alts='Kichererbsen (gegart); Champignons; Avocado')
-f('Milch', 'M111300', 'milch', syn='Kuhmilch, Vollmilch', alts='Mandeldrink ungesüßt')
+f('Milch', 'M111300', 'milch', syn='Kuhmilch, Vollmilch, Cappuccino, Latte, Milchkaffee', alts='Mandeldrink ungesüßt')
 f('Joghurt', 'M141300', 'milch', syn='Naturjoghurt, Skyr', alts='Kokosmilch (vollfett); Cashewkerne')
 f('Quark', 'M713100', 'milch', syn='Magerquark, Topfen', alts='Tahin; Cashewkerne')
 f('Käse', 'M402600', 'milch', syn='Gouda, Bergkäse, Emmentaler, Cheddar', alts='Cashewkerne; Grüne Oliven; Tahin')
@@ -241,7 +241,10 @@ f('Mozzarella', 'M032100', 'milch', syn='Burrata', alts='Avocado; Cashewkerne')
 f('Feta', 'M012200', 'milch', syn='Schafskäse, Hirtenkäse', alts='Grüne Oliven; Kapern; Cashewkerne')
 f('Butter', 'Q611000', 'milch', syn='Butterschmalz, Ghee', alts='Olivenöl; Rapsöl')
 f('Sahne', 'M173800', 'milch', syn='Schlagsahne, Rahm, Creme fraiche', alts='Kokosmilch (vollfett); Cashewkerne')
-f('Kaffee', 'N410100', 'drink', syn='Espresso, Cappuccino, Latte')
+# Kaffee: Die Studien (Brandhorst 2015, Wei 2017) sagen nichts dazu. ProLon-Hilfecenter (L-Nutra): außer Wasser nichts zusätzlich,
+# wenn nötig höchstens eine kleine Tasse Kaffee pro Tag ohne Zucker oder Zusätze. Kleine Tasse = 150 ml (unsere Annahme).
+f('Kaffee', 'N410100', 'getraenk', light='y', cap=150, syn='Espresso, Filterkaffee, schwarzer Kaffee', alts='Kräutertee',
+  why='Wenn es ohne nicht geht: eine kleine Tasse schwarz am Tag, ohne Milch und Zucker. So empfiehlt es der Hersteller des Fertigprodukts ProLon.')
 f('Bier', 'P163000', 'drink', syn='Pils, Alkohol')
 f('Wein', 'P2A3000', 'drink', syn='Rotwein, Weißwein, Sekt, Alkohol')
 f('Orangensaft', 'F603600', 'drink', syn='Saft, Fruchtsaft, Apfelsaft', alts='Orange; Kräutertee')
@@ -351,10 +354,12 @@ f('Gemüsesaft', 'G090600', 'getraenk', light='y', cap=200, syn='Tomatensaft, M�
   why='Ein Glas passt, im Saft fehlt aber die Sättigung vom ganzen Gemüse.')
 f('Wasser', 'N110000', 'getraenk', cap=3000, syn='Trinkwasser, Leitungswasser')
 f('Mineralwasser', 'N128000', 'getraenk', cap=3000, syn='Sprudel, Sprudelwasser, stilles Wasser')
-f('Grüner Tee', 'N610100', 'drink', syn='Grüntee, Matcha', alts='Kräutertee',
-  why='Enthält Koffein wie Kaffee. Kräutertee ist in diesen Tagen die entspanntere Wahl.')
-f('Schwarzer Tee', 'N630000', 'drink', syn='Schwarztee, Earl Grey, Chai', alts='Kräutertee',
-  why='Enthält Koffein wie Kaffee. Kräutertee ist in diesen Tagen die entspanntere Wahl.')
+# Schwarzer und grüner Tee: Longos Buch nennt laut Sekundärquellen ungesüßten Tee ohne Einschränkung auf Kräutertee.
+# Die Koffeingrenze wie bei Kaffee ist unsere Ableitung.
+f('Grüner Tee', 'N610100', 'getraenk', light='y', cap=250, syn='Grüntee, Matcha', alts='Kräutertee',
+  why='Ungesüßt passt eine Tasse. Enthält Koffein, deshalb am selben Tag lieber Tee oder Kaffee, nicht beides.')
+f('Schwarzer Tee', 'N630000', 'getraenk', light='y', cap=250, syn='Schwarztee, Earl Grey', alts='Kräutertee',
+  why='Ungesüßt passt eine Tasse. Enthält Koffein, deshalb am selben Tag lieber Tee oder Kaffee, nicht beides.')
 f('Smoothie', 'F032600', 'drink', syn='Fruchtsmoothie, grüner Smoothie', alts='Heidelbeeren; Gurke',
   why='Püriertes Obst ist schnell getrunkener Zucker. Ganze Beeren machen satter.')
 

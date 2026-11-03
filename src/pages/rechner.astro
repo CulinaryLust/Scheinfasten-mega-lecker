@@ -64,7 +64,7 @@ import { pick } from '../data/affiliate.js';
           <span class="small muted">Schnell dazu:</span>
           {quick.map((n) => <button type="button" class="qchip" data-add={n}><Icon name="plus" />{n}</button>)}
         </div>
-        <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Kaffee und Alkohol. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
+        <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Alkohol und Säfte. Kaffee höchstens eine kleine Tasse schwarz. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
         <div class="picked" id="picked" aria-label="Deine Lebensmittel"></div>
         <p class="small muted legendline"><span class="dot g"></span>passt gut <span class="dot y"></span>nur kleine Menge <span class="dot r"></span>lieber tauschen</p>
         <p class="small muted legendline"><span>Hauptnährstoff:</span><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate <span class="mac protein"><Icon name="protein" /></span>Eiweiß <span class="mac fat"><Icon name="fat" /></span>Fett</p>
@@ -80,7 +80,7 @@ import { pick } from '../data/affiliate.js';
 
   <div class="in narrow small muted srcnote">
     <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben. Für Dill, Minze, Paprikapulver und Currypaste gibt es keinen BLS-Eintrag, dort nutzen wir Richtwerte aus der USDA-Datenbank.</p>
-    <p>Sollwerte: Brandhorst S et al., Cell Metab 2015 (Labor von Prof. Dr. Valter Longo); Tage 2 bis 5 identisch in Wei M et al., Sci Transl Med 2017. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Diese Seite wird von Prof. Dr. Valter Longo weder geprüft noch unterstützt.</p>
+    <p>Sollwerte: Brandhorst S et al., Cell Metab 2015, Methoden (Labor von Prof. Dr. Valter Longo). Wei M et al., Sci Transl Med 2017 nennt für Tag 2 bis 5 dieselben Anteile bei ca. 3.000 kJ (ca. 717 kcal). Kaffee höchstens eine kleine Tasse: Empfehlung des ProLon-Herstellers L-Nutra, nicht aus den Studien. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Diese Seite wird von Prof. Dr. Valter Longo weder geprüft noch unterstützt.</p>
   </div>
 </Base>
 
