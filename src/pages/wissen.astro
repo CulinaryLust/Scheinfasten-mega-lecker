@@ -4,6 +4,7 @@ import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 import FastCompare from '../components/FastCompare.astro';
 import AvoidList from '../components/AvoidList.astro';
+import Effects from '../components/Effects.astro';
 const studies = [
   { lv: 'ok', tag: 'Mensch · randomisiert', title: '100 Gesunde, 3 Zyklen', text: 'Körpergewicht, Bauchfett, Blutdruck und der Wachstumsfaktor IGF-1 sanken. Bei Menschen mit erhöhten Ausgangswerten war der Effekt größer.', src: 'Wei M et al. Science Translational Medicine 2017;9:eaai8700', doi: '10.1126/scitranslmed.aai8700' },
   { lv: 'warn', tag: 'Mensch · explorativ', title: 'Biologisches Alter', text: 'Eine Nachauswertung zweier Studien berechnete nach drei Zyklen ein im Median um 2,5 Jahre niedrigeres biologisches Alter. Ein Hinweis, noch kein Beweis.', src: 'Brandhorst S et al. Nature Communications 2024;15:1309', doi: '10.1038/s41467-024-45260-9' },
@@ -47,9 +48,10 @@ const faq = [
     </div>
   </section>
   <AvoidList tint />
-  <section class="band">
+  <Effects />
+  <section class="band tint">
     <div class="in">
-      <div class="head"><h2>Was die Studien zeigen</h2><p class="muted">Die Farbe zeigt, wie belastbar ein Ergebnis ist: grün für randomisierte Studien am Menschen, gelb für erste Daten am Menschen, rot für Tier- und Zellversuche.</p></div>
+      <div class="head"><h2>Wie belastbar ist das?</h2><p class="muted">Die Farbe zeigt, wie belastbar ein Ergebnis ist: grün für randomisierte Studien am Menschen, gelb für erste Daten am Menschen, rot für Tier- und Zellversuche.</p></div>
       <div class="grid3">
         {studies.map((s) => (
           <div class="card">
@@ -61,7 +63,7 @@ const faq = [
       </div>
     </div>
   </section>
-  <section class="band tint">
+  <section class="band">
     <div class="in narrow">
       <div class="head"><h2>Häufige Fragen</h2></div>
       <div class="faq">

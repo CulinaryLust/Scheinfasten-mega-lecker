@@ -3,14 +3,17 @@
 // Alle Aussagen zum Scheinfasten mit Studienbeleg; Tier- und Pilotdaten sind als solche markiert.
 import Icon from './Icon.astro';
 import { u } from '../lib/url.js';
-interface Props { id?: string; tint?: boolean }
-const { id = 'unterschied', tint = false } = Astro.props;
+// compact: Kurzfassung für die Startseite (je drei Punkte, Signale als Chipzeile), die volle Fassung steht auf „Wissen“.
+interface Props { id?: string; tint?: boolean; compact?: boolean }
+const { id = 'unterschied', tint = false, compact = false } = Astro.props;
 const water = [
   ['ban', 'Tagelang gar nichts essen, nur Wasser und Tee'],
   ['ban', 'Keine Vitamine, Mineralstoffe und Ballaststoffe aus dem Essen'],
   ['ban', 'Für viele schwer durchzuhalten, der Hunger ist oft groß'],
   ['ban', 'Längeres Wasserfasten wird meist ärztlich begleitet'],
 ];
+const waterShort = ['Tagelang gar nichts essen', 'Keine Nährstoffe aus dem Essen', 'Hunger ist oft groß'];
+const fmdShort = ['Jeden Tag echte Mahlzeiten', 'Vitamine, Ballaststoffe, gute Fette', 'In Longos Studie gut verträglich'];
 const fmd = [
   ['pot', 'Jeden Tag echte Mahlzeiten mit 700 bis 1.100 kcal: Suppen, Gemüse, Nüsse, Oliven'],
   ['leaf', 'Vitamine, Mineralstoffe, Ballaststoffe und gute Fette bleiben auf dem Teller'],
@@ -25,12 +28,12 @@ const shared = [
   { icon: 'spark', title: 'Aufräumen und Erneuern', text: 'Zellen recyceln alte Bestandteile (Autophagie) und bauen danach neu auf.', lv: 'bad', tag: 'nur bei Mäusen gezeigt' },
 ];
 ---
-<section class:list={['band', 'cmp', { tint }]} id={id}>
+<section class:list={['band', 'cmp', { tint, compact }]} id={id}>
   <div class="in">
     <div class="head center">
       <p class="kicker">Der große Unterschied</p>
       <h2>Fasten-Signale, <span class="hl">ohne auf Essen zu verzichten</span></h2>
-      <p class="muted">Prof. Dr. Valter Longo hat die Mahlzeiten so zusammengesetzt, dass der Körper ähnlich reagiert wie beim Fasten: wenig Eiweiß, wenig Zucker, viel pflanzliches Fett. Du isst also und schaltest trotzdem in einen fastenähnlichen Modus.</p>
+      {!compact && <p class="muted">Prof. Dr. Valter Longo hat die Mahlzeiten so zusammengesetzt, dass der Körper ähnlich reagiert wie beim Fasten: wenig Eiweiß, wenig Zucker, viel pflanzliches Fett. Du isst also und schaltest trotzdem in einen fastenähnlichen Modus.</p>}
     </div>
 
     <div class="vsgrid">
@@ -38,17 +41,21 @@ const shared = [
         <p class="tag">Klassisches Fasten</p>
         <h3>Nur Wasser</h3>
         <p class="kc"><b>0</b> kcal am Tag</p>
-        <ul>{water.map(([i, t]) => <li><Icon name={i} /><span>{t}</span></li>)}</ul>
+        <ul>{compact ? waterShort.map((t) => <li><Icon name="ban" /><span>{t}</span></li>) : water.map(([i, t]) => <li><Icon name={i} /><span>{t}</span></li>)}</ul>
       </article>
       <div class="vs-badge" aria-hidden="true">vs</div>
       <article class="side fmd">
         <p class="tag">Scheinfasten</p>
         <h3>Essen und trotzdem fasten</h3>
         <p class="kc"><b>700 bis 1.100</b> kcal am Tag</p>
-        <ul>{fmd.map(([i, t]) => <li><Icon name={i} /><span>{t}</span></li>)}</ul>
+        <ul>{compact ? fmdShort.map((t) => <li><Icon name="check" /><span>{t}</span></li>) : fmd.map(([i, t]) => <li><Icon name={i} /><span>{t}</span></li>)}</ul>
       </article>
     </div>
 
+    {compact ? (
+      <p class="sigline"><b>Bei beiden ähnlich:</b> <span>Blutzucker sinkt</span><span>IGF-1 sinkt</span><span>mehr Fettverbrennung</span> <a href={u('wissen/#unterschied')}>So funktioniert's, mit Studien</a></p>
+    ) : (
+      <Fragment>
     <div class="both">
       <h3><Icon name="check" />Bei beiden ähnlich: Das passiert im Körper</h3>
       <div class="sig">
@@ -64,6 +71,8 @@ const shared = [
     </div>
 
     <p class="muted small fine">Messwerte beim Scheinfasten: Brandhorst S et al., Cell Metabolism 2015 (Mäuse und Pilotstudie am Menschen) und Wei M et al., Science Translational Medicine 2017 (100 Menschen, randomisiert). Die Studien nutzten das Fertigprodukt ProLon. Eine Studie, die Scheinfasten und Wasserfasten direkt am Menschen vergleicht, gibt es bisher nicht. Ob die Mahlzeiten den Fasteneffekt sogar verstärken, ist deshalb offen. Belegt ist, dass Scheinfasten in der Studie gut verträglich war. Kein Heilversprechen. <a href={u('wissen/')}>Alle Studien einordnen</a></p>
+      </Fragment>
+    )}
   </div>
 </section>
 
@@ -102,4 +111,11 @@ const shared = [
   .sigi { width: 42px; height: 42px; border-radius: 12px; background: var(--ok-bg); color: var(--green); display: grid; place-items: center; }
   .sigi :global(.i) { width: 22px; height: 22px; }
   .fine { margin-top: 18px; max-width: 90ch; }
+  .compact .head { margin-bottom: 22px; }
+  .compact .side h3 { font-size: clamp(1.25rem, 2.2vw, 1.5rem); }
+  .compact .side ul { gap: 8px; }
+  .compact .water { margin-block: 12px; }
+  .sigline { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; text-align: center; }
+  .sigline span { background: var(--ok-bg); color: var(--ok); font-weight: 700; font-size: .88rem; padding: 4px 12px; border-radius: 999px; }
+  .sigline a { font-weight: 700; }
 </style>
