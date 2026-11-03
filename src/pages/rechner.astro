@@ -4,7 +4,7 @@ import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 import { icon } from '../lib/icons.js';
 import { PLAN, fmt } from '../lib/nutrition.js';
-const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search', 'sugar'].map((k) => [k, icon(k)]));
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search', 'sugar', 'leaf', 'nut', 'oil', 'apple', 'herb', 'cup', 'ban'].map((k) => [k, icon(k)]));
 const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 ---
@@ -62,8 +62,10 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
           <span class="small muted">Schnell dazu:</span>
           {quick.map((n) => <button type="button" class="qchip" data-add={n}><Icon name="plus" />{n}</button>)}
         </div>
-        <ul class="picked" id="picked" aria-label="Deine Lebensmittel"></ul>
+        <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Kaffee und Alkohol. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
+        <div class="picked" id="picked" aria-label="Deine Lebensmittel"></div>
         <p class="small muted legendline"><span class="dot g"></span>passt gut <span class="dot y"></span>nur kleine Menge <span class="dot r"></span>lieber tauschen</p>
+        <p class="small muted legendline"><span>Hauptnährstoff:</span><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate <span class="mac protein"><Icon name="protein" /></span>Eiweiß <span class="mac fat"><Icon name="fat" /></span>Fett</p>
       </fieldset>
 
       <p class="err" id="err3" role="alert" hidden></p>
@@ -103,7 +105,13 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
   .qchip:hover, .alt:hover { border-color: var(--green); color: var(--green); }
   .qchip[disabled] { opacity: .45; cursor: default; }
   .qchip .i, .alt .i { width: 1em; height: 1em; }
-  .picked { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .picked { display: grid; gap: 12px; }
+  .pgroup { display: grid; gap: 6px; }
+  .pgroup ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .catlbl { display: flex; gap: 6px; align-items: center; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .catlbl .i { color: var(--green); }
+  .taboo { display: flex; gap: 10px; align-items: flex-start; background: var(--bad-bg); border-radius: 14px; padding: 10px 14px; }
+  .taboo .i { color: var(--bad); margin-top: 2px; }
   .picked:empty::before { content: "Noch nichts ausgewählt."; color: var(--muted); font-size: .92rem; }
   .pchip { cursor: default; background: var(--card); }
   .pchip button { border: 0; background: none; color: var(--muted); cursor: pointer; padding: 2px; display: grid; place-items: center; min-height: 0; }
@@ -118,6 +126,12 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
   .amounts td.nm { font-weight: 600; }
   .amounts td.nm small { display: block; font-weight: 400; color: var(--muted); }
   .amounts .zero td { color: var(--muted); }
+  .amounts tr.cat th { background: var(--band); color: var(--fg); font-size: .8rem; padding: 9px 14px; }
+  .amounts tr.cat th .i { color: var(--green); margin-right: 8px; vertical-align: -3px; }
+  .nmrow { display: flex; gap: 8px; align-items: flex-start; }
+  .nmrow .mac { margin-top: 2px; }
+  .meal ul.ing { list-style: none; padding-left: 0; }
+  .meal ul.ing li { display: flex; gap: 8px; align-items: center; }
   .amounts .reset { border: 0; background: none; color: var(--green); font: 600 .8rem var(--body); cursor: pointer; padding: 4px; min-height: 0; }
   .gcell { display: flex; align-items: center; gap: 6px; }
   .alts { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -139,6 +153,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 <script>
   import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
   import { fmt, PLAN } from '../lib/nutrition.js';
+  import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
   const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
   const TOL_P = PLAN.reference.tolerance.proteinPoints ?? PLAN.reference.tolerance.macroPoints;
 
@@ -154,6 +169,13 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
   const STORE = 'smlRechner';
   const esc = (s: string) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
   const LIGHT: Record<string, string> = { g: 'passt gut', y: 'nur kleine Menge', r: 'lieber tauschen' };
+  // Symbol für den Hauptnährstoff (Kohlenhydrate, Eiweiß oder Fett); Kräuter, Würzen und Kalorienfreies ohne Symbol
+  const mac = (name: string) => {
+    const m = macroOf(BY_NAME[name]);
+    if (!m) return '<span class="mac none" aria-hidden="true"></span>';
+    const lbl = MACROS[m.key as keyof typeof MACROS];
+    return `<span class="mac ${m.key}" title="Liefert vor allem ${lbl} (${m.share} % der Kalorien)">${I[m.key]}<span class="sr-only">${lbl}:</span></span>`;
+  };
 
   type Pick = { name: string; g?: number };
   let state: { inputs?: any; picks: Pick[]; shown?: boolean } = { picks: [] };
@@ -179,7 +201,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
     active = hits.length ? 0 : -1;
     const t = q.value.trim();
     qhint.textContent = t.length >= 2 && !hits.length ? `„${t}“ kennen wir leider noch nicht. Probier es mit einem anderen Wort, z. B. der Grundzutat.` : '';
-    sug.innerHTML = hits.map((f, i) => `<li role="option" id="s${i}" aria-selected="${i === active}" data-name="${esc(f.name)}"><span class="dot ${f.light}" aria-hidden="true"></span>${esc(f.name)}<small>${LIGHT[f.light]}</small></li>`).join('');
+    sug.innerHTML = hits.map((f, i) => `<li role="option" id="s${i}" aria-selected="${i === active}" data-name="${esc(f.name)}"><span class="dot ${f.light}" aria-hidden="true"></span>${mac(f.name)}${esc(f.name)}<small>${LIGHT[f.light]}</small></li>`).join('');
     sug.hidden = !hits.length;
     q.setAttribute('aria-expanded', String(!!hits.length));
     q.setAttribute('aria-activedescendant', active >= 0 ? `s${active}` : '');
@@ -213,10 +235,10 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
     if (state.shown) render();
   }
   function renderPicked() {
-    picked.innerHTML = state.picks.map((p) => {
+    picked.innerHTML = groupByCat(state.picks, (p: Pick) => BY_NAME[p.name]).map((c) => `<div class="pgroup"><p class="catlbl">${I[c.icon]}${c.label}</p><ul>${c.items.map((p: Pick) => {
       const f = BY_NAME[p.name];
-      return `<li class="pchip ${f.light}"><span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>${esc(f.name)}<button type="button" data-remove="${esc(f.name)}" aria-label="${esc(f.name)} entfernen">${I.close}</button></li>`;
-    }).join('');
+      return `<li class="pchip ${f.light}"><span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>${mac(f.name)}${esc(f.name)}<button type="button" data-remove="${esc(f.name)}" aria-label="${esc(f.name)} entfernen">${I.close}</button></li>`;
+    }).join('')}</ul></div>`).join('');
     const have = new Set(state.picks.map((p) => p.name));
     root.querySelectorAll<HTMLButtonElement>('[data-add]').forEach((b) => (b.disabled = have.has(b.dataset.add!)));
   }
@@ -312,16 +334,16 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
       // Mengentabelle
       h += `<div class="stack"><h2 style="font-size:1.6rem">So viel darfst du heute essen</h2>
         <p class="muted small">Mengen für den ganzen Tag. Ändere ruhig eine Zahl, wir passen den Rest an.</p>
-        <div class="tw"><table class="amounts"><thead><tr><th>Lebensmittel</th><th>Menge pro Tag</th><th>kcal</th></tr></thead><tbody>
-        ${res.items.map((it) => {
+        <div class="tw"><table class="amounts"><thead><tr><th>Lebensmittel</th><th>Menge pro Tag</th><th>kcal</th></tr></thead>
+        ${groupByCat(res.items, (it: any) => BY_NAME[it.name]).map((c) => `<tbody><tr class="cat"><th colspan="3" scope="colgroup">${I[c.icon]}${c.label}</th></tr>${c.items.map((it: any) => {
           const f = BY_NAME[it.name];
           const piece = f.piece && it.g ? `<small>etwa ${fmt(it.g / f.piece[1], it.g / f.piece[1] < 3 ? 1 : 0)} ${esc(f.piece[0])}</small>` : '';
           const capNote = f.light === 'y' || f.capWhy !== 'portion' ? `<small>höchstens ${amount(f.name, f.cap)} am Tag${CAP_WHY[f.capWhy] ? `, ${CAP_WHY[f.capWhy]}` : ''}</small>` : '';
           const zero = f.n[0] === 0 ? '<small>so viel du magst</small>' : it.g === 0 ? '<small>heute nicht nötig</small>' : '';
           const input = f.n[0] === 0 ? '' : `<span class="gcell"><input type="number" inputmode="numeric" min="0" max="${f.cap}" step="5" value="${it.g}" data-g="${esc(f.name)}" aria-label="Menge ${esc(f.name)} in Gramm" /> ${unit(f.name)}</span>${it.fixed ? `<button type="button" class="reset" data-free="${esc(f.name)}">zurücksetzen</button>` : ''}`;
-          return `<tr class="${it.g === 0 && f.n[0] > 0 ? 'zero' : ''}"><td class="nm"><span class="dot ${f.light}" title="${LIGHT[f.light]}"></span> ${esc(f.name)}${piece}${capNote}${zero}</td><td>${input}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
-        }).join('')}
-        </tbody></table></div></div>`;
+          return `<tr class="${it.g === 0 && f.n[0] > 0 ? 'zero' : ''}"><td class="nm"><span class="nmrow">${mac(f.name)}<span>${esc(f.name)} <span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>${piece}${capNote}${zero}</span></span></td><td>${input}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
+        }).join('')}</tbody>`).join('')}
+        </table></div></div>`;
       // Gelbe Hinweise
       const yellow = ok.filter((x) => BY_NAME[x.name].light === 'y');
       if (yellow.length) {
@@ -341,7 +363,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
           <div class="meals">${meals.map((m) => `<article class="card meal">
             <div class="meta"><span class="kicker">${m.slot} · ${m.kind}</span><span class="chip ok">${fmt(m.sum.kcal)} kcal</span></div>
             <h3>${esc(m.title)}</h3>
-            <ul>${m.items.map((i) => `<li>${amount(i.name, i.g)} ${esc(i.name)}</li>`).join('')}</ul>
+            <ul class="ing">${m.items.map((i) => `<li>${mac(i.name)}<span>${amount(i.name, i.g)} ${esc(i.name)}</span></li>`).join('')}</ul>
             <ol>${m.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
             <p class="small muted">${I.time} etwa ${m.minutes} Minuten</p>
           </article>`).join('')}</div></div>`;

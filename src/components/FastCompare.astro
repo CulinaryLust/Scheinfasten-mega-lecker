@@ -1,0 +1,105 @@
+---
+// Vergleich klassisches Fasten (nur Wasser) und Scheinfasten, plus gemeinsame Stoffwechselsignale.
+// Alle Aussagen zum Scheinfasten mit Studienbeleg; Tier- und Pilotdaten sind als solche markiert.
+import Icon from './Icon.astro';
+import { u } from '../lib/url.js';
+interface Props { id?: string; tint?: boolean }
+const { id = 'unterschied', tint = false } = Astro.props;
+const water = [
+  ['ban', 'Tagelang gar nichts essen, nur Wasser und Tee'],
+  ['ban', 'Keine Vitamine, Mineralstoffe und Ballaststoffe aus dem Essen'],
+  ['ban', 'Für viele schwer durchzuhalten, der Hunger ist oft groß'],
+  ['ban', 'Längeres Wasserfasten wird meist ärztlich begleitet'],
+];
+const fmd = [
+  ['pot', 'Jeden Tag echte Mahlzeiten mit 700 bis 1.100 kcal: Suppen, Gemüse, Nüsse, Oliven'],
+  ['leaf', 'Vitamine, Mineralstoffe, Ballaststoffe und gute Fette bleiben auf dem Teller'],
+  ['shield', 'In Longos Studie gut verträglich: keine schweren Nebenwirkungen, am häufigsten leichte Müdigkeit oder Kopfschmerzen'],
+  ['home', 'Zu Hause machbar: Die Teilnehmenden fasteten neben ihrem ganz normalen Alltag'],
+];
+// lv: ok = Mensch, randomisiert · warn = kleine Studie am Menschen · bad = Tierversuch
+const shared = [
+  { icon: 'water', title: 'Blutzucker sinkt', text: 'Der Körper stellt sich auf wenig Zucker ein.', lv: 'ok', tag: 'Mensch' },
+  { icon: 'cell', title: 'IGF-1 sinkt', text: 'Ein Wachstumssignal, das die Forschung mit Alterung verbindet, geht zurück.', lv: 'ok', tag: 'Mensch' },
+  { icon: 'kcal', title: 'Fettverbrennung', text: 'Ketonkörper steigen: Der Körper nutzt mehr Fett als Brennstoff.', lv: 'warn', tag: 'Pilotstudie Mensch' },
+  { icon: 'spark', title: 'Aufräumen und Erneuern', text: 'Zellen recyceln alte Bestandteile (Autophagie) und bauen danach neu auf.', lv: 'bad', tag: 'nur bei Mäusen gezeigt' },
+];
+---
+<section class:list={['band', 'cmp', { tint }]} id={id}>
+  <div class="in">
+    <div class="head center">
+      <p class="kicker">Der große Unterschied</p>
+      <h2>Fasten-Signale, <span class="hl">ohne auf Essen zu verzichten</span></h2>
+      <p class="muted">Prof. Dr. Valter Longo hat die Mahlzeiten so zusammengesetzt, dass der Körper ähnlich reagiert wie beim Fasten: wenig Eiweiß, wenig Zucker, viel pflanzliches Fett. Du isst also und schaltest trotzdem in einen fastenähnlichen Modus.</p>
+    </div>
+
+    <div class="vsgrid">
+      <article class="side water">
+        <p class="tag">Klassisches Fasten</p>
+        <h3>Nur Wasser</h3>
+        <p class="kc"><b>0</b> kcal am Tag</p>
+        <ul>{water.map(([i, t]) => <li><Icon name={i} /><span>{t}</span></li>)}</ul>
+      </article>
+      <div class="vs-badge" aria-hidden="true">vs</div>
+      <article class="side fmd">
+        <p class="tag">Scheinfasten</p>
+        <h3>Essen und trotzdem fasten</h3>
+        <p class="kc"><b>700 bis 1.100</b> kcal am Tag</p>
+        <ul>{fmd.map(([i, t]) => <li><Icon name={i} /><span>{t}</span></li>)}</ul>
+      </article>
+    </div>
+
+    <div class="both">
+      <h3><Icon name="check" />Bei beiden ähnlich: Das passiert im Körper</h3>
+      <div class="sig">
+        {shared.map((s) => (
+          <div class="sigcard">
+            <span class="sigi"><Icon name={s.icon} /></span>
+            <b>{s.title}</b>
+            <span class="small muted">{s.text}</span>
+            <span class={`chip ${s.lv}`}>{s.tag}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <p class="muted small fine">Messwerte beim Scheinfasten: Brandhorst S et al., Cell Metabolism 2015 (Mäuse und Pilotstudie am Menschen) und Wei M et al., Science Translational Medicine 2017 (100 Menschen, randomisiert). Die Studien nutzten das Fertigprodukt ProLon. Eine Studie, die Scheinfasten und Wasserfasten direkt am Menschen vergleicht, gibt es bisher nicht. Ob die Mahlzeiten den Fasteneffekt sogar verstärken, ist deshalb offen. Belegt ist, dass Scheinfasten in der Studie gut verträglich war. Kein Heilversprechen. <a href={u('wissen/')}>Alle Studien einordnen</a></p>
+  </div>
+</section>
+
+<style>
+  .center { margin-inline: auto; text-align: center; justify-items: center; }
+  .hl { color: var(--green); background: linear-gradient(transparent 62%, color-mix(in srgb, var(--sun) 45%, transparent) 62%); padding: 0 .1em; }
+  .vsgrid { display: grid; grid-template-columns: minmax(0, .9fr) auto minmax(0, 1.1fr); gap: 0; align-items: stretch; }
+  .side { border-radius: 24px; padding: clamp(20px, 3vw, 32px); display: grid; gap: 10px; align-content: start; }
+  .side h3 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); }
+  .side ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 12px; }
+  .side li { display: flex; gap: 10px; align-items: flex-start; }
+  .side li :global(.i) { width: 22px; height: 22px; margin-top: 1px; }
+  .tag { font-size: .78rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+  .kc { font-size: 1rem; }
+  .kc b { font-family: var(--display); font-weight: 400; font-size: 2rem; }
+  .water { background: var(--card); border: 1.5px dashed var(--line); color: var(--muted); margin-block: 18px; }
+  .water h3, .water .kc b { color: var(--fg); }
+  .water li :global(.i) { color: var(--bad); }
+  .fmd { background: var(--green-d); color: #fff; box-shadow: var(--shadow); position: relative; }
+  .fmd .tag { color: var(--sun); }
+  .fmd li :global(.i) { color: var(--sun); }
+  .vs-badge { align-self: center; width: 56px; height: 56px; border-radius: 50%; background: var(--tomato); color: #fff; display: grid; place-items: center; font: 400 1.4rem var(--display); margin-inline: -14px; z-index: 1; box-shadow: 0 0 0 6px var(--bg); }
+  .tint .vs-badge { box-shadow: 0 0 0 6px var(--band); }
+  @media (max-width: 820px) {
+    .vsgrid { grid-template-columns: 1fr; }
+    .water { margin: 0 10px; }
+    .vs-badge { justify-self: center; margin: -14px 0; }
+  }
+  .both { margin-top: 30px; display: grid; gap: 16px; }
+  .both h3 { display: flex; gap: 10px; align-items: center; font-size: 1.35rem; }
+  .both h3 :global(.i) { color: var(--green); }
+  .sig { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 900px) { .sig { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+  .sigcard { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 6px; align-content: start; }
+  .sigcard .chip { justify-self: start; margin-top: 4px; white-space: normal; }
+  .sigi { width: 42px; height: 42px; border-radius: 12px; background: var(--ok-bg); color: var(--green); display: grid; place-items: center; }
+  .sigi :global(.i) { width: 22px; height: 22px; }
+  .fine { margin-top: 18px; max-width: 90ch; }
+</style>

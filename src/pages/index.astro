@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import RecipeCard from '../components/RecipeCard.astro';
+import FastCompare from '../components/FastCompare.astro';
+import AvoidList from '../components/AvoidList.astro';
 import { RECIPES, PLAN } from '../lib/nutrition.js';
 import { u } from '../lib/url.js';
 const featured = ['kuerbissuppe', 'hummus-bowl', 'ofen-blumenkohl', 'zucchini-nudeln-pesto', 'rote-bete-carpaccio', 'thai-curry-bruehe'].map((s) => RECIPES.find((r) => r.slug === s));
@@ -26,6 +28,7 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
       <h1>Fasten, das richtig gut schmeckt.</h1>
       <p class="lead">Sag uns, was im Kühlschrank liegt. Wir rechnen es auf das Gramm genau nach Longos Werten aus und machen leckere Gerichte daraus.</p>
       <ul class="hfx">
+        <li class="eat"><a href="#unterschied"><Icon name="pot" />Fasten mit echtem Essen</a></li>
         <li class="hot"><Icon name="inflam" />Entzündungswerte runter</li>
         <li><Icon name="scale" />Ø −2,6 kg</li>
         <li><Icon name="tape" />−4 cm Taille</li>
@@ -45,6 +48,8 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
     <span><Icon name="leaf" />100 % pflanzlich</span>
     <span><Icon name="pot" />Frisch gekocht statt Fertigpaket</span>
   </div></div>
+
+  <FastCompare tint />
 
   <section class="band effects">
     <div class="in">
@@ -102,7 +107,9 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
     </div>
   </section>
 
-  <section class="band tint">
+  <AvoidList tint />
+
+  <section class="band">
     <div class="in">
       <div class="head"><p class="kicker">Beliebte Rezepte</p><h2>Darauf freust du dich</h2></div>
       <div class="grid">{featured.map((r) => <RecipeCard r={r} />)}</div>
@@ -110,7 +117,7 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
     </div>
   </section>
 
-  <section class="band">
+  <section class="band tint">
     <div class="in split">
       <img class="rounded" src={u('img/ebook.jpg')} alt="Grüne Gemüsesuppe mit Kräutern" loading="lazy" width="1800" height="1000" />
       <div class="stack">
@@ -127,7 +134,7 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
     </div>
   </section>
 
-  <section class="band tint">
+  <section class="band">
     <div class="in">
       <p class="hint safety"><Icon name="heart" /><span><b>Gut zu wissen:</b> Wenn du schwanger bist, stillst, unter 18 bist, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
     </div>
@@ -171,6 +178,9 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
   .crpv .l { font-family: var(--body); font-size: .9rem; color: var(--muted); font-weight: 700; letter-spacing: .08em; }
   @media (max-width: 820px) { .crp { grid-template-columns: auto minmax(0, 1fr); gap: 14px; } .crptext { grid-column: 1 / -1; grid-row: 2; } .crpv { justify-items: end; } }
   .hfx li.hot { background: var(--tomato); border-color: var(--tomato); }
+  .hfx li.eat { background: var(--sun); border-color: var(--sun); }
+  .hfx li.eat a { color: #24361d; text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+  .hfx li.eat :global(.i) { color: #24361d; }
   .hfx li.hot :global(.i) { color: #fff; }
   .fxcard { display: grid; gap: 4px; align-content: start; }
   .fxi { width: 46px; height: 46px; border-radius: 14px; background: var(--tomato-soft); color: var(--tomato); display: grid; place-items: center; margin-bottom: 6px; }
