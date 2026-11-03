@@ -88,8 +88,9 @@ import { pick } from '../data/affiliate.js';
 
   .result { display: grid; gap: 26px; padding-bottom: 70px; }
   .rhead { display: flex; justify-content: space-between; align-items: end; gap: 14px; flex-wrap: wrap; }
-  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); background: var(--bg); z-index: 5; padding-top: 8px; scrollbar-width: none; }
-  .tab { flex: none; display: grid; gap: 1px; text-align: left; font: inherit; color: var(--fg); background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px 14px; cursor: pointer; min-width: 92px; }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-block: 10px; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); z-index: 5; scrollbar-width: none; }
+  .tab { flex: none; display: grid; gap: 1px; text-align: left; font: inherit; color: var(--fg); background: var(--card); border: 1.5px solid var(--line); border-radius: var(--r-sm); padding: 8px 14px; min-height: 48px; cursor: pointer; min-width: 92px; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease); }
+  .tab:active { transform: scale(.96); }
   .tab b { font-size: .95rem; } .tab span { font-size: .75rem; color: var(--muted); }
   .tab[aria-selected="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
   .tab[aria-selected="true"] span { color: inherit; opacity: .75; }
