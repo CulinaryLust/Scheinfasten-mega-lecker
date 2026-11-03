@@ -45,13 +45,27 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
 
   <section class="band">
     <div class="in">
-      <div class="head"><p class="kicker">In drei Schritten</p><h2>So einfach geht's</h2></div>
-      <div class="grid3 steps">
-        <div class="card"><span class="num">1</span><h3>Kurz über dich</h3><p class="muted">Größe, Gewicht, Fastentag. Dauert eine Minute.</p></div>
-        <div class="card"><span class="num">2</span><h3>Zutaten eingeben</h3><p class="muted">Was liegt im Kühlschrank? Wir rechnen aus, wie viel davon in deinen Tag passt, genau nach Longo.</p></div>
-        <div class="card"><span class="num">3</span><h3>Kochen und genießen</h3><p class="muted">Du bekommst passende Gerichte mit Grammangaben. Etwas passt nicht? Wir schlagen dir einen leckeren Tausch vor.</p></div>
+      <div class="head"><p class="kicker">So funktioniert's</p><h2>Zwei Wege zu deinem Fastentag</h2></div>
+      <div class="ways">
+        <article class="way">
+          <p class="wtag"><Icon name="pot" />Weg 1: Rezepte entdecken</p>
+          <ol class="wsteps">
+            <li><span class="n">1</span><div><b>Rezept aussuchen</b><span>{count} Gerichte, alle nach Longos Werten durchgerechnet.</span></div></li>
+            <li><span class="n">2</span><div><b>Nährwerte sehen</b><span>Kalorien, Eiweiß, Fett und Kohlenhydrate pro Portion.</span></div></li>
+            <li><span class="n">3</span><div><b>Oder gleich den 5-Tage-Plan</b><span>Mengen und Einkaufsliste passend zu dir.</span></div></li>
+          </ol>
+          <div class="ctas"><a class="btn soft" href={u('rezepte/')}>Zu den Rezepten <Icon name="arrow" /></a><a class="wlink" href={u('planer/')}>5-Tage-Plan erstellen</a></div>
+        </article>
+        <article class="way main">
+          <p class="wtag"><Icon name="scale" />Weg 2: Deine eigenen Lebensmittel</p>
+          <ol class="wsteps">
+            <li><span class="n">1</span><div><b>Kurz über dich</b><span>Größe, Gewicht, Fastentag. Dauert eine Minute.</span></div></li>
+            <li><span class="n">2</span><div><b>Zutaten eingeben</b><span>Einfach eintippen, was im Kühlschrank liegt.</span></div></li>
+            <li><span class="n">3</span><div><b>Mengen, Kalorien, Gerichte</b><span>Grammgenau nach Longo, dazu passende Rezepte und ein leckerer Tausch, wenn etwas nicht passt.</span></div></li>
+          </ol>
+          <div class="ctas"><a class="btn" href={u('rechner/')}>Zum Rechner <Icon name="arrow" /></a></div>
+        </article>
       </div>
-      <div class="ctas" style="margin-top:26px"><a class="btn" href={u('rechner/')}>Jetzt ausprobieren <Icon name="arrow" /></a><a class="btn soft" href={u('planer/')}>Lieber einen fertigen 5-Tage-Plan</a></div>
     </div>
   </section>
 
@@ -92,7 +106,19 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
   .trust { background: var(--green-d); color: #fff; }
   .trust .in { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 10px 24px; padding-block: 16px; font-weight: 600; font-size: .95rem; }
   .trust span { display: flex; gap: 8px; align-items: center; }
-  .steps .num { width: 40px; height: 40px; border-radius: 50%; background: var(--tomato-soft); color: var(--tomato); font-family: var(--display); font-size: 1.3rem; display: grid; place-items: center; }
+  .ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  @media (max-width: 820px) { .ways { grid-template-columns: 1fr; gap: 14px; } }
+  .way { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(18px, 3vw, 26px); display: grid; gap: 16px; align-content: start; }
+  .way.main { border: 2px solid var(--tomato); }
+  .wtag { display: flex; gap: 8px; align-items: center; font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--tomato); }
+  .wsteps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .wsteps li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .wsteps .n { width: 30px; height: 30px; border-radius: 9px; background: var(--tomato); color: #fff; font: 800 .95rem/1 var(--body); display: grid; place-items: center; transform: rotate(-4deg); box-shadow: 0 3px 0 var(--tomato-d); }
+  .wsteps div { display: grid; gap: 2px; }
+  .wsteps b { font-size: 1.05rem; }
+  .wsteps div span { color: var(--muted); font-size: .93rem; }
+  .way .ctas { align-items: center; margin-top: 2px; }
+  .wlink { font-weight: 700; }
   .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; align-items: center; }
   @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
   .rounded { border-radius: 24px; aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
