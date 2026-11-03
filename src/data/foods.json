@@ -3840,7 +3840,7 @@
    "Apfel",
    "Walnusskerne"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    400.0,
@@ -3872,7 +3872,7 @@
    "Apfel",
    "Walnusskerne"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    305.0,
@@ -3905,7 +3905,7 @@
    "Heidelbeeren",
    "Mandeln"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    532.0,
@@ -3937,7 +3937,7 @@
    "Apfel",
    "Walnusskerne"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    393.0,
@@ -4135,7 +4135,7 @@
    "Kichererbsen (gegart)",
    "Walnusskerne"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    109.0,
@@ -4170,7 +4170,7 @@
    "Kichererbsen (gegart)",
    "Walnusskerne"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    224.0,
@@ -4203,7 +4203,7 @@
    "Kichererbsen (gegart)",
    "Walnusskerne"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    106.0,
@@ -4236,7 +4236,7 @@
    "Kichererbsen (gegart)",
    "Walnusskerne"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    374.0,
@@ -4268,7 +4268,7 @@
    "Kichererbsen (gegart)",
    "Walnusskerne"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    130.0,
@@ -4331,7 +4331,7 @@
    "Kichererbsen (gegart)",
    "Walnusskerne"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    95.0,
@@ -4363,7 +4363,7 @@
    "Austernpilze",
    "Champignons"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    87.0,
@@ -4397,7 +4397,7 @@
    "Champignons",
    "Avocado"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    135.0,
@@ -4422,7 +4422,10 @@
   "capWhy": "portion",
   "syn": [
    "Kuhmilch",
-   "Vollmilch"
+   "Vollmilch",
+   "Cappuccino",
+   "Latte",
+   "Milchkaffee"
   ],
   "alts": [
    "Mandeldrink ungesüßt"
@@ -4666,22 +4669,20 @@
  },
  {
   "name": "Kaffee",
-  "group": "drink",
-  "groupLabel": "Kaffee, Alkohol, Softdrinks",
-  "light": "r",
-  "cap": 0,
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 150,
   "capWhy": "portion",
   "syn": [
    "Espresso",
-   "Cappuccino",
-   "Latte"
+   "Filterkaffee",
+   "schwarzer Kaffee"
   ],
   "alts": [
-   "Kräutertee",
-   "Zitronensaft",
-   "Gemüsebrühe"
+   "Kräutertee"
   ],
-  "why": "In diesen Tagen sind Wasser und Kräutertee deine besten Freunde.",
+  "why": "Wenn es ohne nicht geht: eine kleine Tasse schwarz am Tag, ohne Milch und Zucker. So empfiehlt es der Hersteller des Fertigprodukts ProLon.",
   "piece": null,
   "n": [
    1.0,
@@ -4700,7 +4701,7 @@
  {
   "name": "Bier",
   "group": "drink",
-  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
   "light": "r",
   "cap": 0,
   "capWhy": "portion",
@@ -4713,7 +4714,7 @@
    "Zitronensaft",
    "Gemüsebrühe"
   ],
-  "why": "In diesen Tagen sind Wasser und Kräutertee deine besten Freunde.",
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
   "piece": null,
   "n": [
    38.0,
@@ -4732,7 +4733,7 @@
  {
   "name": "Wein",
   "group": "drink",
-  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
   "light": "r",
   "cap": 0,
   "capWhy": "portion",
@@ -4747,7 +4748,7 @@
    "Zitronensaft",
    "Gemüsebrühe"
   ],
-  "why": "In diesen Tagen sind Wasser und Kräutertee deine besten Freunde.",
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
   "piece": null,
   "n": [
    70.0,
@@ -4766,7 +4767,7 @@
  {
   "name": "Orangensaft",
   "group": "drink",
-  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
   "light": "r",
   "cap": 0,
   "capWhy": "portion",
@@ -4779,7 +4780,7 @@
    "Orange",
    "Kräutertee"
   ],
-  "why": "In diesen Tagen sind Wasser und Kräutertee deine besten Freunde.",
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
   "piece": null,
   "n": [
    41.0,
@@ -4798,7 +4799,7 @@
  {
   "name": "Cola",
   "group": "drink",
-  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
   "light": "r",
   "cap": 0,
   "capWhy": "portion",
@@ -4813,7 +4814,7 @@
    "Zitronensaft",
    "Gemüsebrühe"
   ],
-  "why": "In diesen Tagen sind Wasser und Kräutertee deine besten Freunde.",
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
   "piece": null,
   "n": [
    41.0,
@@ -7067,10 +7068,10 @@
  },
  {
   "name": "Grüner Tee",
-  "group": "drink",
-  "groupLabel": "Kaffee, Alkohol, Softdrinks",
-  "light": "r",
-  "cap": 0,
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 250,
   "capWhy": "portion",
   "syn": [
    "Grüntee",
@@ -7079,7 +7080,7 @@
   "alts": [
    "Kräutertee"
   ],
-  "why": "Enthält Koffein wie Kaffee. Kräutertee ist in diesen Tagen die entspanntere Wahl.",
+  "why": "Ungesüßt passt eine Tasse. Enthält Koffein, deshalb am selben Tag lieber Tee oder Kaffee, nicht beides.",
   "piece": null,
   "n": [
    0.0,
@@ -7097,20 +7098,19 @@
  },
  {
   "name": "Schwarzer Tee",
-  "group": "drink",
-  "groupLabel": "Kaffee, Alkohol, Softdrinks",
-  "light": "r",
-  "cap": 0,
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 250,
   "capWhy": "portion",
   "syn": [
    "Schwarztee",
-   "Earl Grey",
-   "Chai"
+   "Earl Grey"
   ],
   "alts": [
    "Kräutertee"
   ],
-  "why": "Enthält Koffein wie Kaffee. Kräutertee ist in diesen Tagen die entspanntere Wahl.",
+  "why": "Ungesüßt passt eine Tasse. Enthält Koffein, deshalb am selben Tag lieber Tee oder Kaffee, nicht beides.",
   "piece": null,
   "n": [
    0.0,
@@ -7129,7 +7129,7 @@
  {
   "name": "Smoothie",
   "group": "drink",
-  "groupLabel": "Kaffee, Alkohol, Softdrinks",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
   "light": "r",
   "cap": 0,
   "capWhy": "portion",
@@ -8291,7 +8291,7 @@
    "Haferflocken",
    "Walnusskerne"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    421.0,
@@ -8357,7 +8357,7 @@
    "Mandeln",
    "Apfel"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    428.0,
@@ -8390,7 +8390,7 @@
    "Heidelbeeren",
    "Erdbeeren"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    312.0,
@@ -8422,7 +8422,7 @@
    "Maiswaffeln",
    "Walnusskerne"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    456.0,
@@ -8454,7 +8454,7 @@
    "Himbeeren",
    "Apfelmus ungesüßt"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    234.0,
@@ -8485,7 +8485,7 @@
    "Mandelmus",
    "Haselnussmus"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    530.0,
@@ -8517,7 +8517,7 @@
    "Heidelbeeren",
    "Kokosmilch (vollfett)"
   ],
-  "why": "Zucker holt deinen Körper sofort aus dem Fastenmodus.",
+  "why": "Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
   "piece": null,
   "n": [
    213.0,
@@ -8745,7 +8745,7 @@
    "Kichererbsen (gegart)",
    "Avocado"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    230.0,
@@ -8777,7 +8777,7 @@
    "Champignons",
    "Kichererbsen (gegart)"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    268.0,
@@ -8810,7 +8810,7 @@
    "Champignons",
    "Austernpilze"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    252.0,
@@ -8842,7 +8842,7 @@
    "Paprikapulver, geräuchert",
    "Champignons"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    304.0,
@@ -8874,7 +8874,7 @@
    "Hummus",
    "Tahin"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    357.0,
@@ -8905,7 +8905,7 @@
    "Kichererbsen (gegart)",
    "Champignons"
   ],
-  "why": "Scheinfasten ist rein pflanzlich. Tierisches Eiweiß würde genau den Effekt bremsen, um den es geht.",
+  "why": "Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
   "piece": null,
   "n": [
    181.0,

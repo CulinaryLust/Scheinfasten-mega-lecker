@@ -14,14 +14,14 @@ const pick = (names: string[], light: string) => names.map((n) => {
   return n;
 });
 const red = [
-  { title: 'Fleisch, Fisch und Eier', why: 'Scheinfasten ist rein pflanzlich. Tierisches Eiweiß bremst den Fastenmodus.', ex: pick(['Hähnchen', 'Rindfleisch', 'Salami', 'Lachs', 'Thunfisch', 'Eier'], 'r') },
+  { title: 'Fleisch, Fisch und Eier', why: 'Longos Scheinfasten ist rein pflanzlich und eiweißarm (Wei 2017).', ex: pick(['Hähnchen', 'Rindfleisch', 'Salami', 'Lachs', 'Thunfisch', 'Eier'], 'r') },
   { title: 'Milchprodukte', why: 'Auch Käse und Joghurt machen fünf Tage Pause.', ex: pick(['Milch', 'Käse', 'Joghurt', 'Quark', 'Butter', 'Sahne'], 'r') },
-  { title: 'Zucker und Süßes', why: 'Zucker holt den Körper sofort aus dem Fastenmodus. Auch Honig und Trockenobst.', ex: pick(['Zucker', 'Honig', 'Schokolade', 'Kuchen', 'Datteln', 'Müsli'], 'r') },
+  { title: 'Zucker und Süßes', why: 'Longos Vorgabe: wenig Zucker. Auch Honig und Trockenobst zählen dazu.', ex: pick(['Zucker', 'Honig', 'Schokolade', 'Kuchen', 'Datteln', 'Müsli'], 'r') },
   { title: 'Brot, Nudeln und Weißmehl', why: 'Viele Kalorien, wenig Sättigung. Gemüse bringt dir mehr auf den Teller.', ex: pick(['Weißbrot', 'Mischbrot', 'Nudeln', 'Pizza', 'Croissant', 'Kartoffelchips'], 'r') },
-  { title: 'Kaffee, Alkohol und Säfte', why: 'Wasser und Kräutertee sind jetzt deine Getränke. Kaffee am besten schon vorher reduzieren.', ex: pick(['Kaffee', 'Schwarzer Tee', 'Bier', 'Wein', 'Orangensaft', 'Cola'], 'r') },
+  { title: 'Alkohol, Säfte und Softdrinks', why: 'Bringen Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind jetzt deine Getränke.', ex: pick(['Bier', 'Wein', 'Orangensaft', 'Cola', 'Smoothie'], 'r') },
   { title: 'Fleischersatz', why: 'Fast reines Eiweiß, und genau das hält Longo niedrig.', ex: pick(['Seitan', 'Tempeh', 'Sojagranulat', 'Veggie-Burger'], 'r') },
 ];
-const yellow = pick(['Kartoffeln', 'Kichererbsen (gegart)', 'Linsen (gegart)', 'Hirse (gegart)', 'Reis (gegart)', 'Tofu', 'Apfel', 'Heidelbeeren', 'Knäckebrot'], 'y');
+const yellow = pick(['Kartoffeln', 'Kichererbsen (gegart)', 'Linsen (gegart)', 'Hirse (gegart)', 'Reis (gegart)', 'Tofu', 'Apfel', 'Heidelbeeren', 'Knäckebrot', 'Kaffee', 'Schwarzer Tee'], 'y');
 const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Avocado', 'Kräuter', 'Kräutertee', 'Wasser'];
 ---
 {compact ? (
@@ -38,7 +38,7 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
     <div class="head">
       <p class="kicker">Auf einen Blick</p>
       <h2>Das lässt du fünf Tage weg</h2>
-      <p class="muted">Die Regel ist einfach: pflanzlich, wenig Eiweiß, wenig Zucker. Alles hier unten in Rot würde den Fastenmodus stören. Der <a href={u('rechner/')}>Rechner</a> sagt dir bei jedem Lebensmittel sofort, ob es passt, und schlägt einen leckeren Tausch vor.</p>
+      <p class="muted">Die Regel ist einfach: pflanzlich, wenig Eiweiß, wenig Zucker. Alles hier unten in Rot passt nicht zu Longos Vorgaben. Der <a href={u('rechner/')}>Rechner</a> sagt dir bei jedem Lebensmittel sofort, ob es passt, und schlägt einen leckeren Tausch vor.</p>
     </div>
     <div class="redgrid">
       {red.map((g) => (
@@ -53,7 +53,7 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
       ))}
     </div>
     <div class="lights">
-      <div class="lrow y"><span class="ltag"><span class="dot y"></span>Nur wenig</span><p>{yellow.join(' · ')}</p><p class="small muted">Sättigt gut, aber bringt Zucker oder Eiweiß mit. Der Rechner gibt dir die genaue Menge.</p></div>
+      <div class="lrow y"><span class="ltag"><span class="dot y"></span>Nur wenig</span><p>{yellow.join(' · ')}</p><p class="small muted">Sättigt gut, aber bringt Zucker oder Eiweiß mit. Der Rechner gibt dir die genaue Menge. Kaffee: höchstens eine kleine Tasse schwarz am Tag, so empfiehlt es der ProLon-Hersteller; schwarzer oder grüner Tee statt Kaffee, nicht zusätzlich.</p></div>
       <div class="lrow g"><span class="ltag"><span class="dot g"></span>Darf auf den Teller</span><p>{green.join(' · ')}</p></div>
     </div>
   </div>

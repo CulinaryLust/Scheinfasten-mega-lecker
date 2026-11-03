@@ -13,7 +13,7 @@
    "carbs": 47
   },
   "source": "Brandhorst S et al. Cell Metab 2015;22(1):86-99 (Methoden, Human FMD)",
-  "sourceNote": "Wei M et al. Sci Transl Med 2017 nennt für Tag 1 abweichend ca. 4.600 kJ mit 11 % Eiweiß, 46 % Fett, 43 % Kohlenhydraten; Tage 2 bis 5 identisch.",
+  "sourceNote": "Wei M et al. Sci Transl Med 2017 (Methoden) nennt für Tag 1 ca. 4.600 kJ (ca. 1.100 kcal) mit 11 % Eiweiß, 46 % Fett, 43 % Kohlenhydraten und für Tag 2 bis 5 ca. 3.000 kJ (ca. 717 kcal) mit denselben Anteilen 9/44/47 %.",
   "sugarMaxPercent": 15,
   "tolerance": {
    "kcalPercent": 5,

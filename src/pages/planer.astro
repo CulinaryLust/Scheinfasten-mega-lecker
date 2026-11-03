@@ -323,7 +323,7 @@ import { pick } from '../data/affiliate.js';
       return `<div class="plain"><h3>Vorbereitung am ${dsl(addDays(start, -1))}</h3><ul>
         <li>Einkaufen (siehe Reiter „Einkauf“).</li><li>Vorkochen für die ersten Tage: ${pre.map(esc).join(', ')}.</li>
         <li>Nussmix für fünf Tage abwiegen und in Dosen füllen.</li><li>Abends leicht essen: Gemüse, etwas Reis, kein Alkohol.</li>
-        <li>Kaffee schon jetzt reduzieren, das vermeidet Kopfschmerzen.</li></ul></div>`;
+        <li>Viel Kaffee? Schon jetzt reduzieren, dann reicht in den fünf Tagen eine kleine Tasse.</li></ul></div>`;
     }
     if (k === 6) {
       return `<div class="plain"><h3>Übergangstag am ${dsl(addDays(start, 5))}</h3><ul>
@@ -354,7 +354,7 @@ import { pick } from '../data/affiliate.js';
         ${vs('carbs', 'carbs', 'Kohlenhydrate', `${fmt(n.carbs)} g`, `${fmt(c.shares.carbs)} % · Longo ${c.ref.carbs} %`)}
       </div>
       <div class="mbar" aria-hidden="true"><i class="p" style="width:${c.shares.protein}%"></i><i class="f" style="width:${c.shares.fat}%"></i><i class="c" style="width:${c.shares.carbs}%"></i></div>
-      <p class="muted small">${I.water} Dazu über den Tag mindestens 2 Liter Wasser oder ungesüßten Kräutertee.</p></div>`;
+      <p class="muted small">${I.water} Dazu über den Tag reichlich Wasser oder ungesüßten Tee.</p></div>`;
     list.forEach((it: any, idx: number) => {
       const r = BY_SLUG[it.recipe]; const por = it.portion * f; const m = nutrition(r, por);
       const agg: Record<string, number> = {};
