@@ -1,0 +1,15 @@
+---
+// Platzhalter für Werbeanzeigen. Rendert nichts, solange ADS_ENABLED in src/data/affiliate.js false ist.
+// Vor dem Einschalten: zertifizierten Einwilligungsbanner (CMP) einbauen und Datenschutzerklärung ergänzen.
+import { ADS_ENABLED } from '../data/affiliate.js';
+interface Props { slot: string }
+const { slot } = Astro.props;
+---
+{ADS_ENABLED && (
+  <div class="adslot noprint" data-slot={slot} aria-label="Anzeige">
+    <span>Anzeige</span>
+  </div>
+)}
+<style>
+  .adslot { min-height: 120px; border: 1px dashed var(--line); border-radius: 14px; display: grid; place-items: center; color: var(--muted); font-size: .78rem; margin-block: 24px; }
+</style>

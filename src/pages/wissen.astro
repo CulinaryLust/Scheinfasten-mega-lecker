@@ -5,6 +5,8 @@ import { u } from '../lib/url.js';
 import FastCompare from '../components/FastCompare.astro';
 import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
+import AffiliateBox from '../components/AffiliateBox.astro';
+import { pick } from '../data/affiliate.js';
 const studies = [
   { lv: 'ok', tag: 'Mensch · randomisiert', title: '100 Gesunde, 3 Zyklen', text: 'Körpergewicht, Bauchfett, Blutdruck und der Wachstumsfaktor IGF-1 sanken. Bei Menschen mit erhöhten Ausgangswerten war der Effekt größer.', src: 'Wei M et al. Science Translational Medicine 2017;9:eaai8700', doi: '10.1126/scitranslmed.aai8700' },
   { lv: 'warn', tag: 'Mensch · explorativ', title: 'Biologisches Alter', text: 'Eine Nachauswertung zweier Studien berechnete nach drei Zyklen ein im Median um 2,5 Jahre niedrigeres biologisches Alter. Ein Hinweis, noch kein Beweis.', src: 'Brandhorst S et al. Nature Communications 2024;15:1309', doi: '10.1038/s41467-024-45260-9' },
@@ -69,8 +71,11 @@ const faq = [
       <div class="faq">
         {faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
       </div>
-      <div class="ctas" style="margin-top:24px"><a class="btn" href={u('planer/')}><Icon name="calendar" />Plan erstellen</a><a class="btn soft" href={u('fuer-wen-nicht/')}><Icon name="shield" />Für wen nicht?</a></div>
+      <div class="ctas" style="margin-top:24px"><a class="btn" href={u('planer/')}><Icon name="calendar" />Plan erstellen</a><a class="btn soft" href={u('prolon-oder-selbst-kochen/')}>ProLon oder selbst kochen?</a><a class="btn soft" href={u('fuer-wen-nicht/')}><Icon name="shield" />Für wen nicht?</a></div>
     </div>
+  </section>
+  <section class="band tint">
+    <div class="in narrow"><AffiliateBox items={pick('buch_longo', 'buch_michalsen', 'buch_gu')} title="Zum Weiterlesen" lead="Wenn du tiefer einsteigen willst: das Buch des Erfinders und zwei deutsche Rezeptbücher." /></div>
   </section>
 </Base>
 <style>

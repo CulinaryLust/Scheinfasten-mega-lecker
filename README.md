@@ -31,4 +31,5 @@ npm run dev
 
 - Impressum und Datenschutzerklärung ausfüllen.
 - Eigene Rezeptfotos statt Unsplash-Symbolbildern.
-- Shop-Anbindung für das E-Book.
+- Partner-IDs in `src/data/affiliate.js` eintragen (Amazon-Tracking-ID, ProLon-Partnerlink).
+- Werbeanzeigen erst mit Einwilligungsbanner einschalten (`ADS_ENABLED`).

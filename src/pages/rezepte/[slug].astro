@@ -4,6 +4,9 @@ import Icon from '../../components/Icon.astro';
 import NutritionChips from '../../components/NutritionChips.astro';
 import MacroBar from '../../components/MacroBar.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
+import AffiliateBox from '../../components/AffiliateBox.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { productsForRecipe } from '../../data/affiliate.js';
 import { RECIPES, nutrition, planDays, amountLabel, fmt, shares } from '../../lib/nutrition.js';
 import { u } from '../../lib/url.js';
 
@@ -14,6 +17,7 @@ const { r } = Astro.props;
 const n = nutrition(r);
 const s = shares(n);
 const days = planDays(r.slug);
+const gear = productsForRecipe(r);
 const related = RECIPES.filter((x) => x.slug !== r.slug && x.category === r.category && x.slot !== 'side').slice(0, 3);
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const imgUrl = new URL(u(`img/rezepte/${r.image}.jpg`), Astro.site).toString();
@@ -71,8 +75,10 @@ const pin = `https://www.pinterest.com/pin/create/button/?url=${encodeURICompone
         <h2>Zubereitung</h2>
         <ol>{r.steps.map((t) => <li>{t}</li>)}</ol>
         <div class="alert info"><p><b>Tipp:</b> {r.tip}</p></div>
+        <AffiliateBox items={gear} title="Das hilft beim Kochen" compact />
       </section>
     </div>
+    <AdSlot slot="rezept-unten" />
   </article>
 
   {related.length > 0 && (

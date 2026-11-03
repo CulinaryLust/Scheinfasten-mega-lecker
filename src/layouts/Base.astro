@@ -5,8 +5,8 @@ import '../styles/global.css';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 
-interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean }
-const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo, aber mega lecker: durchgerechnete Rezepte und ein persönlicher 5-Tage-Planer.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false } = Astro.props;
+interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean; noCommerce?: boolean }
+const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo, aber mega lecker: durchgerechnete Rezepte und ein persönlicher 5-Tage-Planer.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false } = Astro.props;
 const fullTitle = title === 'Start' ? 'Scheinfasten mega lecker' : `${title} | Scheinfasten mega lecker`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(u(image), Astro.site);
@@ -17,6 +17,8 @@ const nav = [
   { key: 'rezepte', href: u('rezepte/'), label: 'Rezepte', icon: 'pot' },
   { key: 'wissen', href: u('wissen/'), label: 'Wissen', icon: 'book' },
 ];
+// Auf der Krebs-Seite keine Verweise auf Produktempfehlungen (HWG).
+const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), label: 'Ausstattung' }];
 ---
 <!doctype html>
 <html lang="de">
@@ -41,8 +43,8 @@ const nav = [
     <div class="in">
       <a class="logo" href={u('')}><span class="mark"><Icon name="leaf" /></span>Scheinfasten <span>mega lecker</span></a>
       <nav class="nav" aria-label="Hauptnavigation">
-        {nav.slice(1).map((n) => <a href={n.href} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>)}
-        <a class="btn small" href={u('ebook/')}>E-Book</a>
+        {[...nav.slice(1), ...extra].map((n) => <a href={n.href} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>)}
+        <a class="btn small" href={u('planer/')}>Plan erstellen</a>
       </nav>
     </div>
   </header>
@@ -54,11 +56,13 @@ const nav = [
       <nav aria-label="Rechtliches">
         <a href={u('fuer-wen-nicht/')}>Für wen nicht?</a>
         <a href={u('krebs/')}>Scheinfasten bei Krebs</a>
-        <a href={u('ebook/')}>E-Book</a>
+        {!noCommerce && <a href={u('ausstattung/')}>Ausstattung</a>}
+        {!noCommerce && <a href={u('prolon-oder-selbst-kochen/')}>ProLon oder selbst kochen?</a>}
         <a href={u('impressum/')}>Impressum</a>
         <a href={u('datenschutz/')}>Datenschutz</a>
         <a href={u('transparenz/')}>Transparenz</a>
       </nav>
+      {!noCommerce && <p class="small">Diese Seite ist kostenlos und finanziert sich über gekennzeichnete Affiliate-Links. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>}
       <p class="small">Fotos: Unsplash (Unsplash-Lizenz), Symbolbilder.</p>
     </div>
   </footer>

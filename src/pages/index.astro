@@ -6,6 +6,7 @@ import FastCompare from '../components/FastCompare.astro';
 import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
 import { RECIPES } from '../lib/nutrition.js';
+import { PROLON_PRICE } from '../data/affiliate.js';
 import { u } from '../lib/url.js';
 const featured = ['kuerbissuppe', 'zucchini-nudeln-pesto', 'ofen-blumenkohl'].map((s) => RECIPES.find((r) => r.slug === s));
 const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').length;
@@ -66,15 +67,14 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
     <div class="in split">
       <img class="rounded" src={u('img/ebook.jpg')} alt="Grüne Gemüsesuppe mit Kräutern" loading="lazy" width="1800" height="1000" />
       <div class="stack">
-        <p class="kicker">E-Book</p>
-        <h2>Alles in einem PDF zum Ausdrucken</h2>
+        <p class="kicker">Ehrlich verglichen</p>
+        <h2>ProLon oder selbst kochen?</h2>
         <ul class="check">
-          <li><Icon name="check" />Kompletter 5-Tage-Plan, jeder Tag durchgerechnet</li>
-          <li><Icon name="check" />Alle Rezepte mit Schritt-für-Schritt-Anleitung</li>
-          <li><Icon name="check" />Einkaufsliste und Vorkochplan</li>
+          <li><Icon name="check" />Fertigbox für {PROLON_PRICE} € oder Lebensmittel für etwa 25 bis 40 €</li>
+          <li><Icon name="check" />Was die Studien zeigen und was nicht</li>
+          <li><Icon name="check" />Für wen sich welcher Weg lohnt</li>
         </ul>
-        <p class="price">14,90 €</p>
-        <div class="ctas"><a class="btn" href={u('ebook/')}>Zum E-Book</a></div>
+        <div class="ctas"><a class="btn" href={u('prolon-oder-selbst-kochen/')}>Zum Vergleich</a><a class="btn soft" href={u('ausstattung/')}>Ausstattung</a></div>
       </div>
     </div>
     <div class="in"><p class="hint safety"><Icon name="heart" /><span><b>Gut zu wissen:</b> Wenn du schwanger bist, stillst, unter 18 bist, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p></div>
@@ -99,7 +99,6 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
   .check { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
   .check li { display: flex; gap: 10px; align-items: center; }
   .check :global(.i) { color: var(--green); }
-  .price { font-family: var(--display); font-size: 2.4rem; }
   .safety { margin-top: 40px; }
   .safety p { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
   .hfx { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }

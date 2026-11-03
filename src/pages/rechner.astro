@@ -7,6 +7,8 @@ import { PLAN, fmt } from '../lib/nutrition.js';
 const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search', 'sugar', 'leaf', 'nut', 'oil', 'apple', 'herb', 'cup', 'ban'].map((k) => [k, icon(k)]));
 const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
+import AffiliateBox from '../components/AffiliateBox.astro';
+import { pick } from '../data/affiliate.js';
 ---
 <Base title="Lebensmittel-Rechner" active="rechner" description="Sag uns, was in deinem Kühlschrank liegt. Wir rechnen aus, wie viel davon in deinen Scheinfasten-Tag nach Prof. Dr. Valter Longo passt, und machen leckere Gerichte daraus.">
   <div class="in page-head">
@@ -74,6 +76,7 @@ const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
   </section>
 
   <section class="in result" id="result" hidden aria-live="polite"></section>
+  <div class="in narrow" style="padding-block:24px 56px"><AffiliateBox items={pick('waage', 'loeffel', 'oel')} title="Genau abwiegen" lead="Öl und Nüsse machen den größten Teil der Kalorien aus. Schon 5 g mehr verschieben die Werte deutlich." /></div>
 
   <div class="in narrow small muted srcnote">
     <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben. Für Dill, Minze, Paprikapulver und Currypaste gibt es keinen BLS-Eintrag, dort nutzen wir Richtwerte aus der USDA-Datenbank.</p>

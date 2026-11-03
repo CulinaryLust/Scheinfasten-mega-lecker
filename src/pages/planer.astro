@@ -9,6 +9,8 @@ import { RECIPES } from '../lib/nutrition.js';
 const used = new Set(RECIPES.flatMap((r) => r.ingredients.map((i) => i.name)));
 const foodMeta = Object.fromEntries(foods.filter((f) => used.has(f.name)).map((f) => [f.name, { group: f.group, n: f.n.slice(0, 4) }]));
 const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swap', 'check', 'close', 'cart', 'calendar', 'time', 'arrow', 'info', 'water', 'pot', 'leaf', 'nut', 'apple', 'herb', 'cup', 'ban'].map((k) => [k, icon(k)]));
+import AffiliateBox from '../components/AffiliateBox.astro';
+import { pick } from '../data/affiliate.js';
 ---
 <Base title="Dein 5-Tage-Plan" active="planer" description="Persönlicher Scheinfasten-Planer: Rezepte, Mengen und Nährwerte für jeden Tag, abgeglichen mit den Vorgaben von Prof. Dr. Valter Longo.">
   <div class="in page-head">
@@ -71,6 +73,7 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swa
   </section>
 
   <section class="in result" id="result" hidden aria-live="polite"></section>
+  <div class="in narrow" style="padding-block:24px 56px"><AffiliateBox items={pick('waage', 'dosen', 'thermo')} title="Für deine Fastenwoche" lead="Mit diesen drei Helfern klappen Einkauf und Vorkochen leichter." /></div>
 </Base>
 
 <style is:global>
