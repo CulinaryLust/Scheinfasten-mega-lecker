@@ -47,6 +47,29 @@ import { pick } from '../data/affiliate.js';
             <label><input type="radio" name="pal" value="1.8" /><span>Sehr aktiv<small>körperliche Arbeit, Sport</small></span></label>
           </div>
         </div>
+        <div class="field"><span class="lbl">Fastet noch jemand mit?</span>
+          <div class="seg four">
+            <label><input type="radio" name="ppl" value="1" checked /><span>Nur ich</span></label>
+            <label><input type="radio" name="ppl" value="2" /><span>2 Personen</span></label>
+            <label><input type="radio" name="ppl" value="3" /><span>3 Personen</span></label>
+            <label><input type="radio" name="ppl" value="4" /><span>4 Personen</span></label>
+          </div>
+        </div>
+        <div class="others" id="others">
+          {[2, 3, 4].map((n) => (
+            <div class="other" data-p={n} hidden>
+              <p class="lbl">Person {n}</p>
+              <div class="row4">
+                <div class="field"><label for={`p${n}sex`} class="sr-only">Geschlecht Person {n}</label>
+                  <select id={`p${n}sex`} name={`p${n}sex`}><option value="w">Weiblich</option><option value="m">Männlich</option><option value="d">Divers</option></select></div>
+                <div class="field"><div class="unit"><input aria-label={`Alter Person ${n}`} name={`p${n}age`} type="number" inputmode="numeric" min="10" max="100" value="42" /><span>Jahre</span></div></div>
+                <div class="field"><div class="unit"><input aria-label={`Größe Person ${n}`} name={`p${n}h`} type="number" inputmode="numeric" min="120" max="220" value="175" /><span>cm</span></div></div>
+                <div class="field"><div class="unit"><input aria-label={`Gewicht Person ${n}`} name={`p${n}w`} type="number" inputmode="decimal" min="35" max="250" step="0.5" value="75" /><span>kg</span></div></div>
+              </div>
+            </div>
+          ))}
+          <p class="muted small" id="others-note" hidden>Jede Person bekommt ihre eigene Portionsgröße. Einkaufsliste und Kochmengen rechnen wir für alle zusammen. Für Mitfastende nehmen wir einen normal aktiven Alltag an.</p>
+        </div>
         <p class="err" id="err1" role="alert" hidden></p>
         <div class="nav-btns"><span></span><button type="button" class="btn" data-next="2">Weiter <Icon name="arrow" /></button></div>
       </fieldset>
@@ -84,6 +107,14 @@ import { pick } from '../data/affiliate.js';
   .progress li.on { color: var(--fg); border-color: var(--tomato); }
   .progress li.on span { background: var(--tomato); color: #fff; }
   .wcard { padding: clamp(18px, 4vw, 30px); }
+  .seg.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  @media (max-width: 560px) { .seg.four { grid-template-columns: 1fr 1fr; } }
+  .others { display: grid; gap: 14px; }
+  .other { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); }
+  .other .lbl { margin: 0; }
+  .row4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 560px) { .row4 { grid-template-columns: 1fr 1fr; } }
+  .meal li small { color: var(--muted); }
   .step { border: 0; padding: 0; margin: 0; display: grid; gap: 20px; min-width: 0; }
 
   .result { display: grid; gap: 26px; padding-bottom: 70px; }
@@ -112,6 +143,7 @@ import { pick } from '../data/affiliate.js';
   .swapbox { grid-column: 1 / -1; display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 12px; }
   .alt { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; font: inherit; color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px; cursor: pointer; }
   .alt:hover { border-color: var(--green); }
+  a.alt { text-decoration: none; }
   .alt img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; }
   .alt b { display: block; font-size: .95rem; } .alt small { color: var(--muted); }
   .plain { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 12px; }
@@ -184,11 +216,23 @@ import { pick } from '../data/affiliate.js';
     if (!age || age < 10 || age > 100) msg = 'Bitte gib ein Alter zwischen 10 und 100 Jahren ein.';
     else if (!h || h < 120 || h > 220) msg = 'Bitte gib eine Größe zwischen 120 und 220 cm ein.';
     else if (!w || w < 35 || w > 250) msg = 'Bitte gib ein Gewicht zwischen 35 und 250 kg ein.';
+    const ppl = Number((form.elements.namedItem('ppl') as RadioNodeList).value || 1);
+    for (let n = 2; n <= ppl && !msg; n++) {
+      const a = +(form.elements.namedItem(`p${n}age`) as HTMLInputElement).value, hh = +(form.elements.namedItem(`p${n}h`) as HTMLInputElement).value, ww = +(form.elements.namedItem(`p${n}w`) as HTMLInputElement).value;
+      if (!a || a < 10 || a > 100 || !hh || hh < 120 || hh > 220 || !ww || ww < 35 || ww > 250) msg = `Bitte prüfe die Angaben für Person ${n}: Alter 10 bis 100 Jahre, Größe 120 bis 220 cm, Gewicht 35 bis 250 kg.`;
+    }
     e.textContent = msg; e.hidden = !msg;
     if (msg) go1();
     return !msg;
   }
   function go1() { form.querySelectorAll<HTMLElement>('.step').forEach((s) => (s.hidden = s.dataset.step !== '1')); root.querySelectorAll<HTMLElement>('.progress li').forEach((li) => li.classList.toggle('on', li.dataset.s === '1')); }
+  const syncPeople = () => {
+    const n = Number((form.elements.namedItem('ppl') as RadioNodeList).value || 1);
+    root.querySelectorAll<HTMLElement>('.other').forEach((el) => (el.hidden = Number(el.dataset.p) > n));
+    document.getElementById('others-note')!.hidden = n < 2;
+  };
+  form.querySelectorAll<HTMLInputElement>('input[name="ppl"]').forEach((r) => r.addEventListener('change', syncPeople));
+  syncPeople();
   form.querySelectorAll<HTMLButtonElement>('[data-next]').forEach((b) => b.addEventListener('click', () => go(Number(b.dataset.next))));
 
   form.addEventListener('submit', (ev) => {
@@ -200,16 +244,22 @@ import { pick } from '../data/affiliate.js';
     render();
   });
 
+  // Portionsfaktor = geschätzter Bedarf (Mifflin-St Jeor × Aktivität) / 2000, begrenzt auf 0,9 bis 1,15
+  function person(sex: string, age: number, h: number, w: number, pal: number) {
+    const bmi = w / Math.pow(h / 100, 2);
+    const off = sex === 'm' ? 5 : sex === 'w' ? -161 : -78;
+    const tdee = (10 * w + 6.25 * h - 5 * age + off) * pal;
+    const raw = tdee / 2000;
+    return { age, bmi, tdee, raw, f: Math.min(1.15, Math.max(0.9, raw)) };
+  }
   function profile() {
     const v = state.inputs;
-    const age = +v.age, h = +v.h, w = +v.w, pal = +v.pal;
-    const bmi = w / Math.pow(h / 100, 2);
-    const off = v.sex === 'm' ? 5 : v.sex === 'w' ? -161 : -78;
-    const bmr = 10 * w + 6.25 * h - 5 * age + off;
-    const tdee = bmr * pal;
-    const raw = tdee / 2000;
-    const f = Math.min(1.15, Math.max(0.9, raw));
-    return { age, bmi, tdee, raw, f };
+    const me = person(v.sex, +v.age, +v.h, +v.w, +v.pal);
+    const ppl = Math.min(4, Math.max(1, +(v.ppl || 1)));
+    const others = [];
+    for (let n = 2; n <= ppl; n++) others.push({ n, ...person(v[`p${n}sex`], +v[`p${n}age`], +v[`p${n}h`], +v[`p${n}w`], 1.6) });
+    const fAll = me.f + others.reduce((s, o) => s + o.f, 0);
+    return { ...me, ppl, others, fAll };
   }
 
   // Tagesplan inkl. Tauschungen
@@ -287,12 +337,18 @@ import { pick } from '../data/affiliate.js';
       ${notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : p.bmi < 20 ? '<div class="alert info"><p>Dein BMI ist eher niedrig. Hör gut auf deinen Körper und iss normal weiter, wenn du dich schlapp fühlst.</p></div>' : ''}
       ${p.raw > 1.15 ? '<div class="alert info"><p>Dein Bedarf ist hoch. Wir erhöhen die Portionen um höchstens 15 %, damit der Plan nah an Longos Vorgaben bleibt.</p></div>' : ''}
       ${p.raw < 0.9 ? '<div class="alert info"><p>Wir verkleinern die Portionen um höchstens 10 %, damit du genug isst.</p></div>' : ''}
+      ${p.ppl > 1 ? `<details class="plain"><summary><b>Portionen für ${p.ppl} Personen</b> <span class="muted small">(so teilst du den Topf auf)</span></summary>
+        <div class="tw"><table><thead><tr><th>Person</th><th>Bedarf, geschätzt</th><th>Portionsfaktor</th><th>Anteil am Topf</th><th>Tag 1</th><th>Tag 2 bis 5</th></tr></thead><tbody>
+        ${[{ n: 1, ...p }, ...p.others].map((o: any) => `<tr><td><b>${o.n === 1 ? 'Du' : `Person ${o.n}`}</b></td><td class="n">${fmt(o.tdee)} kcal</td><td class="n">×${fmt(o.f, 2)}</td><td class="n">${fmt(o.f / p.fAll * 100)} %</td><td class="n">${fmt(1090 * o.f)} kcal</td><td class="n">${fmt(725 * o.f)} kcal</td></tr>`).join('')}
+        </tbody></table></div>
+        <p class="muted small">Die Nährwerte im Plan gelten für dich. Bei den anderen ändern sich nur die Mengen, die Anteile von Eiweiß, Fett und Kohlenhydraten bleiben gleich und passen damit ebenso zu Longos Vorgaben.${p.others.some((o: any) => o.age < 18 || o.age > 70 || o.bmi < 18.5) ? ' Für mindestens eine mitfastende Person gilt ein Hinweis zu Alter oder Gewicht. Lies dazu bitte <a href="' + base + 'fuer-wen-nicht/">Für wen es nicht passt</a>.' : ''}</p>
+      </details>` : ''}
       <details class="plain"><summary><b>Abgleich mit Longos Vorgaben</b> <span class="muted small">(Brandhorst et al., Cell Metabolism 2015)</span></summary>
         <div class="tw"><table><thead><tr><th>Tag</th><th>kcal</th><th>Eiweiß</th><th>Fett</th><th>davon Öl</th><th>Kohlenhydrate</th><th>Zucker</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
         <p class="muted small">„Passt“ heißt: Kalorien höchstens 5 %, Fett und Kohlenhydrate höchstens 5 und Eiweiß höchstens ${PLAN.reference.tolerance.proteinPoints} Prozentpunkte von Longos Referenz entfernt, Zucker höchstens ${PLAN.reference.sugarMaxPercent} % der Kalorien (Longo nennt dafür keine Zahl, das ist unsere Regel). Die Anpassung der Portionen an deinen Bedarf (Faktor ${fmt(f, 2)}, berechnet mit der Mifflin-St-Jeor-Formel) ist unsere eigene Regel und nicht Teil von Longos Protokoll.</p>
       </details>
       <div class="tabs noprint" role="tablist">${tabs.map(([k, a, b]) => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k === tab}"><b>${a}</b><span>${b}</span></button>`).join('')}</div>
-      <div id="panes">${[0, 1, 2, 3, 4, 5, 6, 7, 8].map((k) => `<div class="daycard" data-pane="${k}" ${k === tab ? '' : 'hidden'}>${pane(k, f, start, cyc, gap)}</div>`).join('')}</div>
+      <div id="panes">${[0, 1, 2, 3, 4, 5, 6, 7, 8].map((k) => `<div class="daycard" data-pane="${k}" ${k === tab ? '' : 'hidden'}>${pane(k, f, start, cyc, gap, p.fAll, p.ppl)}</div>`).join('')}</div>
     `;
     bindCommon();
     result.querySelectorAll<HTMLButtonElement>('.tab').forEach((b) => b.addEventListener('click', () => {
@@ -317,7 +373,7 @@ import { pick } from '../data/affiliate.js';
     if (!result.dataset.shown) { result.dataset.shown = '1'; window.scrollTo({ top: 0 }); }
   }
 
-  function pane(k: number, f: number, start: Date, cyc: number, gap: number) {
+  function pane(k: number, f: number, start: Date, cyc: number, gap: number, fAll = f, ppl = 1) {
     if (k === 0) {
       const pre = [...new Set([...items(1), ...items(2)].filter((x: any) => x.type === 'main').map((x: any) => BY_SLUG[x.recipe].title))];
       return `<div class="plain"><h3>Vorbereitung am ${dsl(addDays(start, -1))}</h3><ul>
@@ -328,12 +384,14 @@ import { pick } from '../data/affiliate.js';
     if (k === 6) {
       return `<div class="plain"><h3>Übergangstag am ${dsl(addDays(start, 5))}</h3><ul>
         <li>Nicht direkt zu großen Portionen zurückkehren.</li><li>Gut geeignet: Suppen, gedünstetes Gemüse, Reis, Haferbrei, kleine Mengen Eiweiß.</li>
-        <li>Ab Tag 7 wieder normal und ausgewogen essen.</li></ul></div>`;
+        <li>Ab Tag 7 wieder normal und ausgewogen essen.</li></ul>
+        <p><b>Passt gut zum Übergang</b> <span class="muted small">(normale Portion, dazu Reis, Brot oder Haferbrei)</span></p>
+        <div class="stack" style="gap:8px">${['minestrone', 'kuerbissuppe', 'spinat-dal'].filter((s) => BY_SLUG[s]).map((s) => { const r = BY_SLUG[s]; return `<a class="alt" href="${base}rezepte/${s}/"><img src="${img(r)}" alt="" loading="lazy"><span><b>${esc(r.title)}</b><small>${r.minutes} Minuten</small></span><span></span></a>`; }).join('')}</div></div>`;
     }
     if (k === 7) {
       const tot: Record<string, number> = {};
-      for (let d = 1; d <= 5; d++) for (const it of items(d)) for (const ing of BY_SLUG[it.recipe].ingredients) tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * f;
-      return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang</h3><p class="muted small">Mengen ohne Reserve. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
+      for (let d = 1; d <= 5; d++) for (const it of items(d)) for (const ing of BY_SLUG[it.recipe].ingredients) tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * fAll;
+      return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang${ppl > 1 ? ` · ${ppl} Personen` : ''}</h3><p class="muted small">Mengen ohne Reserve${ppl > 1 ? ', für alle zusammen' : ''}. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
         <p class="small muted maclegend">Hauptnährstoff: <span class="mac carbs">${I.carbs}</span>Kohlenhydrate <span class="mac protein">${I.protein}</span>Eiweiß <span class="mac fat">${I.fat}</span>Fett</p>
         <div class="shopcats">${groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')), ([n]: [string, number]) => FM[n]).map((c) => `<div class="shopcat"><h4>${I[c.icon]}${c.label}</h4>
         <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
@@ -372,8 +430,8 @@ import { pick } from '../data/affiliate.js';
         <span class="when">${it.meal}</span>
         <h3>${r.slot === 'main' || r.slot === 'snack' ? `<a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a>` : esc(r.title)}</h3>
         <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.carbs)} g</b></span></div>
-        <span class="por">Portion ×${fmt(por, 2)}${it.swapped ? ' · getauscht' : ''}</span>
-        <details><summary>Zutaten in Gramm</summary><ul>${Object.entries(agg).map(([n2, g]) => `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>
+        <span class="por">Portion ×${fmt(por, 2)}${ppl > 1 ? ` · Topf für alle ×${fmt(it.portion * fAll, 2)}` : ''}${it.swapped ? ' · getauscht' : ''}</span>
+        <details><summary>${ppl > 1 ? `Zutaten für alle ${ppl} Personen` : 'Zutaten in Gramm'}</summary><ul>${Object.entries(agg).map(([n2, g]) => ppl > 1 ? `<li>${amountLabel(n2, g / f * fAll)} ${esc(n2)} <small>(deins: ${amountLabel(n2, g)})</small></li>` : `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>
         ${canSwap ? `<div class="acts noprint"><button class="btn soft small" data-swap="${key}" aria-expanded="${openSwap === key}">${I.swap} Tauschen</button>${it.swapped ? `<button class="btn soft small" data-reset="${key}">Original</button>` : ''}</div>` : ''}
       </div>${box}</article>`;
     });
