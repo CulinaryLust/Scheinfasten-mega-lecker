@@ -27,14 +27,15 @@ const days = planDays(r.slug);
   </a>
 </article>
 <style>
-  .rcard { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .2s, box-shadow .2s; }
+  .rcard { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
+  .rcard:active { transform: scale(.985); }
   .rcard:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
   .rlink { color: inherit; text-decoration: none; display: flex; flex-direction: column; height: 100%; }
   .rimg { position: relative; }
   .rimg img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-  .kc { position: absolute; top: 12px; left: 12px; display: inline-flex; align-items: center; gap: 4px; background: var(--card); color: var(--fg); font-weight: 800; font-size: .85rem; padding: 5px 11px 5px 8px; border-radius: 999px; }
+  .kc { position: absolute; top: 12px; left: 12px; display: inline-flex; align-items: center; gap: 4px; background: var(--glass-strong); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-edge); box-shadow: var(--glass-shadow); color: var(--fg); font-weight: 800; font-size: .85rem; padding: 5px 11px 5px 8px; border-radius: 999px; }
   .kc :global(.i) { color: var(--c-kcal); }
-  .inplan { position: absolute; bottom: 12px; left: 12px; background: var(--green); color: #fff; font-weight: 700; font-size: .78rem; padding: 4px 10px; border-radius: 999px; }
+  .inplan { position: absolute; bottom: 12px; left: 12px; background: color-mix(in srgb, var(--green-d) 72%, transparent); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border: 1px solid rgba(255,255,255,.22); color: #fff; font-weight: 700; font-size: .78rem; padding: 4px 10px; border-radius: 999px; }
   .rbody { padding: 16px 18px 18px; display: grid; gap: 10px; }
   .rbody .kicker { display: flex; align-items: center; gap: 5px; }
   .rbody h3 { font-size: 1.18rem; }

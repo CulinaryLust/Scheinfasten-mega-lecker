@@ -8,6 +8,17 @@
   --display: "Young Serif", Georgia, serif;
   --body: "Figtree Variable", "Segoe UI", system-ui, sans-serif;
   --radius: 18px; --shadow: 0 10px 30px -18px rgba(30, 42, 28, .35);
+  /* Radien-Skala (innen kleiner als außen, damit Ecken konzentrisch wirken) */
+  --r-xs: 10px; --r-sm: 14px; --r-lg: 24px; --r-xl: 30px;
+  /* Bewegung: weich auslaufend, angelehnt an Apples Federkurven */
+  --ease: cubic-bezier(.32, .72, 0, 1); --dur: .28s;
+  /* Glas: nur für schwebende Leisten und Chips über Fotos */
+  --glass: color-mix(in srgb, var(--bg) 66%, transparent);
+  --glass-strong: color-mix(in srgb, var(--card) 80%, transparent);
+  --glass-dark: rgba(18, 24, 16, .48);
+  --glass-edge: rgba(255, 255, 255, .6);
+  --glass-blur: saturate(180%) blur(20px);
+  --glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .55), 0 10px 30px -16px rgba(30, 42, 28, .4);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -17,6 +28,11 @@
     --ok: #8fcf78; --ok-bg: #1f3319; --warn: #e8bd62; --warn-bg: #352a12; --bad: #ff9a80; --bad-bg: #3d1d15;
     --c-kcal: #ff7a52; --c-protein: #c58ee0; --c-fat: #b4cf5a; --c-carbs: #f0b04a; --c-sugar: #f08ab3;
     --shadow: 0 10px 30px -18px rgba(0, 0, 0, .7);
+    --glass: color-mix(in srgb, var(--bg) 70%, transparent);
+    --glass-strong: color-mix(in srgb, var(--card) 78%, transparent);
+    --glass-dark: rgba(8, 12, 7, .55);
+    --glass-edge: rgba(255, 255, 255, .12);
+    --glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 10px 30px -16px rgba(0, 0, 0, .8);
     color-scheme: dark;
   }
 }
@@ -46,33 +62,35 @@ a { color: var(--green); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 700 1rem/1.2 var(--body); padding: 14px 22px; min-height: 48px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; background: var(--tomato); color: #fff; transition: transform .15s, background .15s; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 700 1rem/1.2 var(--body); padding: 14px 22px; min-height: 48px; border-radius: 999px; border: 0; cursor: pointer; text-decoration: none; background: var(--tomato); color: #fff; transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease); -webkit-tap-highlight-color: transparent; }
 .btn:hover { background: var(--tomato-d); transform: translateY(-1px); }
+.btn:active { transform: scale(.97); transition-duration: .08s; }
 .btn.ghost { background: transparent; color: inherit; border: 2px solid currentColor; }
 .btn.soft { background: var(--band); color: var(--fg); }
-.btn.small { padding: 8px 14px; min-height: 38px; font-size: .9rem; }
+.btn.small { padding: 8px 16px; min-height: 44px; font-size: .9rem; }
 .btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; }
 .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* Kopf und Navigation */
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 41; background: var(--bg); }
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
 .top .in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
 .logo { font-family: var(--display); font-size: 1.3rem; text-decoration: none; color: var(--fg); white-space: nowrap; display: flex; align-items: center; gap: 8px; }
 .logo span { color: var(--tomato); }
 .logo .mark { width: 32px; height: 32px; border-radius: 50%; background: var(--tomato); color: #fff; display: grid; place-items: center; }
 .nav { display: flex; gap: 6px; }
-.nav a { text-decoration: none; color: var(--fg); font-weight: 600; padding: 8px 12px; border-radius: 999px; }
-.nav a[aria-current="page"], .nav a:hover { background: var(--band); color: var(--green); }
+.nav a { text-decoration: none; color: var(--fg); font-weight: 600; padding: 8px 14px; min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; transition: background var(--dur) var(--ease), color var(--dur) var(--ease); }
+.nav a[aria-current="page"], .nav a:hover { background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green); }
 .nav .btn { color: #fff; margin-left: 6px; }
 .tabbar { display: none; }
 @media (max-width: 820px) {
   .nav { display: none; }
-  .tabbar { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; inset: auto 0 0 0; z-index: 40; background: var(--card); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); box-shadow: 0 -6px 20px -14px rgba(0,0,0,.4); }
-  .tabbar a { display: grid; justify-items: center; gap: 2px; padding: 8px 4px 9px; font-size: .74rem; font-weight: 700; color: var(--muted); text-decoration: none; }
+  .tabbar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; position: fixed; z-index: 40; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: max(10px, env(safe-area-inset-bottom, 0px)); padding: 6px; border-radius: var(--r-xl); background: var(--glass-strong); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-edge); box-shadow: var(--glass-shadow); }
+  .tabbar a { display: grid; justify-items: center; gap: 2px; padding: 7px 4px 6px; min-height: 52px; border-radius: 24px; font-size: .72rem; font-weight: 700; color: var(--muted); text-decoration: none; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease); -webkit-tap-highlight-color: transparent; }
+  .tabbar a:active { transform: scale(.94); }
   .tabbar a .i { width: 24px; height: 24px; }
-  .tabbar a[aria-current="page"] { color: var(--tomato); }
-  body { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
+  .tabbar a[aria-current="page"] { color: var(--tomato); background: color-mix(in srgb, var(--tomato) 13%, transparent); }
+  body { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
 }
 
 /* Abschnitte */
@@ -108,7 +126,7 @@ section.tint { background: var(--band); }
 .alert.info { background: var(--band); border-left: 5px solid var(--green); }
 .chip { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
 .chip.ok { background: var(--ok-bg); color: var(--ok); } .chip.warn { background: var(--warn-bg); color: var(--warn); } .chip.bad { background: var(--bad-bg); color: var(--bad); }
-.chip.photo { background: rgba(0,0,0,.55); color: #fff; font-weight: 600; }
+.chip.photo { background: var(--glass-dark); color: #fff; font-weight: 600; -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border: 1px solid rgba(255,255,255,.22); }
 
 /* Tabellen */
 .tw { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
@@ -176,3 +194,14 @@ footer.foot a { color: var(--muted); }
 .mac.protein { background: color-mix(in srgb, var(--c-protein) 18%, transparent); color: var(--c-protein); }
 .mac.fat { background: color-mix(in srgb, var(--c-fat) 20%, transparent); color: var(--c-fat); }
 .mac.none { background: transparent; }
+
+/* Fallbacks: ohne Blur-Unterstützung, bei „Transparenz reduzieren“ oder „Mehr Kontrast“ wird Glas deckend */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --glass: var(--bg); --glass-strong: var(--card); --glass-dark: rgba(18, 24, 16, .82); }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root { --glass: var(--bg); --glass-strong: var(--card); --glass-dark: rgba(18, 24, 16, .88); --glass-blur: none; }
+}
+@media (forced-colors: active) {
+  .top, .tabbar { background: Canvas; backdrop-filter: none; }
+}

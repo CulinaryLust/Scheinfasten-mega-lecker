@@ -128,7 +128,7 @@ const count = RECIPES.filter((r) => r.slot === 'main' || r.slot === 'snack').len
   .safety { margin-top: 40px; }
   .safety p { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
   .hfx { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .hfx li { display: inline-flex; gap: 6px; align-items: center; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(4px); border-radius: 999px; padding: 6px 12px; font-weight: 700; font-size: .92rem; }
+  .hfx li { display: inline-flex; gap: 6px; align-items: center; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.32); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: inset 0 1px 0 rgba(255,255,255,.35); border-radius: 999px; padding: 6px 12px; font-weight: 700; font-size: .92rem; }
   .hfx :global(.i) { color: var(--sun); }
   .hfx li.hot { background: var(--tomato); border-color: var(--tomato); }
   .hfx li.eat { background: var(--sun); border-color: var(--sun); }
