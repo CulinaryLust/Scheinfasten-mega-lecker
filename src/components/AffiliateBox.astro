@@ -1,0 +1,38 @@
+---
+// Gekennzeichnete Affiliate-Empfehlungen. Nie auf der Krebs-Seite einsetzen.
+import { icon } from '../lib/icons.js';
+import { amazonUrl } from '../data/affiliate.js';
+import { u } from '../lib/url.js';
+interface Props { items: any[]; title?: string; lead?: string; compact?: boolean }
+const { items, title = 'Das hilft dabei', lead, compact = false } = Astro.props;
+---
+<aside class:list={['aff', 'noprint', { compact }]} aria-label="Anzeige: Produktempfehlungen">
+  <div class="aff-head">
+    <h2>{title}</h2>
+    <span class="ad">Anzeige</span>
+  </div>
+  {lead && <p class="muted small">{lead}</p>}
+  <ul>
+    {items.map((p) => (
+      <li>
+        <span class="ic" set:html={icon(p.icon || 'cart', 'i')} />
+        <span class="tx"><b>{p.title}</b><span class="muted small">{p.why}</span></span>
+        <a class="btn small soft" href={amazonUrl(p)} target="_blank" rel="sponsored nofollow noopener">Bei Amazon<span class="sr-only"> ansehen: {p.title}</span></a>
+      </li>
+    ))}
+  </ul>
+  <p class="muted tiny">Affiliate-Links: Kaufst du darüber, erhalten wir eine kleine Provision. Für dich bleibt der Preis gleich. <a href={u('transparenz/')}>Mehr dazu</a></p>
+</aside>
+<style>
+  .aff { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; display: grid; gap: 12px; }
+  .aff-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .aff h2 { font-size: 1.35rem; }
+  .ad { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  li { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  li:last-child { border-bottom: 0; }
+  .ic { width: 40px; height: 40px; border-radius: 12px; background: var(--band); color: var(--green); display: grid; place-items: center; }
+  .tx { display: grid; gap: 2px; min-width: 0; }
+  @media (max-width: 560px) { li { grid-template-columns: 40px minmax(0, 1fr); } li .btn { grid-column: 2; justify-self: start; } }
+  .tiny { font-size: .78rem; }
+</style>

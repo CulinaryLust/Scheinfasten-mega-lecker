@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
 import { RECIPES } from '../../lib/nutrition.js';
 const list = RECIPES.filter((r) => r.slot !== 'side');
 const cats = [...new Set(list.map((r) => r.category))];
@@ -27,6 +28,7 @@ const cats = [...new Set(list.map((r) => r.category))];
     <div class="in">
       <p class="muted small" id="count" aria-live="polite"></p>
       <div class="grid" id="list">{list.map((r) => <RecipeCard r={r} />)}</div>
+      <AdSlot slot="rezepte-liste" />
       <div class="empty" id="empty" hidden><p>Kein Rezept passt zu deiner Auswahl.</p><button class="btn soft" id="reset">Filter zurücksetzen</button></div>
       <p class="muted small" style="margin-top:22px">Fotos: Symbolbilder von Unsplash. Sie zeigen ähnliche Gerichte, nicht die exakten Rezepte.</p>
     </div>
