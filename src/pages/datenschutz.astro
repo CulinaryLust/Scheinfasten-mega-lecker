@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import { NEWSLETTER_ENABLED, NEWSLETTER_ACTION, PROVIDER } from '../data/newsletter.js';
+const nl = NEWSLETTER_ENABLED && !!NEWSLETTER_ACTION;
 ---
 <Base title="Datenschutz" noindex>
   <div class="in page-head narrow prose"><h1>Datenschutzerklärung</h1>
@@ -8,7 +10,12 @@ import Base from '../layouts/Base.astro';
     <ul><li>Hosting über GitHub Pages (GitHub Inc.). Dabei werden Server-Logdaten wie IP-Adressen verarbeitet.</li>
       <li>Schriften werden lokal ausgeliefert, nicht über Google-Server.</li>
       <li>Der Planer rechnet vollständig in deinem Browser. Deine Angaben werden nur lokal in deinem Browser gespeichert (localStorage) und nicht an uns übertragen.</li>
+      <li>„Stand sichern“ im Rechner: Deine Einträge werden in einen Link gepackt. Sie stehen nur im Teil hinter dem „#“, den der Browser nicht an den Server schickt. Wir speichern davon nichts. Wer den Link hat, kann die Einträge sehen.</li>
       <li>Es gibt derzeit keine Cookies, kein Tracking und keine Analyse-Tools.</li>
       <li>Affiliate-Links (z. B. Amazon, ProLon): Auf dieser Seite werden dadurch keine Daten erhoben. Erst wenn du einen Link anklickst, gelangst du auf die Seite des Anbieters, der dort eigene Cookies setzen kann, um die Vermittlung zuzuordnen. Es gilt dann die Datenschutzerklärung des Anbieters.</li></ul>
+    {nl && (<>
+      <h2>Zyklus-Erinnerung per E-Mail</h2>
+      <p>Wenn du die Erinnerung bestellst, verarbeiten wir deine E-Mail-Adresse und das Startdatum deines nächsten Durchgangs, um dir vorher eine Erinnerung mit Einkaufsliste und gelegentlich Tipps zu schicken. Die Mails können Affiliate-Links enthalten. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit über den Abmeldelink in jeder Mail widerrufen kannst. Die Anmeldung erfolgt im Double-Opt-in-Verfahren. Für den Versand nutzen wir {PROVIDER} als Auftragsverarbeiter mit Servern in der EU. Brevo kann Öffnungen und Klicks auswerten. Deine Daten löschen wir, sobald du dich abmeldest. Was du im Rechner einträgst, wird nicht übertragen.</p>
+    </>)}
   </div>
 </Base>

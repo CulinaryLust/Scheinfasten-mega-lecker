@@ -9,6 +9,8 @@ const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis'
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 import AffiliateBox from '../components/AffiliateBox.astro';
 import Tagebuch from '../components/Tagebuch.astro';
+import StandSichern from '../components/StandSichern.astro';
+import Erinnerung from '../components/Erinnerung.astro';
 import { pick } from '../data/affiliate.js';
 ---
 <Base title="Lebensmittel-Rechner" active="rechner" description="Trag ein, was du heute schon gegessen hast, und sieh sofort, wie viel von deinem Scheinfasten-Tag nach Prof. Dr. Valter Longo noch übrig ist. Mit Vorschlägen, wie du den Rest lecker füllst.">
@@ -119,6 +121,8 @@ import { pick } from '../data/affiliate.js';
 
   <section class="in result" id="result" hidden aria-live="polite"></section>
   </div>
+  <StandSichern />
+  <Erinnerung />
   <div class="in narrow" style="padding-block:24px 56px"><AffiliateBox items={pick('waage', 'loeffel', 'oel')} title="Genau abwiegen" lead="Öl und Nüsse machen den größten Teil der Kalorien aus. Schon 5 g mehr verschieben die Werte deutlich." /></div>
 
   <div class="in narrow small muted srcnote">
