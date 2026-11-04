@@ -8,17 +8,18 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'ch
 const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 import AffiliateBox from '../components/AffiliateBox.astro';
+import Tagebuch from '../components/Tagebuch.astro';
 import { pick } from '../data/affiliate.js';
 ---
-<Base title="Lebensmittel-Rechner" active="rechner" description="Sag uns, was in deinem Kühlschrank liegt. Wir rechnen aus, wie viel davon in deinen Scheinfasten-Tag nach Prof. Dr. Valter Longo passt, und machen leckere Gerichte daraus.">
+<Base title="Lebensmittel-Rechner" active="rechner" description="Trag ein, was du heute schon gegessen hast, und sieh sofort, wie viel von deinem Scheinfasten-Tag nach Prof. Dr. Valter Longo noch übrig ist. Mit Vorschlägen, wie du den Rest lecker füllst.">
   <div class="in page-head">
     <p class="kicker">Rechner</p>
-    <h1>Was koche ich heute?</h1>
-    <p class="lead">Sag uns, was in deinem Kühlschrank liegt. Wir rechnen aus, wie viel du davon essen kannst, genau nach den Werten von Prof. Dr. Valter Longo, und machen leckere Gerichte daraus.</p>
+    <h1>Wie viel geht heute noch?</h1>
+    <p class="lead">Trag ein, was du heute schon gegessen hast. Wir zeigen dir, wie viel von deinem Tageslimit erreicht ist, genau nach den Werten von Prof. Dr. Valter Longo, und wie du den Rest lecker füllst.</p>
   </div>
 
-  <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
-    <form id="f" class="card wcard" novalidate>
+  <section class="in calc" id="prof">
+    <form id="pf" class="card wcard" novalidate>
       <fieldset class="block">
         <legend><span class="num">1</span>Über dich</legend>
         <div class="field"><span class="lbl">Geschlecht</span>
@@ -41,16 +42,57 @@ import { pick } from '../data/affiliate.js';
           </div>
         </div>
         <div class="field"><span class="lbl">Welcher Fastentag ist heute?</span>
-          <div class="seg two">
-            <label><input type="radio" name="day" value="1" checked /><span>Tag 1<small>ca. {fmt(r1.kcal)} kcal, mehr Fett</small></span></label>
-            <label><input type="radio" name="day" value="2" /><span>Tag 2 bis 5<small>ca. {fmt(r2.kcal)} kcal</small></span></label>
+          <div class="seg five" id="days">
+            {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small></span></label>)}
           </div>
+          <p class="small muted" id="dayhint" aria-live="polite"></p>
         </div>
         <p class="err" id="err1" role="alert" hidden></p>
       </fieldset>
+    </form>
+    <script is:inline>
+      // Eingaben sofort beim Laden wiederherstellen, bevor die Reiter rechnen: erst eigene, sonst aus Rechner oder Planer.
+      (function () {
+        var get = function (k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } };
+        var pf = document.getElementById('pf');
+        var prof = get('smlProfil'), plan = get('smlPlaner'), old = get('smlRechner');
+        var v = (prof && prof.inputs) || (old && old.inputs) || (plan && plan.inputs) || {};
+        ['sex', 'age', 'h', 'w', 'pal'].forEach(function (k) {
+          if (v[k] == null) return;
+          var el = pf.elements.namedItem(k);
+          if (!el) return;
+          if (el.length && el[0] && el[0].type === 'radio') { for (var i = 0; i < el.length; i++) el[i].checked = el[i].value === String(v[k]); } else el.value = v[k];
+        });
+        // Zyklustag aus dem Startdatum im Planer, sonst der zuletzt gewählte Tag
+        var day = null, start = plan && plan.inputs && plan.inputs.start;
+        if (start) {
+          var s = new Date(start + 'T12:00:00'), d = new Date(); d.setHours(12, 0, 0, 0);
+          var n = Math.round((d - s) / 86400000) + 1;
+          if (n >= 1 && n <= 5) { day = n; pf.dataset.fromPlan = String(n); }
+        }
+        if (!day && prof && prof.day) day = +prof.day;
+        if (day) { var r = pf.querySelector('input[name="day"][value="' + day + '"]'); if (r) r.checked = true; }
+      })();
+    </script>
+  </section>
 
+  <div class="in calc tabsw">
+    <div class="tabs" role="tablist" aria-label="Rechner">
+      <button type="button" role="tab" id="tab-log" aria-controls="pane-log" aria-selected="true"><Icon name="check" />Was habe ich gegessen?</button>
+      <button type="button" role="tab" id="tab-cook" aria-controls="pane-cook" aria-selected="false" tabindex="-1"><Icon name="pot" />Was koche ich noch?</button>
+    </div>
+  </div>
+
+  <div id="pane-log" role="tabpanel" aria-labelledby="tab-log">
+    <Tagebuch />
+  </div>
+
+  <div id="pane-cook" role="tabpanel" aria-labelledby="tab-cook" hidden>
+  <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
+    <form id="f" class="card wcard" novalidate>
       <fieldset class="block">
         <legend><span class="num">2</span>Was liegt im Kühlschrank?</legend>
+        <p class="small muted">Wir rechnen aus, wie viel du davon heute essen kannst, und machen leckere Gerichte daraus.</p>
         <div class="field combo">
           <label for="q" class="lbl">Lebensmittel hinzufügen</label>
           <div class="search">
@@ -76,6 +118,7 @@ import { pick } from '../data/affiliate.js';
   </section>
 
   <section class="in result" id="result" hidden aria-live="polite"></section>
+  </div>
   <div class="in narrow" style="padding-block:24px 56px"><AffiliateBox items={pick('waage', 'loeffel', 'oel')} title="Genau abwiegen" lead="Öl und Nüsse machen den größten Teil der Kalorien aus. Schon 5 g mehr verschieben die Werte deutlich." /></div>
 
   <div class="in narrow small muted srcnote">
@@ -91,6 +134,15 @@ import { pick } from '../data/affiliate.js';
   .block legend { font-family: var(--display); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; padding: 0; margin-bottom: 4px; }
   .block .num { width: 32px; height: 32px; border-radius: 50%; background: var(--tomato); color: #fff; display: grid; place-items: center; font: 700 .95rem var(--body); flex: none; }
   .seg.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .seg.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  @media (max-width: 560px) { .seg.five { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  #prof { padding-bottom: 18px; }
+  .tabsw { padding-bottom: 18px; }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; background: var(--band); border-radius: 18px; }
+  .tabs button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; border: 0; border-radius: 13px; padding: 12px 10px; min-height: 48px; font: 700 .98rem/1.2 var(--body); background: none; color: var(--muted); cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--card); color: var(--green); box-shadow: var(--shadow); }
+  .tabs button:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+  .tabs .i { width: 1.1em; height: 1.1em; }
   .combo { position: relative; }
   .search { position: relative; }
   .search .i { position: absolute; left: 14px; top: 50%; translate: 0 -50%; color: var(--muted); }
@@ -184,16 +236,8 @@ import { pick } from '../data/affiliate.js';
   let state: { inputs?: any; picks: Pick[]; shown?: boolean } = { picks: [] };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && Array.isArray(s.picks)) state = s; } catch {}
   state.picks = state.picks.filter((p) => BY_NAME[p.name]);
-  // Körperdaten aus dem Planer übernehmen, falls dort schon etwas eingetragen wurde
-  let inputs = state.inputs;
-  if (!inputs) { try { inputs = JSON.parse(localStorage.getItem('smlPlaner') || 'null')?.inputs; } catch {} }
-  if (inputs) {
-    for (const [k, v] of Object.entries(inputs)) {
-      const el = form.elements.namedItem(k) as any;
-      if (!el) continue;
-      if (el instanceof RadioNodeList) { for (const r of Array.from(el) as HTMLInputElement[]) r.checked = r.value === v; } else el.value = v;
-    }
-  }
+  // Körperdaten und Fastentag stehen im gemeinsamen Formular oben (#pf), für beide Reiter.
+  const pf = document.getElementById('pf') as HTMLFormElement;
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch {} };
 
   // Suche mit Vorschlagsliste
@@ -253,7 +297,7 @@ import { pick } from '../data/affiliate.js';
   renderPicked();
 
   function readInputs() {
-    const fd = new FormData(form);
+    const fd = new FormData(pf);
     const v = Object.fromEntries(fd.entries()) as any;
     const age = +v.age, h = +v.h, w = +v.w;
     let msg = '';
@@ -266,7 +310,7 @@ import { pick } from '../data/affiliate.js';
 
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
-    const v = readInputs(); if (!v) { form.scrollIntoView({ behavior: 'smooth' }); return; }
+    const v = readInputs(); if (!v) { pf.scrollIntoView({ behavior: 'smooth' }); return; }
     const e3 = document.getElementById('err3')!;
     let msg = '';
     if (!state.picks.length) msg = 'Füge noch mindestens ein Lebensmittel hinzu.';
@@ -278,9 +322,8 @@ import { pick } from '../data/affiliate.js';
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   // Tageswahl und Körperdaten wirken sofort, sobald ein Ergebnis da ist
-  form.addEventListener('change', (e) => {
-    const t = e.target as HTMLInputElement;
-    if (!state.shown || t.id === 'q') return;
+  pf.addEventListener('change', () => {
+    if (!state.shown) return;
     const v = readInputs(); if (!v) return;
     state.inputs = v; save(); render();
   });
@@ -304,7 +347,7 @@ import { pick } from '../data/affiliate.js';
     const res = ok.length ? solve(ok, t) : null;
     const vd = res?.verdict;
     const adds = res ? suggestAdditions(ok, t, res) : [];
-    const dayLabel = day === 1 ? 'Tag 1' : 'Tag 2 bis 5';
+    const dayLabel = `Tag ${v.day}`;
 
     let h = notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : '';
     // Kopf mit Abgleich
@@ -409,5 +452,30 @@ import { pick } from '../data/affiliate.js';
     save(); render();
   });
 
-  if (state.shown && state.inputs && state.picks.length) render();
+  if (state.shown && state.picks.length) { const v = readInputs(); if (v) { state.inputs = v; render(); } }
+</script>
+
+<script>
+  // Reiter: „Was habe ich gegessen?“ ist Standard, #kochen öffnet den Kühlschrank-Rechner.
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.tabs [role="tab"]')];
+  function show(id: string, focus = false) {
+    for (const t of tabs) {
+      const on = t.id === id;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+      if (on && focus) t.focus();
+    }
+    history.replaceState(null, '', id === 'tab-cook' ? '#kochen' : location.pathname + location.search);
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t.id));
+    t.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      show(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length].id, true);
+    });
+  });
+  if (location.hash === '#kochen') show('tab-cook');
+  addEventListener('hashchange', () => show(location.hash === '#kochen' ? 'tab-cook' : 'tab-log'));
 </script>

@@ -1,0 +1,335 @@
+---
+// Reiter „Was habe ich gegessen?“: Tagesbilanz je Zyklustag mit Fortschritt zum Tageslimit nach Prof. Dr. Valter Longo.
+// Die Körperdaten und der Fastentag kommen aus dem gemeinsamen Formular #pf auf der Rechner-Seite.
+import Icon from './Icon.astro';
+import { u } from '../lib/url.js';
+import { icon } from '../lib/icons.js';
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'sugar', 'check', 'close', 'plus', 'info', 'time', 'pot', 'heart', 'arrow', 'cup'].map((k) => [k, icon(k)]));
+const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'], ['food', 'Walnusskerne'], ['recipe', 'minestrone'], ['recipe', 'nussmix']];
+---
+<section class="in calc" id="log" data-base={u('')} data-icons={JSON.stringify(icons)}>
+  <div class="card wcard">
+    <fieldset class="block">
+      <legend><span class="num">2</span>Was hast du heute schon gegessen?</legend>
+      <div class="field combo">
+        <label for="lq" class="lbl">Lebensmittel oder Rezept suchen</label>
+        <div class="search">
+          <Icon name="search" />
+          <input id="lq" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="lsug" autocomplete="off" placeholder="z. B. Minestrone, Walnüsse, Apfel" />
+        </div>
+        <ul id="lsug" class="sug" role="listbox" hidden></ul>
+        <p class="small muted" id="lqhint" aria-live="polite"></p>
+      </div>
+      <div class="addrow" id="addrow" hidden>
+        <p class="addname" id="addname"></p>
+        <div class="addctl">
+          <label class="sr-only" for="addqty">Menge</label>
+          <input id="addqty" type="number" inputmode="decimal" min="0" step="any" />
+          <label class="sr-only" for="addunit">Einheit</label>
+          <select id="addunit"></select>
+          <button type="button" class="btn" id="addbtn"><Icon name="plus" />Eintragen</button>
+        </div>
+      </div>
+      <div class="quick" aria-label="Schnell eintragen">
+        <span class="small muted">Schnell dazu:</span>
+        {quick.map(([type, key]) => <button type="button" class="qchip" data-pick={`${type}:${key}`}><Icon name="plus" />{type === 'recipe' ? (key === 'minestrone' ? 'Minestrone' : 'Nussmix') : key}</button>)}
+      </div>
+      <div id="lentries" class="lentries" aria-label="Heute gegessen"></div>
+      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="button" class="btn soft" id="lclear" hidden>Tag leeren</button></div>
+      <p class="small muted">Alles bleibt nur in deinem Browser gespeichert. Wir sehen nichts davon.</p>
+    </fieldset>
+  </div>
+</section>
+<section class="in result" id="lres" aria-live="polite"></section>
+
+<style is:global>
+  .addrow { display: grid; gap: 10px; padding: 14px; border-radius: 14px; background: var(--band); }
+  .addname { font-weight: 700; margin: 0; display: flex; gap: 8px; align-items: center; }
+  .addctl { display: grid; grid-template-columns: minmax(0, 110px) minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+  @media (max-width: 560px) { .addctl { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .addctl .btn { grid-column: 1 / -1; } }
+  .addctl input, .addctl select, .lentry input, .lentry select { min-height: 44px; padding: 6px 10px; font-weight: 700; }
+  .lentries { display: grid; gap: 8px; }
+  .lentries:empty::before { content: "Noch nichts eingetragen. Fang mit deinem Frühstück oder Mittagessen an."; color: var(--muted); font-size: .92rem; }
+  .lentry { display: grid; grid-template-columns: minmax(0, 1fr) 84px minmax(0, 150px) 70px 36px; gap: 8px; align-items: center; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--card); }
+  .lentry .nm { font-weight: 600; display: flex; gap: 8px; align-items: center; min-width: 0; }
+  .lentry .nm span { overflow-wrap: anywhere; }
+  .lentry .nm small { color: var(--muted); font-weight: 500; }
+  .lentry .kc { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: .9rem; }
+  .lentry .rm { border: 0; background: none; color: var(--muted); cursor: pointer; display: grid; place-items: center; min-height: 36px; }
+  .lentry.r { border-color: var(--bad); background: var(--bad-bg); }
+  @media (max-width: 560px) { .lentry { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) 36px; } .lentry .nm { grid-column: 1 / -1; } .lentry .kc { display: none; } }
+  .lentry .rm .i { width: 1em; height: 1em; }
+  .tag { flex: none; white-space: nowrap; font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--green); background: var(--ok-bg); padding: 2px 8px; border-radius: 999px; }
+  .bars { display: grid; gap: 14px; }
+  .pbar { display: grid; gap: 6px; }
+  .pbar .phead { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: baseline; }
+  .pbar .k { display: flex; gap: 6px; align-items: center; font-weight: 700; }
+  .pbar .v { font-variant-numeric: tabular-nums; font-size: .92rem; }
+  .pbar .v b { font-size: 1.05rem; }
+  .pbar .track { height: 12px; border-radius: 999px; background: var(--band); overflow: hidden; }
+  .pbar .fill { height: 100%; border-radius: 999px; background: var(--green); transition: width .3s ease; }
+  .pbar.kcal .fill { background: var(--c-kcal); } .pbar.protein .fill { background: var(--c-protein); } .pbar.fat .fill { background: var(--c-fat); } .pbar.carbs .fill { background: var(--c-carbs); } .pbar.sugar .fill { background: var(--c-sugar); }
+  .pbar.over .fill { background: var(--bad); }
+  .pbar.kcal .i { color: var(--c-kcal); } .pbar.protein .i { color: var(--c-protein); } .pbar.fat .i { color: var(--c-fat); } .pbar.carbs .i { color: var(--c-carbs); } .pbar.sugar .i { color: var(--c-sugar); }
+  .pbar .rest { font-size: .82rem; color: var(--muted); }
+  .pbar.over .rest { color: var(--bad); font-weight: 700; }
+  .fillrow { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .mini { border: 1.5px solid var(--line); background: var(--bg); border-radius: 999px; padding: 6px 12px; min-height: 36px; font: 600 .85rem var(--body); cursor: pointer; color: var(--fg); display: inline-flex; gap: 6px; align-items: center; }
+  .mini:hover { border-color: var(--green); color: var(--green); }
+  .mini .i { width: 1em; height: 1em; }
+  .fill-foods { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .fill-foods li { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 8px 12px; border-radius: 12px; background: var(--band); flex-wrap: wrap; }
+  .rmatch .fillrow { margin-top: 4px; }
+  .rcard { display: grid; grid-template-columns: 110px 1fr; gap: 14px; align-items: start; }
+  .rcard img { width: 110px; height: 82px; object-fit: cover; border-radius: 12px; }
+  .rcard h3 { font-size: 1.1rem; }
+  .rcard h3 a { color: inherit; }
+  .rcard p { font-size: .88rem; margin: 0; }
+</style>
+
+<script>
+  import { status, fillFoods, fillRecipes, searchAll, defaultAmount, units, grams, qtyLabel, entryTotals, PANTRY, BY_NAME, BY_SLUG } from '../lib/tagebuch.js';
+  import { profile, targets, amount } from '../lib/rechner.js';
+  import { fmt } from '../lib/nutrition.js';
+
+  const root = document.getElementById('log')!;
+  const base = root.dataset.base!;
+  const I = JSON.parse(root.dataset.icons!);
+  const pf = document.getElementById('pf') as HTMLFormElement;
+  const q = document.getElementById('lq') as HTMLInputElement;
+  const sug = document.getElementById('lsug')!;
+  const qhint = document.getElementById('lqhint')!;
+  const addrow = document.getElementById('addrow')!;
+  const addname = document.getElementById('addname')!;
+  const addqty = document.getElementById('addqty') as HTMLInputElement;
+  const addunit = document.getElementById('addunit') as HTMLSelectElement;
+  const list = document.getElementById('lentries')!;
+  const res = document.getElementById('lres')!;
+  const clear = document.getElementById('lclear')!;
+  const dayhint = document.getElementById('dayhint')!;
+  const esc = (s: string) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+  const STORE = 'smlTagebuch';
+
+  type Entry = { type: 'food' | 'recipe'; name?: string; slug?: string; qty: number; unit: string };
+  let state: { logs: Record<string, Entry[]> } = { logs: {} };
+  try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && s.logs) state = s; } catch {}
+  const valid = (e: Entry) => (e.type === 'recipe' ? !!BY_SLUG[e.slug!] : !!BY_NAME[e.name!]);
+  for (const k of Object.keys(state.logs)) state.logs[k] = (state.logs[k] || []).filter(valid);
+  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch {} };
+
+  // Körperdaten und Tag aus dem gemeinsamen Formular
+  function inputs() {
+    const v = Object.fromEntries(new FormData(pf).entries()) as any;
+    const age = +v.age, h = +v.h, w = +v.w;
+    if (!(age >= 10 && age <= 100 && h >= 120 && h <= 220 && w >= 35 && w <= 250)) return null;
+    return { v, day: Math.min(5, Math.max(1, +v.day || 1)), p: profile({ sex: v.sex, age, h, w, pal: +v.pal }) };
+  }
+  const day = () => String(Math.min(5, Math.max(1, +(new FormData(pf).get('day') as string) || 1)));
+  const log = () => (state.logs[day()] ||= []);
+  const label = (e: Entry) => (e.type === 'recipe' ? BY_SLUG[e.slug!].title : e.name!);
+
+  // Suche
+  let hits: any[] = [], active = -1, pending: Entry | null = null;
+  function showSug() {
+    hits = searchAll(q.value);
+    active = hits.length ? 0 : -1;
+    const t = q.value.trim();
+    qhint.textContent = t.length >= 2 && !hits.length ? `„${t}“ kennen wir leider noch nicht. Probier es mit der Grundzutat.` : '';
+    sug.innerHTML = hits.map((h, i) => `<li role="option" id="ls${i}" aria-selected="${i === active}" data-i="${i}">${h.type === 'recipe' ? '<span class="tag">Rezept</span>' : `<span class="dot ${h.light}" aria-hidden="true"></span>`}${esc(h.label)}</li>`).join('');
+    sug.hidden = !hits.length;
+    q.setAttribute('aria-expanded', String(!!hits.length));
+    q.setAttribute('aria-activedescendant', active >= 0 ? `ls${active}` : '');
+  }
+  function mark() {
+    sug.querySelectorAll('li').forEach((li, i) => li.setAttribute('aria-selected', String(i === active)));
+    q.setAttribute('aria-activedescendant', active >= 0 ? `ls${active}` : '');
+  }
+  function choose(type: 'food' | 'recipe', key: string) {
+    const e: Entry = type === 'recipe' ? { type, slug: key, qty: 1, unit: 'portion' } : { type, name: key, qty: 0, unit: 'g' };
+    Object.assign(e, defaultAmount(e));
+    pending = e;
+    addname.innerHTML = `${type === 'recipe' ? '<span class="tag">Rezept</span>' : ''}${esc(label(e))}`;
+    addunit.innerHTML = units(e).map(([k, l]) => `<option value="${k}" ${k === e.unit ? 'selected' : ''}>${esc(l)}</option>`).join('');
+    addqty.value = String(e.qty);
+    addqty.step = e.unit === 'g' || e.unit === 'ml' ? '5' : '0.5';
+    addrow.hidden = false;
+    q.value = ''; sug.hidden = true; qhint.textContent = '';
+    addqty.focus(); addqty.select();
+  }
+  function commit() {
+    if (!pending) return;
+    const qty = Math.max(0, +addqty.value.replace(',', '.') || 0);
+    if (!qty) { addqty.focus(); return; }
+    pending.qty = qty; pending.unit = addunit.value;
+    log().push(pending);
+    pending = null; addrow.hidden = true;
+    save(); render(); q.focus();
+  }
+  q.addEventListener('input', showSug);
+  q.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' && hits.length) { e.preventDefault(); active = (active + 1) % hits.length; mark(); }
+    else if (e.key === 'ArrowUp' && hits.length) { e.preventDefault(); active = (active - 1 + hits.length) % hits.length; mark(); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (active >= 0) { const h = hits[active]; choose(h.type, h.slug || h.name); } }
+    else if (e.key === 'Escape') { sug.hidden = true; q.setAttribute('aria-expanded', 'false'); }
+  });
+  sug.addEventListener('mousedown', (e) => { const li = (e.target as HTMLElement).closest('li'); if (li) { e.preventDefault(); const h = hits[+li.dataset.i!]; choose(h.type, h.slug || h.name); } });
+  q.addEventListener('blur', () => setTimeout(() => { sug.hidden = true; q.setAttribute('aria-expanded', 'false'); }, 120));
+  addqty.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); commit(); } });
+  addunit.addEventListener('change', () => {
+    if (!pending) return;
+    const d = units(pending).find((x) => x[0] === addunit.value)!;
+    addqty.value = d[2] === 1 && pending.type === 'food' ? String(Math.round(grams({ ...pending, qty: +addqty.value || 0 } as any))) : '1';
+    pending.unit = addunit.value;
+    addqty.step = d[2] === 1 && pending.type === 'food' ? '5' : '0.5';
+  });
+  document.getElementById('addbtn')!.addEventListener('click', commit);
+  root.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    const pk = t.closest<HTMLElement>('[data-pick]');
+    if (pk) { const [type, key] = pk.dataset.pick!.split(':'); choose(type as any, key); }
+  });
+  clear.addEventListener('click', () => {
+    if (!confirm(`Alle Einträge von Tag ${day()} löschen?`)) return;
+    state.logs[day()] = []; save(); render();
+  });
+
+  // Liste der Einträge mit änderbarer Menge
+  list.addEventListener('change', (e) => {
+    const t = e.target as HTMLInputElement | HTMLSelectElement;
+    const i = +(t.closest<HTMLElement>('[data-idx]')?.dataset.idx ?? -1);
+    const en = log()[i]; if (!en) return;
+    if (t.matches('select')) { en.unit = t.value; en.qty = 1; }
+    else en.qty = Math.max(0, +t.value.replace(',', '.') || 0);
+    save(); render();
+  });
+  list.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLElement>('[data-rm]');
+    if (!b) return;
+    log().splice(+b.dataset.rm!, 1); save(); render();
+  });
+
+  // Vorschläge im Ergebnis übernehmen
+  res.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLElement>('[data-take]');
+    if (!b) return;
+    const [type, key, qty] = b.dataset.take!.split('|');
+    if (type === 'recipe') log().push({ type: 'recipe', slug: key, qty: +qty, unit: 'portion' });
+    else log().push({ type: 'food', name: key, qty: +qty, unit: units({ type: 'food', name: key } as any)[0][0] });
+    save(); render();
+    list.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  pf.addEventListener('change', () => {
+    const v = inputs();
+    try { localStorage.setItem('smlProfil', JSON.stringify({ inputs: v ? { sex: v.v.sex, age: v.v.age, h: v.v.h, w: v.v.w, pal: v.v.pal } : undefined, day: day() })); } catch {}
+    render();
+  });
+
+  const g = (x: number) => fmt(x, x < 10 ? 1 : 0);
+  function bar(b: any) {
+    const unit = b.key === 'kcal' ? 'kcal' : 'g';
+    const w = Math.min(100, b.max ? b.eaten / b.max * 100 : 0);
+    const rest = b.state === 'over' ? `${g(b.eaten - b.target)} ${unit} über dem Ziel`
+      : b.kind === 'max' ? `noch ${g(Math.max(0, b.max - b.eaten))} ${unit} Luft`
+      : b.rest < 0.5 ? 'erreicht' : `noch ${g(b.rest)} ${unit}`;
+    return `<div class="pbar ${b.key} ${b.state}">
+      <div class="phead"><span class="k">${I[b.key]} ${b.label}</span><span class="v"><b>${g(b.eaten)}</b> ${b.kind === 'max' ? 'von höchstens' : 'von'} ${g(b.target)} ${unit} · ${fmt(Math.min(999, b.pct))} %</span></div>
+      <div class="track" role="progressbar" aria-label="${b.label}" aria-valuemin="0" aria-valuemax="${Math.round(b.target)}" aria-valuenow="${Math.round(b.eaten)}"><div class="fill" style="width:${w}%"></div></div>
+      <span class="rest">${rest}</span></div>`;
+  }
+
+  function pantry() {
+    try {
+      const s = JSON.parse(localStorage.getItem('smlRechner') || 'null');
+      const names = (s?.picks || []).map((p: any) => p.name).filter((n: string) => BY_NAME[n] && BY_NAME[n].light !== 'r');
+      if (names.length >= 3) return { names, own: true };
+    } catch {}
+    return { names: PANTRY, own: false };
+  }
+
+  function render() {
+    const entries = log();
+    clear.hidden = !entries.length;
+    // Liste
+    list.innerHTML = entries.map((e, i) => {
+      const n = entryTotals(e);
+      const red = e.type === 'food' && BY_NAME[e.name!].light === 'r';
+      const us = units(e);
+      return `<div class="lentry ${red ? 'r' : ''}" data-idx="${i}">
+        <span class="nm">${e.type === 'recipe' ? '<span class="tag">Rezept</span>' : `<span class="dot ${BY_NAME[e.name!].light}" aria-hidden="true"></span>`}<span>${esc(label(e))}${e.unit === 'piece' || e.unit === 'cup' ? ` <small>${esc(qtyLabel(e).replace(/^.*\(/, '').replace(')', ''))}</small>` : ''}</span></span>
+        <input type="number" inputmode="decimal" min="0" step="${e.unit === 'g' || e.unit === 'ml' ? 5 : 0.5}" value="${e.qty}" aria-label="Menge ${esc(label(e))}" />
+        ${us.length > 1 ? `<select aria-label="Einheit ${esc(label(e))}">${us.map(([k, l]) => `<option value="${k}" ${k === e.unit ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>` : `<span class="small muted">${esc(us[0][1])}</span>`}
+        <span class="kc">${fmt(n.kcal)} kcal</span>
+        <button type="button" class="rm" data-rm="${i}" aria-label="${esc(label(e))} entfernen">${I.close}</button>
+      </div>`;
+    }).join('');
+
+    const inp = inputs();
+    // Übersicht Tag 1 bis 5 in der Tagesauswahl
+    if (inp) for (let d = 1; d <= 5; d++) {
+      const el = pf.querySelector<HTMLElement>(`[data-daysum="${d}"]`);
+      if (!el) continue;
+      const t = targets(d === 1 ? 1 : 2, inp.p.f);
+      const es = state.logs[String(d)] || [];
+      el.textContent = es.length ? `${fmt(status(es, t, d).sum.kcal)} / ${fmt(t.kcal)} kcal` : `ca. ${fmt(t.kcal)} kcal`;
+    }
+    const fromPlan = pf.dataset.fromPlan;
+    dayhint.textContent = fromPlan ? `Laut deinem Plan ist heute Tag ${fromPlan}.` : '';
+    if (!inp) { res.innerHTML = '<div class="alert info"><p>Trag oben kurz Alter, Größe und Gewicht ein, dann rechnen wir dein Tageslimit aus.</p></div>'; return; }
+
+    const d = inp.day;
+    const t = targets(d === 1 ? 1 : 2, inp.p.f);
+    const s = status(entries, t, d);
+    const kc = s.bars[0];
+    let chip = '';
+    if (!entries.length) chip = '';
+    else if (s.done) chip = `<span class="chip ok">${I.check} Tag passt zu Longo</span>`;
+    else if (s.over) chip = '<span class="chip warn">Limit erreicht</span>';
+    else chip = `<span class="chip ok">${fmt(Math.min(100, kc.pct))} % geschafft</span>`;
+    let h = `<div class="rtop">
+      <div class="row"><h2 style="font-size:1.6rem">Dein Tag ${d}</h2>${chip}</div>
+      <p class="small muted">Tageslimit für dich: ca. ${fmt(t.kcal)} kcal mit ${t.ref.protein} % Eiweiß, ${t.ref.fat} % Fett und ${t.ref.carbs} % Kohlenhydraten.</p>
+      <div class="bars">${s.bars.map(bar).join('')}</div>
+      <details class="small muted"><summary>Wie wir rechnen</summary><p>Das Tageslimit kommt aus den Studien des Labors von Prof. Dr. Valter Longo (Brandhorst et al., Cell Metab 2015): Tag 1 ca. 1.090 kcal, Tag 2 bis 5 ca. 725 kcal, angepasst an deinen Bedarf (Faktor ${fmt(inp.p.f, 2)}). Die Grammzahlen ergeben sich aus den Prozentanteilen. Beim Eiweiß ist bis ${t.ref.protein + 3} % in Ordnung, beim Zucker höchstens 15 % der Kalorien (eigene Regel der Seite, Longo nennt keine Grammzahl).</p></details>
+    </div>`;
+    // Hinweise
+    for (const n of s.notes) {
+      h += `<div class="alert info"><p>${esc(n.text)}</p>${n.alts?.length ? `<p class="small">Nächstes Mal lieber: ${n.alts.map(esc).join(', ')}</p>` : ''}</div>`;
+    }
+    if (s.done) {
+      h += `<div class="alert info"><p><b>Geschafft!</b> Dein Tag ${d} passt zu Longos Werten. Ab jetzt nur noch Wasser und ungesüßter Kräutertee.</p></div>`;
+    } else if (s.over) {
+      h += `<div class="alert warn"><p><b>Dein Kalorienlimit für heute ist erreicht.</b> Kein Drama, ein Tag etwas drüber macht den Zyklus nicht kaputt. Für den Rest des Tages reichen Wasser und ungesüßter Kräutertee.</p></div>`;
+    } else if (entries.length) {
+      const overM = s.bars.filter((b) => b.key !== 'kcal' && b.state === 'over').map((b) => b.label);
+      if (overM.length) h += `<div class="alert info"><p>${overM.join(' und ')} ${overM.length > 1 ? 'sind' : 'ist'} für heute schon mehr als genug. Für den Rest des Tages eignet sich ${overM.includes('Fett') ? 'Gemüse ohne Öl, zum Beispiel eine klare Gemüsesuppe' : 'Gemüse mit etwas Olivenöl'}.</p></div>`;
+      // Restbudget füllen
+      const rec = fillRecipes(entries, t);
+      if (rec.length) {
+        h += `<div class="stack"><h2 style="font-size:1.6rem">So füllst du den Rest</h2>
+          <p class="muted small">Rezepte, mit denen dein Tag am nächsten an Longos Werte kommt. Noch offen: ${fmt(kc.rest)} kcal.</p>
+          <div class="grid">${rec.map((x) => `<article class="card rcard">
+            <img src="${base}img/rezepte/${x.recipe.image}.jpg" alt="" loading="lazy" width="110" height="82" />
+            <div class="stack" style="gap:6px"><h3><a href="${base}rezepte/${x.recipe.slug}/">${esc(x.recipe.title)}</a></h3>
+            <p>${x.portion.toLocaleString('de-DE')} ${x.portion === 1 ? 'Portion' : 'Portionen'}, ${fmt(x.n.kcal)} kcal</p>
+            <p class="muted">Danach: ${fmt(x.sum.kcal)} von ${fmt(t.kcal)} kcal${x.ok ? ', Tag passt' : ''}</p>
+            <div class="fillrow">${x.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span></span>'}<button type="button" class="mini" data-take="recipe|${x.recipe.slug}|${x.portion}">${I.plus} Gegessen</button></div></div>
+          </article>`).join('')}</div></div>`;
+      }
+      const pt = pantry();
+      const ff = fillFoods(entries, t, pt.names);
+      if (ff && ff.add.length && ff.sum.kcal <= t.kcal * 1.05) {
+        h += `<div class="stack"><h3 style="font-size:1.25rem">Oder frei kombiniert</h3>
+          <p class="muted small">${pt.own ? 'Aus deinem Kühlschrank im Reiter „Was koche ich noch?“.' : 'Aus Zutaten, die fast jeder da hat. Im Reiter „Was koche ich noch?“ kannst du deinen Kühlschrank eintragen.'} Damit kommst du auf ${fmt(ff.sum.kcal)} kcal${ff.verdict.ok ? ' und dein Tag passt zu Longo' : ''}.</p>
+          <ul class="fill-foods">${ff.add.map((i) => `<li><span>${amount(i.name, i.g)} ${esc(i.name)}</span><button type="button" class="mini" data-take="food|${esc(i.name)}|${i.g}">${I.plus} Gegessen</button></li>`).join('')}</ul></div>`;
+      }
+    }
+    h += `<p class="hint">${I.info}<span>Fühlst du dich schwindelig oder sehr schlapp, iss einfach normal weiter. Dein Körper geht vor.</span></p>`;
+    res.innerHTML = h;
+  }
+
+  // Beim Zurückwechseln neu rechnen, falls im Kühlschrank-Reiter neue Lebensmittel dazugekommen sind
+  document.getElementById('tab-log')?.addEventListener('click', render);
+  addEventListener('hashchange', render);
+  render();
+</script>
