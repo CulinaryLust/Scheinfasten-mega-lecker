@@ -34,3 +34,18 @@ npm run dev
 - Eigene Rezeptfotos statt Unsplash-Symbolbildern.
 - Partner-IDs in `src/data/affiliate.js` eintragen (Amazon-Tracking-ID, ProLon-Partnerlink).
 - Werbeanzeigen erst mit Einwilligungsbanner einschalten (`ADS_ENABLED`).
+
+## Stand sichern
+Im Rechner erstellt „Link erstellen“ einen persönlichen Link mit QR-Code (`src/components/StandSichern.astro`, Logik `src/lib/sicherung.js`). Alle gespeicherten Daten (`smlTagebuch`, `smlProfil`, `smlPlaner`, `smlRechner`) stehen komprimiert im Teil hinter `#stand=`, der nie an den Server geht. Beim Öffnen fragt die Seite, ob der Stand übernommen werden soll. Test: `node scripts/check-sicherung.mjs`.
+
+## Zyklus-Erinnerung (Brevo, vorerst aus)
+Die Box `src/components/Erinnerung.astro` erscheint auf Rechner und Planer, sobald sie in `src/data/newsletter.js` eingeschaltet ist. Erst einschalten, wenn Gewerbe, Impressum und Datenschutzerklärung stehen, denn die Mails enthalten Affiliate-Links.
+
+1. Konto bei Brevo anlegen (kostenloser Tarif reicht für den Anfang) und den Auftragsverarbeitungsvertrag in den Kontoeinstellungen annehmen.
+2. Unter Kontakte > Einstellungen ein Attribut `ZYKLUS_START` vom Typ Datum anlegen.
+3. Unter Kontakte > Formulare ein Anmeldeformular mit den Feldern E-Mail und `ZYKLUS_START` anlegen, Double-Opt-in aktivieren, Datumsformat TT-MM-JJJJ.
+4. Beim Einbetten die Adresse aus `action="…"` des HTML-Codes kopieren und in `NEWSLETTER_ACTION` eintragen, dann `NEWSLETTER_ENABLED = true`.
+5. Unter Automationen einen Ablauf „Datum eines Attributs“ mit `ZYKLUS_START` minus 3 Tage anlegen: Erinnerung mit Link zum Planer, Einkaufsliste und Ausstattungs-Empfehlungen.
+6. Einmal mit der eigenen Adresse testen, ob das Datum in Brevo richtig ankommt.
+
+Die Datenschutzerklärung zeigt den passenden Abschnitt automatisch, sobald die Box eingeschaltet ist. Ernährungseinträge werden nie an Brevo übertragen.

@@ -1,0 +1,52 @@
+---
+// Freiwillige Zyklus-Erinnerung per E-Mail (Brevo, Double-Opt-in). Erscheint nur, wenn sie in src/data/newsletter.js eingeschaltet ist.
+// Bewusst getrennt vom Speichern: Rechner und „Stand sichern“ funktionieren immer ohne E-Mail (Kopplungsverbot, Art. 7 Abs. 4 DSGVO).
+import Icon from './Icon.astro';
+import { u } from '../lib/url.js';
+import { NEWSLETTER_ENABLED, NEWSLETTER_ACTION, DATE_FIELD, DATE_FORMAT } from '../data/newsletter.js';
+const on = NEWSLETTER_ENABLED && !!NEWSLETTER_ACTION;
+---
+{on && (
+  <section class="in calc remind-wrap">
+    <form class="card wcard remind" id="remind" action={NEWSLETTER_ACTION} method="post" target="_blank" data-field={DATE_FIELD} data-format={DATE_FORMAT}>
+      <div class="stack" style="gap:8px">
+        <h2 style="font-size:1.4rem;display:flex;gap:10px;align-items:center"><Icon name="mail" />Erinnerung vor dem nächsten Durchgang</h2>
+        <p class="muted">Wir schreiben dir drei Tage vorher, mit Einkaufsliste und Tipps für die fünf Tage. Kostenlos und jederzeit abbestellbar. Deine Einträge aus dem Rechner bleiben dabei auf deinem Gerät.</p>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="remail" class="lbl">E-Mail</label><input id="remail" name="EMAIL" type="email" autocomplete="email" required placeholder="du@beispiel.de" /></div>
+        <div class="field"><label for="rdate" class="lbl">Nächster Start (Tag 1)</label><input id="rdate" type="date" required /></div>
+      </div>
+      <input type="hidden" name={DATE_FIELD} id="rdatev" />
+      <input type="hidden" name="locale" value="de" />
+      <input type="hidden" name="html_type" value="simple" />
+      <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp" />
+      <label class="consent"><input type="checkbox" name="OPT_IN" value="1" required /><span>Ja, ich möchte die Erinnerung und gelegentlich Tipps zum Scheinfasten per E-Mail bekommen. Die Mails können Empfehlungslinks enthalten, für die wir eine Provision erhalten. Abmelden geht jederzeit über den Link in jeder Mail. Mehr in der <a href={u('datenschutz/')}>Datenschutzerklärung</a>.</span></label>
+      <div class="nav-btns"><span class="small muted">Du bekommst zuerst eine Mail, mit der du die Anmeldung bestätigst.</span><button type="submit" class="btn"><Icon name="mail" />Erinnerung bestellen</button></div>
+    </form>
+  </section>
+)}
+
+<style is:global>
+  .remind-wrap { padding-block: 8px 24px; }
+  .remind { gap: 18px; }
+  .remind h2 .i { color: var(--tomato); }
+  .row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; }
+  .consent input { width: 20px; height: 20px; min-height: 0; margin-top: 2px; flex: none; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+</style>
+
+<script>
+  import { nextCycle, formatDate } from '../lib/erinnerung.js';
+  const f = document.getElementById('remind') as HTMLFormElement | null;
+  if (f) {
+    const d = document.getElementById('rdate') as HTMLInputElement;
+    const v = document.getElementById('rdatev') as HTMLInputElement;
+    // Datum aus dem Planer vorschlagen
+    try { const p = JSON.parse(localStorage.getItem('smlPlaner') || 'null'); const n = nextCycle(p?.inputs); if (n) d.value = n; } catch {}
+    d.min = new Date().toISOString().slice(0, 10);
+    f.addEventListener('submit', () => { v.value = d.value ? formatDate(d.value, f.dataset.format) : ''; });
+  }
+</script>

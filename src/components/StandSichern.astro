@@ -1,0 +1,93 @@
+---
+// „Stand sichern“: persönlicher Link und QR-Code mit allen Einträgen, ohne Konto und ohne Server.
+import Icon from './Icon.astro';
+import { u } from '../lib/url.js';
+---
+<section class="in calc" id="backup" data-page={u('rechner/')}>
+  <div class="card wcard backup">
+    <div class="stack" style="gap:8px">
+      <h2 style="font-size:1.4rem;display:flex;gap:10px;align-items:center"><Icon name="link" />Auf einem anderen Gerät weitermachen</h2>
+      <p class="muted">Mit deinem persönlichen Link nimmst du alles mit: Einträge, Körperdaten, Plan und Kühlschrank. Ganz ohne Konto. Öffne den Link einfach auf dem Handy oder Laptop.</p>
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="btn" id="bmake"><Icon name="link" />Link erstellen</button>
+      <button type="button" class="btn soft" id="bnew">Neuen Durchgang starten</button>
+    </div>
+    <div id="bout" class="bout" hidden>
+      <div class="field"><label for="blink" class="lbl">Dein Link</label>
+        <div class="bline"><input id="blink" type="text" readonly /><button type="button" class="btn soft" id="bcopy"><Icon name="copy" /><span>Kopieren</span></button><button type="button" class="btn soft" id="bshare" hidden>Teilen</button></div>
+      </div>
+      <div class="bqr" id="bqr"></div>
+      <p class="small muted">Der Link speichert den Stand von jetzt. Trägst du später mehr ein, erstell einfach einen neuen. Deine Daten stehen nur im Link selbst und werden nicht an uns geschickt. Gib ihn nur weiter, wenn die andere Person deine Einträge sehen darf.</p>
+    </div>
+    <p class="err" id="berr" role="alert" hidden></p>
+  </div>
+</section>
+
+<style is:global>
+  .backup { gap: 18px; }
+  .backup h2 .i { color: var(--green); }
+  .bout { display: grid; gap: 14px; }
+  .bline { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; }
+  .bline input { min-height: 48px; font-size: .9rem; }
+  @media (max-width: 560px) { .bline { grid-template-columns: 1fr 1fr; } .bline input { grid-column: 1 / -1; } }
+  .bqr:empty { display: none; }
+  .bqr { width: min(220px, 70vw); padding: 10px; background: #fff; border-radius: 14px; border: 1px solid var(--line); }
+  .bqr svg { display: block; width: 100%; height: auto; }
+</style>
+
+<script>
+  import qrcode from 'qrcode-generator';
+  import { collect, pack, unpack, restore, summary, PARAM } from '../lib/sicherung.js';
+
+  const root = document.getElementById('backup')!;
+  const out = document.getElementById('bout')!;
+  const link = document.getElementById('blink') as HTMLInputElement;
+  const qr = document.getElementById('bqr')!;
+  const err = document.getElementById('berr')!;
+  const copy = document.getElementById('bcopy')!;
+  const share = document.getElementById('bshare')!;
+  const fail = (m: string) => { err.textContent = m; err.hidden = false; };
+
+  // Stand aus einem Link übernehmen (…/rechner/#stand=…)
+  const m = location.hash.match(new RegExp(`^#${PARAM}=(.+)$`));
+  if (m) {
+    unpack(decodeURIComponent(m[1])).then((data) => {
+      history.replaceState(null, '', location.pathname + location.search);
+      if (!confirm(`Gespeicherten Stand übernehmen (${summary(data)})? Was auf diesem Gerät bisher gespeichert ist, wird dabei ersetzt.`)) return;
+      restore(localStorage, data);
+      location.reload();
+    }).catch(() => {
+      history.replaceState(null, '', location.pathname + location.search);
+      fail('Dieser Link ist leider unvollständig oder beschädigt. Kopier ihn am besten noch einmal komplett.');
+      root.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  document.getElementById('bmake')!.addEventListener('click', async () => {
+    err.hidden = true;
+    try {
+      const url = `${location.origin}${root.dataset.page}#${PARAM}=${await pack(collect(localStorage))}`;
+      link.value = url;
+      qr.innerHTML = '';
+      try {
+        const q = qrcode(0, 'L'); q.addData(url); q.make();
+        qr.innerHTML = q.createSvgTag({ cellSize: 4, margin: 2, scalable: true, alt: 'QR-Code mit deinem Link' } as any);
+      } catch { qr.innerHTML = ''; } // zu lang für einen QR-Code: der Link reicht
+      share.hidden = !navigator.share;
+      out.hidden = false;
+      link.focus(); link.select();
+    } catch { fail('Der Link ließ sich nicht erstellen. Versuch es bitte noch einmal.'); }
+  });
+  copy.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(link.value); } catch { link.select(); document.execCommand('copy'); }
+    copy.querySelector('span')!.textContent = 'Kopiert';
+    setTimeout(() => (copy.querySelector('span')!.textContent = 'Kopieren'), 2000);
+  });
+  share.addEventListener('click', () => { navigator.share({ title: 'Mein Scheinfasten-Stand', url: link.value }).catch(() => {}); });
+  document.getElementById('bnew')!.addEventListener('click', () => {
+    if (!confirm('Neuen Durchgang starten? Alle Einträge von Tag 1 bis 5 werden gelöscht. Körperdaten, Plan und Kühlschrank bleiben.')) return;
+    try { localStorage.removeItem('smlTagebuch'); } catch {}
+    location.reload();
+  });
+</script>
