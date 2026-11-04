@@ -78,7 +78,8 @@
    "Suppe mit Pfeffer, Salz und Oregano abschmecken, Basilikumöl in Klecksen daraufgeben."
   ],
   "tip": "Gleich die vierfache Menge kochen. Ohne Basilikumöl hält die Suppe 3 Tage im Kühlschrank.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "kuerbissuppe",
@@ -134,7 +135,11 @@
    "Mit Salz, Pfeffer und Limette abschmecken und mit Kernen servieren."
   ],
   "tip": "Eine Messerspitze Kurkuma und Kreuzkümmel machen die Suppe noch runder.",
-  "own": false
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
  },
  {
   "slug": "ofen-blumenkohl",
@@ -195,7 +200,11 @@
    "Gemüse anrichten, Sauce darüberträufeln, Petersilie darüberstreuen."
   ],
   "tip": "Die Sauce dickt nach. Einfach mit etwas Wasser wieder cremig rühren.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer",
+   "Herbst"
+  ]
  },
  {
   "slug": "zucchini-pfanne",
@@ -261,7 +270,10 @@
    "Hirse unterheben, mit Pfeffer, Oregano und Basilikum abschmecken."
   ],
   "tip": "Pfanne nicht überladen, sonst kochen die Zucchini statt zu bräunen.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "pilz-miso-bruehe",
@@ -322,7 +334,8 @@
    "Spinat in die Schale geben und mit der heißen Suppe übergießen."
   ],
   "tip": "Miso ist salzig. Erst danach abschmecken, meist braucht es kein Salz mehr.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "gruenkohl-chips",
@@ -357,7 +370,11 @@
    "15 bis 20 Minuten backen, bis die Blätter knistern. Nach 10 Minuten wenden."
   ],
   "tip": "Luftdicht verpackt bleiben die Chips 2 Tage knusprig.",
-  "own": false
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
  },
  {
   "slug": "rote-bete-carpaccio",
@@ -408,7 +425,11 @@
    "Restliches Dressing über die Bete träufeln."
   ],
   "tip": "Einweghandschuhe tragen, Rote Bete färbt stark.",
-  "own": false
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
  },
  {
   "slug": "nussmix",
@@ -436,7 +457,8 @@
    "Langsam essen und dazu einen großen Becher Kräutertee trinken."
   ],
   "tip": "Kurz in der Pfanne geröstet schmecken die Nüsse intensiver.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "oliven",
@@ -459,7 +481,8 @@
    "Mit etwas Zitronenabrieb, Chiliflocken und Thymian mischen."
   ],
   "tip": "Wer Hunger hat, isst die Oliven langsam und trinkt ein Glas Wasser dazu.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "beilagensalat",
@@ -498,7 +521,8 @@
    "Öl, Zitronensaft, Salz und Pfeffer verrühren und unterheben."
   ],
   "tip": "Frische Kräuter wie Dill oder Schnittlauch machen ihn besonders.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "fenchel-orangen-suppe",
@@ -548,7 +572,10 @@
    "Mit Orangenfilets und Fenchelgrün servieren."
   ],
   "tip": "Statt Safran passt auch eine Prise Kurkuma.",
-  "own": false
+  "own": false,
+  "season": [
+   "Winter"
+  ]
  },
  {
   "slug": "gazpacho",
@@ -608,7 +635,10 @@
    "Mit Gurkenwürfeln und einem Tropfen Öl servieren."
   ],
   "tip": "Je reifer die Tomaten, desto besser die Suppe.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "thai-curry-bruehe",
@@ -668,7 +698,8 @@
    "Mit Limettensaft und Koriander abschmecken."
   ],
   "tip": "Currypaste ohne Fischsauce kaufen, dann bleibt das Gericht pflanzlich.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "brokkoli-lauch-suppe",
@@ -718,7 +749,11 @@
    "Mit Muskat, Salz und Pfeffer abschmecken, Mandeln rösten und darüberstreuen."
   ],
   "tip": "Ein paar Brokkoliröschen vor dem Pürieren herausnehmen und als Einlage verwenden.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer",
+   "Herbst"
+  ]
  },
  {
   "slug": "zucchini-nudeln-pesto",
@@ -778,7 +813,10 @@
    "Sofort servieren."
   ],
   "tip": "Zucchini-Nudeln nicht salzen, bevor sie in die Pfanne kommen, sonst ziehen sie Wasser.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "rotkohl-apfel-salat",
@@ -828,7 +866,11 @@
    "Mit lauwarmen Kartoffelwürfeln anrichten und mit Kernen bestreuen."
   ],
   "tip": "Am Vorabend zubereitet schmeckt der Salat noch runder.",
-  "own": false
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
  },
  {
   "slug": "ofen-tomaten-kraeuterkruste",
@@ -878,7 +920,10 @@
    "20 Minuten backen und mit Hirse servieren."
   ],
   "tip": "Ein paar Thymianzweige in der Form geben zusätzliches Aroma.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "leinsamen-cracker",
@@ -913,7 +958,8 @@
    "Pro Portion mit Paprikastreifen servieren."
   ],
   "tip": "Die Masse so dünn wie möglich streichen, dann werden die Cracker richtig knusprig.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "tapenade-gemuesesticks",
@@ -962,7 +1008,8 @@
    "Zusammen servieren."
   ],
   "tip": "Die Tapenade hält im Glas 4 Tage im Kühlschrank.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "ofen-kichererbsen",
@@ -996,7 +1043,8 @@
    "25 Minuten rösten, zwischendurch schütteln."
   ],
   "tip": "Kichererbsen vor dem Rösten gut trocknen, sonst werden sie nicht knusprig.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "avocado-gurken-kaltschale",
@@ -1045,7 +1093,10 @@
    "Mit Gurkenwürfeln und Dill servieren."
   ],
   "tip": "Ein Eiswürfel im Mixer macht die Suppe sofort kalt.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "hummus-bowl",
@@ -1104,7 +1155,10 @@
    "Hummus in eine Schale streichen, Ofengemüse und Rucola daraufgeben."
   ],
   "tip": "Etwas Kreuzkümmel im Hummus macht ihn orientalischer.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "gemuese-lasagne",
@@ -1159,7 +1213,11 @@
    "Bei 190 °C 30 Minuten backen."
   ],
   "tip": "Zucchinischeiben vorher salzen und abtupfen, dann wird die Lasagne nicht wässrig.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer",
+   "Herbst"
+  ]
  },
  {
   "slug": "ofen-ratatouille",
@@ -1218,7 +1276,10 @@
    "In einer Form 35 Minuten schmoren, einmal umrühren."
   ],
   "tip": "Am nächsten Tag aufgewärmt schmeckt Ratatouille noch besser.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "spinat-dal",
@@ -1278,7 +1339,8 @@
    "Spinat unterheben, bis er zusammenfällt."
   ],
   "tip": "Mit Limettensaft und Koriander abschmecken.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "blumenkohl-reis-bowl",
@@ -1333,7 +1395,11 @@
    "Mit gerösteten Cashews und Petersilie servieren."
   ],
   "tip": "Blumenkohl in der Küchenmaschine reiben spart viel Zeit.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer",
+   "Herbst"
+  ]
  },
  {
   "slug": "gefuellte-paprika",
@@ -1383,7 +1449,10 @@
    "25 Minuten backen."
   ],
   "tip": "Ein Schuss Gemüsebrühe in der Form verhindert, dass die Paprika anbrennt.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "suesskartoffel-avocado-dip",
@@ -1433,7 +1502,8 @@
    "Mit Salat und Dip servieren."
   ],
   "tip": "Spalten mit Abstand legen, dann werden sie knuspriger.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "gurkensalat-sesam",
@@ -1478,7 +1548,10 @@
    "Mit Sesam bestreuen."
   ],
   "tip": "Ein paar Chiliflocken machen den Salat richtig spannend.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "erbsen-minz-suppe",
@@ -1527,7 +1600,11 @@
    "Mit Minze fein pürieren und abschmecken."
   ],
   "tip": "Nicht zu lange kochen, damit die Farbe leuchtend bleibt.",
-  "own": false
+  "own": false,
+  "season": [
+   "Frühling",
+   "Sommer"
+  ]
  },
  {
   "slug": "karotten-ingwer-suppe",
@@ -1577,7 +1654,11 @@
    "Mit Salz, Pfeffer und Limette abschmecken."
   ],
   "tip": "Mit einem Klecks Kokosmilch und Chiliöl servieren.",
-  "own": false
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
  },
  {
   "slug": "champignon-pfanne-cashew",
@@ -1627,7 +1708,8 @@
    "Cashew-Rahm angießen, 2 Minuten köcheln, mit Petersilie servieren."
   ],
   "tip": "Pilze erst salzen, wenn sie gebräunt sind.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "rote-bete-suppe",
@@ -1682,7 +1764,11 @@
    "Mit gehackten Walnüssen servieren."
   ],
   "tip": "Ein paar Dillspitzen passen wunderbar dazu.",
-  "own": false
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
  },
  {
   "slug": "aubergine-salsa",
@@ -1736,7 +1822,10 @@
    "Salsa auf die Aubergine geben und mit Kartoffeln servieren."
   ],
   "tip": "Aubergine nicht ertränken: wenig Öl mit dem Pinsel reicht.",
-  "own": false
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  },
  {
   "slug": "feldsalat-ofenkuerbis",
@@ -1786,7 +1875,11 @@
    "Kürbiskerne rösten und darüberstreuen."
   ],
   "tip": "Der Kürbis kann lauwarm oder kalt auf den Salat.",
-  "own": false
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
  },
  {
   "slug": "pak-choi-sesam",
@@ -1841,7 +1934,8 @@
    "Mit Limette, Sesam und Süßkartoffel servieren."
   ],
   "tip": "Statt Salz einen Spritzer Sojasauce, aber sparsam.",
-  "own": false
+  "own": false,
+  "season": []
  },
  {
   "slug": "pilz-lauch-kartoffel-suppe",
@@ -1891,6 +1985,1236 @@
    "Suppe mit Pilzen und Petersilie servieren."
   ],
   "tip": "Ein paar Lauchringe für die Garnitur aufheben.",
-  "own": false
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
+ },
+ {
+  "slug": "mandel-kokos-riegel",
+  "title": "Mandel-Kokos-Riegel mit Leinsamen und Zimt",
+  "short": "Mandel-Riegel",
+  "category": "Snack",
+  "slot": "snack",
+  "minutes": 15,
+  "image": "riegel",
+  "teaser": "Dein eigener Fastenriegel: nussig, leicht nach Zimt und ganz ohne Zucker. Einmal machen, fünf Tage genießen.",
+  "ingredients": [
+   {
+    "name": "Mandelmus",
+    "amount": 10,
+    "note": "1 gehäufter TL"
+   },
+   {
+    "name": "Mandeln",
+    "amount": 8,
+    "note": "grob gehackt"
+   },
+   {
+    "name": "Kokosraspeln",
+    "amount": 6,
+    "note": ""
+   },
+   {
+    "name": "Leinsamen",
+    "amount": 5,
+    "note": "geschrotet"
+   },
+   {
+    "name": "Apfelmus ungesüßt",
+    "amount": 10,
+    "note": "1 EL"
+   },
+   {
+    "name": "Zimt",
+    "amount": 0.5,
+    "note": "1 Prise"
+   }
+  ],
+  "steps": [
+   "Alle Zutaten für fünf Riegel abwiegen (also jede Menge mal fünf) und in einer Schüssel gut verkneten.",
+   "Die Masse in eine mit Backpapier ausgelegte kleine Form drücken, etwa 1 cm hoch.",
+   "Mindestens 2 Stunden kalt stellen, dann in fünf gleich große Riegel schneiden.",
+   "Einzeln in Papier wickeln und im Kühlschrank lagern."
+  ],
+  "tip": "Mandeln vorher 5 Minuten ohne Fett rösten. Das macht den Riegel deutlich aromatischer.",
+  "own": false,
+  "season": []
+ },
+ {
+  "slug": "spargel-baerlauch-kartoffeln",
+  "title": "Grüner Spargel mit Bärlauch-Kartoffeln und Zitrone",
+  "short": "Spargel mit Bärlauch",
+  "category": "Pfanne",
+  "slot": "main",
+  "minutes": 25,
+  "image": "spargel",
+  "teaser": "Der Frühling auf einem Teller: knackiger grüner Spargel, dazu Kartoffeln in leuchtend grünem Bärlauchöl.",
+  "ingredients": [
+   {
+    "name": "Spargel",
+    "amount": 250,
+    "note": "grün, unteres Drittel geschält"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 150,
+    "note": "klein, mit Schale"
+   },
+   {
+    "name": "Bärlauch",
+    "amount": 15,
+    "note": "fein gehackt"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 12,
+    "note": "aufgeteilt"
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Kartoffeln in Salzwasser 15 bis 18 Minuten garen, abgießen und halbieren.",
+   "Bärlauch mit 8 g Öl und einer Prise Salz fein pürieren.",
+   "Spargel in einer Pfanne im restlichen Öl 5 bis 6 Minuten braten, bis er Farbe hat und noch Biss.",
+   "Kartoffeln mit dem Bärlauchöl mischen.",
+   "Spargel mit Zitronensaft beträufeln, salzen, pfeffern und mit den Kartoffeln anrichten."
+  ],
+  "tip": "Außerhalb der Bärlauchsaison nimmst du Basilikum und eine halbe Knoblauchzehe.",
+  "own": false,
+  "season": [
+   "Frühling"
+  ]
+ },
+ {
+  "slug": "kohlrabi-carpaccio",
+  "title": "Kohlrabi-Radieschen-Carpaccio mit Kräuteröl und lauwarmen Kartoffeln",
+  "short": "Kohlrabi-Carpaccio",
+  "category": "Salat",
+  "slot": "main",
+  "minutes": 20,
+  "image": "kohlrabi",
+  "teaser": "Hauchdünn, knackig und frisch. Das Kräuteröl und ein paar Walnüsse machen daraus ein richtiges Essen.",
+  "ingredients": [
+   {
+    "name": "Kohlrabi",
+    "amount": 150,
+    "note": "hauchdünn gehobelt"
+   },
+   {
+    "name": "Radieschen",
+    "amount": 60,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 100,
+    "note": "gekocht, lauwarm"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Schnittlauch",
+    "amount": 5,
+    "note": "fein geschnitten"
+   },
+   {
+    "name": "Kresse",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 5,
+    "note": "gehackt"
+   }
+  ],
+  "steps": [
+   "Kartoffeln garen und lauwarm in Scheiben schneiden.",
+   "Kohlrabi und Radieschen hauchdünn hobeln und fächerartig auf einen Teller legen.",
+   "Öl, Zitronensaft, Schnittlauch, Salz und Pfeffer verrühren.",
+   "Kartoffeln dazulegen, alles mit dem Kräuteröl beträufeln.",
+   "Mit Kresse und gerösteten Walnüssen bestreuen."
+  ],
+  "tip": "Den Kohlrabi 10 Minuten vorher salzen. Er wird dann zart, bleibt aber knackig.",
+  "own": false,
+  "season": [
+   "Frühling",
+   "Sommer"
+  ]
+ },
+ {
+  "slug": "baerlauch-kartoffel-suppe",
+  "title": "Bärlauch-Kartoffel-Suppe mit Kokos",
+  "short": "Bärlauchsuppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 25,
+  "image": "baerlauchsuppe",
+  "teaser": "Samtig, knallgrün und mit dem typischen Knoblaucharoma. Die Frühlingssuppe schlechthin.",
+  "ingredients": [
+   {
+    "name": "Kartoffeln",
+    "amount": 150,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Bärlauch",
+    "amount": 30,
+    "note": "grob gehackt"
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 350,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Kokosmilch (vollfett)",
+    "amount": 30,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Zwiebel im Öl glasig dünsten.",
+   "Kartoffeln und Brühe zugeben, 15 Minuten weich kochen.",
+   "Kokosmilch und Bärlauch zugeben und sofort fein pürieren.",
+   "Mit Salz, Pfeffer und Muskat abschmecken."
+  ],
+  "tip": "Bärlauch erst ganz zum Schluss zugeben. Kocht er mit, wird die Suppe grau und bitter.",
+  "own": false,
+  "season": [
+   "Frühling"
+  ]
+ },
+ {
+  "slug": "wirsing-eintopf",
+  "title": "Wirsing-Kartoffel-Eintopf mit Kümmel",
+  "short": "Wirsing-Eintopf",
+  "category": "Eintopf",
+  "slot": "main",
+  "minutes": 35,
+  "image": "wirsing",
+  "teaser": "Deftig wie bei Oma, nur leichter. Kümmel und Majoran geben dem Eintopf seinen Charakter.",
+  "ingredients": [
+   {
+    "name": "Wirsing",
+    "amount": 150,
+    "note": "in Streifen"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 130,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Karotten",
+    "amount": 40,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 30,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 12,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 350,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Zwiebel im Öl andünsten, ½ TL Kümmel kurz mitrösten.",
+   "Kartoffeln, Karotten und Brühe zugeben, 10 Minuten köcheln.",
+   "Wirsing zugeben und weitere 10 Minuten garen.",
+   "Mit Majoran, Salz und Pfeffer abschmecken."
+  ],
+  "tip": "Am nächsten Tag schmeckt der Eintopf noch besser. Gleich doppelt kochen.",
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
+ },
+ {
+  "slug": "ofen-rosenkohl",
+  "title": "Ofen-Rosenkohl mit Süßkartoffel, Walnüssen und Balsamico",
+  "short": "Ofen-Rosenkohl",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 35,
+  "image": "rosenkohl",
+  "teaser": "Wer Rosenkohl nicht mag, hat ihn noch nicht aus dem Ofen gegessen. Karamellisiert, nussig, leicht süßsauer.",
+  "ingredients": [
+   {
+    "name": "Rosenkohl",
+    "amount": 180,
+    "note": "halbiert"
+   },
+   {
+    "name": "Süßkartoffel",
+    "amount": 100,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 20,
+    "note": "in Spalten"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 6,
+    "note": ""
+   },
+   {
+    "name": "Balsamico",
+    "amount": 8,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Ofen auf 220 °C Umluft vorheizen.",
+   "Rosenkohl, Süßkartoffel und Zwiebel mit Öl und Salz mischen, Rosenkohl mit der Schnittfläche nach unten aufs Blech legen.",
+   "25 Minuten rösten, bis die Schnittflächen dunkelbraun sind.",
+   "Walnüsse die letzten 4 Minuten mitrösten.",
+   "Mit Balsamico beträufeln und pfeffern."
+  ],
+  "tip": "Die Schnittfläche nach unten ist der ganze Trick. Nur so wird der Rosenkohl süß statt bitter.",
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
+ },
+ {
+  "slug": "pastinaken-suppe",
+  "title": "Pastinaken-Suppe mit gerösteten Walnüssen",
+  "short": "Pastinakensuppe",
+  "category": "Suppe",
+  "slot": "main",
+  "minutes": 30,
+  "image": "pastinakensuppe",
+  "teaser": "Cremig, leicht süßlich und nussig. Ein Wintergemüse, das viel zu selten auf den Tisch kommt.",
+  "ingredients": [
+   {
+    "name": "Pastinaken",
+    "amount": 150,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 60,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 30,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Gemüsebrühe",
+    "amount": 300,
+    "note": ""
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 6,
+    "note": "grob gehackt"
+   }
+  ],
+  "steps": [
+   "Zwiebel im Öl glasig dünsten.",
+   "Pastinaken und Kartoffeln kurz mitbraten, Brühe angießen.",
+   "20 Minuten köcheln und fein pürieren.",
+   "Mit Muskat, Salz und einem Spritzer Zitrone abschmecken.",
+   "Walnüsse ohne Fett rösten und darüberstreuen."
+  ],
+  "tip": "Eine Prise Currypulver passt hervorragend zur Süße der Pastinake.",
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
+ },
+ {
+  "slug": "baba-ganoush-teller",
+  "title": "Baba Ganoush mit Ofenkartoffeln, Gurke und Granatapfel",
+  "short": "Baba Ganoush",
+  "category": "Kalte Küche",
+  "slot": "main",
+  "minutes": 45,
+  "image": "baba-ganoush",
+  "teaser": "Rauchige Auberginencreme mit Tahin, wie im Libanon. Mit Kartoffelspalten und Gurke zum Dippen.",
+  "ingredients": [
+   {
+    "name": "Aubergine",
+    "amount": 250,
+    "note": "ganz"
+   },
+   {
+    "name": "Tahin",
+    "amount": 10,
+    "note": "2 TL"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 2,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": "in Spalten"
+   },
+   {
+    "name": "Gurke",
+    "amount": 60,
+    "note": "in Sticks"
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Granatapfel",
+    "amount": 10,
+    "note": "Kerne"
+   }
+  ],
+  "steps": [
+   "Ofen auf 230 °C vorheizen. Aubergine mehrmals einstechen und 35 Minuten rösten, bis sie zusammenfällt.",
+   "Kartoffelspalten mit der Hälfte des Öls und Salz für die letzten 25 Minuten aufs Blech geben.",
+   "Auberginenfleisch auskratzen, mit Tahin, Zitronensaft, Knoblauch und Salz zerdrücken.",
+   "Creme anrichten, restliches Öl, Petersilie und Granatapfelkerne darauf.",
+   "Mit Kartoffeln und Gurke servieren."
+  ],
+  "tip": "Für echtes Raucharoma die Aubergine direkt über der Gasflamme schwärzen.",
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
+ },
+ {
+  "slug": "muhammara-gemuesesticks",
+  "title": "Muhammara (Paprika-Walnuss-Dip) mit Gurke und Fenchel",
+  "short": "Muhammara",
+  "category": "Snack",
+  "slot": "snack",
+  "minutes": 15,
+  "image": "muhammara",
+  "teaser": "Der syrische Lieblingsdip: süß, rauchig, leicht scharf. Macht aus Gemüsesticks einen Snack, auf den du dich freust.",
+  "ingredients": [
+   {
+    "name": "Rote Paprika",
+    "amount": 80,
+    "note": "geröstet, gehäutet"
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 10,
+    "note": "geröstet"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 4,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Tomatenmark",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Kreuzkümmel",
+    "amount": 0.5,
+    "note": ""
+   },
+   {
+    "name": "Gurke",
+    "amount": 80,
+    "note": "in Sticks"
+   },
+   {
+    "name": "Fenchel",
+    "amount": 60,
+    "note": "in Streifen"
+   }
+  ],
+  "steps": [
+   "Paprika im Ofen bei 230 °C 20 Minuten rösten, bis die Haut schwarz wird, kurz abdecken und häuten.",
+   "Mit Walnüssen, Öl, Zitronensaft, Tomatenmark, Kreuzkümmel, Chiliflocken und Salz grob pürieren.",
+   "Mit Gurke und Fenchel servieren."
+  ],
+  "tip": "Paprika aus dem Glas geht auch. Gut abtropfen lassen, sonst wird der Dip wässrig.",
+  "own": false,
+  "season": [
+   "Sommer",
+   "Herbst"
+  ]
+ },
+ {
+  "slug": "harissa-ofenkarotten",
+  "title": "Harissa-Ofenkarotten mit Blumenkohl und Tahin-Zitrone",
+  "short": "Harissa-Karotten",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 35,
+  "image": "harissa-karotten",
+  "teaser": "Feurig, süß und cremig zugleich. Die schnelle Harissa aus Tomatenmark und Gewürzen machst du selbst.",
+  "ingredients": [
+   {
+    "name": "Karotten",
+    "amount": 120,
+    "note": "längs halbiert"
+   },
+   {
+    "name": "Blumenkohl",
+    "amount": 150,
+    "note": "in Röschen"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Tomatenmark",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Chili",
+    "amount": 2,
+    "note": "fein gehackt"
+   },
+   {
+    "name": "Kreuzkümmel",
+    "amount": 1,
+    "note": "½ TL"
+   },
+   {
+    "name": "Paprikapulver, geräuchert",
+    "amount": 1,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 2,
+    "note": ""
+   },
+   {
+    "name": "Tahin",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Ofen auf 220 °C vorheizen.",
+   "Öl, Tomatenmark, Chili, Kreuzkümmel, Paprika, Knoblauch und Salz zur Harissa verrühren.",
+   "Karotten und Blumenkohl darin wenden und 25 Minuten rösten.",
+   "Tahin mit Zitronensaft und 2 EL Wasser glatt rühren.",
+   "Gemüse anrichten, Tahinsauce darüber, mit Petersilie bestreuen."
+  ],
+  "tip": "Wer es milder mag, lässt die frische Chili weg. Das Raucharoma bleibt.",
+  "own": false,
+  "season": []
+ },
+ {
+  "slug": "escalivada",
+  "title": "Escalivada: katalanisches Ofengemüse mit Knoblauchöl",
+  "short": "Escalivada",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 50,
+  "image": "escalivada",
+  "teaser": "Paprika, Aubergine und Zwiebel, im Ganzen geröstet und in Streifen gezupft. Simpel, rauchig und wunderbar ölig.",
+  "ingredients": [
+   {
+    "name": "Rote Paprika",
+    "amount": 100,
+    "note": "ganz"
+   },
+   {
+    "name": "Aubergine",
+    "amount": 200,
+    "note": "ganz"
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 40,
+    "note": "halbiert"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 12,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 2,
+    "note": "fein gehackt"
+   },
+   {
+    "name": "Weinessig",
+    "amount": 5,
+    "note": "am besten Sherryessig"
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 100,
+    "note": "gekocht"
+   }
+  ],
+  "steps": [
+   "Ofen auf 220 °C vorheizen. Gemüse im Ganzen mit wenig Öl einreiben und 40 Minuten rösten, einmal wenden.",
+   "Kurz abdecken und abkühlen lassen, dann Paprika und Aubergine häuten.",
+   "Alles in lange Streifen zupfen und auf einer Platte auslegen.",
+   "Restliches Öl mit Knoblauch, Essig und Salz verrühren und darübergeben.",
+   "Mit Petersilie bestreuen und lauwarm mit den Kartoffeln servieren."
+  ],
+  "tip": "Escalivada schmeckt lauwarm am besten und hält sich 3 Tage im Kühlschrank.",
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
+ },
+ {
+  "slug": "pkhali",
+  "title": "Pkhali: georgische Spinat-Walnuss-Bällchen mit Granatapfel",
+  "short": "Pkhali",
+  "category": "Kalte Küche",
+  "slot": "main",
+  "minutes": 30,
+  "image": "pkhali",
+  "teaser": "Kaum bekannt und sofort ein Lieblingsgericht: Spinat mit Walnüssen, Koriander und Essig, gekrönt mit Granatapfel.",
+  "ingredients": [
+   {
+    "name": "Babyspinat",
+    "amount": 120,
+    "note": ""
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 15,
+    "note": ""
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 20,
+    "note": "sehr fein gehackt"
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 2,
+    "note": ""
+   },
+   {
+    "name": "Koriander",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Weinessig",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Granatapfel",
+    "amount": 15,
+    "note": "Kerne"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 100,
+    "note": "gekocht"
+   },
+   {
+    "name": "Gurke",
+    "amount": 80,
+    "note": "in Scheiben"
+   }
+  ],
+  "steps": [
+   "Spinat in kochendem Wasser 1 Minute blanchieren, kalt abschrecken und sehr gut ausdrücken.",
+   "Walnüsse, Knoblauch, Koriander und eine Prise Salz fein mahlen.",
+   "Spinat fein hacken und mit Nusspaste, Zwiebel, Essig und Öl verkneten.",
+   "Zu kleinen Bällchen formen und in jedes eine Mulde drücken.",
+   "Mit Granatapfelkernen füllen und mit Kartoffeln und Gurke servieren."
+  ],
+  "tip": "Eine Prise Bockshornklee und Koriandersamen machen das Aroma echt georgisch.",
+  "own": false,
+  "season": [
+   "Frühling",
+   "Herbst"
+  ]
+ },
+ {
+  "slug": "gemuese-tajine",
+  "title": "Marokkanische Gemüse-Tajine mit Zimt, Oliven und Zitrone",
+  "short": "Gemüse-Tajine",
+  "category": "Eintopf",
+  "slot": "main",
+  "minutes": 40,
+  "image": "tajine",
+  "teaser": "Warm, duftend und ein bisschen exotisch. Zimt, Kreuzkümmel und Oliven machen das Gemüse zum Festessen.",
+  "ingredients": [
+   {
+    "name": "Karotten",
+    "amount": 50,
+    "note": "in Stücken"
+   },
+   {
+    "name": "Süßkartoffel",
+    "amount": 60,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Blumenkohl",
+    "amount": 80,
+    "note": "in Röschen"
+   },
+   {
+    "name": "Zucchini",
+    "amount": 100,
+    "note": "in Stücken"
+   },
+   {
+    "name": "Zwiebeln",
+    "amount": 30,
+    "note": ""
+   },
+   {
+    "name": "Tomaten (Dose)",
+    "amount": 80,
+    "note": ""
+   },
+   {
+    "name": "Grüne Oliven",
+    "amount": 20,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Zimt",
+    "amount": 0.5,
+    "note": ""
+   },
+   {
+    "name": "Kreuzkümmel",
+    "amount": 1,
+    "note": ""
+   },
+   {
+    "name": "Kurkuma",
+    "amount": 0.5,
+    "note": ""
+   },
+   {
+    "name": "Ingwer",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Koriander",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Zwiebel im Öl andünsten, Gewürze und Ingwer 1 Minute mitrösten.",
+   "Karotten, Süßkartoffel und Blumenkohl zugeben, Tomaten und 100 ml Wasser angießen.",
+   "Zugedeckt 15 Minuten schmoren.",
+   "Zucchini und Oliven zugeben, weitere 10 Minuten garen.",
+   "Mit Zitronensaft und Salz abschmecken, mit Koriander bestreuen."
+  ],
+  "tip": "Ein Stück eingelegte Salzzitrone statt Zitronensaft macht die Tajine authentisch.",
+  "own": false,
+  "season": [
+   "Herbst",
+   "Winter"
+  ]
+ },
+ {
+  "slug": "briam",
+  "title": "Briam: griechisches Ofengemüse mit Oregano",
+  "short": "Briam",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 60,
+  "image": "briam",
+  "teaser": "Kartoffeln, Zucchini und Tomaten, langsam im Olivenöl geschmort. Schmeckt nach Sommer auf Kreta.",
+  "ingredients": [
+   {
+    "name": "Zucchini",
+    "amount": 150,
+    "note": "in Scheiben"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 130,
+    "note": "in dünnen Scheiben"
+   },
+   {
+    "name": "Rote Paprika",
+    "amount": 40,
+    "note": "in Streifen"
+   },
+   {
+    "name": "Tomaten",
+    "amount": 100,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 30,
+    "note": "in Ringen"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 14,
+    "note": ""
+   },
+   {
+    "name": "Knoblauch",
+    "amount": 3,
+    "note": ""
+   },
+   {
+    "name": "Oregano (getrocknet)",
+    "amount": 0.5,
+    "note": ""
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Ofen auf 190 °C vorheizen.",
+   "Gemüse mit Öl, Knoblauch, Oregano, Salz und Pfeffer mischen und in eine Auflaufform geben.",
+   "50 ml Wasser angießen, mit Folie abdecken und 30 Minuten garen.",
+   "Folie abnehmen und weitere 25 Minuten rösten, bis die Ränder braun sind.",
+   "Mit Petersilie bestreuen."
+  ],
+  "tip": "Briam schmeckt lauwarm am besten. Gut zum Vorkochen.",
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
+ },
+ {
+  "slug": "miso-aubergine",
+  "title": "Ofen-Aubergine mit Miso-Glasur, Sesam und Vollkornreis",
+  "short": "Miso-Aubergine",
+  "category": "Ofengericht",
+  "slot": "main",
+  "minutes": 35,
+  "image": "miso-aubergine",
+  "teaser": "Butterweiche Aubergine mit salzig-würziger Misoglasur. Ein japanischer Klassiker, ganz ohne Zucker.",
+  "ingredients": [
+   {
+    "name": "Aubergine",
+    "amount": 250,
+    "note": "längs halbiert"
+   },
+   {
+    "name": "Helle Misopaste",
+    "amount": 10,
+    "note": "2 TL"
+   },
+   {
+    "name": "Sesamöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Ingwer",
+    "amount": 3,
+    "note": "gerieben"
+   },
+   {
+    "name": "Limettensaft",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Sesam",
+    "amount": 4,
+    "note": ""
+   },
+   {
+    "name": "Frühlingszwiebeln",
+    "amount": 15,
+    "note": "in Ringen"
+   },
+   {
+    "name": "Vollkornreis (gegart)",
+    "amount": 70,
+    "note": "ca. 25 g roh"
+   }
+  ],
+  "steps": [
+   "Ofen auf 210 °C vorheizen. Schnittflächen rautenförmig einschneiden und mit der Hälfte des Öls bestreichen.",
+   "Mit der Schnittfläche nach unten 20 Minuten backen.",
+   "Miso mit restlichem Öl, Ingwer, Limettensaft und 1 TL Wasser verrühren.",
+   "Auberginen umdrehen, mit der Glasur bestreichen und 8 Minuten weiterbacken.",
+   "Mit Sesam und Frühlingszwiebeln bestreuen und mit Reis servieren."
+  ],
+  "tip": "Die letzten 2 Minuten unter den Grill, dann karamellisiert die Glasur.",
+  "own": false,
+  "season": [
+   "Sommer",
+   "Herbst"
+  ]
+ },
+ {
+  "slug": "mediterraner-kartoffelsalat",
+  "title": "Mediterraner Kartoffelsalat mit Oliven, Kapern und Rucola",
+  "short": "Kartoffelsalat",
+  "category": "Kalte Küche",
+  "slot": "main",
+  "minutes": 30,
+  "image": "kartoffelsalat",
+  "teaser": "Ohne Mayo, dafür mit Oliven, Kapern und einem Senf-Vinaigrette. Perfekt zum Mitnehmen ins Büro.",
+  "ingredients": [
+   {
+    "name": "Kartoffeln",
+    "amount": 200,
+    "note": "festkochend"
+   },
+   {
+    "name": "Grüne Oliven",
+    "amount": 20,
+    "note": "halbiert"
+   },
+   {
+    "name": "Kapern",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Kirschtomaten",
+    "amount": 80,
+    "note": "halbiert"
+   },
+   {
+    "name": "Rote Zwiebel",
+    "amount": 20,
+    "note": "fein gewürfelt"
+   },
+   {
+    "name": "Rucola",
+    "amount": 20,
+    "note": ""
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Weinessig",
+    "amount": 10,
+    "note": ""
+   },
+   {
+    "name": "Senf",
+    "amount": 3,
+    "note": "½ TL"
+   },
+   {
+    "name": "Petersilie",
+    "amount": 5,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Kartoffeln in der Schale 20 Minuten garen, pellen und in Scheiben schneiden.",
+   "Essig, Senf, Öl, Salz und Pfeffer verrühren und noch warm über die Kartoffeln geben.",
+   "15 Minuten ziehen lassen.",
+   "Oliven, Kapern, Tomaten, Zwiebel und Petersilie unterheben.",
+   "Kurz vor dem Essen den Rucola unterheben."
+  ],
+  "tip": "Die Kartoffeln nehmen das Dressing nur warm richtig auf.",
+  "own": false,
+  "season": []
+ },
+ {
+  "slug": "hirse-porridge",
+  "title": "Hirse-Kokos-Porridge mit Zimtapfel und Walnüssen",
+  "short": "Hirse-Porridge",
+  "category": "Frühstück",
+  "slot": "breakfast",
+  "minutes": 15,
+  "image": "porridge",
+  "teaser": "Warm, cremig und nach Zimt duftend. Ein Frühstück, das sich gar nicht nach Fasten anfühlt.",
+  "ingredients": [
+   {
+    "name": "Hirse (gegart)",
+    "amount": 70,
+    "note": "ca. 25 g roh, am Vorabend gekocht"
+   },
+   {
+    "name": "Kokosmilch (vollfett)",
+    "amount": 25,
+    "note": ""
+   },
+   {
+    "name": "Apfel",
+    "amount": 40,
+    "note": "gewürfelt"
+   },
+   {
+    "name": "Walnusskerne",
+    "amount": 5,
+    "note": "gehackt"
+   },
+   {
+    "name": "Zimt",
+    "amount": 0.5,
+    "note": "1 Prise"
+   }
+  ],
+  "steps": [
+   "Hirse mit Kokosmilch und 50 ml Wasser 3 Minuten cremig erwärmen.",
+   "Apfel mit Zimt und 1 EL Wasser 2 Minuten in einer kleinen Pfanne dünsten.",
+   "Porridge in eine Schale geben, Zimtapfel und Walnüsse darauf."
+  ],
+  "tip": "Hirse gleich für drei Tage kochen. Sie hält sich im Kühlschrank problemlos.",
+  "own": false,
+  "season": []
+ },
+ {
+  "slug": "chia-kokos-pudding",
+  "title": "Chia-Kokos-Pudding mit Heidelbeeren",
+  "short": "Chia-Pudding",
+  "category": "Frühstück",
+  "slot": "breakfast",
+  "minutes": 5,
+  "image": "chiapudding",
+  "teaser": "Am Abend in zwei Minuten angerührt, am Morgen fertig. Cremig, frisch und sättigend.",
+  "ingredients": [
+   {
+    "name": "Chiasamen",
+    "amount": 10,
+    "note": "1 EL"
+   },
+   {
+    "name": "Kokosmilch (vollfett)",
+    "amount": 40,
+    "note": ""
+   },
+   {
+    "name": "Mandeldrink ungesüßt",
+    "amount": 60,
+    "note": ""
+   },
+   {
+    "name": "Heidelbeeren",
+    "amount": 40,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Chiasamen mit Kokosmilch und Mandeldrink verrühren.",
+   "Nach 5 Minuten noch einmal umrühren, damit nichts verklumpt.",
+   "Abgedeckt über Nacht in den Kühlschrank stellen.",
+   "Morgens mit Heidelbeeren servieren."
+  ],
+  "tip": "Eine Prise Vanille oder abgeriebene Zitronenschale macht den Pudding noch runder.",
+  "own": false,
+  "season": []
+ },
+ {
+  "slug": "suesskartoffel-toast",
+  "title": "Süßkartoffel-Toast mit Avocado, Tomate und Kresse",
+  "short": "Süßkartoffel-Toast",
+  "category": "Frühstück",
+  "slot": "breakfast",
+  "minutes": 15,
+  "image": "suesskartoffel-toast",
+  "teaser": "Brot ist in diesen Tagen tabu, Toast trotzdem nicht: Süßkartoffelscheiben aus dem Toaster.",
+  "ingredients": [
+   {
+    "name": "Süßkartoffel",
+    "amount": 80,
+    "note": "in 7 mm dicken Scheiben"
+   },
+   {
+    "name": "Avocado",
+    "amount": 60,
+    "note": ""
+   },
+   {
+    "name": "Kirschtomaten",
+    "amount": 40,
+    "note": "geviertelt"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 4,
+    "note": ""
+   },
+   {
+    "name": "Kürbiskerne",
+    "amount": 4,
+    "note": "geröstet"
+   },
+   {
+    "name": "Kresse",
+    "amount": 3,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Süßkartoffelscheiben zwei- bis dreimal auf höchster Stufe toasten, bis sie weich sind. Alternativ 15 Minuten bei 210 °C im Ofen.",
+   "Avocado mit Salz, Pfeffer und einem Spritzer Zitrone zerdrücken.",
+   "Scheiben mit Avocado bestreichen, Tomaten darauflegen.",
+   "Mit Öl beträufeln, mit Kürbiskernen und Kresse bestreuen."
+  ],
+  "tip": "Die Scheiben am Vorabend im Ofen garen, dann morgens nur kurz in den Toaster.",
+  "own": false,
+  "season": []
+ },
+ {
+  "slug": "zucchini-roesti",
+  "title": "Zucchini-Kartoffel-Rösti mit Kräuter-Avocado",
+  "short": "Zucchini-Rösti",
+  "category": "Frühstück",
+  "slot": "breakfast",
+  "minutes": 25,
+  "image": "roesti",
+  "teaser": "Herzhaft, knusprig und ohne Ei. Für alle, die morgens lieber etwas Deftiges mögen.",
+  "ingredients": [
+   {
+    "name": "Zucchini",
+    "amount": 100,
+    "note": "grob geraspelt"
+   },
+   {
+    "name": "Kartoffeln",
+    "amount": 80,
+    "note": "roh, grob geraspelt"
+   },
+   {
+    "name": "Leinsamen",
+    "amount": 3,
+    "note": "geschrotet"
+   },
+   {
+    "name": "Olivenöl",
+    "amount": 8,
+    "note": ""
+   },
+   {
+    "name": "Avocado",
+    "amount": 25,
+    "note": ""
+   },
+   {
+    "name": "Schnittlauch",
+    "amount": 5,
+    "note": ""
+   },
+   {
+    "name": "Zitronensaft",
+    "amount": 3,
+    "note": ""
+   }
+  ],
+  "steps": [
+   "Zucchini salzen, 10 Minuten ziehen lassen und kräftig ausdrücken.",
+   "Mit Kartoffeln, Leinsamen, Salz und Pfeffer mischen.",
+   "Im heißen Öl zu drei flachen Rösti formen und je Seite 4 Minuten goldbraun braten.",
+   "Avocado mit Zitronensaft, Schnittlauch und Salz zerdrücken und dazu servieren."
+  ],
+  "tip": "Die Zucchini wirklich gut ausdrücken. Sonst werden die Rösti nicht knusprig.",
+  "own": false,
+  "season": [
+   "Sommer"
+  ]
  }
 ]

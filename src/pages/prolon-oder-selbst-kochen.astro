@@ -4,11 +4,13 @@ import Icon from '../components/Icon.astro';
 import AffiliateBox from '../components/AffiliateBox.astro';
 import { PROLON_LINK, PROLON_PRICE, PROLON_CHECKED, pick } from '../data/affiliate.js';
 import { u } from '../lib/url.js';
+import { RECIPES } from '../lib/nutrition.js';
+const recipeCount = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.slot)).length;
 const rows = [
   ['Preis für 5 Tage', `${PROLON_PRICE} € laut Hersteller (Stand ${PROLON_CHECKED})`, 'Lebensmittel für etwa 25 bis 40 €, je nach Bio-Anteil (unsere Schätzung)'],
   ['Aufwand', 'Auspacken, aufwärmen, fertig', 'Einkaufen und täglich kochen, mit Vorkochen etwa 30 bis 45 Minuten am Tag'],
   ['Studienlage', 'Mit diesem Produkt wurden Longos Studien am Menschen gemacht', 'Gleiche Kalorien- und Nährstoffvorgaben, aber nicht in Studien getestet'],
-  ['Geschmack und Abwechslung', 'Feste Auswahl an Suppen, Riegeln, Crackern, Oliven und Tees', 'Frisch gekocht, 36 Rezepte zur Auswahl, Zutaten nach deinem Geschmack'],
+  ['Geschmack und Abwechslung', 'Feste Auswahl an Suppen, Riegeln, Crackern, Oliven und Tees', `Frisch gekocht, ${recipeCount} Rezepte zur Auswahl, Zutaten nach deinem Geschmack`],
   ['Anpassung an dich', 'Eine Box für alle', 'Der Planer passt die Mengen an Größe, Gewicht und Geschlecht an'],
   ['Unverträglichkeiten', 'Zutaten fest vorgegeben', 'Du tauschst einzelne Zutaten im Rechner selbst aus'],
   ['Vitamine und Omega-3', 'Ergänzungspräparat liegt bei', 'Nicht enthalten, bei Bedarf ärztlich abklären'],

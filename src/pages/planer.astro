@@ -120,6 +120,9 @@ import { pick } from '../data/affiliate.js';
   .step { border: 0; padding: 0; margin: 0; display: grid; gap: 20px; min-width: 0; }
 
   .result { display: grid; gap: 26px; padding-bottom: 70px; }
+  .bftoggle { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-block: 14px; cursor: pointer; }
+  .bftoggle input { width: 22px; height: 22px; margin-top: 2px; flex: none; accent-color: var(--green); }
+  .bftoggle span { display: grid; gap: 4px; }
   .rhead { display: flex; justify-content: space-between; align-items: end; gap: 14px; flex-wrap: wrap; }
   .tabs { display: flex; gap: 8px; overflow-x: auto; padding-block: 10px; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); z-index: 5; scrollbar-width: none; }
   .tab { flex: none; display: grid; gap: 1px; text-align: left; font: inherit; color: var(--fg); background: var(--card); border: 1.5px solid var(--line); border-radius: var(--r-sm); padding: 8px 14px; min-height: 48px; cursor: pointer; min-width: 92px; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease); }
@@ -264,10 +267,12 @@ import { pick } from '../data/affiliate.js';
     return { ...me, ppl, others, fAll };
   }
 
-  // Tagesplan inkl. Tauschungen
+  // Tagesplan inkl. Tauschungen. Variante „Mit Frühstück“ hat eigene Tauschungen, weil die Mahlzeiten andere sind.
+  const bf = () => !!state.breakfast && !!PLAN.breakfastDays;
+  const swapKey = () => (bf() ? 'swapsBf' : 'swaps');
   function items(day: number) {
-    return PLAN.days[day].map((it: any, idx: number) => {
-      const s = state.swaps?.[day]?.[idx];
+    return (bf() ? PLAN.breakfastDays : PLAN.days)[day].map((it: any, idx: number) => {
+      const s = state[swapKey()]?.[day]?.[idx];
       return s ? { ...it, recipe: s.recipe, portion: s.portion, swapped: true } : { ...it };
     });
   }
@@ -335,6 +340,7 @@ import { pick } from '../data/affiliate.js';
         <div class="stat"><span>Dein Tagesbedarf, geschätzt</span><b>${fmt(p.tdee)} kcal</b></div>
         <div class="stat"><span>Tag 1</span><b>${fmt(1090 * f)} kcal</b></div>
         <div class="stat"><span>Tag 2 bis 5</span><b>${fmt(725 * f)} kcal</b></div>
+      <label class="bftoggle noprint"><input type="checkbox" id="bf" ${bf() ? 'checked' : ''}><span><b>Mit Frühstück</b><small class="muted">Statt Nussmix gibt es morgens ein echtes Frühstück mit etwa 150 bis 200 kcal. Mittag- und Abendessen werden dafür um 15 % kleiner. Jeder Tag bleibt in Longos Rahmen.</small></span></label>
       </div>
       ${notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : p.bmi < 20 ? '<div class="alert info"><p>Dein BMI ist eher niedrig. Hör gut auf deinen Körper und iss normal weiter, wenn du dich schlapp fühlst.</p></div>' : ''}
       ${p.raw > 1.15 ? '<div class="alert info"><p>Dein Bedarf ist hoch. Wir erhöhen die Portionen um höchstens 15 %, damit der Plan nah an Longos Vorgaben bleibt.</p></div>' : ''}
@@ -358,15 +364,17 @@ import { pick } from '../data/affiliate.js';
       result.querySelectorAll<HTMLElement>('.tab').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
       result.querySelectorAll<HTMLElement>('.daycard').forEach((x) => (x.hidden = x.dataset.pane !== String(tab)));
     }));
+    result.querySelector<HTMLInputElement>('#bf')?.addEventListener('change', (e) => { state.breakfast = (e.target as HTMLInputElement).checked; openSwap = ''; save(); rerender(); });
     result.querySelectorAll<HTMLButtonElement>('[data-swap]').forEach((b) => b.addEventListener('click', () => { openSwap = openSwap === b.dataset.swap ? '' : b.dataset.swap!; rerender(); }));
     result.querySelectorAll<HTMLButtonElement>('[data-pick]').forEach((b) => b.addEventListener('click', () => {
       const [d, i] = b.dataset.pick!.split('-').map(Number);
-      state.swaps[d] = state.swaps[d] || {}; state.swaps[d][i] = { recipe: b.dataset.r, portion: Number(b.dataset.p) };
+      const sw = (state[swapKey()] = state[swapKey()] || {});
+      sw[d] = sw[d] || {}; sw[d][i] = { recipe: b.dataset.r, portion: Number(b.dataset.p) };
       openSwap = ''; save(); rerender();
     }));
     result.querySelectorAll<HTMLButtonElement>('[data-reset]').forEach((b) => b.addEventListener('click', () => {
       const [d, i] = b.dataset.reset!.split('-').map(Number);
-      if (state.swaps[d]) delete state.swaps[d][i]; save(); rerender();
+      const sw = state[swapKey()]; if (sw?.[d]) delete sw[d][i]; save(); rerender();
     }));
   }
   function rerender() { const y = window.scrollY; render(); window.scrollTo({ top: y }); }
@@ -380,7 +388,7 @@ import { pick } from '../data/affiliate.js';
       const pre = [...new Set([...items(1), ...items(2)].filter((x: any) => x.type === 'main').map((x: any) => BY_SLUG[x.recipe].title))];
       return `<div class="plain"><h3>Vorbereitung am ${dsl(addDays(start, -1))}</h3><ul>
         <li>Einkaufen (siehe Reiter „Einkauf“).</li><li>Vorkochen für die ersten Tage: ${pre.map(esc).join(', ')}.</li>
-        <li>Nussmix für fünf Tage abwiegen und in Dosen füllen.</li><li>Abends leicht essen: Gemüse, etwas Reis, kein Alkohol.</li>
+        ${bf() ? '<li>Frühstück vorbereiten: Hirse vorkochen, den Chia-Pudding am Vorabend ansetzen. Die halbe Portion Nussmix für Tag 1 abwiegen.</li>' : '<li>Nussmix für fünf Tage abwiegen und in Dosen füllen.</li>'}<li>Abends leicht essen: Gemüse, etwas Reis, kein Alkohol.</li>
         <li>Viel Kaffee? Schon jetzt reduzieren, dann reicht in den fünf Tagen eine kleine Tasse.</li></ul></div>`;
     }
     if (k === 6) {
@@ -430,7 +438,7 @@ import { pick } from '../data/affiliate.js';
       }
       html += `<article class="meal"><img src="${img(r)}" alt="" loading="lazy"><div class="info">
         <span class="when">${it.meal}</span>
-        <h3>${r.slot === 'main' || r.slot === 'snack' ? `<a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a>` : esc(r.title)}</h3>
+        <h3>${['main', 'snack', 'breakfast'].includes(r.slot) ? `<a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a>` : esc(r.title)}</h3>
         <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.carbs)} g</b></span></div>
         <span class="por">Portion ×${fmt(por, 2)}${ppl > 1 ? ` · Topf für alle ×${fmt(it.portion * fAll, 2)}` : ''}${it.swapped ? ' · getauscht' : ''}</span>
         <details><summary>${ppl > 1 ? `Zutaten für alle ${ppl} Personen` : 'Zutaten in Gramm'}</summary><ul>${Object.entries(agg).map(([n2, g]) => ppl > 1 ? `<li>${amountLabel(n2, g / f * fAll)} ${esc(n2)} <small>(deins: ${amountLabel(n2, g)})</small></li>` : `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>

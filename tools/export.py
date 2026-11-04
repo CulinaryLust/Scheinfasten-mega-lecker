@@ -10,6 +10,14 @@ PLAN={
 }
 for d,it in PLAN.items():
     s,p,o=ok(d,it); assert o,(d,[round(x) for x in s],[round(x,1) for x in p]); print('Tag',d,round(s[0]),[round(x) for x in p],'Zucker',round(s[4],1),'g')
+# Variante „Mit Frühstück“ (Schalter im Planer): Frühstück statt Nussmix, Hauptgerichte auf 85 %.
+# Tag 1 behält eine halbe Portion Nussmix, weil Longos 56 % Fett sonst nicht erreichbar sind.
+BF={1:('chia-kokos-pudding',1.35),2:('zucchini-roesti',0.85),3:('hirse-porridge',0.7),4:('suesskartoffel-toast',0.7),5:('chia-kokos-pudding',0.7)}
+PLAN_BF={}
+for d,it in PLAN.items():
+    b,bp=BF[d]
+    PLAN_BF[d]=([('Morgens','nussmix',0.5,'fixed')] if d==1 else [])+[('Morgens',b,bp,'breakfast')]+[(m,k,round(p*0.85,2) if t=='main' else p,t) for m,k,p,t in it if k!='nussmix']
+    s,p,o=ok(d,PLAN_BF[d]); assert o,('Frühstück',d,[round(x) for x in s],[round(x,1) for x in p]); print('Mit Frühstück Tag',d,round(s[0]),[round(x) for x in p],'Zucker',round(s[4],1),'g')
 out='../src/data'; os.makedirs(out,exist_ok=True)
 json.dump({k:list(v) for k,v in N.items()},open(f'{out}/nutrients.json','w'),ensure_ascii=False,indent=1)
 json.dump(R,open(f'{out}/recipes.json','w'),ensure_ascii=False,indent=1)
@@ -18,7 +26,8 @@ json.dump({'reference':{'day1':{'kcal':1090,'protein':10,'fat':56,'carbs':34},'d
   'sourceNote':'Wei M et al. Sci Transl Med 2017 (Methoden) nennt für Tag 1 ca. 4.600 kJ (ca. 1.100 kcal) mit 11 % Eiweiß, 46 % Fett, 43 % Kohlenhydraten und für Tag 2 bis 5 ca. 3.000 kJ (ca. 717 kcal) mit denselben Anteilen 9/44/47 %.',
   'sugarMaxPercent':SUGAR_MAX_PCT,
   'tolerance':{'kcalPercent':5,'macroPoints':5,'proteinPoints':PROTEIN_TOL}},
-  'days':{str(d):[{'meal':m,'recipe':k,'portion':x,'type':t} for m,k,x,t in it] for d,it in PLAN.items()}},
+  'days':{str(d):[{'meal':m,'recipe':k,'portion':x,'type':t} for m,k,x,t in it] for d,it in PLAN.items()},
+  'breakfastDays':{str(d):[{'meal':m,'recipe':k,'portion':x,'type':t} for m,k,x,t in it] for d,it in PLAN_BF.items()}},
   open(f'{out}/plan.json','w'),ensure_ascii=False,indent=1)
 
 # Lebensmitteldatenbank für den Rechner

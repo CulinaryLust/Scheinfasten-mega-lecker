@@ -40,7 +40,7 @@ const pin = `https://www.pinterest.com/pin/create/button/?url=${encodeURICompone
         <span class="chip photo">Symbolfoto</span>
       </div>
       <div class="stack">
-        <p class="kicker">{r.category}{days.length > 0 && ` · im 5-Tage-Plan an Tag ${days.join(', ')}`}</p>
+        <p class="kicker">{r.category}{days.length > 0 && ` · im 5-Tage-Plan an Tag ${days.join(', ')}`} · Saison: {r.season?.length ? r.season.join(', ') : 'ganzjährig'}</p>
         <h1>{r.title}</h1>
         <p class="lead">{r.teaser}</p>
         <NutritionChips n={n} minutes={r.minutes} full />
