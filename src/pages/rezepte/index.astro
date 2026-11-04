@@ -19,6 +19,10 @@ const cats = [...new Set(list.map((r) => r.category))];
       <button class="fchip" aria-pressed="true" data-cat="">Alle</button>
       {cats.map((c) => <button class="fchip" aria-pressed="false" data-cat={c}>{c}</button>)}
     </div>
+    <div class="chips" role="group" aria-label="Saison">
+      <button class="fchip" aria-pressed="true" data-season="">Jede Saison</button>
+      {['Frühling', 'Sommer', 'Herbst', 'Winter'].map((x) => <button class="fchip" aria-pressed="false" data-season={x}>{x}</button>)}
+    </div>
     <div class="chips" role="group" aria-label="Weitere Filter">
       <button class="fchip" aria-pressed="false" id="quick"><Icon name="time" />Bis 20 Minuten</button>
       <button class="fchip" aria-pressed="false" id="light"><Icon name="kcal" />Unter 260 kcal</button>
@@ -49,23 +53,28 @@ const cats = [...new Set(list.map((r) => r.category))];
   const q = document.getElementById('q') as HTMLInputElement;
   const cards = [...document.querySelectorAll<HTMLElement>('#list .rcard')];
   const catBtns = [...document.querySelectorAll<HTMLButtonElement>('.fchip[data-cat]')];
+  const seasonBtns = [...document.querySelectorAll<HTMLButtonElement>('.fchip[data-season]')];
   const quick = document.getElementById('quick')!; const light = document.getElementById('light')!;
-  let cat = '';
+  let cat = ''; let season = '';
+  // Aktuelle Saison markieren (meteorologisch: März bis Mai Frühling usw.)
+  const now = ['Winter', 'Frühling', 'Sommer', 'Herbst'][Math.floor(((new Date().getMonth() + 1) % 12) / 3)];
+  seasonBtns.forEach((b) => { if (b.dataset.season === now) b.textContent = `${now} (jetzt)`; });
   function apply() {
     const term = q.value.trim().toLowerCase();
     const isQuick = quick.getAttribute('aria-pressed') === 'true';
     const isLight = light.getAttribute('aria-pressed') === 'true';
     let shown = 0;
     for (const c of cards) {
-      const ok = (!cat || c.dataset.cat === cat) && (!term || c.dataset.name!.includes(term)) && (!isQuick || Number(c.dataset.min) <= 20) && (!isLight || Number(c.dataset.kcal) < 260);
+      const ok = (!cat || c.dataset.cat === cat) && (!season || !c.dataset.season || c.dataset.season.split(' ').includes(season)) && (!term || c.dataset.name!.includes(term)) && (!isQuick || Number(c.dataset.min) <= 20) && (!isLight || Number(c.dataset.kcal) < 260);
       c.hidden = !ok; if (ok) shown++;
     }
     document.getElementById('count')!.textContent = `${shown} von ${cards.length} Rezepten`;
     document.getElementById('empty')!.hidden = shown > 0;
   }
   catBtns.forEach((b) => b.addEventListener('click', () => { cat = b.dataset.cat || ''; catBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b))); apply(); }));
+  seasonBtns.forEach((b) => b.addEventListener('click', () => { season = b.dataset.season || ''; seasonBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b))); apply(); }));
   [quick, light].forEach((b) => b.addEventListener('click', () => { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); apply(); }));
   q.addEventListener('input', apply);
-  document.getElementById('reset')!.addEventListener('click', () => { q.value = ''; cat = ''; catBtns.forEach((x, i) => x.setAttribute('aria-pressed', String(i === 0))); [quick, light].forEach((b) => b.setAttribute('aria-pressed', 'false')); apply(); });
+  document.getElementById('reset')!.addEventListener('click', () => { q.value = ''; cat = ''; season = ''; catBtns.forEach((x, i) => x.setAttribute('aria-pressed', String(i === 0))); seasonBtns.forEach((x, i) => x.setAttribute('aria-pressed', String(i === 0))); [quick, light].forEach((b) => b.setAttribute('aria-pressed', 'false')); apply(); });
   apply();
 </script>

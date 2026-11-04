@@ -7,7 +7,7 @@ const { r } = Astro.props;
 const n = nutrition(r);
 const days = planDays(r.slug);
 ---
-<article class="rcard" data-cat={r.category} data-slot={r.slot} data-min={r.minutes} data-kcal={Math.round(n.kcal)} data-name={(r.title + ' ' + r.ingredients.map((i) => i.name).join(' ')).toLowerCase()}>
+<article class="rcard" data-cat={r.category} data-season={(r.season || []).join(' ')} data-slot={r.slot} data-min={r.minutes} data-kcal={Math.round(n.kcal)} data-name={(r.title + ' ' + r.ingredients.map((i) => i.name).join(' ')).toLowerCase()}>
   <a href={u(`rezepte/${r.slug}/`)} class="rlink">
     <div class="rimg">
       <img src={u(`img/rezepte/${r.image}.jpg`)} alt="" loading="lazy" width="900" height="675" />

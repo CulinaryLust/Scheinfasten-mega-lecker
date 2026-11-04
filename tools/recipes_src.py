@@ -184,3 +184,126 @@ r('pilz-lauch-kartoffel-suppe','Kartoffel-Lauch-Suppe mit gebratenen Pilzen','Ka
  'Hausmannskost in leicht: cremig gemixt, obendrauf knusprige Pilze.',
  [('Kartoffeln',150,'gewürfelt'),('Lauch',120,'in Ringen'),('Gemüsebrühe',350,''),('Olivenöl',8,''),('Champignons',60,'in Scheiben'),('Petersilie',5,'')],
  ['Lauch in der Hälfte des Öls dünsten, Kartoffel und Brühe zugeben, 15 Minuten köcheln.','Fein pürieren und mit Muskat abschmecken.','Pilze im restlichen Öl knusprig braten.','Suppe mit Pilzen und Petersilie servieren.'],'Ein paar Lauchringe für die Garnitur aufheben.')
+# Zweite Welle (04.11.2026): 16 Rezepte für Lücken bei Saison, Küchen und kalten Gerichten, dazu 4 Frühstücke.
+N.update({'Spargel':(28.0,2.0,0.2,5.4,3.8),'Bärlauch':(26.0,1.9,0.2,5.1,2.9),'Kohlrabi':(28.0,1.9,0.2,5.4,3.7),'Radieschen':(18.0,1.1,0.1,3.8,2.1),
+ 'Schnittlauch':(29.0,2.6,0.7,4.1,1.5),'Kresse':(31.0,4.2,0.7,3.8,0.2),'Wirsing':(37.0,2.8,0.3,6.9,3.5),'Rosenkohl':(40.0,4.5,0.3,6.7,1.6),
+ 'Pastinaken':(59.0,2.7,0.4,11.8,3.1),'Granatapfel':(79.0,0.7,0.6,18.3,16.1),'Tomatenmark':(81.0,3.4,0.2,17.9,12.9),'Kreuzkümmel':(375,17.8,22.3,44.2,2.3),
+ 'Chili':(40.0,1.9,0.4,7.7,6.2),'Weinessig':(25.0,0,0,0,0),'Koriander':(23,2.1,0.5,3.7,0.9),'Tomaten (Dose)':(24.0,1.2,0.3,4.2,3.2),
+ 'Zimt':(247,4.0,1.2,80.6,2.2),'Kurkuma':(312,9.7,3.3,67.1,3.2),'Oregano (getrocknet)':(265,9.0,4.3,68.9,4.1),'Frühlingszwiebeln':(27.0,1.9,0.2,5.6,2.8),
+ 'Vollkornreis (gegart)':(128.0,3.0,0.9,27.7,0.3),'Senf':(111.0,5.5,7.0,7.4,2.8),'Mandelmus':(559.0,25.3,46.6,14.8,4.4),'Kokosraspeln':(676.0,7.4,65.2,22.6,7.1),
+ 'Apfelmus ungesüßt':(63.0,0.4,0.3,15.2,11.1),'Chiasamen':(479.0,22.1,32.8,43.9,0.5),'Mandeldrink ungesüßt':(24.0,0.9,2.2,0.3,0.2),'Heidelbeeren':(61.0,0.5,0.6,14.6,9.7)})
+r('mandel-kokos-riegel','Mandel-Kokos-Riegel mit Leinsamen und Zimt','Mandel-Riegel','Snack','snack',15,'riegel',
+ 'Dein eigener Fastenriegel: nussig, leicht nach Zimt und ganz ohne Zucker. Einmal machen, fünf Tage genießen.',
+ [('Mandelmus',10,'1 gehäufter TL'),('Mandeln',8,'grob gehackt'),('Kokosraspeln',6,''),('Leinsamen',5,'geschrotet'),('Apfelmus ungesüßt',10,'1 EL'),('Zimt',0.5,'1 Prise')],
+ ['Alle Zutaten für fünf Riegel abwiegen (also jede Menge mal fünf) und in einer Schüssel gut verkneten.','Die Masse in eine mit Backpapier ausgelegte kleine Form drücken, etwa 1 cm hoch.','Mindestens 2 Stunden kalt stellen, dann in fünf gleich große Riegel schneiden.','Einzeln in Papier wickeln und im Kühlschrank lagern.'],
+ 'Mandeln vorher 5 Minuten ohne Fett rösten. Das macht den Riegel deutlich aromatischer.')
+r('spargel-baerlauch-kartoffeln','Grüner Spargel mit Bärlauch-Kartoffeln und Zitrone','Spargel mit Bärlauch','Pfanne','main',25,'spargel',
+ 'Der Frühling auf einem Teller: knackiger grüner Spargel, dazu Kartoffeln in leuchtend grünem Bärlauchöl.',
+ [('Spargel',250,'grün, unteres Drittel geschält'),('Kartoffeln',150,'klein, mit Schale'),('Bärlauch',15,'fein gehackt'),('Olivenöl',12,'aufgeteilt'),('Zitronensaft',5,'')],
+ ['Kartoffeln in Salzwasser 15 bis 18 Minuten garen, abgießen und halbieren.','Bärlauch mit 8 g Öl und einer Prise Salz fein pürieren.','Spargel in einer Pfanne im restlichen Öl 5 bis 6 Minuten braten, bis er Farbe hat und noch Biss.','Kartoffeln mit dem Bärlauchöl mischen.','Spargel mit Zitronensaft beträufeln, salzen, pfeffern und mit den Kartoffeln anrichten.'],
+ 'Außerhalb der Bärlauchsaison nimmst du Basilikum und eine halbe Knoblauchzehe.')
+r('kohlrabi-carpaccio','Kohlrabi-Radieschen-Carpaccio mit Kräuteröl und lauwarmen Kartoffeln','Kohlrabi-Carpaccio','Salat','main',20,'kohlrabi',
+ 'Hauchdünn, knackig und frisch. Das Kräuteröl und ein paar Walnüsse machen daraus ein richtiges Essen.',
+ [('Kohlrabi',150,'hauchdünn gehobelt'),('Radieschen',60,'in Scheiben'),('Kartoffeln',100,'gekocht, lauwarm'),('Olivenöl',10,''),('Zitronensaft',10,''),('Schnittlauch',5,'fein geschnitten'),('Kresse',5,''),('Walnusskerne',5,'gehackt')],
+ ['Kartoffeln garen und lauwarm in Scheiben schneiden.','Kohlrabi und Radieschen hauchdünn hobeln und fächerartig auf einen Teller legen.','Öl, Zitronensaft, Schnittlauch, Salz und Pfeffer verrühren.','Kartoffeln dazulegen, alles mit dem Kräuteröl beträufeln.','Mit Kresse und gerösteten Walnüssen bestreuen.'],
+ 'Den Kohlrabi 10 Minuten vorher salzen. Er wird dann zart, bleibt aber knackig.')
+r('baerlauch-kartoffel-suppe','Bärlauch-Kartoffel-Suppe mit Kokos','Bärlauchsuppe','Suppe','main',25,'baerlauchsuppe',
+ 'Samtig, knallgrün und mit dem typischen Knoblaucharoma. Die Frühlingssuppe schlechthin.',
+ [('Kartoffeln',150,'gewürfelt'),('Zwiebeln',40,''),('Bärlauch',30,'grob gehackt'),('Gemüsebrühe',350,''),('Olivenöl',8,''),('Kokosmilch (vollfett)',30,'')],
+ ['Zwiebel im Öl glasig dünsten.','Kartoffeln und Brühe zugeben, 15 Minuten weich kochen.','Kokosmilch und Bärlauch zugeben und sofort fein pürieren.','Mit Salz, Pfeffer und Muskat abschmecken.'],
+ 'Bärlauch erst ganz zum Schluss zugeben. Kocht er mit, wird die Suppe grau und bitter.')
+r('wirsing-eintopf','Wirsing-Kartoffel-Eintopf mit Kümmel','Wirsing-Eintopf','Eintopf','main',35,'wirsing',
+ 'Deftig wie bei Oma, nur leichter. Kümmel und Majoran geben dem Eintopf seinen Charakter.',
+ [('Wirsing',150,'in Streifen'),('Kartoffeln',130,'gewürfelt'),('Karotten',40,'in Scheiben'),('Zwiebeln',30,''),('Olivenöl',12,''),('Gemüsebrühe',350,'')],
+ ['Zwiebel im Öl andünsten, ½ TL Kümmel kurz mitrösten.','Kartoffeln, Karotten und Brühe zugeben, 10 Minuten köcheln.','Wirsing zugeben und weitere 10 Minuten garen.','Mit Majoran, Salz und Pfeffer abschmecken.'],
+ 'Am nächsten Tag schmeckt der Eintopf noch besser. Gleich doppelt kochen.')
+r('ofen-rosenkohl','Ofen-Rosenkohl mit Süßkartoffel, Walnüssen und Balsamico','Ofen-Rosenkohl','Ofengericht','main',35,'rosenkohl',
+ 'Wer Rosenkohl nicht mag, hat ihn noch nicht aus dem Ofen gegessen. Karamellisiert, nussig, leicht süßsauer.',
+ [('Rosenkohl',180,'halbiert'),('Süßkartoffel',100,'gewürfelt'),('Rote Zwiebel',20,'in Spalten'),('Olivenöl',10,''),('Walnusskerne',6,''),('Balsamico',8,'')],
+ ['Ofen auf 220 °C Umluft vorheizen.','Rosenkohl, Süßkartoffel und Zwiebel mit Öl und Salz mischen, Rosenkohl mit der Schnittfläche nach unten aufs Blech legen.','25 Minuten rösten, bis die Schnittflächen dunkelbraun sind.','Walnüsse die letzten 4 Minuten mitrösten.','Mit Balsamico beträufeln und pfeffern.'],
+ 'Die Schnittfläche nach unten ist der ganze Trick. Nur so wird der Rosenkohl süß statt bitter.')
+r('pastinaken-suppe','Pastinaken-Suppe mit gerösteten Walnüssen','Pastinakensuppe','Suppe','main',30,'pastinakensuppe',
+ 'Cremig, leicht süßlich und nussig. Ein Wintergemüse, das viel zu selten auf den Tisch kommt.',
+ [('Pastinaken',150,'gewürfelt'),('Kartoffeln',60,'gewürfelt'),('Zwiebeln',30,''),('Olivenöl',8,''),('Gemüsebrühe',300,''),('Walnusskerne',6,'grob gehackt')],
+ ['Zwiebel im Öl glasig dünsten.','Pastinaken und Kartoffeln kurz mitbraten, Brühe angießen.','20 Minuten köcheln und fein pürieren.','Mit Muskat, Salz und einem Spritzer Zitrone abschmecken.','Walnüsse ohne Fett rösten und darüberstreuen.'],
+ 'Eine Prise Currypulver passt hervorragend zur Süße der Pastinake.')
+r('baba-ganoush-teller','Baba Ganoush mit Ofenkartoffeln, Gurke und Granatapfel','Baba Ganoush','Kalte Küche','main',45,'baba-ganoush',
+ 'Rauchige Auberginencreme mit Tahin, wie im Libanon. Mit Kartoffelspalten und Gurke zum Dippen.',
+ [('Aubergine',250,'ganz'),('Tahin',10,'2 TL'),('Olivenöl',8,''),('Zitronensaft',10,''),('Knoblauch',2,''),('Kartoffeln',80,'in Spalten'),('Gurke',60,'in Sticks'),('Petersilie',5,''),('Granatapfel',10,'Kerne')],
+ ['Ofen auf 230 °C vorheizen. Aubergine mehrmals einstechen und 35 Minuten rösten, bis sie zusammenfällt.','Kartoffelspalten mit der Hälfte des Öls und Salz für die letzten 25 Minuten aufs Blech geben.','Auberginenfleisch auskratzen, mit Tahin, Zitronensaft, Knoblauch und Salz zerdrücken.','Creme anrichten, restliches Öl, Petersilie und Granatapfelkerne darauf.','Mit Kartoffeln und Gurke servieren.'],
+ 'Für echtes Raucharoma die Aubergine direkt über der Gasflamme schwärzen.')
+r('muhammara-gemuesesticks','Muhammara (Paprika-Walnuss-Dip) mit Gurke und Fenchel','Muhammara','Snack','snack',15,'muhammara',
+ 'Der syrische Lieblingsdip: süß, rauchig, leicht scharf. Macht aus Gemüsesticks einen Snack, auf den du dich freust.',
+ [('Rote Paprika',80,'geröstet, gehäutet'),('Walnusskerne',10,'geröstet'),('Olivenöl',4,''),('Zitronensaft',3,''),('Tomatenmark',3,''),('Kreuzkümmel',0.5,''),('Gurke',80,'in Sticks'),('Fenchel',60,'in Streifen')],
+ ['Paprika im Ofen bei 230 °C 20 Minuten rösten, bis die Haut schwarz wird, kurz abdecken und häuten.','Mit Walnüssen, Öl, Zitronensaft, Tomatenmark, Kreuzkümmel, Chiliflocken und Salz grob pürieren.','Mit Gurke und Fenchel servieren.'],
+ 'Paprika aus dem Glas geht auch. Gut abtropfen lassen, sonst wird der Dip wässrig.')
+r('harissa-ofenkarotten','Harissa-Ofenkarotten mit Blumenkohl und Tahin-Zitrone','Harissa-Karotten','Ofengericht','main',35,'harissa-karotten',
+ 'Feurig, süß und cremig zugleich. Die schnelle Harissa aus Tomatenmark und Gewürzen machst du selbst.',
+ [('Karotten',120,'längs halbiert'),('Blumenkohl',150,'in Röschen'),('Olivenöl',10,''),('Tomatenmark',5,''),('Chili',2,'fein gehackt'),('Kreuzkümmel',1,'½ TL'),('Paprikapulver, geräuchert',1,''),('Knoblauch',2,''),('Tahin',8,''),('Zitronensaft',10,''),('Petersilie',5,'')],
+ ['Ofen auf 220 °C vorheizen.','Öl, Tomatenmark, Chili, Kreuzkümmel, Paprika, Knoblauch und Salz zur Harissa verrühren.','Karotten und Blumenkohl darin wenden und 25 Minuten rösten.','Tahin mit Zitronensaft und 2 EL Wasser glatt rühren.','Gemüse anrichten, Tahinsauce darüber, mit Petersilie bestreuen.'],
+ 'Wer es milder mag, lässt die frische Chili weg. Das Raucharoma bleibt.')
+r('escalivada','Escalivada: katalanisches Ofengemüse mit Knoblauchöl','Escalivada','Ofengericht','main',50,'escalivada',
+ 'Paprika, Aubergine und Zwiebel, im Ganzen geröstet und in Streifen gezupft. Simpel, rauchig und wunderbar ölig.',
+ [('Rote Paprika',100,'ganz'),('Aubergine',200,'ganz'),('Rote Zwiebel',40,'halbiert'),('Olivenöl',12,''),('Knoblauch',2,'fein gehackt'),('Weinessig',5,'am besten Sherryessig'),('Petersilie',5,''),('Kartoffeln',100,'gekocht')],
+ ['Ofen auf 220 °C vorheizen. Gemüse im Ganzen mit wenig Öl einreiben und 40 Minuten rösten, einmal wenden.','Kurz abdecken und abkühlen lassen, dann Paprika und Aubergine häuten.','Alles in lange Streifen zupfen und auf einer Platte auslegen.','Restliches Öl mit Knoblauch, Essig und Salz verrühren und darübergeben.','Mit Petersilie bestreuen und lauwarm mit den Kartoffeln servieren.'],
+ 'Escalivada schmeckt lauwarm am besten und hält sich 3 Tage im Kühlschrank.')
+r('pkhali','Pkhali: georgische Spinat-Walnuss-Bällchen mit Granatapfel','Pkhali','Kalte Küche','main',30,'pkhali',
+ 'Kaum bekannt und sofort ein Lieblingsgericht: Spinat mit Walnüssen, Koriander und Essig, gekrönt mit Granatapfel.',
+ [('Babyspinat',120,''),('Walnusskerne',15,''),('Zwiebeln',20,'sehr fein gehackt'),('Knoblauch',2,''),('Koriander',5,''),('Weinessig',5,''),('Olivenöl',5,''),('Granatapfel',15,'Kerne'),('Kartoffeln',100,'gekocht'),('Gurke',80,'in Scheiben')],
+ ['Spinat in kochendem Wasser 1 Minute blanchieren, kalt abschrecken und sehr gut ausdrücken.','Walnüsse, Knoblauch, Koriander und eine Prise Salz fein mahlen.','Spinat fein hacken und mit Nusspaste, Zwiebel, Essig und Öl verkneten.','Zu kleinen Bällchen formen und in jedes eine Mulde drücken.','Mit Granatapfelkernen füllen und mit Kartoffeln und Gurke servieren.'],
+ 'Eine Prise Bockshornklee und Koriandersamen machen das Aroma echt georgisch.')
+r('gemuese-tajine','Marokkanische Gemüse-Tajine mit Zimt, Oliven und Zitrone','Gemüse-Tajine','Eintopf','main',40,'tajine',
+ 'Warm, duftend und ein bisschen exotisch. Zimt, Kreuzkümmel und Oliven machen das Gemüse zum Festessen.',
+ [('Karotten',50,'in Stücken'),('Süßkartoffel',60,'gewürfelt'),('Blumenkohl',80,'in Röschen'),('Zucchini',100,'in Stücken'),('Zwiebeln',30,''),('Tomaten (Dose)',80,''),('Grüne Oliven',20,''),('Olivenöl',8,''),('Zitronensaft',5,''),('Zimt',0.5,''),('Kreuzkümmel',1,''),('Kurkuma',0.5,''),('Ingwer',3,''),('Koriander',5,'')],
+ ['Zwiebel im Öl andünsten, Gewürze und Ingwer 1 Minute mitrösten.','Karotten, Süßkartoffel und Blumenkohl zugeben, Tomaten und 100 ml Wasser angießen.','Zugedeckt 15 Minuten schmoren.','Zucchini und Oliven zugeben, weitere 10 Minuten garen.','Mit Zitronensaft und Salz abschmecken, mit Koriander bestreuen.'],
+ 'Ein Stück eingelegte Salzzitrone statt Zitronensaft macht die Tajine authentisch.')
+r('briam','Briam: griechisches Ofengemüse mit Oregano','Briam','Ofengericht','main',60,'briam',
+ 'Kartoffeln, Zucchini und Tomaten, langsam im Olivenöl geschmort. Schmeckt nach Sommer auf Kreta.',
+ [('Zucchini',150,'in Scheiben'),('Kartoffeln',130,'in dünnen Scheiben'),('Rote Paprika',40,'in Streifen'),('Tomaten',100,'gewürfelt'),('Rote Zwiebel',30,'in Ringen'),('Olivenöl',14,''),('Knoblauch',3,''),('Oregano (getrocknet)',0.5,''),('Petersilie',5,'')],
+ ['Ofen auf 190 °C vorheizen.','Gemüse mit Öl, Knoblauch, Oregano, Salz und Pfeffer mischen und in eine Auflaufform geben.','50 ml Wasser angießen, mit Folie abdecken und 30 Minuten garen.','Folie abnehmen und weitere 25 Minuten rösten, bis die Ränder braun sind.','Mit Petersilie bestreuen.'],
+ 'Briam schmeckt lauwarm am besten. Gut zum Vorkochen.')
+r('miso-aubergine','Ofen-Aubergine mit Miso-Glasur, Sesam und Vollkornreis','Miso-Aubergine','Ofengericht','main',35,'miso-aubergine',
+ 'Butterweiche Aubergine mit salzig-würziger Misoglasur. Ein japanischer Klassiker, ganz ohne Zucker.',
+ [('Aubergine',250,'längs halbiert'),('Helle Misopaste',10,'2 TL'),('Sesamöl',8,''),('Ingwer',3,'gerieben'),('Limettensaft',5,''),('Sesam',4,''),('Frühlingszwiebeln',15,'in Ringen'),('Vollkornreis (gegart)',70,'ca. 25 g roh')],
+ ['Ofen auf 210 °C vorheizen. Schnittflächen rautenförmig einschneiden und mit der Hälfte des Öls bestreichen.','Mit der Schnittfläche nach unten 20 Minuten backen.','Miso mit restlichem Öl, Ingwer, Limettensaft und 1 TL Wasser verrühren.','Auberginen umdrehen, mit der Glasur bestreichen und 8 Minuten weiterbacken.','Mit Sesam und Frühlingszwiebeln bestreuen und mit Reis servieren.'],
+ 'Die letzten 2 Minuten unter den Grill, dann karamellisiert die Glasur.')
+r('mediterraner-kartoffelsalat','Mediterraner Kartoffelsalat mit Oliven, Kapern und Rucola','Kartoffelsalat','Kalte Küche','main',30,'kartoffelsalat',
+ 'Ohne Mayo, dafür mit Oliven, Kapern und einem Senf-Vinaigrette. Perfekt zum Mitnehmen ins Büro.',
+ [('Kartoffeln',200,'festkochend'),('Grüne Oliven',20,'halbiert'),('Kapern',5,''),('Kirschtomaten',80,'halbiert'),('Rote Zwiebel',20,'fein gewürfelt'),('Rucola',20,''),('Olivenöl',10,''),('Weinessig',10,''),('Senf',3,'½ TL'),('Petersilie',5,'')],
+ ['Kartoffeln in der Schale 20 Minuten garen, pellen und in Scheiben schneiden.','Essig, Senf, Öl, Salz und Pfeffer verrühren und noch warm über die Kartoffeln geben.','15 Minuten ziehen lassen.','Oliven, Kapern, Tomaten, Zwiebel und Petersilie unterheben.','Kurz vor dem Essen den Rucola unterheben.'],
+ 'Die Kartoffeln nehmen das Dressing nur warm richtig auf.')
+# Frühstück (Planer-Schalter „Mit Frühstück“)
+r('hirse-porridge','Hirse-Kokos-Porridge mit Zimtapfel und Walnüssen','Hirse-Porridge','Frühstück','breakfast',15,'porridge',
+ 'Warm, cremig und nach Zimt duftend. Ein Frühstück, das sich gar nicht nach Fasten anfühlt.',
+ [('Hirse (gegart)',70,'ca. 25 g roh, am Vorabend gekocht'),('Kokosmilch (vollfett)',25,''),('Apfel',40,'gewürfelt'),('Walnusskerne',5,'gehackt'),('Zimt',0.5,'1 Prise')],
+ ['Hirse mit Kokosmilch und 50 ml Wasser 3 Minuten cremig erwärmen.','Apfel mit Zimt und 1 EL Wasser 2 Minuten in einer kleinen Pfanne dünsten.','Porridge in eine Schale geben, Zimtapfel und Walnüsse darauf.'],
+ 'Hirse gleich für drei Tage kochen. Sie hält sich im Kühlschrank problemlos.')
+r('chia-kokos-pudding','Chia-Kokos-Pudding mit Heidelbeeren','Chia-Pudding','Frühstück','breakfast',5,'chiapudding',
+ 'Am Abend in zwei Minuten angerührt, am Morgen fertig. Cremig, frisch und sättigend.',
+ [('Chiasamen',10,'1 EL'),('Kokosmilch (vollfett)',40,''),('Mandeldrink ungesüßt',60,''),('Heidelbeeren',40,'')],
+ ['Chiasamen mit Kokosmilch und Mandeldrink verrühren.','Nach 5 Minuten noch einmal umrühren, damit nichts verklumpt.','Abgedeckt über Nacht in den Kühlschrank stellen.','Morgens mit Heidelbeeren servieren.'],
+ 'Eine Prise Vanille oder abgeriebene Zitronenschale macht den Pudding noch runder.')
+r('suesskartoffel-toast','Süßkartoffel-Toast mit Avocado, Tomate und Kresse','Süßkartoffel-Toast','Frühstück','breakfast',15,'suesskartoffel-toast',
+ 'Brot ist in diesen Tagen tabu, Toast trotzdem nicht: Süßkartoffelscheiben aus dem Toaster.',
+ [('Süßkartoffel',80,'in 7 mm dicken Scheiben'),('Avocado',60,''),('Kirschtomaten',40,'geviertelt'),('Olivenöl',4,''),('Kürbiskerne',4,'geröstet'),('Kresse',3,'')],
+ ['Süßkartoffelscheiben zwei- bis dreimal auf höchster Stufe toasten, bis sie weich sind. Alternativ 15 Minuten bei 210 °C im Ofen.','Avocado mit Salz, Pfeffer und einem Spritzer Zitrone zerdrücken.','Scheiben mit Avocado bestreichen, Tomaten darauflegen.','Mit Öl beträufeln, mit Kürbiskernen und Kresse bestreuen.'],
+ 'Die Scheiben am Vorabend im Ofen garen, dann morgens nur kurz in den Toaster.')
+r('zucchini-roesti','Zucchini-Kartoffel-Rösti mit Kräuter-Avocado','Zucchini-Rösti','Frühstück','breakfast',25,'roesti',
+ 'Herzhaft, knusprig und ohne Ei. Für alle, die morgens lieber etwas Deftiges mögen.',
+ [('Zucchini',100,'grob geraspelt'),('Kartoffeln',80,'roh, grob geraspelt'),('Leinsamen',3,'geschrotet'),('Olivenöl',8,''),('Avocado',25,''),('Schnittlauch',5,''),('Zitronensaft',3,'')],
+ ['Zucchini salzen, 10 Minuten ziehen lassen und kräftig ausdrücken.','Mit Kartoffeln, Leinsamen, Salz und Pfeffer mischen.','Im heißen Öl zu drei flachen Rösti formen und je Seite 4 Minuten goldbraun braten.','Avocado mit Zitronensaft, Schnittlauch und Salz zerdrücken und dazu servieren.'],
+ 'Die Zucchini wirklich gut ausdrücken. Sonst werden die Rösti nicht knusprig.')
+# Saison nach deutschem Freilandkalender der Hauptzutaten. Fehlt ein Eintrag, gilt das Rezept als ganzjährig.
+F_,S_,H_,W_='Frühling','Sommer','Herbst','Winter'
+SEASON={
+ 'kuerbissuppe':[H_,W_],'ofen-blumenkohl':[S_,H_],'zucchini-pfanne':[S_],'gruenkohl-chips':[H_,W_],'rote-bete-carpaccio':[H_,W_],
+ 'fenchel-orangen-suppe':[W_],'gazpacho':[S_],'brokkoli-lauch-suppe':[S_,H_],'zucchini-nudeln-pesto':[S_],'rotkohl-apfel-salat':[H_,W_],
+ 'ofen-tomaten-kraeuterkruste':[S_],'avocado-gurken-kaltschale':[S_],'hummus-bowl':[S_],'gemuese-lasagne':[S_,H_],'ofen-ratatouille':[S_],
+ 'blumenkohl-reis-bowl':[S_,H_],'gefuellte-paprika':[S_],'gurkensalat-sesam':[S_],'erbsen-minz-suppe':[F_,S_],'karotten-ingwer-suppe':[H_,W_],
+ 'rote-bete-suppe':[H_,W_],'aubergine-salsa':[S_],'feldsalat-ofenkuerbis':[H_,W_],'pilz-lauch-kartoffel-suppe':[H_,W_],
+ 'spargel-baerlauch-kartoffeln':[F_],'kohlrabi-carpaccio':[F_,S_],'baerlauch-kartoffel-suppe':[F_],'wirsing-eintopf':[H_,W_],
+ 'ofen-rosenkohl':[H_,W_],'pastinaken-suppe':[H_,W_],'baba-ganoush-teller':[S_],'muhammara-gemuesesticks':[S_,H_],'escalivada':[S_],
+ 'pkhali':[F_,H_],'gemuese-tajine':[H_,W_],'briam':[S_],'miso-aubergine':[S_,H_],'zucchini-roesti':[S_],
+}
+assert not set(SEASON)-{x['slug'] for x in R}, set(SEASON)-{x['slug'] for x in R}
+for x in R: x['season']=SEASON.get(x['slug'],[])
