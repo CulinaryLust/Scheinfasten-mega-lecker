@@ -253,7 +253,10 @@ const SOUP = new Set(['Hokkaido-Kürbis', 'Gartenkürbis', 'Karotten', 'Lauch', 
 const OVEN = new Set(['Hokkaido-Kürbis', 'Gartenkürbis', 'Karotten', 'Kartoffeln', 'Süßkartoffel', 'Blumenkohl', 'Brokkoli', 'Rosenkohl',
   'Aubergine', 'Rote Paprika', 'Gelbe Paprika', 'Grüne Paprika', 'Zucchini', 'Pastinaken', 'Knollensellerie', 'Rote Zwiebel',
   'Fenchel', 'Rote Bete (vorgegart)', 'Kichererbsen (gegart)', 'Grünkohl', 'Tomaten', 'Kirschtomaten', 'Champignons', 'Steckrübe']);
-const SNACK = new Set(['nuss', 'obst', 'fettfrucht', 'getraenk', 'knusper']);
+// Saaten und Muse kommen in die Gerichte (bestreuen, Dressing), ganze Nüsse höchstens als Handvoll pur.
+const SEEDS = new Set(['Leinsamen', 'Sesam', 'Kürbiskerne', 'Sonnenblumenkerne', 'Chiasamen', 'Hanfsamen', 'Mohn', 'Pinienkerne']);
+const NUT_BUTTER = /mus$|Tahin/;
+const HANDFUL = 20;
 
 const TEMPLATES = {
   salat: { title: 'Bunter Salat', kind: 'Salat', min: 10, steps: (m) => [
@@ -320,9 +323,18 @@ const names = (xs) => [...new Set(xs.map((i) => short(i.name)))];
 export function buildMeals(items) {
   const f = (i) => BY_NAME[i.name];
   const use = items.filter((i) => i.g > 0 && f(i).n[0] > 0);
-  const isSnack = (i) => SNACK.has(f(i).group) && !['Avocado', 'Kokosmilch (vollfett)'].includes(i.name);
-  const snack = use.filter(isSnack);
-  const rest = use.filter((i) => !isSnack(i));
+  // Snacks sind nur Lückenfüller: Nüsse, Saaten, Oliven und Obst wandern zuerst in die Gerichte.
+  // Als Snack bleiben nur echte Snacks (Waffeln, Popcorn, eine Handvoll Nüsse) und Obst, wenn es keinen Salat gibt.
+  const g = (i) => f(i).group;
+  const drink = use.filter((i) => g(i) === 'getraenk');
+  const plantMilk = drink.filter((i) => f(i).n[0] > 5); // Pflanzendrinks: in die Suppe oder als Snack; Tee, Kaffee, Wasser gehören in keine Mahlzeit
+  const crisp = use.filter((i) => g(i) === 'knusper');
+  const fruit = use.filter((i) => g(i) === 'obst');
+  const seeds = use.filter((i) => g(i) === 'nuss' && (SEEDS.has(i.name) || NUT_BUTTER.test(i.name)));
+  const nuts = use.filter((i) => g(i) === 'nuss' && !seeds.includes(i));
+  const toppers = use.filter((i) => g(i) === 'fettfrucht' && !['Avocado', 'Kokosmilch (vollfett)'].includes(i.name));
+  const taken = new Set([...drink, ...crisp, ...fruit, ...seeds, ...nuts, ...toppers]);
+  const rest = use.filter((i) => !taken.has(i));
   const veg = rest.filter((i) => ['gemuese', 'blatt', 'pilze', 'knolle'].includes(f(i).group) || i.name === 'Avocado');
   const base = rest.filter((i) => ['huelsen', 'getreide', 'soja'].includes(f(i).group));
   const oil = rest.filter((i) => f(i).group === 'fett');
@@ -366,7 +378,40 @@ export function buildMeals(items) {
     };
     return { tpl, ...ctx };
   });
-  if (snack.length) meals.push({ tpl: 'snack', veg: snack.filter((i) => f(i).group !== 'nuss' && f(i).group !== 'fettfrucht'), top: snack.filter((i) => f(i).group === 'nuss' || f(i).group === 'fettfrucht'), base: [], oils: [], herb: [], acid: [], aroma: [], liq: [] });
+  // Übrige Zutaten den Gerichten zuordnen, in denen sie üblich sind
+  const at = (...tpls) => { for (const t of tpls) { const m = meals.find((x) => x.tpl === t); if (m) return m; } return meals[0]; };
+  const snackItems = { veg: [...crisp], top: [] };
+  // Eine Handvoll Nüsse (höchstens 20 g, eine Sorte) bleibt Snack, der Rest kommt als Topping in die Gerichte
+  const nutsSorted = [...nuts].sort((a, b) => b.g - a.g);
+  if (nutsSorted.length && (meals.length === 0 || nutsSorted[0].g >= 8)) {
+    const n0 = nutsSorted.shift();
+    // Bis 30 g bleibt die ganze Menge eine Handvoll, darüber 20 g pur und der Rest als Topping
+    const keep = meals.length && n0.g > 30 ? HANDFUL : n0.g;
+    snackItems.top.push({ ...n0, g: keep });
+    if (n0.g - keep >= 1) nutsSorted.unshift({ ...n0, g: n0.g - keep });
+  }
+  if (meals.length) {
+    for (const i of nutsSorted) at('salat', 'ofen', 'pfanne', 'suppe').top.push(i);
+    for (const i of seeds) {
+      if (NUT_BUTTER.test(i.name)) at('salat', 'pfanne', 'ofen', 'suppe').acid.push(i);
+      else at('salat', 'suppe', 'ofen', 'pfanne').top.push(i);
+    }
+    for (const i of toppers) at('salat', 'ofen', 'pfanne', 'suppe').top.push(i);
+    const salad = meals.find((x) => x.tpl === 'salat');
+    // Obst: in den Salat, sonst ein Stück als Snack und der Rest als Nachtisch zum letzten Gericht
+    if (salad) salad.veg.push(...fruit);
+    else if (fruit.length) {
+      const [f0, ...more] = [...fruit].sort((a, b) => b.g - a.g);
+      snackItems.veg.push(f0);
+      if (more.length) meals[meals.length - 1].dessert = more;
+    }
+    const soup = meals.find((x) => x.tpl === 'suppe');
+    if (soup) soup.liq.push(...plantMilk); else snackItems.veg.push(...plantMilk);
+  } else {
+    snackItems.top.push(...nutsSorted, ...seeds, ...toppers);
+    snackItems.veg.push(...fruit, ...plantMilk);
+  }
+  if (snackItems.veg.length || snackItems.top.length) meals.push({ tpl: 'snack', ...snackItems, base: [], oils: [], herb: [], acid: [], aroma: [], liq: [] });
 
   return meals.map((m, idx) => {
     const t = TEMPLATES[m.tpl];
@@ -376,9 +421,9 @@ export function buildMeals(items) {
       : `${t.title} mit ${list(main.length ? main : names(m.base))}`;
     const ctx = { veg: big(m.veg), base: big(m.base), oil: Math.round(m.oils.reduce((a, o) => a + o.g, 0)), acid: big(m.acid),
       aroma: big(m.aroma), herb: big(m.herb), top: big(m.top), liquid: big(m.liq).map(label).join(' und ') };
-    const merged = mergeItems([...m.veg, ...m.base, ...m.oils, ...m.herb, ...m.acid, ...m.liq, ...m.aroma, ...m.top]);
+    const merged = mergeItems([...m.veg, ...m.base, ...m.oils, ...m.herb, ...m.acid, ...m.liq, ...m.aroma, ...m.top, ...(m.dessert || [])]);
     return { slot: m.tpl === 'snack' ? 'Snack' : idx === 0 ? 'Mittags' : 'Abends', kind: t.kind, minutes: t.min, title,
-      items: merged, steps: t.steps(ctx).filter(Boolean), sum: totals(merged) };
+      items: merged, steps: [...t.steps(ctx), m.dessert?.length ? `Als Nachtisch: ${list(big(m.dessert))}, in Spalten oder Stücke geschnitten.` : null].filter(Boolean), sum: totals(merged) };
   });
 }
 
