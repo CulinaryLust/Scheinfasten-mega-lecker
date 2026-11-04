@@ -156,7 +156,8 @@ function fit(list, t, lambda, W, minShare = 0) {
  * und weicht nur so weit davon ab, wie es für Longos Werte nötig ist. Winzige Restmengen fallen weg.
  */
 export function solve(picks, t, opt = {}) {
-  const list = picks.map((p) => ({ ...p, f: BY_NAME[p.name] })).filter((p) => p.f && p.f.light !== 'r');
+  // Rote Lebensmittel plant der Rechner nie ein. Hat jemand sie schon gegessen (feste Menge), zählen sie mit.
+  const list = picks.map((p) => ({ ...p, f: BY_NAME[p.name] })).filter((p) => p.f && (p.f.light !== 'r' || p.g != null));
   const W = opt.W || [3, 1, 2, 2];
   const lambdas = opt.lambda != null ? [opt.lambda] : [0.03, 0.01, 0.003, 0.001];
   // Erst mit Mindestmengen (ein Drittel der üblichen Portion je gewähltem Lebensmittel) rechnen,
