@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check:plans": "node scripts/check-plans.mjs",
+    "check:launch": "node scripts/check-launch.mjs",
     "check:rechner": "node scripts/check-rechner.mjs && node scripts/check-tagebuch.mjs && node scripts/check-sicherung.mjs && node scripts/audit-foods.mjs"
   },
   "dependencies": {

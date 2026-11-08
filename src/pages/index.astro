@@ -11,7 +11,7 @@ import { u } from '../lib/url.js';
 const featured = ['kuerbissuppe', 'zucchini-nudeln-pesto', 'ofen-blumenkohl'].map((s) => RECIPES.find((r) => r.slug === s));
 const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.slot)).length;
 ---
-<Base title="Start" active="start">
+<Base title="Start" active="start" jsonLd={{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Scheinfasten mega lecker', url: new URL(u(''), Astro.site).toString(), inLanguage: 'de-DE' }}>
   <section class="hero">
     <img src={u('img/hero.jpg')} alt="" width="1800" height="1000" fetchpriority="high" />
     <div class="in">

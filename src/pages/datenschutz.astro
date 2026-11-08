@@ -1,21 +1,46 @@
 ---
 import Base from '../layouts/Base.astro';
 import { NEWSLETTER_ENABLED, NEWSLETTER_ACTION, PROVIDER } from '../data/newsletter.js';
+import { BETREIBER as b, fehlend } from '../data/betreiber.js';
+import { u } from '../lib/url.js';
 const nl = NEWSLETTER_ENABLED && !!NEWSLETTER_ACTION;
+const offen = fehlend();
 ---
 <Base title="Datenschutz" noindex>
   <div class="in page-head narrow prose"><h1>Datenschutzerklärung</h1>
-    <div class="alert warn"><p><b>Platzhalter.</b> Vor der Veröffentlichung durch eine vollständige Datenschutzerklärung ersetzen (z. B. mit einem Generator oder anwaltlich geprüft).</p></div>
-    <h2>Was diese Seite technisch macht</h2>
-    <ul><li>Hosting über GitHub Pages (GitHub Inc.). Dabei werden Server-Logdaten wie IP-Adressen verarbeitet.</li>
-      <li>Schriften werden lokal ausgeliefert, nicht über Google-Server.</li>
-      <li>Der Planer rechnet vollständig in deinem Browser. Deine Angaben werden nur lokal in deinem Browser gespeichert (localStorage) und nicht an uns übertragen.</li>
-      <li>„Stand sichern“ im Rechner: Deine Einträge werden in einen Link gepackt. Sie stehen nur im Teil hinter dem „#“, den der Browser nicht an den Server schickt. Wir speichern davon nichts. Wer den Link hat, kann die Einträge sehen.</li>
-      <li>Es gibt derzeit keine Cookies, kein Tracking und keine Analyse-Tools.</li>
-      <li>Affiliate-Links (z. B. Amazon, ProLon): Auf dieser Seite werden dadurch keine Daten erhoben. Erst wenn du einen Link anklickst, gelangst du auf die Seite des Anbieters, der dort eigene Cookies setzen kann, um die Vermittlung zuzuordnen. Es gilt dann die Datenschutzerklärung des Anbieters.</li></ul>
+    {offen.length > 0 && <div class="alert warn"><p><b>Noch unvollständig.</b> Die Angaben zum Verantwortlichen in <code>src/data/betreiber.js</code> fehlen.</p></div>}
+    <p>Kurz gesagt: Diese Seite setzt keine Cookies, nutzt kein Tracking und schickt deine Eingaben aus Planer und Rechner nirgendwohin. Alles Weitere steht hier.</p>
+
+    <h2>1. Verantwortlich</h2>
+    <p>{b.name || '[Vorname Nachname]'}<br />{b.strasse || '[Straße Hausnummer]'}<br />{b.plzOrt || '[PLZ Ort]'}<br />E-Mail: {b.email || '[E-Mail-Adresse]'}</p>
+    <p>Einen Datenschutzbeauftragten müssen wir nicht benennen.</p>
+
+    <h2>2. Hosting und Server-Logdaten</h2>
+    <p>Die Seite liegt bei GitHub Pages, einem Dienst der GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf verarbeitet GitHub technisch notwendige Daten, vor allem deine IP-Adresse, Datum und Uhrzeit, die aufgerufene Adresse, den Referrer und die Browserkennung. Das ist nötig, um die Seite auszuliefern und vor Angriffen zu schützen. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und funktionierenden Angebot (Art. 6 Abs. 1 lit. f DSGVO). GitHub ist unter dem EU-US Data Privacy Framework zertifiziert, das ist die Grundlage für die Übermittlung in die USA (Art. 45 DSGVO). Wir selbst bekommen diese Logdaten nicht zu sehen. Mehr in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+
+    <h2>3. Speicherung in deinem Browser</h2>
+    <p>Planer und Rechner rechnen vollständig in deinem Browser. Deine Angaben (zum Beispiel Größe, Gewicht, Startdatum und was du gegessen hast) speichert die Seite im localStorage deines Browsers, damit sie beim nächsten Besuch noch da sind. Diese Daten verlassen dein Gerät nicht und werden nicht an uns übertragen. Das Speichern ist für die von dir gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Du kannst die Daten jederzeit löschen, indem du die Websitedaten in deinem Browser löschst.</p>
+    <p>„Stand sichern“ packt deine Einträge in einen Link. Sie stehen nur im Teil hinter dem „#“, den der Browser nicht an den Server schickt. Wir speichern davon nichts. Wer den Link hat, kann die Einträge sehen, gib ihn also nur weiter, wenn du das willst.</p>
+
+    <h2>4. Schriften</h2>
+    <p>Alle Schriften werden von unserem eigenen Server geladen. Es besteht keine Verbindung zu Google oder anderen Schriftanbietern.</p>
+
+    <h2>5. Affiliate-Links</h2>
+    <p>Einige Links, gekennzeichnet mit „Anzeige“, führen zu Partnern wie Amazon oder ProLon. Auf dieser Seite werden dadurch keine Daten erhoben. Erst wenn du einen solchen Link anklickst, gelangst du auf die Seite des Anbieters. Der Anbieter kann dort Cookies setzen, um zu erkennen, dass der Kauf über uns vermittelt wurde. Dafür ist der jeweilige Anbieter verantwortlich, es gilt seine Datenschutzerklärung, zum Beispiel die <a href="https://www.amazon.de/gp/help/customer/display.html?nodeId=201909010" rel="noopener">Datenschutzerklärung von Amazon</a>. Wir erhalten von Amazon nur zusammengefasste Verkaufszahlen, keine Angaben zu deiner Person.</p>
+    <p>Wir sind Teilnehmer des Partnerprogramms von Amazon EU, das zur Bereitstellung eines Mediums für Websites konzipiert wurde, mittels dessen durch die Platzierung von Werbeanzeigen und Links zu Amazon.de Werbekostenerstattung verdient werden kann.</p>
+
+    <h2>6. Pinterest und Teilen</h2>
+    <p>Der Knopf „Merken“ auf den Rezeptseiten ist ein einfacher Link. Pinterest erfährt erst etwas, wenn du ihn anklickst. Wir binden keine Skripte von Pinterest oder anderen sozialen Netzwerken ein.</p>
+
     {nl && (<>
-      <h2>Zyklus-Erinnerung per E-Mail</h2>
+      <h2>7. Zyklus-Erinnerung per E-Mail</h2>
       <p>Wenn du die Erinnerung bestellst, verarbeiten wir deine E-Mail-Adresse und das Startdatum deines nächsten Durchgangs, um dir vorher eine Erinnerung mit Einkaufsliste und gelegentlich Tipps zu schicken. Die Mails können Affiliate-Links enthalten. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit über den Abmeldelink in jeder Mail widerrufen kannst. Die Anmeldung erfolgt im Double-Opt-in-Verfahren. Für den Versand nutzen wir {PROVIDER} als Auftragsverarbeiter mit Servern in der EU. Brevo kann Öffnungen und Klicks auswerten. Deine Daten löschen wir, sobald du dich abmeldest. Was du im Rechner einträgst, wird nicht übertragen.</p>
     </>)}
+
+    <h2>{nl ? '8' : '7'}. Deine Rechte</h2>
+    <p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen (Art. 21). Eine Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen. Schreib uns dafür einfach eine E-Mail.</p>
+    <p>Du kannst dich außerdem bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der Behörde deines Bundeslandes.</p>
+
+    <p class="muted small">Stand: November 2026. Zum <a href={u('impressum/')}>Impressum</a>.</p>
   </div>
 </Base>

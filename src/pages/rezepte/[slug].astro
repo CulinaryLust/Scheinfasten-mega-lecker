@@ -22,7 +22,7 @@ const related = RECIPES.filter((x) => x.slug !== r.slug && x.category === r.cate
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const imgUrl = new URL(u(`img/rezepte/${r.image}.jpg`), Astro.site).toString();
 const jsonLd = {
-  '@context': 'https://schema.org', '@type': 'Recipe', name: r.title, description: r.teaser, image: [imgUrl],
+  '@context': 'https://schema.org', '@type': 'Recipe', name: r.title, author: { '@type': 'Organization', name: 'Scheinfasten mega lecker' }, keywords: 'Scheinfasten, Fasting Mimicking Diet, vegan', description: r.teaser, image: [imgUrl],
   recipeCategory: r.category, recipeCuisine: 'Pflanzlich', recipeYield: '1 Portion', totalTime: `PT${r.minutes}M`,
   suitableForDiet: 'https://schema.org/VeganDiet',
   recipeIngredient: r.ingredients.map((i) => `${amountLabel(i.name, i.amount)} ${i.name}${i.note ? ', ' + i.note : ''}`),
@@ -31,7 +31,7 @@ const jsonLd = {
 };
 const pin = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}&media=${encodeURIComponent(imgUrl)}&description=${encodeURIComponent(r.title + ' | Scheinfasten mega lecker')}`;
 ---
-<Base title={r.title} description={r.teaser} active="rezepte" image={`img/rezepte/${r.image}.jpg`} jsonLd={jsonLd}>
+<Base title={r.title} description={r.teaser} active="rezepte" image={`img/rezepte/${r.image}.jpg`} jsonLd={jsonLd} ogType="article">
   <div class="in crumbs noprint" style="padding-top:20px"><a href={u('rezepte/')}><Icon name="back" />Alle Rezepte</a></div>
   <article class="in recipe">
     <div class="top-grid">
