@@ -1,4 +1,4 @@
-# Scheinfasten mega lecker
+# Scheinfasten - einfach lecker fasten
 
 Webseite mit pflanzlichen Rezepten und einem persönlichen 5-Tage-Planer, angelehnt an die Fasting Mimicking Diet nach Prof. Dr. Valter Longo.
 
@@ -33,6 +33,7 @@ npm run dev
 `npm run check:launch` zeigt, was noch fehlt. Alle Angaben stehen in je einer Datei:
 
 - `src/data/site.js`: eigene Domain in `DOMAIN` eintragen. Der Build setzt dann Adresse, Pfad, Sitemap, robots.txt und die CNAME-Datei. Danach in GitHub unter Settings > Pages die Domain eintragen und „Enforce HTTPS“ anhaken. Beim Domainanbieter: für die Hauptdomain A-Records auf 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 und für `www` einen CNAME auf `culinarylust.github.io`.
+- DNS bei ALL-INKL: Im KAS unter Tools > DNS-Einstellungen die Domain wählen. Die vorhandenen A-Records für die Domain ohne Präfix löschen und vier neue anlegen (Ziel je eine der vier GitHub-IPs oben). Für `www` den A-Record löschen und einen CNAME auf `culinarylust.github.io.` anlegen. Erst danach `DOMAIN` setzen und in GitHub die Domain eintragen. Bis das Zertifikat da ist, können bis zu 24 Stunden vergehen.
 - `src/data/betreiber.js`: Name, Anschrift, E-Mail für Impressum und Datenschutzerklärung.
 - `src/data/affiliate.js`: Amazon-Tracking-ID und ProLon-Partnerlink.
 - Werbeanzeigen erst mit Einwilligungsbanner einschalten (`ADS_ENABLED`).
