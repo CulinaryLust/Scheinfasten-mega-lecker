@@ -25,7 +25,7 @@ const shown = compact ? effects.slice(0, 3) : effects;
       <div class="crptext">
         <p class="kicker">Im Fokus</p>
         <h3>Entzündungswert CRP</h3>
-        {!compact && <p>Stille Entzündungen im Körper gelten als einer der Treiber von Alterung und vielen Zivilisationskrankheiten. Bei Teilnehmenden mit erhöhtem Entzündungswert CRP sank dieser nach drei Zyklen deutlich, um durchschnittlich <b>{crp.value} {crp.unit}</b>. Wer ohnehin niedrige Werte hatte, sah kaum eine Veränderung.</p>}
+        {!compact && <p>Stille Entzündungen im Körper gelten als einer der Treiber von Alterung und vielen Zivilisationskrankheiten. Bei Teilnehmenden mit erhöhtem Entzündungswert CRP sank dieser nach drei Zyklen deutlich, um durchschnittlich <b>{crp.value} {crp.unit}</b>.</p>}
         {compact && <p>Bei erhöhtem Entzündungswert CRP sank er nach drei Zyklen im Schnitt um <b>{crp.value} {crp.unit}</b>.</p>}
       </div>
       <b class="fxv crpv"><span class="n">{crp.value}<small>{crp.unit}</small></span><span class="l">CRP</span></b>
