@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { ARTIKEL } from '../../data/ratgeber.js';
+import { u } from '../../lib/url.js';
+---
+<Base title="Scheinfasten-Ratgeber: Einkauf, Ablauf, Alltag" active="wissen" description="Praktische Antworten rund um die fünf Tage Scheinfasten: Einkaufsliste, Ablauf Tag für Tag, Sport und Arbeit, Essen danach. Jede Aussage mit Beleg.">
+  <div class="in page-head narrow">
+    <p class="kicker">Ratgeber</p>
+    <h1>Praktisches für deine Fastenwoche</h1>
+    <p class="lead">Kurze Antworten auf die häufigsten Fragen. Bei jeder Aussage steht, ob sie aus einer Studie stammt, vom Hersteller oder von uns.</p>
+  </div>
+  <section class="band" style="padding-top:16px">
+    <div class="in narrow stack">
+      {ARTIKEL.map((a) => (
+        <a class="card rat" href={u(`ratgeber/${a.slug}/`)}>
+          <span class="ic"><Icon name={a.icon} /></span>
+          <span class="tx"><b>{a.title}</b><span class="muted">{a.teaser}</span></span>
+          <Icon name="arrow" />
+        </a>
+      ))}
+      <div class="ctas"><a class="btn soft" href={u('wissen/')}><Icon name="book" />Was die Forschung zeigt</a><a class="btn soft" href={u('prolon-oder-selbst-kochen/')}>ProLon oder selbst kochen?</a></div>
+    </div>
+  </section>
+</Base>
+<style is:global>
+  .rat { grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 14px; text-decoration: none; color: inherit; transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
+  .rat:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .rat .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--band); color: var(--green); display: grid; place-items: center; }
+  .rat .tx { display: grid; gap: 2px; }
+  .rat .tx b { font-size: 1.08rem; }
+  .rat > .i { color: var(--tomato); }
+</style>

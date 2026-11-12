@@ -3,13 +3,17 @@ import Base from '../layouts/Base.astro';
 import { NEWSLETTER_ENABLED, NEWSLETTER_ACTION, PROVIDER } from '../data/newsletter.js';
 import { BETREIBER as b, fehlend } from '../data/betreiber.js';
 import { u } from '../lib/url.js';
+import { GOATCOUNTER_CODE } from '../data/statistik.js';
 const nl = NEWSLETTER_ENABLED && !!NEWSLETTER_ACTION;
 const offen = fehlend();
+const st = !!GOATCOUNTER_CODE;
+// Abschnittsnummern laufen mit, je nachdem welche optionalen Abschnitte aktiv sind
+let nr = 6;
 ---
 <Base title="Datenschutz" noindex>
   <div class="in page-head narrow prose"><h1>Datenschutzerklärung</h1>
     {offen.length > 0 && <div class="alert warn"><p><b>Noch unvollständig.</b> Die Angaben zum Verantwortlichen in <code>src/data/betreiber.js</code> fehlen.</p></div>}
-    <p>Kurz gesagt: Diese Seite setzt keine Cookies, nutzt kein Tracking und schickt deine Eingaben aus Planer und Rechner nirgendwohin. Alles Weitere steht hier.</p>
+    <p>Kurz gesagt: Diese Seite setzt keine Cookies, {st ? 'zählt Besuche nur anonym und ohne Wiedererkennung' : 'nutzt kein Tracking'} und schickt deine Eingaben aus Planer und Rechner nirgendwohin. Alles Weitere steht hier.</p>
 
     <h2>1. Verantwortlich</h2>
     <p>{b.name || '[Vorname Nachname]'}<br />{b.strasse || '[Straße Hausnummer]'}<br />{b.plzOrt || '[PLZ Ort]'}<br />E-Mail: {b.email || '[E-Mail-Adresse]'}</p>
@@ -32,12 +36,17 @@ const offen = fehlend();
     <h2>6. Pinterest und Teilen</h2>
     <p>Der Knopf „Merken“ auf den Rezeptseiten ist ein einfacher Link. Pinterest erfährt erst etwas, wenn du ihn anklickst. Wir binden keine Skripte von Pinterest oder anderen sozialen Netzwerken ein.</p>
 
+    {st && (<>
+      <h2>{++nr}. Besucherstatistik ohne Cookies</h2>
+      <p>Um zu sehen, welche Seiten gelesen werden, nutzen wir GoatCounter. Dabei wird beim Seitenaufruf ein kleines Skript von gc.zgo.at geladen, das die aufgerufene Adresse, die verweisende Seite, Bildschirmgröße und Browsertyp übermittelt. Auch Klicks auf Partnerlinks werden gezählt. GoatCounter setzt keine Cookies, speichert keine IP-Adresse und erstellt kein Profil über mehrere Tage oder Seiten hinweg. Wir sehen nur zusammengefasste Zahlen. Rechtsgrundlage ist unser berechtigtes Interesse, das Angebot zu verbessern (Art. 6 Abs. 1 lit. f DSGVO). Auf dein Gerät wird dabei nicht zugegriffen, deshalb ist keine Einwilligung nötig. Mehr dazu in den <a href="https://www.goatcounter.com/help/privacy" rel="noopener">Datenschutzhinweisen von GoatCounter</a>.</p>
+    </>)}
+
     {nl && (<>
-      <h2>7. Zyklus-Erinnerung per E-Mail</h2>
+      <h2>{++nr}. Zyklus-Erinnerung per E-Mail</h2>
       <p>Wenn du die Erinnerung bestellst, verarbeiten wir deine E-Mail-Adresse und das Startdatum deines nächsten Durchgangs, um dir vorher eine Erinnerung mit Einkaufsliste und gelegentlich Tipps zu schicken. Die Mails können Affiliate-Links enthalten. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit über den Abmeldelink in jeder Mail widerrufen kannst. Die Anmeldung erfolgt im Double-Opt-in-Verfahren. Für den Versand nutzen wir {PROVIDER} als Auftragsverarbeiter mit Servern in der EU. Brevo kann Öffnungen und Klicks auswerten. Deine Daten löschen wir, sobald du dich abmeldest. Was du im Rechner einträgst, wird nicht übertragen.</p>
     </>)}
 
-    <h2>{nl ? '8' : '7'}. Deine Rechte</h2>
+    <h2>{++nr}. Deine Rechte</h2>
     <p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen (Art. 21). Eine Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen. Schreib uns dafür einfach eine E-Mail.</p>
     <p>Du kannst dich außerdem bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der Behörde deines Bundeslandes.</p>
 

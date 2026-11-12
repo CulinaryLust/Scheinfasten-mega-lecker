@@ -1,0 +1,46 @@
+---
+import Artikel from '../../layouts/Artikel.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { BY_SLUG } from '../../lib/nutrition.js';
+import { u } from '../../lib/url.js';
+const soft = ['minestrone', 'kuerbissuppe', 'spinat-dal'].map((s) => BY_SLUG[s]).filter(Boolean);
+---
+<Artikel slug="nach-dem-scheinfasten" description="Was essen nach dem Scheinfasten? So gelingt Tag 6: erst Suppen, dann leichte Mahlzeiten, ab Tag 7 wieder normal. Mit Quellen und passenden Rezepten." lead="Kurz gesagt: An Tag 6 nicht überessen, mit Suppe beginnen und im Lauf des Tages zu leichten Mahlzeiten übergehen. Ab Tag 7 isst du wieder normal.">
+  <h2>Was die Quellen sagen</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Aussage</th><th>Beleg</th></tr></thead>
+    <tbody>
+      <tr><td>In Longos Studien kehrten die Teilnehmenden nach den fünf Tagen direkt zu ihrer normalen Ernährung zurück. Einen Übergangstag gab es dort nicht.</td><td><span class="evid s">Studie</span> Brandhorst 2015, Wei 2017</td></tr>
+      <tr><td>Der Hersteller des Fertigpakets ProLon rät, an Tag 6 nicht zu viel zu essen und schrittweise zur normalen Ernährung zurückzukehren: erst Flüssiges wie Suppen, dann leichte Mahlzeiten. Ab Tag 7 wieder normal.</td><td><span class="evid h">Hersteller</span> ProLon-Hilfecenter und Packungsbeilage</td></tr>
+      <tr><td>Konkrete Gerichte und Mengen für Tag 6.</td><td><span class="evid w">Unser Tipp</span> nicht untersucht</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>So kann Tag 6 aussehen</h2>
+  <ul>
+    <li><b>Morgens:</b> eine Schale Gemüsesuppe oder Haferbrei mit etwas Obst. Dazu Tee oder Wasser.</li>
+    <li><b>Mittags:</b> gedünstetes Gemüse mit Reis oder Kartoffeln, eine kleine Portion Hülsenfrüchte.</li>
+    <li><b>Abends:</b> eine normale, aber nicht üppige Mahlzeit. Wer Fisch, Eier oder Milchprodukte isst, beginnt mit kleinen Portionen.</li>
+    <li><b>Lieber noch nicht:</b> das große Belohnungsessen, viel Alkohol, sehr Fettiges oder sehr Süßes auf einmal.</li>
+  </ul>
+  <p>Der Grund ist schlicht: Nach fünf Tagen mit kleinen Portionen verträgt der Magen eine große Mahlzeit oft schlecht. Das ist unser Erfahrungswert, eine Studie dazu gibt es nicht.</p>
+
+  <h2>Rezepte, die gut zum Übergang passen</h2>
+  <p>Diese drei Gerichte aus unserer Sammlung eignen sich in normaler Portion, dazu Reis, Brot oder Haferbrei:</p>
+  <div class="grid">{soft.map((r) => <RecipeCard r={r} />)}</div>
+
+  <h2>Und in den Wochen danach?</h2>
+  <ul>
+    <li><b>Normal essen, nicht nachholen.</b> In der Studie von 2017 aßen die Teilnehmenden zwischen den Durchgängen, wie sie wollten. Die gemessenen Veränderungen entstanden trotzdem.</li>
+    <li><b>Gewicht:</b> Dass die Waage in den ersten normalen Tagen wieder etwas mehr zeigt, ist üblich und kein Rückschlag. Das ist ein Erfahrungswert. Die Studie hat erst einige Tage nach dem letzten Durchgang gemessen.</li>
+    <li><b>Nächster Durchgang:</b> In der Studie lag etwa ein Monat zwischen den Durchgängen, drei Mal hintereinander. Wie oft es für dich sinnvoll ist, besprichst du am besten ärztlich. Der <a href={u('planer/')}>Planer</a> rechnet dir die Termine aus.</li>
+  </ul>
+
+  <Fragment slot="quellen">
+    <ul>
+      <li>Brandhorst S et al. Cell Metab 2015;22(1):86-99. <a href="https://doi.org/10.1016/j.cmet.2015.05.012" rel="noopener">DOI 10.1016/j.cmet.2015.05.012</a></li>
+      <li>Wei M et al. Sci Transl Med 2017;9(377):eaai8700. <a href="https://doi.org/10.1126/scitranslmed.aai8700" rel="noopener">DOI 10.1126/scitranslmed.aai8700</a></li>
+      <li>L-Nutra, ProLon-Hilfecenter: „Do I have to follow a transition diet after the end of ProLon?“ <a href="https://support.prolon.it/hc/en-gb/articles/23401275306780" rel="noopener">support.prolon.it</a>, abgerufen am 12.11.2026</li>
+    </ul>
+  </Fragment>
+</Artikel>

@@ -1,0 +1,51 @@
+---
+// Redaktionelle Grundsätze: ersetzt eine „Über uns“-Seite mit Person und ärztlichem Prüfer (Entscheidung 12.11.2026).
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url.js';
+import { SITE_NAME } from '../data/site.js';
+import { BETREIBER } from '../data/betreiber.js';
+import { RECIPES } from '../lib/nutrition.js';
+import foods from '../data/foods.json';
+const jsonLd = { '@context': 'https://schema.org', '@type': 'AboutPage', name: `So arbeiten wir | ${SITE_NAME}`, inLanguage: 'de-DE' };
+---
+<Base title="So arbeiten wir: Quellen, Prüfung, Unabhängigkeit" description="Wie die Inhalte dieser Seite entstehen: nur Primärquellen, jede Zahl mit Beleg, jedes Rezept automatisch nachgerechnet, keine Heilversprechen. Und was wir nicht leisten." jsonLd={jsonLd}>
+  <div class="in page-head narrow">
+    <p class="kicker">Über diese Seite</p>
+    <h1>So arbeiten wir</h1>
+    <p class="lead">{SITE_NAME} ist ein unabhängiges Projekt. Wir sind keine Ärztinnen oder Ärzte und geben keine medizinische Beratung. Was wir können: sauber rechnen, Quellen offenlegen und ehrlich sagen, was belegt ist und was nicht.</p>
+  </div>
+  <section class="band" style="padding-top:16px">
+    <div class="in narrow stack">
+      <div class="grid3 saw">
+        <div class="card"><Icon name="book" /><h2>Nur Primärquellen</h2><p>Kalorien und Nährstoffanteile stammen aus den veröffentlichten Studien von Prof. Dr. Valter Longo. Was wir nur aus zweiter Hand kennen, ist als solches markiert.</p></div>
+        <div class="card"><Icon name="scale" /><h2>Automatisch nachgerechnet</h2><p>Alle {RECIPES.length} Rezepte und {foods.length} Lebensmittel werden bei jeder Änderung der Seite neu gegen Longos Werte geprüft. Passt ein Tag nicht, wird die Seite nicht veröffentlicht.</p></div>
+        <div class="card"><Icon name="shield" /><h2>Keine Heilversprechen</h2><p>Wir nennen Studienergebnisse mit Quelle und Einschränkung. Wir versprechen keine Wirkung für dich persönlich.</p></div>
+      </div>
+      <div class="prose" style="max-width:none">
+        <h2>Unsere Regeln im Einzelnen</h2>
+        <ol>
+          <li><b>Jede Zahl hat eine Quelle.</b> Die vollständige Liste steht unter <a href={u('transparenz/')}>Transparenz</a>. Wo Longo nichts vorgibt und wir eine eigene Regel nutzen, etwa beim Zucker, steht das dabei.</li>
+          <li><b>Belegstufen sind sichtbar.</b> Wir unterscheiden Studien am Menschen, Hinweise des Herstellers, Tierversuche und eigene Tipps. Ergebnisse aus Tierversuchen stellen wir nicht als Wirkung beim Menschen dar.</li>
+          <li><b>Nährwerte sind berechnet, nicht gemessen.</b> Grundlage ist der Bundeslebensmittelschlüssel 4.0 des Max Rubner-Instituts. Natürliche Schwankungen bei Lebensmitteln sind normal.</li>
+          <li><b>Selbst gekocht ist nicht dasselbe wie das Studienprodukt.</b> Die Studien wurden mit dem Fertigpaket ProLon gemacht. Unsere Rezepte halten dieselben Kalorien- und Nährstoffvorgaben ein, sind aber nicht in Studien getestet.</li>
+          <li><b>Werbung ist gekennzeichnet und getrennt.</b> Die Seite finanziert sich über Affiliate-Links, jeder ist mit „Anzeige“ markiert. Provisionen beeinflussen weder Rezepte noch Zahlen noch den Vergleich mit ProLon. Auf der Seite zu Krebs gibt es keine Werbung.</li>
+          <li><b>Texte und Berechnungen entstehen mit Unterstützung von KI-Werkzeugen</b> und werden gegen die Originalstudien geprüft. Eine ärztliche Prüfung der Inhalte gibt es nicht.</li>
+          <li><b>Fotos sind Symbolbilder</b> von Unsplash und zeigen ähnliche Gerichte, nicht die exakten Rezepte.</li>
+          <li><b>Prüfdatum.</b> Ratgeber-Artikel tragen das Datum der letzten inhaltlichen Prüfung. Preise und Herstellerangaben prüfen wir regelmäßig nach.</li>
+        </ol>
+        <h2>Was wir nicht leisten</h2>
+        <p>Wir kennen deine Gesundheit nicht. Planer und Rechner ersetzen kein Gespräch mit deiner Ärztin oder deinem Arzt, besonders bei Medikamenten, Vorerkrankungen, Schwangerschaft oder Stillzeit. Die wichtigsten Fälle stehen unter <a href={u('fuer-wen-nicht/')}>Für wen nicht?</a></p>
+        <h2>Fehler gefunden?</h2>
+        <p>Schreib uns{BETREIBER.email ? <> an <a href={`mailto:${BETREIBER.email}`}>{BETREIBER.email}</a></> : <>, die Adresse steht im <a href={u('impressum/')}>Impressum</a></>}. Belegte Fehler korrigieren wir und passen das Prüfdatum an.</p>
+        <h2>Unabhängigkeit</h2>
+        <p>Diese Seite ist kein Angebot von L-Nutra oder ProLon und wird von Prof. Dr. Valter Longo weder geprüft noch unterstützt. Verantwortlich für die Inhalte ist der im <a href={u('impressum/')}>Impressum</a> genannte Betreiber.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .saw .card :global(.i) { color: var(--tomato); width: 28px; height: 28px; }
+  .saw h2 { font-size: 1.2rem; }
+  .saw { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+</style>

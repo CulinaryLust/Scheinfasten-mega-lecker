@@ -8,7 +8,7 @@ import AffiliateBox from '../../components/AffiliateBox.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { productsForRecipe } from '../../data/affiliate.js';
 import { RECIPES, nutrition, planDays, amountLabel, fmt, shares } from '../../lib/nutrition.js';
-import { u } from '../../lib/url.js';
+import { u, webp } from '../../lib/url.js';
 import { SITE_NAME } from '../../data/site.js';
 
 export function getStaticPaths() {
@@ -30,14 +30,16 @@ const jsonLd = {
   recipeInstructions: r.steps.map((t) => ({ '@type': 'HowToStep', text: t })),
   nutrition: { '@type': 'NutritionInformation', calories: `${Math.round(n.kcal)} kcal`, proteinContent: `${fmt(n.protein)} g`, fatContent: `${fmt(n.fat)} g`, carbohydrateContent: `${fmt(n.carbs)} g`, sugarContent: `${fmt(n.sugar)} g` },
 };
-const pin = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}&media=${encodeURIComponent(imgUrl)}&description=${encodeURIComponent(r.title + ' | ' + SITE_NAME)}`;
+// Hochformat-Grafik aus scripts/pins.mjs (entsteht nach dem Build)
+const pinImg = new URL(u(`pins/${r.slug}.jpg`), Astro.site).toString();
+const pin = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}&media=${encodeURIComponent(pinImg)}&description=${encodeURIComponent(r.title + ' | ' + SITE_NAME)}`;
 ---
 <Base title={r.title} description={r.teaser} active="rezepte" image={`img/rezepte/${r.image}.jpg`} jsonLd={jsonLd} ogType="article">
   <div class="in crumbs noprint" style="padding-top:20px"><a href={u('rezepte/')}><Icon name="back" />Alle Rezepte</a></div>
   <article class="in recipe">
     <div class="top-grid">
       <div class="photo">
-        <img src={u(`img/rezepte/${r.image}.jpg`)} alt={`Symbolfoto: ${r.short}`} width="900" height="675" />
+        <picture><source type="image/webp" srcset={webp(`img/rezepte/${r.image}.jpg`)} sizes="(max-width: 900px) 92vw, 560px" /><img src={u(`img/rezepte/${r.image}.jpg`)} alt={`Symbolfoto: ${r.short}`} width="900" height="675" fetchpriority="high" /></picture>
         <span class="chip photo">Symbolfoto</span>
       </div>
       <div class="stack">

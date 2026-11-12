@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 import MacroBar from './MacroBar.astro';
 import { nutrition, planDays, fmt } from '../lib/nutrition.js';
-import { u } from '../lib/url.js';
+import { u, webp } from '../lib/url.js';
 const { r } = Astro.props;
 const n = nutrition(r);
 const days = planDays(r.slug);
@@ -10,7 +10,7 @@ const days = planDays(r.slug);
 <article class="rcard" data-cat={r.category} data-season={(r.season || []).join(' ')} data-slot={r.slot} data-min={r.minutes} data-kcal={Math.round(n.kcal)} data-name={(r.title + ' ' + r.ingredients.map((i) => i.name).join(' ')).toLowerCase()}>
   <a href={u(`rezepte/${r.slug}/`)} class="rlink">
     <div class="rimg">
-      <img src={u(`img/rezepte/${r.image}.jpg`)} alt="" loading="lazy" width="900" height="675" />
+      <picture><source type="image/webp" srcset={webp(`img/rezepte/${r.image}.jpg`)} sizes="(max-width: 700px) 92vw, 380px" /><img src={u(`img/rezepte/${r.image}.jpg`)} alt="" loading="lazy" width="900" height="675" /></picture>
       <span class="kc"><Icon name="kcal" />{fmt(n.kcal)} kcal</span>
       {days.length > 0 && <span class="inplan">Im Plan: Tag {days.join(', ')}</span>}
     </div>
