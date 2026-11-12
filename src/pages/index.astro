@@ -18,15 +18,15 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
     <div class="in">
       <p class="kicker">5 Tage Scheinfasten nach Prof. Dr. Valter Longo</p>
       <h1>Fasten, das richtig gut schmeckt.</h1>
-      <p class="lead">Sag uns, was im Kühlschrank liegt. Wir rechnen es auf das Gramm genau nach Longos Werten aus und machen leckere Gerichte daraus.</p>
+      <p class="lead">In einer Minute zu deinem Plan: fünf Tage leckere Gerichte, auf das Gramm genau nach Longos Werten berechnet, mit Einkaufsliste. Kostenlos und ohne Anmeldung.</p>
       <ul class="hfx">
         <li class="eat"><a href="#unterschied"><Icon name="pot" />Fasten mit echtem Essen</a></li>
         <li class="hot"><Icon name="scale" />Auf das Gramm nach Longo</li>
         <li><Icon name="book" />Quelle zu jeder Zahl</li>
       </ul>
       <div class="ctas">
-        <a class="btn" href={u('rechner/')}><Icon name="scale" />Zum Rechner</a>
-        <a class="btn ghost" href={u('planer/')}>5-Tage-Plan erstellen</a>
+        <a class="btn" href={u('planer/')}><Icon name="calendar" />Gratis 5-Tage-Plan erstellen</a>
+        <a class="btn ghost" href={u('rechner/')}>Zum Rechner</a>
       </div>
     </div>
   </section>
@@ -46,25 +46,25 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
 
   <section class="band">
     <div class="in">
-      <div class="head"><p class="kicker">So funktioniert's</p><h2>Zwei Wege zu deinem Fastentag</h2></div>
+      <div class="head"><p class="kicker">So funktioniert's</p><h2>Zwei Wege durch deine Fastenwoche</h2></div>
       <div class="ways">
-        <article class="way">
-          <p class="wtag"><Icon name="pot" />Weg 1: Rezepte entdecken</p>
-          <ol class="wsteps">
-            <li><span class="n">1</span><div><b>Rezept aussuchen</b><span>{count} Gerichte, alle nach Longos Werten durchgerechnet.</span></div></li>
-            <li><span class="n">2</span><div><b>Nährwerte sehen</b><span>Kalorien, Eiweiß, Fett und Kohlenhydrate pro Portion.</span></div></li>
-            <li><span class="n">3</span><div><b>Oder gleich den 5-Tage-Plan</b><span>Mengen und Einkaufsliste passend zu dir.</span></div></li>
-          </ol>
-          <div class="ctas"><a class="btn soft" href={u('rezepte/')}>Zu den Rezepten <Icon name="arrow" /></a><a class="wlink" href={u('planer/')}>5-Tage-Plan erstellen</a></div>
-        </article>
         <article class="way main">
+          <p class="wtag"><Icon name="calendar" />Weg 1: Dein fertiger 5-Tage-Plan</p>
+          <ol class="wsteps">
+            <li><span class="n">1</span><div><b>Kurz über dich</b><span>Größe, Gewicht, Startdatum. Dauert eine Minute.</span></div></li>
+            <li><span class="n">2</span><div><b>Plan ansehen</b><span>Jeden Tag Gerichte aus {count} Rezepten, mit Mengen passend zu dir. Was dir nicht schmeckt, tauschst du.</span></div></li>
+            <li><span class="n">3</span><div><b>Einkaufen und loskochen</b><span>Einkaufsliste für alle fünf Tage, auch für bis zu vier Personen.</span></div></li>
+          </ol>
+          <div class="ctas"><a class="btn" href={u('planer/')}>Plan erstellen <Icon name="arrow" /></a><a class="wlink" href={u('rezepte/')}>Erst Rezepte ansehen</a></div>
+        </article>
+        <article class="way">
           <p class="wtag"><Icon name="scale" />Weg 2: Deine eigenen Lebensmittel</p>
           <ol class="wsteps">
-            <li><span class="n">1</span><div><b>Kurz über dich</b><span>Größe, Gewicht, Fastentag. Dauert eine Minute.</span></div></li>
-            <li><span class="n">2</span><div><b>Zutaten eingeben</b><span>Einfach eintippen, was im Kühlschrank liegt.</span></div></li>
-            <li><span class="n">3</span><div><b>Mengen, Kalorien, Gerichte</b><span>Grammgenau nach Longo, dazu passende Rezepte und ein leckerer Tausch, wenn etwas nicht passt.</span></div></li>
+            <li><span class="n">1</span><div><b>Zutaten eingeben</b><span>Einfach eintippen, was im Kühlschrank liegt oder was du schon gegessen hast.</span></div></li>
+            <li><span class="n">2</span><div><b>Mengen und Kalorien sehen</b><span>Grammgenau nach Longo, mit Ampel für jedes Lebensmittel.</span></div></li>
+            <li><span class="n">3</span><div><b>Passende Gerichte</b><span>Rezeptideen aus deinen Zutaten und ein leckerer Tausch, wenn etwas nicht passt.</span></div></li>
           </ol>
-          <div class="ctas"><a class="btn" href={u('rechner/')}>Zum Rechner <Icon name="arrow" /></a></div>
+          <div class="ctas"><a class="btn soft" href={u('rechner/')}>Zum Rechner <Icon name="arrow" /></a></div>
         </article>
       </div>
     </div>

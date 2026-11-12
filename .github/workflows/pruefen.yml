@@ -1,0 +1,23 @@
+name: Änderung prüfen
+
+# Baut jede vorgeschlagene Änderung (Pull Request) und prüft Pläne, Rechner und interne Links,
+# bevor sie auf die Seite kommt.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check:plans
+      - run: npm run check:rechner
+      - run: npm run build

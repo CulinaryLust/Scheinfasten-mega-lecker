@@ -6,6 +6,7 @@ import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 
 import { SITE_NAME } from '../data/site.js';
+import { GOATCOUNTER_CODE } from '../data/statistik.js';
 interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean; noCommerce?: boolean; ogType?: string }
 const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo selbst kochen: über 50 pflanzliche Rezepte, auf das Gramm nach Longos Werten berechnet, dazu ein kostenloser 5-Tage-Plan mit Einkaufsliste.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
 // Startseite: Suchbegriffe vorne, Marke hinten. Unterseiten: Seitentitel | Marke.
@@ -42,6 +43,7 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
   <link rel="sitemap" href={u('sitemap.xml')} />
   <meta name="theme-color" content="#3d7a2e" />
   <link rel="icon" href={u('favicon.svg')} type="image/svg+xml" />
+  <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME}: Rezepte`} href={u('pins.xml')} />
   {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 </head>
 <body>
@@ -61,12 +63,14 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
       <p><b>{SITE_NAME}</b> · Rechner, Rezepte und Planer für das Scheinfasten nach Prof. Dr. Valter Longo.</p>
       <p>Unsere Rezepte folgen den Werten aus Longos Studien, die Nährwerte sind berechnet. Die Seite ersetzt keine ärztliche Beratung und ist kein Angebot von L-Nutra oder ProLon.</p>
       <nav aria-label="Rechtliches">
+        <a href={u('ratgeber/')}>Ratgeber</a>
         <a href={u('fuer-wen-nicht/')}>Für wen nicht?</a>
         <a href={u('krebs/')}>Scheinfasten bei Krebs</a>
         {!noCommerce && <a href={u('ausstattung/')}>Ausstattung</a>}
         {!noCommerce && <a href={u('prolon-oder-selbst-kochen/')}>ProLon oder selbst kochen?</a>}
         <a href={u('impressum/')}>Impressum</a>
         <a href={u('datenschutz/')}>Datenschutz</a>
+        <a href={u('so-arbeiten-wir/')}>So arbeiten wir</a>
         <a href={u('transparenz/')}>Transparenz</a>
       </nav>
       {!noCommerce && <p class="small">Diese Seite ist kostenlos und finanziert sich über gekennzeichnete Affiliate-Links. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>}
@@ -76,5 +80,6 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
   <nav class="tabbar" aria-label="Schnellnavigation">
     {nav.map((n) => <a href={n.href} aria-current={active === n.key ? 'page' : undefined}><Icon name={n.icon} /><span>{n.label}</span></a>)}
   </nav>
+  {GOATCOUNTER_CODE && <script is:inline data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`} async src="https://gc.zgo.at/count.js"></script>}
 </body>
 </html>

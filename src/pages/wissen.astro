@@ -7,6 +7,7 @@ import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
 import AffiliateBox from '../components/AffiliateBox.astro';
 import { pick } from '../data/affiliate.js';
+import { ARTIKEL } from '../data/ratgeber.js';
 const studies = [
   { lv: 'ok', tag: 'Mensch · randomisiert', title: '100 Gesunde, 3 Zyklen', text: 'Körpergewicht, Bauchfett, Blutdruck und der Wachstumsfaktor IGF-1 sanken. Bei Menschen mit erhöhten Ausgangswerten war der Effekt größer.', src: 'Wei M et al. Science Translational Medicine 2017;9:eaai8700', doi: '10.1126/scitranslmed.aai8700' },
   { lv: 'warn', tag: 'Mensch · explorativ', title: 'Biologisches Alter', text: 'Eine Nachauswertung zweier Studien berechnete nach drei Zyklen ein im Median um 2,5 Jahre niedrigeres biologisches Alter. Ein Hinweis, noch kein Beweis.', src: 'Brandhorst S et al. Nature Communications 2024;15:1309', doi: '10.1038/s41467-024-45260-9' },
@@ -75,6 +76,12 @@ const faq = [
     </div>
   </section>
   <section class="band tint">
+    <div class="in narrow">
+      <div class="head"><h2>Praktisches aus dem Ratgeber</h2></div>
+      <ul class="ratlist">{ARTIKEL.map((a) => <li><a href={u(`ratgeber/${a.slug}/`)}>{a.title}</a><span class="muted small">{a.teaser}</span></li>)}</ul>
+    </div>
+  </section>
+  <section class="band">
     <div class="in narrow"><AffiliateBox items={pick('buch_longo', 'buch_michalsen', 'buch_gu')} title="Zum Weiterlesen" lead="Wenn du tiefer einsteigen willst: das Buch des Erfinders und zwei deutsche Rezeptbücher." /></div>
   </section>
 </Base>
@@ -87,4 +94,7 @@ const faq = [
   .faq details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
   .faq summary { cursor: pointer; font-weight: 700; }
   .faq p { margin-top: 10px; }
+  .ratlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .ratlist li { display: grid; gap: 2px; }
+  .ratlist a { font-weight: 700; font-size: 1.05rem; }
 </style>

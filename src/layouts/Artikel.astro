@@ -1,0 +1,55 @@
+---
+// Rahmen für Ratgeber-Artikel: Kopf mit Prüfdatum, Text, Quellen (Slot "quellen"), Abschluss mit Plan-Knopf.
+import Base from './Base.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url.js';
+import { SITE_NAME } from '../data/site.js';
+import { ARTIKEL, BY_SLUG, datum } from '../data/ratgeber.js';
+interface Props { slug: string; description: string; lead: string }
+const { slug, description, lead } = Astro.props;
+const a = BY_SLUG[slug];
+const others = ARTIKEL.filter((x) => x.slug !== slug);
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description, inLanguage: 'de-DE',
+  dateModified: a.stand, datePublished: a.stand, mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+  author: { '@type': 'Organization', name: SITE_NAME, url: new URL(u('so-arbeiten-wir/'), Astro.site).toString() },
+  publisher: { '@type': 'Organization', name: SITE_NAME },
+};
+---
+<Base title={a.title} description={description} active="wissen" jsonLd={jsonLd} ogType="article">
+  <div class="in page-head narrow">
+    <p class="kicker"><a href={u('ratgeber/')}>Ratgeber</a></p>
+    <h1>{a.title}</h1>
+    <p class="lead">{lead}</p>
+    <p class="muted small">Zuletzt geprüft am {datum(a.stand)} · <a href={u('so-arbeiten-wir/')}>So arbeiten wir</a></p>
+  </div>
+  <section class="band" style="padding-top:16px">
+    <div class="in narrow stack artikel">
+      <div class="prose"><slot /></div>
+      {Astro.slots.has('quellen') && <div class="prose quellen"><h2>Quellen</h2><slot name="quellen" /></div>}
+      <div class="card">
+        <h2 style="font-size:1.35rem">Dein Plan in einer Minute</h2>
+        <p>Der Planer rechnet Gerichte, Mengen und Einkaufsliste passend zu dir aus. Kostenlos und ohne Anmeldung.</p>
+        <div class="ctas"><a class="btn" href={u('planer/')}><Icon name="calendar" />Gratis 5-Tage-Plan erstellen</a><a class="btn soft" href={u('rezepte/')}>Alle Rezepte</a></div>
+      </div>
+      <p class="hint"><Icon name="heart" /><span><b>Kurz zur Sicherheit:</b> Wenn du schwanger bist, stillst, unter 18 bist, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
+      <nav aria-label="Weitere Artikel" class="mehr">
+        <h2 style="font-size:1.2rem">Weiterlesen</h2>
+        <ul>{others.map((x) => <li><a href={u(`ratgeber/${x.slug}/`)}>{x.title}</a></li>)}</ul>
+      </nav>
+    </div>
+  </section>
+</Base>
+<style is:global>
+  .artikel .prose { max-width: none; }
+  .artikel .prose h2 { font-size: 1.5rem; margin-top: 14px; }
+  .artikel .prose h3 { font-size: 1.15rem; margin-top: 6px; }
+  .artikel .quellen { font-size: .92rem; color: var(--muted); }
+  .artikel .quellen h2 { font-size: 1.15rem; color: var(--fg); }
+  .artikel .mehr ul { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 6px; }
+  .artikel table { width: 100%; }
+  .evid { font-size: .78rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .evid.s { background: var(--ok-bg); color: var(--ok); }
+  .evid.h { background: var(--warn-bg); color: var(--warn); }
+  .evid.w { background: var(--band); color: var(--muted); }
+</style>

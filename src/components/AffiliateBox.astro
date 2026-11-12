@@ -17,7 +17,7 @@ const { items, title = 'Das hilft dabei', lead, compact = false } = Astro.props;
       <li>
         <span class="ic" set:html={icon(p.icon || 'cart', 'i')} />
         <span class="tx"><b>{p.title}</b><span class="muted small">{p.why}</span></span>
-        <a class="btn small soft" href={amazonUrl(p)} target="_blank" rel="sponsored nofollow noopener">Bei Amazon<span class="sr-only"> ansehen: {p.title}</span></a>
+        <a class="btn small soft" href={amazonUrl(p)} target="_blank" rel="sponsored nofollow noopener" data-goatcounter-click={`partner-amazon-${p.key || "produkt"}`} data-goatcounter-title={p.title}>Bei Amazon<span class="sr-only"> ansehen: {p.title}</span></a>
       </li>
     ))}
   </ul>
