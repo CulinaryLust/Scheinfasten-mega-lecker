@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url.js';
+---
+<Base title="Seite nicht gefunden" noindex>
+  <div class="in page-head narrow prose">
+    <p class="kicker">Fehler 404</p>
+    <h1>Diese Seite gibt es nicht (mehr)</h1>
+    <p class="lead">Vielleicht hat sich die Adresse geändert. Hier geht es weiter:</p>
+    <div class="ctas">
+      <a class="btn" href={u('rezepte/')}><Icon name="pot" />Alle Rezepte</a>
+      <a class="btn soft" href={u('planer/')}>5-Tage-Plan erstellen</a>
+      <a class="btn soft" href={u('')}>Zur Startseite</a>
+    </div>
+  </div>
+</Base>

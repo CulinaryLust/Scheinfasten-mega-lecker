@@ -5,9 +5,10 @@ import '../styles/global.css';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 
-interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean; noCommerce?: boolean }
-const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo, aber mega lecker: durchgerechnete Rezepte und ein persönlicher 5-Tage-Planer.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false } = Astro.props;
-const fullTitle = title === 'Start' ? 'Scheinfasten mega lecker' : `${title} | Scheinfasten mega lecker`;
+import { SITE_NAME } from '../data/site.js';
+interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean; noCommerce?: boolean; ogType?: string }
+const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo, einfach lecker: durchgerechnete Rezepte und ein persönlicher 5-Tage-Planer.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
+const fullTitle = title === 'Start' ? SITE_NAME : `${title} | ${SITE_NAME}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(u(image), Astro.site);
 const nav = [
@@ -29,10 +30,15 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex" />}
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:url" content={canonical} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="sitemap" href={u('sitemap.xml')} />
   <meta name="theme-color" content="#3d7a2e" />
   <link rel="icon" href={u('favicon.svg')} type="image/svg+xml" />
   {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
@@ -41,7 +47,7 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
   <a class="sr-only" href="#main">Zum Inhalt springen</a>
   <header class="top">
     <div class="in">
-      <a class="logo" href={u('')}><span class="mark"><Icon name="leaf" /></span>Scheinfasten <span>mega lecker</span></a>
+      <a class="logo" href={u('')}><span class="mark"><Icon name="leaf" /></span>Scheinfasten <span class="tag">einfach lecker fasten</span></a>
       <nav class="nav" aria-label="Hauptnavigation">
         {[...nav.slice(1), ...extra].map((n) => <a href={n.href} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>)}
         <a class="btn small" href={u('planer/')}>Plan erstellen</a>
@@ -51,7 +57,7 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
   <main id="main"><slot /></main>
   <footer class="foot">
     <div class="in">
-      <p><b>Scheinfasten mega lecker</b> · Rechner, Rezepte und Planer für das Scheinfasten nach Prof. Dr. Valter Longo.</p>
+      <p><b>{SITE_NAME}</b> · Rechner, Rezepte und Planer für das Scheinfasten nach Prof. Dr. Valter Longo.</p>
       <p>Unsere Rezepte folgen den Werten aus Longos Studien, die Nährwerte sind berechnet. Die Seite ersetzt keine ärztliche Beratung und ist kein Angebot von L-Nutra oder ProLon.</p>
       <nav aria-label="Rechtliches">
         <a href={u('fuer-wen-nicht/')}>Für wen nicht?</a>

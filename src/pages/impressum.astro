@@ -1,9 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
+import { BETREIBER as b, fehlend } from '../data/betreiber.js';
+const offen = fehlend();
+const x = (v: string, ph: string) => v || `[${ph}]`;
 ---
 <Base title="Impressum" noindex>
   <div class="in page-head narrow prose"><h1>Impressum</h1>
-    <div class="alert warn"><p><b>Platzhalter.</b> Vor der Veröffentlichung ausfüllen: Name, ladungsfähige Anschrift, E-Mail, gegebenenfalls Umsatzsteuer-ID und verantwortliche Person nach § 18 Abs. 2 MStV.</p></div>
-    <p>Angaben gemäß § 5 DDG</p><p>[Vorname Nachname]<br />[Straße Hausnummer]<br />[PLZ Ort]</p><p>E-Mail: [E-Mail-Adresse]</p>
+    {offen.length > 0 && <div class="alert warn"><p><b>Noch unvollständig.</b> Die Angaben in <code>src/data/betreiber.js</code> fehlen.</p></div>}
+    <h2>Angaben gemäß § 5 DDG</h2>
+    <p>{x(b.name, 'Vorname Nachname')}<br />{x(b.strasse, 'Straße Hausnummer')}<br />{x(b.plzOrt, 'PLZ Ort')}</p>
+    <h2>Kontakt</h2>
+    <p>E-Mail: {b.email ? <a href={`mailto:${b.email}`}>{b.email}</a> : '[E-Mail-Adresse]'}{b.telefon && <><br />Telefon: {b.telefon}</>}</p>
+    {b.ustId && <><h2>Umsatzsteuer-ID</h2><p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: {b.ustId}</p></>}
+    {b.wIdNr && <><h2>Wirtschafts-Identifikationsnummer</h2><p>{b.wIdNr}</p></>}
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+    <p>{x(b.name, 'Vorname Nachname')}, Anschrift wie oben</p>
+    <h2>Hinweis zu Gesundheitsthemen</h2>
+    <p>Die Inhalte dieser Seite dienen der allgemeinen Information und ersetzen keine ärztliche Beratung, Diagnose oder Behandlung. Sprich vor dem Scheinfasten mit deiner Ärztin oder deinem Arzt, besonders bei Vorerkrankungen oder wenn du Medikamente nimmst.</p>
+    <h2>Affiliate-Links</h2>
+    <p>Mit „Anzeige“ gekennzeichnete Links sind Affiliate-Links. Kaufst du darüber ein, erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+    <h2>Verbraucherstreitbeilegung</h2>
+    <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
   </div>
 </Base>

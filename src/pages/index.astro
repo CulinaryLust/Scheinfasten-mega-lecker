@@ -8,10 +8,11 @@ import Effects from '../components/Effects.astro';
 import { RECIPES } from '../lib/nutrition.js';
 import { PROLON_PRICE } from '../data/affiliate.js';
 import { u } from '../lib/url.js';
+import { SITE_NAME } from '../data/site.js';
 const featured = ['kuerbissuppe', 'zucchini-nudeln-pesto', 'ofen-blumenkohl'].map((s) => RECIPES.find((r) => r.slug === s));
 const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.slot)).length;
 ---
-<Base title="Start" active="start">
+<Base title="Start" active="start" jsonLd={{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: new URL(u(''), Astro.site).toString(), inLanguage: 'de-DE' }}>
   <section class="hero">
     <img src={u('img/hero.jpg')} alt="" width="1800" height="1000" fetchpriority="high" />
     <div class="in">

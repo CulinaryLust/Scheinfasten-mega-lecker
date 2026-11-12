@@ -1,4 +1,4 @@
-# Scheinfasten mega lecker
+# Scheinfasten - einfach lecker fasten
 
 Webseite mit pflanzlichen Rezepten und einem persönlichen 5-Tage-Planer, angelehnt an die Fasting Mimicking Diet nach Prof. Dr. Valter Longo.
 
@@ -28,12 +28,16 @@ npm install
 npm run dev
 ```
 
-## Offene Punkte vor dem Start
+## Start-Checkliste
 
-- Impressum und Datenschutzerklärung ausfüllen.
-- Eigene Rezeptfotos statt Unsplash-Symbolbildern.
-- Partner-IDs in `src/data/affiliate.js` eintragen (Amazon-Tracking-ID, ProLon-Partnerlink).
+`npm run check:launch` zeigt, was noch fehlt. Alle Angaben stehen in je einer Datei:
+
+- `src/data/site.js`: eigene Domain in `DOMAIN` eintragen. Der Build setzt dann Adresse, Pfad, Sitemap, robots.txt und die CNAME-Datei. Danach in GitHub unter Settings > Pages die Domain eintragen und „Enforce HTTPS“ anhaken. Beim Domainanbieter: für die Hauptdomain A-Records auf 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 und für `www` einen CNAME auf `culinarylust.github.io`.
+- DNS bei ALL-INKL: Im KAS unter Tools > DNS-Einstellungen die Domain wählen. Die vorhandenen A-Records für die Domain ohne Präfix löschen und vier neue anlegen (Ziel je eine der vier GitHub-IPs oben). Für `www` den A-Record löschen und einen CNAME auf `culinarylust.github.io.` anlegen. Erst danach `DOMAIN` setzen und in GitHub die Domain eintragen. Bis das Zertifikat da ist, können bis zu 24 Stunden vergehen.
+- `src/data/betreiber.js`: Name, Anschrift, E-Mail für Impressum und Datenschutzerklärung.
+- `src/data/affiliate.js`: Amazon-Tracking-ID und ProLon-Partnerlink.
 - Werbeanzeigen erst mit Einwilligungsbanner einschalten (`ADS_ENABLED`).
+- Nach dem Umzug: Domain in der Google Search Console und den Bing Webmaster Tools anmelden und `sitemap.xml` einreichen.
 
 ## Stand sichern
 Im Rechner erstellt „Link erstellen“ einen persönlichen Link mit QR-Code (`src/components/StandSichern.astro`, Logik `src/lib/sicherung.js`). Alle gespeicherten Daten (`smlTagebuch`, `smlProfil`, `smlPlaner`, `smlRechner`) stehen komprimiert im Teil hinter `#stand=`, der nie an den Server geht. Beim Öffnen fragt die Seite, ob der Stand übernommen werden soll. Test: `node scripts/check-sicherung.mjs`.
