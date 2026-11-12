@@ -74,5 +74,23 @@ must(rFix.items.find((i) => i.name === 'Zucchini').g === 300, 'Feste Menge geän
 // Rezeptabgleich
 const m = matchRecipes(['Hokkaido-Kürbis', 'Ingwer', 'Kokosmilch (vollfett)']);
 must(m[0]?.recipe.slug === 'kuerbissuppe', `Rezeptabgleich: ${m[0]?.recipe.slug}`);
+// Snacks nur als Lückenfüller: Saaten, Oliven und Nüsse wandern in die Gerichte, pur bleibt höchstens eine Handvoll
+{
+  const t = targets(2, p.f);
+  const many = ['Brokkoli', 'Mandeln', 'Haselnüsse', 'Apfel', 'Birne', 'Grünkohl', 'Leinsamen', 'Grüne Oliven', 'Olivenöl', 'Maiswaffeln', 'Kartoffeln'];
+  const r = solve(many.map((name) => ({ name })), t);
+  const meals = buildMeals(r.items);
+  const snack = meals.find((m) => m.slot === 'Snack');
+  const sn = snack ? snack.items.map((i) => BY_NAME[i.name]) : [];
+  console.log('Snack:', snack ? snack.items.map((i) => `${i.name} ${i.g}`).join(', ') : 'keiner');
+  must(sn.filter((f) => f.group === 'nuss').length <= 1, 'Mehr als eine Nusssorte als Snack');
+  must(!sn.some((f) => ['Leinsamen', 'Grüne Oliven'].includes(f.name)), 'Saaten oder Oliven als Snack');
+  must(sn.filter((f) => f.group === 'obst').length <= 1, 'Mehr als ein Obst als Snack');
+  const back = totals(meals.flatMap((m) => m.items));
+  must(Math.abs(back.kcal - r.sum.kcal) < 15, `Mahlzeiten verlieren Zutaten: ${fmt(back.kcal)} statt ${fmt(r.sum.kcal)} kcal`);
+  // Nur Nüsse und Obst: dann ist alles ein Snack
+  const only = buildMeals(solve([{ name: 'Walnusskerne' }, { name: 'Apfel' }], t).items);
+  must(only.length === 1 && only[0].slot === 'Snack', 'Nur Snack-Zutaten');
+}
 console.log(failed ? `${failed} Fehler` : 'Alles ok');
 process.exit(failed ? 1 : 0);
