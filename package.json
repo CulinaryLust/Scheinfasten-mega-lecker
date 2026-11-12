@@ -5,16 +5,19 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/bilder.mjs && node scripts/pins.mjs && node scripts/check-links.mjs",
     "preview": "astro preview",
     "check:plans": "node scripts/check-plans.mjs",
     "check:launch": "node scripts/check-launch.mjs",
-    "check:rechner": "node scripts/check-rechner.mjs && node scripts/check-tagebuch.mjs && node scripts/check-sicherung.mjs && node scripts/audit-foods.mjs"
+    "check:rechner": "node scripts/check-rechner.mjs && node scripts/check-tagebuch.mjs && node scripts/check-sicherung.mjs && node scripts/audit-foods.mjs",
+    "check:links": "node scripts/check-links.mjs --extern",
+    "check:frische": "node scripts/check-frische.mjs"
   },
   "dependencies": {
     "@fontsource-variable/figtree": "^5.1.1",
     "@fontsource/young-serif": "^5.1.0",
     "astro": "4.16.18",
-    "qrcode-generator": "^1.4.4"
+    "qrcode-generator": "^1.4.4",
+    "sharp": "^0.33.5"
   }
 }

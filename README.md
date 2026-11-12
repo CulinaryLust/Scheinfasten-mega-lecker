@@ -39,6 +39,44 @@ npm run dev
 - Werbeanzeigen erst mit Einwilligungsbanner einschalten (`ADS_ENABLED`).
 - Nach dem Umzug: Domain in der Google Search Console und den Bing Webmaster Tools anmelden und `sitemap.xml` einreichen.
 
+## Was automatisch läuft
+
+Ziel: möglichst keine wiederkehrende Handarbeit. Einmal einrichten, danach läuft es.
+
+| Aufgabe | Automatik | Einmal einrichten |
+| --- | --- | --- |
+| Seite veröffentlichen | Jeder Merge auf `main` baut und veröffentlicht (`deploy.yml`) | erledigt |
+| Rezepte und Pläne nachrechnen | Bei jedem Build; passt ein Tag nicht zu Longos Werten, wird nicht veröffentlicht | erledigt |
+| Bilder verkleinern | `scripts/bilder.mjs` erzeugt WebP in passenden Größen | erledigt |
+| Tote interne Links | `scripts/check-links.mjs` bricht den Build ab | erledigt |
+| Änderungen vorab prüfen | `pruefen.yml` baut jeden Pull Request | erledigt |
+| Pinterest-Grafiken | `scripts/pins.mjs` baut pro Rezept ein Hochformat-Bild nach `pins/` | erledigt |
+| Pins veröffentlichen | Feed `pins.xml`, Pinterest holt alle 2 Tage ein neues Rezept ab | siehe „Pinterest automatisch“ |
+| Externe Links, ProLon-Preis, Artikel-Alter | `wartung.yml` am 1. jedes Monats, bei Befund E-Mail von GitHub | GitHub-Benachrichtigungen für fehlgeschlagene Actions anlassen (Standard) |
+| Einkaufsliste und „Tag für Tag“ im Ratgeber | Werden aus dem Standardplan berechnet, ändern sich mit dem Plan | erledigt |
+| Sitemap für Google und Bing | Entsteht bei jedem Build, Suchmaschinen holen sie selbst ab | Sitemap einmal in Search Console und Bing eintragen |
+| Erinnerungs-Mails | Brevo-Automationen, Texte in `docs/mails.md` | siehe „Zyklus-Erinnerung“ |
+| Besucherzahlen | GoatCounter zählt Aufrufe und Klicks auf Partnerlinks | Code in `src/data/statistik.js` eintragen |
+| Offene Punkte vor dem Start | `npm run check:launch`, steht auch in der Zusammenfassung jedes Deploys | erledigt |
+
+Nicht automatisierbar: Domainkauf, Gewerbeanmeldung, Impressumsangaben, Anmeldung bei Partnerprogrammen, Brevo und Pinterest (jeweils einmalig).
+
+## Pinterest automatisch
+
+1. Pinterest-Unternehmenskonto anlegen und die eigene Domain bestätigen („Website beanspruchen“). Das geht erst mit eigener Domain.
+2. In `src/data/site.js` bei `PINS_START` das heutige Datum eintragen (JJJJ-MM-TT) und mergen.
+3. In Pinterest am Computer unter Einstellungen > Pins in großen Mengen erstellen > Automatisch veröffentlichen die Adresse `https://DOMAIN/pins.xml` eintragen und eine Pinnwand wählen.
+
+Ab dann gibt der Feed alle `PINS_ABSTAND` Tage ein weiteres Rezept frei, Rezepte der aktuellen Jahreszeit zuerst. Die Seite baut sich dafür montags und donnerstags selbst neu. Bei 56 Rezepten reicht das für knapp vier Monate. Neue Rezepte hängen sich hinten an.
+
+## Statistik (GoatCounter)
+
+Kostenloses Konto auf goatcounter.com anlegen, den gewählten Code in `src/data/statistik.js` eintragen. Die Datenschutzerklärung ergänzt den Abschnitt dann selbst. Vor dem Einschalten bitte die Angaben dort einmal mit den aktuellen Datenschutzhinweisen von GoatCounter abgleichen. Klicks auf Partnerlinks erscheinen als Ereignisse `partner-amazon-…` und `partner-prolon`.
+
+## Ratgeber
+
+Artikel stehen in `src/pages/ratgeber/`, die Liste in `src/data/ratgeber.js`. Jeder Artikel trägt ein Prüfdatum (`stand`). Aussagen sind mit „Studie“, „Hersteller“ oder „Unser Tipp“ markiert.
+
 ## Stand sichern
 Im Rechner erstellt „Link erstellen“ einen persönlichen Link mit QR-Code (`src/components/StandSichern.astro`, Logik `src/lib/sicherung.js`). Alle gespeicherten Daten (`smlTagebuch`, `smlProfil`, `smlPlaner`, `smlRechner`) stehen komprimiert im Teil hinter `#stand=`, der nie an den Server geht. Beim Öffnen fragt die Seite, ob der Stand übernommen werden soll. Test: `node scripts/check-sicherung.mjs`.
 
@@ -51,5 +89,7 @@ Die Box `src/components/Erinnerung.astro` erscheint auf Rechner und Planer, soba
 4. Beim Einbetten die Adresse aus `action="…"` des HTML-Codes kopieren und in `NEWSLETTER_ACTION` eintragen, dann `NEWSLETTER_ENABLED = true`.
 5. Unter Automationen einen Ablauf „Datum eines Attributs“ mit `ZYKLUS_START` minus 3 Tage anlegen: Erinnerung mit Link zum Planer, Einkaufsliste und Ausstattungs-Empfehlungen.
 6. Einmal mit der eigenen Adresse testen, ob das Datum in Brevo richtig ankommt.
+
+Die fertigen Mailtexte und die Auslöser für alle fünf Mails stehen in `docs/mails.md`.
 
 Die Datenschutzerklärung zeigt den passenden Abschnitt automatisch, sobald die Box eingeschaltet ist. Ernährungseinträge werden nie an Brevo übertragen.

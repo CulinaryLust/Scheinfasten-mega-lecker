@@ -19,12 +19,12 @@ const shown = compact ? effects.slice(0, 3) : effects;
 ---
 <section class:list={['band', 'effects', { tint, compact }]} id="studien">
   <div class="in">
-    <div class="head"><p class="kicker">Was Studien zeigen</p><h2>Weniger Entzündung, weniger Bauchfett, bessere Werte</h2>{!compact && <p class="muted">In der wichtigsten Studie von Prof. Dr. Valter Longo aßen 100 gesunde Erwachsene drei Monate lang jeweils fünf Tage nach dem Scheinfasten-Prinzip. Danach normal. Das kam heraus:</p>}</div>
+    <div class="head"><p class="kicker">Was Studien zeigen</p><h2>Das hat Longos Studie gemessen</h2>{!compact && <p class="muted">In der wichtigsten Studie von Prof. Dr. Valter Longo aßen 100 gesunde Erwachsene drei Monate lang jeweils fünf Tage nach dem Scheinfasten-Prinzip. Danach normal. Das kam heraus:</p>}</div>
     <div class="card crp">
       <span class="fxi big"><Icon name="inflam" /></span>
       <div class="crptext">
         <p class="kicker">Im Fokus</p>
-        <h3>Entzündungswerte sinken</h3>
+        <h3>Entzündungswert CRP</h3>
         {!compact && <p>Stille Entzündungen im Körper gelten als einer der Treiber von Alterung und vielen Zivilisationskrankheiten. Bei Teilnehmenden mit erhöhtem Entzündungswert CRP sank dieser nach drei Zyklen deutlich, um durchschnittlich <b>{crp.value} {crp.unit}</b>. Wer ohnehin niedrige Werte hatte, sah kaum eine Veränderung.</p>}
         {compact && <p>Bei erhöhtem Entzündungswert CRP sank er nach drei Zyklen im Schnitt um <b>{crp.value} {crp.unit}</b>.</p>}
       </div>

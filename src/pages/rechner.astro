@@ -13,7 +13,7 @@ import StandSichern from '../components/StandSichern.astro';
 import Erinnerung from '../components/Erinnerung.astro';
 import { pick } from '../data/affiliate.js';
 ---
-<Base title="Lebensmittel-Rechner" active="rechner" description="Trag ein, was du heute schon gegessen hast, und sieh sofort, wie viel von deinem Scheinfasten-Tag nach Prof. Dr. Valter Longo noch übrig ist. Mit Vorschlägen, wie du den Rest lecker füllst.">
+<Base title="Scheinfasten-Rechner: Kalorien und Nährwerte pro Tag" active="rechner" description="Trag ein, was du heute schon gegessen hast, und sieh sofort, wie viel von deinem Scheinfasten-Tag nach Prof. Dr. Valter Longo noch übrig ist. Mit Vorschlägen, wie du den Rest lecker füllst.">
   <div class="in page-head">
     <p class="kicker">Rechner</p>
     <h1>Wie viel geht heute noch?</h1>
@@ -136,7 +136,7 @@ import { pick } from '../data/affiliate.js';
   .calc .wcard { padding: clamp(18px, 4vw, 30px); gap: 30px; }
   .block { border: 0; padding: 0; margin: 0; display: grid; gap: 18px; min-width: 0; }
   .block legend { font-family: var(--display); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; padding: 0; margin-bottom: 4px; }
-  .block .num { width: 32px; height: 32px; border-radius: 50%; background: var(--tomato); color: #fff; display: grid; place-items: center; font: 700 .95rem var(--body); flex: none; }
+  .block .num { width: 32px; height: 32px; border-radius: 50%; background: var(--tomato); color: var(--on-tomato); display: grid; place-items: center; font: 700 .95rem var(--body); flex: none; }
   .seg.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .seg.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   @media (max-width: 560px) { .seg.five { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -213,6 +213,7 @@ import { pick } from '../data/affiliate.js';
   import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
   import { fmt, PLAN } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
+  import { thumb } from '../lib/url.js';
   const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
   const TOL_P = PLAN.reference.tolerance.proteinPoints ?? PLAN.reference.tolerance.macroPoints;
 
@@ -424,7 +425,7 @@ import { pick } from '../data/affiliate.js';
         h += `<div class="stack"><h2 style="font-size:1.6rem">Passt auch: unsere Rezepte</h2>
           <p class="muted small">Fertig durchgerechnet, mit vielen deiner Zutaten.</p>
           <div class="grid">${rec.map((m) => `<a class="card rmatch" href="${base}rezepte/${m.recipe.slug}/">
-            <img src="${base}img/rezepte/${m.recipe.image}.jpg" alt="" loading="lazy" width="110" height="82" />
+            <img src="${thumb(base, m.recipe.image)}" alt="" loading="lazy" width="110" height="82" />
             <div class="stack" style="gap:6px"><h3>${esc(m.recipe.title)}</h3>
             <p><b>Du hast:</b> ${m.hit.map(esc).join(', ')}</p>
             ${m.miss.length ? `<p class="muted"><b>Es fehlt:</b> ${m.miss.map(esc).join(', ')}</p>` : '<p class="muted">Du hast alles da!</p>'}
