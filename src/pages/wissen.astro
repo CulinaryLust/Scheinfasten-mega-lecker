@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import { u } from '../lib/url.js';
+import { u, webp } from '../lib/url.js';
 import FastCompare from '../components/FastCompare.astro';
 import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
@@ -23,14 +23,14 @@ const faq = [
   ['Brauche ich Nahrungsergänzungsmittel?', 'Das Fertigprodukt der Studien enthielt ein Präparat mit Vitaminen, Mineralstoffen und essenziellen Fettsäuren (Wei 2017). Ob du für fünf Tage etwas ergänzen solltest, klärst du am besten mit deiner Ärztin oder deinem Arzt.'],
 ];
 ---
-<Base title="Wissen" active="wissen" description="Was die Forschung zur Fasting Mimicking Diet von Prof. Dr. Valter Longo zeigt, mit Evidenzstufe und Quellen.">
+<Base title="Scheinfasten nach Longo: Ablauf, Studien und Wirkung" active="wissen" description="Was die Forschung zur Fasting Mimicking Diet von Prof. Dr. Valter Longo zeigt, mit Evidenzstufe und Quellen.">
   <div class="in page-head narrow">
     <p class="kicker">Wissen</p>
     <h1>Was steckt hinter dem Scheinfasten?</h1>
   </div>
   <section class="band" style="padding-top:20px">
     <div class="in person">
-      <img src={u('img/markt.jpg')} alt="Gemüsestand auf einem Markt" loading="lazy" width="1800" height="1000" />
+      <picture><source type="image/webp" srcset={webp('img/markt.jpg')} sizes="(max-width: 820px) 92vw, 560px" /><img src={u('img/markt.jpg')} alt="Gemüsestand auf einem Markt" loading="lazy" width="1800" height="1000" /></picture>
       <div class="prose">
         <h2>Prof. Dr. Valter Longo</h2>
         <p>Valter Longo ist Professor für Gerontologie und Biologie an der University of Southern California in Los Angeles und leitet dort das Longevity Institute. Er hat die Fasting Mimicking Diet entwickelt, auf Deutsch meist Scheinfasten genannt, und sie in Studien an Zellen, Tieren und Menschen untersucht. Sein Buch ist auf Deutsch unter dem Titel „Iss dich jung“ erschienen.</p>

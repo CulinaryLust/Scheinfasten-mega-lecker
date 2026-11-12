@@ -7,8 +7,9 @@ import { u } from '../lib/url.js';
 
 import { SITE_NAME } from '../data/site.js';
 interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean; noCommerce?: boolean; ogType?: string }
-const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo, einfach lecker: durchgerechnete Rezepte und ein persönlicher 5-Tage-Planer.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
-const fullTitle = title === 'Start' ? SITE_NAME : `${title} | ${SITE_NAME}`;
+const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo selbst kochen: über 50 pflanzliche Rezepte, auf das Gramm nach Longos Werten berechnet, dazu ein kostenloser 5-Tage-Plan mit Einkaufsliste.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
+// Startseite: Suchbegriffe vorne, Marke hinten. Unterseiten: Seitentitel | Marke.
+const fullTitle = title === 'Start' ? `Scheinfasten selbst kochen: Rezepte und 5-Tage-Plan | ${SITE_NAME}` : `${title} | ${SITE_NAME}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(u(image), Astro.site);
 const nav = [

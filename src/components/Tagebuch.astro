@@ -59,7 +59,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
   .lentry.r { border-color: var(--bad); background: var(--bad-bg); }
   @media (max-width: 560px) { .lentry { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) 36px; } .lentry .nm { grid-column: 1 / -1; } .lentry .kc { display: none; } }
   .lentry .rm .i { width: 1em; height: 1em; }
-  .tag { flex: none; white-space: nowrap; font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--green); background: var(--ok-bg); padding: 2px 8px; border-radius: 999px; }
+  .rtag { flex: none; white-space: nowrap; font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--green); background: var(--ok-bg); padding: 2px 8px; border-radius: 999px; }
   .bars { display: grid; gap: 14px; }
   .pbar { display: grid; gap: 6px; }
   .pbar .phead { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: baseline; }
@@ -91,6 +91,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
   import { status, fillFoods, fillRecipes, searchAll, defaultAmount, units, grams, qtyLabel, entryTotals, PANTRY, BY_NAME, BY_SLUG } from '../lib/tagebuch.js';
   import { profile, targets, amount } from '../lib/rechner.js';
   import { fmt } from '../lib/nutrition.js';
+  import { thumb } from '../lib/url.js';
 
   const root = document.getElementById('log')!;
   const base = root.dataset.base!;
@@ -135,7 +136,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
     active = hits.length ? 0 : -1;
     const t = q.value.trim();
     qhint.textContent = t.length >= 2 && !hits.length ? `„${t}“ kennen wir leider noch nicht. Probier es mit der Grundzutat.` : '';
-    sug.innerHTML = hits.map((h, i) => `<li role="option" id="ls${i}" aria-selected="${i === active}" data-i="${i}">${h.type === 'recipe' ? '<span class="tag">Rezept</span>' : `<span class="dot ${h.light}" aria-hidden="true"></span>`}${esc(h.label)}</li>`).join('');
+    sug.innerHTML = hits.map((h, i) => `<li role="option" id="ls${i}" aria-selected="${i === active}" data-i="${i}">${h.type === 'recipe' ? '<span class="rtag">Rezept</span>' : `<span class="dot ${h.light}" aria-hidden="true"></span>`}${esc(h.label)}</li>`).join('');
     sug.hidden = !hits.length;
     q.setAttribute('aria-expanded', String(!!hits.length));
     q.setAttribute('aria-activedescendant', active >= 0 ? `ls${active}` : '');
@@ -148,7 +149,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
     const e: Entry = type === 'recipe' ? { type, slug: key, qty: 1, unit: 'portion' } : { type, name: key, qty: 0, unit: 'g' };
     Object.assign(e, defaultAmount(e));
     pending = e;
-    addname.innerHTML = `${type === 'recipe' ? '<span class="tag">Rezept</span>' : ''}${esc(label(e))}`;
+    addname.innerHTML = `${type === 'recipe' ? '<span class="rtag">Rezept</span>' : ''}${esc(label(e))}`;
     addunit.innerHTML = units(e).map(([k, l]) => `<option value="${k}" ${k === e.unit ? 'selected' : ''}>${esc(l)}</option>`).join('');
     addqty.value = String(e.qty);
     addqty.step = e.unit === 'g' || e.unit === 'ml' ? '5' : '0.5';
@@ -256,7 +257,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
       const red = e.type === 'food' && BY_NAME[e.name!].light === 'r';
       const us = units(e);
       return `<div class="lentry ${red ? 'r' : ''}" data-idx="${i}">
-        <span class="nm">${e.type === 'recipe' ? '<span class="tag">Rezept</span>' : `<span class="dot ${BY_NAME[e.name!].light}" aria-hidden="true"></span>`}<span>${esc(label(e))}${e.unit === 'piece' || e.unit === 'cup' ? ` <small>${esc(qtyLabel(e).replace(/^.*\(/, '').replace(')', ''))}</small>` : ''}</span></span>
+        <span class="nm">${e.type === 'recipe' ? '<span class="rtag">Rezept</span>' : `<span class="dot ${BY_NAME[e.name!].light}" aria-hidden="true"></span>`}<span>${esc(label(e))}${e.unit === 'piece' || e.unit === 'cup' ? ` <small>${esc(qtyLabel(e).replace(/^.*\(/, '').replace(')', ''))}</small>` : ''}</span></span>
         <input type="number" inputmode="decimal" min="0" step="${e.unit === 'g' || e.unit === 'ml' ? 5 : 0.5}" value="${e.qty}" aria-label="Menge ${esc(label(e))}" />
         ${us.length > 1 ? `<select aria-label="Einheit ${esc(label(e))}">${us.map(([k, l]) => `<option value="${k}" ${k === e.unit ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>` : `<span class="small muted">${esc(us[0][1])}</span>`}
         <span class="kc">${fmt(n.kcal)} kcal</span>
@@ -309,7 +310,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
         h += `<div class="stack"><h2 style="font-size:1.6rem">So füllst du den Rest</h2>
           <p class="muted small">Rezepte, mit denen dein Tag am nächsten an Longos Werte kommt. Noch offen: ${fmt(kc.rest)} kcal.</p>
           <div class="grid">${rec.map((x) => `<article class="card rcard">
-            <img src="${base}img/rezepte/${x.recipe.image}.jpg" alt="" loading="lazy" width="110" height="82" />
+            <img src="${thumb(base, x.recipe.image)}" alt="" loading="lazy" width="110" height="82" />
             <div class="stack" style="gap:6px"><h3><a href="${base}rezepte/${x.recipe.slug}/">${esc(x.recipe.title)}</a></h3>
             <p>${x.portion.toLocaleString('de-DE')} ${x.portion === 1 ? 'Portion' : 'Portionen'}, ${fmt(x.n.kcal)} kcal</p>
             <p class="muted">Danach: ${fmt(x.sum.kcal)} von ${fmt(t.kcal)} kcal${x.ok ? ', Tag passt' : ''}</p>

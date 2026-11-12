@@ -7,7 +7,7 @@ import { RECIPES } from '../../lib/nutrition.js';
 const list = RECIPES.filter((r) => r.slot !== 'side');
 const cats = [...new Set(list.map((r) => r.category))];
 ---
-<Base title="Rezepte" active="rezepte" description={`${list.length} pflanzliche Scheinfasten-Rezepte mit Kalorien, Eiweiß, Fett und Kohlenhydraten pro Portion.`}>
+<Base title={`Scheinfasten-Rezepte: ${list.length} Gerichte mit Nährwerten`} active="rezepte" description={`${list.length} pflanzliche Scheinfasten-Rezepte mit Kalorien, Eiweiß, Fett und Kohlenhydraten pro Portion.`}>
   <div class="in page-head">
     <p class="kicker">Rezepte</p>
     <h1>{list.length} Rezepte für deine Fastentage</h1>

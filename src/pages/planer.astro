@@ -13,7 +13,7 @@ import AffiliateBox from '../components/AffiliateBox.astro';
 import Erinnerung from '../components/Erinnerung.astro';
 import { pick } from '../data/affiliate.js';
 ---
-<Base title="Dein 5-Tage-Plan" active="planer" description="Persönlicher Scheinfasten-Planer: Rezepte, Mengen und Nährwerte für jeden Tag, abgeglichen mit den Vorgaben von Prof. Dr. Valter Longo.">
+<Base title="Scheinfasten-Plan für 5 Tage mit Einkaufsliste" active="planer" description="Persönlicher Scheinfasten-Planer: Rezepte, Mengen und Nährwerte für jeden Tag, abgeglichen mit den Vorgaben von Prof. Dr. Valter Longo.">
   <div class="in page-head">
     <p class="kicker">Planer</p>
     <h1>Dein persönlicher 5-Tage-Plan</h1>
@@ -107,7 +107,7 @@ import { pick } from '../data/affiliate.js';
   .progress li { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; color: var(--muted); padding-bottom: 10px; border-bottom: 4px solid var(--line); }
   .progress li span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--line); color: var(--fg); font-size: .85rem; flex: none; }
   .progress li.on { color: var(--fg); border-color: var(--tomato); }
-  .progress li.on span { background: var(--tomato); color: #fff; }
+  .progress li.on span { background: var(--tomato); color: var(--on-tomato); }
   .wcard { padding: clamp(18px, 4vw, 30px); }
   .seg.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   @media (max-width: 560px) { .seg.four { grid-template-columns: 1fr 1fr; } }
@@ -176,6 +176,7 @@ import { pick } from '../data/affiliate.js';
 <script>
   import { RECIPES, BY_SLUG, PLAN, nutrition, add, check, shares, amountLabel, fmt } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
+  import { thumb } from '../lib/url.js';
 
   const root = document.getElementById('wizard')!;
   const base = root.dataset.base!;
@@ -299,7 +300,7 @@ import { pick } from '../data/affiliate.js';
   const WD = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
   const ds = (d: Date) => `${WD[d.getDay()]}, ${d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' })}`;
   const dsl = (d: Date) => `${WD[d.getDay()]}, ${d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}`;
-  const img = (r: any) => `${base}img/rezepte/${r.image}.jpg`;
+  const img = (r: any) => thumb(base, r.image);
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 
   let tab = 1;

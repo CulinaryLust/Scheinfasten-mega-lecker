@@ -7,22 +7,22 @@ import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
 import { RECIPES } from '../lib/nutrition.js';
 import { PROLON_PRICE } from '../data/affiliate.js';
-import { u } from '../lib/url.js';
+import { u, webp } from '../lib/url.js';
 import { SITE_NAME } from '../data/site.js';
 const featured = ['kuerbissuppe', 'zucchini-nudeln-pesto', 'ofen-blumenkohl'].map((s) => RECIPES.find((r) => r.slug === s));
 const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.slot)).length;
 ---
 <Base title="Start" active="start" jsonLd={{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: new URL(u(''), Astro.site).toString(), inLanguage: 'de-DE' }}>
   <section class="hero">
-    <img src={u('img/hero.jpg')} alt="" width="1800" height="1000" fetchpriority="high" />
+    <picture><source type="image/webp" srcset={webp('img/hero.jpg')} sizes="100vw" /><img src={u('img/hero.jpg')} alt="" width="1800" height="1000" fetchpriority="high" /></picture>
     <div class="in">
       <p class="kicker">5 Tage Scheinfasten nach Prof. Dr. Valter Longo</p>
       <h1>Fasten, das richtig gut schmeckt.</h1>
       <p class="lead">Sag uns, was im Kühlschrank liegt. Wir rechnen es auf das Gramm genau nach Longos Werten aus und machen leckere Gerichte daraus.</p>
       <ul class="hfx">
         <li class="eat"><a href="#unterschied"><Icon name="pot" />Fasten mit echtem Essen</a></li>
-        <li class="hot"><Icon name="inflam" />Entzündungswerte runter</li>
-        <li><Icon name="tape" />−4 cm Taille</li>
+        <li class="hot"><Icon name="scale" />Auf das Gramm nach Longo</li>
+        <li><Icon name="book" />Quelle zu jeder Zahl</li>
       </ul>
       <div class="ctas">
         <a class="btn" href={u('rechner/')}><Icon name="scale" />Zum Rechner</a>
@@ -80,7 +80,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
 
   <section class="band">
     <div class="in split">
-      <img class="rounded" src={u('img/ebook.jpg')} alt="Grüne Gemüsesuppe mit Kräutern" loading="lazy" width="1800" height="1000" />
+      <picture><source type="image/webp" srcset={webp('img/ebook.jpg')} sizes="(max-width: 820px) 92vw, 560px" /><img class="rounded" src={u('img/ebook.jpg')} alt="Grüne Gemüsesuppe mit Kräutern" loading="lazy" width="1800" height="1000" /></picture>
       <div class="stack">
         <p class="kicker">Ehrlich verglichen</p>
         <h2>ProLon oder selbst kochen?</h2>
@@ -98,7 +98,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
 </Base>
 <style>
   .hero { position: relative; color: #fff; overflow: hidden; background: #24361d; }
-  .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero > picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,25,10,.85) 0%, rgba(15,25,10,.55) 55%, rgba(15,25,10,.12) 100%); }
   .hero .in { position: relative; z-index: 1; padding-block: clamp(60px, 11vw, 130px); display: grid; gap: 20px; }
   .hero h1 { max-width: 12ch; }
@@ -114,7 +114,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
   .wtag { display: flex; gap: 8px; align-items: center; font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--tomato); }
   .wsteps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
   .wsteps li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; }
-  .wsteps .n { width: 30px; height: 30px; border-radius: 9px; background: var(--tomato); color: #fff; font: 800 .95rem/1 var(--body); display: grid; place-items: center; transform: rotate(-4deg); box-shadow: 0 3px 0 var(--tomato-d); }
+  .wsteps .n { width: 30px; height: 30px; border-radius: 9px; background: var(--tomato); color: var(--on-tomato); font: 800 .95rem/1 var(--body); display: grid; place-items: center; transform: rotate(-4deg); box-shadow: 0 3px 0 var(--tomato-d); }
   .wsteps div { display: grid; gap: 2px; }
   .wsteps b { font-size: 1.05rem; }
   .wsteps div span { color: var(--muted); font-size: .93rem; }
