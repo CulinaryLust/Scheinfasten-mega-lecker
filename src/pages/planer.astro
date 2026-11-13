@@ -451,7 +451,7 @@ import { pick } from '../data/affiliate.js';
         <h3>${['main', 'snack', 'breakfast'].includes(r.slot) ? `<a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a>` : esc(r.title)}</h3>
         <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.carbs)} g</b></span></div>
         <span class="por">Portion ×${fmt(por, 2)}${ppl > 1 ? ` · Topf für alle ×${fmt(it.portion * fAll, 2)}` : ''}${it.swapped ? ' · getauscht' : ''}</span>
-        <details><summary>${ppl > 1 ? `Zutaten für alle ${ppl} Personen` : 'Zutaten in Gramm'}</summary><ul>${Object.entries(agg).map(([n2, g]) => ppl > 1 ? `<li>${amountLabel(n2, g / f * fAll)} ${esc(n2)} <small>(deins: ${amountLabel(n2, g)})</small></li>` : `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>
+        <details><summary>${ppl > 1 ? `Zutaten für alle ${ppl} Personen` : 'Zutaten in Gramm'}</summary><ul>${Object.entries(agg).map(([n2, g]) => ppl > 1 ? `<li>${amountLabel(n2, g / f * fAll)} ${esc(n2)} <small>(Deins: ${amountLabel(n2, g)})</small></li>` : `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>
         ${canSwap ? `<div class="acts noprint"><button class="btn soft small" data-swap="${key}" aria-expanded="${openSwap === key}">${I.swap} Tauschen</button>${it.swapped ? `<button class="btn soft small" data-reset="${key}">Original</button>` : ''}</div>` : ''}
       </div>${box}</article>`;
     });

@@ -2,11 +2,11 @@
 
 Webseite mit pflanzlichen Rezepten und einem persönlichen 5-Tage-Planer, angelehnt an die Fasting Mimicking Diet nach Prof. Dr. Valter Longo.
 
-Live: https://culinarylust.github.io/Scheinfasten-mega-lecker/
+Live: https://einfach-lecker-fasten.de (die alte Adresse auf github.io leitet dorthin weiter)
 
 ## Aufbau
 
-- **Astro** erzeugt eine statische Seite, GitHub Pages veröffentlicht sie bei jedem Push auf `main` (`.github/workflows/deploy.yml`).
+- **Astro** erzeugt eine statische Seite, bei jedem Push auf `main` lädt `.github/workflows/deploy.yml` sie per FTP zu ALL-INKL hoch. GitHub Pages zeigt danach nur noch Weiterleitungen von der alten Adresse.
 - `src/data/` enthält Nährwerte, Rezepte und den Standardplan als JSON. Diese Dateien werden aus `tools/recipes_src.py` erzeugt.
 - `src/lib/nutrition.js` rechnet Nährwerte und prüft Tage gegen Longos Referenz (Tag 1: 1.090 kcal, 10/56/34 % nach Brandhorst 2015; Tage 2 bis 5: 725 kcal, 9/44/47 %; Toleranz ±5 % kcal, ±5 Prozentpunkte je Makro; Zucker höchstens 15 % der kcal als eigene Regel).
 - Der Planer (`src/pages/planer.astro`) rechnet komplett im Browser. Eingaben bleiben im localStorage.
@@ -32,12 +32,22 @@ npm run dev
 
 `npm run check:launch` zeigt, was noch fehlt. Alle Angaben stehen in je einer Datei:
 
-- `src/data/site.js`: eigene Domain in `DOMAIN` eintragen. Der Build setzt dann Adresse, Pfad, Sitemap, robots.txt und die CNAME-Datei. Danach in GitHub unter Settings > Pages die Domain eintragen und „Enforce HTTPS“ anhaken. Beim Domainanbieter: für die Hauptdomain A-Records auf 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 und für `www` einen CNAME auf `culinarylust.github.io`.
-- DNS bei ALL-INKL: Im KAS unter Tools > DNS-Einstellungen die Domain wählen. Die vorhandenen A-Records für die Domain ohne Präfix löschen und vier neue anlegen (Ziel je eine der vier GitHub-IPs oben). Für `www` den A-Record löschen und einen CNAME auf `culinarylust.github.io.` anlegen. Erst danach `DOMAIN` setzen und in GitHub die Domain eintragen. Bis das Zertifikat da ist, können bis zu 24 Stunden vergehen.
+- `src/data/site.js`: eigene Domain in `DOMAIN`. Der Build setzt dann Adresse, Pfad, Sitemap, robots.txt und die `.htaccess` (HTTPS, www-Umleitung, 404, Cache).
 - `src/data/betreiber.js`: Name, Anschrift, E-Mail für Impressum und Datenschutzerklärung.
 - `src/data/affiliate.js`: Amazon-Tracking-ID und ProLon-Partnerlink.
 - Werbeanzeigen erst mit Einwilligungsbanner einschalten (`ADS_ENABLED`).
 - Nach dem Umzug: Domain in der Google Search Console und den Bing Webmaster Tools anmelden und `sitemap.xml` einreichen.
+
+## Hosting bei ALL-INKL
+
+Einmal einrichten, danach lädt jeder Push auf `main` die Seite automatisch hoch.
+
+1. Im KAS unter Domain die Domain `einfach-lecker-fasten.de` bearbeiten: Ziel ist ein eigener Ordner, z. B. `/einfach-lecker-fasten/`. SSL unter Domain > SSL-Schutz mit Let's Encrypt einschalten. DNS nicht ändern, die Domain zeigt bei ALL-INKL von selbst auf den Webspace.
+2. Im KAS unter FTP einen Zusatz-FTP-Benutzer anlegen, der nur diesen Ordner sieht.
+3. In GitHub unter Settings > Secrets and variables > Actions drei Repository-Secrets anlegen: `ALLINKL_FTP_HOST` (Server aus der FTP-Übersicht, z. B. `w0123456.kasserver.com`), `ALLINKL_FTP_USER` und `ALLINKL_FTP_PASSWORD`.
+4. In GitHub unter Actions den Lauf „Seite veröffentlichen“ neu starten. Ohne Secrets bricht er mit einer klaren Meldung ab und die alte Seite bleibt online.
+5. Im KAS unter Tools > Auftragsverarbeitung den Vertrag zur Auftragsverarbeitung abschließen (Pflicht nach DSGVO).
+6. Für `kontakt@einfach-lecker-fasten.de` im KAS unter E-Mail ein Postfach oder eine Weiterleitung anlegen. Die Adresse steht im Impressum.
 
 ## Was automatisch läuft
 
