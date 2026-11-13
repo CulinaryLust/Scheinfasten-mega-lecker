@@ -4,59 +4,67 @@ import Icon from './Icon.astro';
 import { u } from '../lib/url.js';
 interface Props { compact?: boolean; tint?: boolean }
 const { compact = false, tint = false } = Astro.props;
-// CRP: Wei 2017, Tabelle 4 (Ausgangs-CRP über 1 mg/l, n = 26)
-const crp = { value: '−1,6', unit: 'mg/l' };
-// Effekte aus Wei et al. 2017 (Sci Transl Med, Tabelle 2 und 4) und Brandhorst et al. 2024
-const effects = [
-  { icon: 'scale', value: '−2,6', unit: 'kg', label: 'Körpergewicht', note: 'im Schnitt nach drei Zyklen, vor allem Fett' },
-  { icon: 'tape', value: '−4', unit: 'cm', label: 'Taillenumfang', note: 'weniger Bauchfett, das als besonders ungünstig gilt' },
-  { icon: 'pulse', value: '−6,7', unit: 'mmHg', label: 'Blutdruck', note: 'oberer Wert bei Teilnehmenden mit erhöhtem Blutdruck' },
-  { icon: 'water', value: '−12', unit: 'mg/dl', label: 'Nüchtern\u00ADblutzucker', note: 'bei Teilnehmenden mit erhöhten Ausgangswerten' },
-  { icon: 'cell', value: '−22', unit: 'ng/ml', label: 'Wachstums\u00ADfaktor IGF-1', note: 'ein Blutwert, den die Forschung mit Alterung verbindet' },
-  { icon: 'hourglass', value: '−2,5', unit: 'Jahre', label: 'biologisches Alter', note: 'erster Hinweis aus einer Nachauswertung, noch kein Beweis', weak: true },
+// Effekte aus Wei et al. 2017 (Sci Transl Med, Tabelle 2 und 4) und Brandhorst et al. 2024.
+// Im Zentrum: Gewicht, Entzündungswert CRP, Blutzucker. Normalwerte: CRP unter 5 mg/l (Labor), unter 1 mg/l geringes Herz-Kreislauf-Risiko (AHA/CDC 2003);
+// Nüchternblutzucker 70 bis 99 mg/dl (DDG); Blutdruck optimal unter 120/80 mmHg (ESC 2018); Taille unter 80 cm (Frauen) bzw. 94 cm (Männer) (WHO 2008).
+const main = [
+  { icon: 'scale', value: '−2,6', unit: 'kg', label: 'Körpergewicht', note: 'im Schnitt nach drei Zyklen, vor allem Körperfett', ref: '' },
+  { icon: 'inflam', value: '−1,6', unit: 'mg/l', label: 'Entzündungswert CRP', note: 'bei Teilnehmenden mit erhöhtem Wert', ref: 'Normal: unter 5 mg/l, ideal unter 1 mg/l', key: true },
+  { icon: 'water', value: '−12', unit: 'mg/dl', label: 'Nüchtern\u00ADblutzucker', note: 'bei Teilnehmenden mit erhöhten Ausgangswerten', ref: 'Normal: 70 bis 99 mg/dl' },
 ];
-const shown = compact ? effects.slice(0, 3) : effects;
+const effects = [
+  { icon: 'tape', value: '−4', unit: 'cm', label: 'Taillenumfang', note: 'weniger Bauchfett, das als besonders ungünstig gilt', ref: 'Richtwert: unter 80 cm (Frauen), unter 94 cm (Männer)' },
+  { icon: 'pulse', value: '−6,7', unit: 'mmHg', label: 'Blutdruck', note: 'oberer Wert bei Teilnehmenden mit erhöhtem Blutdruck', ref: 'Optimal: unter 120/80 mmHg' },
+  { icon: 'cell', value: '−22', unit: 'ng/ml', label: 'Wachstums\u00ADfaktor IGF-1', note: 'ein Blutwert, den die Forschung mit Alterung verbindet', ref: 'Normalbereich stark altersabhängig' },
+  { icon: 'hourglass', value: '−2,5', unit: 'Jahre', label: 'biologisches Alter', note: 'erster Hinweis aus einer Nachauswertung, noch kein Beweis', ref: '', weak: true },
+];
 ---
 <section class:list={['band', 'effects', { tint, compact }]} id="studien">
   <div class="in">
-    <div class="head"><p class="kicker">Was Studien zeigen</p><h2>Das hat Longos Studie gemessen</h2>{!compact && <p class="muted">In der wichtigsten Studie von Longo aßen 100 gesunde Erwachsene drei Monate lang jeweils fünf Tage nach dem Scheinfasten-Prinzip. Danach normal. Das kam heraus:</p>}</div>
-    <div class="card crp">
-      <span class="fxi big"><Icon name="inflam" /></span>
-      <div class="crptext">
-        <p class="kicker">Im Fokus</p>
-        <h3>Entzündungswert CRP</h3>
-        {!compact && <p>Stille Entzündungen im Körper gelten als einer der Treiber von Alterung und vielen Zivilisationskrankheiten. Bei Teilnehmenden mit erhöhtem Entzündungswert CRP sank dieser nach drei Zyklen deutlich, um durchschnittlich <b>{crp.value} {crp.unit}</b>.</p>}
-        {compact && <p>Bei erhöhtem Entzündungswert CRP sank er nach drei Zyklen im Schnitt um <b>{crp.value} {crp.unit}</b>.</p>}
-      </div>
-      <b class="fxv crpv"><span class="n">{crp.value}<small>{crp.unit}</small></span><span class="l">CRP</span></b>
+    <div class="head"><p class="kicker">Was Studien zeigen</p><h2>Das hat die Studie von Prof. Dr. Longo gemessen</h2>{!compact && <p class="muted">In der wichtigsten Studie aßen 100 gesunde Erwachsene drei Monate lang jeweils fünf Tage nach dem Scheinfasten-Prinzip, dazwischen normal. Das kam heraus:</p>}</div>
+    <div class="fxmain">
+      {main.map((e) => (
+        <div class:list={['card', 'fxcard', 'big', { key: e.key }]}>
+          <span class="fxi"><Icon name={e.icon} /></span>
+          <b class="fxv">{e.value}<small>{e.unit}</small></b>
+          <span class="fxl">{e.label}</span>
+          <span class="muted small">{e.note}</span>
+          {e.ref && <span class="ref small">{e.ref}</span>}
+        </div>
+      ))}
     </div>
-    <div class="fx">
-      {shown.map((e) => (
+    <div class="card why">
+      <p><b>Warum der Entzündungswert so aussagekräftig ist:</b> CRP ist ein Blutwert, mit dem Ärztinnen und Ärzte Entzündungen im Körper messen. Ist er dauerhaft leicht erhöht, ohne dass man krank ist, spricht man von einer stillen Entzündung. Sie gilt als Risikofaktor für Herz-Kreislauf-Erkrankungen und wird mit schnellerem Altern in Verbindung gebracht. Sinkt der Wert, ist das ein gutes Zeichen, dass der Körper weniger unter Dauerstress steht.</p>
+    </div>
+    {!compact && <div class="fx">
+      {effects.map((e) => (
         <div class:list={['card', 'fxcard', { weak: e.weak }]}>
           <span class="fxi"><Icon name={e.icon} /></span>
           <b class="fxv">{e.value}<small>{e.unit}</small></b>
           <span class="fxl">{e.label}</span>
           <span class="muted small">{e.note}</span>
+          {e.ref && <span class="ref small">{e.ref}</span>}
         </div>
       ))}
-    </div>
+    </div>}
     {!compact && <p class="persist"><Icon name="check" /><span>Die meisten Effekte waren auch rund <b>drei Monate nach</b> dem letzten Durchgang noch messbar, obwohl wieder normal gegessen wurde.</span></p>}
     <p class="muted small fine">Durchschnittswerte, kein Heilversprechen. Die Studien nutzten das Fertigprodukt ProLon; selbst gekochtes Scheinfasten mit gleichen Nährwerten ist nicht eigens untersucht. Quellen: Wei M et al., Sci Transl Med 2017 · Brandhorst S et al., Nat Commun 2024. <a href={u(compact ? 'wissen/#studien' : 'wissen/')}>{compact ? 'Alle Effekte und Studien' : 'Alle Studien einordnen'}</a></p>
   </div>
 </section>
 
 <style>
+  .fxmain { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 14px; }
+  @media (max-width: 820px) { .fxmain { grid-template-columns: 1fr; gap: 10px; } }
+  .fxcard.big { padding: clamp(18px, 3vw, 26px); border: 2px solid color-mix(in srgb, var(--green) 40%, var(--line)); }
+  .fxcard.big .fxv { font-size: clamp(2.4rem, 5vw, 3.2rem); }
+  .fxcard.key { border-color: var(--green); background: linear-gradient(140deg, var(--card) 55%, var(--ok-bg)); }
+  .ref { display: inline-block; margin-top: 4px; padding: 3px 10px; border-radius: 999px; background: var(--band); font-weight: 600; justify-self: start; }
+  .why { margin-bottom: 16px; }
+  .why p { margin: 0; }
   .fx { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   @media (max-width: 820px) { .fx { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .fx .card { padding: 14px; } .fxi { width: 38px; height: 38px; } }
-  .crp { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; margin-bottom: 16px; border: 2px solid var(--green); background: linear-gradient(120deg, var(--card) 55%, var(--tomato-soft)); padding: clamp(18px, 3vw, 30px); }
-  .crp h3 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); margin: 4px 0 8px; }
-  .crp p { margin: 0; }
   .fxi.big { width: 64px; height: 64px; border-radius: 18px; }
   .fxi.big :global(.i) { width: 34px; height: 34px; }
-  .crpv { font-size: clamp(2.6rem, 6vw, 3.6rem) !important; display: grid; justify-items: end; }
-  .crpv .n { white-space: nowrap; }
-  .crpv .l { font-family: var(--body); font-size: .9rem; color: var(--muted); font-weight: 700; letter-spacing: .08em; }
-  @media (max-width: 820px) { .crp { grid-template-columns: auto minmax(0, 1fr); gap: 14px; } .crptext { grid-column: 1 / -1; grid-row: 2; } .crpv { justify-items: end; } }
   .fxcard { display: grid; gap: 4px; align-content: start; }
   .fxi { width: 46px; height: 46px; border-radius: 14px; background: var(--tomato-soft); color: var(--tomato); display: grid; place-items: center; margin-bottom: 6px; }
   .fxi :global(.i) { width: 24px; height: 24px; }

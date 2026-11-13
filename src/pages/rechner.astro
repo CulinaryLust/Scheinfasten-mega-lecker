@@ -132,7 +132,7 @@ import { pick } from '../data/affiliate.js';
 
   <div class="in narrow small muted srcnote">
     <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben. Für Dill, Minze, Paprikapulver und Currypaste gibt es keinen BLS-Eintrag, dort nutzen wir Richtwerte aus der USDA-Datenbank.</p>
-    <p>Sollwerte: Brandhorst S et al., Cell Metab 2015, Methoden (Labor von Longo). Wei M et al., Sci Transl Med 2017 nennt für Tag 2 bis 5 dieselben Anteile bei ca. 3.000 kJ (ca. 717 kcal). Kaffee höchstens eine kleine Tasse: Empfehlung des ProLon-Herstellers L-Nutra, nicht aus den Studien. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Diese Seite wird von Longo weder geprüft noch unterstützt.</p>
+    <p>Sollwerte: Brandhorst S et al., Cell Metab 2015, Methoden (Labor von Prof. Dr. Longo). Wei M et al., Sci Transl Med 2017 nennt für Tag 2 bis 5 dieselben Anteile bei ca. 3.000 kJ (ca. 717 kcal). Kaffee höchstens eine kleine Tasse: Empfehlung des ProLon-Herstellers L-Nutra, nicht aus den Studien. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Prof. Dr. Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Prof. Dr. Longos Makroverteilung. Diese Seite wird von Prof. Dr. Longo weder geprüft noch unterstützt.</p>
   </div>
 </Base>
 
@@ -363,7 +363,7 @@ import { pick } from '../data/affiliate.js';
     let h = notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : '';
     // Kopf mit Abgleich
     if (res && vd) {
-      const status = vd.ok ? `<span class="chip ok">${I.check} Passt genau zu Longo</span>` : `<span class="chip warn">${I.info} Fast geschafft</span>`;
+      const status = vd.ok ? `<span class="chip ok">${I.check} Passt genau zu Prof. Dr. Longo</span>` : `<span class="chip warn">${I.info} Fast geschafft</span>`;
       h += `<div class="rtop">
         <div class="row"><h2 style="font-size:1.6rem">Dein ${dayLabel}</h2>${status}</div>
         <div class="vs">
@@ -373,7 +373,7 @@ import { pick } from '../data/affiliate.js';
           <div class="carbs"><span class="k">${I.carbs} Kohlenhydrate</span><b>${pct(vd.shares.carbs)}</b><small>Ziel ${t.ref.carbs} %, ${fmt(res.sum.carbs)} g</small></div>
           <div class="sugar"><span class="k">${I.sugar} Zucker</span><b>${fmt(res.sum.sugar)} g</b><small>höchstens ${fmt(vd.sugarMax)} g</small></div>
         </div>
-        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und Fett und Kohlenhydrate höchstens 5 Prozentpunkte und Eiweiß höchstens ${TOL_P} Prozentpunkte von Longos Werten entfernt (Brandhorst et al. 2015). Beim Eiweiß rechnen wir bewusst enger, weil Longo gerade das Eiweiß niedrig hält. Zucker höchstens ${PLAN_SUGAR} % der Kalorien: Longo verlangt „wenig Zucker“ ohne Grammzahl, die Grenze ist unsere Regel. Dein Ziel ist an Deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
+        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und Fett und Kohlenhydrate höchstens 5 Prozentpunkte und Eiweiß höchstens ${TOL_P} Prozentpunkte von Prof. Dr. Longos Vorgaben entfernt (Brandhorst et al. 2015). Beim Eiweiß rechnen wir bewusst enger, weil Prof. Dr. Longo gerade das Eiweiß niedrig hält. Zucker höchstens ${PLAN_SUGAR} % der Kalorien: Prof. Dr. Longo verlangt „wenig Zucker“ ohne Grammzahl, die Grenze ist unsere Regel. Dein Ziel ist an Deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
       </div>`;
       if (!vd.ok) {
         const why: string[] = [];

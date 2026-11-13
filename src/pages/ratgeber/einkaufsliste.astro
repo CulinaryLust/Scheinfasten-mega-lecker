@@ -15,7 +15,7 @@ const cats = groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[
 const count = Object.keys(tot).length;
 const mains = [...new Set([1, 2, 3, 4, 5].flatMap((d) => PLAN.days[d]).filter((x) => x.type === 'main').map((x) => x.recipe))].map((s) => BY_SLUG[s]);
 ---
-<Artikel slug="einkaufsliste" description={`Scheinfasten-Einkaufsliste für 5 Tage und eine Person: ${count} Zutaten mit Mengen in Gramm, sortiert nach Abteilung im Supermarkt. Passend zu Prof. Dr. Longos Werten berechnet.`} lead={`Diese Liste reicht für einen kompletten Durchgang für eine Person: ${count} Zutaten, sortiert nach Abteilung. Die Mengen stammen direkt aus unserem Standardplan.`}>
+<Artikel slug="einkaufsliste" description={`Scheinfasten-Einkaufsliste für 5 Tage und eine Person: ${count} Zutaten mit Mengen in Gramm, sortiert nach Abteilung im Supermarkt. Passend zu Prof. Dr. Longos Vorgaben berechnet.`} lead={`Diese Liste reicht für einen kompletten Durchgang für eine Person: ${count} Zutaten, sortiert nach Abteilung. Die Mengen stammen direkt aus unserem Standardplan.`}>
   <h2>Die Liste für fünf Tage</h2>
   <p>Die Mengen sind ohne Reserve gerechnet und gelten für eine Person mit durchschnittlichem Bedarf. Der <a href={u('planer/')}>Planer</a> rechnet dieselbe Liste passend zu Deiner Größe und Deinem Gewicht aus, auch für bis zu vier Personen, und zum Abhaken am Handy.</p>
   <div class="ekl">
@@ -42,7 +42,7 @@ const mains = [...new Set([1, 2, 3, 4, 5].flatMap((d) => PLAN.days[d]).filter((x
   <AffiliateBox items={pick('waage', 'dosen', 'bruehe')} title="Hilft beim Einkauf und Vorkochen" />
 
   <Fragment slot="quellen">
-    <p>Die Mengen berechnet die Seite bei jeder Änderung neu aus dem Standardplan. Die Tageswerte des Plans folgen Brandhorst S et al., Cell Metabolism 2015. Dass Zuckerzusatz zu meiden ist, ist unsere Regel, abgeleitet aus Longos Vorgabe „wenig Zucker“ (Wei M et al., Sci Transl Med 2017). Alle Details auf der Seite <a href={u('transparenz/')}>Transparenz</a>.</p>
+    <p>Die Mengen berechnet die Seite bei jeder Änderung neu aus dem Standardplan. Die Tageswerte des Plans folgen Brandhorst S et al., Cell Metabolism 2015. Dass Zuckerzusatz zu meiden ist, ist unsere Regel, abgeleitet aus Prof. Dr. Longos Vorgabe „wenig Zucker“ (Wei M et al., Sci Transl Med 2017). Alle Details auf der Seite <a href={u('transparenz/')}>Transparenz</a>.</p>
   </Fragment>
 </Artikel>
 <style>

@@ -8,7 +8,7 @@ import { u } from '../lib/url.js';
 import { SITE_NAME } from '../data/site.js';
 import { GOATCOUNTER_CODE } from '../data/statistik.js';
 interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean; noCommerce?: boolean; ogType?: string }
-const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo selbst kochen: über 50 pflanzliche Rezepte, auf das Gramm nach Prof. Dr. Longos Werten berechnet, dazu ein kostenloser 5-Tage-Plan mit Einkaufsliste.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
+const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo selbst kochen: über 50 pflanzliche Rezepte, auf das Gramm nach Prof. Dr. Longos Vorgaben berechnet, dazu ein kostenloser 5-Tage-Plan mit Einkaufsliste.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
 // Startseite: Suchbegriffe vorne, Marke hinten. Unterseiten: Seitentitel | Marke.
 const fullTitle = title === 'Start' ? `Scheinfasten selbst kochen: Rezepte und 5-Tage-Plan | ${SITE_NAME}` : `${title} | ${SITE_NAME}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
