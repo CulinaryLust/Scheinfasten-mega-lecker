@@ -230,3 +230,18 @@ h3.slot { font-size: 1.15rem; margin-top: 10px; color: var(--green); }
 .tick input { width: 22px; height: 22px; accent-color: var(--green); margin: 0; }
 .isdone { opacity: .72; }
 .isdone .tick { color: var(--green); }
+
+/* Übergangstag und Durchgänge (Plan und DIY) */
+.plain .alt { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; font: inherit; color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px; cursor: pointer; }
+.plain .alt:hover { border-color: var(--green); }
+.plain a.alt { text-decoration: none; }
+.plain .alt img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; }
+.plain .alt b { display: block; font-size: .95rem; } .plain .alt small { color: var(--muted); }
+.plain { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 12px; }
+.plain ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.nextcyc { margin-top: 16px; }
+.nextcyc ul { margin: 8px 0 0; }
+.cycopts { display: grid; gap: 8px; }
+.cycopts label { display: flex; gap: 10px; align-items: center; border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+.cycopts label:has(input:checked) { border-color: var(--green); background: var(--ok-bg); }
+.cycopts input { accent-color: var(--green); width: 18px; height: 18px; margin: 0; }

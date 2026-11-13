@@ -16,7 +16,7 @@ const effects = [
   { icon: 'tape', value: '−4', unit: 'cm', label: 'Taillenumfang', note: 'weniger Bauchfett, das als besonders ungünstig gilt', ref: 'Richtwert: unter 80 cm (Frauen), unter 94 cm (Männer)' },
   { icon: 'pulse', value: '−6,7', unit: 'mmHg', label: 'Blutdruck', note: 'oberer Wert bei Teilnehmenden mit erhöhtem Blutdruck', ref: 'Optimal: unter 120/80 mmHg' },
   { icon: 'cell', value: '−22', unit: 'ng/ml', label: 'Wachstums\u00ADfaktor IGF-1', note: 'ein Blutwert, den die Forschung mit Alterung verbindet', ref: 'Normalbereich stark altersabhängig' },
-  { icon: 'hourglass', value: '−2,5', unit: 'Jahre', label: 'biologisches Alter', note: 'erster Hinweis aus einer Nachauswertung, noch kein Beweis', ref: '', weak: true },
+  { icon: 'hourglass', value: '−2,5', unit: 'Jahre', label: 'biologisches Alter', note: 'aus Blutwerten berechnet, nach drei Durchgängen', ref: 'Erster Hinweis aus einer Nachauswertung, noch kein Beweis', weak: true },
 ];
 ---
 <section class:list={['band', 'effects', { tint, compact }]} id="studien">
@@ -38,12 +38,12 @@ const effects = [
     </div>
     {!compact && <div class="fx">
       {effects.map((e) => (
-        <div class:list={['card', 'fxcard', { weak: e.weak }]}>
+        <div class="card fxcard">
           <span class="fxi"><Icon name={e.icon} /></span>
           <b class="fxv">{e.value}<small>{e.unit}</small></b>
           <span class="fxl">{e.label}</span>
           <span class="muted small">{e.note}</span>
-          {e.ref && <span class="ref small">{e.ref}</span>}
+          {e.ref && <span class:list={['ref', 'small', { weak: e.weak }]}>{e.ref}</span>}
         </div>
       ))}
     </div>}
@@ -71,9 +71,7 @@ const effects = [
   .fxv { font-family: var(--display); font-size: clamp(1.9rem, 4vw, 2.4rem); line-height: 1.05; color: var(--green); }
   .fxv small { font-size: .45em; margin-left: .25em; font-family: var(--body, inherit); font-weight: 700; }
   .fxl { font-weight: 700; }
-  .fxcard.weak { background: var(--warn-bg); border-color: color-mix(in srgb, var(--warn) 45%, transparent); }
-  .fxcard.weak .fxv { color: var(--warn); }
-  .fxcard.weak .fxi { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .ref.weak { background: var(--warn-bg); border: 1px solid color-mix(in srgb, var(--warn) 55%, transparent); color: var(--fg); }
   .persist { display: flex; gap: 10px; align-items: flex-start; margin-top: 22px; font-size: 1.05rem; }
   .persist :global(.i) { color: var(--green); flex: none; margin-top: 3px; }
   .fine { margin-top: 10px; max-width: 80ch; }
