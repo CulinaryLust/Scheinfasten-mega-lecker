@@ -5,6 +5,7 @@ import AffiliateBox from '../components/AffiliateBox.astro';
 import { PRODUCTS, GROUPS } from '../data/affiliate.js';
 import { u } from '../lib/url.js';
 const byGroup = GROUPS.map((g) => ({ ...g, items: Object.entries(PRODUCTS).filter(([, p]) => p.group === g.key).map(([key, p]) => ({ key, ...p })) }));
+import FotoStreifen from '../components/FotoStreifen.astro';
 ---
 <Base title="Ausstattung" active="ausstattung" description="Was Du für fünf Tage Scheinfasten zu Hause brauchst: Küchenwaage, Vorrat und Bücher, ehrlich ausgewählt.">
   <div class="in page-head narrow">
@@ -12,6 +13,10 @@ const byGroup = GROUPS.map((g) => ({ ...g, items: Object.entries(PRODUCTS).filte
     <h1>Gut ausgestattet in die Fastenwoche</h1>
     <p class="lead">Für unsere Rezepte brauchst Du keine Spezialgeräte. Ein paar Helfer machen die fünf Tage aber deutlich leichter. Das Wichtigste zuerst: eine genaue Küchenwaage.</p>
   </div>
+  <FotoStreifen images={[
+    { src: 'img/szenen/spargel-kochen.jpg', alt: 'Gemüse wird in einer hellen Küche zubereitet' },
+    { src: 'img/szenen/salat-lachen.jpg', alt: '' },
+  ]} />
   <section class="band" style="padding-top:12px">
     <div class="in narrow stack">
       {byGroup.map((g) => <AffiliateBox items={g.items} title={g.title} lead={g.lead} />)}

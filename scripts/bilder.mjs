@@ -18,7 +18,7 @@ async function* jpgs(dir) {
 
 let n = 0;
 for await (const file of jpgs(ROOT)) {
-  const breiten = /\/(rezepte|menschen|rechner|diy)\//.test(file) ? BREITEN.rezepte : BREITEN.gross;
+  const breiten = /\/(rezepte|menschen|rechner|diy|szenen)\//.test(file) ? BREITEN.rezepte : BREITEN.gross;
   for (const w of breiten) {
     await sharp(file).resize({ width: w, withoutEnlargement: true }).webp({ quality: 72 }).toFile(file.replace(/\.jpg$/, `-${w}.webp`));
     n++;

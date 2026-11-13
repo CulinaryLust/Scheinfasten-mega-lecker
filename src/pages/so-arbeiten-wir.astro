@@ -8,6 +8,7 @@ import { BETREIBER } from '../data/betreiber.js';
 import { RECIPES } from '../lib/nutrition.js';
 import foods from '../data/foods.json';
 const jsonLd = { '@context': 'https://schema.org', '@type': 'AboutPage', name: `So arbeiten wir | ${SITE_NAME}`, inLanguage: 'de-DE' };
+import FotoStreifen from '../components/FotoStreifen.astro';
 ---
 <Base title="So arbeiten wir: Quellen, Prüfung, Unabhängigkeit" description="Wie die Inhalte dieser Seite entstehen: nur Primärquellen, jede Zahl mit Beleg, jedes Rezept automatisch nachgerechnet, keine Heilversprechen. Und was wir nicht leisten." jsonLd={jsonLd}>
   <div class="in page-head narrow">
@@ -15,6 +16,9 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'AboutPage', name: `
     <h1>So arbeiten wir</h1>
     <p class="lead">{SITE_NAME} ist ein unabhängiges Projekt. Wir sind keine Ärztinnen oder Ärzte und geben keine medizinische Beratung. Was wir können: sauber rechnen, Quellen offenlegen und ehrlich sagen, was belegt ist und was nicht.</p>
   </div>
+  <FotoStreifen images={[
+    { src: 'img/szenen/kuerbisse.jpg', alt: 'Bunte Kürbisse auf dem Markt' },
+  ]} />
   <section class="band" style="padding-top:16px">
     <div class="in narrow stack">
       <div class="grid3 saw">

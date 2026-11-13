@@ -2,11 +2,12 @@
 // Rahmen für Ratgeber-Artikel: Kopf mit Prüfdatum, Text, Quellen (Slot "quellen"), Abschluss mit Plan-Knopf.
 import Base from './Base.astro';
 import Icon from '../components/Icon.astro';
+import FotoStreifen from '../components/FotoStreifen.astro';
 import { u } from '../lib/url.js';
 import { SITE_NAME } from '../data/site.js';
 import { ARTIKEL, BY_SLUG, datum } from '../data/ratgeber.js';
-interface Props { slug: string; description: string; lead: string }
-const { slug, description, lead } = Astro.props;
+interface Props { slug: string; description: string; lead: string; fotos?: { src: string; alt: string }[] }
+const { slug, description, lead, fotos = [] } = Astro.props;
 const a = BY_SLUG[slug];
 const others = ARTIKEL.filter((x) => x.slug !== slug);
 const jsonLd = {
@@ -23,6 +24,7 @@ const jsonLd = {
     <p class="lead">{lead}</p>
     <p class="muted small">Zuletzt geprüft am {datum(a.stand)} · <a href={u('so-arbeiten-wir/')}>So arbeiten wir</a></p>
   </div>
+  {fotos.length > 0 && <FotoStreifen images={fotos} />}
   <section class="band" style="padding-top:16px">
     <div class="in narrow stack artikel">
       <div class="prose"><slot /></div>

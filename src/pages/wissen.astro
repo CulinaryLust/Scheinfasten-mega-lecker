@@ -1,4 +1,5 @@
 ---
+import Rotator from '../components/Rotator.astro';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { u, webp } from '../lib/url.js';
@@ -30,7 +31,7 @@ const faq = [
   </div>
   <section class="band" style="padding-top:20px">
     <div class="in person">
-      <picture><source type="image/webp" srcset={webp('img/markt.jpg')} sizes="(max-width: 820px) 92vw, 560px" /><img src={u('img/markt.jpg')} alt="Gemüsestand auf einem Markt" loading="lazy" width="1800" height="1000" /></picture>
+      <Rotator images={[{ src: 'img/markt.jpg', alt: 'Gemüsestand auf einem Markt' }, { src: 'img/szenen/markt-stand.jpg', alt: '' }, { src: 'img/szenen/markt-paprika.jpg', alt: '' }]} />
       <div class="prose">
         <p class="kicker">Der Kopf hinter dem Scheinfasten</p>
         <h2>Prof. Dr. Valter Longo</h2>

@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import { ARTIKEL } from '../../data/ratgeber.js';
 import { u } from '../../lib/url.js';
+import FotoStreifen from '../../components/FotoStreifen.astro';
 ---
 <Base title="Scheinfasten-Ratgeber: Einkauf, Ablauf, Alltag" active="wissen" description="Praktische Antworten rund um die fünf Tage Scheinfasten: Einkaufsliste, Ablauf Tag für Tag, Sport und Arbeit, Essen danach. Jede Aussage mit Beleg.">
   <div class="in page-head narrow">
@@ -10,6 +11,10 @@ import { u } from '../../lib/url.js';
     <h1>Praktisches für Deine Fastenwoche</h1>
     <p class="lead">Kurze Antworten auf die häufigsten Fragen. Bei jeder Aussage steht, ob sie aus einer Studie stammt, vom Hersteller oder von uns.</p>
   </div>
+  <FotoStreifen images={[
+    { src: 'img/szenen/picknick.jpg', alt: 'Freundinnen beim Picknick im Park' },
+    { src: 'img/szenen/zutaten.jpg', alt: '' },
+  ]} />
   <section class="band" style="padding-top:16px">
     <div class="in narrow stack">
       {ARTIKEL.map((a) => (
