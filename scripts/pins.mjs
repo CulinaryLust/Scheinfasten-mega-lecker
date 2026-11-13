@@ -29,7 +29,7 @@ for (const r of RECIPES.filter((x) => x.slot !== 'side')) {
   }
   const meta = await text(`<span foreground="#cf4520" size="34pt">${kcal} kcal · ${r.minutes} Min. · 100 % pflanzlich</span>`, W - 2 * PAD);
   const brand = await text(`<span foreground="#ffffff" size="32pt">Scheinfasten · einfach lecker fasten</span>`, W - 2 * PAD);
-  const kick = await text(`<span foreground="#5e6b5a" size="28pt">Scheinfasten-Rezept nach Prof. Dr. Longos Werten berechnet</span>`, W - 2 * PAD);
+  const kick = await text(`<span foreground="#5e6b5a" size="28pt">Scheinfasten-Rezept nach Longos Werten berechnet</span>`, W - 2 * PAD);
   const bar = 96;
   const top = PHOTO + 44;
   await sharp({ create: { width: W, height: H, channels: 3, background: '#fffdf8' } })

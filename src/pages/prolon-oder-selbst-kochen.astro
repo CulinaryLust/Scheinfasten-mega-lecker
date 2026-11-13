@@ -9,7 +9,7 @@ const recipeCount = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].include
 const rows = [
   ['Preis für 5 Tage', `${PROLON_PRICE} € laut Hersteller (Stand ${PROLON_CHECKED})`, 'Lebensmittel für etwa 25 bis 40 €, je nach Bio-Anteil (unsere Schätzung)'],
   ['Aufwand', 'Auspacken, aufwärmen, fertig', 'Einkaufen und täglich kochen, mit Vorkochen etwa 30 bis 45 Minuten am Tag'],
-  ['Studienlage', 'Mit diesem Produkt wurden Prof. Dr. Longos Studien am Menschen gemacht', 'Gleiche Kalorien- und Nährstoffvorgaben, aber nicht in Studien getestet'],
+  ['Studienlage', 'Mit diesem Produkt wurden Longos Studien am Menschen gemacht', 'Gleiche Kalorien- und Nährstoffvorgaben, aber nicht in Studien getestet'],
   ['Geschmack und Abwechslung', 'Feste Auswahl an Suppen, Riegeln, Crackern, Oliven und Tees', `Frisch gekocht, ${recipeCount} Rezepte zur Auswahl, Zutaten nach Deinem Geschmack`],
   ['Anpassung an Dich', 'Eine Box für alle', 'Der Planer passt die Mengen an Größe, Gewicht und Geschlecht an'],
   ['Unverträglichkeiten', 'Zutaten fest vorgegeben', 'Du tauschst einzelne Zutaten im Rechner selbst aus'],
@@ -51,7 +51,7 @@ const rows = [
       </div>
       <p class="hint"><Icon name="heart" /><span>Egal welcher Weg: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Für wen nicht?</a></span></p>
       <AffiliateBox items={pick('waage', 'dosen', 'tee')} title="Wenn Du selbst kochst" lead="Diese drei Dinge machen die Woche leichter." />
-      <p class="muted small">Der Link zu ProLon ist ein Affiliate-Link. Wir sind kein Angebot von L-Nutra und werden von Prof. Dr. Valter Longo weder geprüft noch unterstützt. <a href={u('transparenz/')}>Transparenz</a></p>
+      <p class="muted small">Der Link zu ProLon ist ein Affiliate-Link. Wir sind kein Angebot von L-Nutra und werden von Longo weder geprüft noch unterstützt. <a href={u('transparenz/')}>Transparenz</a></p>
     </div>
   </section>
 </Base>

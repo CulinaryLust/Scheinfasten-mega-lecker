@@ -1,4 +1,4 @@
-// Lebensmittel-Rechner: verteilt das Tagesbudget nach Prof. Dr. Valter Longo auf die Lebensmittel,
+// Lebensmittel-Rechner: verteilt das Tagesbudget nach Longo auf die Lebensmittel,
 // die jemand zu Hause hat, und baut daraus Mahlzeiten. Läuft im Browser und in Node (Tests).
 import foodsJson from '../data/foods.json' with { type: 'json' };
 import { PLAN, RECIPES, nutrition, shares } from './nutrition.js';

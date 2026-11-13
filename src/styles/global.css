@@ -107,6 +107,9 @@ section.tint { background: var(--band); }
 .head { display: grid; gap: 10px; max-width: 64ch; margin-bottom: 30px; }
 .page-head { padding-block: clamp(36px, 6vw, 64px) 8px; display: grid; gap: 12px; }
 .page-head .lead { font-size: 1.15rem; max-width: 60ch; }
+.page-head.split { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
+.page-head.split .ph-text { display: grid; gap: 12px; min-width: 0; }
+@media (max-width: 820px) { .page-head.split { grid-template-columns: 1fr; } .page-head.split .rot { max-width: 520px; aspect-ratio: 2 / 1; } }
 .crumbs { font-size: .9rem; }
 .crumbs a { text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
 

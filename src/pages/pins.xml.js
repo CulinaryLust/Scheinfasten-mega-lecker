@@ -28,7 +28,7 @@ export function GET({ site }) {
 <channel>
   <title>${esc(SITE_NAME)}: Rezepte</title>
   <link>${abs('rezepte/')}</link>
-  <description>Pflanzliche Scheinfasten-Rezepte, nach den Werten von Prof. Dr. Valter Longo berechnet.</description>
+  <description>Pflanzliche Scheinfasten-Rezepte, nach den Werten von Longo berechnet.</description>
   <language>de-DE</language>
 ${items.map(({ r, date }) => {
     const kcal = Math.round(nutrition(r).kcal), link = abs(`rezepte/${r.slug}/`), img = abs(`pins/${r.slug}.jpg`);

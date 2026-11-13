@@ -1,5 +1,5 @@
 ---
-// Reiter „Was habe ich gegessen?“: Tagesbilanz je Zyklustag mit Fortschritt zum Tageslimit nach Prof. Dr. Valter Longo.
+// Reiter „Was habe ich gegessen?“: Tagesbilanz je Zyklustag mit Fortschritt zum Tageslimit nach Longo.
 // Die Körperdaten und der Fastentag kommen aus dem gemeinsamen Formular #pf auf der Rechner-Seite.
 import Icon from './Icon.astro';
 import { u } from '../lib/url.js';
@@ -336,21 +336,21 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
     const kc = s.bars[0];
     let chip = '';
     if (!entries.length) chip = '';
-    else if (s.done) chip = `<span class="chip ok">${I.check} Tag passt zu Prof. Dr. Longo</span>`;
+    else if (s.done) chip = `<span class="chip ok">${I.check} Tag passt zu Longo</span>`;
     else if (s.over) chip = '<span class="chip warn">Limit erreicht</span>';
     else chip = `<span class="chip ok">${fmt(Math.min(100, kc.pct))} % geschafft</span>`;
     let h = `<div class="rtop">
       <div class="row"><h2 style="font-size:1.6rem">Dein Tag ${d}</h2>${chip}</div>
       <p class="small muted">Tageslimit für Dich: ca. ${fmt(t.kcal)} kcal mit ${t.ref.protein} % Eiweiß, ${t.ref.fat} % Fett und ${t.ref.carbs} % Kohlenhydraten.</p>
       <div class="bars">${s.bars.map(bar).join('')}</div>
-      <details class="small muted"><summary>Wie wir rechnen</summary><p>Das Tageslimit kommt aus den Studien des Labors von Prof. Dr. Valter Longo (Brandhorst et al., Cell Metab 2015): Tag 1 ca. 1.090 kcal, Tag 2 bis 5 ca. 725 kcal, angepasst an Deinen Bedarf (Faktor ${fmt(inp.p.f, 2)}). Die Grammzahlen ergeben sich aus den Prozentanteilen. Beim Eiweiß ist bis ${t.ref.protein + 3} % in Ordnung, beim Zucker höchstens 15 % der Kalorien (eigene Regel der Seite, Prof. Dr. Longo nennt keine Grammzahl).</p></details>
+      <details class="small muted"><summary>Wie wir rechnen</summary><p>Das Tageslimit kommt aus den Studien des Labors von Longo (Brandhorst et al., Cell Metab 2015): Tag 1 ca. 1.090 kcal, Tag 2 bis 5 ca. 725 kcal, angepasst an Deinen Bedarf (Faktor ${fmt(inp.p.f, 2)}). Die Grammzahlen ergeben sich aus den Prozentanteilen. Beim Eiweiß ist bis ${t.ref.protein + 3} % in Ordnung, beim Zucker höchstens 15 % der Kalorien (eigene Regel der Seite, Longo nennt keine Grammzahl).</p></details>
     </div>`;
     // Hinweise
     for (const n of s.notes) {
       h += `<div class="alert info"><p>${esc(n.text)}</p>${n.alts?.length ? `<p class="small">Nächstes Mal lieber: ${n.alts.map(esc).join(', ')}</p>` : ''}</div>`;
     }
     if (s.done) {
-      h += `<div class="alert info"><p><b>Geschafft!</b> Dein Tag ${d} passt zu Prof. Dr. Longos Werten. Ab jetzt nur noch Wasser und ungesüßter Kräutertee.</p></div>`;
+      h += `<div class="alert info"><p><b>Geschafft!</b> Dein Tag ${d} passt zu Longos Werten. Ab jetzt nur noch Wasser und ungesüßter Kräutertee.</p></div>`;
     } else if (s.over) {
       h += `<div class="alert warn"><p><b>Dein Kalorienlimit für heute ist erreicht.</b> Kein Drama, ein Tag etwas drüber macht den Zyklus nicht kaputt. Für den Rest des Tages reichen Wasser und ungesüßter Kräutertee.</p></div>`;
     } else if (entries.length) {
@@ -360,7 +360,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
       const rec = fillRecipes(entries, t);
       if (rec.length) {
         h += `<div class="stack"><h2 style="font-size:1.6rem">So füllst Du den Rest</h2>
-          <p class="muted small">Rezepte, mit denen Dein Tag am nächsten an Prof. Dr. Longos Werte kommt. Noch offen: ${fmt(kc.rest)} kcal.</p>
+          <p class="muted small">Rezepte, mit denen Dein Tag am nächsten an Longos Werte kommt. Noch offen: ${fmt(kc.rest)} kcal.</p>
           <div class="grid">${rec.map((x) => `<article class="card rcard">
             <img src="${thumb(base, x.recipe.image)}" alt="" loading="lazy" width="110" height="82" />
             <div class="stack" style="gap:6px"><h3><a href="${base}rezepte/${x.recipe.slug}/">${esc(x.recipe.title)}</a></h3>
@@ -373,7 +373,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
       const ff = fillFoods(entries, t, pt.names);
       if (ff && ff.add.length && ff.sum.kcal <= t.kcal * 1.05) {
         h += `<div class="stack"><h3 style="font-size:1.25rem">Oder frei kombiniert</h3>
-          <p class="muted small">${pt.own ? 'Aus Deinem Kühlschrank im Reiter „Was koche ich noch?“.' : 'Aus Zutaten, die fast jeder da hat. Im Reiter „Was koche ich noch?“ kannst Du Deinen Kühlschrank eintragen.'} Damit kommst Du auf ${fmt(ff.sum.kcal)} kcal${ff.verdict.ok ? ' und Dein Tag passt zu Prof. Dr. Longo' : ''}.</p>
+          <p class="muted small">${pt.own ? 'Aus Deinem Kühlschrank im Reiter „Was koche ich noch?“.' : 'Aus Zutaten, die fast jeder da hat. Im Reiter „Was koche ich noch?“ kannst Du Deinen Kühlschrank eintragen.'} Damit kommst Du auf ${fmt(ff.sum.kcal)} kcal${ff.verdict.ok ? ' und Dein Tag passt zu Longo' : ''}.</p>
           <ul class="fill-foods">${ff.add.map((i) => `<li><span>${amount(i.name, i.g)} ${esc(i.name)}</span><button type="button" class="mini" data-take="food|${esc(i.name)}|${i.g}">${I.plus} Gegessen</button></li>`).join('')}</ul></div>`;
       }
     }
