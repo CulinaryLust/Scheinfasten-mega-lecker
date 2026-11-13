@@ -3,7 +3,7 @@
 // Bewusst getrennt vom Speichern: Rechner und „Stand sichern“ funktionieren immer ohne E-Mail (Kopplungsverbot, Art. 7 Abs. 4 DSGVO).
 import Icon from './Icon.astro';
 import { u } from '../lib/url.js';
-import { NEWSLETTER_ENABLED, NEWSLETTER_ACTION, DATE_FIELD, DATE_FORMAT } from '../data/newsletter.js';
+import { NEWSLETTER_ENABLED, NEWSLETTER_ACTION, DATE_FIELD, DATE_FORMAT, TIPS_FIELD } from '../data/newsletter.js';
 const on = NEWSLETTER_ENABLED && !!NEWSLETTER_ACTION;
 ---
 {on && (
@@ -11,7 +11,7 @@ const on = NEWSLETTER_ENABLED && !!NEWSLETTER_ACTION;
     <form class="card wcard remind" id="remind" action={NEWSLETTER_ACTION} method="post" target="_blank" data-field={DATE_FIELD} data-format={DATE_FORMAT}>
       <div class="stack" style="gap:8px">
         <h2 style="font-size:1.4rem;display:flex;gap:10px;align-items:center"><Icon name="mail" />Erinnerung vor dem nächsten Durchgang</h2>
-        <p class="muted">Wir schreiben dir drei Tage vorher, mit Einkaufsliste und Tipps für die fünf Tage. Kostenlos und jederzeit abbestellbar. Deine Einträge aus dem Rechner bleiben dabei auf deinem Gerät.</p>
+        <p class="muted">Wir schreiben Dir drei Tage vorher, mit Einkaufsliste und Tipps für die fünf Tage. Kostenlos und jederzeit abbestellbar. Wir speichern nur Deine E-Mail-Adresse und das Startdatum. Deine Einträge aus dem Rechner bleiben auf Deinem Gerät, Deinen persönlichen Link mit QR-Code gibt es weiterhin im Rechner.</p>
       </div>
       <div class="row2">
         <div class="field"><label for="remail" class="lbl">E-Mail</label><input id="remail" name="EMAIL" type="email" autocomplete="email" required placeholder="du@beispiel.de" /></div>
@@ -21,8 +21,9 @@ const on = NEWSLETTER_ENABLED && !!NEWSLETTER_ACTION;
       <input type="hidden" name="locale" value="de" />
       <input type="hidden" name="html_type" value="simple" />
       <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp" />
-      <label class="consent"><input type="checkbox" name="OPT_IN" value="1" required /><span>Ja, ich möchte die Erinnerung und gelegentlich Tipps zum Scheinfasten per E-Mail bekommen. Die Mails können Empfehlungslinks enthalten, für die wir eine Provision erhalten. Abmelden geht jederzeit über den Link in jeder Mail. Mehr in der <a href={u('datenschutz/')}>Datenschutzerklärung</a>.</span></label>
-      <div class="nav-btns"><span class="small muted">Du bekommst zuerst eine Mail, mit der du die Anmeldung bestätigst.</span><button type="submit" class="btn"><Icon name="mail" />Erinnerung bestellen</button></div>
+      <label class="consent"><input type="checkbox" name="OPT_IN" value="1" required /><span>Ja, schickt mir drei Tage vor meinem Start eine Erinnerung mit Einkaufsliste und rund um die fünf Tage kurze Begleitmails. Die Mails können als Anzeige gekennzeichnete Empfehlungen enthalten. Abmelden geht jederzeit über den Link in jeder Mail. Mehr in der <a href={u('datenschutz/')}>Datenschutzerklärung</a>.</span></label>
+      <label class="consent"><input type="checkbox" name={TIPS_FIELD} value="1" /><span>Freiwillig: Außerdem möchte ich gelegentlich neue Rezepte und Tipps zum Scheinfasten bekommen (Newsletter, höchstens zweimal im Monat).</span></label>
+      <div class="nav-btns"><span class="small muted">Du bekommst zuerst eine Mail, mit der Du die Anmeldung bestätigst.</span><button type="submit" class="btn"><Icon name="mail" />Erinnerung bestellen</button></div>
     </form>
   </section>
 )}

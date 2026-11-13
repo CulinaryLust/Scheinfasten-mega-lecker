@@ -10,7 +10,7 @@ export const u = (path = '') => base + String(path).replace(/^\//, '');
 export const webp = (path) => {
   if (import.meta.env.DEV) return '';
   const stem = u(path).replace(/\.jpg$/, '');
-  const ws = path.includes('rezepte/') ? [400, 900] : [800, 1800];
+  const ws = /(rezepte|menschen|rechner)\//.test(path) ? [400, 900] : [800, 1800];
   return ws.map((w) => `${stem}-${w}.webp ${w}w`).join(', ');
 };
 /** Kleines Vorschaubild (400 px WebP) für Listen im Planer und Rechner. */

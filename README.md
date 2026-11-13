@@ -93,12 +93,17 @@ Im Rechner erstellt „Link erstellen“ einen persönlichen Link mit QR-Code (`
 ## Zyklus-Erinnerung (Brevo, vorerst aus)
 Die Box `src/components/Erinnerung.astro` erscheint auf Rechner und Planer, sobald sie in `src/data/newsletter.js` eingeschaltet ist. Erst einschalten, wenn Gewerbe, Impressum und Datenschutzerklärung stehen, denn die Mails enthalten Affiliate-Links.
 
-1. Konto bei Brevo anlegen (kostenloser Tarif reicht für den Anfang) und den Auftragsverarbeitungsvertrag in den Kontoeinstellungen annehmen.
-2. Unter Kontakte > Einstellungen ein Attribut `ZYKLUS_START` vom Typ Datum anlegen.
-3. Unter Kontakte > Formulare ein Anmeldeformular mit den Feldern E-Mail und `ZYKLUS_START` anlegen, Double-Opt-in aktivieren, Datumsformat TT-MM-JJJJ.
+Per API schon erledigt (13.11.2026): Ordner „Scheinfasten“, Liste „Scheinfasten Erinnerung“ (ID 5), Attribute `ZYKLUS_START` (Datum) und `SF_TIPPS` (Ja/Nein). Der API-Schlüssel liegt nur in der Umgebung, nie im Code.
+
+Im Brevo-Dashboard noch selbst zu tun:
+1. Auftragsverarbeitungsvertrag in den Kontoeinstellungen annehmen.
+2. Absender und Domain verifizieren (Einstellungen > Absender, Domains), z. B. `hallo@DOMAIN`. Der vorhandene Absender gehört zu einem anderen Projekt und darf hier nicht verwendet werden.
+3. Unter Kontakte > Formulare ein Anmeldeformular anlegen: Liste „Scheinfasten Erinnerung“, Felder E-Mail, `ZYKLUS_START` (Datumsformat TT-MM-JJJJ), `SF_TIPPS` (Kontrollkästchen, nicht vorausgewählt) und das DSGVO-Feld `OPT_IN`. Double-Opt-in aktivieren, Bestätigungstext aus `docs/mails.md`.
 4. Beim Einbetten die Adresse aus `action="…"` des HTML-Codes kopieren und in `NEWSLETTER_ACTION` eintragen, dann `NEWSLETTER_ENABLED = true`.
-5. Unter Automationen einen Ablauf „Datum eines Attributs“ mit `ZYKLUS_START` minus 3 Tage anlegen: Erinnerung mit Link zum Planer, Einkaufsliste und Ausstattungs-Empfehlungen.
-6. Einmal mit der eigenen Adresse testen, ob das Datum in Brevo richtig ankommt.
+5. Automationen anlegen (Auslöser in `docs/mails.md`). Newsletter-Kampagnen nur an Kontakte mit `SF_TIPPS` = Ja schicken.
+6. Einmal mit der eigenen Adresse testen, ob Datum und Häkchen in Brevo richtig ankommen.
+
+Keine Amazon-Partnerlinks direkt in Mails, das verbieten die Teilnahmebedingungen. Stattdessen auf die eigene Seite `/ausstattung/` verlinken.
 
 Die fertigen Mailtexte und die Auslöser für alle fünf Mails stehen in `docs/mails.md`.
 

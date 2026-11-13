@@ -8,7 +8,7 @@ import { u } from '../lib/url.js';
 import { SITE_NAME } from '../data/site.js';
 import { GOATCOUNTER_CODE } from '../data/statistik.js';
 interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean; noCommerce?: boolean; ogType?: string }
-const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo selbst kochen: über 50 pflanzliche Rezepte, auf das Gramm nach Longos Werten berechnet, dazu ein kostenloser 5-Tage-Plan mit Einkaufsliste.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
+const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo selbst kochen: über 50 pflanzliche Rezepte, auf das Gramm nach Prof. Dr. Longos Werten berechnet, dazu ein kostenloser 5-Tage-Plan mit Einkaufsliste.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
 // Startseite: Suchbegriffe vorne, Marke hinten. Unterseiten: Seitentitel | Marke.
 const fullTitle = title === 'Start' ? `Scheinfasten selbst kochen: Rezepte und 5-Tage-Plan | ${SITE_NAME}` : `${title} | ${SITE_NAME}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -52,7 +52,7 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
     <div class="in">
       <a class="logo" href={u('')}><span class="mark"><Icon name="leaf" /></span>Scheinfasten <span class="tag">einfach lecker fasten</span></a>
       <nav class="nav" aria-label="Hauptnavigation">
-        {[...nav.slice(1), ...extra].map((n) => <a href={n.href} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>)}
+        {[...nav.slice(1), ...extra].map((n) => <a href={n.href} class={n.key === 'rechner' ? 'nav-hot' : undefined} aria-current={active === n.key ? 'page' : undefined}>{n.key === 'rechner' && <Icon name="scale" />}{n.label}</a>)}
         <a class="btn small" href={u('planer/')}>Plan erstellen</a>
       </nav>
     </div>
@@ -61,7 +61,7 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
   <footer class="foot">
     <div class="in">
       <p><b>{SITE_NAME}</b> · Rechner, Rezepte und Planer für das Scheinfasten nach Prof. Dr. Valter Longo.</p>
-      <p>Unsere Rezepte folgen den Werten aus Longos Studien, die Nährwerte sind berechnet. Die Seite ersetzt keine ärztliche Beratung und ist kein Angebot von L-Nutra oder ProLon.</p>
+      <p>Unsere Rezepte folgen den Werten aus Prof. Dr. Longos Studien, die Nährwerte sind berechnet. Die Seite ersetzt keine ärztliche Beratung und ist kein Angebot von L-Nutra oder ProLon.</p>
       <nav aria-label="Rechtliches">
         <a href={u('ratgeber/')}>Ratgeber</a>
         <a href={u('fuer-wen-nicht/')}>Für wen nicht?</a>
@@ -79,7 +79,7 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
     </div>
   </footer>
   <nav class="tabbar" aria-label="Schnellnavigation">
-    {nav.map((n) => <a href={n.href} aria-current={active === n.key ? 'page' : undefined}><Icon name={n.icon} /><span>{n.label}</span></a>)}
+    {nav.map((n) => <a href={n.href} class={n.key === 'rechner' ? 'tab-hot' : undefined} aria-current={active === n.key ? 'page' : undefined}><Icon name={n.icon} /><span>{n.label}</span></a>)}
   </nav>
   {GOATCOUNTER_CODE && <script is:inline data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`} async src="https://gc.zgo.at/count.js"></script>}
 </body>

@@ -15,9 +15,9 @@ const cats = groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[
 const count = Object.keys(tot).length;
 const mains = [...new Set([1, 2, 3, 4, 5].flatMap((d) => PLAN.days[d]).filter((x) => x.type === 'main').map((x) => x.recipe))].map((s) => BY_SLUG[s]);
 ---
-<Artikel slug="einkaufsliste" description={`Scheinfasten-Einkaufsliste für 5 Tage und eine Person: ${count} Zutaten mit Mengen in Gramm, sortiert nach Abteilung im Supermarkt. Passend zu Longos Werten berechnet.`} lead={`Diese Liste reicht für einen kompletten Durchgang für eine Person: ${count} Zutaten, sortiert nach Abteilung. Die Mengen stammen direkt aus unserem Standardplan.`}>
+<Artikel slug="einkaufsliste" description={`Scheinfasten-Einkaufsliste für 5 Tage und eine Person: ${count} Zutaten mit Mengen in Gramm, sortiert nach Abteilung im Supermarkt. Passend zu Prof. Dr. Longos Werten berechnet.`} lead={`Diese Liste reicht für einen kompletten Durchgang für eine Person: ${count} Zutaten, sortiert nach Abteilung. Die Mengen stammen direkt aus unserem Standardplan.`}>
   <h2>Die Liste für fünf Tage</h2>
-  <p>Die Mengen sind ohne Reserve gerechnet und gelten für eine Person mit durchschnittlichem Bedarf. Der <a href={u('planer/')}>Planer</a> rechnet dieselbe Liste passend zu deiner Größe und deinem Gewicht aus, auch für bis zu vier Personen, und zum Abhaken am Handy.</p>
+  <p>Die Mengen sind ohne Reserve gerechnet und gelten für eine Person mit durchschnittlichem Bedarf. Der <a href={u('planer/')}>Planer</a> rechnet dieselbe Liste passend zu Deiner Größe und Deinem Gewicht aus, auch für bis zu vier Personen, und zum Abhaken am Handy.</p>
   <div class="ekl">
     {cats.map((c) => (
       <div class="card">
@@ -28,16 +28,16 @@ const mains = [...new Set([1, 2, 3, 4, 5].flatMap((d) => PLAN.days[d]).filter((x
   </div>
   <p class="muted small">Dazu aus dem Vorrat: Salz, Pfeffer, getrocknete Kräuter, Gewürze und ungesüßter Kräutertee.</p>
 
-  <h2>Was du daraus kochst</h2>
+  <h2>Was Du daraus kochst</h2>
   <p>Die Liste deckt diese Hauptgerichte ab, dazu jeden Tag Nussmix und Oliven als feste Bausteine:</p>
   <ul>{mains.map((r) => <li><a href={u(`rezepte/${r.slug}/`)}>{r.title}</a></li>)}</ul>
-  <p>Schmeckt dir ein Gericht nicht, tauschst du es im Planer gegen ein anderes. Die Einkaufsliste rechnet sich dann neu.</p>
+  <p>Schmeckt Dir ein Gericht nicht, tauschst Du es im Planer gegen ein anderes. Die Einkaufsliste rechnet sich dann neu.</p>
 
   <h2>Drei Tipps für den Einkauf</h2>
   <ul>
-    <li><b>Ein Einkauf reicht meistens.</b> Blattsalate und frische Kräuter halten im Gemüsefach gut fünf Tage, wenn du sie in ein feuchtes Tuch wickelst. Wer es knackiger mag, kauft sie an Tag 3 nach.</li>
+    <li><b>Ein Einkauf reicht meistens.</b> Blattsalate und frische Kräuter halten im Gemüsefach gut fünf Tage, wenn Du sie in ein feuchtes Tuch wickelst. Wer es knackiger mag, kauft sie an Tag 3 nach.</li>
     <li><b>Zutatenliste lesen.</b> Gemüsebrühe, Oliven und Tomaten aus der Dose enthalten oft zugesetzten Zucker. Nimm Sorten ohne.</li>
-    <li><b>Abwiegen statt schätzen.</b> Ein Esslöffel Öl mehr sind rund 90 kcal, das ist an Tag 2 bis 5 ein Achtel des Tages. Eine Küchenwaage ist das einzige Gerät, das du wirklich brauchst.</li>
+    <li><b>Abwiegen statt schätzen.</b> Ein Esslöffel Öl mehr sind rund 90 kcal, das ist an Tag 2 bis 5 ein Achtel des Tages. Eine Küchenwaage ist das einzige Gerät, das Du wirklich brauchst.</li>
   </ul>
   <AffiliateBox items={pick('waage', 'dosen', 'bruehe')} title="Hilft beim Einkauf und Vorkochen" />
 

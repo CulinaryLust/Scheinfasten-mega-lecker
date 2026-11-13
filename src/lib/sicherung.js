@@ -67,5 +67,5 @@ export function summary(data) {
   if (days.length) parts.push(`Einträge für Tag ${days.join(', ')}`);
   if (data.smlPlaner?.inputs?.start) parts.push(`Plan mit Start am ${new Date(data.smlPlaner.inputs.start + 'T12:00:00').toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}`);
   if (data.smlRechner?.picks?.length) parts.push(`${data.smlRechner.picks.length} Lebensmittel im Kühlschrank`);
-  return parts.join(', ') || 'deine Körperdaten';
+  return parts.join(', ') || 'Deine Körperdaten';
 }

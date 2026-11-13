@@ -1,5 +1,5 @@
 ---
-// Reiter „Was habe ich gegessen?“: Tagesbilanz je Zyklustag mit Fortschritt zum Tageslimit nach Prof. Dr. Valter Longo.
+// Reiter „Was habe ich gegessen?“: Tagesbilanz je Zyklustag mit Fortschritt zum Tageslimit nach Longo.
 // Die Körperdaten und der Fastentag kommen aus dem gemeinsamen Formular #pf auf der Rechner-Seite.
 import Icon from './Icon.astro';
 import { u } from '../lib/url.js';
@@ -10,7 +10,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
 <section class="in calc" id="log" data-base={u('')} data-icons={JSON.stringify(icons)}>
   <div class="card wcard">
     <fieldset class="block">
-      <legend><span class="num">2</span>Was hast du heute schon gegessen?</legend>
+      <legend><span class="num">2</span>Was hast Du heute schon gegessen?</legend>
       <div class="field combo">
         <label for="lq" class="lbl">Lebensmittel oder Rezept suchen</label>
         <div class="search">
@@ -35,8 +35,8 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
         {quick.map(([type, key]) => <button type="button" class="qchip" data-pick={`${type}:${key}`}><Icon name="plus" />{type === 'recipe' ? (key === 'minestrone' ? 'Minestrone' : 'Nussmix') : key}</button>)}
       </div>
       <div id="lentries" class="lentries" aria-label="Heute gegessen"></div>
-      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="button" class="btn soft" id="lclear" hidden>Tag leeren</button></div>
-      <p class="small muted">Alles bleibt nur in deinem Browser gespeichert. Wir sehen nichts davon.</p>
+      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="button" class="btn soft" id="lclear" hidden>Tag leeren</button></div>
+      <p class="small muted">Alles bleibt nur in Deinem Browser gespeichert. Wir sehen nichts davon.</p>
     </fieldset>
   </div>
 </section>
@@ -49,7 +49,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
   @media (max-width: 560px) { .addctl { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .addctl .btn { grid-column: 1 / -1; } }
   .addctl input, .addctl select, .lentry input, .lentry select { min-height: 44px; padding: 6px 10px; font-weight: 700; }
   .lentries { display: grid; gap: 8px; }
-  .lentries:empty::before { content: "Noch nichts eingetragen. Fang mit deinem Frühstück oder Mittagessen an."; color: var(--muted); font-size: .92rem; }
+  .lentries:empty::before { content: "Noch nichts eingetragen. Fang mit Deinem Frühstück oder Mittagessen an."; color: var(--muted); font-size: .92rem; }
   .lentry { display: grid; grid-template-columns: minmax(0, 1fr) 84px minmax(0, 150px) 70px 36px; gap: 8px; align-items: center; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--card); }
   .lentry .nm { font-weight: 600; display: flex; gap: 8px; align-items: center; min-width: 0; }
   .lentry .nm span { overflow-wrap: anywhere; }
@@ -85,6 +85,37 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
   .rcard h3 { font-size: 1.1rem; }
   .rcard h3 a { color: inherit; }
   .rcard p { font-size: .88rem; margin: 0; }
+
+  /* Tagesknöpfe: Füllstand und Farbe nach gegessenen Kalorien */
+  #days label > span { position: relative; overflow: hidden; isolation: isolate; transition: color .5s var(--ease), border-color .5s var(--ease), background-color .5s var(--ease), box-shadow .5s var(--ease), transform .3s var(--ease); }
+  #days label > span::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--p, 0%); z-index: -1; background: var(--tone, transparent); border-radius: inherit; transition: height .9s var(--ease), background-color .6s var(--ease); }
+  #days label:hover > span { transform: translateY(-2px); }
+  #days [data-st="under"] { --tone: color-mix(in srgb, color-mix(in oklab, var(--green) var(--u), var(--sun)) 42%, transparent); }
+  #days [data-st="over"] { --tone: color-mix(in srgb, color-mix(in oklab, var(--bad) var(--o), var(--sun)) 55%, transparent); border-color: color-mix(in oklab, var(--bad) var(--o), var(--sun)); }
+  #days [data-st="hit"] { --tone: var(--green); border-color: var(--green); color: var(--bg); }
+  #days [data-st="hit"] small { color: var(--bg); opacity: .9; }
+  #days [data-st="under"] small, #days [data-st="over"] small { color: var(--fg); opacity: .8; }
+  #days [data-st="hit"] small::before { content: "✓ "; font-weight: 800; }
+  #days input:checked + [data-st] { color: var(--fg); box-shadow: 0 0 0 2px var(--fg) inset; }
+  #days input:checked + [data-st="hit"] { color: var(--bg); box-shadow: 0 0 0 2px var(--bg) inset, 0 0 0 2px var(--green); }
+  #days input:checked + [data-st] small { color: inherit; }
+  #days .flash { animation: dayglow 1.1s var(--ease); }
+  #days .flash::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .7) 50%, transparent 70%); transform: translateX(-120%); animation: daysheen .9s .15s ease-out forwards; }
+  @keyframes dayglow {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 60%, transparent); }
+    30% { transform: scale(1.09); box-shadow: 0 0 0 8px color-mix(in srgb, var(--green) 25%, transparent), 0 0 30px 6px color-mix(in srgb, var(--sun) 65%, transparent); filter: brightness(1.2); }
+    100% { transform: scale(1); box-shadow: 0 0 0 14px transparent; filter: none; }
+  }
+  @keyframes daysheen { to { transform: translateX(120%); } }
+  .daylegend { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+  .daylegend i { display: inline-block; width: 22px; height: 10px; border-radius: 99px; vertical-align: middle; margin-right: 5px; }
+  .daylegend .lu { background: linear-gradient(90deg, color-mix(in srgb, var(--sun) 55%, transparent), color-mix(in srgb, var(--green) 55%, transparent)); }
+  .daylegend .lh { background: var(--green); }
+  .daylegend .lo { background: linear-gradient(90deg, var(--sun), var(--bad)); }
+  @media (prefers-reduced-motion: reduce) {
+    #days label > span, #days label > span::before { transition: none; }
+    #days .flash, #days .flash::after { animation: none; }
+  }
 </style>
 
 <script>
@@ -226,6 +257,24 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
     render();
   });
 
+  // Tagesknöpfe einfärben: darunter verläuft die Farbe von Gelb nach Grün, getroffen (±5 %) leuchtet der Knopf kurz auf und bleibt grün, darüber wird er orange bis rot.
+  const HIT = 0.05;
+  const lastState: Record<number, string> = {};
+  let firstPaint = true;
+  function paintDay(span: HTMLElement, d: number, r: number | null) {
+    const st = r === null ? '' : Math.abs(r - 1) <= HIT ? 'hit' : r < 1 ? 'under' : 'over';
+    span.dataset.st = st;
+    span.style.setProperty('--p', st === 'under' ? `${Math.max(6, Math.min(100, r! * 100)).toFixed(1)}%` : st ? '100%' : '0%');
+    span.style.setProperty('--u', st === 'under' ? `${Math.round(Math.min(100, r! * 100))}%` : '0%');
+    span.style.setProperty('--o', st === 'over' ? `${Math.round(Math.min(1, (r! - 1 - HIT) / 0.25) * 100)}%` : '0%');
+    span.title = st === 'hit' ? 'Kalorienziel getroffen' : st === 'under' ? `${fmt(r! * 100)} % vom Kalorienziel` : st === 'over' ? `${fmt((r! - 1) * 100)} % über dem Kalorienziel` : '';
+    if (st === 'hit' && lastState[d] !== 'hit' && !firstPaint) {
+      span.classList.remove('flash'); void span.offsetWidth; span.classList.add('flash');
+      span.addEventListener('animationend', () => span.classList.remove('flash'), { once: true });
+    }
+    lastState[d] = st;
+  }
+
   const g = (x: number) => fmt(x, x < 10 ? 1 : 0);
   function bar(b: any) {
     const unit = b.key === 'kcal' ? 'kcal' : 'g';
@@ -272,11 +321,14 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
       if (!el) continue;
       const t = targets(d === 1 ? 1 : 2, inp.p.f);
       const es = state.logs[String(d)] || [];
-      el.textContent = es.length ? `${fmt(status(es, t, d).sum.kcal)} / ${fmt(t.kcal)} kcal` : `ca. ${fmt(t.kcal)} kcal`;
+      const eaten = es.length ? status(es, t, d).sum.kcal : 0;
+      el.textContent = es.length ? `${fmt(eaten)} / ${fmt(t.kcal)} kcal` : `ca. ${fmt(t.kcal)} kcal`;
+      paintDay(el.parentElement as HTMLElement, d, es.length ? eaten / t.kcal : null);
     }
+    firstPaint = false;
     const fromPlan = pf.dataset.fromPlan;
-    dayhint.textContent = fromPlan ? `Laut deinem Plan ist heute Tag ${fromPlan}.` : '';
-    if (!inp) { res.innerHTML = '<div class="alert info"><p>Trag oben kurz Alter, Größe und Gewicht ein, dann rechnen wir dein Tageslimit aus.</p></div>'; return; }
+    dayhint.textContent = fromPlan ? `Laut Deinem Plan ist heute Tag ${fromPlan}.` : '';
+    if (!inp) { res.innerHTML = '<div class="alert info"><p>Trag oben kurz Alter, Größe und Gewicht ein, dann rechnen wir Dein Tageslimit aus.</p></div>'; return; }
 
     const d = inp.day;
     const t = targets(d === 1 ? 1 : 2, inp.p.f);
@@ -289,9 +341,9 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
     else chip = `<span class="chip ok">${fmt(Math.min(100, kc.pct))} % geschafft</span>`;
     let h = `<div class="rtop">
       <div class="row"><h2 style="font-size:1.6rem">Dein Tag ${d}</h2>${chip}</div>
-      <p class="small muted">Tageslimit für dich: ca. ${fmt(t.kcal)} kcal mit ${t.ref.protein} % Eiweiß, ${t.ref.fat} % Fett und ${t.ref.carbs} % Kohlenhydraten.</p>
+      <p class="small muted">Tageslimit für Dich: ca. ${fmt(t.kcal)} kcal mit ${t.ref.protein} % Eiweiß, ${t.ref.fat} % Fett und ${t.ref.carbs} % Kohlenhydraten.</p>
       <div class="bars">${s.bars.map(bar).join('')}</div>
-      <details class="small muted"><summary>Wie wir rechnen</summary><p>Das Tageslimit kommt aus den Studien des Labors von Prof. Dr. Valter Longo (Brandhorst et al., Cell Metab 2015): Tag 1 ca. 1.090 kcal, Tag 2 bis 5 ca. 725 kcal, angepasst an deinen Bedarf (Faktor ${fmt(inp.p.f, 2)}). Die Grammzahlen ergeben sich aus den Prozentanteilen. Beim Eiweiß ist bis ${t.ref.protein + 3} % in Ordnung, beim Zucker höchstens 15 % der Kalorien (eigene Regel der Seite, Longo nennt keine Grammzahl).</p></details>
+      <details class="small muted"><summary>Wie wir rechnen</summary><p>Das Tageslimit kommt aus den Studien des Labors von Longo (Brandhorst et al., Cell Metab 2015): Tag 1 ca. 1.090 kcal, Tag 2 bis 5 ca. 725 kcal, angepasst an Deinen Bedarf (Faktor ${fmt(inp.p.f, 2)}). Die Grammzahlen ergeben sich aus den Prozentanteilen. Beim Eiweiß ist bis ${t.ref.protein + 3} % in Ordnung, beim Zucker höchstens 15 % der Kalorien (eigene Regel der Seite, Longo nennt keine Grammzahl).</p></details>
     </div>`;
     // Hinweise
     for (const n of s.notes) {
@@ -307,8 +359,8 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
       // Restbudget füllen
       const rec = fillRecipes(entries, t);
       if (rec.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">So füllst du den Rest</h2>
-          <p class="muted small">Rezepte, mit denen dein Tag am nächsten an Longos Werte kommt. Noch offen: ${fmt(kc.rest)} kcal.</p>
+        h += `<div class="stack"><h2 style="font-size:1.6rem">So füllst Du den Rest</h2>
+          <p class="muted small">Rezepte, mit denen Dein Tag am nächsten an Longos Werte kommt. Noch offen: ${fmt(kc.rest)} kcal.</p>
           <div class="grid">${rec.map((x) => `<article class="card rcard">
             <img src="${thumb(base, x.recipe.image)}" alt="" loading="lazy" width="110" height="82" />
             <div class="stack" style="gap:6px"><h3><a href="${base}rezepte/${x.recipe.slug}/">${esc(x.recipe.title)}</a></h3>
@@ -321,11 +373,11 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
       const ff = fillFoods(entries, t, pt.names);
       if (ff && ff.add.length && ff.sum.kcal <= t.kcal * 1.05) {
         h += `<div class="stack"><h3 style="font-size:1.25rem">Oder frei kombiniert</h3>
-          <p class="muted small">${pt.own ? 'Aus deinem Kühlschrank im Reiter „Was koche ich noch?“.' : 'Aus Zutaten, die fast jeder da hat. Im Reiter „Was koche ich noch?“ kannst du deinen Kühlschrank eintragen.'} Damit kommst du auf ${fmt(ff.sum.kcal)} kcal${ff.verdict.ok ? ' und dein Tag passt zu Longo' : ''}.</p>
+          <p class="muted small">${pt.own ? 'Aus Deinem Kühlschrank im Reiter „Was koche ich noch?“.' : 'Aus Zutaten, die fast jeder da hat. Im Reiter „Was koche ich noch?“ kannst Du Deinen Kühlschrank eintragen.'} Damit kommst Du auf ${fmt(ff.sum.kcal)} kcal${ff.verdict.ok ? ' und Dein Tag passt zu Longo' : ''}.</p>
           <ul class="fill-foods">${ff.add.map((i) => `<li><span>${amount(i.name, i.g)} ${esc(i.name)}</span><button type="button" class="mini" data-take="food|${esc(i.name)}|${i.g}">${I.plus} Gegessen</button></li>`).join('')}</ul></div>`;
       }
     }
-    h += `<p class="hint">${I.info}<span>Fühlst du dich schwindelig oder sehr schlapp, iss einfach normal weiter. Dein Körper geht vor.</span></p>`;
+    h += `<p class="hint">${I.info}<span>Fühlst Du Dich schwindelig oder sehr schlapp, iss einfach normal weiter. Dein Körper geht vor.</span></p>`;
     res.innerHTML = h;
   }
 

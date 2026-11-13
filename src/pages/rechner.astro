@@ -11,19 +11,28 @@ import AffiliateBox from '../components/AffiliateBox.astro';
 import Tagebuch from '../components/Tagebuch.astro';
 import StandSichern from '../components/StandSichern.astro';
 import Erinnerung from '../components/Erinnerung.astro';
+import Rotator from '../components/Rotator.astro';
 import { pick } from '../data/affiliate.js';
 ---
-<Base title="Scheinfasten-Rechner: Kalorien und Nährwerte pro Tag" active="rechner" description="Trag ein, was du heute schon gegessen hast, und sieh sofort, wie viel von deinem Scheinfasten-Tag nach Prof. Dr. Valter Longo noch übrig ist. Mit Vorschlägen, wie du den Rest lecker füllst.">
-  <div class="in page-head">
-    <p class="kicker">Rechner</p>
-    <h1>Wie viel geht heute noch?</h1>
-    <p class="lead">Trag ein, was du heute schon gegessen hast. Wir zeigen dir, wie viel von deinem Tageslimit erreicht ist, genau nach den Werten von Prof. Dr. Valter Longo, und wie du den Rest lecker füllst.</p>
+<Base title="Scheinfasten-Rechner: Kalorien und Nährwerte pro Tag" active="rechner" description="Trag ein, was Du heute schon gegessen hast, und sieh sofort, wie viel von Deinem Scheinfasten-Tag nach Prof. Dr. Valter Longo noch übrig ist. Mit Vorschlägen, wie Du den Rest lecker füllst.">
+  <div class="in page-head split">
+    <div class="ph-text">
+      <p class="kicker">Rechner</p>
+      <h1>Wie viel geht heute noch?</h1>
+      <p class="lead">Trag ein, was Du heute schon gegessen hast. Wir zeigen Dir, wie viel von Deinem Tageslimit erreicht ist, genau nach den Werten von Prof. Dr. Valter Longo, und wie Du den Rest lecker füllst.</p>
+    </div>
+    <Rotator images={[
+      { src: 'img/menschen/paar-kocht.jpg', alt: 'Paar kocht gemeinsam mit frischem Gemüse' },
+      { src: 'img/rechner/pilz.jpg', alt: '' },
+      { src: 'img/menschen/lachen-essen.jpg', alt: '' },
+      { src: 'img/rechner/carpaccio.jpg', alt: '' },
+    ]} />
   </div>
 
   <section class="in calc" id="prof">
     <form id="pf" class="card wcard" novalidate>
       <fieldset class="block">
-        <legend><span class="num">1</span>Über dich</legend>
+        <legend><span class="num">1</span>Über Dich</legend>
         <div class="field"><span class="lbl">Geschlecht</span>
           <div class="seg three">
             <label><input type="radio" name="sex" value="w" checked /><span>Weiblich</span></label>
@@ -36,7 +45,7 @@ import { pick } from '../data/affiliate.js';
           <div class="field"><label for="h" class="lbl">Größe</label><div class="unit"><input id="h" name="h" type="number" inputmode="numeric" min="120" max="220" value="168" required /><span>cm</span></div></div>
           <div class="field"><label for="w" class="lbl">Gewicht</label><div class="unit"><input id="w" name="w" type="number" inputmode="decimal" min="35" max="250" step="0.5" value="70" required /><span>kg</span></div></div>
         </div>
-        <div class="field"><span class="lbl">Wie aktiv ist dein Alltag?</span>
+        <div class="field"><span class="lbl">Wie aktiv ist Dein Alltag?</span>
           <div class="seg three">
             <label><input type="radio" name="pal" value="1.4" /><span>Eher sitzend</span></label>
             <label><input type="radio" name="pal" value="1.6" checked /><span>Normal</span></label>
@@ -47,6 +56,7 @@ import { pick } from '../data/affiliate.js';
           <div class="seg five" id="days">
             {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small></span></label>)}
           </div>
+          <p class="small muted daylegend" aria-hidden="true"><span><i class="lu"></i>auf dem Weg</span><span><i class="lh"></i>Ziel getroffen</span><span><i class="lo"></i>drüber</span></p>
           <p class="small muted" id="dayhint" aria-live="polite"></p>
         </div>
         <p class="err" id="err1" role="alert" hidden></p>
@@ -94,7 +104,7 @@ import { pick } from '../data/affiliate.js';
     <form id="f" class="card wcard" novalidate>
       <fieldset class="block">
         <legend><span class="num">2</span>Was liegt im Kühlschrank?</legend>
-        <p class="small muted">Wir rechnen aus, wie viel du davon heute essen kannst, und machen leckere Gerichte daraus.</p>
+        <p class="small muted">Wir rechnen aus, wie viel Du davon heute essen kannst, und machen leckere Gerichte daraus.</p>
         <div class="field combo">
           <label for="q" class="lbl">Lebensmittel hinzufügen</label>
           <div class="search">
@@ -115,7 +125,7 @@ import { pick } from '../data/affiliate.js';
       </fieldset>
 
       <p class="err" id="err3" role="alert" hidden></p>
-      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="submit" class="btn">Jetzt ausrechnen <Icon name="arrow" /></button></div>
+      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="submit" class="btn">Jetzt ausrechnen <Icon name="arrow" /></button></div>
     </form>
   </section>
 
@@ -127,7 +137,7 @@ import { pick } from '../data/affiliate.js';
 
   <div class="in narrow small muted srcnote">
     <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben. Für Dill, Minze, Paprikapulver und Currypaste gibt es keinen BLS-Eintrag, dort nutzen wir Richtwerte aus der USDA-Datenbank.</p>
-    <p>Sollwerte: Brandhorst S et al., Cell Metab 2015, Methoden (Labor von Prof. Dr. Valter Longo). Wei M et al., Sci Transl Med 2017 nennt für Tag 2 bis 5 dieselben Anteile bei ca. 3.000 kJ (ca. 717 kcal). Kaffee höchstens eine kleine Tasse: Empfehlung des ProLon-Herstellers L-Nutra, nicht aus den Studien. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Diese Seite wird von Prof. Dr. Valter Longo weder geprüft noch unterstützt.</p>
+    <p>Sollwerte: Brandhorst S et al., Cell Metab 2015, Methoden (Labor von Longo). Wei M et al., Sci Transl Med 2017 nennt für Tag 2 bis 5 dieselben Anteile bei ca. 3.000 kJ (ca. 717 kcal). Kaffee höchstens eine kleine Tasse: Empfehlung des ProLon-Herstellers L-Nutra, nicht aus den Studien. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Longos Makroverteilung. Diese Seite wird von Longo weder geprüft noch unterstützt.</p>
   </div>
 </Base>
 
@@ -341,9 +351,9 @@ import { pick } from '../data/affiliate.js';
     const p = profile({ sex: v.sex, age: +v.age, h: +v.h, w: +v.w, pal: +v.pal });
     // Freundliche Hinweise statt Sperre: gerechnet wird immer.
     const notes: string[] = [];
-    if (p.age < 18) notes.push('Du bist unter 18. In diesem Alter wächst der Körper noch, deshalb ist Scheinfasten eher nichts für dich. Die Gerichte kannst du trotzdem nachkochen.');
-    if (p.age > 70) notes.push('Ab 70 lohnt sich vorher ein kurzes Gespräch mit deiner Ärztin oder deinem Arzt.');
-    if (p.bmi < 18.5) notes.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei so wenig Gewicht sprich bitte vorher mit deiner Ärztin oder deinem Arzt.`);
+    if (p.age < 18) notes.push('Du bist unter 18. In diesem Alter wächst der Körper noch, deshalb ist Scheinfasten eher nichts für Dich. Die Gerichte kannst Du trotzdem nachkochen.');
+    if (p.age > 70) notes.push('Ab 70 lohnt sich vorher ein kurzes Gespräch mit Deiner Ärztin oder Deinem Arzt.');
+    if (p.bmi < 18.5) notes.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei so wenig Gewicht sprich bitte vorher mit Deiner Ärztin oder Deinem Arzt.`);
     result.hidden = false;
     const day = v.day === '1' ? 1 : 2;
     const t = targets(day, p.f);
@@ -367,11 +377,11 @@ import { pick } from '../data/affiliate.js';
           <div class="carbs"><span class="k">${I.carbs} Kohlenhydrate</span><b>${pct(vd.shares.carbs)}</b><small>Ziel ${t.ref.carbs} %, ${fmt(res.sum.carbs)} g</small></div>
           <div class="sugar"><span class="k">${I.sugar} Zucker</span><b>${fmt(res.sum.sugar)} g</b><small>höchstens ${fmt(vd.sugarMax)} g</small></div>
         </div>
-        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und Fett und Kohlenhydrate höchstens 5 Prozentpunkte und Eiweiß höchstens ${TOL_P} Prozentpunkte von Longos Werten entfernt (Brandhorst et al. 2015). Beim Eiweiß rechnen wir bewusst enger, weil Longo gerade das Eiweiß niedrig hält. Zucker höchstens ${PLAN_SUGAR} % der Kalorien: Longo verlangt „wenig Zucker“ ohne Grammzahl, die Grenze ist unsere Regel. Dein Ziel ist an deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
+        <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und Fett und Kohlenhydrate höchstens 5 Prozentpunkte und Eiweiß höchstens ${TOL_P} Prozentpunkte von Longos Werten entfernt (Brandhorst et al. 2015). Beim Eiweiß rechnen wir bewusst enger, weil Longo gerade das Eiweiß niedrig hält. Zucker höchstens ${PLAN_SUGAR} % der Kalorien: Longo verlangt „wenig Zucker“ ohne Grammzahl, die Grenze ist unsere Regel. Dein Ziel ist an Deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
       </div>`;
       if (!vd.ok) {
         const why: string[] = [];
-        if (vd.dk < -5) why.push('Mit diesen Lebensmitteln wirst du noch nicht ganz satt. Da geht noch was!');
+        if (vd.dk < -5) why.push('Mit diesen Lebensmitteln wirst Du noch nicht ganz satt. Da geht noch was!');
         if (vd.dk > 5) why.push('Deine selbst eingetragenen Mengen sind etwas zu viel für heute.');
         if (vd.dev.fat < -5) why.push('Es fehlt noch etwas gutes Fett, zum Beispiel Olivenöl, Nüsse oder Oliven.');
         if (vd.dev.fat > 5) why.push('Etwas zu viel Fett. Mehr Gemüse gleicht das aus.');
@@ -383,14 +393,14 @@ import { pick } from '../data/affiliate.js';
           ${adds.length ? `<p>Tipp eins davon an, wir rechnen sofort neu:</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div>`;
       }
       // Mengentabelle
-      h += `<div class="stack"><h2 style="font-size:1.6rem">So viel darfst du heute essen</h2>
+      h += `<div class="stack"><h2 style="font-size:1.6rem">So viel darfst Du heute essen</h2>
         <p class="muted small">Mengen für den ganzen Tag. Ändere ruhig eine Zahl, wir passen den Rest an.</p>
         <div class="tw"><table class="amounts"><thead><tr><th>Lebensmittel</th><th>Menge pro Tag</th><th>kcal</th></tr></thead>
         ${groupByCat(res.items, (it: any) => BY_NAME[it.name]).map((c) => `<tbody><tr class="cat"><th colspan="3" scope="colgroup">${I[c.icon]}${c.label}</th></tr>${c.items.map((it: any) => {
           const f = BY_NAME[it.name];
           const piece = f.piece && it.g ? `<small>etwa ${fmt(it.g / f.piece[1], it.g / f.piece[1] < 3 ? 1 : 0)} ${esc(f.piece[0])}</small>` : '';
           const capNote = f.light === 'y' || f.capWhy !== 'portion' ? `<small>höchstens ${amount(f.name, f.cap)} am Tag${CAP_WHY[f.capWhy] ? `, ${CAP_WHY[f.capWhy]}` : ''}</small>` : '';
-          const zero = f.n[0] === 0 ? '<small>so viel du magst</small>' : it.g === 0 ? '<small>heute nicht nötig</small>' : '';
+          const zero = f.n[0] === 0 ? '<small>so viel Du magst</small>' : it.g === 0 ? '<small>heute nicht nötig</small>' : '';
           const input = f.n[0] === 0 ? '' : `<span class="gcell"><input type="number" inputmode="numeric" min="0" max="${f.cap}" step="5" value="${it.g}" data-g="${esc(f.name)}" aria-label="Menge ${esc(f.name)} in Gramm" /> ${unit(f.name)}</span>${it.fixed ? `<button type="button" class="reset" data-free="${esc(f.name)}">zurücksetzen</button>` : ''}`;
           return `<tr class="${it.g === 0 && f.n[0] > 0 ? 'zero' : ''}"><td class="nm"><span class="nmrow">${mac(f.name)}<span>${esc(f.name)} <span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>${piece}${capNote}${zero}</span></span></td><td>${input}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
         }).join('')}</tbody>`).join('')}
@@ -403,14 +413,14 @@ import { pick } from '../data/affiliate.js';
     }
     // Rote Lebensmittel
     if (red.length) {
-      h += `<div class="stack"><h2 style="font-size:1.6rem">Lieber tauschen</h2><p class="muted small">Diese Lebensmittel heben den Fasteneffekt auf. Mit einem Tipp tauschst du sie gegen etwas, das genauso gut schmeckt.</p><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}</b>: ${esc(a.why)}</p><p class="small">Probier stattdessen:</p><div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} ${esc(n)}</button>`).join('')}</div></div>`; }).join('')}</div></div>`;
+      h += `<div class="stack"><h2 style="font-size:1.6rem">Lieber tauschen</h2><p class="muted small">Diese Lebensmittel heben den Fasteneffekt auf. Mit einem Tipp tauschst Du sie gegen etwas, das genauso gut schmeckt.</p><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}</b>: ${esc(a.why)}</p><p class="small">Probier stattdessen:</p><div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} ${esc(n)}</button>`).join('')}</div></div>`; }).join('')}</div></div>`;
     }
     if (res) {
       // Gerichte aus den eigenen Zutaten
       const meals = buildMeals(res.items);
       if (meals.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">Das kochst du heute</h2>
-          <p class="muted small">Aus deinen Zutaten, genau auf deine Tagesmenge berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune.</p>
+        h += `<div class="stack"><h2 style="font-size:1.6rem">Das kochst Du heute</h2>
+          <p class="muted small">Aus Deinen Zutaten, genau auf Deine Tagesmenge berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune.</p>
           <div class="meals">${meals.map((m) => `<article class="card meal">
             <div class="meta"><span class="kicker">${m.slot} · ${m.kind}</span><span class="chip ok">${fmt(m.sum.kcal)} kcal</span></div>
             <h3>${esc(m.title)}</h3>
@@ -423,7 +433,7 @@ import { pick } from '../data/affiliate.js';
       const rec = matchRecipes(ok.map((x) => x.name));
       if (rec.length) {
         h += `<div class="stack"><h2 style="font-size:1.6rem">Passt auch: unsere Rezepte</h2>
-          <p class="muted small">Fertig durchgerechnet, mit vielen deiner Zutaten.</p>
+          <p class="muted small">Fertig durchgerechnet, mit vielen Deiner Zutaten.</p>
           <div class="grid">${rec.map((m) => `<a class="card rmatch" href="${base}rezepte/${m.recipe.slug}/">
             <img src="${thumb(base, m.recipe.image)}" alt="" loading="lazy" width="110" height="82" />
             <div class="stack" style="gap:6px"><h3>${esc(m.recipe.title)}</h3>
@@ -434,7 +444,7 @@ import { pick } from '../data/affiliate.js';
     } else if (!red.length) {
       h += `<div class="alert info"><p>Füge oben ein paar Lebensmittel hinzu, dann geht's los.</p></div>`;
     }
-    h += `<p class="hint noprint">${I.info}<span>Fühlst du dich schwindelig oder sehr schlapp, iss einfach normal weiter. Dein Körper geht vor.</span></p>`;
+    h += `<p class="hint noprint">${I.info}<span>Fühlst Du Dich schwindelig oder sehr schlapp, iss einfach normal weiter. Dein Körper geht vor.</span></p>`;
     result.innerHTML = h;
   }
 

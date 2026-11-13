@@ -5,6 +5,8 @@ import RecipeCard from '../components/RecipeCard.astro';
 import FastCompare from '../components/FastCompare.astro';
 import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
+import RechnerTeaser from '../components/RechnerTeaser.astro';
+import Rotator from '../components/Rotator.astro';
 import { RECIPES } from '../lib/nutrition.js';
 import { PROLON_PRICE } from '../data/affiliate.js';
 import { u, webp } from '../lib/url.js';
@@ -14,11 +16,16 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
 ---
 <Base title="Start" active="start" jsonLd={{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: new URL(u(''), Astro.site).toString(), inLanguage: 'de-DE' }}>
   <section class="hero">
-    <picture><source type="image/webp" srcset={webp('img/hero.jpg')} sizes="100vw" /><img src={u('img/hero.jpg')} alt="" width="1800" height="1000" fetchpriority="high" /></picture>
+    <Rotator mode="bg" first="eager" sizes="100vw" images={[
+      { src: 'img/hero.jpg', alt: '' },
+      { src: 'img/hero/blumenkohl.jpg', alt: '' },
+      { src: 'img/hero/ratatouille.jpg', alt: '' },
+      { src: 'img/hero/curry.jpg', alt: '' },
+    ]} />
     <div class="in">
       <p class="kicker">5 Tage Scheinfasten nach Prof. Dr. Valter Longo</p>
       <h1>Fasten, das richtig gut schmeckt.</h1>
-      <p class="lead">In einer Minute zu deinem Plan: fünf Tage leckere Gerichte, auf das Gramm genau nach Longos Werten berechnet, mit Einkaufsliste. Kostenlos und ohne Anmeldung.</p>
+      <p class="lead">In einer Minute zu Deinem Plan: fünf Tage leckere Gerichte, auf das Gramm genau nach Longos Werten berechnet, mit Einkaufsliste. Kostenlos und ohne Anmeldung.</p>
       <ul class="hfx">
         <li class="eat"><a href="#unterschied"><Icon name="pot" />Fasten mit echtem Essen</a></li>
         <li class="hot"><Icon name="scale" />Auf das Gramm nach Longo</li>
@@ -26,17 +33,19 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
       </ul>
       <div class="ctas">
         <a class="btn" href={u('planer/')}><Icon name="calendar" />Gratis 5-Tage-Plan erstellen</a>
-        <a class="btn ghost" href={u('rechner/')}>Zum Rechner</a>
+        <a class="btn ghost" href={u('rechner/')}><Icon name="scale" />Zum Rechner</a>
       </div>
     </div>
   </section>
 
   <div class="trust"><div class="in">
-    <span><Icon name="book" />Nach den Studien von Prof. Dr. Valter Longo</span>
+    <span><Icon name="book" />Nach den Studien von Longo</span>
     <span><Icon name="kcal" />Jedes Rezept mit Nährwerten</span>
     <span><Icon name="leaf" />100 % pflanzlich</span>
     <span><Icon name="pot" />Frisch gekocht statt Fertigpaket</span>
   </div></div>
+
+  <RechnerTeaser />
 
   <FastCompare tint compact />
 
@@ -46,13 +55,13 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
 
   <section class="band">
     <div class="in">
-      <div class="head"><p class="kicker">So funktioniert's</p><h2>Zwei Wege durch deine Fastenwoche</h2></div>
+      <div class="head"><p class="kicker">So funktioniert's</p><h2>Zwei Wege durch Deine Fastenwoche</h2></div>
       <div class="ways">
         <article class="way main">
           <p class="wtag"><Icon name="calendar" />Weg 1: Dein fertiger 5-Tage-Plan</p>
           <ol class="wsteps">
-            <li><span class="n">1</span><div><b>Kurz über dich</b><span>Größe, Gewicht, Startdatum. Dauert eine Minute.</span></div></li>
-            <li><span class="n">2</span><div><b>Plan ansehen</b><span>Jeden Tag Gerichte aus {count} Rezepten, mit Mengen passend zu dir. Was dir nicht schmeckt, tauschst du.</span></div></li>
+            <li><span class="n">1</span><div><b>Kurz über Dich</b><span>Größe, Gewicht, Startdatum. Dauert eine Minute.</span></div></li>
+            <li><span class="n">2</span><div><b>Plan ansehen</b><span>Jeden Tag Gerichte aus {count} Rezepten, mit Mengen passend zu Dir. Was Dir nicht schmeckt, tauschst Du.</span></div></li>
             <li><span class="n">3</span><div><b>Einkaufen und loskochen</b><span>Einkaufsliste für alle fünf Tage, auch für bis zu vier Personen.</span></div></li>
           </ol>
           <div class="ctas"><a class="btn" href={u('planer/')}>Plan erstellen <Icon name="arrow" /></a><a class="wlink" href={u('rezepte/')}>Erst Rezepte ansehen</a></div>
@@ -60,9 +69,9 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
         <article class="way">
           <p class="wtag"><Icon name="scale" />Weg 2: Deine eigenen Lebensmittel</p>
           <ol class="wsteps">
-            <li><span class="n">1</span><div><b>Zutaten eingeben</b><span>Einfach eintippen, was im Kühlschrank liegt oder was du schon gegessen hast.</span></div></li>
+            <li><span class="n">1</span><div><b>Zutaten eingeben</b><span>Einfach eintippen, was im Kühlschrank liegt oder was Du schon gegessen hast.</span></div></li>
             <li><span class="n">2</span><div><b>Mengen und Kalorien sehen</b><span>Grammgenau nach Longo, mit Ampel für jedes Lebensmittel.</span></div></li>
-            <li><span class="n">3</span><div><b>Passende Gerichte</b><span>Rezeptideen aus deinen Zutaten und ein leckerer Tausch, wenn etwas nicht passt.</span></div></li>
+            <li><span class="n">3</span><div><b>Passende Gerichte</b><span>Rezeptideen aus Deinen Zutaten und ein leckerer Tausch, wenn etwas nicht passt.</span></div></li>
           </ol>
           <div class="ctas"><a class="btn soft" href={u('rechner/')}>Zum Rechner <Icon name="arrow" /></a></div>
         </article>
@@ -72,7 +81,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
 
   <section class="band tint">
     <div class="in">
-      <div class="head"><p class="kicker">Beliebte Rezepte</p><h2>Darauf freust du dich</h2></div>
+      <div class="head"><p class="kicker">Beliebte Rezepte</p><h2>Darauf freust Du Dich</h2></div>
       <div class="grid">{featured.map((r) => <RecipeCard r={r} />)}</div>
       <div class="ctas" style="margin-top:26px"><a class="btn soft" href={u('rezepte/')}>Alle {count} Rezepte <Icon name="arrow" /></a></div>
     </div>
@@ -92,13 +101,12 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
         <div class="ctas"><a class="btn" href={u('prolon-oder-selbst-kochen/')}>Zum Vergleich</a><a class="btn soft" href={u('ausstattung/')}>Ausstattung</a></div>
       </div>
     </div>
-    <div class="in"><p class="hint safety"><Icon name="heart" /><span><b>Gut zu wissen:</b> Wenn du schwanger bist, stillst, unter 18 bist, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p></div>
+    <div class="in"><p class="hint safety"><Icon name="heart" /><span><b>Gut zu wissen:</b> Wenn Du schwanger bist, stillst, unter 18 bist, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p></div>
   </section>
 
 </Base>
 <style>
   .hero { position: relative; color: #fff; overflow: hidden; background: #24361d; }
-  .hero > picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,25,10,.85) 0%, rgba(15,25,10,.55) 55%, rgba(15,25,10,.12) 100%); }
   .hero .in { position: relative; z-index: 1; padding-block: clamp(60px, 11vw, 130px); display: grid; gap: 20px; }
   .hero h1 { max-width: 12ch; }

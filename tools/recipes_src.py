@@ -201,7 +201,7 @@ r('spargel-baerlauch-kartoffeln','Grüner Spargel mit Bärlauch-Kartoffeln und Z
  'Der Frühling auf einem Teller: knackiger grüner Spargel, dazu Kartoffeln in leuchtend grünem Bärlauchöl.',
  [('Spargel',250,'grün, unteres Drittel geschält'),('Kartoffeln',150,'klein, mit Schale'),('Bärlauch',15,'fein gehackt'),('Olivenöl',12,'aufgeteilt'),('Zitronensaft',5,'')],
  ['Kartoffeln in Salzwasser 15 bis 18 Minuten garen, abgießen und halbieren.','Bärlauch mit 8 g Öl und einer Prise Salz fein pürieren.','Spargel in einer Pfanne im restlichen Öl 5 bis 6 Minuten braten, bis er Farbe hat und noch Biss.','Kartoffeln mit dem Bärlauchöl mischen.','Spargel mit Zitronensaft beträufeln, salzen, pfeffern und mit den Kartoffeln anrichten.'],
- 'Außerhalb der Bärlauchsaison nimmst du Basilikum und eine halbe Knoblauchzehe.')
+ 'Außerhalb der Bärlauchsaison nimmst Du Basilikum und eine halbe Knoblauchzehe.')
 r('kohlrabi-carpaccio','Kohlrabi-Radieschen-Carpaccio mit Kräuteröl und lauwarmen Kartoffeln','Kohlrabi-Carpaccio','Salat','main',20,'kohlrabi',
  'Hauchdünn, knackig und frisch. Das Kräuteröl und ein paar Walnüsse machen daraus ein richtiges Essen.',
  [('Kohlrabi',150,'hauchdünn gehobelt'),('Radieschen',60,'in Scheiben'),('Kartoffeln',100,'gekocht, lauwarm'),('Olivenöl',10,''),('Zitronensaft',10,''),('Schnittlauch',5,'fein geschnitten'),('Kresse',5,''),('Walnusskerne',5,'gehackt')],
@@ -233,12 +233,12 @@ r('baba-ganoush-teller','Baba Ganoush mit Ofenkartoffeln, Gurke und Granatapfel'
  ['Ofen auf 230 °C vorheizen. Aubergine mehrmals einstechen und 35 Minuten rösten, bis sie zusammenfällt.','Kartoffelspalten mit der Hälfte des Öls und Salz für die letzten 25 Minuten aufs Blech geben.','Auberginenfleisch auskratzen, mit Tahin, Zitronensaft, Knoblauch und Salz zerdrücken.','Creme anrichten, restliches Öl, Petersilie und Granatapfelkerne darauf.','Mit Kartoffeln und Gurke servieren.'],
  'Für echtes Raucharoma die Aubergine direkt über der Gasflamme schwärzen.')
 r('muhammara-gemuesesticks','Muhammara (Paprika-Walnuss-Dip) mit Gurke und Fenchel','Muhammara','Snack','snack',15,'muhammara',
- 'Der syrische Lieblingsdip: süß, rauchig, leicht scharf. Macht aus Gemüsesticks einen Snack, auf den du dich freust.',
+ 'Der syrische Lieblingsdip: süß, rauchig, leicht scharf. Macht aus Gemüsesticks einen Snack, auf den Du Dich freust.',
  [('Rote Paprika',80,'geröstet, gehäutet'),('Walnusskerne',10,'geröstet'),('Olivenöl',4,''),('Zitronensaft',3,''),('Tomatenmark',3,''),('Kreuzkümmel',0.5,''),('Gurke',80,'in Sticks'),('Fenchel',60,'in Streifen')],
  ['Paprika im Ofen bei 230 °C 20 Minuten rösten, bis die Haut schwarz wird, kurz abdecken und häuten.','Mit Walnüssen, Öl, Zitronensaft, Tomatenmark, Kreuzkümmel, Chiliflocken und Salz grob pürieren.','Mit Gurke und Fenchel servieren.'],
  'Paprika aus dem Glas geht auch. Gut abtropfen lassen, sonst wird der Dip wässrig.')
 r('harissa-ofenkarotten','Harissa-Ofenkarotten mit Blumenkohl und Tahin-Zitrone','Harissa-Karotten','Ofengericht','main',35,'harissa-karotten',
- 'Feurig, süß und cremig zugleich. Die schnelle Harissa aus Tomatenmark und Gewürzen machst du selbst.',
+ 'Feurig, süß und cremig zugleich. Die schnelle Harissa aus Tomatenmark und Gewürzen machst Du selbst.',
  [('Karotten',120,'längs halbiert'),('Blumenkohl',150,'in Röschen'),('Olivenöl',10,''),('Tomatenmark',5,''),('Chili',2,'fein gehackt'),('Kreuzkümmel',1,'½ TL'),('Paprikapulver, geräuchert',1,''),('Knoblauch',2,''),('Tahin',8,''),('Zitronensaft',10,''),('Petersilie',5,'')],
  ['Ofen auf 220 °C vorheizen.','Öl, Tomatenmark, Chili, Kreuzkümmel, Paprika, Knoblauch und Salz zur Harissa verrühren.','Karotten und Blumenkohl darin wenden und 25 Minuten rösten.','Tahin mit Zitronensaft und 2 EL Wasser glatt rühren.','Gemüse anrichten, Tahinsauce darüber, mit Petersilie bestreuen.'],
  'Wer es milder mag, lässt die frische Chili weg. Das Raucharoma bleibt.')

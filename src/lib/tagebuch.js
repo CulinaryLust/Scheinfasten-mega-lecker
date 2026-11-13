@@ -1,5 +1,5 @@
 // Tagesbilanz: zählt, was jemand an einem Fastentag schon gegessen hat, vergleicht es mit dem Tageslimit
-// nach Prof. Dr. Valter Longo und schlägt vor, wie sich der Rest des Tages passend füllen lässt.
+// nach Longo und schlägt vor, wie sich der Rest des Tages passend füllen lässt.
 // Läuft im Browser und in Node (Tests).
 import { BY_NAME, FOODS, search, solve, totals, verdict, norm } from './rechner.js';
 import { RECIPES, BY_SLUG, PLAN, nutrition } from './nutrition.js';

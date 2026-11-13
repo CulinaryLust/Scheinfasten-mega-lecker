@@ -12,6 +12,12 @@ export const NEWSLETTER_ACTION = '';
 /** Name des Brevo-Kontaktattributs (Typ Datum) für den Start des nächsten Durchgangs. */
 export const DATE_FIELD = 'ZYKLUS_START';
 
+/** Brevo-Attribut (Typ Ja/Nein) für das freiwillige Newsletter-Häkchen. Getrennt von der Erinnerung (Kopplungsverbot). */
+export const TIPS_FIELD = 'SF_TIPPS';
+
+/** Brevo-Liste „Scheinfasten Erinnerung“ (Ordner „Scheinfasten“), am 13.11.2026 per API angelegt. */
+export const LIST_ID = 5;
+
 /** Datumsformat, das das Brevo-Formular erwartet (in Brevo beim Datumsfeld einstellbar). */
 export const DATE_FORMAT = 'DD-MM-YYYY';
 

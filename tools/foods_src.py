@@ -25,7 +25,7 @@ WHY = {
   'tier': 'Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.',
   'milch': 'Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.',
   'suess': 'Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.',
-  'weissmehl': 'Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.',
+  'weissmehl': 'Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.',
   'drink': 'Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.',
   'eiweiss': 'Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.',
   'knusper': 'Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.',
@@ -229,7 +229,7 @@ f('Schweinefleisch', 'U541100', 'tier', syn='Schwein, Schnitzel')
 f('Salami', 'W140000', 'tier', syn='Wurst, Aufschnitt')
 f('Kochschinken', 'W424000', 'tier', syn='Schinken')
 f('Lachs', 'T410100', 'tier', syn='Fisch, Räucherlachs', alts='Walnusskerne; Leinöl; Leinsamen',
-  why='Fisch ist tierisches Eiweiß. Omega-3 bekommst du im Scheinfasten aus Walnüssen und Leinöl.')
+  why='Fisch ist tierisches Eiweiß. Omega-3 bekommst Du im Scheinfasten aus Walnüssen und Leinöl.')
 f('Thunfisch', 'T121902', 'tier', syn='Fisch, Thunfischdose', alts='Kichererbsen (gegart); Walnusskerne')
 f('Garnelen', 'T753100', 'tier', syn='Shrimps, Krabben, Scampi', alts='Austernpilze; Champignons')
 f('Eier', 'E111100', 'tier', syn='Ei, Hühnerei, Spiegelei, Rührei', alts='Kichererbsen (gegart); Champignons; Avocado')
