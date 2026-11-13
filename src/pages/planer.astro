@@ -185,6 +185,7 @@ import { pick } from '../data/affiliate.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
   import { thumb } from '../lib/url.js';
   import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml } from '../lib/uebergang.js';
+  import { doneHtml } from '../lib/fortschritt.js';
 
   const root = document.getElementById('wizard')!;
   const base = root.dataset.base!;
@@ -474,7 +475,7 @@ import { pick } from '../data/affiliate.js';
     }
     if (k === 8) return `<div class="plain nextcyc">${nextCycleHtml(start, cyc, gap, I.calendar)}</div>`;
     const list = items(k); const n = total(list, f); const c = check(k, n, f);
-    const doneKcal = list.reduce((a: number, it: any, i: number) => a + (isDone(k, i) ? nutrition(BY_SLUG[it.recipe], it.portion * f).kcal : 0), 0);
+    const eaten = list.reduce((a: any, it: any, i: number) => { if (!isDone(k, i)) return a; const m = nutrition(BY_SLUG[it.recipe], it.portion * f); return { kcal: a.kcal + m.kcal, protein: a.protein + m.protein, fat: a.fat + m.fat, carbs: a.carbs + m.carbs }; }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
     const vs = (cls: string, ic: string, label: string, val: string, sub: string) => `<div class="${cls}"><span class="k">${I[ic]}${label}</span><b>${val}</b><small>${sub}</small></div>`;
     let html = `<div class="daytop"><div class="row"><h3>Tag ${k}${k === 1 ? ' (Starttag)' : ''} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Prof. Dr. Longos Vorgaben</span>` : '<span class="chip warn">knapp daneben</span>'}</div>${c.ok ? '' : `<p class="small muted knapp"><b>Knapp daneben</b> heißt: Kalorien oder Nährstoffanteile weichen an diesem Tag etwas mehr ab als erlaubt (Kalorien mehr als 5 %, Eiweiß mehr als ${PLAN.reference.tolerance.proteinPoints}, Fett oder Kohlenhydrate mehr als 5 Prozentpunkte). Tausche ein Gericht, dann passt es meist wieder.</p>`}
       <div class="vs">
@@ -485,7 +486,7 @@ import { pick } from '../data/affiliate.js';
         ${vs('carbs', 'carbs', 'Kohlenhydrate', `${fmt(n.carbs)} g`, `${fmt(c.shares.carbs)} % · Vorgabe ${c.ref.carbs} %`)}
       </div>
       <div class="mbar" aria-hidden="true"><i class="p" style="width:${c.shares.protein}%"></i><i class="f" style="width:${c.shares.fat}%"></i><i class="c" style="width:${c.shares.carbs}%"></i></div>
-      <div class="donebar"><div class="bar"><i style="width:${Math.min(100, doneKcal / n.kcal * 100)}%"></i></div><span><b>${fmt(doneKcal)}</b> von ${fmt(n.kcal)} kcal abgehakt${dayDone(k) ? ' · Tag geschafft!' : ''}</span></div>
+      ${doneHtml(eaten, n, fmt, dayDone(k) ? ' · Tag geschafft!' : '')}
       <p class="muted small">${I.water} Dazu über den Tag reichlich Wasser oder ungesüßten Tee.</p></div>`;
     list.forEach((it: any, idx: number) => {
       const r = BY_SLUG[it.recipe]; const por = it.portion * f; const m = nutrition(r, por);

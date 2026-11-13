@@ -206,6 +206,7 @@ import { pick } from '../data/affiliate.js';
   .meal ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: .93rem; }
   .meal ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: .93rem; }
   .meal h3 { font-size: 1.2rem; }
+  .meal .mimg { width: 100%; aspect-ratio: 16 / 9; max-height: 190px; object-fit: cover; border-radius: 12px; margin-bottom: 4px; }
   .meal .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
   .rmatch { display: grid; grid-template-columns: 88px 1fr; gap: 14px; align-items: start; text-decoration: none; color: inherit; }
   .rmatch img { width: 88px; height: 66px; object-fit: cover; border-radius: 12px; }
@@ -219,7 +220,8 @@ import { pick } from '../data/affiliate.js';
   import { FOODS, BY_NAME, search, profile, targets, solve, verdict, suggestAdditions, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
   import { fmt, PLAN, amountLabel, RECIPES, nutrition, shares } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
-  import { thumb } from '../lib/url.js';
+  import { thumb, thumbIn } from '../lib/url.js';
+  import { doneHtml } from '../lib/fortschritt.js';
   import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml, addDays } from '../lib/uebergang.js';
   const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
   const TOL_P = PLAN.reference.tolerance.proteinPoints ?? PLAN.reference.tolerance.macroPoints;
@@ -436,16 +438,17 @@ import { pick } from '../data/affiliate.js';
     if (res) {
       // Gerichte aus den eigenen Zutaten, nach Mahlzeit sortiert, zum Abhaken
       const meals: any[] = buildMeals(res.items).map((m: any, i: number) => ({ ...m, key: `m${i}`, kcal: m.sum.kcal }));
-      if (bk) meals.unshift({ key: 'bf', slot: 'Morgens', kind: 'Frühstück', title: bk.recipe.title, kcal: bk.n.kcal, minutes: bk.recipe.minutes, recipe: bk.recipe,
+      if (bk) meals.unshift({ key: 'bf', slot: 'Morgens', kind: 'Frühstück', title: bk.recipe.title, kcal: bk.n.kcal, sum: bk.n, minutes: bk.recipe.minutes, recipe: bk.recipe,
         items: bk.recipe.ingredients.map((i: any) => ({ name: i.name, g: Math.round(i.amount * bk.portion) })), steps: [] });
       const SLOTS: [string, string][] = [['Morgens', 'Frühstück'], ['Mittags', 'Mittagessen'], ['Abends', 'Abendessen'], ['Snack', 'Snack']];
       const dk = String(v.day); const done = ((state.done = state.done || {})[dk] = state.done[dk] || {});
-      const doneK = meals.filter((m) => done[m.key]).reduce((a2, m) => a2 + m.kcal, 0);
+      const eaten = meals.filter((m) => done[m.key]).reduce((a2: any, m: any) => { const n2 = m.sum || (m.n as any); return { kcal: a2.kcal + m.kcal, protein: a2.protein + n2.protein, fat: a2.fat + n2.fat, carbs: a2.carbs + n2.carbs }; }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
       if (meals.length) {
         h += `<div class="stack"><h2 style="font-size:1.6rem">Deine Rezepte für heute</h2>
           <p class="muted small">Aus Deinen Lebensmitteln, die Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune. Hake ab, was Du gegessen hast.</p>
-          <div class="donebar"><div class="bar"><i style="width:${Math.min(100, doneK / t.kcal * 100)}%"></i></div><span><b>${fmt(doneK)}</b> von ${fmt(t.kcal)} kcal abgehakt${doneK >= t.kcal * 0.95 ? ' · Tag geschafft!' : ''}</span></div>
+          ${doneHtml(eaten, t, fmt, eaten.kcal >= t.kcal * 0.95 ? ' · Tag geschafft!' : '')}
           ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => `<article class="card meal${done[m.key] ? ' isdone' : ''}">
+            <img class="mimg" src="${m.recipe ? thumb(base, m.recipe.image) : thumbIn(base, 'diy', m.tpl || 'pfanne')}" alt="" loading="lazy" width="400" height="300" />
             <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.kcal)} kcal</span></div>
             <h3>${m.recipe ? `<a href="${base}rezepte/${m.recipe.slug}/">${esc(m.title)}</a>` : esc(m.title)}</h3>
             <ul class="ing">${m.items.map((i: any) => `<li>${mac(i.name)}<span>${amount(i.name, i.g)} ${esc(i.name)}</span></li>`).join('')}</ul>
