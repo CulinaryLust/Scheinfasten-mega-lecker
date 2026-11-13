@@ -1,14 +1,12 @@
 ---
-// Drei Wege im Scheinfastenrechner: fertiger Plan (/planer/), Do it yourself (/rechner/#kochen) und Live-Tracking (/rechner/).
-// Auf /rechner/ schaltet das Skript der Seite zwischen den beiden Bereichen um (über den Hash).
+// Zwei Wege im Scheinfastenrechner: fertiger Plan (/planer/) und Do it yourself (/rechner/).
 import Icon from './Icon.astro';
 import { u } from '../lib/url.js';
-interface Props { current: 'plan' | 'diy' | 'live' }
+interface Props { current: 'plan' | 'diy' }
 const { current } = Astro.props;
 const modes = [
   { key: 'plan', href: u('planer/'), icon: 'calendar', label: 'Fertiger 5-Tage-Plan', sub: 'mit wenig Aufwand' },
-  { key: 'diy', href: u('rechner/#kochen'), icon: 'pot', label: 'Do it yourself', sub: 'aus Deinen Lebensmitteln' },
-  { key: 'live', href: u('rechner/#live'), icon: 'check', label: 'Live-Tracking', sub: 'Dein Tag auf einen Blick' },
+  { key: 'diy', href: u('rechner/'), icon: 'pot', label: 'Do it yourself', sub: 'aus Deinen Lebensmitteln' },
 ];
 ---
 <nav class="in modenav" aria-label="Scheinfastenrechner">
@@ -17,7 +15,7 @@ const modes = [
   ))}
 </nav>
 <style>
-  .modenav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 6px; background: var(--band); border-radius: 18px; margin-bottom: 18px; }
+  .modenav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 6px; background: var(--band); border-radius: 18px; margin-bottom: 18px; }
   .modenav a { display: flex; gap: 10px; align-items: center; justify-content: center; border-radius: 13px; padding: 10px 12px; min-height: 52px; text-decoration: none; color: var(--muted); }
   .modenav a span { display: grid; gap: 1px; }
   .modenav b { font-size: .98rem; line-height: 1.2; }
