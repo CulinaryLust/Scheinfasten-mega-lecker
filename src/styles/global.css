@@ -257,3 +257,9 @@ h3.slot { font-size: 1.15rem; margin-top: 10px; color: var(--green); }
 .dm::after { content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 8px); width: max-content; max-width: min(280px, 80vw); padding: 8px 10px; border-radius: 10px; background: var(--fg); color: var(--bg); font-size: .8rem; line-height: 1.35; box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; pointer-events: none; transform: translateY(4px); transition: opacity .15s, transform .15s; z-index: 10; white-space: normal; }
 .dm:hover::after, .dm:focus-visible::after, .dm:focus::after { opacity: 1; transform: none; }
 .donebar .dm { font-size: .85rem; }
+
+/* iOS: Datumsfeld nicht breiter als die Karte */
+input[type="date"] { -webkit-appearance: none; appearance: none; display: block; width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; min-height: 48px; }
+input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+/* Lange deutsche Wörter (z. B. „Datenschutzerklärung“) auf schmalen Handys trennen statt über den Rand laufen lassen */
+h1, h2, h3, .prose p, .prose li { overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }

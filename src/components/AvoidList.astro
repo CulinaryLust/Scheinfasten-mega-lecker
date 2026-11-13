@@ -29,7 +29,7 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
   <div class="in">
     <div class="head"><p class="kicker">Auf einen Blick</p><h2>Das lässt Du 5 Tage weg</h2></div>
     <ul class="redchips">{red.map((g) => <li><Icon name="ban" />{g.title}</li>)}</ul>
-    <p class="okline"><span class="dot g"></span><span><b>Dafür auf dem Teller:</b> {green.join(', ')}.</span> <a href={u('wissen/#weglassen')}>Ganze Liste mit Beispielen</a></p>
+    <p class="okline"><span><span class="dot g"></span><b>Dafür auf dem Teller:</b>{' '}{green.join(', ')}.</span>{' '}<a href={u('wissen/#weglassen')}>Ganze Liste mit Beispielen</a></p>
   </div>
 </section>
 ) : (
@@ -82,5 +82,6 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
   .redchips li { display: inline-flex; gap: 8px; align-items: center; background: var(--bad-bg); color: var(--bad); border: 1.5px solid color-mix(in srgb, var(--bad) 35%, transparent); border-radius: 999px; padding: 8px 14px; font-weight: 800; }
   .redchips :global(.i) { stroke-width: 2.4; }
   .okline { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+  .okline .dot { margin-right: 8px; vertical-align: 1px; }
   .okline a { font-weight: 700; }
 </style>
