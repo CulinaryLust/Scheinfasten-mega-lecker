@@ -117,8 +117,8 @@ import { pick } from '../data/affiliate.js';
         </div>
         <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Alkohol und Säfte. Kaffee höchstens eine kleine Tasse schwarz. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
         <div class="picked" id="picked" aria-label="Deine Lebensmittel"></div>
-        <p class="small muted legendline"><span class="dot g"></span>passt gut <span class="dot y"></span>nur kleine Menge <span class="dot r"></span>lieber tauschen</p>
-        <p class="small muted legendline"><span>Hauptnährstoff:</span><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate <span class="mac protein"><Icon name="protein" /></span>Eiweiß <span class="mac fat"><Icon name="fat" /></span>Fett</p>
+        <p class="small muted legendline"><span class="lg"><span class="dot g"></span>passt gut</span><span class="lg"><span class="dot y"></span>nur kleine Menge</span><span class="lg"><span class="dot r"></span>lieber tauschen</span></p>
+        <p class="small muted legendline"><span>Hauptnährstoff:</span><span class="lg"><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate</span><span class="lg"><span class="mac protein"><Icon name="protein" /></span>Eiweiß</span><span class="lg"><span class="mac fat"><Icon name="fat" /></span>Fett</span></p>
       </fieldset>
 
       <p class="err" id="err3" role="alert" hidden></p>
@@ -167,7 +167,7 @@ import { pick } from '../data/affiliate.js';
   .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; flex: none; vertical-align: -1px; }
   .dot.g { background: var(--ok); } .dot.y { background: var(--sun); } .dot.r { background: var(--bad); }
   .legendline { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
-  .legendline .dot { margin-left: 6px; }
+  .legendline .lg { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
   .quick { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
   .qchip, .pchip, .alt { display: inline-flex; align-items: center; gap: 6px; font: 600 .88rem/1.2 var(--body); padding: 8px 12px; min-height: 38px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; }
   .qchip:hover, .alt:hover { border-color: var(--green); color: var(--green); }
