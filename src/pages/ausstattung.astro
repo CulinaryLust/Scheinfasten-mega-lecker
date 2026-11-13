@@ -6,18 +6,18 @@ import { PRODUCTS, GROUPS } from '../data/affiliate.js';
 import { u } from '../lib/url.js';
 const byGroup = GROUPS.map((g) => ({ ...g, items: Object.entries(PRODUCTS).filter(([, p]) => p.group === g.key).map(([key, p]) => ({ key, ...p })) }));
 ---
-<Base title="Ausstattung" active="ausstattung" description="Was du für fünf Tage Scheinfasten zu Hause brauchst: Küchenwaage, Vorrat und Bücher, ehrlich ausgewählt.">
+<Base title="Ausstattung" active="ausstattung" description="Was Du für fünf Tage Scheinfasten zu Hause brauchst: Küchenwaage, Vorrat und Bücher, ehrlich ausgewählt.">
   <div class="in page-head narrow">
     <p class="kicker">Ausstattung</p>
     <h1>Gut ausgestattet in die Fastenwoche</h1>
-    <p class="lead">Für unsere Rezepte brauchst du keine Spezialgeräte. Ein paar Helfer machen die fünf Tage aber deutlich leichter. Das Wichtigste zuerst: eine genaue Küchenwaage.</p>
+    <p class="lead">Für unsere Rezepte brauchst Du keine Spezialgeräte. Ein paar Helfer machen die fünf Tage aber deutlich leichter. Das Wichtigste zuerst: eine genaue Küchenwaage.</p>
   </div>
   <section class="band" style="padding-top:12px">
     <div class="in narrow stack">
       {byGroup.map((g) => <AffiliateBox items={g.items} title={g.title} lead={g.lead} />)}
       <div class="card">
         <h2 style="font-size:1.35rem">Lieber das Fertigpaket?</h2>
-        <p>Wenn du keine Zeit zum Kochen hast, gibt es das Original als Box. Wir haben beides ehrlich verglichen.</p>
+        <p>Wenn Du keine Zeit zum Kochen hast, gibt es das Original als Box. Wir haben beides ehrlich verglichen.</p>
         <div class="ctas"><a class="btn soft" href={u('prolon-oder-selbst-kochen/')}>ProLon oder selbst kochen? <Icon name="arrow" /></a></div>
       </div>
     </div>

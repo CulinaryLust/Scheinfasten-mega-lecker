@@ -9,9 +9,9 @@ const recipeCount = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].include
 const rows = [
   ['Preis für 5 Tage', `${PROLON_PRICE} € laut Hersteller (Stand ${PROLON_CHECKED})`, 'Lebensmittel für etwa 25 bis 40 €, je nach Bio-Anteil (unsere Schätzung)'],
   ['Aufwand', 'Auspacken, aufwärmen, fertig', 'Einkaufen und täglich kochen, mit Vorkochen etwa 30 bis 45 Minuten am Tag'],
-  ['Studienlage', 'Mit diesem Produkt wurden Longos Studien am Menschen gemacht', 'Gleiche Kalorien- und Nährstoffvorgaben, aber nicht in Studien getestet'],
-  ['Geschmack und Abwechslung', 'Feste Auswahl an Suppen, Riegeln, Crackern, Oliven und Tees', `Frisch gekocht, ${recipeCount} Rezepte zur Auswahl, Zutaten nach deinem Geschmack`],
-  ['Anpassung an dich', 'Eine Box für alle', 'Der Planer passt die Mengen an Größe, Gewicht und Geschlecht an'],
+  ['Studienlage', 'Mit diesem Produkt wurden Prof. Dr. Longos Studien am Menschen gemacht', 'Gleiche Kalorien- und Nährstoffvorgaben, aber nicht in Studien getestet'],
+  ['Geschmack und Abwechslung', 'Feste Auswahl an Suppen, Riegeln, Crackern, Oliven und Tees', `Frisch gekocht, ${recipeCount} Rezepte zur Auswahl, Zutaten nach Deinem Geschmack`],
+  ['Anpassung an Dich', 'Eine Box für alle', 'Der Planer passt die Mengen an Größe, Gewicht und Geschlecht an'],
   ['Unverträglichkeiten', 'Zutaten fest vorgegeben', 'Du tauschst einzelne Zutaten im Rechner selbst aus'],
   ['Vitamine und Omega-3', 'Ergänzungspräparat liegt bei', 'Nicht enthalten, bei Bedarf ärztlich abklären'],
 ];
@@ -20,7 +20,7 @@ const rows = [
   <div class="in page-head narrow">
     <p class="kicker">Vergleich</p>
     <h1>ProLon oder selbst kochen?</h1>
-    <p class="lead">ProLon ist das Fertigpaket zum Scheinfasten, entwickelt von Prof. Dr. Valter Longo und verkauft von seiner Firma L-Nutra. Unsere Rezepte folgen denselben veröffentlichten Werten. Was passt besser zu dir?</p>
+    <p class="lead">ProLon ist das Fertigpaket zum Scheinfasten, entwickelt von Prof. Dr. Valter Longo und verkauft von seiner Firma L-Nutra. Unsere Rezepte folgen denselben veröffentlichten Werten. Was passt besser zu Dir?</p>
   </div>
   <section class="band" style="padding-top:12px">
     <div class="in narrow stack">
@@ -30,27 +30,27 @@ const rows = [
       </table></div>
       <div class="grid2">
         <div class="card">
-          <h2 style="font-size:1.35rem">ProLon passt zu dir, wenn</h2>
+          <h2 style="font-size:1.35rem">ProLon passt zu Dir, wenn</h2>
           <ul class="check">
-            <li><Icon name="check" />du keine Zeit oder Lust zum Kochen hast</li>
-            <li><Icon name="check" />du genau das Produkt aus den Studien willst</li>
-            <li><Icon name="check" />du unterwegs oder auf Reisen fastest</li>
+            <li><Icon name="check" />Du keine Zeit oder Lust zum Kochen hast</li>
+            <li><Icon name="check" />Du genau das Produkt aus den Studien willst</li>
+            <li><Icon name="check" />Du unterwegs oder auf Reisen fastest</li>
           </ul>
           <p class="ad-row"><span class="ad">Anzeige</span></p>
           <a class="btn" href={PROLON_LINK} target="_blank" rel="sponsored nofollow noopener" data-goatcounter-click="partner-prolon" data-goatcounter-title="ProLon">Zu ProLon <Icon name="arrow" /></a>
         </div>
         <div class="card">
-          <h2 style="font-size:1.35rem">Selbst kochen passt zu dir, wenn</h2>
+          <h2 style="font-size:1.35rem">Selbst kochen passt zu Dir, wenn</h2>
           <ul class="check">
-            <li><Icon name="check" />du gern kochst und frisch essen willst</li>
-            <li><Icon name="check" />du sparen oder öfter im Jahr fasten willst</li>
-            <li><Icon name="check" />du Zutaten selbst aussuchen oder tauschen musst</li>
+            <li><Icon name="check" />Du gern kochst und frisch essen willst</li>
+            <li><Icon name="check" />Du sparen oder öfter im Jahr fasten willst</li>
+            <li><Icon name="check" />Du Zutaten selbst aussuchen oder tauschen musst</li>
           </ul>
           <a class="btn soft" href={u('planer/')}><Icon name="calendar" />Gratis-Plan erstellen</a>
         </div>
       </div>
-      <p class="hint"><Icon name="heart" /><span>Egal welcher Weg: Wenn du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Für wen nicht?</a></span></p>
-      <AffiliateBox items={pick('waage', 'dosen', 'tee')} title="Wenn du selbst kochst" lead="Diese drei Dinge machen die Woche leichter." />
+      <p class="hint"><Icon name="heart" /><span>Egal welcher Weg: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Für wen nicht?</a></span></p>
+      <AffiliateBox items={pick('waage', 'dosen', 'tee')} title="Wenn Du selbst kochst" lead="Diese drei Dinge machen die Woche leichter." />
       <p class="muted small">Der Link zu ProLon ist ein Affiliate-Link. Wir sind kein Angebot von L-Nutra und werden von Prof. Dr. Valter Longo weder geprüft noch unterstützt. <a href={u('transparenz/')}>Transparenz</a></p>
     </div>
   </section>

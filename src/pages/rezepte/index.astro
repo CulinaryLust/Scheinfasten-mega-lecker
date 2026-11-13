@@ -10,8 +10,8 @@ const cats = [...new Set(list.map((r) => r.category))];
 <Base title={`Scheinfasten-Rezepte: ${list.length} Gerichte mit Nährwerten`} active="rezepte" description={`${list.length} pflanzliche Scheinfasten-Rezepte mit Kalorien, Eiweiß, Fett und Kohlenhydraten pro Portion.`}>
   <div class="in page-head">
     <p class="kicker">Rezepte</p>
-    <h1>{list.length} Rezepte für deine Fastentage</h1>
-    <p class="muted">Alle für eine Portion, rein pflanzlich und durchgerechnet. Im Planer werden die Mengen auf dich angepasst.</p>
+    <h1>{list.length} leckere Rezepte für Deine Fastentage</h1>
+    <p class="muted">Alle für eine Portion, rein pflanzlich und durchgerechnet. Im Planer werden die Mengen auf Dich angepasst.</p>
   </div>
   <div class="in filters noprint">
     <label class="search"><Icon name="search" /><span class="sr-only">Rezepte durchsuchen</span><input id="q" type="search" placeholder="Suchen, z. B. Kürbis oder Suppe" autocomplete="off" /></label>
@@ -33,8 +33,8 @@ const cats = [...new Set(list.map((r) => r.category))];
       <p class="muted small" id="count" aria-live="polite"></p>
       <div class="grid" id="list">{list.map((r) => <RecipeCard r={r} />)}</div>
       <AdSlot slot="rezepte-liste" />
-      <div class="empty" id="empty" hidden><p>Kein Rezept passt zu deiner Auswahl.</p><button class="btn soft" id="reset">Filter zurücksetzen</button></div>
-      <p class="muted small" style="margin-top:22px">Fotos: Symbolbilder von Unsplash. Sie zeigen ähnliche Gerichte, nicht die exakten Rezepte.</p>
+      <div class="empty" id="empty" hidden><p>Kein Rezept passt zu Deiner Auswahl.</p><button class="btn soft" id="reset">Filter zurücksetzen</button></div>
+      <p class="muted small" style="margin-top:22px">Fotos: Unsplash. Jedes Foto zeigt das jeweilige Gericht, aber nicht exakt unsere Zubereitung und Portion.</p>
     </div>
   </section>
 </Base>

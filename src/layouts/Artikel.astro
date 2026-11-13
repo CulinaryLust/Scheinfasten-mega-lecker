@@ -29,10 +29,10 @@ const jsonLd = {
       {Astro.slots.has('quellen') && <div class="prose quellen"><h2>Quellen</h2><slot name="quellen" /></div>}
       <div class="card">
         <h2 style="font-size:1.35rem">Dein Plan in einer Minute</h2>
-        <p>Der Planer rechnet Gerichte, Mengen und Einkaufsliste passend zu dir aus. Kostenlos und ohne Anmeldung.</p>
+        <p>Der Planer rechnet Gerichte, Mengen und Einkaufsliste passend zu Dir aus. Kostenlos und ohne Anmeldung.</p>
         <div class="ctas"><a class="btn" href={u('planer/')}><Icon name="calendar" />Gratis 5-Tage-Plan erstellen</a><a class="btn soft" href={u('rezepte/')}>Alle Rezepte</a></div>
       </div>
-      <p class="hint"><Icon name="heart" /><span><b>Kurz zur Sicherheit:</b> Wenn du schwanger bist, stillst, unter 18 bist, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
+      <p class="hint"><Icon name="heart" /><span><b>Kurz zur Sicherheit:</b> Wenn Du schwanger bist, stillst, unter 18 bist, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
       <nav aria-label="Weitere Artikel" class="mehr">
         <h2 style="font-size:1.2rem">Weiterlesen</h2>
         <ul>{others.map((x) => <li><a href={u(`ratgeber/${x.slug}/`)}>{x.title}</a></li>)}</ul>

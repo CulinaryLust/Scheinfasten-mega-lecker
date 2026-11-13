@@ -14,15 +14,15 @@ Kein Heilversprechen in Betreff oder Text (HWG).
 
 ## 1 Bestätigung (Double-Opt-in)
 
-**Betreff:** Bitte bestätige deine Erinnerung
+**Betreff:** Bitte bestätige Deine Erinnerung
 
 Hallo,
 
-du hast auf einfach lecker fasten eine Erinnerung für deinen nächsten Scheinfasten-Durchgang bestellt. Bitte bestätige kurz, dass die Adresse stimmt:
+Du hast auf einfach lecker fasten eine Erinnerung für Deinen nächsten Scheinfasten-Durchgang bestellt. Bitte bestätige kurz, dass die Adresse stimmt:
 
 [Ja, Erinnerung schicken] (Bestätigungslink von Brevo)
 
-Warst du das nicht, ignoriere diese Mail einfach. Dann bekommst du nichts weiter von uns.
+Warst Du das nicht, ignoriere diese Mail einfach. Dann bekommst Du nichts weiter von uns.
 
 ## 2 Willkommen
 
@@ -30,15 +30,15 @@ Warst du das nicht, ignoriere diese Mail einfach. Dann bekommst du nichts weiter
 
 Hallo,
 
-alles eingerichtet. Drei Tage vor deinem Start am {{ contact.ZYKLUS_START }} melden wir uns mit der Einkaufsliste.
+alles eingerichtet. Drei Tage vor Deinem Start am {{ contact.ZYKLUS_START }} melden wir uns mit der Einkaufsliste.
 
 Bis dahin:
 
-- Dein Plan: https://DOMAIN/planer/ (bleibt auf deinem Gerät gespeichert)
+- Dein Plan: https://DOMAIN/planer/ (bleibt auf Deinem Gerät gespeichert)
 - Einkaufsliste für fünf Tage: https://DOMAIN/ratgeber/einkaufsliste/
 - So läuft die Woche ab: https://DOMAIN/ratgeber/tag-fuer-tag/
 
-Wenn du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher mit deiner Ärztin oder deinem Arzt.
+Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher mit Deiner Ärztin oder Deinem Arzt.
 
 Abmelden geht jederzeit über den Link unten.
 
@@ -48,9 +48,9 @@ Abmelden geht jederzeit über den Link unten.
 
 Hallo,
 
-am {{ contact.ZYKLUS_START }} startet dein Durchgang. Das steht jetzt an:
+am {{ contact.ZYKLUS_START }} startet Dein Durchgang. Das steht jetzt an:
 
-1. **Einkaufen.** Die Liste für alle fünf Tage: https://DOMAIN/ratgeber/einkaufsliste/ Im Planer bekommst du sie passend zu deinen Mengen: https://DOMAIN/planer/
+1. **Einkaufen.** Die Liste für alle fünf Tage: https://DOMAIN/ratgeber/einkaufsliste/ Im Planer bekommst Du sie passend zu Deinen Mengen: https://DOMAIN/planer/
 2. **Vorkochen.** Die Gerichte für Tag 1 und 2 am Vorabend kochen, den Nussmix für fünf Tage abwiegen.
 3. **Kaffee reduzieren.** In den fünf Tagen ist höchstens eine kleine Tasse schwarz vorgesehen.
 4. **Kalender prüfen.** Tag 2 und 3 empfinden viele als die zähesten. Plane dort wenig ein.
@@ -65,23 +65,23 @@ Guten Start!
 
 Hallo,
 
-du bist mittendrin. Zwei Dinge, die heute helfen:
+Du bist mittendrin. Zwei Dinge, die heute helfen:
 
 - **Hunger am Nachmittag** ist normal. Kräutertee, Wasser und die Oliven aus dem Plan sind dafür da.
-- **Etwas schmeckt dir nicht?** Im Planer tauschst du jedes Gericht, die Werte rechnen sich neu: https://DOMAIN/planer/
+- **Etwas schmeckt Dir nicht?** Im Planer tauschst Du jedes Gericht, die Werte rechnen sich neu: https://DOMAIN/planer/
 
-Wie viel heute noch geht, zeigt dir der Rechner: https://DOMAIN/rechner/
+Wie viel heute noch geht, zeigt Dir der Rechner: https://DOMAIN/rechner/
 
-Wird dir schwindelig, rast dein Herz oder fühlst du dich sehr schwach, iss normal weiter. Ein abgebrochener Durchgang ist kein Problem.
+Wird Dir schwindelig, rast Dein Herz oder fühlst Du Dich sehr schwach, iss normal weiter. Ein abgebrochener Durchgang ist kein Problem.
 
 ## 5 Danach (Tag 6)
 
-**Betreff:** Geschafft. So steigst du wieder ein
+**Betreff:** Geschafft. So steigst Du wieder ein
 
 Hallo,
 
 fünf Tage sind um. Heute gilt: langsam wieder einsteigen, mit Suppe beginnen, abends eine normale, nicht üppige Mahlzeit. Die Details: https://DOMAIN/ratgeber/nach-dem-scheinfasten/
 
-**Nächster Durchgang?** Trag das neue Startdatum hier ein, dann erinnern wir dich wieder rechtzeitig: https://DOMAIN/planer/#remind
+**Nächster Durchgang?** Trag das neue Startdatum hier ein, dann erinnern wir Dich wieder rechtzeitig: https://DOMAIN/planer/#remind
 
-Hat dir etwas gefehlt oder nicht geschmeckt? Antworte einfach auf diese Mail.
+Hat Dir etwas gefehlt oder nicht geschmeckt? Antworte einfach auf diese Mail.

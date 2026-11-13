@@ -17,18 +17,18 @@ import { pick } from '../data/affiliate.js';
   <div class="in page-head">
     <p class="kicker">Planer</p>
     <h1>Dein persönlicher 5-Tage-Plan</h1>
-    <p class="muted">Zwei kurze Schritte, dann steht dein Plan: jeden Tag leckere Gerichte, auf das Gramm genau nach den Werten von Prof. Dr. Valter Longo berechnet.</p>
+    <p class="muted">Zwei kurze Schritte, dann steht Dein Plan: jeden Tag leckere Gerichte, auf das Gramm genau nach den Werten von Prof. Dr. Valter Longo berechnet.</p>
   </div>
 
   <section class="in wizard" id="wizard" data-base={u('')} data-icons={JSON.stringify(icons)} data-foods={JSON.stringify(foodMeta)}>
     <ol class="progress" aria-label="Fortschritt">
-      <li class="on" data-s="1"><span>1</span>Über dich</li>
+      <li class="on" data-s="1"><span>1</span>Über Dich</li>
       <li data-s="2"><span>2</span>Termine</li>
     </ol>
 
     <form id="f" class="card wcard" novalidate>
       <fieldset class="step" data-step="1">
-        <legend class="sr-only">Über dich</legend>
+        <legend class="sr-only">Über Dich</legend>
         <div class="field"><span class="lbl">Geschlecht</span>
           <div class="seg three">
             <label><input type="radio" name="sex" value="w" checked /><span>Weiblich</span></label>
@@ -41,7 +41,7 @@ import { pick } from '../data/affiliate.js';
           <div class="field"><label for="h" class="lbl">Größe</label><div class="unit"><input id="h" name="h" type="number" inputmode="numeric" min="120" max="220" value="168" required /><span>cm</span></div></div>
           <div class="field"><label for="w" class="lbl">Gewicht</label><div class="unit"><input id="w" name="w" type="number" inputmode="decimal" min="35" max="250" step="0.5" value="70" required /><span>kg</span></div></div>
         </div>
-        <div class="field"><span class="lbl">Wie aktiv ist dein Alltag?</span>
+        <div class="field"><span class="lbl">Wie aktiv ist Dein Alltag?</span>
           <div class="seg three">
             <label><input type="radio" name="pal" value="1.4" /><span>Eher sitzend<small>Büro, wenig Bewegung</small></span></label>
             <label><input type="radio" name="pal" value="1.6" checked /><span>Normal<small>viel auf den Beinen</small></span></label>
@@ -77,9 +77,9 @@ import { pick } from '../data/affiliate.js';
 
       <fieldset class="step" data-step="2" hidden>
         <legend class="sr-only">Termine</legend>
-        <div class="alert info"><p><b>Fastendauer: 5 Tage.</b> Longos Protokoll ist auf genau fünf Tage ausgelegt. Dazu kommen ein Vorbereitungstag und ein Übergangstag.</p></div>
-        <div class="field"><label for="start" class="lbl">Wann startest du? (Tag 1)</label><input id="start" name="start" type="date" required /></div>
-        <div class="field"><span class="lbl">Wie viele Durchgänge planst du?</span>
+        <div class="alert info"><p><b>Fastendauer: 5 Tage.</b> Prof. Dr. Longos Protokoll ist auf genau fünf Tage ausgelegt. Dazu kommen ein Vorbereitungstag und ein Übergangstag.</p></div>
+        <div class="field"><label for="start" class="lbl">Wann startest Du? (Tag 1)</label><input id="start" name="start" type="date" required /></div>
+        <div class="field"><span class="lbl">Wie viele Durchgänge planst Du?</span>
           <div class="seg three">
             <label><input type="radio" name="cyc" value="1" /><span>1 Durchgang<small>zum Ausprobieren</small></span></label>
             <label><input type="radio" name="cyc" value="3" checked /><span>3 Durchgänge<small>wie in der Studie</small></span></label>
@@ -89,7 +89,7 @@ import { pick } from '../data/affiliate.js';
         <div class="field"><label for="gap" class="lbl">Abstand zwischen den Durchgängen</label>
           <select id="gap" name="gap"><option value="1">monatlich (wie in der Studie)</option><option value="2">alle 2 Monate</option><option value="3" selected>alle 3 Monate</option><option value="4">alle 4 Monate</option></select>
         </div>
-        <p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit deiner Ärztin oder deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
+        <p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
         <div class="nav-btns"><button type="button" class="btn soft" data-next="1">Zurück</button><button type="submit" class="btn">Plan erstellen <Icon name="check" /></button></div>
       </fieldset>
 
@@ -98,7 +98,7 @@ import { pick } from '../data/affiliate.js';
 
   <section class="in result" id="result" hidden aria-live="polite"></section>
   <Erinnerung />
-  <div class="in narrow" style="padding-block:24px 56px"><AffiliateBox items={pick('waage', 'dosen', 'thermo')} title="Für deine Fastenwoche" lead="Mit diesen drei Helfern klappen Einkauf und Vorkochen leichter." /></div>
+  <div class="in narrow" style="padding-block:24px 56px"><AffiliateBox items={pick('waage', 'dosen', 'thermo')} title="Für Deine Fastenwoche" lead="Mit diesen drei Helfern klappen Einkauf und Vorkochen leichter." /></div>
 </Base>
 
 <style is:global>
@@ -310,9 +310,9 @@ import { pick } from '../data/affiliate.js';
     const p = profile();
     // Freundliche Hinweise statt Sperre: der Plan wird immer erstellt.
     const notes: string[] = [];
-    if (p.age < 18) notes.push('Du bist unter 18. In diesem Alter wächst der Körper noch, deshalb ist Scheinfasten eher nichts für dich. Die Rezepte kannst du natürlich trotzdem nachkochen.');
-    if (p.age > 70) notes.push('Ab 70 lohnt sich vorher ein kurzes Gespräch mit deiner Ärztin oder deinem Arzt.');
-    if (p.bmi < 18.5) notes.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei so wenig Gewicht sprich bitte vorher mit deiner Ärztin oder deinem Arzt.`);
+    if (p.age < 18) notes.push('Du bist unter 18. In diesem Alter wächst der Körper noch, deshalb ist Scheinfasten eher nichts für Dich. Die Rezepte kannst Du natürlich trotzdem nachkochen.');
+    if (p.age > 70) notes.push('Ab 70 lohnt sich vorher ein kurzes Gespräch mit Deiner Ärztin oder Deinem Arzt.');
+    if (p.bmi < 18.5) notes.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei so wenig Gewicht sprich bitte vorher mit Deiner Ärztin oder Deinem Arzt.`);
     result.hidden = false;
     root.hidden = true;
     const start = new Date((state.inputs.start || iso(d0)) + 'T12:00:00');
@@ -324,10 +324,10 @@ import { pick } from '../data/affiliate.js';
     for (let d = 1; d <= 5; d++) {
       const n = total(items(d), f); const c = check(d, n, f); const ref = c.ref;
       rows += `<tr><td><b>Tag ${d}</b></td><td class="n">${fmt(n.kcal)}<br><small class="muted">Ziel ${fmt(c.target)}</small></td>
-        <td class="n">${fmt(n.protein)} g<br><small class="muted">${fmt(c.shares.protein)} % · Longo ${ref.protein} %</small></td>
-        <td class="n">${fmt(n.fat)} g<br><small class="muted">${fmt(c.shares.fat)} % · Longo ${ref.fat} %</small></td>
+        <td class="n">${fmt(n.protein)} g<br><small class="muted">${fmt(c.shares.protein)} % · Prof. Dr. Longo ${ref.protein} %</small></td>
+        <td class="n">${fmt(n.fat)} g<br><small class="muted">${fmt(c.shares.fat)} % · Prof. Dr. Longo ${ref.fat} %</small></td>
         <td class="n">${fmt(n.oil)} g</td>
-        <td class="n">${fmt(n.carbs)} g<br><small class="muted">${fmt(c.shares.carbs)} % · Longo ${ref.carbs} %</small></td>
+        <td class="n">${fmt(n.carbs)} g<br><small class="muted">${fmt(c.shares.carbs)} % · Prof. Dr. Longo ${ref.carbs} %</small></td>
         <td class="n">${fmt(n.sugar)} g<br><small class="muted">${fmt(c.sugarPct)} % · max. ${PLAN.reference.sugarMaxPercent} %</small></td>
         <td>${c.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span class="chip warn">knapp daneben</span>'}</td></tr>`;
     }
@@ -341,20 +341,20 @@ import { pick } from '../data/affiliate.js';
         <div class="stat"><span>Dein Tagesbedarf, geschätzt</span><b>${fmt(p.tdee)} kcal</b></div>
         <div class="stat"><span>Tag 1</span><b>${fmt(1090 * f)} kcal</b></div>
         <div class="stat"><span>Tag 2 bis 5</span><b>${fmt(725 * f)} kcal</b></div>
-      <label class="bftoggle noprint"><input type="checkbox" id="bf" ${bf() ? 'checked' : ''}><span><b>Mit Frühstück</b><small class="muted">Statt Nussmix gibt es morgens ein echtes Frühstück mit etwa 150 bis 200 kcal. Mittag- und Abendessen werden dafür um 15 % kleiner. Jeder Tag bleibt in Longos Rahmen.</small></span></label>
+      <label class="bftoggle noprint"><input type="checkbox" id="bf" ${bf() ? 'checked' : ''}><span><b>Mit Frühstück</b><small class="muted">Statt Nussmix gibt es morgens ein echtes Frühstück mit etwa 150 bis 200 kcal. Mittag- und Abendessen werden dafür um 15 % kleiner. Jeder Tag bleibt in Prof. Dr. Longos Rahmen.</small></span></label>
       </div>
-      ${notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : p.bmi < 20 ? '<div class="alert info"><p>Dein BMI ist eher niedrig. Hör gut auf deinen Körper und iss normal weiter, wenn du dich schlapp fühlst.</p></div>' : ''}
-      ${p.raw > 1.15 ? '<div class="alert info"><p>Dein Bedarf ist hoch. Wir erhöhen die Portionen um höchstens 15 %, damit der Plan nah an Longos Vorgaben bleibt.</p></div>' : ''}
-      ${p.raw < 0.9 ? '<div class="alert info"><p>Wir verkleinern die Portionen um höchstens 10 %, damit du genug isst.</p></div>' : ''}
-      ${p.ppl > 1 ? `<details class="plain"><summary><b>Portionen für ${p.ppl} Personen</b> <span class="muted small">(so teilst du den Topf auf)</span></summary>
+      ${notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : p.bmi < 20 ? '<div class="alert info"><p>Dein BMI ist eher niedrig. Hör gut auf Deinen Körper und iss normal weiter, wenn Du Dich schlapp fühlst.</p></div>' : ''}
+      ${p.raw > 1.15 ? '<div class="alert info"><p>Dein Bedarf ist hoch. Wir erhöhen die Portionen um höchstens 15 %, damit der Plan nah an Prof. Dr. Longos Vorgaben bleibt.</p></div>' : ''}
+      ${p.raw < 0.9 ? '<div class="alert info"><p>Wir verkleinern die Portionen um höchstens 10 %, damit Du genug isst.</p></div>' : ''}
+      ${p.ppl > 1 ? `<details class="plain"><summary><b>Portionen für ${p.ppl} Personen</b> <span class="muted small">(so teilst Du den Topf auf)</span></summary>
         <div class="tw"><table><thead><tr><th>Person</th><th>Bedarf, geschätzt</th><th>Portionsfaktor</th><th>Anteil am Topf</th><th>Tag 1</th><th>Tag 2 bis 5</th></tr></thead><tbody>
         ${[{ n: 1, ...p }, ...p.others].map((o: any) => `<tr><td><b>${o.n === 1 ? 'Du' : `Person ${o.n}`}</b></td><td class="n">${fmt(o.tdee)} kcal</td><td class="n">×${fmt(o.f, 2)}</td><td class="n">${fmt(o.f / p.fAll * 100)} %</td><td class="n">${fmt(1090 * o.f)} kcal</td><td class="n">${fmt(725 * o.f)} kcal</td></tr>`).join('')}
         </tbody></table></div>
-        <p class="muted small">Die Nährwerte im Plan gelten für dich. Bei den anderen ändern sich nur die Mengen, die Anteile von Eiweiß, Fett und Kohlenhydraten bleiben gleich und passen damit ebenso zu Longos Vorgaben.${p.others.some((o: any) => o.age < 18 || o.age > 70 || o.bmi < 18.5) ? ' Für mindestens eine mitfastende Person gilt ein Hinweis zu Alter oder Gewicht. Lies dazu bitte <a href="' + base + 'fuer-wen-nicht/">Für wen es nicht passt</a>.' : ''}</p>
+        <p class="muted small">Die Nährwerte im Plan gelten für Dich. Bei den anderen ändern sich nur die Mengen, die Anteile von Eiweiß, Fett und Kohlenhydraten bleiben gleich und passen damit ebenso zu Prof. Dr. Longos Vorgaben.${p.others.some((o: any) => o.age < 18 || o.age > 70 || o.bmi < 18.5) ? ' Für mindestens eine mitfastende Person gilt ein Hinweis zu Alter oder Gewicht. Lies dazu bitte <a href="' + base + 'fuer-wen-nicht/">Für wen es nicht passt</a>.' : ''}</p>
       </details>` : ''}
-      <details class="plain"><summary><b>Abgleich mit Longos Vorgaben</b> <span class="muted small">(Brandhorst et al., Cell Metabolism 2015)</span></summary>
+      <details class="plain"><summary><b>Abgleich mit Prof. Dr. Longos Vorgaben</b> <span class="muted small">(Brandhorst et al., Cell Metabolism 2015)</span></summary>
         <div class="tw"><table><thead><tr><th>Tag</th><th>kcal</th><th>Eiweiß</th><th>Fett</th><th>davon Öl</th><th>Kohlenhydrate</th><th>Zucker</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
-        <p class="muted small">„Passt“ heißt: Kalorien höchstens 5 %, Fett und Kohlenhydrate höchstens 5 und Eiweiß höchstens ${PLAN.reference.tolerance.proteinPoints} Prozentpunkte von Longos Referenz entfernt, Zucker höchstens ${PLAN.reference.sugarMaxPercent} % der Kalorien (Longo nennt dafür keine Zahl, das ist unsere Regel). Die Anpassung der Portionen an deinen Bedarf (Faktor ${fmt(f, 2)}, berechnet mit der Mifflin-St-Jeor-Formel) ist unsere eigene Regel und nicht Teil von Longos Protokoll.</p>
+        <p class="muted small">„Passt“ heißt: Kalorien höchstens 5 %, Fett und Kohlenhydrate höchstens 5 und Eiweiß höchstens ${PLAN.reference.tolerance.proteinPoints} Prozentpunkte von Prof. Dr. Longos Referenz entfernt, Zucker höchstens ${PLAN.reference.sugarMaxPercent} % der Kalorien (Prof. Dr. Longo nennt dafür keine Zahl, das ist unsere Regel). Die Anpassung der Portionen an Deinen Bedarf (Faktor ${fmt(f, 2)}, berechnet mit der Mifflin-St-Jeor-Formel) ist unsere eigene Regel und nicht Teil von Prof. Dr. Longos Protokoll.</p>
       </details>
       <div class="tabs noprint" role="tablist">${tabs.map(([k, a, b]) => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k === tab}"><b>${a}</b><span>${b}</span></button>`).join('')}</div>
       <div id="panes">${[0, 1, 2, 3, 4, 5, 6, 7, 8].map((k) => `<div class="daycard" data-pane="${k}" ${k === tab ? '' : 'hidden'}>${pane(k, f, start, cyc, gap, p.fAll, p.ppl)}</div>`).join('')}</div>
@@ -414,13 +414,13 @@ import { pick } from '../data/affiliate.js';
     }
     const list = items(k); const n = total(list, f); const c = check(k, n, f);
     const vs = (cls: string, ic: string, label: string, val: string, sub: string) => `<div class="${cls}"><span class="k">${I[ic]}${label}</span><b>${val}</b><small>${sub}</small></div>`;
-    let html = `<div class="daytop"><div class="row"><h3>Tag ${k} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Longos Vorgaben</span>` : '<span class="chip warn">knapp neben Longos Vorgaben</span>'}</div>
+    let html = `<div class="daytop"><div class="row"><h3>Tag ${k} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Prof. Dr. Longos Vorgaben</span>` : '<span class="chip warn">knapp neben Prof. Dr. Longos Vorgaben</span>'}</div>
       <div class="vs">
-        ${vs('kcal', 'kcal', 'Kalorien', `${fmt(n.kcal)} kcal`, `Ziel ${fmt(c.target)} · Longo ${c.ref.kcal}`)}
-        ${vs('protein', 'protein', 'Eiweiß', `${fmt(n.protein)} g`, `${fmt(c.shares.protein)} % · Longo ${c.ref.protein} %`)}
-        ${vs('fat', 'fat', 'Fett', `${fmt(n.fat)} g`, `${fmt(c.shares.fat)} % · Longo ${c.ref.fat} %`)}
+        ${vs('kcal', 'kcal', 'Kalorien', `${fmt(n.kcal)} kcal`, `Ziel ${fmt(c.target)} · Prof. Dr. Longo ${c.ref.kcal}`)}
+        ${vs('protein', 'protein', 'Eiweiß', `${fmt(n.protein)} g`, `${fmt(c.shares.protein)} % · Prof. Dr. Longo ${c.ref.protein} %`)}
+        ${vs('fat', 'fat', 'Fett', `${fmt(n.fat)} g`, `${fmt(c.shares.fat)} % · Prof. Dr. Longo ${c.ref.fat} %`)}
         ${vs('oil', 'oil', 'davon Öl', `${fmt(n.oil)} g`, `ca. ${fmt(n.oil / 4.6)} TL`)}
-        ${vs('carbs', 'carbs', 'Kohlenhydrate', `${fmt(n.carbs)} g`, `${fmt(c.shares.carbs)} % · Longo ${c.ref.carbs} %`)}
+        ${vs('carbs', 'carbs', 'Kohlenhydrate', `${fmt(n.carbs)} g`, `${fmt(c.shares.carbs)} % · Prof. Dr. Longo ${c.ref.carbs} %`)}
       </div>
       <div class="mbar" aria-hidden="true"><i class="p" style="width:${c.shares.protein}%"></i><i class="f" style="width:${c.shares.fat}%"></i><i class="c" style="width:${c.shares.carbs}%"></i></div>
       <p class="muted small">${I.water} Dazu über den Tag reichlich Wasser oder ungesüßten Tee.</p></div>`;

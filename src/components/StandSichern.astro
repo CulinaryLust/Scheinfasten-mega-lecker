@@ -7,7 +7,7 @@ import { u } from '../lib/url.js';
   <div class="card wcard backup">
     <div class="stack" style="gap:8px">
       <h2 style="font-size:1.4rem;display:flex;gap:10px;align-items:center"><Icon name="link" />Auf einem anderen Gerät weitermachen</h2>
-      <p class="muted">Mit deinem persönlichen Link nimmst du alles mit: Einträge, Körperdaten, Plan und Kühlschrank. Ganz ohne Konto. Öffne den Link einfach auf dem Handy oder Laptop.</p>
+      <p class="muted">Mit Deinem persönlichen Link nimmst Du alles mit: Einträge, Körperdaten, Plan und Kühlschrank. Ganz ohne Konto. Öffne den Link einfach auf dem Handy oder Laptop.</p>
     </div>
     <div class="nav-btns">
       <button type="button" class="btn" id="bmake"><Icon name="link" />Link erstellen</button>
@@ -18,7 +18,7 @@ import { u } from '../lib/url.js';
         <div class="bline"><input id="blink" type="text" readonly /><button type="button" class="btn soft" id="bcopy"><Icon name="copy" /><span>Kopieren</span></button><button type="button" class="btn soft" id="bshare" hidden>Teilen</button></div>
       </div>
       <div class="bqr" id="bqr"></div>
-      <p class="small muted">Der Link speichert den Stand von jetzt. Trägst du später mehr ein, erstell einfach einen neuen. Deine Daten stehen nur im Link selbst und werden nicht an uns geschickt. Gib ihn nur weiter, wenn die andere Person deine Einträge sehen darf.</p>
+      <p class="small muted">Der Link speichert den Stand von jetzt. Trägst Du später mehr ein, erstell einfach einen neuen. Deine Daten stehen nur im Link selbst und werden nicht an uns geschickt. Gib ihn nur weiter, wenn die andere Person Deine Einträge sehen darf.</p>
     </div>
     <p class="err" id="berr" role="alert" hidden></p>
   </div>
@@ -72,7 +72,7 @@ import { u } from '../lib/url.js';
       qr.innerHTML = '';
       try {
         const q = qrcode(0, 'L'); q.addData(url); q.make();
-        qr.innerHTML = q.createSvgTag({ cellSize: 4, margin: 2, scalable: true, alt: 'QR-Code mit deinem Link' } as any);
+        qr.innerHTML = q.createSvgTag({ cellSize: 4, margin: 2, scalable: true, alt: 'QR-Code mit Deinem Link' } as any);
       } catch { qr.innerHTML = ''; } // zu lang für einen QR-Code: der Link reicht
       share.hidden = !navigator.share;
       out.hidden = false;

@@ -2085,7 +2085,7 @@
    "Kartoffeln mit dem Bärlauchöl mischen.",
    "Spargel mit Zitronensaft beträufeln, salzen, pfeffern und mit den Kartoffeln anrichten."
   ],
-  "tip": "Außerhalb der Bärlauchsaison nimmst du Basilikum und eine halbe Knoblauchzehe.",
+  "tip": "Außerhalb der Bärlauchsaison nimmst Du Basilikum und eine halbe Knoblauchzehe.",
   "own": false,
   "season": [
    "Frühling"
@@ -2450,7 +2450,7 @@
   "slot": "snack",
   "minutes": 15,
   "image": "muhammara",
-  "teaser": "Der syrische Lieblingsdip: süß, rauchig, leicht scharf. Macht aus Gemüsesticks einen Snack, auf den du dich freust.",
+  "teaser": "Der syrische Lieblingsdip: süß, rauchig, leicht scharf. Macht aus Gemüsesticks einen Snack, auf den Du Dich freust.",
   "ingredients": [
    {
     "name": "Rote Paprika",
@@ -2513,7 +2513,7 @@
   "slot": "main",
   "minutes": 35,
   "image": "harissa-karotten",
-  "teaser": "Feurig, süß und cremig zugleich. Die schnelle Harissa aus Tomatenmark und Gewürzen machst du selbst.",
+  "teaser": "Feurig, süß und cremig zugleich. Die schnelle Harissa aus Tomatenmark und Gewürzen machst Du selbst.",
   "ingredients": [
    {
     "name": "Karotten",

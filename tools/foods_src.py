@@ -5,7 +5,7 @@
 #
 # Ampel: g = passt gut, y = nur kleine Menge (Obergrenze cap in g pro Tag), r = passt nicht ins Scheinfasten.
 # cap: Obergrenze pro Tag in Gramm, die der Rechner nie überschreitet. Die Werte sind Richtwerte dieser Seite,
-# abgeleitet aus Longos Makroverteilung, keine Zahlen aus Longos Protokoll.
+# abgeleitet aus Prof. Dr. Longos Makroverteilung, keine Zahlen aus Prof. Dr. Longos Protokoll.
 # alts: bessere Alternativen (Namen aus dieser Liste). syn: Suchbegriffe.
 
 GROUPS = {
@@ -21,13 +21,13 @@ GROUPS = {
 }
 
 WHY = {
-  'y': 'Eine kleine Menge passt prima, von mehr hält Longos Rezept nichts.',
-  'tier': 'Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.',
+  'y': 'Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.',
+  'tier': 'Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.',
   'milch': 'Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.',
-  'suess': 'Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.',
-  'weissmehl': 'Kostet viele Kalorien und macht kaum satt. Gemüse bringt dir mehr auf den Teller.',
+  'suess': 'Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.',
+  'weissmehl': 'Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.',
   'drink': 'Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.',
-  'eiweiss': 'Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Longo in diesen Tagen niedrig.',
+  'eiweiss': 'Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.',
   'knusper': 'Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.',
 }
 
@@ -139,7 +139,7 @@ f('Leinöl', 'Q160000', 'fett', cap=15, syn='Öl')
 f('Walnussöl', 'Q310000', 'fett', cap=15, syn='Öl')
 f('Sesamöl', 'Q230000', 'fett', syn='Öl')
 f('Kokosöl', 'Q550000', 'fett', light='y', cap=10, syn='Kokosfett', alts='Olivenöl; Rapsöl',
-  why='Besteht überwiegend aus gesättigten Fettsäuren. Longo setzt auf Olivenöl und Nüsse.')
+  why='Besteht überwiegend aus gesättigten Fettsäuren. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.')
 
 # Nüsse und Saaten
 f('Walnusskerne', 'H120100', 'nuss', syn='Walnüsse, Walnuss', piece=('Kern', 5))
@@ -181,7 +181,7 @@ f('Linsen (gegart)', 'H730132', 'huelsen', syn='Linsen, Tellerlinsen, Berglinsen
 f('Kidneybohnen (gegart)', 'H742902', 'huelsen', syn='Kidneybohnen, rote Bohnen', alts='Rote Paprika; Aubergine')
 f('Edamame', 'G750100', 'soja', syn='Sojabohnen', alts='Zuckerschoten; Erbsen (TK)')
 f('Tofu', 'H861000', 'soja', syn='Räuchertofu', alts='Austernpilze; Champignons',
-  why='Pflanzlich, aber sehr eiweißreich. Longos Tage 2 bis 5 sehen nur etwa 9 % Eiweiß vor.')
+  why='Pflanzlich, aber sehr eiweißreich. Prof. Dr. Longos Tage 2 bis 5 sehen nur etwa 9 % Eiweiß vor.')
 
 # Getreide (gelb)
 f('Hirse (gegart)', 'C334032', 'getreide', syn='Hirse', alts='Blumenkohl; Knollensellerie')
@@ -193,7 +193,7 @@ f('Bulgur (gegart)', 'C119132', 'getreide', cap=80, syn='Bulgur', alts='Hirse (g
 f('Couscous (gegart)', 'C119232', 'getreide', cap=80, syn='Couscous', alts='Hirse (gegart); Blumenkohl')
 f('Haferflocken', 'C133000', 'getreide', cap=30, syn='Hafer, Porridge', alts='Leinsamen; Walnusskerne')
 f('Vollkornbrot', 'B121000', 'getreide', cap=40, syn='Brot, Roggenbrot, Dinkelbrot, Vollkorntoast', alts='Gurke; Kohlrabi',
-  why='Eine dünne Scheibe passt an Tag 1. Für Brot sieht Longo sonst kaum Platz vor.')
+  why='Eine dünne Scheibe passt an Tag 1. Für Brot sieht Prof. Dr. Longo sonst kaum Platz vor.')
 
 # Obst (gelb)
 f('Apfel', 'F110100', 'obst', syn='Äpfel', alts='Heidelbeeren; Gurke', piece=('Stück', 150))
@@ -229,7 +229,7 @@ f('Schweinefleisch', 'U541100', 'tier', syn='Schwein, Schnitzel')
 f('Salami', 'W140000', 'tier', syn='Wurst, Aufschnitt')
 f('Kochschinken', 'W424000', 'tier', syn='Schinken')
 f('Lachs', 'T410100', 'tier', syn='Fisch, Räucherlachs', alts='Walnusskerne; Leinöl; Leinsamen',
-  why='Fisch ist tierisches Eiweiß. Omega-3 bekommst du im Scheinfasten aus Walnüssen und Leinöl.')
+  why='Fisch ist tierisches Eiweiß. Omega-3 bekommst Du im Scheinfasten aus Walnüssen und Leinöl.')
 f('Thunfisch', 'T121902', 'tier', syn='Fisch, Thunfischdose', alts='Kichererbsen (gegart); Walnusskerne')
 f('Garnelen', 'T753100', 'tier', syn='Shrimps, Krabben, Scampi', alts='Austernpilze; Champignons')
 f('Eier', 'E111100', 'tier', syn='Ei, Hühnerei, Spiegelei, Rührei', alts='Kichererbsen (gegart); Champignons; Avocado')
@@ -311,7 +311,7 @@ f('Sonnenblumenöl', 'Q320000', 'fett', syn='Öl')
 f('Erdnussöl', 'Q210000', 'fett', syn='Öl')
 f('Traubenkernöl', 'Q330000', 'fett', syn='Öl')
 f('Margarine', 'Q4A4000', 'fett', light='y', cap=10, syn='vegane Margarine, Pflanzenmargarine, Streichfett', alts='Olivenöl; Rapsöl',
-  why='Pflanzlich, aber stark verarbeitet. Longo setzt auf Olivenöl und Nüsse.')
+  why='Pflanzlich, aber stark verarbeitet. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.')
 
 # Nüsse, Saaten, Kokos
 f('Pinienkerne', 'H320100', 'nuss', syn='Pinienkern')
@@ -354,7 +354,7 @@ f('Gemüsesaft', 'G090600', 'getraenk', light='y', cap=200, syn='Tomatensaft, M�
   why='Ein Glas passt, im Saft fehlt aber die Sättigung vom ganzen Gemüse.')
 f('Wasser', 'N110000', 'getraenk', cap=3000, syn='Trinkwasser, Leitungswasser')
 f('Mineralwasser', 'N128000', 'getraenk', cap=3000, syn='Sprudel, Sprudelwasser, stilles Wasser')
-# Schwarzer und grüner Tee: Longos Buch nennt laut Sekundärquellen ungesüßten Tee ohne Einschränkung auf Kräutertee.
+# Schwarzer und grüner Tee: Prof. Dr. Longos Buch nennt laut Sekundärquellen ungesüßten Tee ohne Einschränkung auf Kräutertee.
 # Die Koffeingrenze wie bei Kaffee ist unsere Ableitung.
 f('Grüner Tee', 'N610100', 'getraenk', light='y', cap=250, syn='Grüntee, Matcha', alts='Kräutertee',
   why='Ungesüßt passt eine Tasse. Enthält Koffein, deshalb am selben Tag lieber Tee oder Kaffee, nicht beides.')
@@ -371,7 +371,7 @@ f('Knäckebrot mit Saaten', 'B6A5100', 'knusper', syn='Dinkelknäcke, Saatenknä
 f('Popcorn', 'C533000', 'knusper', cap=15, syn='Popcorn ungesüßt, Puffmais',
   why='Ungesüßt und selbst gepoppt ein guter Knabberersatz. Eine kleine Schale reicht.')
 f('Pumpernickel', 'B780500', 'getreide', cap=40, syn='Schwarzbrot', alts='Knäckebrot; Gurke',
-  why='Eine dünne Scheibe passt an Tag 1. Für Brot sieht Longo sonst kaum Platz vor.')
+  why='Eine dünne Scheibe passt an Tag 1. Für Brot sieht Prof. Dr. Longo sonst kaum Platz vor.')
 f('Amaranth (gegart)', 'C335032', 'getreide', syn='Amaranth', alts='Hirse (gegart); Blumenkohl')
 f('Grünkern (gegart)', 'C311032', 'getreide', syn='Grünkern', alts='Hirse (gegart); Blumenkohl')
 f('Dinkel (gegart)', 'C236032', 'getreide', syn='Dinkel, Dinkelreis, Ebly', alts='Hirse (gegart); Blumenkohl')
@@ -441,9 +441,9 @@ f('Kefir', 'M130300', 'milch', syn='Ayran, Dickmilch', alts='Mandeldrink ungesü
 f('Buttermilch', 'M150000', 'milch', syn='Molke', alts='Mandeldrink ungesüßt')
 
 
-# Obergrenze je Lebensmittel und Tag (eigene Regel der Seite, Longo nennt keine Mengen pro Lebensmittel):
+# Obergrenze je Lebensmittel und Tag (eigene Regel der Seite, Prof. Dr. Longo nennt keine Mengen pro Lebensmittel):
 # Ein einzelnes Lebensmittel darf höchstens die Hälfte des Zucker- bzw. Eiweißbudgets von Tag 2 bis 5 belegen,
-# damit für den Rest des Tages Platz bleibt. Budget Tag 2 bis 5: 725 kcal, davon 9 % Eiweiß (Longo) und
+# damit für den Rest des Tages Platz bleibt. Budget Tag 2 bis 5: 725 kcal, davon 9 % Eiweiß (Prof. Dr. Longo) und
 # höchstens 15 % Zucker (eigene Regel). Dazu kommt die Portionsgrenze der Gruppe bzw. des Eintrags (cap).
 DAY_KCAL = 725
 PROTEIN_BUDGET = DAY_KCAL * 0.09 / 4   # 16,3 g
@@ -469,7 +469,7 @@ def limit(cap, n):
 
 def bls_table():
     """Nährwerte je 100 g als (kcal, Eiweiß, Fett, Kohlenhydrate gesamt, Zucker, Ballaststoffe) für alle Einträge mit BLS-Code.
-    Kohlenhydrate gesamt = verfügbare Kohlenhydrate + Ballaststoffe, wie in den bisherigen Daten und in Longos US-Quellen."""
+    Kohlenhydrate gesamt = verfügbare Kohlenhydrate + Ballaststoffe, wie in den bisherigen Daten und in Prof. Dr. Longos US-Quellen."""
     import json, os
     b = json.load(open(os.path.join(os.path.dirname(__file__), 'bls_values.json')))
     out = {}

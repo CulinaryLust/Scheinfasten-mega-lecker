@@ -1,11 +1,11 @@
-// Affiliate-Konfiguration. Hier trägst du deine Partner-IDs ein, sobald die Konten stehen.
+// Affiliate-Konfiguration. Hier trägst Du Deine Partner-IDs ein, sobald die Konten stehen.
 // Alle Links werden automatisch als „Anzeige“ gekennzeichnet und mit rel="sponsored" ausgegeben.
 // Die Seite zu Krebs zeigt grundsätzlich keine Affiliate-Links und keine Werbung.
 
-/** Amazon PartnerNet: deine Tracking-ID, z. B. „scheinfasten-21“. Leer = Links ohne Provision. */
+/** Amazon PartnerNet: Deine Tracking-ID, z. B. „scheinfasten-21“. Leer = Links ohne Provision. */
 export const AMAZON_TAG = '';
 
-/** ProLon (Partnerprogramm über Refersion oder Awin): dein persönlicher Partnerlink. */
+/** ProLon (Partnerprogramm über Refersion oder Awin): Dein persönlicher Partnerlink. */
 export const PROLON_LINK = 'https://prolon.eu/de/';
 
 /** Preis laut Herstellerseite, zuletzt geprüft am 03.11.2026. Bitte bei Änderungen anpassen. */
@@ -23,7 +23,7 @@ export function amazonUrl(p) {
 }
 
 // Produkte. Texte bewusst ohne Gesundheitsversprechen (HWG, Health-Claims-Verordnung).
-// asin: optional, wenn du ein konkretes Produkt empfehlen willst. search: Suchbegriff als Fallback.
+// asin: optional, wenn Du ein konkretes Produkt empfehlen willst. search: Suchbegriff als Fallback.
 export const PRODUCTS = {
   waage: { group: 'kueche', icon: 'scale', title: 'Digitale Küchenwaage auf 0,1 g', why: 'Beim Scheinfasten zählt jedes Gramm Öl und Nuss. Eine Feinwaage macht die Mengen aus dem Planer exakt.', search: 'Küchenwaage 0,1 g digital' },
   loeffel: { group: 'kueche', icon: 'oil', title: 'Messlöffel-Set', why: 'Für Öl, Tahin und Gewürze, wenn die Waage gerade nicht griffbereit ist.', search: 'Messlöffel Set Edelstahl' },
@@ -41,7 +41,7 @@ export const PRODUCTS = {
   miso: { group: 'vorrat', icon: 'pot', title: 'Helle Misopaste', why: 'Gibt Brühen in Sekunden einen tiefen, herzhaften Geschmack.', search: 'helle Misopaste Bio' },
   buch_longo: { group: 'buch', icon: 'book', title: 'Prof. Dr. Valter Longo: Iss dich jung', why: 'Das Buch des Erfinders. Erklärt die Forschung hinter dem Scheinfasten aus erster Hand.', search: 'Valter Longo Iss dich jung' },
   buch_michalsen: { group: 'buch', icon: 'book', title: 'Andreas Michalsen: Scheinfasten, mein Masterplan', why: 'Der Berliner Fastenmediziner mit Plänen für mehrere Kuren.', search: 'Michalsen Scheinfasten mein Masterplan' },
-  buch_gu: { group: 'buch', icon: 'book', title: 'GU: Scheinfasten, Das Rezeptbuch', why: 'Weitere vegane Rezepte, drei pro Tag, wenn du Abwechslung suchst.', search: 'Scheinfasten Das Rezeptbuch GU' },
+  buch_gu: { group: 'buch', icon: 'book', title: 'GU: Scheinfasten, Das Rezeptbuch', why: 'Weitere vegane Rezepte, drei pro Tag, wenn Du Abwechslung suchst.', search: 'Scheinfasten Das Rezeptbuch GU' },
 };
 
 export const GROUPS = [
