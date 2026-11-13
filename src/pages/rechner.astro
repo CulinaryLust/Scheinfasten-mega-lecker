@@ -47,6 +47,7 @@ import { pick } from '../data/affiliate.js';
           <div class="seg five" id="days">
             {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small></span></label>)}
           </div>
+          <p class="small muted daylegend" aria-hidden="true"><span><i class="lu"></i>auf dem Weg</span><span><i class="lh"></i>Ziel getroffen</span><span><i class="lo"></i>drüber</span></p>
           <p class="small muted" id="dayhint" aria-live="polite"></p>
         </div>
         <p class="err" id="err1" role="alert" hidden></p>

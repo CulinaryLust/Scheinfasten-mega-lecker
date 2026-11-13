@@ -5,6 +5,7 @@ import RecipeCard from '../components/RecipeCard.astro';
 import FastCompare from '../components/FastCompare.astro';
 import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
+import RechnerTeaser from '../components/RechnerTeaser.astro';
 import { RECIPES } from '../lib/nutrition.js';
 import { PROLON_PRICE } from '../data/affiliate.js';
 import { u, webp } from '../lib/url.js';
@@ -26,7 +27,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
       </ul>
       <div class="ctas">
         <a class="btn" href={u('planer/')}><Icon name="calendar" />Gratis 5-Tage-Plan erstellen</a>
-        <a class="btn ghost" href={u('rechner/')}>Zum Rechner</a>
+        <a class="btn ghost" href={u('rechner/')}><Icon name="scale" />Zum Rechner</a>
       </div>
     </div>
   </section>
@@ -37,6 +38,8 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
     <span><Icon name="leaf" />100 % pflanzlich</span>
     <span><Icon name="pot" />Frisch gekocht statt Fertigpaket</span>
   </div></div>
+
+  <RechnerTeaser />
 
   <FastCompare tint compact />
 

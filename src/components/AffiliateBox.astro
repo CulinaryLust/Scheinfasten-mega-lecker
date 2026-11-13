@@ -15,24 +15,36 @@ const { items, title = 'Das hilft dabei', lead, compact = false } = Astro.props;
   <ul>
     {items.map((p) => (
       <li>
-        <span class="ic" set:html={icon(p.icon || 'cart', 'i')} />
+        <span class="ph"><img src={u(`img/produkte/${p.img || p.key}.jpg`)} alt="" loading="lazy" width="600" height="450" /><span class="ic" set:html={icon(p.icon || 'cart', 'i')} /></span>
         <span class="tx"><b>{p.title}</b><span class="muted small">{p.why}</span></span>
         <a class="btn small soft" href={amazonUrl(p)} target="_blank" rel="sponsored nofollow noopener" data-goatcounter-click={`partner-amazon-${p.key || "produkt"}`} data-goatcounter-title={p.title}>Bei Amazon<span class="sr-only"> ansehen: {p.title}</span></a>
       </li>
     ))}
   </ul>
-  <p class="muted tiny">Affiliate-Links: Kaufst Du darüber, erhalten wir eine kleine Provision. Für Dich bleibt der Preis gleich. <a href={u('transparenz/')}>Mehr dazu</a></p>
+  <p class="muted tiny">Affiliate-Links: Kaufst Du darüber, erhalten wir eine kleine Provision. Für Dich bleibt der Preis gleich. Fotos sind Symbolbilder. <a href={u('transparenz/')}>Mehr dazu</a></p>
 </aside>
 <style>
-  .aff { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; display: grid; gap: 12px; }
+  .aff { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; display: grid; gap: 14px; }
   .aff-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .aff h2 { font-size: 1.35rem; }
   .ad { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; }
-  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-  li { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
-  li:last-child { border-bottom: 0; }
-  .ic { width: 40px; height: 40px; border-radius: 12px; background: var(--band); color: var(--green); display: grid; place-items: center; }
-  .tx { display: grid; gap: 2px; min-width: 0; }
-  @media (max-width: 560px) { li { grid-template-columns: 40px minmax(0, 1fr); } li .btn { grid-column: 2; justify-self: start; } }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  li { display: grid; grid-template-rows: auto 1fr auto; gap: 10px; padding: 0 0 14px; border-radius: 16px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
+  li:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .ph { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--band); }
+  .ph img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+  li:hover .ph img { transform: scale(1.05); }
+  .ic { position: absolute; left: 10px; bottom: 10px; width: 34px; height: 34px; border-radius: 10px; background: var(--glass-strong); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); color: var(--green); display: grid; place-items: center; }
+  .tx { display: grid; gap: 4px; min-width: 0; padding-inline: 14px; align-content: start; }
+  .tx b { line-height: 1.25; }
+  li .btn { margin-inline: 14px; background: var(--tomato); color: var(--on-tomato); }
+  li .btn:hover { background: var(--tomato-d); }
+  .compact ul { grid-template-columns: 1fr; gap: 10px; }
+  .compact li { grid-template-columns: 96px minmax(0, 1fr); grid-template-rows: auto auto; padding: 0; gap: 0 12px; }
+  .compact .ph { grid-row: 1 / 3; aspect-ratio: auto; height: 100%; min-height: 96px; }
+  .compact .ic { display: none; }
+  .compact .tx { padding: 10px 12px 4px 0; }
+  .compact li .btn { margin: 4px 12px 10px 0; justify-self: start; }
   .tiny { font-size: .78rem; }
+  @media (prefers-reduced-motion: reduce) { li, .ph img { transition: none; } }
 </style>

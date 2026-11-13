@@ -39,9 +39,9 @@ export const PRODUCTS = {
   leinsamen: { group: 'vorrat', icon: 'herb', title: 'Leinsamen', why: 'Für die knusprigen Leinsamen-Cracker.', search: 'Leinsamen Bio' },
   tahin: { group: 'vorrat', icon: 'oil', title: 'Tahin', why: 'Für Hummus-Bowl und Dressings.', search: 'Tahin Bio' },
   miso: { group: 'vorrat', icon: 'pot', title: 'Helle Misopaste', why: 'Gibt Brühen in Sekunden einen tiefen, herzhaften Geschmack.', search: 'helle Misopaste Bio' },
-  buch_longo: { group: 'buch', icon: 'book', title: 'Prof. Dr. Valter Longo: Iss dich jung', why: 'Das Buch des Erfinders. Erklärt die Forschung hinter dem Scheinfasten aus erster Hand.', search: 'Valter Longo Iss dich jung' },
-  buch_michalsen: { group: 'buch', icon: 'book', title: 'Andreas Michalsen: Scheinfasten, mein Masterplan', why: 'Der Berliner Fastenmediziner mit Plänen für mehrere Kuren.', search: 'Michalsen Scheinfasten mein Masterplan' },
-  buch_gu: { group: 'buch', icon: 'book', title: 'GU: Scheinfasten, Das Rezeptbuch', why: 'Weitere vegane Rezepte, drei pro Tag, wenn Du Abwechslung suchst.', search: 'Scheinfasten Das Rezeptbuch GU' },
+  buch_longo: { group: 'buch', img: 'buch', icon: 'book', title: 'Prof. Dr. Valter Longo: Iss dich jung', why: 'Das Buch des Erfinders. Erklärt die Forschung hinter dem Scheinfasten aus erster Hand.', search: 'Valter Longo Iss dich jung' },
+  buch_michalsen: { group: 'buch', img: 'buch', icon: 'book', title: 'Andreas Michalsen: Scheinfasten, mein Masterplan', why: 'Der Berliner Fastenmediziner mit Plänen für mehrere Kuren.', search: 'Michalsen Scheinfasten mein Masterplan' },
+  buch_gu: { group: 'buch', img: 'buch', icon: 'book', title: 'GU: Scheinfasten, Das Rezeptbuch', why: 'Weitere vegane Rezepte, drei pro Tag, wenn Du Abwechslung suchst.', search: 'Scheinfasten Das Rezeptbuch GU' },
 };
 
 export const GROUPS = [

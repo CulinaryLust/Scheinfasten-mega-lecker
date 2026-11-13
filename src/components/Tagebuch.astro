@@ -85,6 +85,37 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
   .rcard h3 { font-size: 1.1rem; }
   .rcard h3 a { color: inherit; }
   .rcard p { font-size: .88rem; margin: 0; }
+
+  /* Tagesknöpfe: Füllstand und Farbe nach gegessenen Kalorien */
+  #days label > span { position: relative; overflow: hidden; isolation: isolate; transition: color .5s var(--ease), border-color .5s var(--ease), background-color .5s var(--ease), box-shadow .5s var(--ease), transform .3s var(--ease); }
+  #days label > span::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--p, 0%); z-index: -1; background: var(--tone, transparent); border-radius: inherit; transition: height .9s var(--ease), background-color .6s var(--ease); }
+  #days label:hover > span { transform: translateY(-2px); }
+  #days [data-st="under"] { --tone: color-mix(in srgb, color-mix(in oklab, var(--green) var(--u), var(--sun)) 42%, transparent); }
+  #days [data-st="over"] { --tone: color-mix(in srgb, color-mix(in oklab, var(--bad) var(--o), var(--sun)) 55%, transparent); border-color: color-mix(in oklab, var(--bad) var(--o), var(--sun)); }
+  #days [data-st="hit"] { --tone: var(--green); border-color: var(--green); color: var(--bg); }
+  #days [data-st="hit"] small { color: var(--bg); opacity: .9; }
+  #days [data-st="under"] small, #days [data-st="over"] small { color: var(--fg); opacity: .8; }
+  #days [data-st="hit"] small::before { content: "✓ "; font-weight: 800; }
+  #days input:checked + [data-st] { color: var(--fg); box-shadow: 0 0 0 2px var(--fg) inset; }
+  #days input:checked + [data-st="hit"] { color: var(--bg); box-shadow: 0 0 0 2px var(--bg) inset, 0 0 0 2px var(--green); }
+  #days input:checked + [data-st] small { color: inherit; }
+  #days .flash { animation: dayglow 1.1s var(--ease); }
+  #days .flash::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .7) 50%, transparent 70%); transform: translateX(-120%); animation: daysheen .9s .15s ease-out forwards; }
+  @keyframes dayglow {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 60%, transparent); }
+    30% { transform: scale(1.09); box-shadow: 0 0 0 8px color-mix(in srgb, var(--green) 25%, transparent), 0 0 30px 6px color-mix(in srgb, var(--sun) 65%, transparent); filter: brightness(1.2); }
+    100% { transform: scale(1); box-shadow: 0 0 0 14px transparent; filter: none; }
+  }
+  @keyframes daysheen { to { transform: translateX(120%); } }
+  .daylegend { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+  .daylegend i { display: inline-block; width: 22px; height: 10px; border-radius: 99px; vertical-align: middle; margin-right: 5px; }
+  .daylegend .lu { background: linear-gradient(90deg, color-mix(in srgb, var(--sun) 55%, transparent), color-mix(in srgb, var(--green) 55%, transparent)); }
+  .daylegend .lh { background: var(--green); }
+  .daylegend .lo { background: linear-gradient(90deg, var(--sun), var(--bad)); }
+  @media (prefers-reduced-motion: reduce) {
+    #days label > span, #days label > span::before { transition: none; }
+    #days .flash, #days .flash::after { animation: none; }
+  }
 </style>
 
 <script>
@@ -226,6 +257,24 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
     render();
   });
 
+  // Tagesknöpfe einfärben: darunter verläuft die Farbe von Gelb nach Grün, getroffen (±5 %) leuchtet der Knopf kurz auf und bleibt grün, darüber wird er orange bis rot.
+  const HIT = 0.05;
+  const lastState: Record<number, string> = {};
+  let firstPaint = true;
+  function paintDay(span: HTMLElement, d: number, r: number | null) {
+    const st = r === null ? '' : Math.abs(r - 1) <= HIT ? 'hit' : r < 1 ? 'under' : 'over';
+    span.dataset.st = st;
+    span.style.setProperty('--p', st === 'under' ? `${Math.max(6, Math.min(100, r! * 100)).toFixed(1)}%` : st ? '100%' : '0%');
+    span.style.setProperty('--u', st === 'under' ? `${Math.round(Math.min(100, r! * 100))}%` : '0%');
+    span.style.setProperty('--o', st === 'over' ? `${Math.round(Math.min(1, (r! - 1 - HIT) / 0.25) * 100)}%` : '0%');
+    span.title = st === 'hit' ? 'Kalorienziel getroffen' : st === 'under' ? `${fmt(r! * 100)} % vom Kalorienziel` : st === 'over' ? `${fmt((r! - 1) * 100)} % über dem Kalorienziel` : '';
+    if (st === 'hit' && lastState[d] !== 'hit' && !firstPaint) {
+      span.classList.remove('flash'); void span.offsetWidth; span.classList.add('flash');
+      span.addEventListener('animationend', () => span.classList.remove('flash'), { once: true });
+    }
+    lastState[d] = st;
+  }
+
   const g = (x: number) => fmt(x, x < 10 ? 1 : 0);
   function bar(b: any) {
     const unit = b.key === 'kcal' ? 'kcal' : 'g';
@@ -272,8 +321,11 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
       if (!el) continue;
       const t = targets(d === 1 ? 1 : 2, inp.p.f);
       const es = state.logs[String(d)] || [];
-      el.textContent = es.length ? `${fmt(status(es, t, d).sum.kcal)} / ${fmt(t.kcal)} kcal` : `ca. ${fmt(t.kcal)} kcal`;
+      const eaten = es.length ? status(es, t, d).sum.kcal : 0;
+      el.textContent = es.length ? `${fmt(eaten)} / ${fmt(t.kcal)} kcal` : `ca. ${fmt(t.kcal)} kcal`;
+      paintDay(el.parentElement as HTMLElement, d, es.length ? eaten / t.kcal : null);
     }
+    firstPaint = false;
     const fromPlan = pf.dataset.fromPlan;
     dayhint.textContent = fromPlan ? `Laut Deinem Plan ist heute Tag ${fromPlan}.` : '';
     if (!inp) { res.innerHTML = '<div class="alert info"><p>Trag oben kurz Alter, Größe und Gewicht ein, dann rechnen wir Dein Tageslimit aus.</p></div>'; return; }
