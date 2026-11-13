@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readdirSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { join } from 'node:path';
 import { DOMAIN, SITE, BASE } from './src/data/site.js';
 
 // Adresse und Pfad kommen aus src/data/site.js. Bei eigener Domain schreibt der Build die .htaccess für ALL-INKL (Apache):
-// HTTPS erzwingen, www auf die Domain ohne www umleiten, eigene 404-Seite, Cache (Bilder 7 Tage, weil ihre Namen gleich bleiben).
+// HTTPS erzwingen, www auf die Domain ohne www umleiten, eigene 404-Seite, Cache (Bilder 7 Tage; ersetzte Fotos lädt der Browser trotzdem sofort neu, weil jede Bildadresse ?v=<Version> trägt).
 const htaccess = (d) => `# Wird beim Build aus src/data/site.js erzeugt, nicht von Hand ändern.
 ErrorDocument 404 /404.html
 Options -Indexes
@@ -35,7 +37,17 @@ const hosting = {
   },
 };
 
+// Bildversion: Prüfsumme über alle Fotos in public/img. Ändert sich ein Foto, ändert sich die Adresse (?v=…),
+// und Browser laden es neu statt eine alte Fassung aus dem Zwischenspeicher zu zeigen.
+const imgVersion = (() => {
+  const h = createHash('md5');
+  const walk = (d) => { for (const e of readdirSync(d, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) { const p = join(d, e.name); if (e.isDirectory()) walk(p); else { h.update(p); h.update(readFileSync(p)); } } };
+  walk(new URL('./public/img', import.meta.url).pathname);
+  return h.digest('hex').slice(0, 8);
+})();
+
 export default defineConfig({
+  vite: { define: { 'import.meta.env.IMG_V': JSON.stringify(imgVersion) } },
   site: SITE,
   base: BASE,
   trailingSlash: 'ignore',
