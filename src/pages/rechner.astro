@@ -12,14 +12,15 @@ import Tagebuch from '../components/Tagebuch.astro';
 import StandSichern from '../components/StandSichern.astro';
 import Erinnerung from '../components/Erinnerung.astro';
 import Rotator from '../components/Rotator.astro';
+import ModeNav from '../components/ModeNav.astro';
 import { pick } from '../data/affiliate.js';
 ---
 <Base title="Scheinfasten-Rechner: Kalorien und Nährwerte pro Tag" active="rechner" description="Trag ein, was Du heute schon gegessen hast, und sieh sofort, wie viel von Deinem Scheinfasten-Tag nach Prof. Dr. Valter Longo noch übrig ist. Mit Vorschlägen, wie Du den Rest lecker füllst.">
   <div class="in page-head split">
     <div class="ph-text">
       <p class="kicker">Scheinfastenrechner</p>
-      <h1>Wie viel geht heute noch?</h1>
-      <p class="lead">Trag ein, was Du gegessen hast, und sieh, wie viel heute noch geht. Triffst Du Dein Ziel, leuchtet der Tag grün auf.</p>
+      <h1 id="rh">Wie viel geht heute noch?</h1>
+      <p class="lead" id="rl">Trag ein, was Du gegessen hast, und sieh, wie viel heute noch geht. Triffst Du Dein Ziel, leuchtet der Tag grün auf.</p>
     </div>
     <Rotator images={[
       { src: 'img/menschen/paar-kocht.jpg', alt: 'Paar kocht gemeinsam mit frischem Gemüse' },
@@ -28,6 +29,7 @@ import { pick } from '../data/affiliate.js';
       { src: 'img/rechner/carpaccio.jpg', alt: '' },
     ]} />
   </div>
+  <ModeNav current="live" />
 
   <section class="in calc" id="prof">
     <form id="pf" class="card wcard" novalidate>
@@ -88,18 +90,11 @@ import { pick } from '../data/affiliate.js';
     </script>
   </section>
 
-  <div class="in calc tabsw">
-    <div class="tabs" role="tablist" aria-label="Rechner">
-      <button type="button" role="tab" id="tab-log" aria-controls="pane-log" aria-selected="true"><Icon name="check" />Was habe ich gegessen?</button>
-      <button type="button" role="tab" id="tab-cook" aria-controls="pane-cook" aria-selected="false" tabindex="-1"><Icon name="pot" />Was koche ich noch?</button>
-    </div>
-  </div>
-
-  <div id="pane-log" role="tabpanel" aria-labelledby="tab-log">
+  <div id="pane-log">
     <Tagebuch />
   </div>
 
-  <div id="pane-cook" role="tabpanel" aria-labelledby="tab-cook" hidden>
+  <div id="pane-cook" hidden>
   <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
     <form id="f" class="card wcard" novalidate>
       <fieldset class="block">
@@ -125,7 +120,7 @@ import { pick } from '../data/affiliate.js';
       </fieldset>
 
       <p class="err" id="err3" role="alert" hidden></p>
-      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="submit" class="btn">Jetzt ausrechnen <Icon name="arrow" /></button></div>
+      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="submit" class="btn">Jetzt daraus Rezepte erstellen <Icon name="arrow" /></button></div>
     </form>
   </section>
 
@@ -221,7 +216,7 @@ import { pick } from '../data/affiliate.js';
 
 <script>
   import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
-  import { fmt, PLAN } from '../lib/nutrition.js';
+  import { fmt, PLAN, amountLabel } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
   import { thumb } from '../lib/url.js';
   const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
@@ -364,6 +359,7 @@ import { pick } from '../data/affiliate.js';
     const adds = res ? suggestAdditions(ok, t, res) : [];
     const dayLabel = `Tag ${v.day}`;
 
+    let tableHtml = '';
     let h = notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : '';
     // Kopf mit Abgleich
     if (res && vd) {
@@ -393,8 +389,7 @@ import { pick } from '../data/affiliate.js';
           ${adds.length ? `<p>Tipp eins davon an, wir rechnen sofort neu:</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div>`;
       }
       // Mengentabelle
-      h += `<div class="stack"><h2 style="font-size:1.6rem">So viel darfst Du heute essen</h2>
-        <p class="muted small">Mengen für den ganzen Tag. Ändere ruhig eine Zahl, wir passen den Rest an.</p>
+      tableHtml = `<details class="stack plain amountsbox"><summary><b>Deine Tagesmengen im Detail</b> <span class="muted small">(ändere ruhig eine Zahl, wir passen den Rest an)</span></summary>
         <div class="tw"><table class="amounts"><thead><tr><th>Lebensmittel</th><th>Menge pro Tag</th><th>kcal</th></tr></thead>
         ${groupByCat(res.items, (it: any) => BY_NAME[it.name]).map((c) => `<tbody><tr class="cat"><th colspan="3" scope="colgroup">${I[c.icon]}${c.label}</th></tr>${c.items.map((it: any) => {
           const f = BY_NAME[it.name];
@@ -404,7 +399,7 @@ import { pick } from '../data/affiliate.js';
           const input = f.n[0] === 0 ? '' : `<span class="gcell"><input type="number" inputmode="numeric" min="0" max="${f.cap}" step="5" value="${it.g}" data-g="${esc(f.name)}" aria-label="Menge ${esc(f.name)} in Gramm" /> ${unit(f.name)}</span>${it.fixed ? `<button type="button" class="reset" data-free="${esc(f.name)}">zurücksetzen</button>` : ''}`;
           return `<tr class="${it.g === 0 && f.n[0] > 0 ? 'zero' : ''}"><td class="nm"><span class="nmrow">${mac(f.name)}<span>${esc(f.name)} <span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>${piece}${capNote}${zero}</span></span></td><td>${input}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
         }).join('')}</tbody>`).join('')}
-        </table></div></div>`;
+        </table></div></details>`;
       // Gelbe Hinweise
       const yellow = ok.filter((x) => BY_NAME[x.name].light === 'y');
       if (yellow.length) {
@@ -416,30 +411,36 @@ import { pick } from '../data/affiliate.js';
       h += `<div class="stack"><h2 style="font-size:1.6rem">Lieber tauschen</h2><p class="muted small">Diese Lebensmittel heben den Fasteneffekt auf. Mit einem Tipp tauschst Du sie gegen etwas, das genauso gut schmeckt.</p><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}</b>: ${esc(a.why)}</p><p class="small">Probier stattdessen:</p><div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} ${esc(n)}</button>`).join('')}</div></div>`; }).join('')}</div></div>`;
     }
     if (res) {
-      // Gerichte aus den eigenen Zutaten
+      // Gerichte aus den eigenen Zutaten, nach Mahlzeit sortiert
       const meals = buildMeals(res.items);
+      const SLOTS: [string, string][] = [['Mittags', 'Mittagessen'], ['Abends', 'Abendessen'], ['Snack', 'Snack']];
       if (meals.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">Das kochst Du heute</h2>
-          <p class="muted small">Aus Deinen Zutaten, genau auf Deine Tagesmenge berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune.</p>
-          <div class="meals">${meals.map((m) => `<article class="card meal">
-            <div class="meta"><span class="kicker">${m.slot} · ${m.kind}</span><span class="chip ok">${fmt(m.sum.kcal)} kcal</span></div>
+        h += `<div class="stack"><h2 style="font-size:1.6rem">Deine Rezepte für heute</h2>
+          <p class="muted small">Aus Deinen Lebensmitteln, die Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune.</p>
+          ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => `<article class="card meal">
+            <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.sum.kcal)} kcal</span></div>
             <h3>${esc(m.title)}</h3>
             <ul class="ing">${m.items.map((i) => `<li>${mac(i.name)}<span>${amount(i.name, i.g)} ${esc(i.name)}</span></li>`).join('')}</ul>
-            <ol>${m.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
+            <ol>${m.steps.map((st) => `<li>${esc(st)}</li>`).join('')}</ol>
             <p class="small muted">${I.time} etwa ${m.minutes} Minuten</p>
-          </article>`).join('')}</div></div>`;
+          </article>`).join('')}</div>` : ''; }).join('')}</div>`;
       }
-      // Passende Rezepte der Seite
-      const rec = matchRecipes(ok.map((x) => x.name));
+      h += tableHtml;
+      // Passende Rezepte der Seite, je 1 Portion, nach Mahlzeit
+      const rec = matchRecipes(ok.map((x) => x.name), 24);
       if (rec.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">Passt auch: unsere Rezepte</h2>
-          <p class="muted small">Fertig durchgerechnet, mit vielen Deiner Zutaten.</p>
-          <div class="grid">${rec.map((m) => `<a class="card rmatch" href="${base}rezepte/${m.recipe.slug}/">
+        const RS: [string, string][] = [['breakfast', 'Frühstück'], ['main', 'Mittag- und Abendessen'], ['snack', 'Snacks']];
+        const card = (m: any, hidden: boolean) => `<a class="card rmatch" href="${base}rezepte/${m.recipe.slug}/"${hidden ? ' hidden data-more' : ''}>
             <img src="${thumb(base, m.recipe.image)}" alt="" loading="lazy" width="110" height="82" />
             <div class="stack" style="gap:6px"><h3>${esc(m.recipe.title)}</h3>
-            <p><b>Du hast:</b> ${m.hit.map(esc).join(', ')}</p>
-            ${m.miss.length ? `<p class="muted"><b>Es fehlt:</b> ${m.miss.map(esc).join(', ')}</p>` : '<p class="muted">Du hast alles da!</p>'}
-            <p class="small muted">${fmt(m.n.kcal)} kcal pro Portion</p></div></a>`).join('')}</div></div>`;
+            <p class="small muted">1 Portion · ${fmt(m.n.kcal)} kcal · ${m.recipe.minutes} Minuten</p>
+            <ul class="ing small">${m.recipe.ingredients.filter((i: any) => m.hit.includes(i.name)).map((i: any) => `<li>${amountLabel(i.name, i.amount)} ${esc(i.name)}</li>`).join('')}</ul>
+            ${m.miss.length ? `<p class="small tasty">${I.plus} Mit ${m.miss.slice(0, 3).map(esc).join(', ').replace(/, ([^,]*)$/, ' und $1')} wird es noch leckerer.</p>` : '<p class="small tasty">Du hast alles da!</p>'}
+            </div></a>`;
+        h += `<div class="stack"><h2 style="font-size:1.6rem">Unsere Rezepte mit Deinen Zutaten</h2>
+          <p class="muted small">Fertig durchgerechnet, jeweils für 1 Portion.</p>
+          ${RS.map(([k, lbl]) => { const ms = rec.filter((m) => m.recipe.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="grid">${ms.map((m, i) => card(m, i >= 3)).join('')}</div>` : ''; }).join('')}
+          ${RS.some(([k]) => rec.filter((m) => m.recipe.slot === k).length > 3) ? `<button type="button" class="btn soft small" data-more-btn>Weitere Rezepte anzeigen</button>` : ''}</div>`;
       }
     } else if (!red.length) {
       h += `<div class="alert info"><p>Füge oben ein paar Lebensmittel hinzu, dann geht's los.</p></div>`;
@@ -451,6 +452,8 @@ import { pick } from '../data/affiliate.js';
   // Interaktion im Ergebnis
   result.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
+    const mb = t.closest<HTMLElement>('[data-more-btn]');
+    if (mb) { result.querySelectorAll<HTMLElement>('[data-more]').forEach((x) => (x.hidden = false)); mb.remove(); return; }
     const b = t.closest<HTMLElement>('[data-add]');
     if (b) { addFood(b.dataset.add!, b.dataset.replace); return; }
     const fr = t.closest<HTMLElement>('[data-free]');
@@ -471,26 +474,22 @@ import { pick } from '../data/affiliate.js';
 </script>
 
 <script>
-  // Reiter: „Was habe ich gegessen?“ ist Standard, #kochen öffnet den Kühlschrank-Rechner.
-  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.tabs [role="tab"]')];
-  function show(id: string, focus = false) {
-    for (const t of tabs) {
-      const on = t.id === id;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
-      if (on && focus) t.focus();
-    }
-    history.replaceState(null, '', id === 'tab-cook' ? '#kochen' : location.pathname + location.search);
-  }
-  tabs.forEach((t, i) => {
-    t.addEventListener('click', () => show(t.id));
-    t.addEventListener('keydown', (e) => {
-      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-      e.preventDefault();
-      show(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length].id, true);
+  // Bereiche: Live-Tracking ist Standard, #kochen öffnet Do it yourself. Umschalten über die Leiste oben (ModeNav).
+  function show() {
+    const diy = location.hash === '#kochen';
+    document.getElementById('pane-log')!.hidden = diy;
+    document.getElementById('pane-cook')!.hidden = !diy;
+    document.querySelectorAll<HTMLAnchorElement>('.modenav a').forEach((a) => {
+      const on = a.dataset.mode === (diy ? 'diy' : 'live');
+      if (a.dataset.mode !== 'plan') a.toggleAttribute('aria-current', false);
+      if (on) a.setAttribute('aria-current', 'page');
     });
-  });
-  if (location.hash === '#kochen') show('tab-cook');
-  addEventListener('hashchange', () => show(location.hash === '#kochen' ? 'tab-cook' : 'tab-log'));
+    const k = document.getElementById('rk'); const h = document.getElementById('rh'); const l = document.getElementById('rl');
+    if (k && h && l) { h.textContent = diy ? 'Was koche ich daraus?' : 'Wie viel geht heute noch?'; l.textContent = diy ? 'Gib ein, was Du zu Hause hast. Wir machen daraus Rezepte mit berechneten Mengen für Deinen Fastentag.' : 'Trag ein, was Du gegessen hast, und sieh, wie viel heute noch geht. Triffst Du Dein Ziel, leuchtet der Tag grün auf.'; }
+  }
+  document.querySelectorAll<HTMLAnchorElement>('.modenav a:not([data-mode="plan"])').forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault(); history.replaceState(null, '', a.dataset.mode === 'diy' ? '#kochen' : location.pathname + location.search); show();
+  }));
+  addEventListener('hashchange', show);
+  show();
 </script>

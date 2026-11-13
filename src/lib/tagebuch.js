@@ -147,7 +147,7 @@ function err(sum, t) {
  * Rezepte der Seite, die am besten in das Restbudget passen. Probiert halbe, ganze und anderthalb Portionen
  * und nimmt je Rezept die Menge, mit der der Tag Longos Werten am nächsten kommt. Nichts, was die Kalorien sprengt.
  */
-export function fillRecipes(entries, t, limit = 3) {
+export function fillRecipes(entries, t, limit = 3, portions = [0.5, 1, 1.5, 2]) {
   const eaten = totals(expand(entries));
   const left = t.kcal - eaten.kcal;
   if (left < t.kcal * 0.08) return [];
@@ -156,7 +156,7 @@ export function fillRecipes(entries, t, limit = 3) {
   for (const r of RECIPES) {
     if (used.has(r.slug)) continue;
     let best = null;
-    for (const portion of [0.5, 1, 1.5, 2]) {
+    for (const portion of portions) {
       const n = nutrition(r, portion);
       if (n.kcal > left * 1.05) continue;
       const sum = { kcal: eaten.kcal + n.kcal, protein: eaten.protein + n.protein, fat: eaten.fat + n.fat, carbs: eaten.carbs + n.carbs, sugar: eaten.sugar + n.sugar };

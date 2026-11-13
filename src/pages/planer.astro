@@ -8,18 +8,25 @@ import { RECIPES } from '../lib/nutrition.js';
 // Gruppe und Nährwerte nur für Zutaten, die in Rezepten vorkommen (für Kategorien und Makro-Symbole der Einkaufsliste)
 const used = new Set(RECIPES.flatMap((r) => r.ingredients.map((i) => i.name)));
 const foodMeta = Object.fromEntries(foods.filter((f) => used.has(f.name)).map((f) => [f.name, { group: f.group, n: f.n.slice(0, 4) }]));
+// Vorlieben: Gruppen von Zutaten (Muster gegen die Zutatennamen der Rezepte)
+const PREFS = [
+  ['pilze', 'Pilze'], ['huelsen', 'Hülsenfrüchte'], ['kokos', 'Kokos'], ['nuesse', 'Nüsse in Gerichten'], ['aubergine', 'Aubergine'], ['zucchini', 'Zucchini'],
+  ['paprika', 'Paprika'], ['kuerbis', 'Kürbis'], ['kohl', 'Kohl'], ['rotebete', 'Rote Bete'], ['suesskartoffel', 'Süßkartoffel'], ['tomate', 'Tomaten'],
+  ['sesam', 'Sesam und Tahin'], ['koriander', 'Koriander'], ['scharf', 'Scharfes'],
+];
 const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swap', 'check', 'close', 'cart', 'calendar', 'time', 'arrow', 'info', 'water', 'pot', 'leaf', 'nut', 'apple', 'herb', 'cup', 'ban'].map((k) => [k, icon(k)]));
 import AffiliateBox from '../components/AffiliateBox.astro';
 import Erinnerung from '../components/Erinnerung.astro';
 import Rotator from '../components/Rotator.astro';
+import ModeNav from '../components/ModeNav.astro';
 import { pick } from '../data/affiliate.js';
 ---
 <Base title="Scheinfasten-Plan für 5 Tage mit Einkaufsliste" active="planer" description="Persönlicher Scheinfasten-Planer: Rezepte, Mengen und Nährwerte für jeden Tag, abgeglichen mit den Vorgaben von Prof. Dr. Valter Longo.">
   <div class="in page-head split">
     <div class="ph-text">
-      <p class="kicker">Planer</p>
-      <h1>Dein persönlicher 5-Tage-Plan</h1>
-      <p class="muted">Ein paar Angaben, dann steht Dein Plan: jeden Tag leckere Gerichte, auf das Gramm genau nach den Werten von Prof. Dr. Valter Longo berechnet.</p>
+      <p class="kicker">Scheinfastenrechner</p>
+      <h1>Dein fertiger 5-Tage-Plan</h1>
+      <p class="muted">Mit möglichst wenig Aufwand: ein paar Angaben, dann steht Dein Plan. Jeden Tag leckere Gerichte, auf das Gramm genau nach den Vorgaben von Prof. Dr. Valter Longo berechnet, passend zu Deinen Vorlieben.</p>
     </div>
     <Rotator badge="Gemeinsam fasten macht mehr Spaß" images={[
       { src: 'img/menschen/freunde-tisch.jpg', alt: 'Freunde essen gemeinsam Salate am Tisch' },
@@ -28,6 +35,7 @@ import { pick } from '../data/affiliate.js';
       { src: 'img/menschen/schale-gemuese.jpg', alt: '' },
     ]} />
   </div>
+  <ModeNav current="plan" />
 
   <section class="in wizard" id="wizard" data-base={u('')} data-icons={JSON.stringify(icons)} data-foods={JSON.stringify(foodMeta)}>
 
@@ -76,6 +84,9 @@ import { pick } from '../data/affiliate.js';
           ))}
           <p class="muted small" id="others-note" hidden>Jede Person bekommt ihre eigene Portionsgröße. Einkaufsliste und Kochmengen rechnen wir für alle zusammen. Für Mitfastende nehmen wir einen normal aktiven Alltag an.</p>
         </div>
+        <h3 class="sub">Deine Vorlieben <span class="muted small">(freiwillig)</span></h3>
+        <p class="muted small">Tippe einmal für <b>mag ich besonders</b>, zweimal für <b>lieber nicht</b>. Wir tauschen die Gerichte dann passend aus und rechnen alles neu.</p>
+        <div class="prefs" id="prefs">{PREFS.map(([k, l]) => <button type="button" class="pref" data-pref={k} aria-pressed="false"><span class="pi" aria-hidden="true"></span>{l}</button>)}</div>
         <h3 class="sub">Termine</h3>
         <p class="muted small">Gefastet wird immer 5 Tage. Dazu kommen ein Vorbereitungstag davor und ein Übergangstag danach.</p>
         <div class="field"><label for="start" class="lbl">Wann startest Du? (Tag 1)</label><input id="start" name="start" type="date" required /></div>
@@ -166,6 +177,15 @@ import { pick } from '../data/affiliate.js';
   .shop label { display: flex; gap: 10px; padding: 9px 0; cursor: pointer; align-items: center; }
   .shop input { width: 20px; height: 20px; min-height: 0; accent-color: var(--green); }
   .shop input:checked + span { opacity: .45; text-decoration: line-through; }
+  .mtags { display: block; color: var(--muted); font-size: .76rem; }
+  .prefs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pref { display: inline-flex; gap: 6px; align-items: center; border: 1.5px solid var(--line); background: var(--card); color: var(--fg); border-radius: 999px; padding: 7px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+  .pref .pi::before { content: "+"; color: var(--muted); }
+  .pref.like { border-color: var(--green); background: var(--ok-bg); }
+  .pref.like .pi::before { content: "♥"; color: var(--green); }
+  .pref.no { border-color: var(--bad); background: var(--bad-bg); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--bad) 60%, transparent); }
+  .pref.no .pi::before { content: "✕"; color: var(--bad); }
+  .chip.pref-chip { background: var(--ok-bg); color: var(--green); }
   .step h3.sub { font-size: 1.25rem; margin-top: 8px; }
   .nextcyc { margin-top: 16px; }
   .nextcyc ul { margin: 8px 0 0; }
@@ -202,8 +222,27 @@ import { pick } from '../data/affiliate.js';
   const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   (form.start as HTMLInputElement).value = iso(d0);
 
+  const PREF_RX: Record<string, RegExp> = {
+    pilze: /Champignon|Pilz/i, huelsen: /Kichererbsen|Linsen|Bohnen|Erbsen/i, kokos: /Kokos/i, nuesse: /Walnuss|Mandel|Cashew/i,
+    aubergine: /Aubergine/i, zucchini: /Zucchini/i, paprika: /Rote Paprika/i, kuerbis: /Hokkaido/i, kohl: /kohl|Wirsing|Pak Choi/i,
+    rotebete: /Rote Bete/i, suesskartoffel: /Süßkartoffel/i, tomate: /Tomat/i, sesam: /Sesam|Tahin/i, koriander: /Koriander/i, scharf: /Chili|Currypaste|Meerrettich/i,
+  };
+  const hits = (r: any, keys: string[]) => keys.filter((k) => r.ingredients.some((i: any) => PREF_RX[k]?.test(i.name)));
   let state: any = { swaps: {} };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s) state = s; } catch {}
+  state.prefs = state.prefs || { like: [], no: [] };
+  const prefBtns = [...document.querySelectorAll<HTMLButtonElement>('.pref')];
+  const paintPrefs = () => prefBtns.forEach((b) => {
+    const k = b.dataset.pref!; const st = state.prefs.like.includes(k) ? 'like' : state.prefs.no.includes(k) ? 'no' : '';
+    b.classList.toggle('like', st === 'like'); b.classList.toggle('no', st === 'no');
+    b.setAttribute('aria-pressed', String(!!st)); b.title = st === 'like' ? 'mag ich besonders' : st === 'no' ? 'lieber nicht' : '';
+  });
+  prefBtns.forEach((b) => b.addEventListener('click', () => {
+    const k = b.dataset.pref!; const { like, no } = state.prefs;
+    if (like.includes(k)) { like.splice(like.indexOf(k), 1); no.push(k); } else if (no.includes(k)) no.splice(no.indexOf(k), 1); else like.push(k);
+    paintPrefs(); save();
+  }));
+  paintPrefs();
   if (state.inputs) {
     for (const [k, v] of Object.entries(state.inputs)) {
       const el = form.elements.namedItem(k) as any;
@@ -275,17 +314,48 @@ import { pick } from '../data/affiliate.js';
   // Tagesplan inkl. Tauschungen. Variante „Mit Frühstück“ hat eigene Tauschungen, weil die Mahlzeiten andere sind.
   const bf = () => !!state.breakfast && !!PLAN.breakfastDays;
   const swapKey = () => (bf() ? 'swapsBf' : 'swaps');
+  // Grundplan, an die Vorlieben angepasst: Gerichte mit „lieber nicht“ werden getauscht, Lieblingszutaten bevorzugt, solange der Tag passt.
+  const SWAPPABLE = ['main', 'snack', 'breakfast'];
+  let autoKey = ''; let AUTO: Record<number, any[]> = {};
+  function autoPlan() {
+    const key = JSON.stringify([state.prefs, bf()]);
+    if (key === autoKey) return AUTO;
+    autoKey = key; AUTO = {};
+    const { like, no } = state.prefs; const picked = new Set<string>();
+    for (let d = 1; d <= 5; d++) {
+      const list = (bf() ? PLAN.breakfastDays : PLAN.days)[d].map((it: any) => ({ ...it }));
+      list.forEach((it: any, idx: number) => {
+        if (!SWAPPABLE.includes(it.type) || (!like.length && !no.length)) return;
+        const r = BY_SLUG[it.recipe]; const bad = hits(r, no).length > 0; const good = hits(r, like).length > 0;
+        if (!bad && (good || !like.length)) return;
+        const c = candidatesFor(d, list, idx, 1).filter((x: any) => !hits(x.r, no).length && !picked.has(x.r.slug))
+          .map((x: any) => ({ ...x, liked: hits(x.r, like).length }))
+          .sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || (b.liked - a.liked) || a.score - b.score);
+        const best = c[0];
+        if (!best) return;
+        if (bad || (best.liked && best.ok)) { list[idx] = { ...it, recipe: best.r.slug, portion: best.portion, auto: true }; picked.add(best.r.slug); }
+      });
+      AUTO[d] = list;
+    }
+    return AUTO;
+  }
+  function baseDay(day: number) { const a = autoPlan(); return a[day] || (bf() ? PLAN.breakfastDays : PLAN.days)[day]; }
   function items(day: number) {
-    return (bf() ? PLAN.breakfastDays : PLAN.days)[day].map((it: any, idx: number) => {
+    return baseDay(day).map((it: any, idx: number) => {
       const s = state[swapKey()]?.[day]?.[idx];
-      return s ? { ...it, recipe: s.recipe, portion: s.portion, swapped: true } : { ...it };
+      return s ? { ...it, recipe: s.recipe, portion: s.portion, swapped: true, auto: false } : { ...it };
     });
   }
   const total = (list: any[], f: number) => list.reduce((acc, it) => add(acc, nutrition(BY_SLUG[it.recipe], it.portion * f)), ZERO);
   const r5 = (x: number) => Math.round(x * 20) / 20;
 
   function candidates(day: number, idx: number, f: number) {
-    const list = items(day); const cur = list[idx];
+    const { like, no } = state.prefs;
+    return candidatesFor(day, items(day), idx, f, 30).filter((x: any) => !hits(x.r, no).length)
+      .sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || (hits(b.r, like).length - hits(a.r, like).length) || a.score - b.score).slice(0, 8);
+  }
+  function candidatesFor(day: number, list: any[], idx: number, f: number, max = 30) {
+    const cur = list[idx];
     const curK = nutrition(BY_SLUG[cur.recipe], cur.portion).kcal;
     const used = new Set(list.map((x: any) => x.recipe));
     const pool = RECIPES.filter((r: any) => r.slot === cur.type && !used.has(r.slug) && !['nussmix', 'oliven'].includes(r.slug));
@@ -296,7 +366,7 @@ import { pick } from '../data/affiliate.js';
       const sh = c.shares; const ref = c.ref;
       const score = Math.abs(sh.protein - ref.protein) + Math.abs(sh.fat - ref.fat) + Math.abs(sh.carbs - ref.carbs);
       return { r, portion, ok: c.ok, score, kcal: nutrition(r, portion * f).kcal };
-    }).sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || a.score - b.score).slice(0, 8);
+    }).sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || a.score - b.score).slice(0, max);
   }
 
   const addDays = (d: Date, n: number) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
@@ -315,6 +385,7 @@ import { pick } from '../data/affiliate.js';
     // Freundliche Hinweise statt Sperre: der Plan wird immer erstellt.
     const notes: string[] = [];
     if (p.age < 18) notes.push('Du bist unter 18. In diesem Alter wächst der Körper noch, deshalb ist Scheinfasten eher nichts für Dich. Die Rezepte kannst Du natürlich trotzdem nachkochen.');
+    if (state.prefs.no.includes('nuesse')) notes.push('Gerichte mit Nüssen haben wir getauscht. Der Nussmix am Morgen und die Oliven bleiben, weil sie die nötigen Fette liefern. Statt Walnüssen kannst Du dort auch Kürbiskerne nehmen.');
     if (p.age > 70) notes.push('Ab 70 lohnt sich vorher ein kurzes Gespräch mit Deiner Ärztin oder Deinem Arzt.');
     if (p.bmi < 18.5) notes.push('Dein Gewicht ist für Deine Größe eher niedrig. Sprich bitte vorher mit Deiner Ärztin oder Deinem Arzt.');
     result.hidden = false;
@@ -339,7 +410,7 @@ import { pick } from '../data/affiliate.js';
 
     result.innerHTML = `
       <div class="rhead"><div class="stack" style="gap:6px"><p class="kicker">Dein Plan</p><h2>Start am ${dsl(start)}</h2></div>
-        <div class="ctas noprint"><button class="btn soft small" data-edit>Angaben ändern</button><button class="btn soft small" onclick="window.print()">Drucken</button></div></div>
+        <div class="ctas noprint"><button class="btn soft small" data-edit>Angaben ändern</button></div></div>
       <div class="sumbar">
         <div class="stat"><span>Dein Tagesbedarf (ohne Fasten)</span><b>${fmt(p.tdee)} kcal</b></div>
         <div class="stat"><span>Tag 1 (Starttag)</span><b>${fmt(1090 * f)} kcal</b></div>
@@ -403,11 +474,15 @@ import { pick } from '../data/affiliate.js';
     }
     if (k === 7 || k === -7) {
       const tot: Record<string, number> = {};
-      for (let d = 1; d <= 5; d++) for (const it of items(d)) for (const ing of BY_SLUG[it.recipe].ingredients) tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * fAll;
+      const MEAL: Record<string, string> = { Morgens: 'Frühstück', Mittags: 'Mittag', Nachmittags: 'Snack', Abends: 'Abend' };
+      const meals: Record<string, Set<string>> = {};
+      for (let d = 1; d <= 5; d++) for (const it of items(d)) for (const ing of BY_SLUG[it.recipe].ingredients) { tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * fAll; (meals[ing.name] = meals[ing.name] || new Set()).add(MEAL[it.meal] || it.meal); }
+      const ORDER = ['Frühstück', 'Mittag', 'Snack', 'Abend'];
+      const mtags = (n: string) => `<small class="mtags">${[...meals[n]].sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b)).join(' · ')}</small>`;
       return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang${ppl > 1 ? ` · ${ppl} Personen` : ''}</h3><p class="muted small">Mengen ohne Reserve${ppl > 1 ? ', für alle zusammen' : ''}. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
         <p class="small muted maclegend">Hauptnährstoff: <span class="mac carbs">${I.carbs}</span>Kohlenhydrate <span class="mac protein">${I.protein}</span>Eiweiß <span class="mac fat">${I.fat}</span>Fett</p>
         <div class="shopcats">${groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')), ([n]: [string, number]) => FM[n]).map((c) => `<div class="shopcat"><h4>${I[c.icon]}${c.label}</h4>
-        <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
+        <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)} ${mtags(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
     }
     if (k === 8) {
       if (cyc < 2) return `<div class="plain nextcyc"><p>${I.calendar} Du hast einen Durchgang geplant. Für weitere Termine wähle unter „Angaben ändern“ mehrere Durchgänge.</p></div>`;
@@ -418,7 +493,7 @@ import { pick } from '../data/affiliate.js';
     }
     const list = items(k); const n = total(list, f); const c = check(k, n, f);
     const vs = (cls: string, ic: string, label: string, val: string, sub: string) => `<div class="${cls}"><span class="k">${I[ic]}${label}</span><b>${val}</b><small>${sub}</small></div>`;
-    let html = `<div class="daytop"><div class="row"><h3>Tag ${k}${k === 1 ? ' (Starttag)' : ''} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Longos Vorgaben</span>` : '<span class="chip warn">knapp neben Longos Vorgaben</span>'}</div>
+    let html = `<div class="daytop"><div class="row"><h3>Tag ${k}${k === 1 ? ' (Starttag)' : ''} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Longos Vorgaben</span>` : '<span class="chip warn">knapp daneben</span>'}</div>${c.ok ? '' : `<p class="small muted knapp"><b>Knapp daneben</b> heißt: Kalorien oder Nährstoffanteile weichen an diesem Tag etwas mehr ab als erlaubt (Kalorien mehr als 5 %, Eiweiß mehr als ${PLAN.reference.tolerance.proteinPoints}, Fett oder Kohlenhydrate mehr als 5 Prozentpunkte). Tausche ein Gericht, dann passt es meist wieder.</p>`}
       <div class="vs">
         ${vs('kcal', 'kcal', 'Kalorien', `${fmt(n.kcal)} kcal`, `Ziel ${fmt(c.target)} · Longo ${c.ref.kcal}`)}
         ${vs('protein', 'protein', 'Eiweiß', `${fmt(n.protein)} g`, `${fmt(c.shares.protein)} % · Longo ${c.ref.protein} %`)}
@@ -445,7 +520,7 @@ import { pick } from '../data/affiliate.js';
         <span class="when">${it.meal}</span>
         <h3>${['main', 'snack', 'breakfast'].includes(r.slot) ? `<a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a>` : esc(r.title)}</h3>
         <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.carbs)} g</b></span></div>
-        <span class="por">Portion ×${fmt(por, 2)}${ppl > 1 ? ` · Topf für alle ×${fmt(it.portion * fAll, 2)}` : ''}${it.swapped ? ' · getauscht' : ''}</span>
+        <span class="por">Portion ×${fmt(por, 2)}${ppl > 1 ? ` · Topf für alle ×${fmt(it.portion * fAll, 2)}` : ''}${it.swapped ? ' · getauscht' : ''}</span>${it.auto ? `<span class="chip pref-chip">${I.check} passend zu Deinen Vorlieben</span>` : ''}
         <details><summary>${ppl > 1 ? `Zutaten für alle ${ppl} Personen` : 'Zutaten in Gramm'}</summary><ul>${Object.entries(agg).map(([n2, g]) => ppl > 1 ? `<li>${amountLabel(n2, g / f * fAll)} ${esc(n2)} <small>(Deins: ${amountLabel(n2, g)})</small></li>` : `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>
         ${canSwap ? `<div class="acts noprint"><button class="btn soft small" data-swap="${key}" aria-expanded="${openSwap === key}">${I.swap} Tauschen</button>${it.swapped ? `<button class="btn soft small" data-reset="${key}">Original</button>` : ''}</div>` : ''}
       </div>${box}</article>`;
