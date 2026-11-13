@@ -5,8 +5,6 @@ import { u, webp } from '../lib/url.js';
 import FastCompare from '../components/FastCompare.astro';
 import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
-import AffiliateBox from '../components/AffiliateBox.astro';
-import { pick } from '../data/affiliate.js';
 import { ARTIKEL } from '../data/ratgeber.js';
 const studies = [
   { lv: 'ok', tag: 'Mensch · randomisiert', title: '100 Gesunde, 3 Zyklen', text: 'Körpergewicht, Bauchfett, Blutdruck und der Wachstumsfaktor IGF-1 sanken. Bei Menschen mit erhöhten Ausgangswerten war der Effekt größer.', src: 'Wei M et al. Science Translational Medicine 2017;9:eaai8700', doi: '10.1126/scitranslmed.aai8700' },
@@ -80,9 +78,6 @@ const faq = [
       <div class="head"><h2>Praktisches aus dem Ratgeber</h2></div>
       <ul class="ratlist">{ARTIKEL.map((a) => <li><a href={u(`ratgeber/${a.slug}/`)}>{a.title}</a><span class="muted small">{a.teaser}</span></li>)}</ul>
     </div>
-  </section>
-  <section class="band">
-    <div class="in narrow"><AffiliateBox items={pick('buch_longo', 'buch_michalsen', 'buch_gu')} title="Zum Weiterlesen" lead="Wenn du tiefer einsteigen willst: das Buch des Erfinders und zwei deutsche Rezeptbücher." /></div>
   </section>
 </Base>
 <style>
