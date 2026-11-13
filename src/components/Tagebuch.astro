@@ -1,5 +1,5 @@
 ---
-// Reiter „Was habe ich gegessen?“: Tagesbilanz je Zyklustag mit Fortschritt zum Tageslimit nach Longo.
+// Live-Tracking: Tagesbilanz je Zyklustag mit Fortschritt zum Tageslimit nach Prof. Dr. Longo.
 // Die Körperdaten und der Fastentag kommen aus dem gemeinsamen Formular #pf auf der Rechner-Seite.
 import Icon from './Icon.astro';
 import { u } from '../lib/url.js';
@@ -242,6 +242,8 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
 
   // Vorschläge im Ergebnis übernehmen
   res.addEventListener('click', (e) => {
+    const mb = (e.target as HTMLElement).closest<HTMLElement>('[data-more-btn]');
+    if (mb) { res.querySelectorAll<HTMLElement>('[data-more]').forEach((x) => (x.hidden = false)); mb.remove(); return; }
     const b = (e.target as HTMLElement).closest<HTMLElement>('[data-take]');
     if (!b) return;
     const [type, key, qty] = b.dataset.take!.split('|');
@@ -336,44 +338,50 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
     const kc = s.bars[0];
     let chip = '';
     if (!entries.length) chip = '';
-    else if (s.done) chip = `<span class="chip ok">${I.check} Tag passt zu Longo</span>`;
+    else if (s.done) chip = `<span class="chip ok">${I.check} Tag passt zu Prof. Dr. Longo</span>`;
     else if (s.over) chip = '<span class="chip warn">Limit erreicht</span>';
     else chip = `<span class="chip ok">${fmt(Math.min(100, kc.pct))} % geschafft</span>`;
     let h = `<div class="rtop">
       <div class="row"><h2 style="font-size:1.6rem">Dein Tag ${d}</h2>${chip}</div>
       <p class="small muted">Tageslimit für Dich: ca. ${fmt(t.kcal)} kcal mit ${t.ref.protein} % Eiweiß, ${t.ref.fat} % Fett und ${t.ref.carbs} % Kohlenhydraten.</p>
       <div class="bars">${s.bars.map(bar).join('')}</div>
-      <details class="small muted"><summary>Wie wir rechnen</summary><p>Das Tageslimit kommt aus den Studien des Labors von Longo (Brandhorst et al., Cell Metab 2015): Tag 1 ca. 1.090 kcal, Tag 2 bis 5 ca. 725 kcal, angepasst an Deinen Bedarf (Faktor ${fmt(inp.p.f, 2)}). Die Grammzahlen ergeben sich aus den Prozentanteilen. Beim Eiweiß ist bis ${t.ref.protein + 3} % in Ordnung, beim Zucker höchstens 15 % der Kalorien (eigene Regel der Seite, Longo nennt keine Grammzahl).</p></details>
+      <details class="small muted"><summary>Wie wir rechnen</summary><p>Das Tageslimit kommt aus den Studien des Labors von Prof. Dr. Longo (Brandhorst et al., Cell Metab 2015): Tag 1 ca. 1.090 kcal, Tag 2 bis 5 ca. 725 kcal, angepasst an Deinen Bedarf (Faktor ${fmt(inp.p.f, 2)}). Die Grammzahlen ergeben sich aus den Prozentanteilen. Beim Eiweiß ist bis ${t.ref.protein + 3} % in Ordnung, beim Zucker höchstens 15 % der Kalorien (eigene Regel der Seite, Prof. Dr. Longo nennt keine Grammzahl).</p></details>
     </div>`;
     // Hinweise
     for (const n of s.notes) {
       h += `<div class="alert info"><p>${esc(n.text)}</p>${n.alts?.length ? `<p class="small">Nächstes Mal lieber: ${n.alts.map(esc).join(', ')}</p>` : ''}</div>`;
     }
     if (s.done) {
-      h += `<div class="alert info"><p><b>Geschafft!</b> Dein Tag ${d} passt zu Longos Werten. Ab jetzt nur noch Wasser und ungesüßter Kräutertee.</p></div>`;
+      h += `<div class="alert info"><p><b>Geschafft!</b> Dein Tag ${d} passt zu Prof. Dr. Longos Vorgaben. Ab jetzt nur noch Wasser und ungesüßter Kräutertee.</p></div>`;
     } else if (s.over) {
       h += `<div class="alert warn"><p><b>Dein Kalorienlimit für heute ist erreicht.</b> Kein Drama, ein Tag etwas drüber macht den Zyklus nicht kaputt. Für den Rest des Tages reichen Wasser und ungesüßter Kräutertee.</p></div>`;
     } else if (entries.length) {
       const overM = s.bars.filter((b) => b.key !== 'kcal' && b.state === 'over').map((b) => b.label);
       if (overM.length) h += `<div class="alert info"><p>${overM.join(' und ')} ${overM.length > 1 ? 'sind' : 'ist'} für heute schon mehr als genug. Für den Rest des Tages eignet sich ${overM.includes('Fett') ? 'Gemüse ohne Öl, zum Beispiel eine klare Gemüsesuppe' : 'Gemüse mit etwas Olivenöl'}.</p></div>`;
       // Restbudget füllen
-      const rec = fillRecipes(entries, t);
+      const rec = fillRecipes(entries, t, 18, [1]);
       if (rec.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">So füllst Du den Rest</h2>
-          <p class="muted small">Rezepte, mit denen Dein Tag am nächsten an Longos Werte kommt. Noch offen: ${fmt(kc.rest)} kcal.</p>
-          <div class="grid">${rec.map((x) => `<article class="card rcard">
+        const RS: [string, string][] = [['breakfast', 'Frühstück'], ['main', 'Mittag- und Abendessen'], ['snack', 'Snacks']];
+        const card = (x: any) => { const more = x.rank >= 3; return `<article class="card rcard"${more ? ' hidden data-more' : ''}>
             <img src="${thumb(base, x.recipe.image)}" alt="" loading="lazy" width="110" height="82" />
             <div class="stack" style="gap:6px"><h3><a href="${base}rezepte/${x.recipe.slug}/">${esc(x.recipe.title)}</a></h3>
-            <p>${x.portion.toLocaleString('de-DE')} ${x.portion === 1 ? 'Portion' : 'Portionen'}, ${fmt(x.n.kcal)} kcal</p>
+            <p>1 Portion, ${fmt(x.n.kcal)} kcal</p>
             <p class="muted">Danach: ${fmt(x.sum.kcal)} von ${fmt(t.kcal)} kcal${x.ok ? ', Tag passt' : ''}</p>
-            <div class="fillrow">${x.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span></span>'}<button type="button" class="mini" data-take="recipe|${x.recipe.slug}|${x.portion}">${I.plus} Gegessen</button></div></div>
-          </article>`).join('')}</div></div>`;
+            <div class="fillrow">${x.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span></span>'}<button type="button" class="mini" data-take="recipe|${x.recipe.slug}|1">${I.plus} Gegessen</button></div></div>
+          </article>`; };
+        rec.forEach((x: any, i: number) => (x.rank = i));
+        rec.sort((a: any, b: any) => RS.findIndex((r) => r[0] === a.recipe.slot) - RS.findIndex((r) => r[0] === b.recipe.slot));
+        const groups = RS.map(([k, lbl]) => [lbl, rec.filter((x: any) => x.recipe.slot === k)] as [string, any[]]).filter(([, xs]) => xs.length);
+        h += `<div class="stack"><h2 style="font-size:1.6rem">So füllst Du den Rest</h2>
+          <p class="muted small">Rezepte für je 1 Portion, mit denen Dein Tag am nächsten an die Vorgaben kommt. Noch offen: ${fmt(kc.rest)} kcal.</p>
+          ${groups.map(([lbl, xs]) => { const html = xs.map(card).join(''); return `<div class="slotgrp"${xs.every((x: any) => x.rank >= 3) ? ' hidden data-more' : ''}><h3 class="slot">${lbl}</h3><div class="grid">${html}</div></div>`; }).join('')}
+          ${rec.length > 3 ? '<button type="button" class="btn soft small" data-more-btn>Weitere Rezepte anzeigen</button>' : ''}</div>`;
       }
       const pt = pantry();
       const ff = fillFoods(entries, t, pt.names);
       if (ff && ff.add.length && ff.sum.kcal <= t.kcal * 1.05) {
         h += `<div class="stack"><h3 style="font-size:1.25rem">Oder frei kombiniert</h3>
-          <p class="muted small">${pt.own ? 'Aus Deinem Kühlschrank im Reiter „Was koche ich noch?“.' : 'Aus Zutaten, die fast jeder da hat. Im Reiter „Was koche ich noch?“ kannst Du Deinen Kühlschrank eintragen.'} Damit kommst Du auf ${fmt(ff.sum.kcal)} kcal${ff.verdict.ok ? ' und Dein Tag passt zu Longo' : ''}.</p>
+          <p class="muted small">${pt.own ? 'Aus Deinen Lebensmitteln unter „Do it yourself“.' : 'Aus Zutaten, die fast jeder da hat. Unter „Do it yourself“ kannst Du eintragen, was Du zu Hause hast.'} Damit kommst Du auf ${fmt(ff.sum.kcal)} kcal${ff.verdict.ok ? ' und Dein Tag passt zu Prof. Dr. Longo' : ''}.</p>
           <ul class="fill-foods">${ff.add.map((i) => `<li><span>${amount(i.name, i.g)} ${esc(i.name)}</span><button type="button" class="mini" data-take="food|${esc(i.name)}|${i.g}">${I.plus} Gegessen</button></li>`).join('')}</ul></div>`;
       }
     }
@@ -382,7 +390,7 @@ const quick = [['food', 'Kaffee'], ['food', 'Kräutertee'], ['food', 'Olivenöl'
   }
 
   // Beim Zurückwechseln neu rechnen, falls im Kühlschrank-Reiter neue Lebensmittel dazugekommen sind
-  document.getElementById('tab-log')?.addEventListener('click', render);
+  document.querySelector('.modenav a[data-mode="live"]')?.addEventListener('click', () => setTimeout(render));
   addEventListener('hashchange', render);
   render();
 </script>

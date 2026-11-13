@@ -8,19 +8,19 @@ import { u } from '../lib/url.js';
 import { SITE_NAME } from '../data/site.js';
 import { GOATCOUNTER_CODE } from '../data/statistik.js';
 interface Props { title: string; description?: string; active?: string; image?: string; jsonLd?: object; noindex?: boolean; noCommerce?: boolean; ogType?: string }
-const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo selbst kochen: über 50 pflanzliche Rezepte, auf das Gramm nach Prof. Dr. Longos Werten berechnet, dazu ein kostenloser 5-Tage-Plan mit Einkaufsliste.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
+const { title, description = 'Scheinfasten nach Prof. Dr. Valter Longo selbst kochen: über 50 pflanzliche Rezepte, auf das Gramm nach Prof. Dr. Longos Vorgaben berechnet, dazu ein kostenloser 5-Tage-Plan mit Einkaufsliste.', active = '', image = 'img/hero.jpg', jsonLd, noindex = false, noCommerce = false, ogType = 'website' } = Astro.props;
 // Startseite: Suchbegriffe vorne, Marke hinten. Unterseiten: Seitentitel | Marke.
 const fullTitle = title === 'Start' ? `Scheinfasten selbst kochen: Rezepte und 5-Tage-Plan | ${SITE_NAME}` : `${title} | ${SITE_NAME}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(u(image), Astro.site);
 const nav = [
   { key: 'start', href: u(''), label: 'Start', icon: 'home' },
-  { key: 'planer', href: u('planer/'), label: 'Planer', icon: 'calendar' },
-  { key: 'rechner', href: u('rechner/'), label: 'Rechner', icon: 'scale' },
+  { key: 'rechner', href: u('planer/'), label: 'Scheinfastenrechner', short: 'Rechner', icon: 'scale' },
   { key: 'rezepte', href: u('rezepte/'), label: 'Rezepte', icon: 'pot' },
   { key: 'wissen', href: u('wissen/'), label: 'Wissen', icon: 'book' },
 ];
 // Auf der Krebs-Seite keine Verweise auf Produktempfehlungen (HWG).
+const cur = (k: string) => active === k || (k === 'rechner' && active === 'planer');
 const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), label: 'Ausstattung' }];
 ---
 <!doctype html>
@@ -52,7 +52,7 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
     <div class="in">
       <a class="logo" href={u('')}><span class="mark"><Icon name="leaf" /></span>Scheinfasten <span class="tag">einfach lecker fasten</span></a>
       <nav class="nav" aria-label="Hauptnavigation">
-        {[...nav.slice(1), ...extra].map((n) => <a href={n.href} class={n.key === 'rechner' ? 'nav-hot' : undefined} aria-current={active === n.key ? 'page' : undefined}>{n.key === 'rechner' && <Icon name="scale" />}{n.label}</a>)}
+        {[...nav.slice(1), ...extra].map((n) => <a href={n.href} aria-current={cur(n.key) ? 'page' : undefined}>{n.label}</a>)}
         <a class="btn small" href={u('planer/')}>Plan erstellen</a>
       </nav>
     </div>
@@ -79,7 +79,7 @@ const extra = noCommerce ? [] : [{ key: 'ausstattung', href: u('ausstattung/'), 
     </div>
   </footer>
   <nav class="tabbar" aria-label="Schnellnavigation">
-    {nav.map((n) => <a href={n.href} class={n.key === 'rechner' ? 'tab-hot' : undefined} aria-current={active === n.key ? 'page' : undefined}><Icon name={n.icon} /><span>{n.label}</span></a>)}
+    {nav.map((n) => <a href={n.href} aria-current={cur(n.key) ? 'page' : undefined}><Icon name={n.icon} /><span>{n.short || n.label}</span></a>)}
   </nav>
   {GOATCOUNTER_CODE && <script is:inline data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`} async src="https://gc.zgo.at/count.js"></script>}
 </body>

@@ -5,7 +5,6 @@ import RecipeCard from '../components/RecipeCard.astro';
 import FastCompare from '../components/FastCompare.astro';
 import AvoidList from '../components/AvoidList.astro';
 import Effects from '../components/Effects.astro';
-import RechnerTeaser from '../components/RechnerTeaser.astro';
 import Rotator from '../components/Rotator.astro';
 import { RECIPES } from '../lib/nutrition.js';
 import { PROLON_PRICE } from '../data/affiliate.js';
@@ -25,27 +24,25 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
     <div class="in">
       <p class="kicker">5 Tage Scheinfasten nach Prof. Dr. Valter Longo</p>
       <h1>Fasten, das richtig gut schmeckt.</h1>
-      <p class="lead">In einer Minute zu Deinem Plan: fünf Tage leckere Gerichte, auf das Gramm genau nach Longos Werten berechnet, mit Einkaufsliste. Kostenlos und ohne Anmeldung.</p>
+      <p class="lead">In einer Minute zu Deinem Plan: fünf Tage leckere Gerichte, auf das Gramm genau nach Prof. Dr. Longos Vorgaben berechnet, mit Einkaufsliste. Kostenlos und ohne Anmeldung.</p>
       <ul class="hfx">
-        <li class="eat"><a href="#unterschied"><Icon name="pot" />Fasten mit echtem Essen</a></li>
-        <li class="hot"><Icon name="scale" />Auf das Gramm nach Longo</li>
-        <li><Icon name="book" />Quelle zu jeder Zahl</li>
+        <li class="eat"><a href="#unterschied"><Icon name="pot" />Fasten mit frischem Essen</a></li>
+        <li class="hot"><Icon name="scale" />Auf das Gramm nach Prof. Dr. Longo</li>
+        <li><Icon name="book" />Studienbasierte Angaben</li>
       </ul>
       <div class="ctas">
-        <a class="btn" href={u('planer/')}><Icon name="calendar" />Gratis 5-Tage-Plan erstellen</a>
-        <a class="btn ghost" href={u('rechner/')}><Icon name="scale" />Zum Rechner</a>
+        <a class="btn" href={u('planer/')}><Icon name="calendar" />5-Tage-Essensplan kostenlos erstellen</a>
+        <a class="btn ghost" href={u('rechner/#kochen')}><Icon name="pot" />Mit eigenen Lebensmitteln</a>
       </div>
     </div>
   </section>
 
   <div class="trust"><div class="in">
-    <span><Icon name="book" />Nach den Studien von Longo</span>
+    <span><Icon name="book" />Nach den Studien von Prof. Dr. Longo</span>
     <span><Icon name="kcal" />Jedes Rezept mit Nährwerten</span>
     <span><Icon name="leaf" />100 % pflanzlich</span>
-    <span><Icon name="pot" />Frisch gekocht statt Fertigpaket</span>
+    <span><Icon name="pot" />Frisch gekocht</span>
   </div></div>
-
-  <RechnerTeaser />
 
   <FastCompare tint compact />
 
@@ -67,13 +64,13 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
           <div class="ctas"><a class="btn" href={u('planer/')}>Plan erstellen <Icon name="arrow" /></a><a class="wlink" href={u('rezepte/')}>Erst Rezepte ansehen</a></div>
         </article>
         <article class="way">
-          <p class="wtag"><Icon name="scale" />Weg 2: Deine eigenen Lebensmittel</p>
+          <p class="wtag"><Icon name="pot" />Weg 2: Do it yourself</p>
           <ol class="wsteps">
-            <li><span class="n">1</span><div><b>Zutaten eingeben</b><span>Einfach eintippen, was im Kühlschrank liegt oder was Du schon gegessen hast.</span></div></li>
-            <li><span class="n">2</span><div><b>Mengen und Kalorien sehen</b><span>Grammgenau nach Longo, mit Ampel für jedes Lebensmittel.</span></div></li>
-            <li><span class="n">3</span><div><b>Passende Gerichte</b><span>Rezeptideen aus Deinen Zutaten und ein leckerer Tausch, wenn etwas nicht passt.</span></div></li>
+            <li><span class="n">1</span><div><b>Zutaten eingeben</b><span>Einfach eintippen, was zu Hause liegt oder was Du gern verwenden möchtest. Mengen brauchst Du nicht.</span></div></li>
+            <li><span class="n">2</span><div><b>Mengen und Kalorien sehen</b><span>Grammgenau nach Prof. Dr. Longo, mit Ampel für jedes Lebensmittel.</span></div></li>
+            <li><span class="n">3</span><div><b>Rezepte erstellen</b><span>Rezepte aus Deinen Zutaten, je 1 Portion. Während der fünf Tage zeigt Dir das Live-Tracking, wo Du stehst.</span></div></li>
           </ol>
-          <div class="ctas"><a class="btn soft" href={u('rechner/')}>Zum Rechner <Icon name="arrow" /></a></div>
+          <div class="ctas"><a class="btn soft" href={u('rechner/#kochen')}>Do it yourself <Icon name="arrow" /></a></div>
         </article>
       </div>
     </div>
@@ -122,7 +119,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
   .wtag { display: flex; gap: 8px; align-items: center; font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--tomato); }
   .wsteps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
   .wsteps li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; }
-  .wsteps .n { width: 30px; height: 30px; border-radius: 9px; background: var(--tomato); color: var(--on-tomato); font: 800 .95rem/1 var(--body); display: grid; place-items: center; transform: rotate(-4deg); box-shadow: 0 3px 0 var(--tomato-d); }
+  .wsteps .n { width: 30px; height: 30px; border-radius: 9px; background: var(--tomato); color: var(--on-tomato); font: 800 .95rem/1 var(--body); display: grid; place-items: center; box-shadow: 0 3px 0 var(--tomato-d); }
   .wsteps div { display: grid; gap: 2px; }
   .wsteps b { font-size: 1.05rem; }
   .wsteps div span { color: var(--muted); font-size: .93rem; }

@@ -14,12 +14,12 @@ const pick = (names: string[], light: string) => names.map((n) => {
   return n;
 });
 const red = [
-  { title: 'Fleisch, Fisch und Eier', why: 'Longos Scheinfasten ist rein pflanzlich und eiweißarm (Wei 2017).', ex: pick(['Hähnchen', 'Rindfleisch', 'Salami', 'Lachs', 'Thunfisch', 'Eier'], 'r') },
+  { title: 'Fleisch, Fisch und Eier', why: 'Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm (Wei 2017).', ex: pick(['Hähnchen', 'Rindfleisch', 'Salami', 'Lachs', 'Thunfisch', 'Eier'], 'r') },
   { title: 'Milchprodukte', why: 'Auch Käse und Joghurt machen fünf Tage Pause.', ex: pick(['Milch', 'Käse', 'Joghurt', 'Quark', 'Butter', 'Sahne'], 'r') },
-  { title: 'Zucker und Süßes', why: 'Longos Vorgabe: wenig Zucker. Auch Honig und Trockenobst zählen dazu.', ex: pick(['Zucker', 'Honig', 'Schokolade', 'Kuchen', 'Datteln', 'Müsli'], 'r') },
+  { title: 'Zucker und Süßes', why: 'Prof. Dr. Longos Vorgabe: wenig Zucker. Auch Honig und Trockenobst zählen dazu.', ex: pick(['Zucker', 'Honig', 'Schokolade', 'Kuchen', 'Datteln', 'Müsli'], 'r') },
   { title: 'Brot, Nudeln und Weißmehl', why: 'Viele Kalorien, wenig Sättigung. Gemüse bringt Dir mehr auf den Teller.', ex: pick(['Weißbrot', 'Mischbrot', 'Nudeln', 'Pizza', 'Croissant', 'Kartoffelchips'], 'r') },
   { title: 'Alkohol, Säfte und Softdrinks', why: 'Bringen Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind jetzt Deine Getränke.', ex: pick(['Bier', 'Wein', 'Orangensaft', 'Cola', 'Smoothie'], 'r') },
-  { title: 'Fleischersatz', why: 'Fast reines Eiweiß, und genau das hält Longo niedrig.', ex: pick(['Seitan', 'Tempeh', 'Sojagranulat', 'Veggie-Burger'], 'r') },
+  { title: 'Fleischersatz', why: 'Fast reines Eiweiß, und genau das hält Prof. Dr. Longo niedrig.', ex: pick(['Seitan', 'Tempeh', 'Sojagranulat', 'Veggie-Burger'], 'r') },
 ];
 const yellow = pick(['Kartoffeln', 'Kichererbsen (gegart)', 'Linsen (gegart)', 'Hirse (gegart)', 'Reis (gegart)', 'Tofu', 'Apfel', 'Heidelbeeren', 'Knäckebrot', 'Kaffee', 'Schwarzer Tee'], 'y');
 const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Avocado', 'Kräuter', 'Kräutertee', 'Wasser'];
@@ -27,7 +27,7 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
 {compact ? (
 <section class:list={['band', 'avoid', 'compact', { tint }]} id={id}>
   <div class="in">
-    <div class="head"><p class="kicker">Auf einen Blick</p><h2>Das lässt Du fünf Tage weg</h2></div>
+    <div class="head"><p class="kicker">Auf einen Blick</p><h2>Das lässt Du 5 Tage weg</h2></div>
     <ul class="redchips">{red.map((g) => <li><Icon name="ban" />{g.title}</li>)}</ul>
     <p class="okline"><span class="dot g"></span><span><b>Dafür auf dem Teller:</b> {green.join(', ')}.</span> <a href={u('wissen/#weglassen')}>Ganze Liste mit Beispielen</a></p>
   </div>
@@ -37,8 +37,8 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
   <div class="in">
     <div class="head">
       <p class="kicker">Auf einen Blick</p>
-      <h2>Das lässt Du fünf Tage weg</h2>
-      <p class="muted">Die Regel ist einfach: pflanzlich, wenig Eiweiß, wenig Zucker. Alles hier unten in Rot passt nicht zu Longos Vorgaben. Der <a href={u('rechner/')}>Rechner</a> sagt Dir bei jedem Lebensmittel sofort, ob es passt, und schlägt einen leckeren Tausch vor.</p>
+      <h2>Das lässt Du 5 Tage weg</h2>
+      <p class="muted">Die Regel ist einfach: pflanzlich, wenig Eiweiß, wenig Zucker. Alles in Rot bleibt fünf Tage im Schrank, Gelbes gibt es in kleinen Mengen, Grünes darf auf den Teller. Der <a href={u('rechner/')}>Scheinfastenrechner</a> sagt Dir bei jedem Lebensmittel sofort, ob es passt, und schlägt einen leckeren Tausch vor.</p>
     </div>
     <div class="redgrid">
       {red.map((g) => (
@@ -46,7 +46,6 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
           <span class="ri"><Icon name="ban" /></span>
           <div class="stack" style="gap:6px">
             <h3>{g.title}</h3>
-            <p class="small">{g.why}</p>
             <p class="ex">{g.ex.join(' · ')}</p>
           </div>
         </article>

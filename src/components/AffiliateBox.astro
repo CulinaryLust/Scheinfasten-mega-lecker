@@ -17,11 +17,11 @@ const { items, title = 'Das hilft dabei', lead, compact = false } = Astro.props;
       <li>
         <span class="ph"><img src={u(`img/produkte/${p.img || p.key}.jpg`)} alt="" loading="lazy" width="600" height="450" /><span class="ic" set:html={icon(p.icon || 'cart', 'i')} /></span>
         <span class="tx"><b>{p.title}</b><span class="muted small">{p.why}</span></span>
-        <a class="btn small soft" href={amazonUrl(p)} target="_blank" rel="sponsored nofollow noopener" data-goatcounter-click={`partner-amazon-${p.key || "produkt"}`} data-goatcounter-title={p.title}>Bei Amazon<span class="sr-only"> ansehen: {p.title}</span></a>
+        <a class="btn small soft" href={amazonUrl(p)} target="_blank" rel="sponsored nofollow noopener" data-goatcounter-click={`partner-amazon-${p.key || "produkt"}`} data-goatcounter-title={p.title}>Hier entdecken<span class="sr-only"> bei Amazon: {p.title}</span></a>
       </li>
     ))}
   </ul>
-  <p class="muted tiny">Affiliate-Links: Kaufst Du darüber, erhalten wir eine kleine Provision. Für Dich bleibt der Preis gleich. Fotos sind Symbolbilder. <a href={u('transparenz/')}>Mehr dazu</a></p>
+  <p class="muted tiny">Die Links führen zu Amazon. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen. Für Dich bleibt der Preis gleich. Fotos sind Symbolbilder. <a href={u('transparenz/')}>Mehr dazu</a></p>
 </aside>
 <style>
   .aff { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; display: grid; gap: 14px; }
