@@ -1,4 +1,4 @@
-name: Seite veröffentlichen
+name: Seite veröffentlichen (ALL-INKL)
 
 on:
   push:
@@ -36,12 +36,49 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           npm run --silent check:launch >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - name: Weiterleitungen für die alte github.io-Adresse
+        run: node scripts/weiterleitung.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seite
+          path: dist
+          include-hidden-files: true
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: dist
+          path: dist-weiterleitung
 
-  deploy:
+  # Die Seite liegt bei ALL-INKL. Zugangsdaten als Repository-Secrets (README, „Hosting bei ALL-INKL“).
+  allinkl:
     needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Zugangsdaten vorhanden?
+        env:
+          HOST: ${{ secrets.ALLINKL_FTP_HOST }}
+          USER: ${{ secrets.ALLINKL_FTP_USER }}
+          PASS: ${{ secrets.ALLINKL_FTP_PASSWORD }}
+        run: |
+          if [ -z "$HOST" ] || [ -z "$USER" ] || [ -z "$PASS" ]; then
+            echo "::error::Secrets ALLINKL_FTP_HOST, ALLINKL_FTP_USER und ALLINKL_FTP_PASSWORD fehlen. Die alte Seite bleibt online, bis sie eingetragen sind."
+            exit 1
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          name: seite
+          path: dist
+      - name: Hochladen zu ALL-INKL (FTP mit TLS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.ALLINKL_FTP_HOST }}
+          username: ${{ secrets.ALLINKL_FTP_USER }}
+          password: ${{ secrets.ALLINKL_FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ./
+
+  # github.io zeigt nur noch Weiterleitungen, und erst wenn ALL-INKL aktuell ist
+  deploy:
+    needs: allinkl
     runs-on: ubuntu-latest
     environment:
       name: github-pages

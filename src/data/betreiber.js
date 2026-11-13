@@ -5,12 +5,12 @@
 
 export const BETREIBER = {
   /** Vor- und Nachname (bei Einzelunternehmen der eigene Name, optional mit Zusatz). */
-  name: '',
+  name: 'Alexander Russo',
   /** Ladungsfähige Anschrift, kein Postfach. Wer die Privatadresse nicht zeigen will: Impressum-Service mit Geschäftsanschrift. */
-  strasse: '',
-  plzOrt: '',
+  strasse: 'Am Herrnholz 3',
+  plzOrt: '85630 Grasbrunn',
   /** E-Mail-Adresse, die du regelmäßig liest. */
-  email: '',
+  email: 'kontakt@einfach-lecker-fasten.de',
   /** Optional: Telefon. Nicht Pflicht, beschleunigt aber Anfragen.  */
   telefon: '',
   /** Optional: Umsatzsteuer-ID, nur wenn vorhanden. Als Kleinunternehmer ohne USt-ID leer lassen. */
