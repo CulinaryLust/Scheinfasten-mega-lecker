@@ -218,3 +218,15 @@ h3.slot { font-size: 1.15rem; margin-top: 10px; color: var(--green); }
 .tasty { color: var(--green); display: flex; gap: 6px; align-items: center; }
 .rmatch .ing { margin: 0; padding-left: 18px; }
 [hidden] { display: none !important; }
+.bftoggle { grid-column: 1 / -1; display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-block: 14px; cursor: pointer; }
+.bftoggle input { width: 22px; height: 22px; margin-top: 2px; flex: none; accent-color: var(--green); }
+.bftoggle span { display: grid; gap: 4px; }
+/* Abhaken von Mahlzeiten (Plan und Do it yourself) */
+.donebar { display: grid; gap: 6px; }
+.donebar .bar { height: 12px; border-radius: 999px; background: var(--band); overflow: hidden; }
+.donebar .bar i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--sun), var(--green)); transition: width .5s var(--ease); }
+.donebar span { font-size: .92rem; font-variant-numeric: tabular-nums; }
+.tick { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; cursor: pointer; margin-top: 4px; }
+.tick input { width: 22px; height: 22px; accent-color: var(--green); margin: 0; }
+.isdone { opacity: .72; }
+.isdone .tick { color: var(--green); }

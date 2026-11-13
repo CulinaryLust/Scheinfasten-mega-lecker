@@ -8,19 +8,18 @@ const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'ch
 const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 import AffiliateBox from '../components/AffiliateBox.astro';
-import Tagebuch from '../components/Tagebuch.astro';
 import StandSichern from '../components/StandSichern.astro';
 import Erinnerung from '../components/Erinnerung.astro';
 import Rotator from '../components/Rotator.astro';
 import ModeNav from '../components/ModeNav.astro';
 import { pick } from '../data/affiliate.js';
 ---
-<Base title="Scheinfasten-Rechner: Kalorien und Nährwerte pro Tag" active="rechner" description="Trag ein, was Du heute schon gegessen hast, und sieh sofort, wie viel von Deinem Scheinfasten-Tag nach Prof. Dr. Valter Longo noch übrig ist. Mit Vorschlägen, wie Du den Rest lecker füllst.">
+<Base title="Scheinfasten-Rechner: Rezepte aus Deinen Lebensmitteln" active="rechner" description="Gib ein, was Du zu Hause hast: Der Scheinfastenrechner macht daraus Rezepte mit Mengen für Deinen Fastentag, nach den Vorgaben von Prof. Dr. Valter Longo. Mit Vorschlägen, wie Du den Rest lecker füllst.">
   <div class="in page-head split">
     <div class="ph-text">
       <p class="kicker">Scheinfastenrechner</p>
-      <h1 id="rh">Wie viel geht heute noch?</h1>
-      <p class="lead" id="rl">Trag ein, was Du gegessen hast, und sieh, wie viel heute noch geht. Triffst Du Dein Ziel, leuchtet der Tag grün auf.</p>
+      <h1>Do it yourself: Was koche ich heute?</h1>
+      <p class="lead">Gib ein, was Du zu Hause hast oder gern verwenden möchtest. Wir machen daraus Rezepte mit berechneten Mengen für Deinen Fastentag. Gegessenes hakst Du einfach ab.</p>
     </div>
     <Rotator images={[
       { src: 'img/menschen/paar-kocht.jpg', alt: 'Paar kocht gemeinsam mit frischem Gemüse' },
@@ -29,7 +28,7 @@ import { pick } from '../data/affiliate.js';
       { src: 'img/rechner/carpaccio.jpg', alt: '' },
     ]} />
   </div>
-  <ModeNav current="live" />
+  <ModeNav current="diy" />
 
   <section class="in calc" id="prof">
     <form id="pf" class="card wcard" novalidate>
@@ -58,9 +57,9 @@ import { pick } from '../data/affiliate.js';
           <div class="seg five" id="days">
             {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small></span></label>)}
           </div>
-          <p class="small muted daylegend" aria-hidden="true"><span><i class="lu"></i>auf dem Weg</span><span><i class="lh"></i>Ziel getroffen</span><span><i class="lo"></i>drüber</span></p>
           <p class="small muted" id="dayhint" aria-live="polite"></p>
         </div>
+        <label class="bftoggle"><input type="checkbox" name="bf" value="1" id="bfx" /><span><b>Mit Frühstück</b><small class="muted">Morgens ein Frühstück mit etwa 150 bis 200 kcal, Mittag- und Abendessen werden dafür kleiner. Der Tag bleibt im Rahmen der Vorgaben.</small></span></label>
         <p class="err" id="err1" role="alert" hidden></p>
       </fieldset>
     </form>
@@ -86,15 +85,13 @@ import { pick } from '../data/affiliate.js';
         }
         if (!day && prof && prof.day) day = +prof.day;
         if (day) { var r = pf.querySelector('input[name="day"][value="' + day + '"]'); if (r) r.checked = true; }
+        if (pf.dataset.fromPlan) document.getElementById('dayhint').textContent = 'Laut Deinem Plan ist heute Tag ' + pf.dataset.fromPlan + '.';
+        if ((prof && prof.bf) || (plan && plan.breakfast)) document.getElementById('bfx').checked = true;
       })();
     </script>
   </section>
 
-  <div id="pane-log">
-    <Tagebuch />
-  </div>
-
-  <div id="pane-cook" hidden>
+  <div id="pane-cook">
   <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
     <form id="f" class="card wcard" novalidate>
       <fieldset class="block">
@@ -215,8 +212,8 @@ import { pick } from '../data/affiliate.js';
 </style>
 
 <script>
-  import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
-  import { fmt, PLAN, amountLabel } from '../lib/nutrition.js';
+  import { FOODS, BY_NAME, search, profile, targets, solve, verdict, suggestAdditions, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
+  import { fmt, PLAN, amountLabel, RECIPES, nutrition, shares } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
   import { thumb } from '../lib/url.js';
   const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
@@ -243,7 +240,7 @@ import { pick } from '../data/affiliate.js';
   };
 
   type Pick = { name: string; g?: number };
-  let state: { inputs?: any; picks: Pick[]; shown?: boolean } = { picks: [] };
+  let state: { inputs?: any; picks: Pick[]; shown?: boolean; done?: Record<string, Record<string, boolean>> } = { picks: [] };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && Array.isArray(s.picks)) state = s; } catch {}
   state.picks = state.picks.filter((p) => BY_NAME[p.name]);
   // Körperdaten und Fastentag stehen im gemeinsamen Formular oben (#pf), für beide Reiter.
@@ -282,12 +279,14 @@ import { pick } from '../data/affiliate.js';
     if (!BY_NAME[name]) return;
     if (replace) state.picks = state.picks.filter((p) => p.name !== replace);
     if (!state.picks.some((p) => p.name === name)) state.picks.push({ name });
+    state.done = {};
     q.value = ''; sug.hidden = true; qhint.textContent = '';
     save(); renderPicked();
     if (state.shown) render();
   }
   function removeFood(name: string) {
     state.picks = state.picks.filter((p) => p.name !== name);
+    state.done = {};
     save(); renderPicked();
     if (state.shown) render();
   }
@@ -333,6 +332,8 @@ import { pick } from '../data/affiliate.js';
   });
   // Tageswahl und Körperdaten wirken sofort, sobald ein Ergebnis da ist
   pf.addEventListener('change', () => {
+    const fd = Object.fromEntries(new FormData(pf).entries()) as any;
+    try { localStorage.setItem('smlProfil', JSON.stringify({ inputs: { sex: fd.sex, age: fd.age, h: fd.h, w: fd.w, pal: fd.pal }, day: fd.day, bf: !!fd.bf })); } catch {}
     if (!state.shown) return;
     const v = readInputs(); if (!v) return;
     state.inputs = v; save(); render();
@@ -354,9 +355,24 @@ import { pick } from '../data/affiliate.js';
     const t = targets(day, p.f);
     const red = state.picks.filter((x) => BY_NAME[x.name].light === 'r');
     const ok = state.picks.filter((x) => BY_NAME[x.name].light !== 'r');
-    const res = ok.length ? solve(ok, t) : null;
+    // Mit Frühstück: passendes Frühstücksrezept (meiste eigene Zutaten) mit gut einem Fünftel der Tageskalorien, der Rest verteilt sich auf die eigenen Lebensmittel.
+    const have = new Set(ok.map((x) => x.name));
+    const bk = v.bf ? (() => {
+      const r = RECIPES.filter((x: any) => x.slot === 'breakfast').map((x: any) => ({ x, sc: x.ingredients.filter((i: any) => have.has(i.name)).length })).sort((a: any, b: any) => b.sc - a.sc)[0].x;
+      const portion = Math.round((t.kcal * 0.22) / nutrition(r).kcal * 20) / 20;
+      return { recipe: r, portion, n: nutrition(r, portion) };
+    })() : null;
+    let tf: any = t;
+    if (bk) {
+      const kcal = t.kcal - bk.n.kcal, protein = Math.max(1, t.protein - bk.n.protein), fat = Math.max(1, t.fat - bk.n.fat), carbs = Math.max(1, t.carbs - bk.n.carbs);
+      const sh = shares({ kcal, protein, fat, carbs } as any);
+      tf = { kcal, protein, fat, carbs, ref: { ...t.ref, protein: sh.protein, fat: sh.fat, carbs: sh.carbs } };
+    }
+    const res0 = ok.length ? solve(ok, tf) : null;
+    const res = res0 && bk ? { ...res0, sum: { kcal: res0.sum.kcal + bk.n.kcal, protein: res0.sum.protein + bk.n.protein, fat: res0.sum.fat + bk.n.fat, carbs: res0.sum.carbs + bk.n.carbs, sugar: res0.sum.sugar + bk.n.sugar } } : res0;
+    if (res && bk) res.verdict = verdict(res.sum, t);
     const vd = res?.verdict;
-    const adds = res ? suggestAdditions(ok, t, res) : [];
+    const adds = res0 ? suggestAdditions(ok, tf, res0) : [];
     const dayLabel = `Tag ${v.day}`;
 
     let tableHtml = '';
@@ -411,18 +427,24 @@ import { pick } from '../data/affiliate.js';
       h += `<div class="stack"><h2 style="font-size:1.6rem">Lieber tauschen</h2><p class="muted small">Diese Lebensmittel heben den Fasteneffekt auf. Mit einem Tipp tauschst Du sie gegen etwas, das genauso gut schmeckt.</p><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}</b>: ${esc(a.why)}</p><p class="small">Probier stattdessen:</p><div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} ${esc(n)}</button>`).join('')}</div></div>`; }).join('')}</div></div>`;
     }
     if (res) {
-      // Gerichte aus den eigenen Zutaten, nach Mahlzeit sortiert
-      const meals = buildMeals(res.items);
-      const SLOTS: [string, string][] = [['Mittags', 'Mittagessen'], ['Abends', 'Abendessen'], ['Snack', 'Snack']];
+      // Gerichte aus den eigenen Zutaten, nach Mahlzeit sortiert, zum Abhaken
+      const meals: any[] = buildMeals(res.items).map((m: any, i: number) => ({ ...m, key: `m${i}`, kcal: m.sum.kcal }));
+      if (bk) meals.unshift({ key: 'bf', slot: 'Morgens', kind: 'Frühstück', title: bk.recipe.title, kcal: bk.n.kcal, minutes: bk.recipe.minutes, recipe: bk.recipe,
+        items: bk.recipe.ingredients.map((i: any) => ({ name: i.name, g: Math.round(i.amount * bk.portion) })), steps: [] });
+      const SLOTS: [string, string][] = [['Morgens', 'Frühstück'], ['Mittags', 'Mittagessen'], ['Abends', 'Abendessen'], ['Snack', 'Snack']];
+      const dk = String(v.day); const done = ((state.done = state.done || {})[dk] = state.done[dk] || {});
+      const doneK = meals.filter((m) => done[m.key]).reduce((a2, m) => a2 + m.kcal, 0);
       if (meals.length) {
         h += `<div class="stack"><h2 style="font-size:1.6rem">Deine Rezepte für heute</h2>
-          <p class="muted small">Aus Deinen Lebensmitteln, die Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune.</p>
-          ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => `<article class="card meal">
-            <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.sum.kcal)} kcal</span></div>
-            <h3>${esc(m.title)}</h3>
-            <ul class="ing">${m.items.map((i) => `<li>${mac(i.name)}<span>${amount(i.name, i.g)} ${esc(i.name)}</span></li>`).join('')}</ul>
-            <ol>${m.steps.map((st) => `<li>${esc(st)}</li>`).join('')}</ol>
+          <p class="muted small">Aus Deinen Lebensmitteln, die Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune. Hake ab, was Du gegessen hast.</p>
+          <div class="donebar"><div class="bar"><i style="width:${Math.min(100, doneK / t.kcal * 100)}%"></i></div><span><b>${fmt(doneK)}</b> von ${fmt(t.kcal)} kcal abgehakt${doneK >= t.kcal * 0.95 ? ' · Tag geschafft!' : ''}</span></div>
+          ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => `<article class="card meal${done[m.key] ? ' isdone' : ''}">
+            <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.kcal)} kcal</span></div>
+            <h3>${m.recipe ? `<a href="${base}rezepte/${m.recipe.slug}/">${esc(m.title)}</a>` : esc(m.title)}</h3>
+            <ul class="ing">${m.items.map((i: any) => `<li>${mac(i.name)}<span>${amount(i.name, i.g)} ${esc(i.name)}</span></li>`).join('')}</ul>
+            ${m.steps.length ? `<ol>${m.steps.map((st: string) => `<li>${esc(st)}</li>`).join('')}</ol>` : '<p class="small muted">Zubereitung im Rezept.</p>'}
             <p class="small muted">${I.time} etwa ${m.minutes} Minuten</p>
+            <label class="tick"><input type="checkbox" data-done="${m.key}" ${done[m.key] ? 'checked' : ''}><span>Gegessen</span></label>
           </article>`).join('')}</div>` : ''; }).join('')}</div>`;
       }
       h += tableHtml;
@@ -461,6 +483,7 @@ import { pick } from '../data/affiliate.js';
   });
   result.addEventListener('change', (e) => {
     const t = e.target as HTMLInputElement;
+    if (t.dataset.done) { const dk = String(state.inputs.day); state.done = state.done || {}; (state.done[dk] = state.done[dk] || {})[t.dataset.done] = t.checked; save(); const y = scrollY; render(); scrollTo({ top: y }); return; }
     if (!t.dataset.g) return;
     const p = state.picks.find((x) => x.name === t.dataset.g);
     if (!p) return;
@@ -474,22 +497,4 @@ import { pick } from '../data/affiliate.js';
 </script>
 
 <script>
-  // Bereiche: Live-Tracking ist Standard, #kochen öffnet Do it yourself. Umschalten über die Leiste oben (ModeNav).
-  function show() {
-    const diy = location.hash === '#kochen';
-    document.getElementById('pane-log')!.hidden = diy;
-    document.getElementById('pane-cook')!.hidden = !diy;
-    document.querySelectorAll<HTMLAnchorElement>('.modenav a').forEach((a) => {
-      const on = a.dataset.mode === (diy ? 'diy' : 'live');
-      if (a.dataset.mode !== 'plan') a.toggleAttribute('aria-current', false);
-      if (on) a.setAttribute('aria-current', 'page');
-    });
-    const k = document.getElementById('rk'); const h = document.getElementById('rh'); const l = document.getElementById('rl');
-    if (k && h && l) { h.textContent = diy ? 'Was koche ich daraus?' : 'Wie viel geht heute noch?'; l.textContent = diy ? 'Gib ein, was Du zu Hause hast. Wir machen daraus Rezepte mit berechneten Mengen für Deinen Fastentag.' : 'Trag ein, was Du gegessen hast, und sieh, wie viel heute noch geht. Triffst Du Dein Ziel, leuchtet der Tag grün auf.'; }
-  }
-  document.querySelectorAll<HTMLAnchorElement>('.modenav a:not([data-mode="plan"])').forEach((a) => a.addEventListener('click', (e) => {
-    e.preventDefault(); history.replaceState(null, '', a.dataset.mode === 'diy' ? '#kochen' : location.pathname + location.search); show();
-  }));
-  addEventListener('hashchange', show);
-  show();
 </script>

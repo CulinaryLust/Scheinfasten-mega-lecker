@@ -87,19 +87,9 @@ import { pick } from '../data/affiliate.js';
         <h3 class="sub">Deine Vorlieben <span class="muted small">(freiwillig)</span></h3>
         <p class="muted small">Tippe einmal für <b>mag ich besonders</b>, zweimal für <b>lieber nicht</b>. Wir tauschen die Gerichte dann passend aus und rechnen alles neu.</p>
         <div class="prefs" id="prefs">{PREFS.map(([k, l]) => <button type="button" class="pref" data-pref={k} aria-pressed="false"><span class="pi" aria-hidden="true"></span>{l}</button>)}</div>
-        <h3 class="sub">Termine</h3>
+        <h3 class="sub">Start</h3>
         <p class="muted small">Gefastet wird immer 5 Tage. Dazu kommen ein Vorbereitungstag davor und ein Übergangstag danach.</p>
         <div class="field"><label for="start" class="lbl">Wann startest Du? (Tag 1)</label><input id="start" name="start" type="date" required /></div>
-        <div class="field"><span class="lbl">Wie viele Durchgänge planst Du?</span>
-          <div class="seg three">
-            <label><input type="radio" name="cyc" value="1" /><span>1 Durchgang<small>zum Ausprobieren</small></span></label>
-            <label><input type="radio" name="cyc" value="3" checked /><span>3 Durchgänge<small>wie in der Studie</small></span></label>
-            <label><input type="radio" name="cyc" value="6" /><span>6 Durchgänge<small>übers Jahr verteilt</small></span></label>
-          </div>
-        </div>
-        <div class="field"><label for="gap" class="lbl">Abstand zwischen den Durchgängen</label>
-          <select id="gap" name="gap"><option value="1">monatlich (wie in der Studie)</option><option value="2">alle 2 Monate</option><option value="3" selected>alle 3 Monate</option><option value="4">alle 4 Monate</option></select>
-        </div>
         <p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
         <p class="err" id="err1" role="alert" hidden></p>
         <div class="nav-btns"><span></span><button type="submit" class="btn">Plan erstellen <Icon name="check" /></button></div>
@@ -132,9 +122,6 @@ import { pick } from '../data/affiliate.js';
   .step { border: 0; padding: 0; margin: 0; display: grid; gap: 20px; min-width: 0; }
 
   .result { display: grid; gap: 26px; padding-bottom: 70px; }
-  .bftoggle { grid-column: 1 / -1; display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-block: 14px; cursor: pointer; }
-  .bftoggle input { width: 22px; height: 22px; margin-top: 2px; flex: none; accent-color: var(--green); }
-  .bftoggle span { display: grid; gap: 4px; }
   .rhead { display: flex; justify-content: space-between; align-items: end; gap: 14px; flex-wrap: wrap; }
   .tabs { display: flex; gap: 8px; overflow-x: auto; padding-block: 10px; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); z-index: 5; scrollbar-width: none; }
   .tab { flex: none; display: grid; gap: 1px; text-align: left; font: inherit; color: var(--fg); background: var(--card); border: 1.5px solid var(--line); border-radius: var(--r-sm); padding: 8px 14px; min-height: 48px; cursor: pointer; min-width: 92px; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease); }
@@ -189,6 +176,10 @@ import { pick } from '../data/affiliate.js';
   .step h3.sub { font-size: 1.25rem; margin-top: 8px; }
   .nextcyc { margin-top: 16px; }
   .nextcyc ul { margin: 8px 0 0; }
+  .cycopts { display: grid; gap: 8px; }
+  .cycopts label { display: flex; gap: 10px; align-items: center; border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+  .cycopts label:has(input:checked) { border-color: var(--green); background: var(--ok-bg); }
+  .cycopts input { accent-color: var(--green); width: 18px; height: 18px; margin: 0; }
   @media print {
     .tabs, .wizard, .acts, .swapbox { display: none !important; }
     .daycard[hidden] { display: grid !important; }
@@ -288,7 +279,7 @@ import { pick } from '../data/affiliate.js';
     ev.preventDefault();
     if (!valid1()) return;
     const fd = new FormData(form);
-    state.inputs = Object.fromEntries(fd.entries());
+    state.inputs = { cyc: state.inputs?.cyc, gap: state.inputs?.gap, ...Object.fromEntries(fd.entries()) };
     save();
     render();
   });
@@ -377,6 +368,9 @@ import { pick } from '../data/affiliate.js';
   const img = (r: any) => thumb(base, r.image);
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 
+  const doneKey = (k: number) => `${bf() ? 'b' : ''}${k}`;
+  const isDone = (k: number, i: number) => !!state.done?.[doneKey(k)]?.[i];
+  const dayDone = (k: number) => items(k).every((_: any, i: number) => isDone(k, i));
   let tab = 1;
   let openSwap = '';
 
@@ -391,7 +385,7 @@ import { pick } from '../data/affiliate.js';
     result.hidden = false;
     root.hidden = true;
     const start = new Date((state.inputs.start || iso(d0)) + 'T12:00:00');
-    const cyc = +state.inputs.cyc, gap = +state.inputs.gap;
+    const cyc = +state.inputs.cyc || 1, gap = +state.inputs.gap || 1;
     const f = p.f;
 
     // Abgleich-Tabelle
@@ -429,7 +423,7 @@ import { pick } from '../data/affiliate.js';
         <div class="tw"><table><thead><tr><th>Tag</th><th>kcal</th><th>Eiweiß</th><th>Fett</th><th>davon Öl</th><th>Kohlenhydrate</th><th>Zucker</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
         <p class="muted small">„Passt“ heißt: Kalorien höchstens 5 %, Fett und Kohlenhydrate höchstens 5 und Eiweiß höchstens ${PLAN.reference.tolerance.proteinPoints} Prozentpunkte von Prof. Dr. Longos Referenz entfernt, Zucker höchstens ${PLAN.reference.sugarMaxPercent} % der Kalorien (Prof. Dr. Longo nennt dafür keine Zahl, das ist unsere Regel). Die Anpassung der Portionen an Deinen Bedarf (Faktor ${fmt(f, 2)}, berechnet mit der Mifflin-St-Jeor-Formel) ist unsere eigene Regel und nicht Teil von Prof. Dr. Longos Protokoll.</p>
       </details>
-      <div class="tabs noprint" role="tablist">${tabs.map(([k, a, b]) => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k === tab}"><b>${a}</b><span>${b}</span></button>`).join('')}</div>
+      <div class="tabs noprint" role="tablist">${tabs.map(([k, a, b]) => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k === tab}"><b>${k >= 1 && k <= 5 && dayDone(k) ? '✓ ' : ''}${a}</b><span>${b}</span></button>`).join('')}</div>
       <div id="panes">${[0, 1, 2, 3, 4, 5, 6].map((k) => `<div class="daycard" data-pane="${k}" ${k === tab ? '' : 'hidden'}>${pane(k, f, start, cyc, gap, p.fAll, p.ppl)}</div>`).join('')}</div>
     `;
     bindCommon();
@@ -438,6 +432,10 @@ import { pick } from '../data/affiliate.js';
       result.querySelectorAll<HTMLElement>('.tab').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
       result.querySelectorAll<HTMLElement>('.daycard').forEach((x) => (x.hidden = x.dataset.pane !== String(tab)));
     }));
+    result.querySelectorAll<HTMLInputElement>('input[data-done]').forEach((c) => c.addEventListener('change', () => {
+      const [d, i] = c.dataset.done!.split('-').map(Number); state.done = state.done || {}; (state.done[doneKey(d)] = state.done[doneKey(d)] || {})[i] = c.checked; save(); rerender();
+    }));
+    result.querySelectorAll<HTMLInputElement>('input[name="nextcyc"]').forEach((r) => r.addEventListener('change', () => { state.inputs.cyc = r.dataset.cyc; state.inputs.gap = r.dataset.gap; save(); rerender(); }));
     result.querySelector<HTMLInputElement>('#bf')?.addEventListener('change', (e) => { state.breakfast = (e.target as HTMLInputElement).checked; openSwap = ''; save(); rerender(); });
     result.querySelectorAll<HTMLButtonElement>('[data-swap]').forEach((b) => b.addEventListener('click', () => { openSwap = openSwap === b.dataset.swap ? '' : b.dataset.swap!; rerender(); }));
     result.querySelectorAll<HTMLButtonElement>('[data-pick]').forEach((b) => b.addEventListener('click', () => {
@@ -485,13 +483,22 @@ import { pick } from '../data/affiliate.js';
         <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)} ${mtags(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
     }
     if (k === 8) {
-      if (cyc < 2) return `<div class="plain nextcyc"><p>${I.calendar} Du hast einen Durchgang geplant. Für weitere Termine wähle unter „Angaben ändern“ mehrere Durchgänge.</p></div>`;
-      const next = addMonths(start, gap);
+      const OPTS: [string, number, number, string][] = [
+        ['once', 1, 1, 'Erst mal nur dieser Durchgang'],
+        ['study', 3, 1, '3 Durchgänge, einmal im Monat (wie in der Studie)'],
+        ['quarter', 4, 3, 'Alle 3 Monate'],
+        ['half', 2, 6, 'Zweimal im Jahr'],
+      ];
+      const curKey = (OPTS.find((o) => o[1] === cyc && o[2] === gap) || OPTS[0])[0];
       let li = '';
       for (let c = 1; c < cyc; c++) { const s1 = addMonths(start, c * gap); li += `<li><b>${c + 1}. Durchgang:</b> ${dsl(s1)} bis ${dsl(addDays(s1, 4))} <span class="muted">(Vorbereitung ${dsl(addDays(s1, -1))})</span></li>`; }
-      return `<div class="plain nextcyc"><h3>${I.calendar} Dein nächster Scheinfastenzyklus beginnt am ${dsl(next)}</h3><ul>${li}</ul></div>`;
+      return `<div class="plain nextcyc"><h3>${I.calendar} Wie geht es weiter?</h3>
+        <p class="small muted">Gerichte und Mengen bleiben in jedem Durchgang gleich, es ändern sich nur die Termine. In der wichtigsten Studie gab es drei Durchgänge im Abstand von einem Monat. Wer gesund und normalgewichtig ist, kommt laut Prof. Dr. Longo mit etwa zwei Durchgängen im Jahr aus. Entscheide nach diesem ersten Durchgang, wie es Dir ging.</p>
+        <div class="cycopts">${OPTS.map(([key, c, g, l]) => `<label><input type="radio" name="nextcyc" value="${key}" data-cyc="${c}" data-gap="${g}" ${key === curKey ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div>
+        ${cyc > 1 ? `<p><b>Dein nächster Scheinfastenzyklus beginnt am ${dsl(addMonths(start, gap))}.</b></p><ul>${li}</ul>` : ''}</div>`;
     }
     const list = items(k); const n = total(list, f); const c = check(k, n, f);
+    const doneKcal = list.reduce((a: number, it: any, i: number) => a + (isDone(k, i) ? nutrition(BY_SLUG[it.recipe], it.portion * f).kcal : 0), 0);
     const vs = (cls: string, ic: string, label: string, val: string, sub: string) => `<div class="${cls}"><span class="k">${I[ic]}${label}</span><b>${val}</b><small>${sub}</small></div>`;
     let html = `<div class="daytop"><div class="row"><h3>Tag ${k}${k === 1 ? ' (Starttag)' : ''} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Prof. Dr. Longos Vorgaben</span>` : '<span class="chip warn">knapp daneben</span>'}</div>${c.ok ? '' : `<p class="small muted knapp"><b>Knapp daneben</b> heißt: Kalorien oder Nährstoffanteile weichen an diesem Tag etwas mehr ab als erlaubt (Kalorien mehr als 5 %, Eiweiß mehr als ${PLAN.reference.tolerance.proteinPoints}, Fett oder Kohlenhydrate mehr als 5 Prozentpunkte). Tausche ein Gericht, dann passt es meist wieder.</p>`}
       <div class="vs">
@@ -502,6 +509,7 @@ import { pick } from '../data/affiliate.js';
         ${vs('carbs', 'carbs', 'Kohlenhydrate', `${fmt(n.carbs)} g`, `${fmt(c.shares.carbs)} % · Vorgabe ${c.ref.carbs} %`)}
       </div>
       <div class="mbar" aria-hidden="true"><i class="p" style="width:${c.shares.protein}%"></i><i class="f" style="width:${c.shares.fat}%"></i><i class="c" style="width:${c.shares.carbs}%"></i></div>
+      <div class="donebar"><div class="bar"><i style="width:${Math.min(100, doneKcal / n.kcal * 100)}%"></i></div><span><b>${fmt(doneKcal)}</b> von ${fmt(n.kcal)} kcal abgehakt${dayDone(k) ? ' · Tag geschafft!' : ''}</span></div>
       <p class="muted small">${I.water} Dazu über den Tag reichlich Wasser oder ungesüßten Tee.</p></div>`;
     list.forEach((it: any, idx: number) => {
       const r = BY_SLUG[it.recipe]; const por = it.portion * f; const m = nutrition(r, por);
@@ -516,13 +524,14 @@ import { pick } from '../data/affiliate.js';
           ${cands.map((x: any) => `<button class="alt" data-pick="${key}" data-r="${x.r.slug}" data-p="${x.portion}"><img src="${img(x.r)}" alt="" loading="lazy"><span><b>${esc(x.r.title)}</b><small>${fmt(x.kcal)} kcal · Portion ×${fmt(x.portion, 2)}</small></span>${x.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span class="chip warn">knapp</span>'}</button>`).join('')}
         </div>`;
       }
-      html += `<article class="meal"><img src="${img(r)}" alt="" loading="lazy"><div class="info">
+      html += `<article class="meal${isDone(k, idx) ? ' isdone' : ''}"><img src="${img(r)}" alt="" loading="lazy"><div class="info">
         <span class="when">${it.meal}</span>
         <h3>${['main', 'snack', 'breakfast'].includes(r.slot) ? `<a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a>` : esc(r.title)}</h3>
         <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.carbs)} g</b></span></div>
         <span class="por">Portion ×${fmt(por, 2)}${ppl > 1 ? ` · Topf für alle ×${fmt(it.portion * fAll, 2)}` : ''}${it.swapped ? ' · getauscht' : ''}</span>${it.auto ? `<span class="chip pref-chip">${I.check} passend zu Deinen Vorlieben</span>` : ''}
         <details><summary>${ppl > 1 ? `Zutaten für alle ${ppl} Personen` : 'Zutaten in Gramm'}</summary><ul>${Object.entries(agg).map(([n2, g]) => ppl > 1 ? `<li>${amountLabel(n2, g / f * fAll)} ${esc(n2)} <small>(Deins: ${amountLabel(n2, g)})</small></li>` : `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>
         ${canSwap ? `<div class="acts noprint"><button class="btn soft small" data-swap="${key}" aria-expanded="${openSwap === key}">${I.swap} Tauschen</button>${it.swapped ? `<button class="btn soft small" data-reset="${key}">Original</button>` : ''}</div>` : ''}
+        <label class="tick noprint"><input type="checkbox" data-done="${k}-${idx}" ${isDone(k, idx) ? 'checked' : ''}><span>Gegessen</span></label>
       </div>${box}</article>`;
     });
     return html;
