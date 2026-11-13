@@ -202,11 +202,15 @@ import { pick } from '../data/affiliate.js';
   .alts { display: flex; flex-wrap: wrap; gap: 8px; }
   .badlist { display: grid; gap: 12px; }
   .badlist .alert p b { font-weight: 800; }
-  .meals { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 18px; }
+  .meals { display: grid; gap: 14px; }
   .meal ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: .93rem; }
   .meal ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: .93rem; }
   .meal h3 { font-size: 1.2rem; }
-  .meal .mimg { width: 100%; aspect-ratio: 16 / 9; max-height: 190px; object-fit: cover; border-radius: 12px; margin-bottom: 4px; }
+  /* Gleiche Anordnung wie im fertigen Plan: Foto links (112 px, mobil 76 px), Inhalt rechts */
+  .card.meal { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 14px; align-items: start; }
+  @media (max-width: 560px) { .card.meal { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; } }
+  .meal .mimg { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+  .meal .info { display: grid; gap: 8px; min-width: 0; }
   .meal .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
   .rmatch { display: grid; grid-template-columns: 88px 1fr; gap: 14px; align-items: start; text-decoration: none; color: inherit; }
   .rmatch img { width: 88px; height: 66px; object-fit: cover; border-radius: 12px; }
@@ -449,13 +453,14 @@ import { pick } from '../data/affiliate.js';
           ${doneHtml(eaten, t, fmt, eaten.kcal >= t.kcal * 0.95 ? ' · Tag geschafft!' : '')}
           ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => `<article class="card meal${done[m.key] ? ' isdone' : ''}">
             <img class="mimg" src="${m.recipe ? thumb(base, m.recipe.image) : thumbIn(base, 'diy', m.tpl || 'pfanne')}" alt="" loading="lazy" width="400" height="300" />
+            <div class="info">
             <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.kcal)} kcal</span></div>
             <h3>${m.recipe ? `<a href="${base}rezepte/${m.recipe.slug}/">${esc(m.title)}</a>` : esc(m.title)}</h3>
             <ul class="ing">${m.items.map((i: any) => `<li>${mac(i.name)}<span>${amount(i.name, i.g)} ${esc(i.name)}</span></li>`).join('')}</ul>
             ${m.steps.length ? `<ol>${m.steps.map((st: string) => `<li>${esc(st)}</li>`).join('')}</ol>` : '<p class="small muted">Zubereitung im Rezept.</p>'}
             <p class="small muted">${I.time} etwa ${m.minutes} Minuten</p>
             <label class="tick"><input type="checkbox" data-done="${m.key}" ${done[m.key] ? 'checked' : ''}><span>Gegessen</span></label>
-          </article>`).join('')}</div>` : ''; }).join('')}</div>`;
+          </div></article>`).join('')}</div>` : ''; }).join('')}</div>`;
       }
       h += tableHtml;
       // Passende Rezepte der Seite, je 1 Portion, nach Mahlzeit
