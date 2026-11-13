@@ -4,7 +4,7 @@ import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 import { icon } from '../lib/icons.js';
 import { PLAN, fmt } from '../lib/nutrition.js';
-const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search', 'sugar', 'leaf', 'nut', 'oil', 'apple', 'herb', 'cup', 'ban'].map((k) => [k, icon(k)]));
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search', 'sugar', 'leaf', 'nut', 'oil', 'apple', 'herb', 'cup', 'ban', 'calendar'].map((k) => [k, icon(k)]));
 const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 import AffiliateBox from '../components/AffiliateBox.astro';
@@ -54,12 +54,13 @@ import { pick } from '../data/affiliate.js';
           </div>
         </div>
         <div class="field"><span class="lbl">Welcher Fastentag ist heute?</span>
-          <div class="seg five" id="days">
+          <div class="seg six" id="days">
             {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small></span></label>)}
+            <label><input type="radio" name="day" value="6" /><span>Übergang<small>Tag 6</small></span></label>
           </div>
           <p class="small muted" id="dayhint" aria-live="polite"></p>
         </div>
-        <label class="bftoggle"><input type="checkbox" name="bf" value="1" id="bfx" /><span><b>Mit Frühstück</b><small class="muted">Morgens ein Frühstück mit etwa 150 bis 200 kcal, Mittag- und Abendessen werden dafür kleiner. Der Tag bleibt im Rahmen der Vorgaben.</small></span></label>
+        <label class="bftoggle" id="bfrow"><input type="checkbox" name="bf" value="1" id="bfx" /><span><b>Mit Frühstück</b><small class="muted">Morgens ein Frühstück mit etwa 150 bis 200 kcal, Mittag- und Abendessen werden dafür kleiner. Der Tag bleibt im Rahmen der Vorgaben.</small></span></label>
         <p class="err" id="err1" role="alert" hidden></p>
       </fieldset>
     </form>
@@ -81,16 +82,17 @@ import { pick } from '../data/affiliate.js';
         if (start) {
           var s = new Date(start + 'T12:00:00'), d = new Date(); d.setHours(12, 0, 0, 0);
           var n = Math.round((d - s) / 86400000) + 1;
-          if (n >= 1 && n <= 5) { day = n; pf.dataset.fromPlan = String(n); }
+          if (n >= 1 && n <= 6) { day = n; pf.dataset.fromPlan = String(n); }
         }
         if (!day && prof && prof.day) day = +prof.day;
         if (day) { var r = pf.querySelector('input[name="day"][value="' + day + '"]'); if (r) r.checked = true; }
-        if (pf.dataset.fromPlan) document.getElementById('dayhint').textContent = 'Laut Deinem Plan ist heute Tag ' + pf.dataset.fromPlan + '.';
+        if (pf.dataset.fromPlan) document.getElementById('dayhint').textContent = pf.dataset.fromPlan === '6' ? 'Laut Deinem Plan ist heute der Übergangstag.' : 'Laut Deinem Plan ist heute Tag ' + pf.dataset.fromPlan + '.';
         if ((prof && prof.bf) || (plan && plan.breakfast)) document.getElementById('bfx').checked = true;
       })();
     </script>
   </section>
 
+  <section class="in" id="uebergang" hidden aria-live="polite"></section>
   <div id="pane-cook">
   <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
     <form id="f" class="card wcard" novalidate>
@@ -140,8 +142,9 @@ import { pick } from '../data/affiliate.js';
   .block legend { font-family: var(--display); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; padding: 0; margin-bottom: 4px; }
   .block .num { width: 32px; height: 32px; border-radius: 50%; background: var(--tomato); color: var(--on-tomato); display: grid; place-items: center; font: 700 .95rem var(--body); flex: none; }
   .seg.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .seg.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  @media (max-width: 560px) { .seg.five { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .seg.six { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  @media (max-width: 640px) { .seg.six { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  #uebergang { max-width: 820px; padding-bottom: 40px; display: grid; gap: 0; }
   #prof { padding-bottom: 18px; }
   .tabsw { padding-bottom: 18px; }
   .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; background: var(--band); border-radius: 18px; }
@@ -216,6 +219,7 @@ import { pick } from '../data/affiliate.js';
   import { fmt, PLAN, amountLabel, RECIPES, nutrition, shares } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
   import { thumb } from '../lib/url.js';
+  import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml, addDays } from '../lib/uebergang.js';
   const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
   const TOL_P = PLAN.reference.tolerance.proteinPoints ?? PLAN.reference.tolerance.macroPoints;
 
@@ -320,6 +324,7 @@ import { pick } from '../data/affiliate.js';
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
     const v = readInputs(); if (!v) { pf.scrollIntoView({ behavior: 'smooth' }); return; }
+    if (applyDay()) return;
     const e3 = document.getElementById('err3')!;
     let msg = '';
     if (!state.picks.length) msg = 'Füge noch mindestens ein Lebensmittel hinzu.';
@@ -333,7 +338,8 @@ import { pick } from '../data/affiliate.js';
   // Tageswahl und Körperdaten wirken sofort, sobald ein Ergebnis da ist
   pf.addEventListener('change', () => {
     const fd = Object.fromEntries(new FormData(pf).entries()) as any;
-    try { localStorage.setItem('smlProfil', JSON.stringify({ inputs: { sex: fd.sex, age: fd.age, h: fd.h, w: fd.w, pal: fd.pal }, day: fd.day, bf: !!fd.bf })); } catch {}
+    try { const old = JSON.parse(localStorage.getItem('smlProfil') || 'null') || {}; localStorage.setItem('smlProfil', JSON.stringify({ ...old, inputs: { sex: fd.sex, age: fd.age, h: fd.h, w: fd.w, pal: fd.pal }, day: fd.day, bf: !!fd.bf })); } catch {}
+    if (applyDay()) return;
     if (!state.shown) return;
     const v = readInputs(); if (!v) return;
     state.inputs = v; save(); render();
@@ -493,7 +499,39 @@ import { pick } from '../data/affiliate.js';
     save(); render();
   });
 
-  if (state.shown && state.picks.length) { const v = readInputs(); if (v) { state.inputs = v; render(); } }
+  // Übergangstag (Tag 6): statt Rezeptrechnung die Hinweise zum Übergang und die Wahl der nächsten Durchgänge.
+  const trans = document.getElementById('uebergang')!;
+  const cook = document.getElementById('pane-cook')!;
+  const bfrow = document.getElementById('bfrow')!;
+  const getJ = (k: string) => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } };
+  function renderTransition() {
+    const plan = getJ('smlPlaner'), prof = getJ('smlProfil') || {};
+    // Erster Fastentag: aus dem Plan, sonst heute minus fünf Tage (heute ist Tag 6).
+    const today = new Date(); today.setHours(12, 0, 0, 0);
+    const start = plan?.inputs?.start ? new Date(`${plan.inputs.start}T12:00:00`) : addDays(today, -5);
+    const date = plan?.inputs?.start ? addDays(start, 5) : today;
+    const cyc = +(plan?.inputs?.cyc || prof.cyc) || 1, gap = +(plan?.inputs?.gap || prof.gap) || 1;
+    const bySlug = Object.fromEntries(RECIPES.map((r: any) => [r.slug, r]));
+    const recs = TRANSITION_SLUGS.filter((x) => bySlug[x]).map((x) => { const r = bySlug[x]; return { href: `${base}rezepte/${x}/`, img: thumb(base, r.image), title: r.title, minutes: r.minutes }; });
+    trans.innerHTML = `<div class="plain">${transitionHtml(date, recs, esc)}</div><div class="plain nextcyc">${nextCycleHtml(start, cyc, gap, I.calendar || '')}</div>`;
+  }
+  trans.addEventListener('change', (e) => {
+    const r = e.target as HTMLInputElement; if (r.name !== 'nextcyc') return;
+    const prof = getJ('smlProfil') || {}; prof.cyc = r.dataset.cyc; prof.gap = r.dataset.gap;
+    try { localStorage.setItem('smlProfil', JSON.stringify(prof)); } catch {}
+    const plan = getJ('smlPlaner');
+    if (plan?.inputs) { plan.inputs.cyc = r.dataset.cyc; plan.inputs.gap = r.dataset.gap; try { localStorage.setItem('smlPlaner', JSON.stringify(plan)); } catch {} }
+    renderTransition();
+  });
+  /** Zeigt am Übergangstag die Hinweise statt des Rechners; true, wenn Tag 6 gewählt ist. */
+  function applyDay() {
+    const six = (pf.elements.namedItem('day') as RadioNodeList).value === '6';
+    trans.hidden = !six; cook.hidden = six; bfrow.hidden = six;
+    if (six) renderTransition();
+    return six;
+  }
+
+  if (!applyDay() && state.shown && state.picks.length) { const v = readInputs(); if (v) { state.inputs = v; render(); } }
 </script>
 
 <script>

@@ -104,6 +104,11 @@ import { pick } from '../data/affiliate.js';
 </Base>
 
 <style is:global>
+  .alt { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; font: inherit; color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px; cursor: pointer; }
+  .alt:hover { border-color: var(--green); }
+  a.alt { text-decoration: none; }
+  .alt img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; }
+  .alt b { display: block; font-size: .95rem; } .alt small { color: var(--muted); }
   .wizard { display: grid; gap: 18px; max-width: 760px; padding-bottom: 60px; }
   .progress { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .progress li { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; color: var(--muted); padding-bottom: 10px; border-bottom: 4px solid var(--line); }
@@ -145,13 +150,6 @@ import { pick } from '../data/affiliate.js';
   @media (max-width: 560px) { .meal ul { columns: 1; } }
   .meal .acts { display: flex; gap: 8px; flex-wrap: wrap; }
   .swapbox { grid-column: 1 / -1; display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 12px; }
-  .alt { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; font: inherit; color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px; cursor: pointer; }
-  .alt:hover { border-color: var(--green); }
-  a.alt { text-decoration: none; }
-  .alt img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; }
-  .alt b { display: block; font-size: .95rem; } .alt small { color: var(--muted); }
-  .plain { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 12px; }
-  .plain ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
   .shopcats { columns: 2; column-gap: 28px; margin-top: 10px; }
   @media (max-width: 600px) { .shopcats { columns: 1; } }
   .shopcat { break-inside: avoid; margin-bottom: 18px; }
@@ -174,12 +172,6 @@ import { pick } from '../data/affiliate.js';
   .pref.no .pi::before { content: "✕"; color: var(--bad); }
   .chip.pref-chip { background: var(--ok-bg); color: var(--green); }
   .step h3.sub { font-size: 1.25rem; margin-top: 8px; }
-  .nextcyc { margin-top: 16px; }
-  .nextcyc ul { margin: 8px 0 0; }
-  .cycopts { display: grid; gap: 8px; }
-  .cycopts label { display: flex; gap: 10px; align-items: center; border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; cursor: pointer; }
-  .cycopts label:has(input:checked) { border-color: var(--green); background: var(--ok-bg); }
-  .cycopts input { accent-color: var(--green); width: 18px; height: 18px; margin: 0; }
   @media print {
     .tabs, .wizard, .acts, .swapbox { display: none !important; }
     .daycard[hidden] { display: grid !important; }
@@ -192,6 +184,7 @@ import { pick } from '../data/affiliate.js';
   import { RECIPES, BY_SLUG, PLAN, nutrition, add, check, shares, amountLabel, fmt } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
   import { thumb } from '../lib/url.js';
+  import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml } from '../lib/uebergang.js';
 
   const root = document.getElementById('wizard')!;
   const base = root.dataset.base!;
@@ -400,7 +393,7 @@ import { pick } from '../data/affiliate.js';
         <td class="n">${fmt(n.sugar)} g<br><small class="muted">${fmt(c.sugarPct)} % · max. ${PLAN.reference.sugarMaxPercent} %</small></td>
         <td>${c.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span class="chip warn">knapp daneben</span>'}</td></tr>`;
     }
-    const tabs = [[0, 'Vorbereitung', ds(addDays(start, -1))], ...[1, 2, 3, 4, 5].map((d) => [d, `Tag ${d}`, ds(addDays(start, d - 1))]), [6, 'Tag 6', ds(addDays(start, 5))]];
+    const tabs = [[0, 'Vorbereitung', ds(addDays(start, -1))], ...[1, 2, 3, 4, 5].map((d) => [d, `Tag ${d}`, ds(addDays(start, d - 1))]), [6, 'Übergangstag', ds(addDays(start, 5))]];
 
     result.innerHTML = `
       <div class="rhead"><div class="stack" style="gap:6px"><p class="kicker">Dein Plan</p><h2>Start am ${dsl(start)}</h2></div>
@@ -464,11 +457,8 @@ import { pick } from '../data/affiliate.js';
         <li>Viel Kaffee? Schon jetzt reduzieren, dann reicht in den fünf Tagen eine kleine Tasse.</li></ul></div>${pane(7, f, start, cyc, gap, fAll, ppl)}`;
     }
     if (k === 6) {
-      return `<div class="plain"><h3>Tag 6 (Übergangstag) am ${dsl(addDays(start, 5))}</h3><ul>
-        <li>Nicht direkt zu großen Portionen zurückkehren.</li><li>Gut geeignet: Suppen, gedünstetes Gemüse, Reis, Haferbrei, kleine Mengen Eiweiß.</li>
-        <li>Ab Tag 7 wieder normal und ausgewogen essen.</li></ul>
-        <p><b>Passt gut zum Übergang</b> <span class="muted small">(normale Portion, dazu Reis, Brot oder Haferbrei)</span></p>
-        <div class="stack" style="gap:8px">${['minestrone', 'kuerbissuppe', 'spinat-dal'].filter((s) => BY_SLUG[s]).map((s) => { const r = BY_SLUG[s]; return `<a class="alt" href="${base}rezepte/${s}/"><img src="${img(r)}" alt="" loading="lazy"><span><b>${esc(r.title)}</b><small>${r.minutes} Minuten</small></span><span></span></a>`; }).join('')}</div></div>${pane(8, f, start, cyc, gap, fAll, ppl)}`;
+      const recs = TRANSITION_SLUGS.filter((x) => BY_SLUG[x]).map((x) => { const r = BY_SLUG[x]; return { href: `${base}rezepte/${x}/`, img: img(r), title: r.title, minutes: r.minutes }; });
+      return `<div class="plain">${transitionHtml(addDays(start, 5), recs, esc)}</div>${pane(8, f, start, cyc, gap, fAll, ppl)}`;
     }
     if (k === 7 || k === -7) {
       const tot: Record<string, number> = {};
@@ -482,21 +472,7 @@ import { pick } from '../data/affiliate.js';
         <div class="shopcats">${groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')), ([n]: [string, number]) => FM[n]).map((c) => `<div class="shopcat"><h4>${I[c.icon]}${c.label}</h4>
         <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)} ${mtags(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
     }
-    if (k === 8) {
-      const OPTS: [string, number, number, string][] = [
-        ['once', 1, 1, 'Erst mal nur dieser Durchgang'],
-        ['study', 3, 1, '3 Durchgänge, einmal im Monat (wie in der Studie)'],
-        ['quarter', 4, 3, 'Alle 3 Monate'],
-        ['half', 2, 6, 'Zweimal im Jahr'],
-      ];
-      const curKey = (OPTS.find((o) => o[1] === cyc && o[2] === gap) || OPTS[0])[0];
-      let li = '';
-      for (let c = 1; c < cyc; c++) { const s1 = addMonths(start, c * gap); li += `<li><b>${c + 1}. Durchgang:</b> ${dsl(s1)} bis ${dsl(addDays(s1, 4))} <span class="muted">(Vorbereitung ${dsl(addDays(s1, -1))})</span></li>`; }
-      return `<div class="plain nextcyc"><h3>${I.calendar} Wie geht es weiter?</h3>
-        <p class="small muted">Gerichte und Mengen bleiben in jedem Durchgang gleich, es ändern sich nur die Termine. In der wichtigsten Studie gab es drei Durchgänge im Abstand von einem Monat. Wer gesund und normalgewichtig ist, kommt laut Prof. Dr. Longo mit etwa zwei Durchgängen im Jahr aus. Entscheide nach diesem ersten Durchgang, wie es Dir ging.</p>
-        <div class="cycopts">${OPTS.map(([key, c, g, l]) => `<label><input type="radio" name="nextcyc" value="${key}" data-cyc="${c}" data-gap="${g}" ${key === curKey ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div>
-        ${cyc > 1 ? `<p><b>Dein nächster Scheinfastenzyklus beginnt am ${dsl(addMonths(start, gap))}.</b></p><ul>${li}</ul>` : ''}</div>`;
-    }
+    if (k === 8) return `<div class="plain nextcyc">${nextCycleHtml(start, cyc, gap, I.calendar)}</div>`;
     const list = items(k); const n = total(list, f); const c = check(k, n, f);
     const doneKcal = list.reduce((a: number, it: any, i: number) => a + (isDone(k, i) ? nutrition(BY_SLUG[it.recipe], it.portion * f).kcal : 0), 0);
     const vs = (cls: string, ic: string, label: string, val: string, sub: string) => `<div class="${cls}"><span class="k">${I[ic]}${label}</span><b>${val}</b><small>${sub}</small></div>`;
