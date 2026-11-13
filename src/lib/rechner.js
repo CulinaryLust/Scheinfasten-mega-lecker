@@ -422,7 +422,7 @@ export function buildMeals(items) {
     const ctx = { veg: big(m.veg), base: big(m.base), oil: Math.round(m.oils.reduce((a, o) => a + o.g, 0)), acid: big(m.acid),
       aroma: big(m.aroma), herb: big(m.herb), top: big(m.top), liquid: big(m.liq).map(label).join(' und ') };
     const merged = mergeItems([...m.veg, ...m.base, ...m.oils, ...m.herb, ...m.acid, ...m.liq, ...m.aroma, ...m.top, ...(m.dessert || [])]);
-    return { slot: m.tpl === 'snack' ? 'Snack' : idx === 0 ? 'Mittags' : 'Abends', kind: t.kind, minutes: t.min, title,
+    return { tpl: m.tpl, slot: m.tpl === 'snack' ? 'Snack' : idx === 0 ? 'Mittags' : 'Abends', kind: t.kind, minutes: t.min, title,
       items: merged, steps: [...t.steps(ctx), m.dessert?.length ? `Als Nachtisch: ${list(big(m.dessert))}, in Spalten oder Stücke geschnitten.` : null].filter(Boolean), sum: totals(merged) };
   });
 }

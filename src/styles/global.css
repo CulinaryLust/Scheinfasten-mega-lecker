@@ -245,3 +245,15 @@ h3.slot { font-size: 1.15rem; margin-top: 10px; color: var(--green); }
 .cycopts label { display: flex; gap: 10px; align-items: center; border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; cursor: pointer; }
 .cycopts label:has(input:checked) { border-color: var(--green); background: var(--ok-bg); }
 .cycopts input { accent-color: var(--green); width: 18px; height: 18px; margin: 0; }
+
+/* Fortschritt nach Nährstoffen (Plan und DIY) */
+.donebar .bar.stacked { display: flex; }
+.donebar .bar.stacked i { border-radius: 0; background: none; flex: none; }
+.donebar .bar.stacked i.p { background: var(--c-protein); } .donebar .bar.stacked i.f { background: var(--c-fat); } .donebar .bar.stacked i.c { background: var(--c-carbs); }
+.donemac { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .85rem; font-variant-numeric: tabular-nums; }
+.dm { position: relative; display: inline-block; cursor: help; border-radius: 6px; outline-offset: 2px; }
+.dm .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: 0; }
+.dm.protein .dot { background: var(--c-protein); } .dm.fat .dot { background: var(--c-fat); } .dm.carbs .dot { background: var(--c-carbs); }
+.dm::after { content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 8px); width: max-content; max-width: min(280px, 80vw); padding: 8px 10px; border-radius: 10px; background: var(--fg); color: var(--bg); font-size: .8rem; line-height: 1.35; box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; pointer-events: none; transform: translateY(4px); transition: opacity .15s, transform .15s; z-index: 10; white-space: normal; }
+.dm:hover::after, .dm:focus-visible::after, .dm:focus::after { opacity: 1; transform: none; }
+.donebar .dm { font-size: .85rem; }
