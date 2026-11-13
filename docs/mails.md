@@ -1,7 +1,8 @@
 # Mailtexte für die Zyklus-Erinnerung (Brevo)
 
 Einmal in Brevo anlegen, danach läuft alles automatisch. `{{ contact.ZYKLUS_START }}` setzt Brevo selbst ein.
-`DOMAIN` durch die eigene Adresse ersetzen. Partnerlinks in Mails immer mit „Anzeige“ kennzeichnen.
+`DOMAIN` durch die eigene Adresse ersetzen. Partnerlinks in Mails immer mit „Anzeige“ kennzeichnen, keine Amazon-Links direkt in Mails (nur auf `/ausstattung/` verweisen).
+Newsletter (neue Rezepte, Tipps) nur an Kontakte mit `SF_TIPPS` = Ja, die Erinnerungsmails 1 bis 5 an alle bestätigten Kontakte der Liste.
 Kein Heilversprechen in Betreff oder Text (HWG).
 
 | Mail | Auslöser in Brevo | Zweck |
