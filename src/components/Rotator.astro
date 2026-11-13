@@ -25,7 +25,7 @@ const [w, h] = mode === 'bg' ? [1800, 1000] : [1100, 825];
   .rot.bg picture img { transform: scale(1.06); transition: transform 7s linear; }
   .rot.bg picture.on img { transform: scale(1); }
   .rot.card { aspect-ratio: 4 / 3; max-width: 100%; }
-  .rot.card picture { transform: translateY(10px) rotate(1.2deg); }
+  .rot.card picture { transform: translateY(10px); }
   .rot.card picture.on { transform: none; }
   .rot.card img { border-radius: var(--r-lg); box-shadow: 0 24px 44px -26px rgba(20, 30, 16, .55); }
   .rbadge { position: absolute; left: -10px; bottom: 18px; z-index: 2; background: var(--card); color: var(--fg); border-radius: 14px; padding: 10px 14px; font-weight: 700; font-size: .88rem; box-shadow: 0 14px 30px -18px rgba(0, 0, 0, .5); display: flex; gap: 8px; align-items: center; }

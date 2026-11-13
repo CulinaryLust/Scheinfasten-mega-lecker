@@ -25,7 +25,7 @@ export function amazonUrl(p) {
 // Produkte. Texte bewusst ohne Gesundheitsversprechen (HWG, Health-Claims-Verordnung).
 // asin: optional, wenn Du ein konkretes Produkt empfehlen willst. search: Suchbegriff als Fallback.
 export const PRODUCTS = {
-  waage: { group: 'kueche', icon: 'scale', title: 'Digitale Küchenwaage auf 0,1 g', why: 'Beim Scheinfasten zählt jedes Gramm Öl und Nuss. Eine Feinwaage macht die Mengen aus dem Planer exakt.', search: 'Küchenwaage 0,1 g digital' },
+  waage: { group: 'kueche', icon: 'scale', title: 'Digitale Küchenwaage auf 0,1 Gramm genau', why: 'Beim Scheinfasten zählt jedes Gramm Öl und Nuss. Eine Feinwaage macht die Mengen aus dem Planer exakt.', search: 'Küchenwaage 0,1 g digital' },
   loeffel: { group: 'kueche', icon: 'oil', title: 'Messlöffel-Set', why: 'Für Öl, Tahin und Gewürze, wenn die Waage gerade nicht griffbereit ist.', search: 'Messlöffel Set Edelstahl' },
   dosen: { group: 'kueche', icon: 'pot', title: 'Meal-Prep-Glasdosen', why: 'Suppen und Salate für zwei Tage vorkochen und portioniert in den Kühlschrank stellen.', search: 'Meal Prep Glasbehälter Deckel' },
   stab: { group: 'kueche', icon: 'pot', title: 'Stabmixer', why: 'Für cremige Suppen, Pesto und Kräuteröl ohne Sahne.', search: 'Stabmixer Edelstahl' },

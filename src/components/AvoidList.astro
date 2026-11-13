@@ -27,7 +27,7 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
 {compact ? (
 <section class:list={['band', 'avoid', 'compact', { tint }]} id={id}>
   <div class="in">
-    <div class="head"><p class="kicker">Auf einen Blick</p><h2>Das lässt Du fünf Tage weg</h2></div>
+    <div class="head"><p class="kicker">Auf einen Blick</p><h2>Das lässt Du 5 Tage weg</h2></div>
     <ul class="redchips">{red.map((g) => <li><Icon name="ban" />{g.title}</li>)}</ul>
     <p class="okline"><span class="dot g"></span><span><b>Dafür auf dem Teller:</b> {green.join(', ')}.</span> <a href={u('wissen/#weglassen')}>Ganze Liste mit Beispielen</a></p>
   </div>
@@ -37,8 +37,8 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
   <div class="in">
     <div class="head">
       <p class="kicker">Auf einen Blick</p>
-      <h2>Das lässt Du fünf Tage weg</h2>
-      <p class="muted">Die Regel ist einfach: pflanzlich, wenig Eiweiß, wenig Zucker. Alles hier unten in Rot passt nicht zu Longos Vorgaben. Der <a href={u('rechner/')}>Rechner</a> sagt Dir bei jedem Lebensmittel sofort, ob es passt, und schlägt einen leckeren Tausch vor.</p>
+      <h2>Das lässt Du 5 Tage weg</h2>
+      <p class="muted">Die Regel ist einfach: pflanzlich, wenig Eiweiß, wenig Zucker. Alles in Rot bleibt fünf Tage im Schrank, Gelbes gibt es in kleinen Mengen, Grünes darf auf den Teller. Der <a href={u('rechner/')}>Scheinfastenrechner</a> sagt Dir bei jedem Lebensmittel sofort, ob es passt, und schlägt einen leckeren Tausch vor.</p>
     </div>
     <div class="redgrid">
       {red.map((g) => (
@@ -46,7 +46,6 @@ const green = ['Gemüse', 'Salat', 'Pilze', 'Olivenöl', 'Nüsse', 'Oliven', 'Av
           <span class="ri"><Icon name="ban" /></span>
           <div class="stack" style="gap:6px">
             <h3>{g.title}</h3>
-            <p class="small">{g.why}</p>
             <p class="ex">{g.ex.join(' · ')}</p>
           </div>
         </article>

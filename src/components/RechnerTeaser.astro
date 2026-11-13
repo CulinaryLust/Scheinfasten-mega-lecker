@@ -15,7 +15,7 @@ const days = [
     <div class="rt-text">
       <p class="kicker rt-kick"><Icon name="scale" />Der Scheinfasten-Rechner</p>
       <h2>Wie viel geht heute noch?</h2>
-      <p>Trag ein, was Du gegessen hast, und sieh sofort, wie viel von Deinem Tag nach Longo noch übrig ist. Triffst Du Dein Kalorienziel, leuchtet der Tag grün auf. Dazu gibt es Rezeptideen für den Rest.</p>
+      <p>Trag ein, was Du gegessen hast, und sieh, wie viel heute noch geht. Triffst Du Dein Ziel, leuchtet der Tag grün auf.</p>
       <ul class="rt-pts">
         <li><Icon name="check" />Über 300 Lebensmittel und alle Rezepte</li>
         <li><Icon name="check" />Kalorien, Eiweiß, Fett und Kohlenhydrate auf einen Blick</li>
@@ -51,8 +51,8 @@ const days = [
   .rt-btn { background: var(--sun); color: #1e2a1c; font-size: 1.08rem; padding: 16px 26px; box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .5); }
   .rt-btn:hover { background: #ffc95e; }
   .rt-demo { text-decoration: none; color: inherit; display: block; }
-  .rt-card { background: var(--card); color: var(--fg); border-radius: var(--r-xl); padding: clamp(18px, 3vw, 28px); box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .6); display: grid; gap: 12px; transform: rotate(-1.2deg); transition: transform .5s var(--ease); }
-  .rt-demo:hover .rt-card { transform: rotate(0) translateY(-4px); }
+  .rt-card { background: var(--card); color: var(--fg); border-radius: var(--r-xl); padding: clamp(18px, 3vw, 28px); box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .6); display: grid; gap: 12px; transition: transform .5s var(--ease); }
+  .rt-demo:hover .rt-card { transform: translateY(-4px); }
   .rt-label { margin: 0; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
   .rt-days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
   .rt-day { position: relative; overflow: hidden; isolation: isolate; display: grid; gap: 2px; text-align: center; padding: 10px 4px; border-radius: 12px; border: 1.5px solid var(--line); font-size: .85rem; }
@@ -77,6 +77,5 @@ const days = [
     .rt-day::before { animation: none; height: var(--p); }
     .rt-day.hit, .rt-day.hit small { animation: none; }
     .rt-fill { animation: none; width: 62%; }
-    .rt-card { transform: none; }
   }
 </style>

@@ -27,12 +27,12 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
       <h1>Fasten, das richtig gut schmeckt.</h1>
       <p class="lead">In einer Minute zu Deinem Plan: fünf Tage leckere Gerichte, auf das Gramm genau nach Longos Werten berechnet, mit Einkaufsliste. Kostenlos und ohne Anmeldung.</p>
       <ul class="hfx">
-        <li class="eat"><a href="#unterschied"><Icon name="pot" />Fasten mit echtem Essen</a></li>
+        <li class="eat"><a href="#unterschied"><Icon name="pot" />Fasten mit frischem Essen</a></li>
         <li class="hot"><Icon name="scale" />Auf das Gramm nach Longo</li>
-        <li><Icon name="book" />Quelle zu jeder Zahl</li>
+        <li><Icon name="book" />Studienbasierte Angaben</li>
       </ul>
       <div class="ctas">
-        <a class="btn" href={u('planer/')}><Icon name="calendar" />Gratis 5-Tage-Plan erstellen</a>
+        <a class="btn" href={u('planer/')}><Icon name="calendar" />5-Tage-Essensplan kostenlos erstellen</a>
         <a class="btn ghost" href={u('rechner/')}><Icon name="scale" />Zum Rechner</a>
       </div>
     </div>
@@ -42,7 +42,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
     <span><Icon name="book" />Nach den Studien von Longo</span>
     <span><Icon name="kcal" />Jedes Rezept mit Nährwerten</span>
     <span><Icon name="leaf" />100 % pflanzlich</span>
-    <span><Icon name="pot" />Frisch gekocht statt Fertigpaket</span>
+    <span><Icon name="pot" />Frisch gekocht</span>
   </div></div>
 
   <RechnerTeaser />
@@ -122,7 +122,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
   .wtag { display: flex; gap: 8px; align-items: center; font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--tomato); }
   .wsteps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
   .wsteps li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; }
-  .wsteps .n { width: 30px; height: 30px; border-radius: 9px; background: var(--tomato); color: var(--on-tomato); font: 800 .95rem/1 var(--body); display: grid; place-items: center; transform: rotate(-4deg); box-shadow: 0 3px 0 var(--tomato-d); }
+  .wsteps .n { width: 30px; height: 30px; border-radius: 9px; background: var(--tomato); color: var(--on-tomato); font: 800 .95rem/1 var(--body); display: grid; place-items: center; box-shadow: 0 3px 0 var(--tomato-d); }
   .wsteps div { display: grid; gap: 2px; }
   .wsteps b { font-size: 1.05rem; }
   .wsteps div span { color: var(--muted); font-size: .93rem; }

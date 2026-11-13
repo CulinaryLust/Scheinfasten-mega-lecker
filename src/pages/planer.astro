@@ -19,7 +19,7 @@ import { pick } from '../data/affiliate.js';
     <div class="ph-text">
       <p class="kicker">Planer</p>
       <h1>Dein persönlicher 5-Tage-Plan</h1>
-      <p class="muted">Zwei kurze Schritte, dann steht Dein Plan: jeden Tag leckere Gerichte, auf das Gramm genau nach den Werten von Prof. Dr. Valter Longo berechnet.</p>
+      <p class="muted">Ein paar Angaben, dann steht Dein Plan: jeden Tag leckere Gerichte, auf das Gramm genau nach den Werten von Prof. Dr. Valter Longo berechnet.</p>
     </div>
     <Rotator badge="Gemeinsam fasten macht mehr Spaß" images={[
       { src: 'img/menschen/freunde-tisch.jpg', alt: 'Freunde essen gemeinsam Salate am Tisch' },
@@ -30,10 +30,6 @@ import { pick } from '../data/affiliate.js';
   </div>
 
   <section class="in wizard" id="wizard" data-base={u('')} data-icons={JSON.stringify(icons)} data-foods={JSON.stringify(foodMeta)}>
-    <ol class="progress" aria-label="Fortschritt">
-      <li class="on" data-s="1"><span>1</span>Über Dich</li>
-      <li data-s="2"><span>2</span>Termine</li>
-    </ol>
 
     <form id="f" class="card wcard" novalidate>
       <fieldset class="step" data-step="1">
@@ -80,13 +76,8 @@ import { pick } from '../data/affiliate.js';
           ))}
           <p class="muted small" id="others-note" hidden>Jede Person bekommt ihre eigene Portionsgröße. Einkaufsliste und Kochmengen rechnen wir für alle zusammen. Für Mitfastende nehmen wir einen normal aktiven Alltag an.</p>
         </div>
-        <p class="err" id="err1" role="alert" hidden></p>
-        <div class="nav-btns"><span></span><button type="button" class="btn" data-next="2">Weiter <Icon name="arrow" /></button></div>
-      </fieldset>
-
-      <fieldset class="step" data-step="2" hidden>
-        <legend class="sr-only">Termine</legend>
-        <div class="alert info"><p><b>Fastendauer: 5 Tage.</b> Longos Protokoll ist auf genau fünf Tage ausgelegt. Dazu kommen ein Vorbereitungstag und ein Übergangstag.</p></div>
+        <h3 class="sub">Termine</h3>
+        <p class="muted small">Gefastet wird immer 5 Tage. Dazu kommen ein Vorbereitungstag davor und ein Übergangstag danach.</p>
         <div class="field"><label for="start" class="lbl">Wann startest Du? (Tag 1)</label><input id="start" name="start" type="date" required /></div>
         <div class="field"><span class="lbl">Wie viele Durchgänge planst Du?</span>
           <div class="seg three">
@@ -99,7 +90,8 @@ import { pick } from '../data/affiliate.js';
           <select id="gap" name="gap"><option value="1">monatlich (wie in der Studie)</option><option value="2">alle 2 Monate</option><option value="3" selected>alle 3 Monate</option><option value="4">alle 4 Monate</option></select>
         </div>
         <p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
-        <div class="nav-btns"><button type="button" class="btn soft" data-next="1">Zurück</button><button type="submit" class="btn">Plan erstellen <Icon name="check" /></button></div>
+        <p class="err" id="err1" role="alert" hidden></p>
+        <div class="nav-btns"><span></span><button type="submit" class="btn">Plan erstellen <Icon name="check" /></button></div>
       </fieldset>
 
     </form>
@@ -129,7 +121,7 @@ import { pick } from '../data/affiliate.js';
   .step { border: 0; padding: 0; margin: 0; display: grid; gap: 20px; min-width: 0; }
 
   .result { display: grid; gap: 26px; padding-bottom: 70px; }
-  .bftoggle { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-block: 14px; cursor: pointer; }
+  .bftoggle { grid-column: 1 / -1; display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-block: 14px; cursor: pointer; }
   .bftoggle input { width: 22px; height: 22px; margin-top: 2px; flex: none; accent-color: var(--green); }
   .bftoggle span { display: grid; gap: 4px; }
   .rhead { display: flex; justify-content: space-between; align-items: end; gap: 14px; flex-wrap: wrap; }
@@ -174,6 +166,9 @@ import { pick } from '../data/affiliate.js';
   .shop label { display: flex; gap: 10px; padding: 9px 0; cursor: pointer; align-items: center; }
   .shop input { width: 20px; height: 20px; min-height: 0; accent-color: var(--green); }
   .shop input:checked + span { opacity: .45; text-decoration: line-through; }
+  .step h3.sub { font-size: 1.25rem; margin-top: 8px; }
+  .nextcyc { margin-top: 16px; }
+  .nextcyc ul { margin: 8px 0 0; }
   @media print {
     .tabs, .wizard, .acts, .swapbox { display: none !important; }
     .daycard[hidden] { display: grid !important; }
@@ -321,7 +316,7 @@ import { pick } from '../data/affiliate.js';
     const notes: string[] = [];
     if (p.age < 18) notes.push('Du bist unter 18. In diesem Alter wächst der Körper noch, deshalb ist Scheinfasten eher nichts für Dich. Die Rezepte kannst Du natürlich trotzdem nachkochen.');
     if (p.age > 70) notes.push('Ab 70 lohnt sich vorher ein kurzes Gespräch mit Deiner Ärztin oder Deinem Arzt.');
-    if (p.bmi < 18.5) notes.push(`Dein BMI liegt bei ${fmt(p.bmi, 1)}. Bei so wenig Gewicht sprich bitte vorher mit Deiner Ärztin oder Deinem Arzt.`);
+    if (p.bmi < 18.5) notes.push('Dein Gewicht ist für Deine Größe eher niedrig. Sprich bitte vorher mit Deiner Ärztin oder Deinem Arzt.');
     result.hidden = false;
     root.hidden = true;
     const start = new Date((state.inputs.start || iso(d0)) + 'T12:00:00');
@@ -340,20 +335,18 @@ import { pick } from '../data/affiliate.js';
         <td class="n">${fmt(n.sugar)} g<br><small class="muted">${fmt(c.sugarPct)} % · max. ${PLAN.reference.sugarMaxPercent} %</small></td>
         <td>${c.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span class="chip warn">knapp daneben</span>'}</td></tr>`;
     }
-    const tabs = [[0, 'Vorbereitung', ds(addDays(start, -1))], ...[1, 2, 3, 4, 5].map((d) => [d, `Tag ${d}`, ds(addDays(start, d - 1))]), [6, 'Übergang', ds(addDays(start, 5))], [7, 'Einkauf', 'Liste'], [8, 'Termine', `${cyc}×`]];
+    const tabs = [[0, 'Vorbereitung', ds(addDays(start, -1))], ...[1, 2, 3, 4, 5].map((d) => [d, `Tag ${d}`, ds(addDays(start, d - 1))]), [6, 'Tag 6', ds(addDays(start, 5))]];
 
     result.innerHTML = `
       <div class="rhead"><div class="stack" style="gap:6px"><p class="kicker">Dein Plan</p><h2>Start am ${dsl(start)}</h2></div>
         <div class="ctas noprint"><button class="btn soft small" data-edit>Angaben ändern</button><button class="btn soft small" onclick="window.print()">Drucken</button></div></div>
       <div class="sumbar">
-        <div class="stat"><span>BMI</span><b>${fmt(p.bmi, 1)}</b></div>
-        <div class="stat"><span>Dein Tagesbedarf, geschätzt</span><b>${fmt(p.tdee)} kcal</b></div>
-        <div class="stat"><span>Tag 1</span><b>${fmt(1090 * f)} kcal</b></div>
+        <div class="stat"><span>Dein Tagesbedarf (ohne Fasten)</span><b>${fmt(p.tdee)} kcal</b></div>
+        <div class="stat"><span>Tag 1 (Starttag)</span><b>${fmt(1090 * f)} kcal</b></div>
         <div class="stat"><span>Tag 2 bis 5</span><b>${fmt(725 * f)} kcal</b></div>
       <label class="bftoggle noprint"><input type="checkbox" id="bf" ${bf() ? 'checked' : ''}><span><b>Mit Frühstück</b><small class="muted">Statt Nussmix gibt es morgens ein echtes Frühstück mit etwa 150 bis 200 kcal. Mittag- und Abendessen werden dafür um 15 % kleiner. Jeder Tag bleibt in Longos Rahmen.</small></span></label>
       </div>
-      ${notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : p.bmi < 20 ? '<div class="alert info"><p>Dein BMI ist eher niedrig. Hör gut auf Deinen Körper und iss normal weiter, wenn Du Dich schlapp fühlst.</p></div>' : ''}
-      ${p.raw > 1.15 ? '<div class="alert info"><p>Dein Bedarf ist hoch. Wir erhöhen die Portionen um höchstens 15 %, damit der Plan nah an Longos Vorgaben bleibt.</p></div>' : ''}
+      ${notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : p.bmi < 20 ? '<div class="alert info"><p>Dein Gewicht ist eher niedrig. Hör gut auf Deinen Körper und iss normal weiter, wenn Du Dich schlapp fühlst.</p></div>' : ''}
       ${p.raw < 0.9 ? '<div class="alert info"><p>Wir verkleinern die Portionen um höchstens 10 %, damit Du genug isst.</p></div>' : ''}
       ${p.ppl > 1 ? `<details class="plain"><summary><b>Portionen für ${p.ppl} Personen</b> <span class="muted small">(so teilst Du den Topf auf)</span></summary>
         <div class="tw"><table><thead><tr><th>Person</th><th>Bedarf, geschätzt</th><th>Portionsfaktor</th><th>Anteil am Topf</th><th>Tag 1</th><th>Tag 2 bis 5</th></tr></thead><tbody>
@@ -366,7 +359,7 @@ import { pick } from '../data/affiliate.js';
         <p class="muted small">„Passt“ heißt: Kalorien höchstens 5 %, Fett und Kohlenhydrate höchstens 5 und Eiweiß höchstens ${PLAN.reference.tolerance.proteinPoints} Prozentpunkte von Longos Referenz entfernt, Zucker höchstens ${PLAN.reference.sugarMaxPercent} % der Kalorien (Longo nennt dafür keine Zahl, das ist unsere Regel). Die Anpassung der Portionen an Deinen Bedarf (Faktor ${fmt(f, 2)}, berechnet mit der Mifflin-St-Jeor-Formel) ist unsere eigene Regel und nicht Teil von Longos Protokoll.</p>
       </details>
       <div class="tabs noprint" role="tablist">${tabs.map(([k, a, b]) => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k === tab}"><b>${a}</b><span>${b}</span></button>`).join('')}</div>
-      <div id="panes">${[0, 1, 2, 3, 4, 5, 6, 7, 8].map((k) => `<div class="daycard" data-pane="${k}" ${k === tab ? '' : 'hidden'}>${pane(k, f, start, cyc, gap, p.fAll, p.ppl)}</div>`).join('')}</div>
+      <div id="panes">${[0, 1, 2, 3, 4, 5, 6].map((k) => `<div class="daycard" data-pane="${k}" ${k === tab ? '' : 'hidden'}>${pane(k, f, start, cyc, gap, p.fAll, p.ppl)}</div>`).join('')}</div>
     `;
     bindCommon();
     result.querySelectorAll<HTMLButtonElement>('.tab').forEach((b) => b.addEventListener('click', () => {
@@ -397,18 +390,18 @@ import { pick } from '../data/affiliate.js';
     if (k === 0) {
       const pre = [...new Set([...items(1), ...items(2)].filter((x: any) => x.type === 'main').map((x: any) => BY_SLUG[x.recipe].title))];
       return `<div class="plain"><h3>Vorbereitung am ${dsl(addDays(start, -1))}</h3><ul>
-        <li>Einkaufen (siehe Reiter „Einkauf“).</li><li>Vorkochen für die ersten Tage: ${pre.map(esc).join(', ')}.</li>
+        <li>Einkaufen (Liste unten).</li><li>Vorkochen für die ersten Tage: ${pre.map(esc).join(', ')}.</li>
         ${bf() ? '<li>Frühstück vorbereiten: Hirse vorkochen, den Chia-Pudding am Vorabend ansetzen. Die halbe Portion Nussmix für Tag 1 abwiegen.</li>' : '<li>Nussmix für fünf Tage abwiegen und in Dosen füllen.</li>'}<li>Abends leicht essen: Gemüse, etwas Reis, kein Alkohol.</li>
-        <li>Viel Kaffee? Schon jetzt reduzieren, dann reicht in den fünf Tagen eine kleine Tasse.</li></ul></div>`;
+        <li>Viel Kaffee? Schon jetzt reduzieren, dann reicht in den fünf Tagen eine kleine Tasse.</li></ul></div>${pane(7, f, start, cyc, gap, fAll, ppl)}`;
     }
     if (k === 6) {
-      return `<div class="plain"><h3>Übergangstag am ${dsl(addDays(start, 5))}</h3><ul>
+      return `<div class="plain"><h3>Tag 6 (Übergangstag) am ${dsl(addDays(start, 5))}</h3><ul>
         <li>Nicht direkt zu großen Portionen zurückkehren.</li><li>Gut geeignet: Suppen, gedünstetes Gemüse, Reis, Haferbrei, kleine Mengen Eiweiß.</li>
         <li>Ab Tag 7 wieder normal und ausgewogen essen.</li></ul>
         <p><b>Passt gut zum Übergang</b> <span class="muted small">(normale Portion, dazu Reis, Brot oder Haferbrei)</span></p>
-        <div class="stack" style="gap:8px">${['minestrone', 'kuerbissuppe', 'spinat-dal'].filter((s) => BY_SLUG[s]).map((s) => { const r = BY_SLUG[s]; return `<a class="alt" href="${base}rezepte/${s}/"><img src="${img(r)}" alt="" loading="lazy"><span><b>${esc(r.title)}</b><small>${r.minutes} Minuten</small></span><span></span></a>`; }).join('')}</div></div>`;
+        <div class="stack" style="gap:8px">${['minestrone', 'kuerbissuppe', 'spinat-dal'].filter((s) => BY_SLUG[s]).map((s) => { const r = BY_SLUG[s]; return `<a class="alt" href="${base}rezepte/${s}/"><img src="${img(r)}" alt="" loading="lazy"><span><b>${esc(r.title)}</b><small>${r.minutes} Minuten</small></span><span></span></a>`; }).join('')}</div></div>${pane(8, f, start, cyc, gap, fAll, ppl)}`;
     }
-    if (k === 7) {
+    if (k === 7 || k === -7) {
       const tot: Record<string, number> = {};
       for (let d = 1; d <= 5; d++) for (const it of items(d)) for (const ing of BY_SLUG[it.recipe].ingredients) tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * fAll;
       return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang${ppl > 1 ? ` · ${ppl} Personen` : ''}</h3><p class="muted small">Mengen ohne Reserve${ppl > 1 ? ', für alle zusammen' : ''}. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
@@ -417,13 +410,15 @@ import { pick } from '../data/affiliate.js';
         <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
     }
     if (k === 8) {
-      let tr = '';
-      for (let c = 0; c < cyc; c++) { const s1 = addMonths(start, c * gap); tr += `<tr><td><b>${c + 1}</b></td><td>${dsl(addDays(s1, -1))}</td><td>${dsl(s1)} bis ${dsl(addDays(s1, 4))}</td><td>${dsl(addDays(s1, 5))}</td></tr>`; }
-      return `<div class="tw"><table><thead><tr><th>Durchgang</th><th>Vorbereitung</th><th>Fasten</th><th>Übergang</th></tr></thead><tbody>${tr}</tbody></table></div>`;
+      if (cyc < 2) return `<div class="plain nextcyc"><p>${I.calendar} Du hast einen Durchgang geplant. Für weitere Termine wähle unter „Angaben ändern“ mehrere Durchgänge.</p></div>`;
+      const next = addMonths(start, gap);
+      let li = '';
+      for (let c = 1; c < cyc; c++) { const s1 = addMonths(start, c * gap); li += `<li><b>${c + 1}. Durchgang:</b> ${dsl(s1)} bis ${dsl(addDays(s1, 4))} <span class="muted">(Vorbereitung ${dsl(addDays(s1, -1))})</span></li>`; }
+      return `<div class="plain nextcyc"><h3>${I.calendar} Dein nächster Scheinfastenzyklus beginnt am ${dsl(next)}</h3><ul>${li}</ul></div>`;
     }
     const list = items(k); const n = total(list, f); const c = check(k, n, f);
     const vs = (cls: string, ic: string, label: string, val: string, sub: string) => `<div class="${cls}"><span class="k">${I[ic]}${label}</span><b>${val}</b><small>${sub}</small></div>`;
-    let html = `<div class="daytop"><div class="row"><h3>Tag ${k} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Longos Vorgaben</span>` : '<span class="chip warn">knapp neben Longos Vorgaben</span>'}</div>
+    let html = `<div class="daytop"><div class="row"><h3>Tag ${k}${k === 1 ? ' (Starttag)' : ''} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Longos Vorgaben</span>` : '<span class="chip warn">knapp neben Longos Vorgaben</span>'}</div>
       <div class="vs">
         ${vs('kcal', 'kcal', 'Kalorien', `${fmt(n.kcal)} kcal`, `Ziel ${fmt(c.target)} · Longo ${c.ref.kcal}`)}
         ${vs('protein', 'protein', 'Eiweiß', `${fmt(n.protein)} g`, `${fmt(c.shares.protein)} % · Longo ${c.ref.protein} %`)}

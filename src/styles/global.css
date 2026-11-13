@@ -77,6 +77,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .top .in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
 .logo { font-family: var(--display); font-size: 1.3rem; text-decoration: none; color: var(--fg); white-space: nowrap; display: flex; align-items: center; gap: 8px; }
 .logo span { color: var(--tomato); }
+.logo span.tag { color: var(--green); }
 @media (max-width: 560px) { .logo { font-size: 1.1rem; gap: 6px; } .logo span.tag { font-size: .95rem; } }
 @media (max-width: 400px) { .logo span.tag { font-size: .8rem; } }
 @media (max-width: 350px) { .logo span.tag { display: none; } }
@@ -177,7 +178,7 @@ input:focus, select:focus { border-color: var(--green); outline: none; box-shado
 .hint { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; color: var(--muted); background: var(--band); border-radius: 14px; padding: 12px 14px; }
 .hint .i { color: var(--tomato); margin-top: 2px; }
 .sumbar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 12px; }
-.stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: grid; gap: 2px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: grid; gap: 2px; align-content: start; }
 .stat b { font-size: 1.45rem; font-variant-numeric: tabular-nums; }
 .stat span { font-size: .82rem; color: var(--muted); }
 .vs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 10px; }
