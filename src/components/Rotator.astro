@@ -2,7 +2,7 @@
 // Wechselnde Fotos mit sanfter Überblendung. mode="bg": füllt den Elternblock (Hero), mode="card": abgerundetes Bild mit Rahmen.
 // Fotos von Unsplash, IDs in tools/images.txt. Wechsel alle 5,5 s, pausiert bei reduzierter Bewegung und im Hintergrund-Tab.
 import { u, webp } from '../lib/url.js';
-interface Props { images: { src: string; alt: string }[]; mode?: 'bg' | 'card'; sizes?: string; badge?: string; first?: 'eager' | 'lazy' }
+interface Props { images: { src: string; alt: string }[]; mode?: 'bg' | 'card' | 'wide'; sizes?: string; badge?: string; first?: 'eager' | 'lazy' }
 const { images, mode = 'card', sizes = '(max-width: 820px) 92vw, 520px', badge, first = 'lazy' } = Astro.props;
 const [w, h] = mode === 'bg' ? [1800, 1000] : [1100, 825];
 ---
@@ -28,6 +28,8 @@ const [w, h] = mode === 'bg' ? [1800, 1000] : [1100, 825];
   .rot.card picture { transform: translateY(10px); }
   .rot.card picture.on { transform: none; }
   .rot.card img { border-radius: var(--r-lg); box-shadow: 0 24px 44px -26px rgba(20, 30, 16, .55); }
+  .rot.wide { width: 100%; height: clamp(190px, 30vw, 320px); }
+  .rot.wide img { border-radius: var(--r-lg); object-position: center 30%; }
   .rbadge { position: absolute; left: -10px; bottom: 18px; z-index: 2; background: var(--card); color: var(--fg); border-radius: 14px; padding: 10px 14px; font-weight: 700; font-size: .88rem; box-shadow: 0 14px 30px -18px rgba(0, 0, 0, .5); display: flex; gap: 8px; align-items: center; }
   .rbadge i { width: 10px; height: 10px; border-radius: 99px; background: var(--green); display: inline-block; }
   @media (max-width: 560px) { .rbadge { left: 10px; } }

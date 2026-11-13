@@ -80,7 +80,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 560px) { .logo { font-size: 1.1rem; gap: 6px; } .logo span.tag { font-size: .95rem; } }
 @media (max-width: 400px) { .logo span.tag { font-size: .8rem; } }
 @media (max-width: 350px) { .logo span.tag { display: none; } }
-.logo .mark { width: 32px; height: 32px; border-radius: 50%; background: var(--tomato); color: var(--on-tomato); display: grid; place-items: center; }
+.logo .mark { width: 32px; height: 32px; border-radius: 50%; background: var(--green); color: var(--bg); display: grid; place-items: center; }
 .nav { display: flex; gap: 6px; }
 .nav a { text-decoration: none; color: var(--fg); font-weight: 600; padding: 8px 14px; min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; transition: background var(--dur) var(--ease), color var(--dur) var(--ease); }
 .nav a[aria-current="page"], .nav a:hover { background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green); }

@@ -41,8 +41,10 @@ const hosting = {
 // und Browser laden es neu statt eine alte Fassung aus dem Zwischenspeicher zu zeigen.
 const imgVersion = (() => {
   const h = createHash('md5');
-  const walk = (d) => { for (const e of readdirSync(d, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) { const p = join(d, e.name); if (e.isDirectory()) walk(p); else { h.update(p); h.update(readFileSync(p)); } } };
-  walk(new URL('./public/img', import.meta.url).pathname);
+  const root = new URL('./public/img', import.meta.url).pathname;
+  // Relativer Pfad, damit die Version nicht vom Ordner abhängt, in dem gebaut wird.
+  const walk = (d) => { for (const e of readdirSync(d, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) { const p = join(d, e.name); if (e.isDirectory()) walk(p); else { h.update(p.slice(root.length)); h.update(readFileSync(p)); } } };
+  walk(root);
   return h.digest('hex').slice(0, 8);
 })();
 

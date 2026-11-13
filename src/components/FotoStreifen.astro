@@ -1,0 +1,10 @@
+---
+// Breiter Fotostreifen unter dem Seitenkopf (wechselnde Fotos). Fotos von Unsplash, IDs in tools/images.txt.
+import Rotator from './Rotator.astro';
+interface Props { images: { src: string; alt: string }[]; narrow?: boolean }
+const { images, narrow = true } = Astro.props;
+---
+<div class:list={['in', 'fstreifen', { narrow }]}><Rotator mode="wide" images={images} sizes="(max-width: 820px) 92vw, 760px" /></div>
+<style>
+  .fstreifen { margin-block: 4px 8px; }
+</style>

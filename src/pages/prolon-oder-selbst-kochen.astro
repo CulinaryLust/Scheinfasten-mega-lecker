@@ -15,6 +15,7 @@ const rows = [
   ['Unverträglichkeiten', 'Zutaten fest vorgegeben', 'Du tauschst einzelne Zutaten im Rechner selbst aus'],
   ['Vitamine und Omega-3', 'Ergänzungspräparat liegt bei', 'Nicht enthalten, bei Bedarf ärztlich abklären'],
 ];
+import FotoStreifen from '../components/FotoStreifen.astro';
 ---
 <Base title="ProLon-Alternative: selbst kochen oder Fertigbox?" active="wissen" description={`ProLon für ${PROLON_PRICE} € oder Scheinfasten selbst kochen? Ehrlicher Vergleich von Preis, Aufwand, Geschmack und Studienlage.`}>
   <div class="in page-head narrow">
@@ -22,6 +23,10 @@ const rows = [
     <h1>ProLon oder selbst kochen?</h1>
     <p class="lead">ProLon ist das Fertigpaket zum Scheinfasten, entwickelt von Prof. Dr. Valter Longo und verkauft von seiner Firma L-Nutra. Unsere Rezepte folgen denselben veröffentlichten Werten. Was passt besser zu Dir?</p>
   </div>
+  <FotoStreifen images={[
+    { src: 'img/szenen/oma-enkelin.jpg', alt: 'Großmutter und Enkelin kochen zusammen' },
+    { src: 'img/szenen/blaue-kueche.jpg', alt: '' },
+  ]} />
   <section class="band" style="padding-top:12px">
     <div class="in narrow stack">
       <div class="tw"><table>

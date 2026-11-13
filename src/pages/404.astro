@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
+import FotoStreifen from '../components/FotoStreifen.astro';
 ---
 <Base title="Seite nicht gefunden" noindex>
   <div class="in page-head narrow prose">
@@ -14,4 +15,6 @@ import { u } from '../lib/url.js';
       <a class="btn soft" href={u('')}>Zur Startseite</a>
     </div>
   </div>
+  <FotoStreifen images={[{ src: 'img/szenen/markt-platz.jpg', alt: 'Buntes Treiben auf einem Wochenmarkt' }]} />
+  <div style="height:48px"></div>
 </Base>
