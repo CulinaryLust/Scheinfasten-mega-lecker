@@ -1,4 +1,4 @@
-// Selbst eingetragene Mahlzeiten aus dem Rechner (localStorage smlRechner.own), gemeinsam für Rechner und Planer.
+// Selbst eingetragene Mahlzeiten aus dem Rechner (localStorage smlRechner.ownDays, je Fastentag), gemeinsam für Rechner und Planer.
 // Eine Quelle für Einträge, Nährwerte und Einkaufsmengen, damit alle Darstellungen dieselben Zahlen zeigen.
 import { mealCheck, expand, grams, BY_NAME, BY_SLUG } from './tagebuch.js';
 import { nutrition } from './nutrition.js';

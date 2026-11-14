@@ -347,25 +347,24 @@ import { pick } from '../data/affiliate.js';
       .sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || (hits(b.r, like).length - hits(a.r, like).length) || a.score - b.score).slice(0, 8);
   }
 
-  // Heute im Rechner selbst Eingetragenes zählt im Planer mit: es ersetzt die Mahlzeit an derselben Stelle,
-  // Zwischenmahlzeiten kommen dazu. Gilt nur für den heutigen Plantag, wie im Rechner.
+  // Im Rechner selbst Eingetragenes zählt im Planer mit: es ersetzt die Mahlzeit an derselben Stelle,
+  // Zwischenmahlzeiten kommen dazu. Jeder Fastentag hat dort seine eigenen Mahlzeiten.
   const isoD = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   let curStart = new Date();
   const ORDER_T: Record<string, number> = { Z0: 0, Morgens: 1, Z1: 2, Mittags: 3, Z2: 4, Nachmittags: 4.5, Abends: 5, Z3: 6 };
   const readRechner = () => { try { return JSON.parse(localStorage.getItem('smlRechner') || 'null'); } catch { return null; } };
   function ownFor(k: number, f: number) {
     if (k < 1 || k > 5) return null;
-    const today = isoD(new Date());
-    const x = new Date(curStart); x.setDate(x.getDate() + k - 1);
-    if (isoD(x) !== today) return null;
     const rs = readRechner();
-    if (!rs?.own || rs.own.d !== today) return null;
-    const meals = ownDay(rs.own, targets(k === 1 ? 1 : 2, f), k);
+    // Älterer Stand im Rechner: ein Bereich nur für den Kalendertag, an dem er angelegt wurde
+    const x = new Date(curStart); x.setDate(x.getDate() + k - 1);
+    const o = rs?.ownDays?.[String(k)] || (rs?.own && rs.own.d === isoD(x) && isoD(x) === isoD(new Date()) ? rs.own : null);
+    if (!o) return null;
+    const meals = ownDay(o, targets(k === 1 ? 1 : 2, f), k);
     // Im Rechner entfernte Planmahlzeiten bleiben auch hier leer
-    const skipped: string[] = rs.own.skip?.plan || [];
+    const skipped: string[] = o.skip?.plan || [];
     if (!meals.length && !skipped.length) return null;
-    const dd = rs.done?.[String(k)];
-    return { meals, skipped, replaced: new Set([...meals.filter((m: any) => m.main).map((m: any) => m.slot), ...skipped]), done: dd && dd._d === today ? dd : {} };
+    return { meals, skipped, replaced: new Set([...meals.filter((m: any) => m.main).map((m: any) => m.slot), ...skipped]), done: rs.done?.[String(k)] || {} };
   }
   /** Gerichte des Plans, die heute nicht durch Selbst Eingetragenes ersetzt sind (mit ursprünglicher Position). */
   const planItems = (k: number, f: number) => { const o = ownFor(k, f); return items(k).map((it: any, i: number) => ({ ...it, _i: i })).filter((it: any) => !o?.replaced.has(it.meal)); };
@@ -377,9 +376,8 @@ import { pick } from '../data/affiliate.js';
   }
   function setOwnDone(k: number, key: string, v: boolean) {
     const rs = readRechner(); if (!rs) return;
-    const today = isoD(new Date()); rs.done = rs.done || {};
-    if (rs.done[String(k)]?._d !== today) rs.done[String(k)] = { _d: today };
-    rs.done[String(k)][key] = v;
+    rs.done = rs.done || {};
+    (rs.done[String(k)] ||= {})[key] = v;
     try { localStorage.setItem('smlRechner', JSON.stringify(rs)); } catch {}
   }
 
@@ -541,7 +539,7 @@ import { pick } from '../data/affiliate.js';
       </div>
       <div class="mbar" aria-hidden="true"><i class="p" style="width:${c.shares.protein}%"></i><i class="f" style="width:${c.shares.fat}%"></i><i class="c" style="width:${c.shares.carbs}%"></i></div>
       ${doneHtml(eaten, { ...c.ref, kcal: c.target, protein: c.target * c.ref.protein / 400, fat: c.target * c.ref.fat / 900, carbs: c.target * c.ref.carbs / 400 }, fmt, dayDone(k) ? ' · Tag geschafft!' : '', n)}
-      ${own ? `<p class="small muted">${I.info} Heute zählt mit, was Du im <a href="${base}rechner/">Rechner</a> eingetragen oder entfernt hast${own.replaced.size ? `. Nicht aus dem Plan: ${[...own.replaced].map((x) => ({ Morgens: 'Morgens', Mittags: 'Mittagessen', Nachmittags: 'Nachmittags', Abends: 'Abendessen' } as any)[x]).join(', ')}` : ''}.</p>` : ''}
+      ${own ? `<p class="small muted">${I.info} Für diesen Tag zählt mit, was Du im <a href="${base}rechner/">Rechner</a> eingetragen oder entfernt hast${own.replaced.size ? `. Nicht aus dem Plan: ${[...own.replaced].map((x) => ({ Morgens: 'Morgens', Mittags: 'Mittagessen', Nachmittags: 'Nachmittags', Abends: 'Abendessen' } as any)[x]).join(', ')}` : ''}.</p>` : ''}
       <p class="muted small">${I.water} Dazu über den Tag reichlich Wasser oder ungesüßten Tee.</p></div>`;
     const cards: [number, string][] = [];
     for (const m of own?.meals || []) {
