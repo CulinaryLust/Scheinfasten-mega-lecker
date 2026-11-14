@@ -7,10 +7,11 @@ export const CATS = [
   ['saettig', 'Hülsenfrüchte, Getreide, Soja und Suppen', 'pot', ['huelsen', 'getreide', 'soja', 'knusper', 'suppe']],
   ['nuss', 'Nüsse, Saaten und Oliven', 'nut', ['nuss', 'fettfrucht']],
   ['oel', 'Öle', 'oil', ['fett']],
+  ['pflanz', 'Pflanzliche Joghurts und Cremes', 'cup', ['pflanz']],
   ['obst', 'Obst', 'apple', ['obst']],
   ['wuerze', 'Kräuter und Würzen', 'herb', ['kraeuter', 'wuerze']],
   ['trinken', 'Getränke', 'cup', ['getraenk']],
-  ['tauschen', 'Lieber tauschen', 'ban', ['tier', 'milch', 'suess', 'weissmehl', 'drink', 'eiweiss', 'fertig']],
+  ['tauschen', 'Passt nicht ins Scheinfasten', 'ban', ['tier', 'milch', 'suess', 'weissmehl', 'drink', 'eiweiss', 'fertig']],
 ];
 const CAT_OF_GROUP = Object.fromEntries(CATS.flatMap(([k, , , gs]) => gs.map((g) => [g, k])));
 

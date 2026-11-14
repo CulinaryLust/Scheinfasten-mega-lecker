@@ -7,7 +7,7 @@ const must = (cond, msg) => { if (!cond) { failed++; console.log('FEHLER:', msg)
 const fmt = (x) => Math.round(x);
 
 // Datenbank
-must(FOODS.length >= 600, `nur ${FOODS.length} Lebensmittel`);
+must(FOODS.length >= 700, `nur ${FOODS.length} Lebensmittel`);
 for (const f of FOODS) {
   must(f.n.length === 6 && f.n.slice(0, 5).every((v) => typeof v === 'number' && v >= 0), `Nährwerte ${f.name}`);
   must(f.alts.every((a) => BY_NAME[a]), `Alternative fehlt bei ${f.name}`);
@@ -208,3 +208,23 @@ must(unit('Tomatensuppe') === 'ml' && unit('Sojadrink') === 'ml' && unit('Ananas
 }
 console.log(failed ? `${failed} Fehler` : 'Alles ok');
 process.exit(failed ? 1 : 0);
+
+// Produktbreite: Varianten von Joghurt, Pflanzendrinks, Kochcremes und Ölen sind einzeln auffindbar und richtig eingestuft
+{
+  const find = (q, name) => must(search(q, 10).some((f) => f.name === name), `Suche "${q}" findet ${name} nicht`);
+  find('Kokosjoghurt', 'Kokosjoghurt'); find('Cashewmilch', 'Cashewdrink ungesüßt'); find('Mandelmilch', 'Mandeldrink ungesüßt');
+  find('Hafer Cuisine', 'Haferkochcreme'); find('Oatly Barista', 'Haferdrink Barista'); find('griechischer Joghurt', 'Griechischer Joghurt');
+  find('Avocadoöl', 'Avocadoöl'); find('Ghee', 'Butterschmalz'); find('Harvest Moon', 'Kokosjoghurt'); find('Kokosmilch light', 'Kokosmilch (fettreduziert)');
+  for (const n of ['Kokosjoghurt', 'Mandeljoghurt', 'Cashewjoghurt', 'Haferjoghurt', 'Lupinenjoghurt', 'Sojaquark', 'Haferkochcreme']) must(BY_NAME[n].light === 'y' && BY_NAME[n].cap <= 100 && BY_NAME[n].src.db === 'Hersteller', `${n}: Ampel, Grenze oder Quelle`);
+  for (const n of ['Griechischer Joghurt', 'Laktosefreie Milch', 'Butterschmalz', 'Emmentaler', 'Pflanzenjoghurt (gesüßt)', 'Kokosblütenzucker', 'Mandelmehl (entölt)']) must(BY_NAME[n].light === 'r', `${n} muss rot sein`);
+  for (const n of ['Avocadoöl', 'Arganöl', 'Mandelöl', 'Bratöl']) must(BY_NAME[n].light === 'g' && BY_NAME[n].n[2] === 100, `${n}: Öl`);
+  must(unit('Cashewdrink ungesüßt') === 'ml' && unit('Kokosjoghurt') === 'g', 'Einheiten der neuen Produkte');
+  // Mahlzeiten: Joghurt wird ein Klecks zum Gericht, Kochcreme Flüssigkeit, nichts geht verloren oder zählt doppelt
+  const t = targets(2, 1);
+  const r = solve(['Zucchini', 'Karotten', 'Kartoffeln', 'Olivenöl', 'Kokosjoghurt', 'Haferkochcreme', 'Cashewdrink ungesüßt', 'Sojajoghurt', 'Gemahlene Mandeln'].map((name) => ({ name })), t);
+  const meals = buildMeals(r.items);
+  const got = {};
+  for (const m of meals) for (const k of ['veg', 'base', 'oils', 'herb', 'acid', 'aroma', 'liq', 'top', 'dessert', 'dip']) for (const it of m[k] || []) got[it.name] = (got[it.name] || 0) + it.g;
+  for (const it of r.items) if (it.g > 0 && BY_NAME[it.name].n[0] > 0) must(got[it.name] === it.g, `Mahlzeiten: ${it.name} ${got[it.name]} statt ${it.g} g`);
+  must(meals.some((m) => (m.dip || []).some((i) => i.name === 'Kokosjoghurt')) || !r.items.find((i) => i.name === 'Kokosjoghurt').g, 'Kokosjoghurt sollte als Klecks zum Gericht kommen');
+}

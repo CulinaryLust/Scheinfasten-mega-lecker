@@ -2141,7 +2141,11 @@
   "cap": 35,
   "capWhy": "portion",
   "syn": [
-   "Öl"
+   "Öl",
+   "natives Olivenöl extra",
+   "extra vergine",
+   "kaltgepresstes Olivenöl",
+   "Bertolli"
   ],
   "alts": [],
   "why": "",
@@ -2168,7 +2172,12 @@
   "cap": 35,
   "capWhy": "portion",
   "syn": [
-   "Öl"
+   "Öl",
+   "Rapskernöl",
+   "kaltgepresstes Rapsöl",
+   "Rapsöl mit Buttergeschmack",
+   "Albaöl",
+   "Rapso"
   ],
   "alts": [],
   "why": "",
@@ -2883,7 +2892,11 @@
   "capWhy": "portion",
   "syn": [
    "Mandelmilch",
-   "Alpro Mandel ungesüßt"
+   "Mandelmilch ungesüßt",
+   "Alpro Mandel ungesüßt",
+   "Mandeldrink natur",
+   "Provamel Mandel",
+   "Reis-Mandel-Drink"
   ],
   "alts": [],
   "why": "",
@@ -3157,7 +3170,9 @@
   "cap": 50,
   "capWhy": "eiweiss",
   "syn": [
-   "Räuchertofu"
+   "Tofu natur",
+   "Naturtofu",
+   "fester Tofu"
   ],
   "alts": [
    "Austernpilze",
@@ -3834,7 +3849,11 @@
   "capWhy": "portion",
   "syn": [
    "Haushaltszucker",
-   "Rohrzucker"
+   "Rohrzucker",
+   "Raffinade",
+   "Puderzucker",
+   "Gelierzucker",
+   "Vanillezucker"
   ],
   "alts": [
    "Heidelbeeren",
@@ -4424,9 +4443,10 @@
   "syn": [
    "Kuhmilch",
    "Vollmilch",
-   "Cappuccino",
-   "Latte",
-   "Milchkaffee"
+   "Frischmilch",
+   "Weidemilch",
+   "Heumilch",
+   "Bio-Milch"
   ],
   "alts": [
    "Mandeldrink ungesüßt"
@@ -4456,7 +4476,10 @@
   "capWhy": "portion",
   "syn": [
    "Naturjoghurt",
-   "Skyr"
+   "Joghurt 3",
+   "5 %",
+   "Vollmilchjoghurt",
+   "Bio-Joghurt"
   ],
   "alts": [
    "Kokosmilch (vollfett)",
@@ -4487,7 +4510,8 @@
   "capWhy": "portion",
   "syn": [
    "Magerquark",
-   "Topfen"
+   "Topfen",
+   "Speisequark"
   ],
   "alts": [
    "Tahin",
@@ -4518,9 +4542,11 @@
   "capWhy": "portion",
   "syn": [
    "Gouda",
-   "Bergkäse",
-   "Emmentaler",
-   "Cheddar"
+   "Schnittkäse",
+   "Scheibenkäse",
+   "Reibekäse",
+   "Leerdammer",
+   "Maasdamer"
   ],
   "alts": [
    "Cashewkerne",
@@ -4613,8 +4639,11 @@
   "cap": 0,
   "capWhy": "portion",
   "syn": [
-   "Butterschmalz",
-   "Ghee"
+   "Süßrahmbutter",
+   "Sauerrahmbutter",
+   "gesalzene Butter",
+   "Kerrygold",
+   "Weidebutter"
   ],
   "alts": [
    "Olivenöl",
@@ -4646,7 +4675,10 @@
   "syn": [
    "Schlagsahne",
    "Rahm",
-   "Creme fraiche"
+   "Kochsahne",
+   "Sahne zum Kochen",
+   "Cremefine",
+   "Sprühsahne"
   ],
   "alts": [
    "Kokosmilch (vollfett)",
@@ -5965,7 +5997,11 @@
    "Weißweinessig",
    "Rotweinessig",
    "Branntweinessig",
-   "Kräuteressig"
+   "Kräuteressig",
+   "Sherryessig",
+   "Himbeeressig",
+   "Tafelessig",
+   "Essigessenz"
   ],
   "alts": [],
   "why": "",
@@ -6255,7 +6291,11 @@
   "syn": [
    "vegane Margarine",
    "Pflanzenmargarine",
-   "Streichfett"
+   "Streichfett",
+   "Rama",
+   "Sonnenblumenmargarine",
+   "Deli Reform",
+   "Becel"
   ],
   "alts": [
    "Olivenöl",
@@ -6423,7 +6463,7 @@
   "capWhy": "portion",
   "syn": [
    "Kokosflocken",
-   "Kokoschips"
+   "Kokosraspel"
   ],
   "alts": [
    "Walnusskerne",
@@ -6672,9 +6712,12 @@
   "syn": [
    "Joghurtalternative",
    "Sojaghurt",
+   "Sojagurt",
    "veganer Joghurt",
    "Alpro Natur",
-   "Skyr-Alternative"
+   "Soja-Joghurtalternative ungesüßt",
+   "Sojade",
+   "Provamel"
   ],
   "alts": [
    "Kokosmilch (vollfett)",
@@ -6705,8 +6748,10 @@
   "capWhy": "portion",
   "syn": [
    "Sojamilch",
+   "Sojamilch ungesüßt",
    "Alpro Soja ungesüßt",
-   "Provamel"
+   "Provamel",
+   "Sojadrink natur"
   ],
   "alts": [
    "Mandeldrink ungesüßt",
@@ -6905,7 +6950,9 @@
    "Hafermilch",
    "Haferdrink ungesüßt",
    "Oatly",
-   "Kölln Haferdrink"
+   "Kölln Haferdrink",
+   "Haferdrink natur",
+   "Hafer ohne Zucker"
   ],
   "alts": [
    "Mandeldrink ungesüßt"
@@ -8938,7 +8985,8 @@
   "syn": [
    "Doppelrahmfrischkäse",
    "Philadelphia",
-   "Mascarpone"
+   "Exquisa",
+   "Kräuterfrischkäse"
   ],
   "alts": [
    "Hummus",
@@ -9031,8 +9079,8 @@
   "cap": 0,
   "capWhy": "portion",
   "syn": [
-   "Ayran",
-   "Dickmilch"
+   "Milchkefir",
+   "Kalinka"
   ],
   "alts": [
    "Mandeldrink ungesüßt",
@@ -15319,10 +15367,8 @@
   "syn": [
    "Milch 1",
    "5 %",
-   "H-Milch",
-   "laktosefreie Milch",
-   "Magermilch",
-   "Ziegenmilch"
+   "fettarme H-Milch",
+   "teilentrahmte Milch"
   ],
   "alts": [
    "Mandeldrink ungesüßt",
@@ -15354,11 +15400,12 @@
   "syn": [
    "Joghurt mit Frucht",
    "Erdbeerjoghurt",
-   "Trinkjoghurt",
-   "Actimel",
    "Activia",
    "Danone",
-   "Müller"
+   "Müller",
+   "Froop",
+   "Landliebe",
+   "Joghurt mit der Ecke"
   ],
   "alts": [
    "Sojajoghurt",
@@ -15391,7 +15438,7 @@
    "isländischer Joghurt",
    "Proteinjoghurt",
    "High-Protein-Joghurt",
-   "griechischer Joghurt"
+   "Arla Skyr"
   ],
   "alts": [
    "Sojajoghurt",
@@ -15614,10 +15661,7 @@
   "cap": 0,
   "capWhy": "portion",
   "syn": [
-   "Sauerrahm",
-   "saure Sahne",
-   "Crème fraîche",
-   "Creme fraiche"
+   "Sauerrahm 24 %"
   ],
   "alts": [
    "Kokosmilch (vollfett)",
@@ -15647,7 +15691,6 @@
   "cap": 0,
   "capWhy": "portion",
   "syn": [
-   "Kaffeesahne",
    "Kaffeemilch",
    "Dosenmilch",
    "Bärenmarke"
@@ -15749,10 +15792,9 @@
   "capWhy": "portion",
   "syn": [
    "Shake",
-   "Kakao",
-   "Trinkschokolade",
-   "Schokomilch",
-   "Müllermilch"
+   "Erdbeermilch",
+   "Vanillemilch",
+   "Bananenmilch"
   ],
   "alts": [
    "Mandeldrink ungesüßt",
@@ -15785,7 +15827,8 @@
    "Sojamilch gesüßt",
    "Alpro Soja Original",
    "Sojadrink Vanille",
-   "Sojadrink Schoko"
+   "Sojadrink Schoko",
+   "Sojadrink Barista"
   ],
   "alts": [
    "Mandeldrink ungesüßt",
@@ -15816,9 +15859,9 @@
   "capWhy": "portion",
   "syn": [
    "Hafermilch gesüßt",
-   "Hafer Barista",
-   "Oatly Barista",
-   "Hafer Schoko"
+   "Hafer Schoko",
+   "Hafer Vanille",
+   "Oatly Schoko"
   ],
   "alts": [
    "Mandeldrink ungesüßt",
@@ -15849,7 +15892,9 @@
   "capWhy": "portion",
   "syn": [
    "Mandelmilch gesüßt",
-   "Alpro Mandel Original"
+   "Alpro Mandel Original",
+   "Mandeldrink Barista",
+   "Mandel Vanille"
   ],
   "alts": [
    "Mandeldrink ungesüßt"
@@ -15913,11 +15958,10 @@
   "syn": [
    "Soja Cuisine",
    "Pflanzensahne",
-   "Hafercreme",
-   "Hafer Cuisine",
    "vegane Sahne",
    "Kochcreme",
-   "Alpro Cuisine"
+   "Alpro Cuisine",
+   "Sojasahne"
   ],
   "alts": [
    "Kokosmilch (vollfett)",
@@ -19184,6 +19228,2782 @@
    "db": "BLS",
    "code": "N414000",
    "name": "Cappuccino (Getränk) mit Milch 3,5 % Fett"
+  }
+ },
+ {
+  "name": "Cashewdrink ungesüßt",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 250,
+  "capWhy": "portion",
+  "syn": [
+   "Cashewmilch",
+   "Cashewdrink",
+   "Cashew Drink natur",
+   "Provamel Cashew",
+   "Alpro Cashew",
+   "Nussdrink",
+   "Nussmilch"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   38,
+   1.2,
+   3.0,
+   1.5,
+   0.4,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kokosdrink ungesüßt",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 250,
+  "capWhy": "portion",
+  "syn": [
+   "Kokosmilch zum Trinken",
+   "Kokosnussdrink",
+   "Alpro Kokosnuss ungesüßt",
+   "Kokos Drink natur",
+   "Koko"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   20,
+   0.3,
+   1.8,
+   1.0,
+   0.6,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Macadamiadrink ungesüßt",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 250,
+  "capWhy": "portion",
+  "syn": [
+   "Macadamiamilch",
+   "Macadamia Drink",
+   "Milkadamia",
+   "Walnussdrink",
+   "Pistaziendrink"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   28,
+   0.4,
+   2.7,
+   0.8,
+   0.1,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Hanfdrink ungesüßt",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 250,
+  "capWhy": "portion",
+  "syn": [
+   "Hanfmilch",
+   "Hanf Drink",
+   "Good Hemp"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   24,
+   0.8,
+   2.0,
+   0.8,
+   0.3,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Haselnussdrink",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Haselnussmilch",
+   "Alpro Haselnuss",
+   "Haselnuss Drink"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Cashewdrink ungesüßt"
+  ],
+  "why": "Fast immer leicht gesüßt. Ein Schuss passt, die ungesüßten Nussdrinks sind die bessere Wahl.",
+  "piece": null,
+  "n": [
+   29,
+   0.4,
+   1.6,
+   3.5,
+   3.2,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Erbsendrink ungesüßt",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Erbsenmilch",
+   "Erbsenproteindrink",
+   "vly",
+   "Happea",
+   "Sproud",
+   "Lupinendrink",
+   "Lupinenmilch"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Cashewdrink ungesüßt"
+  ],
+  "why": "Ungesüßt okay, aber eiweißreicher als Mandel- oder Cashewdrink.",
+  "piece": null,
+  "n": [
+   40,
+   3.4,
+   2.0,
+   2.0,
+   0.1,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Dinkeldrink",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Dinkelmilch",
+   "Dinkel Drink natur",
+   "Natumi Dinkel"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Cashewdrink ungesüßt"
+  ],
+  "why": "Die Stärke aus dem Dinkel wird beim Herstellen zu Zucker. Ein Schuss passt, Mandeldrink ist zuckerärmer.",
+  "piece": null,
+  "n": [
+   44,
+   0.8,
+   1.1,
+   8.2,
+   6.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Reis-Kokos-Drink",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Reis Kokos Drink",
+   "Kokos-Reis-Drink",
+   "Alpro Kokosnuss Original",
+   "Kokosdrink mit Reis"
+  ],
+  "alts": [
+   "Kokosdrink ungesüßt",
+   "Mandeldrink ungesüßt"
+  ],
+  "why": "Der Reisanteil bringt Zucker mit. Der ungesüßte Kokosdrink ohne Reis passt besser.",
+  "piece": null,
+  "n": [
+   45,
+   0.4,
+   1.1,
+   8.5,
+   4.5,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Haferdrink Barista",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Hafer Barista",
+   "Oatly Barista",
+   "Barista Hafer",
+   "Hafermilch Barista",
+   "Alpro Barista Hafer"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Haferdrink"
+  ],
+  "why": "Mehr Fett und etwas Zucker aus dem Hafer, damit er schäumt. Ein Schuss in den Kaffee passt.",
+  "piece": null,
+  "n": [
+   58,
+   1.0,
+   2.6,
+   7.8,
+   3.8,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kokosjoghurt",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Kokosjoghurt natur",
+   "Kokos-Joghurtalternative",
+   "Kokosghurt",
+   "Harvest Moon",
+   "Alpro Kokosnuss Joghurt",
+   "Coconut Collaborative",
+   "veganer Joghurt"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Avocado"
+  ],
+  "why": "Ungesüßt passt er mit seinem Fett gut in den Tag. Ein kleiner Becher reicht.",
+  "piece": null,
+  "n": [
+   110,
+   0.8,
+   9.5,
+   5.5,
+   0.8,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Mandeljoghurt",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Mandeljoghurt natur",
+   "Mandel-Joghurtalternative",
+   "Mandelghurt",
+   "Mandel natur",
+   "veganer Joghurt"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeln"
+  ],
+  "why": "Pflanzlich und ungesüßt in Ordnung, aber verarbeitet. Ein paar Löffel reichen.",
+  "piece": null,
+  "n": [
+   55,
+   0.8,
+   3.2,
+   5.3,
+   0.5,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Cashewjoghurt",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Cashewjoghurt natur",
+   "Cashew-Joghurtalternative",
+   "Cashew natur",
+   "veganer Joghurt"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Cashewkerne"
+  ],
+  "why": "Pflanzlich und ungesüßt in Ordnung, aber verarbeitet. Ein paar Löffel reichen.",
+  "piece": null,
+  "n": [
+   89,
+   2.1,
+   6.6,
+   5.7,
+   0.9,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Haferjoghurt",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Haferjoghurt natur",
+   "Hafer-Joghurtalternative",
+   "Hafergurt",
+   "Oatly Hafergurt",
+   "veganer Joghurt"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeljoghurt"
+  ],
+  "why": "Der Hafer bringt natürlichen Zucker mit. Ein paar Löffel passen, Kokos- oder Mandeljoghurt sind zuckerärmer.",
+  "piece": null,
+  "n": [
+   83,
+   0.7,
+   4.5,
+   10.0,
+   5.8,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Lupinenjoghurt",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Lupinenjoghurt natur",
+   "Lupinen-Joghurtalternative",
+   "Made with Luve",
+   "Luve",
+   "veganer Joghurt"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeljoghurt"
+  ],
+  "why": "Pflanzlich und ungesüßt in Ordnung, aber verarbeitet. Ein paar Löffel reichen.",
+  "piece": null,
+  "n": [
+   101,
+   1.8,
+   6.0,
+   10.0,
+   1.5,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Sojaquark",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Skyr-Alternative",
+   "Soja-Skyr",
+   "Alpro Skyr Style",
+   "veganer Quark",
+   "veganer Skyr",
+   "Quarkalternative",
+   "Sojade Skyr"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeljoghurt"
+  ],
+  "why": "Pflanzlich, aber eiweißreich wie Tofu. Ein paar Löffel passen, mehr kostet zu viel vom Eiweißbudget.",
+  "piece": null,
+  "n": [
+   62,
+   6.0,
+   3.2,
+   2.5,
+   1.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Pflanzenjoghurt (gesüßt)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kokosjoghurt Mango",
+   "Kokosjoghurt Frucht",
+   "Haferjoghurt Frucht",
+   "Mandeljoghurt Vanille",
+   "veganer Fruchtjoghurt",
+   "Joghurtalternative Heidelbeere"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Heidelbeeren"
+  ],
+  "why": "Gesüßt und aromatisiert. Die ungesüßte Variante mit frischen Beeren passt.",
+  "piece": null,
+  "n": [
+   100,
+   0.6,
+   5.0,
+   14.0,
+   10.5,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Haferkochcreme",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "Hafer Cuisine",
+   "Hafercreme",
+   "Hafersahne",
+   "Oatly Cuisine",
+   "Oatly iMat",
+   "Reis Cuisine",
+   "Dinkel Cuisine",
+   "vegane Sahne",
+   "Pflanzensahne"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Cashewmus"
+  ],
+  "why": "Pflanzlich, aber verarbeitet. Ein Schuss für die Soße passt.",
+  "piece": null,
+  "n": [
+   110,
+   0.7,
+   9.0,
+   6.2,
+   2.5,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kokoskochcreme",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Kokos Cuisine",
+   "Kokossahne",
+   "Kokoscreme zum Kochen",
+   "vegane Sahne"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Cashewmus"
+  ],
+  "why": "Pflanzlich, aber verarbeitet. Ein Schuss für die Soße passt.",
+  "piece": null,
+  "n": [
+   130,
+   1.1,
+   13.0,
+   2.6,
+   1.4,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Mandelkochcreme",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Mandel Cuisine",
+   "Mandelsahne",
+   "Mandelcreme zum Kochen",
+   "vegane Sahne"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Mandelmus"
+  ],
+  "why": "Pflanzlich, aber verarbeitet. Ein Schuss für die Soße passt.",
+  "piece": null,
+  "n": [
+   85,
+   0.9,
+   8.7,
+   0.9,
+   0.3,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Vegane Schlagcreme",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Schlagfix",
+   "vegane Schlagsahne",
+   "Schlagcreme",
+   "Soyatoo",
+   "Pflanzencreme zum Aufschlagen",
+   "Rama Schlagcreme"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Cashewmus"
+  ],
+  "why": "Gehärtetes Pflanzenfett, oft leicht gesüßt. Ein Klecks ist okay.",
+  "piece": null,
+  "n": [
+   200,
+   0.5,
+   19.0,
+   6.0,
+   3.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Veganer Frischkäse",
+  "group": "pflanz",
+  "groupLabel": "Pflanzliche Joghurts und Cremes",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Frischkäsealternative",
+   "Simply V Streichgenuss",
+   "Oatly Aufstrich",
+   "veganer Streichkäse",
+   "Mandel-Frischkäse",
+   "Philadelphia vegan",
+   "Bedda"
+  ],
+  "alts": [
+   "Hummus",
+   "Cashewmus"
+  ],
+  "why": "Meist aus Mandeln oder Hafer mit Kokosfett. Dünn gestrichen passt er.",
+  "piece": null,
+  "n": [
+   245,
+   3.5,
+   23.0,
+   6.0,
+   1.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kokosmilch (fettreduziert)",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Kokosmilch light",
+   "leichte Kokosmilch",
+   "Kokosmilch fettarm"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   110,
+   1.0,
+   11.0,
+   1.8,
+   0.8,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kokosmus",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Kokosbutter",
+   "Kokosmanna",
+   "Kokoscreme",
+   "Creamed Coconut"
+  ],
+  "alts": [
+   "Mandelmus",
+   "Tahin"
+  ],
+  "why": "Viel gesättigtes Fett wie beim Kokosöl. Ein Teelöffel ist okay.",
+  "piece": null,
+  "n": [
+   690,
+   7.0,
+   66.0,
+   19.0,
+   7.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kokoschips",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Kokoschips ungesüßt",
+   "Kokosstreifen",
+   "Kokosnusschips"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Mandeln"
+  ],
+  "why": "Viel gesättigtes Fett wie beim Kokosöl. Als Topping okay, Nüsse passen besser.",
+  "piece": null,
+  "n": [
+   680,
+   7.3,
+   65.0,
+   20.0,
+   6.8,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kokosmehl",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Kokosnussmehl"
+  ],
+  "alts": [
+   "Kichererbsenmehl",
+   "Vollkornmehl"
+  ],
+  "why": "Entölt und deshalb zu einem Fünftel Eiweiß und fast ebenso viel Zucker. Ein Esslöffel zum Binden passt.",
+  "piece": null,
+  "n": [
+   360,
+   20.0,
+   13.0,
+   56.0,
+   18.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Avocadoöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Avocado-Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900,
+   0,
+   100,
+   0,
+   0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Arganöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Argan-Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900,
+   0,
+   100,
+   0,
+   0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Schwarzkümmelöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Schwarzkümmel"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900,
+   0,
+   100,
+   0,
+   0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Leindotteröl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Camelinaöl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900,
+   0,
+   100,
+   0,
+   0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Macadamiaöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Macadamianussöl",
+   "Aprikosenkernöl",
+   "Pistazienöl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900,
+   0,
+   100,
+   0,
+   0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Mandelöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q190000",
+   "name": "Mandelöl"
+  }
+ },
+ {
+  "name": "Mohnöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q350000",
+   "name": "Mohnöl"
+  }
+ },
+ {
+  "name": "Würzöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Chiliöl",
+   "Knoblauchöl",
+   "Trüffelöl",
+   "Zitronenöl",
+   "Kräuteröl",
+   "Basilikumöl",
+   "aromatisiertes Olivenöl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900,
+   0,
+   100,
+   0,
+   0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Bratöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Frittieröl",
+   "Pflanzenöl",
+   "Speiseöl",
+   "Reisöl",
+   "Reiskeimöl",
+   "High-Oleic-Öl",
+   "Mazola",
+   "Thomy",
+   "Bellasan"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q940000",
+   "name": "Bratöl/Frittieröl, pflanzlich"
+  }
+ },
+ {
+  "name": "MCT-Öl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "MCT",
+   "Kokosöl MCT",
+   "C8-Öl"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Konzentriertes Fett aus Kokosöl. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.",
+  "piece": null,
+  "n": [
+   900,
+   0,
+   100,
+   0,
+   0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Palmöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Palmfett",
+   "Palmkernfett",
+   "Frittierfett"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Besteht zur Hälfte aus gesättigten Fettsäuren. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q150000",
+   "name": "Palmfett/Palmöl, raffiniert"
+  }
+ },
+ {
+  "name": "Vegane Butter",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Butteralternative",
+   "veganer Block",
+   "Naturli",
+   "Alsan",
+   "Flora Plant",
+   "pflanzliche Butter",
+   "Violife Block"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Pflanzlich, aber stark verarbeitet und oft aus Kokos- oder Sheafett. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.",
+  "piece": null,
+  "n": [
+   700,
+   0.5,
+   78.0,
+   0.3,
+   0.3,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Halbfettmargarine",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Lätta",
+   "Halvarine",
+   "Diätmargarine",
+   "Becel light",
+   "Margarine light"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Pflanzlich, aber stark verarbeitet. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.",
+  "piece": null,
+  "n": [
+   371.0,
+   0.26,
+   39.66,
+   3.14,
+   0.36,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q440000",
+   "name": "Pflanzenmargarine Halbfett, angereichert mit Vitaminen"
+  }
+ },
+ {
+  "name": "Pflanzencreme (zum Braten)",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Rama Culinesse",
+   "Bratcreme",
+   "flüssige Margarine",
+   "Pflanzencreme"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Pflanzlich, aber stark verarbeitet. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.",
+  "piece": null,
+  "n": [
+   662.0,
+   0.0,
+   73.5,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q4B1000",
+   "name": "Pflanzencreme zum Braten und Kochen"
+  }
+ },
+ {
+  "name": "Butterschmalz",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ghee",
+   "Butterfett",
+   "Butaris",
+   "geklärte Butter"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   897.0,
+   0.25,
+   99.5,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q683000",
+   "name": "Butterschmalz"
+  }
+ },
+ {
+  "name": "Halbfettbutter",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Butter leicht",
+   "Joghurtbutter",
+   "Streichzart",
+   "Kerrygold extra",
+   "Mischstreichfett"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Avocado"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   377.0,
+   4.0,
+   39.8,
+   0.57,
+   0.57,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q640000",
+   "name": "Halbfettbutter"
+  }
+ },
+ {
+  "name": "H-Milch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "haltbare Milch",
+   "H-Vollmilch",
+   "Weihenstephan"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Cashewdrink ungesüßt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   62.0,
+   3.18,
+   3.49,
+   4.19,
+   4.19,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M113300",
+   "name": "H-Vollmilch 3,5 % Fett, ultrahocherhitzt"
+  }
+ },
+ {
+  "name": "Laktosefreie Milch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Milch laktosefrei",
+   "MinusL",
+   "LAC"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Cashewdrink ungesüßt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   62.0,
+   3.55,
+   3.49,
+   4.15,
+   4.15,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M114300",
+   "name": "Vollmilch 3,5 % Fett, laktosefrei, pasteurisiert"
+  }
+ },
+ {
+  "name": "Magermilch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "entrahmte Milch",
+   "Milch 0",
+   "1 %",
+   "Milch 0",
+   "3 %"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Kokosdrink ungesüßt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   34.0,
+   3.42,
+   0.07,
+   4.8,
+   4.8,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M111100",
+   "name": "Milch entrahmt, frisch, höchstens 0,1 % Fett, pasteurisiert"
+  }
+ },
+ {
+  "name": "Ziegenmilch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Schafmilch",
+   "Schafsmilch"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Cashewdrink ungesüßt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   67.0,
+   3.62,
+   3.92,
+   4.2,
+   4.2,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M021000",
+   "name": "Ziegenmilch mind. 3 % Fett"
+  }
+ },
+ {
+  "name": "Schokomilch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kakao",
+   "Trinkschokolade",
+   "Müllermilch",
+   "Kakaomilch",
+   "heiße Schokolade"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Kakaopulver (ungesüßt)"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   78.0,
+   3.7,
+   3.5,
+   7.99,
+   7.55,
+   0.39
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M206300",
+   "name": "Milchmischgetränk 3,5 % Fett, mit Kakao/Schokolade, gesüßt"
+  }
+ },
+ {
+  "name": "Fettarmer Joghurt",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Joghurt 1",
+   "5 %",
+   "Joghurt fettarm"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeljoghurt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   62.0,
+   5.04,
+   1.6,
+   6.05,
+   5.77,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M141200",
+   "name": "Joghurt fettarm, mind. 1,5 % bis max. 1,8 % Fett"
+  }
+ },
+ {
+  "name": "Magerjoghurt",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Joghurt 0",
+   "1 %",
+   "Joghurt entrahmt"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeljoghurt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   48.0,
+   5.27,
+   0.1,
+   5.83,
+   5.83,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M141100",
+   "name": "Joghurt aus entrahmter Milch, max. 0,5 % Fett"
+  }
+ },
+ {
+  "name": "Griechischer Joghurt",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sahnejoghurt",
+   "Joghurt griechischer Art",
+   "Joghurt 10 %",
+   "türkischer Joghurt",
+   "Total",
+   "Süzme"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Cashewjoghurt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   124.0,
+   3.3,
+   10.0,
+   4.5,
+   4.5,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M141500",
+   "name": "Sahnejoghurt mind. 10 % Fett"
+  }
+ },
+ {
+  "name": "Laktosefreier Joghurt",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Joghurt laktosefrei",
+   "MinusL Joghurt"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeljoghurt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   68.0,
+   3.98,
+   3.46,
+   4.36,
+   4.36,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M1E3300",
+   "name": "Joghurt mind. 3,5 % Fett, laktosefrei"
+  }
+ },
+ {
+  "name": "Schafjoghurt",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Schafsjoghurt",
+   "Ziegenjoghurt",
+   "Schafmilchjoghurt"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeljoghurt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   90.0,
+   3.87,
+   6.2,
+   4.02,
+   4.02,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M149500",
+   "name": "Schafjoghurt"
+  }
+ },
+ {
+  "name": "Trinkjoghurt",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Joghurtdrink",
+   "Actimel",
+   "Yakult",
+   "Müller Froop Drink",
+   "Joghurt zum Trinken"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Heidelbeeren"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   96.0,
+   3.01,
+   2.96,
+   14.15,
+   12.1,
+   1.15
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M2L2300",
+   "name": "Trinkjoghurt mind. 3,5 % Fett, mit Fruchtzubereitung, gesüßt"
+  }
+ },
+ {
+  "name": "Ayran",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Lassi",
+   "Joghurtgetränk",
+   "Dugh"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Mandeldrink ungesüßt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   39.0,
+   2.29,
+   1.96,
+   2.69,
+   2.69,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M2S8300",
+   "name": "Ayran, Joghurtgetränk, gesalzen"
+  }
+ },
+ {
+  "name": "Dickmilch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sauermilch",
+   "Schwedenmilch",
+   "Setzmilch"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Mandeljoghurt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   67.0,
+   3.3,
+   3.5,
+   4.8,
+   4.8,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M121300",
+   "name": "Dickmilch/Sauermilch, mind. 3,5 % Fett"
+  }
+ },
+ {
+  "name": "Quark (20 % Fett)",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Halbfettquark",
+   "Speisequark 20 %"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Cashewmus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   110.0,
+   12.24,
+   5.1,
+   3.04,
+   3.04,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M713300",
+   "name": "Speisequark Halbfettstufe, 20 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Sahnequark",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Quark 40 %",
+   "Speisequark Fettstufe"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Cashewmus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   159.0,
+   10.87,
+   11.4,
+   2.6,
+   2.6,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M713500",
+   "name": "Speisequark Fettstufe, 40 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Kräuterquark",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Quark mit Kräutern",
+   "Zaziki",
+   "Tzatziki",
+   "Quarkdip"
+  ],
+  "alts": [
+   "Hummus",
+   "Guacamole"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   94.0,
+   10.09,
+   4.08,
+   3.65,
+   3.53,
+   0.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M8A5000",
+   "name": "Speisequarkzubereitung mind. 20 % Fett i. Tr., mit Kräutern"
+  }
+ },
+ {
+  "name": "Saure Sahne",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sauerrahm",
+   "Sauerrahm 10 %"
+  ],
+  "alts": [
+   "Kokosjoghurt",
+   "Cashewmus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   119.0,
+   3.1,
+   10.0,
+   4.1,
+   4.1,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M172500",
+   "name": "Sauerrahm/Saure Sahne, mind. 10 % Fett"
+  }
+ },
+ {
+  "name": "Crème fraîche",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Creme fraiche",
+   "Crème légère",
+   "Creme double"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Cashewmus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   265.0,
+   2.4,
+   27.03,
+   2.55,
+   2.55,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M176800",
+   "name": "Sauerrahm/Creme fraiche, 30 % Fett"
+  }
+ },
+ {
+  "name": "Kaffeesahne",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kaffeesahne 10 %",
+   "Kaffeeweißer",
+   "Kaffeerahm"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Haferdrink"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   124.0,
+   3.04,
+   10.5,
+   4.05,
+   4.05,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M171500",
+   "name": "Kaffeesahne mind. 10 % Fett"
+  }
+ },
+ {
+  "name": "Mascarpone",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Cashewmus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   395.0,
+   4.5,
+   40.33,
+   3.38,
+   3.38,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M7A6800",
+   "name": "Mascarpone mind. 80 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Emmentaler",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Allgäuer Emmentaler",
+   "Schweizer Käse"
+  ],
+  "alts": [
+   "Cashewkerne",
+   "Grüne Oliven"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   374.0,
+   27.5,
+   29.15,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M304600",
+   "name": "Emmentaler mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Edamer",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [
+   "Cashewkerne",
+   "Grüne Oliven"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   317.0,
+   25.85,
+   23.4,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M401500",
+   "name": "Edamer mind. 40 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Cheddar",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Chester"
+  ],
+  "alts": [
+   "Cashewkerne",
+   "Hefeflocken"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   387.0,
+   22.98,
+   32.2,
+   0.21,
+   0.21,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M303700",
+   "name": "Chester (Cheddar) mind. 50 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Tilsiter",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [
+   "Cashewkerne",
+   "Grüne Oliven"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   355.0,
+   25.76,
+   27.7,
+   0.03,
+   0.03,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M403600",
+   "name": "Tilsiter mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Bergkäse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Gruyère",
+   "Greyerzer",
+   "Appenzeller",
+   "Comté",
+   "Alpkäse"
+  ],
+  "alts": [
+   "Cashewkerne",
+   "Hefeflocken"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   395.0,
+   28.9,
+   30.8,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M302600",
+   "name": "Bergkäse mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Butterkäse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [
+   "Cashewkerne",
+   "Avocado"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   310.0,
+   23.61,
+   23.5,
+   0.1,
+   0.09,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M501600",
+   "name": "Butterkäse mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Raclettekäse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Raclette",
+   "Fonduekäse"
+  ],
+  "alts": [
+   "Champignons",
+   "Cashewkerne"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   342.0,
+   22.8,
+   27.5,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M307700",
+   "name": "Raclettekäse mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Brie",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [
+   "Avocado",
+   "Cashewkerne"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   341.0,
+   22.14,
+   27.9,
+   0.11,
+   0.1,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M601700",
+   "name": "Brie mind. 50 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Ziegenkäse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ziegenweichkäse",
+   "Ziegenrolle",
+   "Chèvre"
+  ],
+  "alts": [
+   "Avocado",
+   "Walnusskerne"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   285.0,
+   17.86,
+   22.66,
+   2.54,
+   1.77,
+   0.62
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M6A9600",
+   "name": "Weichkäse aus Ziegenmilch, mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Ziegenfrischkäse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ziegenfrischkäse natur",
+   "Schaffrischkäse"
+  ],
+  "alts": [
+   "Hummus",
+   "Cashewmus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   230.0,
+   17.94,
+   16.42,
+   2.02,
+   1.74,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M7A1600",
+   "name": "Frischkäse aus Ziegenmilch, Natur, mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Obazda",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Obatzter",
+   "Käsecreme"
+  ],
+  "alts": [
+   "Hummus",
+   "Guacamole"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   298.0,
+   11.64,
+   27.19,
+   1.63,
+   1.46,
+   0.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M863000",
+   "name": "Obatzter/Obazda, Käsezubereitung 60 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Räuchertofu",
+  "group": "soja",
+  "groupLabel": "Soja",
+  "light": "y",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "geräucherter Tofu",
+   "Tofu geräuchert",
+   "Tofu mariniert"
+  ],
+  "alts": [
+   "Austernpilze",
+   "Champignons"
+  ],
+  "why": "Pflanzlich, aber sehr eiweißreich. Prof. Dr. Longos Tage 2 bis 5 sehen nur etwa 9 % Eiweiß vor.",
+  "piece": null,
+  "n": [
+   150,
+   15.5,
+   8.8,
+   1.9,
+   0.6,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Reisessig",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Essig",
+   "Sushi-Essig ungesüßt",
+   "Genmai Su"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18,
+   0.3,
+   0,
+   0.5,
+   0.3,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Balsamico bianco",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Condimento bianco",
+   "weißer Balsamico",
+   "heller Balsamico"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   110,
+   0.3,
+   0,
+   23.3,
+   21.7,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Crema di Balsamico",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Balsamicocreme",
+   "Balsamico-Creme",
+   "Balsamico-Glasur"
+  ],
+  "alts": [
+   "Balsamico",
+   "Zitronensaft"
+  ],
+  "why": "Eingekochter Balsamico mit viel Zucker. Ein paar Tropfen zum Verzieren sind okay.",
+  "piece": null,
+  "n": [
+   240,
+   1.0,
+   0,
+   59.0,
+   43.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Pistazienmus",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Pistaziencreme ungesüßt"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   645,
+   23.0,
+   56.0,
+   16.0,
+   5.5,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Sonnenblumenkernmus",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Sonnenblumenmus"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   687,
+   18.0,
+   64.0,
+   13.0,
+   1.6,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Gemahlene Mandeln",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Mandeln gemahlen",
+   "Mandelgrieß",
+   "Mandelmehl nicht entölt"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   538.0,
+   22.33,
+   46.6,
+   10.87,
+   3.63,
+   7.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H210400",
+   "name": "Mandel süß, gemahlen"
+  }
+ },
+ {
+  "name": "Dinkelvollkornmehl",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Dinkelmehl Vollkorn"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   335.0,
+   13.42,
+   2.3,
+   70.28,
+   1.05,
+   10.15
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C235000",
+   "name": "Dinkel Vollkornmehl"
+  }
+ },
+ {
+  "name": "Roggenvollkornmehl",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Roggenmehl Vollkorn",
+   "Roggenschrot"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   312.0,
+   9.0,
+   1.33,
+   75.54,
+   1.82,
+   18.98
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C221000",
+   "name": "Roggen Vollkornmehl"
+  }
+ },
+ {
+  "name": "Buchweizenmehl",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   355.0,
+   11.7,
+   2.71,
+   73.73,
+   1.05,
+   5.53
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C421000",
+   "name": "Buchweizen Vollkornmehl"
+  }
+ },
+ {
+  "name": "Hafermehl",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "gemahlene Haferflocken"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   360.0,
+   14.24,
+   7.15,
+   66.0,
+   0.61,
+   12.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C233000",
+   "name": "Hafer Mehl"
+  }
+ },
+ {
+  "name": "Reismehl",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Reis gemahlen"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   347.0,
+   7.2,
+   0.65,
+   79.1,
+   0.28,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C453000",
+   "name": "Reis Mehl"
+  }
+ },
+ {
+  "name": "Mandelmehl (entölt)",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Mandelmehl",
+   "Mandelprotein",
+   "Low-Carb-Mehl"
+  ],
+  "alts": [
+   "Mandeln",
+   "Vollkornmehl"
+  ],
+  "why": "Entöltes Mandelmehl ist zur Hälfte Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   380,
+   52.0,
+   12.0,
+   23.0,
+   7.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Kokosblütenzucker",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kokoszucker",
+   "Palmzucker",
+   "Kokosblütensirup"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   383,
+   1.4,
+   0.5,
+   94.0,
+   88.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Reissirup",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Reismalz",
+   "Gerstenmalz",
+   "Malzsirup"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   316,
+   0.5,
+   0.5,
+   79.0,
+   53.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Dattelsirup",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Dattelsüße",
+   "Dattelzucker"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Zimt"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   285,
+   1.5,
+   0.5,
+   71.0,
+   67.0,
+   null
+  ],
+  "src": {
+   "db": "Hersteller",
+   "code": null,
+   "name": null
   }
  }
 ]

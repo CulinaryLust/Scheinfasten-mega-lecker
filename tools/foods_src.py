@@ -19,6 +19,7 @@ GROUPS = {
   'weissmehl': ('Weißmehl und Snacks', 'r', 0), 'drink': ('Alkohol, Säfte, Softdrinks', 'r', 0),
   'eiweiss': ('Fleischersatz und Eiweißprodukte', 'r', 0), 'knusper': ('Cracker und Waffeln', 'y', 20),
   'suppe': ('Suppen und fertige Gerichte', 'y', 300), 'fertig': ('Fertiggerichte', 'r', 0),
+  'pflanz': ('Pflanzliche Joghurts und Cremes', 'y', 100),
 }
 
 WHY = {
@@ -30,6 +31,7 @@ WHY = {
   'drink': 'Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.',
   'eiweiss': 'Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.',
   'fertig': 'Enthält Fleisch, Fisch, Ei, Milchprodukte oder viel Weißmehl. Selbst gekocht hast Du in der Hand, was drin ist.',
+  'pflanz': 'Pflanzlich und ungesüßt in Ordnung, aber verarbeitet. Ein paar Löffel reichen.',
   'knusper': 'Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.',
 }
 
@@ -49,9 +51,10 @@ F = []
 # Rezepte bleiben bei 175 g, damit auch die größte Portion (Faktor 1,15) darunter liegt.
 PUMPKIN_MAX = 200
 PUMPKIN = ('Hokkaido-Kürbis', 'Gartenkürbis')
-def f(name, bls, group, light=None, cap=None, syn='', alts='', why='', piece=None, n=None):
+def f(name, bls, group, light=None, cap=None, syn='', alts='', why='', piece=None, n=None, db=None):
     # n: nur für Einträge ohne BLS-Code, Richtwerte (kcal, Eiweiß, Fett, Kohlenhydrate gesamt, Zucker) je 100 g nach USDA FoodData Central
-    F.append(dict(name=name, bls=bls, group=group, light=light, cap=cap, syn=[s.strip() for s in syn.split(',') if s.strip()],
+    # db: Quelle der n-Werte, 'Hersteller' = Richtwert aus typischen Nährwertangaben auf den Packungen (Mittel mehrerer Marken)
+    F.append(dict(db=db, name=name, bls=bls, group=group, light=light, cap=cap, syn=[s.strip() for s in syn.split(',') if s.strip()],
                   alts=[a.strip() for a in alts.split(';') if a.strip()], why=why, piece=piece, n=n))
 
 # Gemüse
@@ -140,8 +143,8 @@ f('Paprikapulver, geräuchert', None, 'wuerze', cap=5, syn='Paprikapulver, Pimen
 f('Gemüsebrühe', 'X416243', 'wuerze', cap=600, syn='Brühe, Gemüsefond')
 
 # Öle
-f('Olivenöl', 'Q120000', 'fett', syn='Öl')
-f('Rapsöl', 'Q180000', 'fett', syn='Öl')
+f('Olivenöl', 'Q120000', 'fett', syn='Öl, natives Olivenöl extra, extra vergine, kaltgepresstes Olivenöl, Bertolli')
+f('Rapsöl', 'Q180000', 'fett', syn='Öl, Rapskernöl, kaltgepresstes Rapsöl, Rapsöl mit Buttergeschmack, Albaöl, Rapso')
 f('Leinöl', 'Q160000', 'fett', cap=15, syn='Öl')
 f('Walnussöl', 'Q310000', 'fett', cap=15, syn='Öl')
 f('Sesamöl', 'Q230000', 'fett', syn='Öl')
@@ -174,7 +177,7 @@ f('Grüne Oliven', 'H510802', 'fettfrucht', syn='Oliven, Olive')
 f('Schwarze Oliven', 'H520800', 'fettfrucht', syn='Oliven, Kalamata')
 f('Avocado', 'F502100', 'fettfrucht', cap=120, piece=('Stück', 150))
 f('Kokosmilch (vollfett)', 'H154000', 'fettfrucht', cap=100, syn='Kokosmilch')
-f('Mandeldrink ungesüßt', 'H800000', 'getraenk', cap=250, syn='Mandelmilch, Alpro Mandel ungesüßt')
+f('Mandeldrink ungesüßt', 'H800000', 'getraenk', cap=250, syn='Mandelmilch, Mandelmilch ungesüßt, Alpro Mandel ungesüßt, Mandeldrink natur, Provamel Mandel, Reis-Mandel-Drink')
 
 # Kartoffeln und Stärkegemüse (gelb)
 f('Kartoffeln', 'K110100', 'knolle', syn='Kartoffel, Erdäpfel', alts='Blumenkohl; Knollensellerie', piece=('Stück', 100))
@@ -187,7 +190,7 @@ f('Rote Linsen (gegart)', 'H730032', 'huelsen', syn='rote Linsen, Linsen', alts=
 f('Linsen (gegart)', 'H730132', 'huelsen', syn='Linsen, Tellerlinsen, Berglinsen')
 f('Kidneybohnen (gegart)', 'H742902', 'huelsen', syn='Kidneybohnen, rote Bohnen', alts='Rote Paprika; Aubergine')
 f('Edamame', 'G750100', 'soja', syn='Sojabohnen', alts='Zuckerschoten; Erbsen (TK)')
-f('Tofu', 'H861000', 'soja', syn='Räuchertofu', alts='Austernpilze; Champignons',
+f('Tofu', 'H861000', 'soja', syn='Tofu natur, Naturtofu, fester Tofu', alts='Austernpilze; Champignons',
   why='Pflanzlich, aber sehr eiweißreich. Prof. Dr. Longos Tage 2 bis 5 sehen nur etwa 9 % Eiweiß vor.')
 
 # Getreide (gelb)
@@ -219,7 +222,7 @@ f('Mango', 'F516100', 'obst', cap=80, alts='Erdbeeren; Orange')
 # Passt nicht (rot)
 f('Datteln', 'F504400', 'suess', syn='Dattel, Trockenobst', alts='Apfel; Heidelbeeren',
   why='Getrocknetes Obst ist konzentrierter Zucker.')
-f('Zucker', 'S111000', 'suess', syn='Haushaltszucker, Rohrzucker')
+f('Zucker', 'S111000', 'suess', syn='Haushaltszucker, Rohrzucker, Raffinade, Puderzucker, Gelierzucker, Vanillezucker')
 f('Honig', 'S120000', 'suess', syn='Ahornsirup, Sirup')
 f('Schokolade', 'S530000', 'suess', syn='Milchschokolade, Süßigkeiten, Riegel', alts='Walnusskerne; Heidelbeeren; Mandeln')
 f('Kuchen', 'D422600', 'suess', syn='Rührkuchen, Gebäck, Torte', alts='Apfel; Walnusskerne')
@@ -240,14 +243,14 @@ f('Lachs', 'T410100', 'tier', syn='Fisch, Räucherlachs', alts='Walnusskerne; Le
 f('Thunfisch', 'T121902', 'tier', syn='Fisch, Thunfischdose', alts='Kichererbsen (gegart); Walnusskerne')
 f('Garnelen', 'T753100', 'tier', syn='Shrimps, Krabben, Scampi', alts='Austernpilze; Champignons')
 f('Eier', 'E111100', 'tier', syn='Ei, Hühnerei, Spiegelei, Rührei', alts='Kichererbsen (gegart); Champignons; Avocado')
-f('Milch', 'M111300', 'milch', syn='Kuhmilch, Vollmilch, Cappuccino, Latte, Milchkaffee', alts='Mandeldrink ungesüßt')
-f('Joghurt', 'M141300', 'milch', syn='Naturjoghurt, Skyr', alts='Kokosmilch (vollfett); Cashewkerne')
-f('Quark', 'M713100', 'milch', syn='Magerquark, Topfen', alts='Tahin; Cashewkerne')
-f('Käse', 'M402600', 'milch', syn='Gouda, Bergkäse, Emmentaler, Cheddar', alts='Cashewkerne; Grüne Oliven; Tahin')
+f('Milch', 'M111300', 'milch', syn='Kuhmilch, Vollmilch, Frischmilch, Weidemilch, Heumilch, Bio-Milch', alts='Mandeldrink ungesüßt')
+f('Joghurt', 'M141300', 'milch', syn='Naturjoghurt, Joghurt 3,5 %, Vollmilchjoghurt, Bio-Joghurt', alts='Kokosmilch (vollfett); Cashewkerne')
+f('Quark', 'M713100', 'milch', syn='Magerquark, Topfen, Speisequark', alts='Tahin; Cashewkerne')
+f('Käse', 'M402600', 'milch', syn='Gouda, Schnittkäse, Scheibenkäse, Reibekäse, Leerdammer, Maasdamer', alts='Cashewkerne; Grüne Oliven; Tahin')
 f('Mozzarella', 'M032100', 'milch', syn='Burrata', alts='Avocado; Cashewkerne')
 f('Feta', 'M012200', 'milch', syn='Schafskäse, Hirtenkäse', alts='Grüne Oliven; Kapern; Cashewkerne')
-f('Butter', 'Q611000', 'milch', syn='Butterschmalz, Ghee', alts='Olivenöl; Rapsöl')
-f('Sahne', 'M173800', 'milch', syn='Schlagsahne, Rahm, Creme fraiche', alts='Kokosmilch (vollfett); Cashewkerne')
+f('Butter', 'Q611000', 'milch', syn='Süßrahmbutter, Sauerrahmbutter, gesalzene Butter, Kerrygold, Weidebutter', alts='Olivenöl; Rapsöl')
+f('Sahne', 'M173800', 'milch', syn='Schlagsahne, Rahm, Kochsahne, Sahne zum Kochen, Cremefine, Sprühsahne', alts='Kokosmilch (vollfett); Cashewkerne')
 # Kaffee: Die Studien (Brandhorst 2015, Wei 2017) sagen nichts dazu. ProLon-Hilfecenter (L-Nutra): außer Wasser nichts zusätzlich,
 # wenn nötig höchstens eine kleine Tasse Kaffee pro Tag ohne Zucker oder Zusätze. Kleine Tasse = 150 ml (unsere Annahme).
 f('Kaffee', 'N410100', 'getraenk', light='y', cap=150, syn='Espresso, Filterkaffee, schwarzer Kaffee', alts='Kräutertee',
@@ -303,7 +306,7 @@ f('Senf', 'R132000', 'wuerze', cap=15, syn='Dijonsenf, Senf mittelscharf')
 f('Sojasauce', 'R143000', 'wuerze', cap=15, syn='Sojasoße, Tamari, Shoyu')
 f('Hefeflocken', None, 'wuerze', cap=10, syn='Edelhefeflocken, Nährhefe',
   why='Schmecken käsig und würzig, sind aber zur Hälfte Eiweiß. Ein Esslöffel reicht.', n=(400, 50.0, 5.0, 33.0, 0))
-f('Weinessig', 'R121000', 'wuerze', cap=30, syn='Weißweinessig, Rotweinessig, Branntweinessig, Kräuteressig')
+f('Weinessig', 'R121000', 'wuerze', cap=30, syn='Weißweinessig, Rotweinessig, Branntweinessig, Kräuteressig, Sherryessig, Himbeeressig, Tafelessig, Essigessenz')
 f('Zitrone', 'F601100', 'wuerze', cap=60, syn='Zitronen, Zitronenschale', piece=('Stück', 60))
 f('Limette', 'F602100', 'wuerze', cap=60, syn='Limetten', piece=('Stück', 45))
 f('Ketchup', 'R141100', 'suess', syn='Tomatenketchup, Curryketchup, BBQ-Sauce', alts='Tomatenmark; Tomaten, passiert',
@@ -317,7 +320,7 @@ f('Hanföl', 'Q170000', 'fett', cap=15, syn='Öl')
 f('Sonnenblumenöl', 'Q320000', 'fett', syn='Öl')
 f('Erdnussöl', 'Q210000', 'fett', syn='Öl')
 f('Traubenkernöl', 'Q330000', 'fett', syn='Öl')
-f('Margarine', 'Q4A4000', 'fett', light='y', cap=10, syn='vegane Margarine, Pflanzenmargarine, Streichfett', alts='Olivenöl; Rapsöl',
+f('Margarine', 'Q4A4000', 'fett', light='y', cap=10, syn='vegane Margarine, Pflanzenmargarine, Streichfett, Rama, Sonnenblumenmargarine, Deli Reform, Becel', alts='Olivenöl; Rapsöl',
   why='Pflanzlich, aber stark verarbeitet. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.')
 
 # Nüsse, Saaten, Kokos
@@ -326,7 +329,7 @@ f('Hanfsamen', None, 'nuss', syn='Hanfsamen geschält, Hanfherzen', n=(553, 31.6
 f('Mohn', 'H450100', 'nuss', cap=10, syn='Mohnsamen')
 f('Cashewmus', 'F960800', 'nuss', cap=30, syn='Cashewkernmus, Cashewbutter')
 f('Haselnussmus', 'H130800', 'nuss', cap=30, syn='Haselnussbutter')
-f('Kokosraspeln', 'H150400', 'fettfrucht', light='y', cap=15, syn='Kokosflocken, Kokoschips', alts='Walnusskerne; Mandeln',
+f('Kokosraspeln', 'H150400', 'fettfrucht', light='y', cap=15, syn='Kokosflocken, Kokosraspel', alts='Walnusskerne; Mandeln',
   why='Viel gesättigtes Fett wie beim Kokosöl. Als Topping okay, Nüsse passen besser.')
 f('Kokosnuss (frisch)', 'H150100', 'fettfrucht', light='y', cap=30, syn='Kokosnuss, Kokos', alts='Avocado; Walnusskerne',
   why='Viel gesättigtes Fett wie beim Kokosöl. Ein kleines Stück ist okay.')
@@ -340,9 +343,9 @@ f('Hummus', 'H960000', 'huelsen', cap=50, syn='Humus, Kichererbsenmus, Kichererb
 f('Falafel', 'Y9A1050', 'huelsen', light='r', syn='Kichererbsenbällchen', alts='Kichererbsen (gegart); Hummus',
   why='Frittiert. Ofen-Kichererbsen oder Hummus liefern den Geschmack ohne Fettbad.')
 f('Seidentofu', 'H861100', 'soja', cap=100, syn='Silken Tofu', alts='Kokosmilch (vollfett); Avocado')
-f('Sojajoghurt', 'H844000', 'soja', cap=100, syn='Joghurtalternative, Sojaghurt, veganer Joghurt, Alpro Natur, Skyr-Alternative', alts='Kokosmilch (vollfett); Avocado',
+f('Sojajoghurt', 'H844000', 'soja', cap=100, syn='Joghurtalternative, Sojaghurt, Sojagurt, veganer Joghurt, Alpro Natur, Soja-Joghurtalternative ungesüßt, Sojade, Provamel', alts='Kokosmilch (vollfett); Avocado',
   why='Ungesüßt eine gute Basis für Dressings. Viel davon bringt zu viel Eiweiß.')
-f('Sojadrink', 'H841100', 'soja', cap=200, syn='Sojamilch, Alpro Soja ungesüßt, Provamel', alts='Mandeldrink ungesüßt; Haferdrink',
+f('Sojadrink', 'H841100', 'soja', cap=200, syn='Sojamilch, Sojamilch ungesüßt, Alpro Soja ungesüßt, Provamel, Sojadrink natur', alts='Mandeldrink ungesüßt; Haferdrink',
   why='Ungesüßt okay, aber eiweißreicher als Mandel- oder Haferdrink.')
 f('Tempeh', None, 'eiweiss', syn='Tempe', n=(192, 20.3, 10.8, 7.6, 0))
 f('Seitan', 'C558000', 'eiweiss', syn='Weizeneiweiß, Weizengluten')
@@ -351,7 +354,7 @@ f('Veggie-Wurst', 'H930000', 'eiweiss', syn='vegane Wurst, vegetarische Wurst, W
 f('Veggie-Burger', 'H910300', 'eiweiss', syn='vegetarische Bratwurst, Veggie-Bratwurst, Burger-Patty vegan, Veggie-Frikadelle')
 
 # Pflanzendrinks und Getränke
-f('Haferdrink', 'C660000', 'getraenk', light='y', cap=200, syn='Hafermilch, Haferdrink ungesüßt, Oatly, Kölln Haferdrink', alts='Mandeldrink ungesüßt',
+f('Haferdrink', 'C660000', 'getraenk', light='y', cap=200, syn='Hafermilch, Haferdrink ungesüßt, Oatly, Kölln Haferdrink, Haferdrink natur, Hafer ohne Zucker', alts='Mandeldrink ungesüßt',
   why='Der Hafer bringt natürlichen Zucker mit. Ein Schuss im Tee passt, Mandeldrink ist zuckerärmer.')
 f('Reisdrink', 'C650000', 'getraenk', light='y', cap=100, syn='Reismilch', alts='Mandeldrink ungesüßt',
   why='Schmeckt süß, weil die Stärke beim Herstellen zu Zucker wird. Mandeldrink ist die bessere Wahl.')
@@ -441,10 +444,10 @@ f('Bratwurst', 'Y021312', 'tier', syn='Würstchen, Wiener, Currywurst, Grillwurs
 f('Speck', 'W411300', 'tier', syn='Bacon, Schinkenspeck, Pancetta', alts='Paprikapulver, geräuchert; Champignons')
 f('Leberwurst', 'W880100', 'tier', syn='Streichwurst, Teewurst, Mettwurst', alts='Hummus; Tahin')
 f('Fischstäbchen', 'T930100', 'tier', syn='Backfisch, Fisch paniert', alts='Kichererbsen (gegart); Champignons')
-f('Frischkäse', 'M710800', 'milch', syn='Doppelrahmfrischkäse, Philadelphia, Mascarpone', alts='Hummus; Cashewmus')
+f('Frischkäse', 'M710800', 'milch', syn='Doppelrahmfrischkäse, Philadelphia, Exquisa, Kräuterfrischkäse', alts='Hummus; Cashewmus')
 f('Parmesan', 'M306400', 'milch', syn='Grana Padano, Pecorino, Hartkäse', alts='Hefeflocken; Cashewkerne')
 f('Hüttenkäse', 'M711100', 'milch', syn='körniger Frischkäse, Cottage Cheese', alts='Sojajoghurt; Avocado')
-f('Kefir', 'M130300', 'milch', syn='Ayran, Dickmilch', alts='Mandeldrink ungesüßt; Sojajoghurt')
+f('Kefir', 'M130300', 'milch', syn='Milchkefir, Kalinka', alts='Mandeldrink ungesüßt; Sojajoghurt')
 f('Buttermilch', 'M150000', 'milch', syn='Molke', alts='Mandeldrink ungesüßt')
 
 
@@ -748,31 +751,31 @@ f('Kasseler', 'W510000', 'tier', syn='Kassler, Rauchfleisch, Pökelfleisch, Eisb
 f('Eiklar', 'E113100', 'tier', syn='Eiweiß vom Ei, Eischnee, flüssiges Eiklar', alts='Kichererbsen (gegart); Seidentofu')
 
 # Milchprodukte
-f('Fettarme Milch', 'M111200', 'milch', syn='Milch 1,5 %, H-Milch, laktosefreie Milch, Magermilch, Ziegenmilch', alts='Mandeldrink ungesüßt; Haferdrink')
-f('Fruchtjoghurt', 'M241300', 'milch', syn='Joghurt mit Frucht, Erdbeerjoghurt, Trinkjoghurt, Actimel, Activia, Danone, Müller', alts='Sojajoghurt; Heidelbeeren')
-f('Skyr', 'M710100', 'milch', syn='isländischer Joghurt, Proteinjoghurt, High-Protein-Joghurt, griechischer Joghurt', alts='Sojajoghurt; Seidentofu')
+f('Fettarme Milch', 'M111200', 'milch', syn='Milch 1,5 %, fettarme H-Milch, teilentrahmte Milch', alts='Mandeldrink ungesüßt; Haferdrink')
+f('Fruchtjoghurt', 'M241300', 'milch', syn='Joghurt mit Frucht, Erdbeerjoghurt, Activia, Danone, Müller, Froop, Landliebe, Joghurt mit der Ecke', alts='Sojajoghurt; Heidelbeeren')
+f('Skyr', 'M710100', 'milch', syn='isländischer Joghurt, Proteinjoghurt, High-Protein-Joghurt, Arla Skyr', alts='Sojajoghurt; Seidentofu')
 f('Camembert', 'M602600', 'milch', syn='Brie, Weichkäse, Weißschimmelkäse, Ziegenkäse', alts='Avocado; Cashewkerne')
 f('Gorgonzola', 'M5B1600', 'milch', syn='Blauschimmelkäse, Roquefort, Edelpilzkäse', alts='Walnusskerne; Grüne Oliven')
 f('Halloumi', 'M524500', 'milch', syn='Grillkäse, Backcamembert', alts='Aubergine; Austernpilze')
 f('Ricotta', 'M741600', 'milch', syn='Molkenkäse', alts='Seidentofu; Cashewmus')
 f('Schmelzkäse', 'M810600', 'milch', syn='Scheibletten, Toastkäse, Kochkäse, Babybel, Streichkäse', alts='Hummus; Avocado')
 f('Harzer Käse', 'M730100', 'milch', syn='Harzer, Handkäse, Sauermilchkäse, Mainzer', alts='Champignons; Hummus')
-f('Schmand', 'M172700', 'milch', syn='Sauerrahm, saure Sahne, Crème fraîche, Creme fraiche', alts='Kokosmilch (vollfett); Sojajoghurt')
-f('Kondensmilch', 'M182500', 'milch', syn='Kaffeesahne, Kaffeemilch, Dosenmilch, Bärenmarke', alts='Mandeldrink ungesüßt; Haferdrink')
+f('Schmand', 'M172700', 'milch', syn='Sauerrahm 24 %', alts='Kokosmilch (vollfett); Sojajoghurt')
+f('Kondensmilch', 'M182500', 'milch', syn='Kaffeemilch, Dosenmilch, Bärenmarke', alts='Mandeldrink ungesüßt; Haferdrink')
 f('Milchreis', 'X810033', 'milch', syn='Reisbrei, Grießbrei, Grießpudding, Müller Milchreis', alts='Haferbrei (mit Wasser); Heidelbeeren')
 f('Pudding', 'R481132', 'milch', syn='Vanillepudding, Schokopudding, Dessert, Mousse au Chocolat, Dr. Oetker', alts='Chiasamen; Kokosmilch (vollfett); Heidelbeeren')
-f('Milchshake', 'M2H2300', 'milch', syn='Shake, Kakao, Trinkschokolade, Schokomilch, Müllermilch', alts='Mandeldrink ungesüßt; Heidelbeeren')
+f('Milchshake', 'M2H2300', 'milch', syn='Shake, Erdbeermilch, Vanillemilch, Bananenmilch', alts='Mandeldrink ungesüßt; Heidelbeeren')
 
 # Pflanzliche Alternativen
-f('Sojadrink (gesüßt)', 'H842400', 'drink', syn='Sojamilch gesüßt, Alpro Soja Original, Sojadrink Vanille, Sojadrink Schoko', alts='Mandeldrink ungesüßt; Sojadrink',
+f('Sojadrink (gesüßt)', 'H842400', 'drink', syn='Sojamilch gesüßt, Alpro Soja Original, Sojadrink Vanille, Sojadrink Schoko, Sojadrink Barista', alts='Mandeldrink ungesüßt; Sojadrink',
   why='Gesüßt und aromatisiert. Nimm die ungesüßte Variante.')
-f('Haferdrink (gesüßt)', 'C660300', 'drink', syn='Hafermilch gesüßt, Hafer Barista, Oatly Barista, Hafer Schoko', alts='Mandeldrink ungesüßt; Haferdrink',
+f('Haferdrink (gesüßt)', 'C660300', 'drink', syn='Hafermilch gesüßt, Hafer Schoko, Hafer Vanille, Oatly Schoko', alts='Mandeldrink ungesüßt; Haferdrink',
   why='Gesüßt und aromatisiert. Nimm die ungesüßte Variante oder Mandeldrink.')
-f('Mandeldrink (gesüßt)', 'H800200', 'getraenk', light='y', cap=200, syn='Mandelmilch gesüßt, Alpro Mandel Original', alts='Mandeldrink ungesüßt',
+f('Mandeldrink (gesüßt)', 'H800200', 'getraenk', light='y', cap=200, syn='Mandelmilch gesüßt, Alpro Mandel Original, Mandeldrink Barista, Mandel Vanille', alts='Mandeldrink ungesüßt',
   why='Leicht gesüßt. Ein Schuss geht, die ungesüßte Variante passt besser.')
 f('Sojajoghurt (gesüßt)', 'H844400', 'suess', syn='Sojajoghurt Frucht, Alpro Joghurt Erdbeere, veganer Fruchtjoghurt, Sojajoghurt Vanille', alts='Sojajoghurt; Heidelbeeren',
   why='Gesüßt und aromatisiert. Ungesüßter Sojajoghurt mit frischen Beeren passt.')
-f('Sojakochcreme', 'H845000', 'fettfrucht', light='y', cap=50, syn='Soja Cuisine, Pflanzensahne, Hafercreme, Hafer Cuisine, vegane Sahne, Kochcreme, Alpro Cuisine', alts='Kokosmilch (vollfett); Cashewmus',
+f('Sojakochcreme', 'H845000', 'fettfrucht', light='y', cap=50, syn='Soja Cuisine, Pflanzensahne, vegane Sahne, Kochcreme, Alpro Cuisine, Sojasahne', alts='Kokosmilch (vollfett); Cashewmus',
   why='Pflanzlich, aber verarbeitet. Ein Schuss für die Soße passt.')
 f('Veganer Pudding', 'H843200', 'suess', syn='Sojapudding, Alpro Dessert, pflanzlicher Pudding, Sojadessert', alts='Chiasamen; Kokosmilch (vollfett); Heidelbeeren')
 f('Veganer Käse (Kokosöl)', 'Q590000', 'fettfrucht', light='y', cap=30, syn='Käsealternative, veganer Reibekäse, vegane Scheiben, Violife, Simply V, Pflanzenkäse', alts='Hefeflocken; Cashewkerne; Avocado',
@@ -958,3 +961,137 @@ def bls_table():
             e = b[x['bls']]
             out[x['name']] = (e['kcal'], e['protein'], e['fat'], round(e['cho'] + e['fiber'], 2), e['sugar'], e['fiber'])
     return out
+
+
+# ---------------------------------------------------------------------------------------------
+# Erweiterung Produktbreite (14.11.2026): Varianten von Joghurt, Pflanzendrinks, Kochcremes, Ölen,
+# Milchprodukten, Essig, Mehl und Süßungsmitteln. Wo der BLS keinen Eintrag hat (fast alle pflanzlichen
+# Alternativen), stehen Richtwerte aus typischen Herstellerangaben (Mittel mehrerer Marken laut Open Food Facts,
+# Abruf 14.11.2026). Kohlenhydrate wie überall inklusive Ballaststoffe. Marken stehen nur als Suchbegriffe da.
+# ---------------------------------------------------------------------------------------------
+# Pflanzendrinks
+f('Cashewdrink ungesüßt', None, 'getraenk', cap=250, syn='Cashewmilch, Cashewdrink, Cashew Drink natur, Provamel Cashew, Alpro Cashew, Nussdrink, Nussmilch', n=(38, 1.2, 3.0, 1.5, 0.4), db='Hersteller')
+f('Kokosdrink ungesüßt', None, 'getraenk', cap=250, syn='Kokosmilch zum Trinken, Kokosnussdrink, Alpro Kokosnuss ungesüßt, Kokos Drink natur, Koko', n=(20, 0.3, 1.8, 1.0, 0.6), db='Hersteller')
+f('Macadamiadrink ungesüßt', None, 'getraenk', cap=250, syn='Macadamiamilch, Macadamia Drink, Milkadamia, Walnussdrink, Pistaziendrink', n=(28, 0.4, 2.7, 0.8, 0.1), db='Hersteller')
+f('Hanfdrink ungesüßt', None, 'getraenk', cap=250, syn='Hanfmilch, Hanf Drink, Good Hemp', n=(24, 0.8, 2.0, 0.8, 0.3), db='Hersteller')
+f('Haselnussdrink', None, 'getraenk', light='y', cap=200, syn='Haselnussmilch, Alpro Haselnuss, Haselnuss Drink', alts='Mandeldrink ungesüßt; Cashewdrink ungesüßt',
+  why='Fast immer leicht gesüßt. Ein Schuss passt, die ungesüßten Nussdrinks sind die bessere Wahl.', n=(29, 0.4, 1.6, 3.5, 3.2), db='Hersteller')
+f('Erbsendrink ungesüßt', None, 'getraenk', light='y', cap=200, syn='Erbsenmilch, Erbsenproteindrink, vly, Happea, Sproud, Lupinendrink, Lupinenmilch', alts='Mandeldrink ungesüßt; Cashewdrink ungesüßt',
+  why='Ungesüßt okay, aber eiweißreicher als Mandel- oder Cashewdrink.', n=(40, 3.4, 2.0, 2.0, 0.1), db='Hersteller')
+f('Dinkeldrink', None, 'getraenk', light='y', cap=150, syn='Dinkelmilch, Dinkel Drink natur, Natumi Dinkel', alts='Mandeldrink ungesüßt; Cashewdrink ungesüßt',
+  why='Die Stärke aus dem Dinkel wird beim Herstellen zu Zucker. Ein Schuss passt, Mandeldrink ist zuckerärmer.', n=(44, 0.8, 1.1, 8.2, 6.0), db='Hersteller')
+f('Reis-Kokos-Drink', None, 'getraenk', light='y', cap=150, syn='Reis Kokos Drink, Kokos-Reis-Drink, Alpro Kokosnuss Original, Kokosdrink mit Reis', alts='Kokosdrink ungesüßt; Mandeldrink ungesüßt',
+  why='Der Reisanteil bringt Zucker mit. Der ungesüßte Kokosdrink ohne Reis passt besser.', n=(45, 0.4, 1.1, 8.5, 4.5), db='Hersteller')
+f('Haferdrink Barista', None, 'getraenk', light='y', cap=100, syn='Hafer Barista, Oatly Barista, Barista Hafer, Hafermilch Barista, Alpro Barista Hafer', alts='Mandeldrink ungesüßt; Haferdrink',
+  why='Mehr Fett und etwas Zucker aus dem Hafer, damit er schäumt. Ein Schuss in den Kaffee passt.', n=(58, 1.0, 2.6, 7.8, 3.8), db='Hersteller')
+
+# Pflanzliche Joghurts (ungesüßt)
+f('Kokosjoghurt', None, 'pflanz', cap=100, syn='Kokosjoghurt natur, Kokos-Joghurtalternative, Kokosghurt, Harvest Moon, Alpro Kokosnuss Joghurt, Coconut Collaborative, veganer Joghurt', alts='Kokosmilch (vollfett); Avocado',
+  why='Ungesüßt passt er mit seinem Fett gut in den Tag. Ein kleiner Becher reicht.', n=(110, 0.8, 9.5, 5.5, 0.8), db='Hersteller')
+f('Mandeljoghurt', None, 'pflanz', cap=100, syn='Mandeljoghurt natur, Mandel-Joghurtalternative, Mandelghurt, Mandel natur, veganer Joghurt', alts='Kokosjoghurt; Mandeln', n=(55, 0.8, 3.2, 5.3, 0.5), db='Hersteller')
+f('Cashewjoghurt', None, 'pflanz', cap=100, syn='Cashewjoghurt natur, Cashew-Joghurtalternative, Cashew natur, veganer Joghurt', alts='Kokosjoghurt; Cashewkerne', n=(89, 2.1, 6.6, 5.7, 0.9), db='Hersteller')
+f('Haferjoghurt', None, 'pflanz', cap=80, syn='Haferjoghurt natur, Hafer-Joghurtalternative, Hafergurt, Oatly Hafergurt, veganer Joghurt', alts='Kokosjoghurt; Mandeljoghurt',
+  why='Der Hafer bringt natürlichen Zucker mit. Ein paar Löffel passen, Kokos- oder Mandeljoghurt sind zuckerärmer.', n=(83, 0.7, 4.5, 10.0, 5.8), db='Hersteller')
+f('Lupinenjoghurt', None, 'pflanz', cap=100, syn='Lupinenjoghurt natur, Lupinen-Joghurtalternative, Made with Luve, Luve, veganer Joghurt', alts='Kokosjoghurt; Mandeljoghurt', n=(101, 1.8, 6.0, 10.0, 1.5), db='Hersteller')
+f('Sojaquark', None, 'pflanz', cap=60, syn='Skyr-Alternative, Soja-Skyr, Alpro Skyr Style, veganer Quark, veganer Skyr, Quarkalternative, Sojade Skyr', alts='Kokosjoghurt; Mandeljoghurt',
+  why='Pflanzlich, aber eiweißreich wie Tofu. Ein paar Löffel passen, mehr kostet zu viel vom Eiweißbudget.', n=(62, 6.0, 3.2, 2.5, 1.0), db='Hersteller')
+f('Pflanzenjoghurt (gesüßt)', None, 'suess', syn='Kokosjoghurt Mango, Kokosjoghurt Frucht, Haferjoghurt Frucht, Mandeljoghurt Vanille, veganer Fruchtjoghurt, Joghurtalternative Heidelbeere', alts='Kokosjoghurt; Heidelbeeren',
+  why='Gesüßt und aromatisiert. Die ungesüßte Variante mit frischen Beeren passt.', n=(100, 0.6, 5.0, 14.0, 10.5), db='Hersteller')
+
+# Pflanzliche Kochcremes, Frischkäse, Kokosprodukte
+f('Haferkochcreme', None, 'pflanz', cap=50, syn='Hafer Cuisine, Hafercreme, Hafersahne, Oatly Cuisine, Oatly iMat, Reis Cuisine, Dinkel Cuisine, vegane Sahne, Pflanzensahne', alts='Kokosmilch (vollfett); Cashewmus',
+  why='Pflanzlich, aber verarbeitet. Ein Schuss für die Soße passt.', n=(110, 0.7, 9.0, 6.2, 2.5), db='Hersteller')
+f('Kokoskochcreme', None, 'pflanz', cap=60, syn='Kokos Cuisine, Kokossahne, Kokoscreme zum Kochen, vegane Sahne', alts='Kokosmilch (vollfett); Cashewmus',
+  why='Pflanzlich, aber verarbeitet. Ein Schuss für die Soße passt.', n=(130, 1.1, 13.0, 2.6, 1.4), db='Hersteller')
+f('Mandelkochcreme', None, 'pflanz', cap=60, syn='Mandel Cuisine, Mandelsahne, Mandelcreme zum Kochen, vegane Sahne', alts='Kokosmilch (vollfett); Mandelmus',
+  why='Pflanzlich, aber verarbeitet. Ein Schuss für die Soße passt.', n=(85, 0.9, 8.7, 0.9, 0.3), db='Hersteller')
+f('Vegane Schlagcreme', None, 'pflanz', cap=30, syn='Schlagfix, vegane Schlagsahne, Schlagcreme, Soyatoo, Pflanzencreme zum Aufschlagen, Rama Schlagcreme', alts='Kokosmilch (vollfett); Cashewmus',
+  why='Gehärtetes Pflanzenfett, oft leicht gesüßt. Ein Klecks ist okay.', n=(200, 0.5, 19.0, 6.0, 3.0), db='Hersteller')
+f('Veganer Frischkäse', None, 'pflanz', cap=30, syn='Frischkäsealternative, Simply V Streichgenuss, Oatly Aufstrich, veganer Streichkäse, Mandel-Frischkäse, Philadelphia vegan, Bedda', alts='Hummus; Cashewmus',
+  why='Meist aus Mandeln oder Hafer mit Kokosfett. Dünn gestrichen passt er.', n=(245, 3.5, 23.0, 6.0, 1.0), db='Hersteller')
+f('Kokosmilch (fettreduziert)', None, 'fettfrucht', cap=150, syn='Kokosmilch light, leichte Kokosmilch, Kokosmilch fettarm', n=(110, 1.0, 11.0, 1.8, 0.8), db='Hersteller')
+f('Kokosmus', None, 'fettfrucht', light='y', cap=15, syn='Kokosbutter, Kokosmanna, Kokoscreme, Creamed Coconut', alts='Mandelmus; Tahin',
+  why='Viel gesättigtes Fett wie beim Kokosöl. Ein Teelöffel ist okay.', n=(690, 7.0, 66.0, 19.0, 7.0), db='Hersteller')
+f('Kokoschips', None, 'fettfrucht', light='y', cap=15, syn='Kokoschips ungesüßt, Kokosstreifen, Kokosnusschips', alts='Walnusskerne; Mandeln',
+  why='Viel gesättigtes Fett wie beim Kokosöl. Als Topping okay, Nüsse passen besser.', n=(680, 7.3, 65.0, 20.0, 6.8), db='Hersteller')
+f('Kokosmehl', None, 'fettfrucht', light='y', cap=15, syn='Kokosnussmehl', alts='Kichererbsenmehl; Vollkornmehl',
+  why='Entölt und deshalb zu einem Fünftel Eiweiß und fast ebenso viel Zucker. Ein Esslöffel zum Binden passt.', n=(360, 20.0, 13.0, 56.0, 18.0), db='Hersteller')
+
+# Öle und Fette
+f('Avocadoöl', None, 'fett', syn='Öl, Avocado-Öl', n=(900, 0, 100, 0, 0), db='Hersteller')
+f('Arganöl', None, 'fett', cap=15, syn='Öl, Argan-Öl', n=(900, 0, 100, 0, 0), db='Hersteller')
+f('Schwarzkümmelöl', None, 'fett', cap=10, syn='Öl, Schwarzkümmel', n=(900, 0, 100, 0, 0), db='Hersteller')
+f('Leindotteröl', None, 'fett', cap=15, syn='Öl, Camelinaöl', n=(900, 0, 100, 0, 0), db='Hersteller')
+f('Macadamiaöl', None, 'fett', cap=15, syn='Öl, Macadamianussöl, Aprikosenkernöl, Pistazienöl', n=(900, 0, 100, 0, 0), db='Hersteller')
+f('Mandelöl', 'Q190000', 'fett', cap=15, syn='Öl')
+f('Mohnöl', 'Q350000', 'fett', cap=15, syn='Öl')
+f('Würzöl', None, 'fett', cap=15, syn='Öl, Chiliöl, Knoblauchöl, Trüffelöl, Zitronenöl, Kräuteröl, Basilikumöl, aromatisiertes Olivenöl', n=(900, 0, 100, 0, 0), db='Hersteller')
+f('Bratöl', 'Q940000', 'fett', syn='Öl, Frittieröl, Pflanzenöl, Speiseöl, Reisöl, Reiskeimöl, High-Oleic-Öl, Mazola, Thomy, Bellasan')
+f('MCT-Öl', None, 'fett', light='y', cap=10, syn='Öl, MCT, Kokosöl MCT, C8-Öl', alts='Olivenöl; Rapsöl',
+  why='Konzentriertes Fett aus Kokosöl. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.', n=(900, 0, 100, 0, 0), db='Hersteller')
+f('Palmöl', 'Q150000', 'fett', light='y', cap=10, syn='Öl, Palmfett, Palmkernfett, Frittierfett', alts='Olivenöl; Rapsöl',
+  why='Besteht zur Hälfte aus gesättigten Fettsäuren. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.')
+f('Vegane Butter', None, 'fett', light='y', cap=10, syn='Butteralternative, veganer Block, Naturli, Alsan, Flora Plant, pflanzliche Butter, Violife Block', alts='Olivenöl; Rapsöl',
+  why='Pflanzlich, aber stark verarbeitet und oft aus Kokos- oder Sheafett. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.', n=(700, 0.5, 78.0, 0.3, 0.3), db='Hersteller')
+f('Halbfettmargarine', 'Q440000', 'fett', light='y', cap=15, syn='Lätta, Halvarine, Diätmargarine, Becel light, Margarine light', alts='Olivenöl; Rapsöl',
+  why='Pflanzlich, aber stark verarbeitet. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.')
+f('Pflanzencreme (zum Braten)', 'Q4B1000', 'fett', light='y', cap=10, syn='Rama Culinesse, Bratcreme, flüssige Margarine, Pflanzencreme', alts='Olivenöl; Rapsöl',
+  why='Pflanzlich, aber stark verarbeitet. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.')
+f('Butterschmalz', 'Q683000', 'milch', syn='Ghee, Butterfett, Butaris, geklärte Butter', alts='Olivenöl; Rapsöl')
+f('Halbfettbutter', 'Q640000', 'milch', syn='Butter leicht, Joghurtbutter, Streichzart, Kerrygold extra, Mischstreichfett', alts='Olivenöl; Avocado')
+
+# Milch, Joghurt, Quark, Sahne, Käse (alles rot: Scheinfasten ist rein pflanzlich)
+f('H-Milch', 'M113300', 'milch', syn='haltbare Milch, H-Vollmilch, Weihenstephan', alts='Mandeldrink ungesüßt; Cashewdrink ungesüßt')
+f('Laktosefreie Milch', 'M114300', 'milch', syn='Milch laktosefrei, MinusL, LAC', alts='Mandeldrink ungesüßt; Cashewdrink ungesüßt')
+f('Magermilch', 'M111100', 'milch', syn='entrahmte Milch, Milch 0,1 %, Milch 0,3 %', alts='Mandeldrink ungesüßt; Kokosdrink ungesüßt')
+f('Ziegenmilch', 'M021000', 'milch', syn='Schafmilch, Schafsmilch', alts='Mandeldrink ungesüßt; Cashewdrink ungesüßt')
+f('Schokomilch', 'M206300', 'milch', syn='Kakao, Trinkschokolade, Müllermilch, Kakaomilch, heiße Schokolade', alts='Mandeldrink ungesüßt; Kakaopulver (ungesüßt)')
+f('Fettarmer Joghurt', 'M141200', 'milch', syn='Joghurt 1,5 %, Joghurt fettarm', alts='Kokosjoghurt; Mandeljoghurt')
+f('Magerjoghurt', 'M141100', 'milch', syn='Joghurt 0,1 %, Joghurt entrahmt', alts='Kokosjoghurt; Mandeljoghurt')
+f('Griechischer Joghurt', 'M141500', 'milch', syn='Sahnejoghurt, Joghurt griechischer Art, Joghurt 10 %, türkischer Joghurt, Total, Süzme', alts='Kokosjoghurt; Cashewjoghurt')
+f('Laktosefreier Joghurt', 'M1E3300', 'milch', syn='Joghurt laktosefrei, MinusL Joghurt', alts='Kokosjoghurt; Mandeljoghurt')
+f('Schafjoghurt', 'M149500', 'milch', syn='Schafsjoghurt, Ziegenjoghurt, Schafmilchjoghurt', alts='Kokosjoghurt; Mandeljoghurt')
+f('Trinkjoghurt', 'M2L2300', 'milch', syn='Joghurtdrink, Actimel, Yakult, Müller Froop Drink, Joghurt zum Trinken', alts='Mandeldrink ungesüßt; Heidelbeeren')
+f('Ayran', 'M2S8300', 'milch', syn='Lassi, Joghurtgetränk, Dugh', alts='Mineralwasser; Mandeldrink ungesüßt')
+f('Dickmilch', 'M121300', 'milch', syn='Sauermilch, Schwedenmilch, Setzmilch', alts='Kokosjoghurt; Mandeljoghurt')
+f('Quark (20 % Fett)', 'M713300', 'milch', syn='Halbfettquark, Speisequark 20 %', alts='Kokosjoghurt; Cashewmus')
+f('Sahnequark', 'M713500', 'milch', syn='Quark 40 %, Speisequark Fettstufe', alts='Kokosjoghurt; Cashewmus')
+f('Kräuterquark', 'M8A5000', 'milch', syn='Quark mit Kräutern, Zaziki, Tzatziki, Quarkdip', alts='Hummus; Guacamole')
+f('Saure Sahne', 'M172500', 'milch', syn='Sauerrahm, Sauerrahm 10 %', alts='Kokosjoghurt; Cashewmus')
+f('Crème fraîche', 'M176800', 'milch', syn='Creme fraiche, Crème légère, Creme double', alts='Kokosmilch (vollfett); Cashewmus')
+f('Kaffeesahne', 'M171500', 'milch', syn='Kaffeesahne 10 %, Kaffeeweißer, Kaffeerahm', alts='Mandeldrink ungesüßt; Haferdrink')
+f('Mascarpone', 'M7A6800', 'milch', alts='Kokosmilch (vollfett); Cashewmus')
+f('Emmentaler', 'M304600', 'milch', syn='Allgäuer Emmentaler, Schweizer Käse', alts='Cashewkerne; Grüne Oliven')
+f('Edamer', 'M401500', 'milch', alts='Cashewkerne; Grüne Oliven')
+f('Cheddar', 'M303700', 'milch', syn='Chester', alts='Cashewkerne; Hefeflocken')
+f('Tilsiter', 'M403600', 'milch', alts='Cashewkerne; Grüne Oliven')
+f('Bergkäse', 'M302600', 'milch', syn='Gruyère, Greyerzer, Appenzeller, Comté, Alpkäse', alts='Cashewkerne; Hefeflocken')
+f('Butterkäse', 'M501600', 'milch', alts='Cashewkerne; Avocado')
+f('Raclettekäse', 'M307700', 'milch', syn='Raclette, Fonduekäse', alts='Champignons; Cashewkerne')
+f('Brie', 'M601700', 'milch', alts='Avocado; Cashewkerne')
+f('Ziegenkäse', 'M6A9600', 'milch', syn='Ziegenweichkäse, Ziegenrolle, Chèvre', alts='Avocado; Walnusskerne')
+f('Ziegenfrischkäse', 'M7A1600', 'milch', syn='Ziegenfrischkäse natur, Schaffrischkäse', alts='Hummus; Cashewmus')
+f('Obazda', 'M863000', 'milch', syn='Obatzter, Käsecreme', alts='Hummus; Guacamole')
+
+# Tofu, Essig, Nussmus
+f('Räuchertofu', None, 'soja', cap=50, syn='geräucherter Tofu, Tofu geräuchert, Tofu mariniert', alts='Austernpilze; Champignons',
+  why='Pflanzlich, aber sehr eiweißreich. Prof. Dr. Longos Tage 2 bis 5 sehen nur etwa 9 % Eiweiß vor.', n=(150, 15.5, 8.8, 1.9, 0.6), db='Hersteller')
+f('Reisessig', None, 'wuerze', cap=30, syn='Essig, Sushi-Essig ungesüßt, Genmai Su', n=(18, 0.3, 0, 0.5, 0.3), db='Hersteller')
+f('Balsamico bianco', None, 'wuerze', cap=15, syn='Condimento bianco, weißer Balsamico, heller Balsamico', n=(110, 0.3, 0, 23.3, 21.7), db='Hersteller')
+f('Crema di Balsamico', None, 'wuerze', light='y', cap=10, syn='Balsamicocreme, Balsamico-Creme, Balsamico-Glasur', alts='Balsamico; Zitronensaft',
+  why='Eingekochter Balsamico mit viel Zucker. Ein paar Tropfen zum Verzieren sind okay.', n=(240, 1.0, 0, 59.0, 43.0), db='Hersteller')
+f('Pistazienmus', None, 'nuss', cap=30, syn='Pistaziencreme ungesüßt', n=(645, 23.0, 56.0, 16.0, 5.5), db='Hersteller')
+f('Sonnenblumenkernmus', None, 'nuss', cap=30, syn='Sonnenblumenmus', n=(687, 18.0, 64.0, 13.0, 1.6), db='Hersteller')
+f('Gemahlene Mandeln', 'H210400', 'nuss', cap=35, syn='Mandeln gemahlen, Mandelgrieß, Mandelmehl nicht entölt')
+
+# Mehl und Süßungsmittel
+f('Dinkelvollkornmehl', 'C235000', 'getreide', cap=30, syn='Dinkelmehl Vollkorn')
+f('Roggenvollkornmehl', 'C221000', 'getreide', cap=30, syn='Roggenmehl Vollkorn, Roggenschrot')
+f('Buchweizenmehl', 'C421000', 'getreide', cap=30)
+f('Hafermehl', 'C233000', 'getreide', cap=30, syn='gemahlene Haferflocken')
+f('Reismehl', 'C453000', 'getreide', cap=30, syn='Reis gemahlen')
+f('Mandelmehl (entölt)', None, 'eiweiss', syn='Mandelmehl, Mandelprotein, Low-Carb-Mehl', alts='Mandeln; Vollkornmehl',
+  why='Entöltes Mandelmehl ist zur Hälfte Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.', n=(380, 52.0, 12.0, 23.0, 7.0), db='Hersteller')
+f('Kokosblütenzucker', None, 'suess', syn='Kokoszucker, Palmzucker, Kokosblütensirup', n=(383, 1.4, 0.5, 94.0, 88.0), db='Hersteller')
+f('Reissirup', None, 'suess', syn='Reismalz, Gerstenmalz, Malzsirup', n=(316, 0.5, 0.5, 79.0, 53.0), db='Hersteller')
+f('Dattelsirup', None, 'suess', syn='Dattelsüße, Dattelzucker', alts='Heidelbeeren; Apfel; Zimt', n=(285, 1.5, 0.5, 71.0, 67.0), db='Hersteller')

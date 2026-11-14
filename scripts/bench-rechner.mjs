@@ -4,7 +4,7 @@ import { FOODS, BY_NAME, solve, targets, profile, suggestAdditions, completeDay,
 let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
 const pickN = (arr, n) => { const a = [...arr]; const out = []; while (out.length < n && a.length) out.push(a.splice(Math.floor(rnd() * a.length), 1)[0]); return out; };
 const by = (gs) => FOODS.filter((f) => f.light !== 'r' && gs.includes(f.group) && f.n[0] > 5).map((f) => f.name);
-const VEG = by(['gemuese', 'blatt', 'pilze']), FAT = by(['fett', 'nuss', 'fettfrucht']), STARCH = by(['knolle', 'huelsen', 'getreide', 'obst', 'soja', 'knusper']);
+const VEG = by(['gemuese', 'blatt', 'pilze']), FAT = by(['fett', 'nuss', 'fettfrucht', 'pflanz']), STARCH = by(['knolle', 'huelsen', 'getreide', 'obst', 'soja', 'knusper']);
 const N = +(process.argv[2] || 150);
 const stat = { ok: 0, okAdd: 0, okPack: 0, fail: 0, capViol: 0, sugarViol: 0, mealLoss: 0 };
 const fails = [];
