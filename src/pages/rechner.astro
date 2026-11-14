@@ -133,7 +133,7 @@ import { pick } from '../data/affiliate.js';
   <div class="in narrow" style="padding-block:24px 56px"><AffiliateBox items={pick('waage', 'oel', 'oel_manira', 'nuesse', 'kuerbiskerne', 'tahin')} title="Gut abgewogen" lead="Öl und Nüsse machen den größten Teil der Kalorien aus. Schon 5 g mehr verschieben die Werte deutlich." /></div>
 
   <div class="in narrow small muted srcnote">
-    <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben. Für Dill, Minze, Paprikapulver und Currypaste gibt es keinen BLS-Eintrag, dort nutzen wir Richtwerte aus der USDA-Datenbank.</p>
+    <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben und zählen wie in Prof. Dr. Longos US-Angaben mit 4 kcal je Gramm. Die Prozente beziehen sich deshalb auf die Energie aus Eiweiß, Fett und Kohlenhydraten und ergeben zusammen 100 %. Für einige Kräuter, Gewürze und Spezialprodukte ohne BLS-Eintrag nutzen wir Richtwerte aus der USDA-Datenbank.</p>
     <p>Sollwerte: Brandhorst S et al., Cell Metab 2015, Methoden (Labor von Prof. Dr. Longo). Wei M et al., Sci Transl Med 2017 nennt für Tag 2 bis 5 dieselben Anteile bei ca. 3.000 kJ (ca. 717 kcal). Kaffee höchstens eine kleine Tasse: Empfehlung des ProLon-Herstellers L-Nutra, nicht aus den Studien. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Prof. Dr. Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Prof. Dr. Longos Makroverteilung. Diese Seite wird von Prof. Dr. Longo weder geprüft noch unterstützt.</p>
   </div>
 </Base>
@@ -224,8 +224,8 @@ import { pick } from '../data/affiliate.js';
 </style>
 
 <script>
-  import { FOODS, BY_NAME, search, profile, targets, solve, verdict, suggestAdditions, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
-  import { fmt, PLAN, amountLabel, RECIPES, nutrition, shares } from '../lib/nutrition.js';
+  import { FOODS, BY_NAME, search, profile, targets, solve, suggestAdditions, completeDay, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
+  import { fmt, PLAN, amountLabel, RECIPES, nutrition } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
   import { thumb, thumbIn } from '../lib/url.js';
   import { doneHtml } from '../lib/fortschritt.js';
@@ -265,7 +265,7 @@ import { pick } from '../data/affiliate.js';
   let hits: any[] = [];
   let active = -1;
   function showSug() {
-    hits = search(q.value);
+    hits = search(q.value, 10);
     active = hits.length ? 0 : -1;
     const t = q.value.trim();
     qhint.textContent = t.length >= 2 && !hits.length ? `„${t}“ kennen wir leider noch nicht. Probier es mit einem anderen Wort, z. B. der Grundzutat.` : '';
@@ -356,6 +356,7 @@ import { pick } from '../data/affiliate.js';
   });
 
   const pct = (x: number) => `${fmt(x)} %`;
+  const isoToday = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
   const devTxt = (d: number) => (d > 0 ? `+${fmt(d)}` : fmt(d));
 
   function render() {
@@ -378,17 +379,13 @@ import { pick } from '../data/affiliate.js';
       const portion = Math.round((t.kcal * 0.22) / nutrition(r).kcal * 20) / 20;
       return { recipe: r, portion, n: nutrition(r, portion) };
     })() : null;
-    let tf: any = t;
-    if (bk) {
-      const kcal = t.kcal - bk.n.kcal, protein = Math.max(1, t.protein - bk.n.protein), fat = Math.max(1, t.fat - bk.n.fat), carbs = Math.max(1, t.carbs - bk.n.carbs);
-      const sh = shares({ kcal, protein, fat, carbs } as any);
-      tf = { kcal, protein, fat, carbs, ref: { ...t.ref, protein: sh.protein, fat: sh.fat, carbs: sh.carbs } };
-    }
-    const res0 = ok.length ? solve(ok, tf) : null;
-    const res = res0 && bk ? { ...res0, sum: { kcal: res0.sum.kcal + bk.n.kcal, protein: res0.sum.protein + bk.n.protein, fat: res0.sum.fat + bk.n.fat, carbs: res0.sum.carbs + bk.n.carbs, sugar: res0.sum.sugar + bk.n.sugar } } : res0;
-    if (res && bk) res.verdict = verdict(res.sum, t);
+    // Das Frühstück zählt als feste Menge mit, geprüft wird immer der ganze Tag gegen Longos Ziel.
+    const sopt = bk ? { extra: bk.n } : {};
+    const res = ok.length ? solve(ok, t, sopt) : null;
     const vd = res?.verdict;
-    const adds = res0 ? suggestAdditions(ok, tf, res0) : [];
+    const adds = res ? suggestAdditions(ok, t, res, sopt) : [];
+    // Reicht keine einzelne Zutat, schlagen wir ein kleines Paket aus bis zu vier Zutaten vor.
+    const pack = res && !vd!.ok && !adds.some((a) => a.ok) ? completeDay(ok, t, 4, sopt) : null;
     const dayLabel = `Tag ${v.day}`;
 
     let tableHtml = '';
@@ -418,7 +415,8 @@ import { pick } from '../data/affiliate.js';
         if (vd.dev.protein > TOL_P) why.push('Etwas zu viel Eiweiß. Beim Scheinfasten darf es davon ruhig weniger sein.');
         if (!vd.sugarOk) why.push('Etwas zu viel Zucker, meist aus süßem Gemüse wie Kürbis, Karotten oder Roter Bete. Kartoffeln oder Hirse sättigen mit weniger Zucker.');
         h += `<div class="alert warn"><p><b>Noch ein kleiner Schritt</b></p>${why.map((w) => `<p>${w}</p>`).join('')}
-          ${adds.length ? `<p>Tipp eins davon an, wir rechnen sofort neu:</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div>`;
+          ${pack?.ok ? `<p>Mit ${pack.add.length === 1 ? 'dieser Zutat' : `diesen ${pack.add.length} Zutaten`} passt Dein Tag:</p><div class="alts"><button type="button" class="alt" data-addmany="${esc(pack.add.map((a) => a.name).join('|'))}">${I.plus} ${pack.add.map((a) => `${esc(a.name)} (ca. ${amount(a.name, a.g)})`).join(', ')} ✓</button></div>` : ''}
+          ${adds.length ? `<p>${pack?.ok ? 'Oder einzeln, wir rechnen sofort neu:' : 'Tipp eins davon an, wir rechnen sofort neu:'}</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div>`;
       }
       // Mengentabelle
       tableHtml = `<details class="stack plain amountsbox"><summary><b>Deine Tagesmengen im Detail</b> <span class="muted small">(ändere ruhig eine Zahl, wir passen den Rest an)</span></summary>
@@ -448,14 +446,17 @@ import { pick } from '../data/affiliate.js';
       if (bk) meals.unshift({ key: 'bf', slot: 'Morgens', kind: 'Frühstück', title: bk.recipe.title, kcal: bk.n.kcal, sum: bk.n, minutes: bk.recipe.minutes, recipe: bk.recipe,
         items: bk.recipe.ingredients.map((i: any) => ({ name: i.name, g: Math.round(i.amount * bk.portion) })), steps: [] });
       const SLOTS: [string, string][] = [['Morgens', 'Frühstück'], ['Mittags', 'Mittagessen'], ['Abends', 'Abendessen'], ['Snack', 'Snack']];
-      const dk = String(v.day); const done = ((state.done = state.done || {})[dk] = state.done[dk] || {});
+      // Abgehakt gilt nur für heute: ein neuer Kalendertag (z. B. der nächste Zyklus) startet ohne Haken.
+      const dk = String(v.day); const today = isoToday(); state.done = state.done || {};
+      if (state.done[dk]?._d !== today) state.done[dk] = { _d: today };
+      const done = state.done[dk];
       const eaten = meals.filter((m) => done[m.key]).reduce((a2: any, m: any) => { const n2 = m.sum || (m.n as any); return { kcal: a2.kcal + m.kcal, protein: a2.protein + n2.protein, fat: a2.fat + n2.fat, carbs: a2.carbs + n2.carbs }; }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
       if (meals.length) {
         h += `<div class="stack"><h2 style="font-size:1.6rem">Deine Rezepte für heute</h2>
           <p class="muted small">Aus Deinen Lebensmitteln, die Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune. Hake ab, was Du gegessen hast.</p>
           ${doneHtml(eaten, t, fmt, eaten.kcal >= t.kcal * 0.95 ? ' · Tag geschafft!' : '')}
           ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => `<article class="card meal${done[m.key] ? ' isdone' : ''}">
-            <img class="mimg" src="${m.recipe ? thumb(base, m.recipe.image) : thumbIn(base, 'diy', m.tpl || 'pfanne')}" alt="" loading="lazy" width="400" height="300" />
+            <img class="mimg" src="${m.recipe ? thumb(base, m.recipe.image) : thumbIn(base, 'diy', m.tpl === 'fertig' ? 'suppe' : m.tpl || 'pfanne')}" alt="" loading="lazy" width="400" height="300" />
             <div class="info">
             <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.kcal)} kcal</span></div>
             <h3>${m.recipe ? `<a href="${base}rezepte/${m.recipe.slug}/">${esc(m.title)}</a>` : esc(m.title)}</h3>
@@ -494,6 +495,8 @@ import { pick } from '../data/affiliate.js';
     const t = e.target as HTMLElement;
     const mb = t.closest<HTMLElement>('[data-more-btn]');
     if (mb) { result.querySelectorAll<HTMLElement>('[data-more]').forEach((x) => (x.hidden = false)); mb.remove(); return; }
+    const many = t.closest<HTMLElement>('[data-addmany]');
+    if (many) { for (const n of many.dataset.addmany!.split('|')) if (BY_NAME[n] && !state.picks.some((p) => p.name === n)) state.picks.push({ name: n }); state.done = {}; save(); renderPicked(); render(); return; }
     const b = t.closest<HTMLElement>('[data-add]');
     if (b) { addFood(b.dataset.add!, b.dataset.replace); return; }
     const fr = t.closest<HTMLElement>('[data-free]');
@@ -501,7 +504,7 @@ import { pick } from '../data/affiliate.js';
   });
   result.addEventListener('change', (e) => {
     const t = e.target as HTMLInputElement;
-    if (t.dataset.done) { const dk = String(state.inputs.day); state.done = state.done || {}; (state.done[dk] = state.done[dk] || {})[t.dataset.done] = t.checked; save(); const y = scrollY; render(); scrollTo({ top: y }); return; }
+    if (t.dataset.done) { const dk = String(state.inputs.day); state.done = state.done || {}; if (state.done[dk]?._d !== isoToday()) state.done[dk] = { _d: isoToday() }; state.done[dk][t.dataset.done] = t.checked; save(); const y = scrollY; render(); scrollTo({ top: y }); return; }
     if (!t.dataset.g) return;
     const p = state.picks.find((x) => x.name === t.dataset.g);
     if (!p) return;

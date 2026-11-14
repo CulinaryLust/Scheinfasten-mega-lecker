@@ -2882,7 +2882,8 @@
   "cap": 250,
   "capWhy": "portion",
   "syn": [
-   "Mandelmilch"
+   "Mandelmilch",
+   "Alpro Mandel ungesüßt"
   ],
   "alts": [],
   "why": "",
@@ -6671,7 +6672,9 @@
   "syn": [
    "Joghurtalternative",
    "Sojaghurt",
-   "veganer Joghurt"
+   "veganer Joghurt",
+   "Alpro Natur",
+   "Skyr-Alternative"
   ],
   "alts": [
    "Kokosmilch (vollfett)",
@@ -6701,7 +6704,9 @@
   "cap": 200,
   "capWhy": "portion",
   "syn": [
-   "Sojamilch"
+   "Sojamilch",
+   "Alpro Soja ungesüßt",
+   "Provamel"
   ],
   "alts": [
    "Mandeldrink ungesüßt",
@@ -6898,7 +6903,9 @@
   "capWhy": "portion",
   "syn": [
    "Hafermilch",
-   "Haferdrink ungesüßt"
+   "Haferdrink ungesüßt",
+   "Oatly",
+   "Kölln Haferdrink"
   ],
   "alts": [
    "Mandeldrink ungesüßt"
@@ -9074,6 +9081,10109 @@
    "db": "BLS",
    "code": "M150000",
    "name": "Buttermilch"
+  }
+ },
+ {
+  "name": "Brokkoli (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 370,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Broccoli tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren",
+   "Iglo",
+   "Frosta"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   31.0,
+   2.2,
+   0.66,
+   5.7,
+   1.45,
+   3.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G312200",
+   "name": "Broccoli tiefgefroren"
+  }
+ },
+ {
+  "name": "Blumenkohl (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "capWhy": "portion",
+  "syn": [
+   "Karfiol tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   33.0,
+   1.3,
+   0.31,
+   8.82,
+   2.28,
+   3.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G311200",
+   "name": "Blumenkohl tiefgefroren"
+  }
+ },
+ {
+  "name": "Rosenkohl (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 160,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Kohlsprossen tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   45.0,
+   4.94,
+   0.38,
+   7.41,
+   1.76,
+   4.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G332200",
+   "name": "Rosenkohl tiefgefroren"
+  }
+ },
+ {
+  "name": "Grüne Bohnen (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "capWhy": "portion",
+  "syn": [
+   "Bohnen tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren",
+   "Brechbohnen",
+   "Prinzessbohnen"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   28.0,
+   1.9,
+   0.27,
+   5.8,
+   2.39,
+   2.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G710200",
+   "name": "Bohne grün, tiefgefroren"
+  }
+ },
+ {
+  "name": "Grünkohl (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 170,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Kale tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   59.0,
+   4.62,
+   0.74,
+   13.01,
+   2.93,
+   9.32
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G322200",
+   "name": "Grünkohl tiefgefroren"
+  }
+ },
+ {
+  "name": "Karotten (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 210,
+  "capWhy": "zucker",
+  "syn": [
+   "Möhren tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren",
+   "Karotten gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   40.0,
+   0.75,
+   0.42,
+   9.57,
+   6.37,
+   3.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G620200",
+   "name": "Karotte/Möhre, tiefgefroren"
+  }
+ },
+ {
+  "name": "Lauch (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 310,
+  "capWhy": "zucker",
+  "syn": [
+   "Porree tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   32.0,
+   0.9,
+   0.28,
+   7.4,
+   4.3,
+   2.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G470200",
+   "name": "Porree/Lauch, tiefgefroren"
+  }
+ },
+ {
+  "name": "Spargel (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 320,
+  "capWhy": "zucker",
+  "syn": [
+   "tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   32.0,
+   2.18,
+   0.17,
+   6.02,
+   4.22,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G450200",
+   "name": "Spargel tiefgefroren"
+  }
+ },
+ {
+  "name": "Zuckerschoten (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 200,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Kaiserschoten tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   40.0,
+   4.0,
+   0.2,
+   6.6,
+   3.34,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G761200",
+   "name": "Zuckererbse tiefgefroren"
+  }
+ },
+ {
+  "name": "Zwiebeln (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Zwiebelwürfel tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   37.0,
+   1.28,
+   0.17,
+   8.28,
+   6.68,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G480200",
+   "name": "Speisezwiebel tiefgefroren"
+  }
+ },
+ {
+  "name": "Mais (TK)",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Zuckermais tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [
+   "Rote Paprika",
+   "Erbsen (TK)"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   73.0,
+   3.3,
+   1.37,
+   13.6,
+   3.77,
+   3.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G570200",
+   "name": "Zuckermais tiefgefroren"
+  }
+ },
+ {
+  "name": "Dicke Bohnen (TK)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Saubohnen",
+   "Ackerbohnen",
+   "Favabohnen tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [
+   "Grüne Bohnen (TK)",
+   "Zuckerschoten"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   70.0,
+   6.0,
+   0.7,
+   13.0,
+   1.4,
+   6.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G730200",
+   "name": "Dicke Bohne unreif, tiefgefroren"
+  }
+ },
+ {
+  "name": "Suppengemüse (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 370,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Suppengrün",
+   "Suppenkraut tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   32.0,
+   2.15,
+   0.34,
+   6.7,
+   3.2,
+   3.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G093200",
+   "name": "Suppengrün/Suppenkraut, tiefgefroren"
+  }
+ },
+ {
+  "name": "Kaisergemüse (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 350,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Buttergemüse",
+   "Gemüsemischung",
+   "Mischgemüse tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   36.0,
+   2.31,
+   0.43,
+   7.3,
+   3.11,
+   2.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G090200",
+   "name": "Gemüsemischung Kaisergemüse, tiefgefroren"
+  }
+ },
+ {
+  "name": "Asia-Gemüse (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 390,
+  "capWhy": "zucker",
+  "syn": [
+   "Wokgemüse",
+   "Pfannengemüse",
+   "Gemüsemischung asiatisch",
+   "Chop Suey tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   29.0,
+   2.0,
+   0.3,
+   5.4,
+   3.4,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G994200",
+   "name": "Gemüsemischung asiatische Art, tiefgefroren"
+  }
+ },
+ {
+  "name": "Erbsen und Möhren (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Erbsen-Karotten",
+   "Gemüsemischung tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [
+   "Kaisergemüse (TK)",
+   "Brokkoli (TK)"
+  ],
+  "why": "Die Erbsen bringen Eiweiß mit. Eine Portion passt gut.",
+  "piece": null,
+  "n": [
+   62.0,
+   3.4,
+   0.44,
+   12.92,
+   3.65,
+   4.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G992200",
+   "name": "Gemüsemischung Erbsen-Karotten, tiefgefroren"
+  }
+ },
+ {
+  "name": "Mexiko-Gemüse (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Gemüsemischung mexikanisch",
+   "Mexikopfanne tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [
+   "Kaisergemüse (TK)",
+   "Asia-Gemüse (TK)"
+  ],
+  "why": "Mais und Bohnen bringen Stärke und Eiweiß mit. Eine Portion passt gut.",
+  "piece": null,
+  "n": [
+   57.0,
+   3.3,
+   0.5,
+   11.8,
+   3.3,
+   4.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G993200",
+   "name": "Gemüsemischung mexikanische Art, tiefgefroren"
+  }
+ },
+ {
+  "name": "Leipziger Allerlei (TK)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Gemüsemischung",
+   "Mischgemüse tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [
+   "Kaisergemüse (TK)",
+   "Brokkoli (TK)"
+  ],
+  "why": "Die Erbsen bringen Eiweiß mit. Eine Portion passt gut.",
+  "piece": null,
+  "n": [
+   57.0,
+   3.2,
+   0.4,
+   11.8,
+   3.64,
+   3.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G920200",
+   "name": "Gemüsemischung Leipziger Allerlei, tiefgefroren"
+  }
+ },
+ {
+  "name": "Champignons (TK)",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 170,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Pilze tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   36.0,
+   4.58,
+   0.34,
+   6.0,
+   0.2,
+   2.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K701200",
+   "name": "Champignon tiefgefroren"
+  }
+ },
+ {
+  "name": "Mischpilze (TK)",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 180,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Pilzmischung",
+   "Waldpilze",
+   "Pilze tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   43.0,
+   4.4,
+   0.4,
+   9.09,
+   1.22,
+   6.38
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K750200",
+   "name": "Mischpilze tiefgefroren"
+  }
+ },
+ {
+  "name": "Petersilie (TK)",
+  "group": "kraeuter",
+  "groupLabel": "Kräuter",
+  "light": "g",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Kräuter tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren",
+   "TK-Kräuter",
+   "8-Kräuter"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   33.0,
+   4.09,
+   0.36,
+   5.56,
+   0.85,
+   4.25
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G250200",
+   "name": "Petersilienblatt tiefgefroren"
+  }
+ },
+ {
+  "name": "Beerenmischung (TK)",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Beeren tiefgekühlt",
+   "Tiefkühl",
+   "TK",
+   "gefroren",
+   "Waldbeeren",
+   "Beerenmix",
+   "Tiefkühlbeeren",
+   "Beerenfrüchte"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   50.0,
+   1.1,
+   0.3,
+   11.4,
+   7.0,
+   3.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F092100",
+   "name": "Beerenmischung mit Sauerkirschen, ungesüßt, roh"
+  }
+ },
+ {
+  "name": "Grüne Bohnen (Dose)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "capWhy": "portion",
+  "syn": [
+   "Bohnen",
+   "Brechbohnen Konserve",
+   "Dose",
+   "Glas",
+   "Bonduelle"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   21.0,
+   1.66,
+   0.14,
+   4.82,
+   1.29,
+   2.72
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G710902",
+   "name": "Bohne grün, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Erbsen (Dose)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 120,
+  "capWhy": "portion",
+  "syn": [
+   "Erbsen Konserve",
+   "Dose",
+   "Glas",
+   "junge Erbsen"
+  ],
+  "alts": [
+   "Zuckerschoten",
+   "Brokkoli"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   61.0,
+   4.99,
+   0.48,
+   11.82,
+   4.34,
+   5.19
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G760902",
+   "name": "Erbse grün, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Erbsen und Möhren (Dose)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Erbsen-Karotten",
+   "Mischgemüse Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Karotten",
+   "Brokkoli"
+  ],
+  "why": "Die Erbsen bringen Eiweiß mit. Eine Portion passt gut.",
+  "piece": null,
+  "n": [
+   49.0,
+   2.9,
+   0.37,
+   10.24,
+   2.71,
+   3.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G992902",
+   "name": "Gemüsemischung Erbsen-Karotten, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Karotten (Dose)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "capWhy": "portion",
+  "syn": [
+   "Möhren Konserve",
+   "Dose",
+   "Glas",
+   "Pariser Karotten"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   23.0,
+   0.8,
+   0.46,
+   4.88,
+   2.5,
+   2.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G620902",
+   "name": "Karotte/Möhre, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Spargel (Glas)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 400,
+  "capWhy": "portion",
+  "syn": [
+   "Spargel Konserve",
+   "Dose",
+   "Glas",
+   "Stangenspargel"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18.0,
+   1.9,
+   0.3,
+   2.47,
+   1.26,
+   1.09
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G450902",
+   "name": "Spargel Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Artischockenherzen (Dose)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 330,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Artischocken Konserve",
+   "Dose",
+   "Glas",
+   "Artischockenböden"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   44.0,
+   2.42,
+   0.12,
+   13.94,
+   2.15,
+   11.64
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G410902",
+   "name": "Artischocke Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Artischocken in Öl",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Artischockenherzen in Öl",
+   "Antipasti",
+   "eingelegte Artischocken"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   254.0,
+   2.56,
+   22.82,
+   15.54,
+   2.82,
+   12.52
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G410702",
+   "name": "Artischocke in Öl, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Palmherzen",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 370,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Palmenherzen",
+   "Palmito Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   23.0,
+   2.2,
+   0.1,
+   4.04,
+   2.62,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G440902",
+   "name": "Palmenherz Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Sojasprossen (Glas)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 180,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Sojabohnenkeimlinge Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   36.0,
+   4.3,
+   0.69,
+   4.15,
+   2.4,
+   1.75
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H620902",
+   "name": "Sojabohnensprossen/Sojabohnenkeimlinge, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Mungbohnensprossen (Glas)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 370,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Mungbohnenkeimlinge",
+   "Sprossen Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   22.0,
+   2.18,
+   0.2,
+   3.31,
+   2.4,
+   0.91
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H650902",
+   "name": "Mungbohnensprossen/Mungbohnenkeimlinge, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Sauerkraut (frisch)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Weinsauerkraut",
+   "rohes Sauerkraut",
+   "Frischkost"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   23.0,
+   1.12,
+   0.31,
+   3.13,
+   0.77,
+   2.14
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G345100",
+   "name": "Sauerkraut abgetropft, roh"
+  }
+ },
+ {
+  "name": "Rotkohl (Glas)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 130,
+  "capWhy": "zucker",
+  "syn": [
+   "Rotkraut",
+   "Blaukraut",
+   "Apfelrotkohl Konserve",
+   "Dose",
+   "Glas",
+   "Kühne",
+   "Hengstenberg"
+  ],
+  "alts": [
+   "Rotkohl",
+   "Weißkohl"
+  ],
+  "why": "Fertiger Rotkohl ist gezuckert. Frischer Rotkohl mit etwas Apfel und Essig schmeckt ähnlich und spart den Zucker.",
+  "piece": null,
+  "n": [
+   56.0,
+   1.3,
+   0.15,
+   13.5,
+   9.74,
+   3.21
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G341900",
+   "name": "Rotkohlgemüse (küchenfertig) Konserve"
+  }
+ },
+ {
+  "name": "Rote Bete (Glas)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "zucker",
+  "syn": [
+   "Rote Bete eingelegt",
+   "Rote-Bete-Salat",
+   "Rote Rüben Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Rote Bete (vorgegart)",
+   "Rote Bete (roh)"
+  ],
+  "why": "Eingelegte Rote Bete ist gezuckert. Vorgegarte aus dem Kühlregal kommt ohne Zucker aus.",
+  "piece": null,
+  "n": [
+   70.0,
+   1.6,
+   0.3,
+   15.7,
+   12.4,
+   2.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G613802",
+   "name": "Rote Rübe/Rote Bete, gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Mixed Pickles",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "eingelegtes Gemüse",
+   "Essiggemüse",
+   "Pickles"
+  ],
+  "alts": [
+   "Gewürzgurken",
+   "Salzgurken"
+  ],
+  "why": "Im Sud steckt etwas Zucker. Als kleine Beilage passt es.",
+  "piece": null,
+  "n": [
+   43.0,
+   1.17,
+   0.37,
+   9.0,
+   6.75,
+   1.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G880602",
+   "name": "Mixed Pickles gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Cornichons",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Gürkchen",
+   "kleine Gewürzgurken",
+   "Essiggurken"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   33.0,
+   0.93,
+   0.17,
+   6.38,
+   5.58,
+   0.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G890902",
+   "name": "Cornichons gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Silberzwiebeln",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "Perlzwiebeln",
+   "eingelegte Zwiebeln"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   45.0,
+   0.97,
+   0.12,
+   9.71,
+   8.51,
+   1.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G488802",
+   "name": "Silberzwiebel gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Paprika (Glas)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "geröstete Paprika",
+   "eingelegte Paprika",
+   "Tomatenpaprika",
+   "Antipasti Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   35.0,
+   0.74,
+   0.07,
+   7.87,
+   6.11,
+   1.76
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G543802",
+   "name": "Gemüsepaprika rot, gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Honiggurken",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 90,
+  "capWhy": "zucker",
+  "syn": [
+   "Gurkensticks süß",
+   "süße Gurken",
+   "dänische Gurken"
+  ],
+  "alts": [
+   "Salzgurken",
+   "Gewürzgurken"
+  ],
+  "why": "Im Sud steckt Honig oder Zucker. Salz- und Gewürzgurken sind die bessere Wahl.",
+  "piece": null,
+  "n": [
+   70.0,
+   1.08,
+   0.2,
+   15.52,
+   14.49,
+   1.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G891102",
+   "name": "Honiggurke gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Senfgurken",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Schälgurken eingelegt"
+  ],
+  "alts": [
+   "Salzgurken",
+   "Gewürzgurken"
+  ],
+  "why": "Im Sud steckt etwas Zucker. Als kleine Beilage passt es.",
+  "piece": null,
+  "n": [
+   44.0,
+   1.05,
+   0.2,
+   8.97,
+   7.97,
+   1.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G891202",
+   "name": "Senfgurke gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Kürbis süß-sauer (Glas)",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 55,
+  "capWhy": "zucker",
+  "syn": [
+   "eingelegter Kürbis",
+   "Kürbis im Glas"
+  ],
+  "alts": [
+   "Hokkaido-Kürbis",
+   "Gewürzgurken"
+  ],
+  "why": "Fast ein Viertel davon ist Zucker. Ein, zwei Stücke sind okay, frischer Kürbis passt besser.",
+  "piece": null,
+  "n": [
+   112.0,
+   1.04,
+   0.12,
+   27.67,
+   23.66,
+   3.45
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G581802",
+   "name": "Kürbis gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Puszta-Salat",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Pusztasalat",
+   "Paprikasalat Glas"
+  ],
+  "alts": [
+   "Rote Paprika",
+   "Gewürzgurken"
+  ],
+  "why": "Im Sud steckt etwas Zucker. Als kleine Beilage passt es.",
+  "piece": null,
+  "n": [
+   43.0,
+   0.8,
+   0.21,
+   9.49,
+   7.54,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G090802",
+   "name": "Gemüsemischung gesäuert (Puszta Salat) abgetropft"
+  }
+ },
+ {
+  "name": "Getrocknete Tomaten in Öl",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Tomaten in Öl",
+   "eingelegte Tomaten",
+   "Antipasti"
+  ],
+  "alts": [
+   "Tomaten",
+   "Tomatenmark"
+  ],
+  "why": "Konzentriert und ölig: ein paar Stücke geben viel Geschmack, mehr kostet schnell Zucker- und Fettbudget.",
+  "piece": null,
+  "n": [
+   293.0,
+   6.49,
+   16.32,
+   32.73,
+   23.33,
+   9.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G567702",
+   "name": "Tomate getrocknet, in Öl, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Knoblauch (eingelegt)",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Knoblauchzehen eingelegt",
+   "Knoblauch Glas"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   122.0,
+   7.29,
+   0.51,
+   39.41,
+   1.9,
+   36.41
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G491802",
+   "name": "Knoblauch gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Kimchi",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "fermentierter Chinakohl",
+   "Kimchee"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   15,
+   1.1,
+   0.5,
+   2.4,
+   1.1,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Pfifferlinge (Glas)",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Eierschwammerl",
+   "Pilze Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   24.0,
+   2.08,
+   0.69,
+   4.45,
+   0.19,
+   3.81
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K713902",
+   "name": "Pfifferling Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Mischpilze (Dose)",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 180,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Pilzmischung",
+   "Pilze Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   42.0,
+   4.3,
+   0.3,
+   9.5,
+   1.1,
+   7.05
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K750902",
+   "name": "Mischpilze Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Steinpilze (getrocknet)",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Trockenpilze",
+   "getrocknete Pilze",
+   "Herrenpilze getrocknet"
+  ],
+  "alts": [],
+  "why": "Getrocknet sehr konzentriert, eine kleine Handvoll reicht für ein ganzes Gericht.",
+  "piece": null,
+  "n": [
+   270.0,
+   31.48,
+   2.33,
+   54.15,
+   3.09,
+   35.09
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K718400",
+   "name": "Steinpilz getrocknet"
+  }
+ },
+ {
+  "name": "Mischpilze (getrocknet)",
+  "group": "pilze",
+  "groupLabel": "Pilze",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Trockenpilze",
+   "getrocknete Pilze",
+   "Waldpilze getrocknet"
+  ],
+  "alts": [],
+  "why": "Getrocknet sehr konzentriert, eine kleine Handvoll reicht für ein ganzes Gericht.",
+  "piece": null,
+  "n": [
+   257.0,
+   26.8,
+   2.2,
+   55.36,
+   7.42,
+   38.86
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K750400",
+   "name": "Mischpilze getrocknet"
+  }
+ },
+ {
+  "name": "Röstzwiebeln",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Danish Onions",
+   "Zwiebeln geröstet",
+   "frittierte Zwiebeln"
+  ],
+  "alts": [
+   "Zwiebeln",
+   "Frühlingszwiebeln"
+  ],
+  "why": "Frittiert und in Mehl gewendet. Frisch angebratene Zwiebeln geben das gleiche Aroma.",
+  "piece": null,
+  "n": [
+   575.0,
+   5.9,
+   44.48,
+   39.97,
+   19.22,
+   5.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G860192",
+   "name": "Röstzwiebeln (Fertigprodukt)"
+  }
+ },
+ {
+  "name": "Linsen (Dose)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Linsen Konserve",
+   "Dose",
+   "Glas",
+   "Tellerlinsen Dose"
+  ],
+  "alts": [
+   "Hokkaido-Kürbis",
+   "Karotten"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   119.0,
+   9.04,
+   0.7,
+   22.83,
+   0.5,
+   7.43
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H730902",
+   "name": "Linse reif, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Weiße Bohnen (Dose)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Cannellini",
+   "Riesenbohnen",
+   "Bohnen weiß Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Zucchini",
+   "Champignons"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   130.0,
+   9.04,
+   0.6,
+   24.86,
+   0.79,
+   7.14
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H740902",
+   "name": "Gartenbohne reif, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Baked Beans",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Bohnen in Tomatensoße",
+   "weiße Bohnen in Tomatensauce",
+   "Heinz Beanz"
+  ],
+  "alts": [
+   "Weiße Bohnen (Dose)",
+   "Tomaten (Dose)"
+  ],
+  "why": "Die Soße ist gezuckert. Weiße Bohnen mit Dosentomaten und Gewürzen schmecken ähnlich.",
+  "piece": null,
+  "n": [
+   94.0,
+   5.08,
+   1.33,
+   16.98,
+   3.48,
+   4.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H900900",
+   "name": "Bohnen weiß, in Tomatensoße, Konserve"
+  }
+ },
+ {
+  "name": "Sojabohnen (gegart)",
+  "group": "soja",
+  "groupLabel": "Soja",
+  "light": "y",
+  "cap": 40,
+  "capWhy": "portion",
+  "syn": [
+   "Sojabohnen",
+   "Sojakerne gekocht"
+  ],
+  "alts": [
+   "Kichererbsen (gegart)",
+   "Zuckerschoten"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   157.0,
+   15.41,
+   7.52,
+   11.54,
+   2.3,
+   9.04
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G750432",
+   "name": "Sojabohne reif, gekocht"
+  }
+ },
+ {
+  "name": "Limabohnen (gegart)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Butterbohnen",
+   "Mondbohnen",
+   "Limabohnen"
+  ],
+  "alts": [
+   "Zucchini",
+   "Champignons"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   130.0,
+   8.1,
+   0.57,
+   28.1,
+   1.5,
+   11.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G780432",
+   "name": "Limabohne (Butterbohne, Mondbohne) reif, gekocht"
+  }
+ },
+ {
+  "name": "Erbsen (frisch)",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 120,
+  "capWhy": "portion",
+  "syn": [
+   "Erbsen frisch",
+   "Palerbsen",
+   "Schotenerbsen"
+  ],
+  "alts": [
+   "Zuckerschoten",
+   "Brokkoli"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   88.0,
+   5.9,
+   0.48,
+   17.3,
+   1.3,
+   5.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G760100",
+   "name": "Erbse grün, roh"
+  }
+ },
+ {
+  "name": "Wachsbohnen",
+  "group": "gemuese",
+  "groupLabel": "Gemüse",
+  "light": "g",
+  "cap": 380,
+  "capWhy": "eiweiss",
+  "syn": [
+   "gelbe Bohnen",
+   "Butterbohnen gelb"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   27.0,
+   2.1,
+   0.2,
+   5.29,
+   2.26,
+   1.89
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G720100",
+   "name": "Wachsbohne roh"
+  }
+ },
+ {
+  "name": "Maiskolben",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Zuckermais frisch",
+   "Mais frisch"
+  ],
+  "alts": [
+   "Rote Paprika",
+   "Zucchini"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": [
+   "Kolben",
+   200
+  ],
+  "n": [
+   67.0,
+   3.28,
+   1.23,
+   12.2,
+   3.4,
+   2.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G570100",
+   "name": "Zuckermais roh"
+  }
+ },
+ {
+  "name": "Pellkartoffeln",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Kartoffeln gekocht mit Schale",
+   "Salzkartoffeln",
+   "gekochte Kartoffeln"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Knollensellerie"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": [
+   "Stück",
+   100
+  ],
+  "n": [
+   71.0,
+   1.8,
+   0.6,
+   15.34,
+   1.1,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K120134",
+   "name": "Kartoffel ungeschält, gekocht"
+  }
+ },
+ {
+  "name": "Kartoffelpüree (mit Wasser)",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Kartoffelbrei",
+   "Püree",
+   "Stampfkartoffeln",
+   "Kartoffelpüree Pulver",
+   "Pfanni"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Blumenkohl"
+  ],
+  "why": "Mit Wasser statt Milch und Butter angerührt passt eine Portion.",
+  "piece": null,
+  "n": [
+   42.0,
+   0.95,
+   0.06,
+   9.88,
+   0.0,
+   0.78
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X638012",
+   "name": "Kartoffelpüree, zubereitet aus Instantpulver und Wasser"
+  }
+ },
+ {
+  "name": "Kartoffelsalat (mit Brühe)",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Kartoffelsalat schwäbisch",
+   "Kartoffelsalat Essig und Öl",
+   "Kartoffelsalat ohne Mayo"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Gurke"
+  ],
+  "why": "Mit Brühe, Essig und Öl angemacht passt eine kleine Portion. Fertige Salate enthalten oft Zucker.",
+  "piece": null,
+  "n": [
+   83.0,
+   1.52,
+   3.0,
+   12.92,
+   1.2,
+   1.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X1A2010",
+   "name": "Kartoffelsalat mit Marinade (Gemüsebrühe)"
+  }
+ },
+ {
+  "name": "Maniok",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Cassava",
+   "Yuca",
+   "Kassava"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Süßkartoffel"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   146.0,
+   1.0,
+   0.23,
+   36.39,
+   1.4,
+   2.89
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K410100",
+   "name": "Maniok/Cassava, roh"
+  }
+ },
+ {
+  "name": "Kochbanane",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Plantain",
+   "Gemüsebanane"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Süßkartoffel"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   130.0,
+   1.18,
+   0.07,
+   31.7,
+   7.7,
+   2.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F545100",
+   "name": "Kochbanane roh"
+  }
+ },
+ {
+  "name": "Maronen",
+  "group": "knolle",
+  "groupLabel": "Kartoffeln und Stärkegemüse",
+  "light": "y",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Esskastanien",
+   "Edelkastanien",
+   "Maroni",
+   "gegarte Maronen"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Hokkaido-Kürbis"
+  ],
+  "why": "Stärkereich und süßlich. Eine kleine Handvoll passt gut in Suppe oder Ofengemüse.",
+  "piece": null,
+  "n": [
+   210.0,
+   2.92,
+   1.9,
+   49.57,
+   13.9,
+   8.37
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H230100",
+   "name": "Edelkastanie/Marone"
+  }
+ },
+ {
+  "name": "Gnocchi",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kartoffelnocken",
+   "Gnocchi Kühlregal"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Zucchini"
+  ],
+  "why": "Kartoffelteig mit viel Weißmehl. Eine kleine Portion Kartoffeln passt besser.",
+  "piece": null,
+  "n": [
+   140.0,
+   3.64,
+   0.54,
+   31.06,
+   0.37,
+   1.93
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K270032",
+   "name": "Gnocchi gekocht"
+  }
+ },
+ {
+  "name": "Kartoffelklöße",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Knödel",
+   "Klöße",
+   "Kartoffelknödel",
+   "Semmelknödel",
+   "Pfanni"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Knollensellerie"
+  ],
+  "why": "Viel Stärke auf kleinem Raum. Eine kleine Portion Kartoffeln passt besser.",
+  "piece": null,
+  "n": [
+   98.0,
+   3.45,
+   0.86,
+   19.85,
+   0.56,
+   1.67
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K241232",
+   "name": "Kartoffelkloß halb und halb, tiefgefroren, gargezogen"
+  }
+ },
+ {
+  "name": "Rösti",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kartoffelrösti",
+   "Röstinchen",
+   "Hash Browns",
+   "Reibekuchen",
+   "Kartoffelpuffer"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Zucchini"
+  ],
+  "why": "In Fett vorgebacken. Selbst geriebene Kartoffeln mit Zucchini aus der Pfanne kommen mit wenig Öl aus.",
+  "piece": null,
+  "n": [
+   207.0,
+   2.45,
+   8.56,
+   30.9,
+   2.0,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K391200",
+   "name": "Kartoffelrösti tiefgefroren"
+  }
+ },
+ {
+  "name": "Kroketten",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kartoffelkroketten",
+   "Herzoginkartoffeln",
+   "Kartoffelecken",
+   "Wedges"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Süßkartoffel"
+  ],
+  "why": "Paniert und in Fett vorgebacken. Ofenkartoffeln mit etwas Olivenöl passen besser.",
+  "piece": null,
+  "n": [
+   180.0,
+   4.04,
+   9.27,
+   21.14,
+   0.95,
+   2.09
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K282200",
+   "name": "Kartoffelkroketten tiefgefroren"
+  }
+ },
+ {
+  "name": "Gemüsebrühe (Pulver)",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Brühwürfel",
+   "gekörnte Brühe",
+   "Instantbrühe",
+   "Brühpulver",
+   "Bouillon",
+   "Suppenwürfel",
+   "Maggi",
+   "Knorr"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": [
+   "Teelöffel",
+   5
+  ],
+  "n": [
+   195.0,
+   5.82,
+   5.8,
+   30.81,
+   0.4,
+   2.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R821000",
+   "name": "Gemüse Bouillon/Brühe/Suppe (Brühwürfel, Pulver)"
+  }
+ },
+ {
+  "name": "Hühnerbrühe",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Hühnerfond",
+   "Geflügelbrühe",
+   "Geflügelfond",
+   "Hühnersuppe klar"
+  ],
+  "alts": [
+   "Gemüsebrühe",
+   "Helle Misopaste"
+  ],
+  "why": "Aus Huhn gekocht. Scheinfasten ist rein pflanzlich, Gemüsebrühe ist der direkte Ersatz.",
+  "piece": null,
+  "n": [
+   5.0,
+   0.5,
+   0.3,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X411243",
+   "name": "Hühnerbrühe"
+  }
+ },
+ {
+  "name": "Rinderbrühe",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Fleischbrühe",
+   "Rinderfond",
+   "Kraftbrühe",
+   "Knochenbrühe",
+   "Bone Broth",
+   "Fleischfond"
+  ],
+  "alts": [
+   "Gemüsebrühe",
+   "Helle Misopaste"
+  ],
+  "why": "Aus Fleisch und Knochen gekocht. Scheinfasten ist rein pflanzlich, Gemüsebrühe ist der direkte Ersatz.",
+  "piece": null,
+  "n": [
+   3.0,
+   0.4,
+   0.2,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Y183013",
+   "name": "Fleischbrühe (Rind)"
+  }
+ },
+ {
+  "name": "Ajvar",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "Paprikamus",
+   "Paprikapaste",
+   "Ajwar"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   68.0,
+   0.9,
+   4.4,
+   7.2,
+   5.0,
+   2.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G898400",
+   "name": "Ajvar Konserve"
+  }
+ },
+ {
+  "name": "Sambal Oelek",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Chilipaste",
+   "Harissa",
+   "Chilisauce scharf"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   55.0,
+   1.45,
+   0.4,
+   10.51,
+   8.98,
+   1.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R146100",
+   "name": "Sambal Oelek, Würzpaste"
+  }
+ },
+ {
+  "name": "Wasabi",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Wasabipaste",
+   "japanischer Meerrettich"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   94.0,
+   5.4,
+   2.23,
+   14.29,
+   7.2,
+   4.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R913000",
+   "name": "Wasabi-Paste Konserve"
+  }
+ },
+ {
+  "name": "Meerrettich (Glas)",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Tafelmeerrettich",
+   "Kren Glas"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   171.0,
+   3.17,
+   11.92,
+   11.76,
+   7.7,
+   2.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G898300",
+   "name": "Tafel-Meerrettich Konserve"
+  }
+ },
+ {
+  "name": "Sushi-Ingwer",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Gari",
+   "eingelegter Ingwer"
+  ],
+  "alts": [
+   "Ingwer"
+  ],
+  "why": "In gesüßtem Essig eingelegt. Ein paar Scheiben sind okay, frischer Ingwer kommt ohne Zucker aus.",
+  "piece": null,
+  "n": [
+   65.0,
+   1.2,
+   0.47,
+   13.8,
+   8.74,
+   1.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R912000",
+   "name": "Sushi Ingwer (Gari) Konserve"
+  }
+ },
+ {
+  "name": "Süßer Senf",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Weißwurstsenf",
+   "bayerischer Senf",
+   "Honigsenf"
+  ],
+  "alts": [
+   "Senf"
+  ],
+  "why": "Ein Viertel davon ist Zucker. Ein Teelöffel geht, mittelscharfer Senf passt besser.",
+  "piece": null,
+  "n": [
+   177.0,
+   4.25,
+   5.37,
+   28.6,
+   25.0,
+   3.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R135000",
+   "name": "Senf süß"
+  }
+ },
+ {
+  "name": "Kakaopulver (ungesüßt)",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "g",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Backkakao",
+   "Kakao ungesüßt",
+   "Kakao"
+  ],
+  "alts": [],
+  "why": "Ungesüßt ein Teelöffel für Geschmack. Trinkkakao mit Zucker gehört nicht dazu.",
+  "piece": null,
+  "n": [
+   365.0,
+   22.61,
+   19.8,
+   37.22,
+   0.9,
+   26.32
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S711000",
+   "name": "Kakaopulver schwach entölt"
+  }
+ },
+ {
+  "name": "Sriracha",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Chilisauce",
+   "Chilisoße",
+   "Hot Sauce",
+   "Tabasco"
+  ],
+  "alts": [
+   "Chiliflocken",
+   "Sambal Oelek"
+  ],
+  "why": "Scharf, aber gezuckert. Ein paar Spritzer sind okay.",
+  "piece": null,
+  "n": [
+   93,
+   1.9,
+   0.9,
+   19.2,
+   15.1,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Worcestersauce",
+  "group": "wuerze",
+  "groupLabel": "Würzen",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Worcestershire",
+   "Worcestersoße",
+   "Maggi Würze"
+  ],
+  "alts": [
+   "Sojasauce",
+   "Balsamico"
+  ],
+  "why": "Enthält meist Sardellen und Zucker. Ein paar Spritzer fallen kaum ins Gewicht, Sojasauce ist die pflanzliche Wahl.",
+  "piece": null,
+  "n": [
+   78,
+   0,
+   0,
+   19.5,
+   10.0,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Teriyakisauce",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Teriyaki",
+   "Teriyakisoße",
+   "Yakitori"
+  ],
+  "alts": [
+   "Sojasauce",
+   "Ingwer"
+  ],
+  "why": "Sojasauce mit viel Zucker. Sojasauce mit frischem Ingwer und Knoblauch schmeckt ähnlich.",
+  "piece": null,
+  "n": [
+   89,
+   5.9,
+   0,
+   15.6,
+   14.1,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Hoisinsauce",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Hoisin",
+   "Hoi Sin",
+   "Süß-Sauer-Sauce",
+   "Sweet Chili",
+   "süße Chilisauce",
+   "Pflaumensauce"
+  ],
+  "alts": [
+   "Sojasauce",
+   "Helle Misopaste"
+  ],
+  "why": "Mehr als ein Viertel davon ist Zucker. Miso und Sojasauce bringen die Würze ohne Zucker.",
+  "piece": null,
+  "n": [
+   220,
+   3.3,
+   3.4,
+   44.1,
+   27.3,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Fischsauce",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Fischsoße",
+   "Nam Pla",
+   "Austernsauce",
+   "Austernsoße"
+  ],
+  "alts": [
+   "Sojasauce",
+   "Nori"
+  ],
+  "why": "Aus Fisch vergoren. Sojasauce mit etwas Nori bringt den gleichen herzhaften Geschmack.",
+  "piece": null,
+  "n": [
+   35,
+   5.1,
+   0,
+   3.6,
+   3.6,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Grillsauce",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "BBQ-Sauce",
+   "Barbecuesauce",
+   "Zigeunersauce",
+   "Schaschliksauce",
+   "Cocktailsauce",
+   "Burgersauce"
+  ],
+  "alts": [
+   "Tomatenmark",
+   "Ajvar"
+  ],
+  "why": "Ein Fünftel davon ist Zucker. Ajvar oder Tomatenmark mit Gewürzen geben Würze ohne Zucker.",
+  "piece": null,
+  "n": [
+   102.0,
+   1.46,
+   0.56,
+   22.08,
+   19.04,
+   0.72
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R148200",
+   "name": "Feinkostsauce/Grillsauce, Tomaten-Basis"
+  }
+ },
+ {
+  "name": "Chutney",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Mango-Chutney",
+   "Fruchtchutney",
+   "Relish"
+  ],
+  "alts": [
+   "Apfelmus ungesüßt",
+   "Ajvar"
+  ],
+  "why": "Eingekochtes Obst mit sehr viel Zucker.",
+  "piece": null,
+  "n": [
+   282.0,
+   0.6,
+   0.33,
+   69.4,
+   66.4,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R144100",
+   "name": "Frucht-Chutney, Würzsoße"
+  }
+ },
+ {
+  "name": "Mayonnaise",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Mayo",
+   "Majo",
+   "Aioli",
+   "Hellmanns",
+   "Thomy"
+  ],
+  "alts": [
+   "Avocado",
+   "Tahin",
+   "Senf"
+  ],
+  "why": "Mit Eigelb gemacht. Zerdrückte Avocado oder Tahin mit Zitrone machen Salate genauso cremig.",
+  "piece": null,
+  "n": [
+   750.0,
+   1.49,
+   81.2,
+   2.94,
+   2.3,
+   0.64
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q991000",
+   "name": "Mayonnaise (Fertigprodukt)"
+  }
+ },
+ {
+  "name": "Remoulade",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Remouladensauce",
+   "Tartarsauce",
+   "Sauce Tartare"
+  ],
+  "alts": [
+   "Avocado",
+   "Senf",
+   "Kapern"
+  ],
+  "why": "Mayonnaise mit Ei. Avocado mit Kapern und Senf schmeckt ähnlich.",
+  "piece": null,
+  "n": [
+   567.0,
+   0.8,
+   60.0,
+   5.09,
+   3.67,
+   0.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q999000",
+   "name": "Remoulade (Fertigprodukt)"
+  }
+ },
+ {
+  "name": "Salatcreme",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Miracel Whip",
+   "Salatmayonnaise",
+   "Sandwichcreme",
+   "Joghurt-Salatcreme"
+  ],
+  "alts": [
+   "Tahin",
+   "Avocado",
+   "Zitronensaft"
+  ],
+  "why": "Enthält Ei und Zucker. Tahin mit Zitronensaft und Wasser ergibt ein cremiges Dressing.",
+  "piece": null,
+  "n": [
+   300.0,
+   1.4,
+   27.02,
+   11.97,
+   8.01,
+   0.05
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q998000",
+   "name": "Salatcreme (Fertigprodukt)"
+  }
+ },
+ {
+  "name": "Joghurt-Dressing",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Salatdressing",
+   "Fertigdressing",
+   "Sylter Dressing",
+   "Caesar Dressing",
+   "French Dressing",
+   "Kräuterdressing",
+   "Salatsoße"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Zitronensaft",
+   "Tahin"
+  ],
+  "why": "Fertige Dressings enthalten Milchprodukte, Ei oder Zucker. Öl mit Zitrone oder Essig ist in einer Minute angerührt.",
+  "piece": null,
+  "n": [
+   128.0,
+   3.25,
+   10.7,
+   3.54,
+   3.49,
+   0.03
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X357340",
+   "name": "Joghurt-Dressing"
+  }
+ },
+ {
+  "name": "Bratensoße",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Bratensauce",
+   "Soßenbinder",
+   "Jägersoße",
+   "Rahmsoße",
+   "dunkle Soße"
+  ],
+  "alts": [
+   "Tomaten, passiert",
+   "Sojasauce"
+  ],
+  "why": "Fertigsoßen basieren auf Fleischextrakt, Fett und Stärke. Passierte Tomaten mit Sojasauce geben eine herzhafte Soße.",
+  "piece": null,
+  "n": [
+   10.0,
+   0.23,
+   0.25,
+   1.79,
+   0.59,
+   0.06
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R910032",
+   "name": "Bratensoße aus Instantpulver, zubereitet mit Wasser"
+  }
+ },
+ {
+  "name": "Sauce Hollandaise",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Hollandaise",
+   "Sauce Bearnaise",
+   "Buttersoße"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Zitronensaft"
+  ],
+  "why": "Butter und Eigelb. Zum Spargel passt Olivenöl mit Zitrone.",
+  "piece": null,
+  "n": [
+   518.0,
+   4.5,
+   54.9,
+   0.76,
+   0.75,
+   0.01
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X371043",
+   "name": "Sauce Hollandaise/Holländische Sauce"
+  }
+ },
+ {
+  "name": "Pesto rosso",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "rotes Pesto",
+   "Tomatenpesto",
+   "Barilla Pesto"
+  ],
+  "alts": [
+   "Getrocknete Tomaten",
+   "Olivenöl",
+   "Pinienkerne"
+  ],
+  "why": "Fertiges Pesto enthält Käse. Getrocknete Tomaten mit Olivenöl und Pinienkernen gemixt passen.",
+  "piece": null,
+  "n": [
+   495.0,
+   10.2,
+   39.2,
+   28.0,
+   19.3,
+   8.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X3A7010",
+   "name": "Pesto rosso"
+  }
+ },
+ {
+  "name": "Gelatine",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Blattgelatine",
+   "Speisegelatine",
+   "Götterspeise",
+   "Wackelpudding"
+  ],
+  "alts": [
+   "Chiasamen",
+   "Leinsamen"
+  ],
+  "why": "Tierisches Eiweiß. Chiasamen binden Flüssigkeit ganz ähnlich.",
+  "piece": null,
+  "n": [
+   341.0,
+   85.1,
+   0.1,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R468000",
+   "name": "Gelatine/Speisegelatine"
+  }
+ },
+ {
+  "name": "Weizenmehl",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Mehl",
+   "Weißmehl",
+   "Type 405",
+   "Type 550",
+   "Auszugsmehl",
+   "Dinkelmehl"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Hirse (gegart)"
+  ],
+  "why": "Reine Stärke, die kaum satt macht. Zum Binden reicht ein Löffel püriertes Gemüse oder Kartoffel.",
+  "piece": null,
+  "n": [
+   348.0,
+   10.46,
+   0.93,
+   77.07,
+   0.31,
+   5.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C214100",
+   "name": "Weizen Mehl, Type 405"
+  }
+ },
+ {
+  "name": "Vollkornmehl",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Weizenvollkornmehl",
+   "Dinkelvollkornmehl",
+   "Roggenvollkornmehl"
+  ],
+  "alts": [
+   "Haferflocken",
+   "Hirse (gegart)"
+  ],
+  "why": "Ein Esslöffel zum Binden oder für einen kleinen Fladen passt.",
+  "piece": null,
+  "n": [
+   339.0,
+   12.76,
+   1.78,
+   74.05,
+   0.74,
+   12.27
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C211000",
+   "name": "Weizen Vollkornmehl"
+  }
+ },
+ {
+  "name": "Kichererbsenmehl",
+  "group": "huelsen",
+  "groupLabel": "Hülsenfrüchte",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Besan",
+   "Gram-Mehl"
+  ],
+  "alts": [
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Eiweißreich. Ein, zwei Esslöffel zum Binden oder für einen dünnen Pfannkuchen passen.",
+  "piece": null,
+  "n": [
+   322.0,
+   20.04,
+   5.8,
+   55.0,
+   2.41,
+   15.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H720400",
+   "name": "Kichererbsenmehl"
+  }
+ },
+ {
+  "name": "Speisestärke",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Maisstärke",
+   "Stärke",
+   "Mondamin",
+   "Kartoffelstärke",
+   "Kartoffelmehl",
+   "Tapioka"
+  ],
+  "alts": [
+   "Kartoffeln"
+  ],
+  "why": "Ein Teelöffel zum Binden ist okay.",
+  "piece": null,
+  "n": [
+   348.0,
+   0.43,
+   0.08,
+   86.9,
+   0.0,
+   1.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C446000",
+   "name": "Mais Stärke"
+  }
+ },
+ {
+  "name": "Guacamole",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Avocadocreme",
+   "Avocado-Dip",
+   "Avocadoaufstrich"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   113.0,
+   1.41,
+   10.2,
+   5.7,
+   2.0,
+   3.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X389000",
+   "name": "Avocadocreme (Guacamole)"
+  }
+ },
+ {
+  "name": "Sonnenblumenkernaufstrich",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "veganer Brotaufstrich",
+   "pflanzlicher Aufstrich",
+   "Streich",
+   "Zwergenwiese",
+   "Brotaufstrich vegan"
+  ],
+  "alts": [
+   "Hummus",
+   "Tahin",
+   "Avocado"
+  ],
+  "why": "Pflanzlich, aber mit zugesetztem Öl und etwas Zucker. Ein, zwei Esslöffel passen.",
+  "piece": null,
+  "n": [
+   308.0,
+   4.15,
+   27.75,
+   12.49,
+   6.66,
+   4.65
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H880100",
+   "name": "Sonnenblumenkernaufstrich, Brotaufstrich pflanzlich"
+  }
+ },
+ {
+  "name": "Gemüseaufstrich",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "veganer Brotaufstrich",
+   "Paprikaaufstrich",
+   "Tomatenaufstrich",
+   "Bruschetta-Aufstrich",
+   "Gemüsecreme"
+  ],
+  "alts": [
+   "Ajvar",
+   "Hummus",
+   "Avocado"
+  ],
+  "why": "Pflanzlich, aber mit zugesetztem Öl und etwas Zucker. Ein, zwei Esslöffel passen.",
+  "piece": null,
+  "n": [
+   199.0,
+   0.8,
+   16.8,
+   11.6,
+   6.0,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G940100",
+   "name": "Gemüseaufstrich, Brotaufstrich pflanzlich"
+  }
+ },
+ {
+  "name": "Vegetarische Pastete",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Hefepastete",
+   "Tartex",
+   "vegane Pastete",
+   "Brotaufstrich Hefe"
+  ],
+  "alts": [
+   "Hummus",
+   "Tahin"
+  ],
+  "why": "Pflanzlich, aber stark verarbeitet und fettreich. Ein, zwei Esslöffel passen.",
+  "piece": null,
+  "n": [
+   229.0,
+   4.95,
+   18.15,
+   14.65,
+   2.62,
+   6.75
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K820000",
+   "name": "Vegetarische Pastete, Brotaufstrich hefebasiert"
+  }
+ },
+ {
+  "name": "Mandel-Streichcreme",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "g",
+  "cap": 40,
+  "capWhy": "portion",
+  "syn": [
+   "veganer Frischkäse",
+   "Frischkäsealternative",
+   "Streichcreme Mandel",
+   "Simply V Streichgenuss",
+   "vegane Frischecreme"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   220.0,
+   4.48,
+   21.6,
+   2.78,
+   0.73,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H882100",
+   "name": "Frischecreme/Streichcreme, Basis Mandeln, vegan"
+  }
+ },
+ {
+  "name": "Erdnussbutter",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Erdnusscreme",
+   "Peanut Butter",
+   "Erdnussbutter crunchy"
+  ],
+  "alts": [
+   "Mandelmus",
+   "Tahin"
+  ],
+  "why": "Meist mit Zucker und Palmfett. Reines Mandelmus oder Tahin passen besser.",
+  "piece": null,
+  "n": [
+   606.0,
+   24.08,
+   47.78,
+   23.53,
+   11.72,
+   7.44
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H880200",
+   "name": "Erdnussbutter/Erdnusscreme"
+  }
+ },
+ {
+  "name": "Oliven mit Paprika gefüllt",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "gefüllte Oliven",
+   "Oliven gefüllt",
+   "Antipasti"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   118.0,
+   1.15,
+   11.85,
+   2.83,
+   0.5,
+   2.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H510900",
+   "name": "Oliven grün, gefüllt mit Paprikapaste, gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Oliven mit Mandeln gefüllt",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "g",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "gefüllte Oliven",
+   "Mandeloliven",
+   "Antipasti"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   206.0,
+   5.01,
+   19.5,
+   4.39,
+   0.65,
+   3.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H511900",
+   "name": "Oliven grün, gefüllt mit Mandeln, gesäuert, abgetropft"
+  }
+ },
+ {
+  "name": "Maiskeimöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Keimöl",
+   "Mazola"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q260000",
+   "name": "Maiskeimöl"
+  }
+ },
+ {
+  "name": "Sojaöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Pflanzenöl",
+   "Speiseöl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q270000",
+   "name": "Sojaöl"
+  }
+ },
+ {
+  "name": "Distelöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 35,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Safloröl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q340000",
+   "name": "Distelöl/Safloröl"
+  }
+ },
+ {
+  "name": "Haselnussöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl",
+   "Nussöl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   899.0,
+   0.0,
+   99.9,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q140000",
+   "name": "Haselnussöl"
+  }
+ },
+ {
+  "name": "Weizenkeimöl",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "g",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Öl"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q220000",
+   "name": "Weizenkeimöl"
+  }
+ },
+ {
+  "name": "Kokosfett (gehärtet)",
+  "group": "fett",
+  "groupLabel": "Öle",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Palmin",
+   "Plattenfett",
+   "Palmfett",
+   "Frittierfett"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Fast nur gesättigte Fettsäuren. Prof. Dr. Longo setzt auf Olivenöl und Nüsse.",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q550200",
+   "name": "Kokosfett gehärtet"
+  }
+ },
+ {
+  "name": "Kräuterbutter",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Knoblauchbutter",
+   "Grillbutter"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Knoblauch",
+   "Petersilie"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   587.0,
+   4.5,
+   62.0,
+   3.3,
+   1.0,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q656000",
+   "name": "Knoblauchbutter/Kräuterbutter"
+  }
+ },
+ {
+  "name": "Schmalz",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Schweineschmalz",
+   "Griebenschmalz",
+   "Gänseschmalz",
+   "Butterschmalz"
+  ],
+  "alts": [
+   "Olivenöl",
+   "Rapsöl"
+  ],
+  "why": "Tierisches Fett. Zum Braten passen Oliven- oder Rapsöl.",
+  "piece": null,
+  "n": [
+   900.0,
+   0.0,
+   100.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q860000",
+   "name": "Schweinefett/Schweineschmalz"
+  }
+ },
+ {
+  "name": "Mandeln (geröstet, gesalzen)",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Salzmandeln",
+   "Rauchmandeln",
+   "geröstete Mandeln"
+  ],
+  "alts": [
+   "Mandeln",
+   "Walnusskerne"
+  ],
+  "why": "In Fett geröstet und gesalzen. Eine kleine Handvoll ist okay, naturbelassene Nüsse passen besser.",
+  "piece": null,
+  "n": [
+   557.0,
+   21.22,
+   48.64,
+   13.45,
+   3.52,
+   9.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H210710",
+   "name": "Mandel süß, geröstet mit Fett, gesalzen"
+  }
+ },
+ {
+  "name": "Cashewkerne (geröstet, gesalzen)",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Cashews gesalzen",
+   "geröstete Cashews"
+  ],
+  "alts": [
+   "Cashewkerne",
+   "Walnusskerne"
+  ],
+  "why": "In Fett geröstet und gesalzen. Eine kleine Handvoll ist okay, naturbelassene Nüsse passen besser.",
+  "piece": null,
+  "n": [
+   594.0,
+   19.6,
+   49.49,
+   19.1,
+   4.95,
+   3.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H170700",
+   "name": "Cashewkern geröstet mit Fett, gesalzen"
+  }
+ },
+ {
+  "name": "Pistazien (geröstet, gesalzen)",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Pistazien gesalzen",
+   "Pistazien in Schale"
+  ],
+  "alts": [
+   "Pistazien",
+   "Walnusskerne"
+  ],
+  "why": "Gesalzen. Eine kleine Handvoll ist okay, naturbelassene Nüsse passen besser.",
+  "piece": null,
+  "n": [
+   588.0,
+   23.0,
+   49.3,
+   17.4,
+   6.8,
+   8.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H250700",
+   "name": "Pistazie geröstet ohne Fett, gesalzen"
+  }
+ },
+ {
+  "name": "Macadamia (geröstet, gesalzen)",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Macadamianüsse gesalzen"
+  ],
+  "alts": [
+   "Macadamia",
+   "Walnusskerne"
+  ],
+  "why": "Gesalzen. Eine kleine Handvoll ist okay, naturbelassene Nüsse passen besser.",
+  "piece": null,
+  "n": [
+   752.0,
+   9.12,
+   75.5,
+   13.0,
+   4.1,
+   7.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H190700",
+   "name": "Macadamianuss geröstet ohne Fett, gesalzen"
+  }
+ },
+ {
+  "name": "Erdnüsse (gesalzen)",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Salzerdnüsse",
+   "geröstete Erdnüsse gesalzen",
+   "Ültje",
+   "Partynüsse",
+   "Nussmischung gesalzen"
+  ],
+  "alts": [
+   "Mandeln",
+   "Walnusskerne"
+  ],
+  "why": "Viel Eiweiß und Salz. Ein paar Stück sind okay, Walnüsse und Mandeln passen besser.",
+  "piece": null,
+  "n": [
+   614.0,
+   28.7,
+   49.2,
+   18.2,
+   4.9,
+   8.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H110700",
+   "name": "Erdnuss geröstet, gesalzen"
+  }
+ },
+ {
+  "name": "Studentenfutter",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Nuss-Frucht-Mischung",
+   "Trail Mix",
+   "Nussmix mit Rosinen",
+   "Seeberger"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Mandeln",
+   "Heidelbeeren"
+  ],
+  "why": "Die Rosinen machen fast ein Drittel Zucker aus. Nüsse pur mit ein paar frischen Beeren passen.",
+  "piece": null,
+  "n": [
+   485.0,
+   12.3,
+   32.2,
+   38.5,
+   29.6,
+   6.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H810000",
+   "name": "Studentenfutter"
+  }
+ },
+ {
+  "name": "Erdnüsse im Teigmantel",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "NicNacs",
+   "Teignüsse",
+   "Wasabi-Nüsse",
+   "Erdnusslocken"
+  ],
+  "alts": [
+   "Mandeln",
+   "Walnusskerne"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   509.0,
+   15.3,
+   30.5,
+   45.8,
+   6.7,
+   5.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H810100",
+   "name": "Erdnuss geröstet, im Teigmantel"
+  }
+ },
+ {
+  "name": "Erdnussflips",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Flips",
+   "Erdnusslocken",
+   "Maisflips"
+  ],
+  "alts": [
+   "Popcorn",
+   "Maiswaffeln"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   478.0,
+   15.2,
+   25.0,
+   52.5,
+   2.5,
+   8.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D041000",
+   "name": "Erdnussflips"
+  }
+ },
+ {
+  "name": "Kartoffelsticks",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sticks",
+   "Pombär",
+   "Chipsletten",
+   "Pringles",
+   "Stapelchips"
+  ],
+  "alts": [
+   "Grünkohl",
+   "Maiswaffeln"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   502.0,
+   6.5,
+   31.5,
+   48.52,
+   2.17,
+   2.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "K280200",
+   "name": "Kartoffelsticks"
+  }
+ },
+ {
+  "name": "Popcorn (süß)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kinopopcorn",
+   "karamellisiertes Popcorn",
+   "Popcorn gezuckert"
+  ],
+  "alts": [
+   "Popcorn",
+   "Maiswaffeln"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   406.0,
+   5.97,
+   12.62,
+   69.7,
+   22.0,
+   5.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C519000",
+   "name": "Popcorn gesüßt"
+  }
+ },
+ {
+  "name": "Reiswaffeln mit Schokolade",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Schoko-Reiswaffeln",
+   "schokolierte Reiswaffeln"
+  ],
+  "alts": [
+   "Reiswaffeln",
+   "Maiswaffeln"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   475.0,
+   7.13,
+   21.37,
+   66.01,
+   29.6,
+   5.01
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C532900",
+   "name": "Reiswaffeln schokoliert"
+  }
+ },
+ {
+  "name": "Gebrannte Mandeln",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "gebrannte Nüsse",
+   "Krokant",
+   "kandierte Nüsse"
+  ],
+  "alts": [
+   "Mandeln",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   472.0,
+   10.3,
+   21.9,
+   57.8,
+   43.5,
+   6.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S465000",
+   "name": "Mandeln gebrannt, dragiert"
+  }
+ },
+ {
+  "name": "Amaranth (gepufft)",
+  "group": "knusper",
+  "groupLabel": "Cracker und Waffeln",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Amaranth-Pops",
+   "gepoppter Amaranth"
+  ],
+  "alts": [],
+  "why": "Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.",
+  "piece": null,
+  "n": [
+   393.0,
+   13.24,
+   5.9,
+   76.43,
+   0.62,
+   9.51
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C530100",
+   "name": "Amaranth gepufft, ungesüßt"
+  }
+ },
+ {
+  "name": "Quinoa (gepufft)",
+  "group": "knusper",
+  "groupLabel": "Cracker und Waffeln",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Quinoa-Pops",
+   "gepoppter Quinoa"
+  ],
+  "alts": [],
+  "why": "Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.",
+  "piece": null,
+  "n": [
+   380.0,
+   9.04,
+   3.3,
+   81.44,
+   1.12,
+   5.79
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C530200",
+   "name": "Quinoa gepufft, ungesüßt"
+  }
+ },
+ {
+  "name": "Dinkel (gepufft)",
+  "group": "knusper",
+  "groupLabel": "Cracker und Waffeln",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Weizen gepufft",
+   "Dinkelpops ungesüßt",
+   "Puffweizen"
+  ],
+  "alts": [],
+  "why": "Knusprig und leicht, aber fast reine Stärke. Ein, zwei Stück passen gut in den Tag, mehr verdrängt das Gemüse.",
+  "piece": null,
+  "n": [
+   368.0,
+   15.4,
+   2.0,
+   76.5,
+   0.9,
+   9.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C531000",
+   "name": "Weizen gepufft, ungesüßt"
+  }
+ },
+ {
+  "name": "Wildreis (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 120,
+  "capWhy": "portion",
+  "syn": [
+   "Wildreis",
+   "Wildreismischung"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Hirse (gegart)"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   140.0,
+   5.07,
+   0.35,
+   29.86,
+   0.28,
+   1.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C353132",
+   "name": "Wildreis gekocht"
+  }
+ },
+ {
+  "name": "Parboiled Reis (gegart)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Langkornreis",
+   "Kochbeutelreis",
+   "Uncle Bens",
+   "Parboiled",
+   "Risottoreis"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Hirse (gegart)"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   110.0,
+   2.68,
+   0.32,
+   24.3,
+   0.12,
+   0.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C359032",
+   "name": "Reis parboiled, poliert, gekocht"
+  }
+ },
+ {
+  "name": "Sushi-Reis",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Klebreis",
+   "Sushireis gewürzt"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Hirse (gegart)"
+  ],
+  "why": "Mit Zucker und Essig gewürzt. Eine kleine Portion passt.",
+  "piece": null,
+  "n": [
+   104.0,
+   2.31,
+   0.18,
+   23.4,
+   0.44,
+   0.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X8A1100",
+   "name": "Sushi-Reis (Grundrezept)"
+  }
+ },
+ {
+  "name": "Haferbrei (mit Wasser)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Porridge",
+   "Oatmeal",
+   "Haferschleim",
+   "Overnight Oats mit Wasser"
+  ],
+  "alts": [
+   "Leinsamen",
+   "Heidelbeeren"
+  ],
+  "why": "Mit Wasser gekocht und ungesüßt passt eine kleine Schale, am besten an Tag 1.",
+  "piece": null,
+  "n": [
+   71.0,
+   2.69,
+   1.35,
+   13.03,
+   0.15,
+   2.23
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X9A2120",
+   "name": "Porridge ungesüßt, mit Wasser"
+  }
+ },
+ {
+  "name": "Haferkleie",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 20,
+  "capWhy": "portion",
+  "syn": [
+   "Kleie",
+   "Haferkleieflocken"
+  ],
+  "alts": [
+   "Leinsamen",
+   "Chiasamen"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   371.0,
+   15.6,
+   7.7,
+   66.2,
+   0.74,
+   12.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C138000",
+   "name": "Hafer Kleie"
+  }
+ },
+ {
+  "name": "Weizenkleie",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 15,
+  "capWhy": "portion",
+  "syn": [
+   "Kleie",
+   "Speisekleie",
+   "Dinkelkleie"
+  ],
+  "alts": [
+   "Leinsamen",
+   "Chiasamen"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   266.0,
+   17.2,
+   3.95,
+   62.08,
+   1.36,
+   43.16
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C217000",
+   "name": "Weizen Kleie"
+  }
+ },
+ {
+  "name": "Weizenkeime",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 10,
+  "capWhy": "portion",
+  "syn": [
+   "Keime"
+  ],
+  "alts": [
+   "Leinsamen",
+   "Sesam"
+  ],
+  "why": "Sehr eiweißreich. Ein Teelöffel als Topping reicht.",
+  "piece": null,
+  "n": [
+   324.0,
+   28.48,
+   8.34,
+   43.0,
+   2.5,
+   18.46
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C114000",
+   "name": "Weizen Keim"
+  }
+ },
+ {
+  "name": "Hirseflocken",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Hirse Flocken",
+   "Braunhirse"
+  ],
+  "alts": [
+   "Leinsamen",
+   "Walnusskerne"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   352.0,
+   11.79,
+   3.13,
+   70.9,
+   0.56,
+   3.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C333100",
+   "name": "Hirse Flocken"
+  }
+ },
+ {
+  "name": "Dinkelflocken",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Dinkel Flocken",
+   "Mehrkornflocken",
+   "Getreideflocken",
+   "Roggenflocken"
+  ],
+  "alts": [
+   "Leinsamen",
+   "Walnusskerne"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   337.0,
+   14.25,
+   2.45,
+   70.35,
+   1.04,
+   11.53
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C236100",
+   "name": "Dinkel Flocken"
+  }
+ },
+ {
+  "name": "Müsli (ungesüßt)",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Basismüsli",
+   "Bircher Müsli ungesüßt",
+   "Müsli ohne Zucker",
+   "Seitenbacher"
+  ],
+  "alts": [
+   "Haferflocken",
+   "Walnusskerne"
+  ],
+  "why": "Auch ungesüßt bringen Trockenfrüchte Zucker mit. Zwei Esslöffel passen, Haferflocken mit frischen Beeren sind besser.",
+  "piece": null,
+  "n": [
+   366.0,
+   11.8,
+   11.0,
+   59.8,
+   11.3,
+   10.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C512600",
+   "name": "Müslimischung Bircher Art (mit Trockenfrüchten und Nüssen) ungesüßt"
+  }
+ },
+ {
+  "name": "Vollkornbrötchen",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Körnerbrötchen",
+   "Vollkornsemmel",
+   "Mehrkornbrötchen"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Gurke"
+  ],
+  "why": "Ein halbes passt an Tag 1. Für Brot sieht Prof. Dr. Longo sonst kaum Platz vor.",
+  "piece": [
+   "Stück",
+   60
+  ],
+  "n": [
+   282.0,
+   9.9,
+   3.18,
+   58.67,
+   1.5,
+   10.67
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B401000",
+   "name": "Vollkornbrötchen"
+  }
+ },
+ {
+  "name": "Roggenbrot",
+  "group": "getreide",
+  "groupLabel": "Getreide",
+  "light": "y",
+  "cap": 40,
+  "capWhy": "portion",
+  "syn": [
+   "Roggenschrotbrot",
+   "Kommissbrot",
+   "Landbrot"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Gurke"
+  ],
+  "why": "Eine dünne Scheibe passt an Tag 1. Für Brot sieht Prof. Dr. Longo sonst kaum Platz vor.",
+  "piece": [
+   "Scheibe",
+   45
+  ],
+  "n": [
+   220.0,
+   6.0,
+   1.24,
+   49.5,
+   3.81,
+   6.46
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B221000",
+   "name": "Roggenbrot"
+  }
+ },
+ {
+  "name": "Toastbrot",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Toast",
+   "Buttertoast",
+   "Sandwichtoast",
+   "Golden Toast",
+   "Weizentoast"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Vollkornbrot"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": [
+   "Scheibe",
+   25
+  ],
+  "n": [
+   261.0,
+   8.29,
+   3.59,
+   50.75,
+   3.7,
+   3.95
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B314000",
+   "name": "Weizentoastbrot/Buttertoastbrot"
+  }
+ },
+ {
+  "name": "Brötchen",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Semmel",
+   "Schrippe",
+   "Weck",
+   "Weizenbrötchen",
+   "Aufbackbrötchen"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Vollkornbrot"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": [
+   "Stück",
+   50
+  ],
+  "n": [
+   280.0,
+   10.09,
+   1.81,
+   57.57,
+   3.07,
+   3.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B511000",
+   "name": "Weizenbrötchen"
+  }
+ },
+ {
+  "name": "Baguette",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Stangenweißbrot",
+   "Ciabatta",
+   "Kräuterbaguette"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Vollkornbrot"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   253.0,
+   8.3,
+   1.31,
+   53.67,
+   1.5,
+   3.67
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B781200",
+   "name": "Weizenbaguette"
+  }
+ },
+ {
+  "name": "Fladenbrot",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Pide",
+   "Pita",
+   "Naan",
+   "Dönerbrot"
+  ],
+  "alts": [
+   "Romanasalat",
+   "Knäckebrot"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   248.0,
+   8.2,
+   2.3,
+   50.34,
+   0.32,
+   3.34
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B782100",
+   "name": "Weizenfladenbrot"
+  }
+ },
+ {
+  "name": "Laugenbrezel",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Brezel",
+   "Breze",
+   "Laugenstange",
+   "Laugenbrötchen",
+   "Laugengebäck"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Maiswaffeln"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": [
+   "Stück",
+   80
+  ],
+  "n": [
+   282.0,
+   9.13,
+   4.11,
+   53.75,
+   1.4,
+   3.75
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B723000",
+   "name": "Laugengebäck mit Hagelsalz"
+  }
+ },
+ {
+  "name": "Eiweißbrot",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Proteinbrot",
+   "Low-Carb-Brot",
+   "Eiweißbrötchen"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Vollkornbrot"
+  ],
+  "why": "Fast ein Viertel davon ist Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   226.0,
+   23.4,
+   8.2,
+   17.5,
+   3.9,
+   6.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B881100",
+   "name": "Eiweißbrot/Proteinbrot"
+  }
+ },
+ {
+  "name": "Glutenfreies Brot",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Brot glutenfrei",
+   "Schär",
+   "Toast glutenfrei"
+  ],
+  "alts": [
+   "Maiswaffeln",
+   "Reiswaffeln"
+  ],
+  "why": "Meist aus Stärke und Fett. Mais- oder Reiswaffeln sind die glutenfreie Wahl mit weniger Kalorien.",
+  "piece": null,
+  "n": [
+   224.0,
+   3.2,
+   3.1,
+   46.1,
+   1.7,
+   1.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "B309000",
+   "name": "Weißbrot glutenfrei"
+  }
+ },
+ {
+  "name": "Zwieback",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Brandt Zwieback",
+   "Vollkornzwieback"
+  ],
+  "alts": [
+   "Knäckebrot",
+   "Maiswaffeln"
+  ],
+  "why": "Weißmehl mit Zucker. Knäckebrot knuspert ohne Zucker.",
+  "piece": null,
+  "n": [
+   414.0,
+   11.05,
+   7.86,
+   76.83,
+   13.29,
+   4.62
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D038000",
+   "name": "Zwieback eifrei"
+  }
+ },
+ {
+  "name": "Blätterteig",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Strudelteig",
+   "Pizzateig",
+   "Fertigteig",
+   "Mürbeteig",
+   "Tante Fanny"
+  ],
+  "alts": [
+   "Zucchini",
+   "Aubergine"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   425.0,
+   4.18,
+   32.19,
+   30.77,
+   0.12,
+   2.12
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D072000",
+   "name": "Blätterteig eifrei, roh"
+  }
+ },
+ {
+  "name": "Eiernudeln",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Eierteigwaren",
+   "Bandnudeln",
+   "Spätzle",
+   "Tagliatelle",
+   "Schupfnudeln",
+   "Barilla"
+  ],
+  "alts": [
+   "Zucchini",
+   "Vollkornnudeln (gegart)"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   130.0,
+   5.2,
+   0.91,
+   26.05,
+   0.61,
+   1.33
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "E432032",
+   "name": "Eierteigwaren gekocht"
+  }
+ },
+ {
+  "name": "Ravioli (Dose)",
+  "group": "weissmehl",
+  "groupLabel": "Weißmehl und Snacks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ravioli in Tomatensoße",
+   "Dosenravioli",
+   "Tortellini",
+   "Maultaschen",
+   "Maggi Ravioli"
+  ],
+  "alts": [
+   "Zucchini",
+   "Tomaten (Dose)"
+  ],
+  "why": "Kostet viele Kalorien und macht kaum satt. Gemüse bringt Dir mehr auf den Teller.",
+  "piece": null,
+  "n": [
+   95.0,
+   2.8,
+   1.1,
+   19.3,
+   5.9,
+   2.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "E911000",
+   "name": "Teigwaren eifrei, Ravioli (Gemüsefüllung) in Tomatensoße, Konserve"
+  }
+ },
+ {
+  "name": "Gemüsesuppe (klar)",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Gemüsesuppe",
+   "Gemüsebrühe mit Einlage",
+   "Dosensuppe",
+   "Fertigsuppe"
+  ],
+  "alts": [
+   "Gemüsebrühe",
+   "Suppengemüse (TK)"
+  ],
+  "why": "Eine Portion kann ein ganzes Gericht ersetzen. Fertigprodukte unterscheiden sich stark, schau bei Zucker, Sahne und Fleisch auf die Zutatenliste.",
+  "piece": null,
+  "n": [
+   25.0,
+   0.9,
+   1.3,
+   2.8,
+   1.7,
+   0.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X416713",
+   "name": "Gemüsesuppe"
+  }
+ },
+ {
+  "name": "Gemüsecremesuppe",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Cremesuppe",
+   "pürierte Gemüsesuppe",
+   "Brokkolicremesuppe",
+   "Spargelcremesuppe"
+  ],
+  "alts": [
+   "Gemüsebrühe",
+   "Blumenkohl"
+  ],
+  "why": "Eine Portion kann ein ganzes Gericht ersetzen. Fertigprodukte unterscheiden sich stark, schau bei Zucker, Sahne und Fleisch auf die Zutatenliste.",
+  "piece": null,
+  "n": [
+   32.0,
+   0.86,
+   1.2,
+   4.8,
+   1.9,
+   0.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X416913",
+   "name": "Gemüsesuppe püriert/Gemüsecremesuppe"
+  }
+ },
+ {
+  "name": "Minestrone (fertig)",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Minestrone Dose",
+   "italienische Gemüsesuppe"
+  ],
+  "alts": [
+   "Gemüsebrühe",
+   "Suppengemüse (TK)"
+  ],
+  "why": "Eine Portion kann ein ganzes Gericht ersetzen. Fertigprodukte unterscheiden sich stark, schau bei Zucker, Sahne und Fleisch auf die Zutatenliste.",
+  "piece": null,
+  "n": [
+   44.0,
+   2.2,
+   1.8,
+   5.3,
+   1.4,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X425163",
+   "name": "Gemüsesuppe italienisch (Minestrone)"
+  }
+ },
+ {
+  "name": "Tomatensuppe",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Tomatencremesuppe",
+   "Tomatensuppe Dose",
+   "Tomatensuppe Tüte"
+  ],
+  "alts": [
+   "Tomaten, passiert",
+   "Gemüsebrühe"
+  ],
+  "why": "Eine Portion kann ein ganzes Gericht ersetzen. Fertigprodukte unterscheiden sich stark, schau bei Zucker, Sahne und Fleisch auf die Zutatenliste.",
+  "piece": null,
+  "n": [
+   41.0,
+   0.7,
+   2.8,
+   3.3,
+   1.3,
+   0.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X4A6020",
+   "name": "Tomatensuppe aus Tomatenmark mit Gemüsebrühe"
+  }
+ },
+ {
+  "name": "Kürbissuppe (mit Kokosmilch)",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Kürbiscremesuppe",
+   "Kürbissuppe fertig",
+   "Hokkaidosuppe"
+  ],
+  "alts": [
+   "Hokkaido-Kürbis",
+   "Kokosmilch (vollfett)"
+  ],
+  "why": "Eine Portion kann ein ganzes Gericht ersetzen. Fertigprodukte unterscheiden sich stark, schau bei Zucker, Sahne und Fleisch auf die Zutatenliste.",
+  "piece": null,
+  "n": [
+   59.0,
+   1.01,
+   4.1,
+   4.9,
+   2.5,
+   0.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X4A3010",
+   "name": "Kürbissuppe mit Kokosmilch"
+  }
+ },
+ {
+  "name": "Kartoffelsuppe",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Kartoffelcremesuppe",
+   "Kartoffelsuppe Dose"
+  ],
+  "alts": [
+   "Kartoffeln",
+   "Gemüsebrühe"
+  ],
+  "why": "Eine Portion kann ein ganzes Gericht ersetzen. Fertigprodukte unterscheiden sich stark, schau bei Zucker, Sahne und Fleisch auf die Zutatenliste.",
+  "piece": null,
+  "n": [
+   57.0,
+   1.01,
+   1.8,
+   9.6,
+   1.0,
+   0.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X449023",
+   "name": "Kartoffelsuppe mit Gemüsebrühe"
+  }
+ },
+ {
+  "name": "Linsensuppe",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 180,
+  "capWhy": "eiweiss",
+  "syn": [
+   "Linseneintopf",
+   "Linsensuppe Dose",
+   "Erasco"
+  ],
+  "alts": [
+   "Linsen (Dose)",
+   "Gemüsebrühe"
+  ],
+  "why": "Linsen bringen viel Eiweiß mit, deshalb nur eine kleine Portion. Achte darauf, dass kein Speck oder Würstchen drin ist.",
+  "piece": null,
+  "n": [
+   82.0,
+   4.53,
+   1.9,
+   13.4,
+   1.4,
+   3.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X462513",
+   "name": "Linsensuppe mit Gemüse"
+  }
+ },
+ {
+  "name": "Erbsensuppe",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Erbseneintopf",
+   "Erbsensuppe Dose"
+  ],
+  "alts": [
+   "Erbsen (TK)",
+   "Gemüsebrühe"
+  ],
+  "why": "Erbsen bringen viel Eiweiß mit, deshalb nur eine kleine Portion. Achte darauf, dass kein Speck oder Würstchen drin ist.",
+  "piece": null,
+  "n": [
+   56.0,
+   3.25,
+   1.4,
+   9.2,
+   1.4,
+   3.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X4A8020",
+   "name": "Erbsensuppe mit Gemüsebrühe und Suppengrün"
+  }
+ },
+ {
+  "name": "Gazpacho",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "kalte Gemüsesuppe",
+   "kalte Tomatensuppe"
+  ],
+  "alts": [
+   "Tomaten",
+   "Gurke"
+  ],
+  "why": "Eine Portion kann ein ganzes Gericht ersetzen. Fertigprodukte unterscheiden sich stark, schau bei Zucker, Sahne und Fleisch auf die Zutatenliste.",
+  "piece": null,
+  "n": [
+   88.0,
+   1.5,
+   5.7,
+   7.7,
+   3.2,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X469460",
+   "name": "Gazpacho (Spanische Gemüsesuppe)"
+  }
+ },
+ {
+  "name": "Misosuppe",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 500,
+  "capWhy": "portion",
+  "syn": [
+   "Miso-Suppe",
+   "Instant-Miso"
+  ],
+  "alts": [
+   "Helle Misopaste",
+   "Gemüsebrühe"
+  ],
+  "why": "Leicht und würzig. Ohne Fisch-Dashi ist sie rein pflanzlich.",
+  "piece": null,
+  "n": [
+   11.0,
+   0.6,
+   0.4,
+   1.45,
+   0.43,
+   0.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X4A8060",
+   "name": "Misosuppe"
+  }
+ },
+ {
+  "name": "Tütensuppe (Gemüse)",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Instantsuppe",
+   "Tassensuppe",
+   "5-Minuten-Terrine",
+   "Suppe aus Pulver",
+   "Heiße Tasse"
+  ],
+  "alts": [
+   "Gemüsebrühe",
+   "Suppengemüse (TK)"
+  ],
+  "why": "Stärke, Zucker und Aromen statt Gemüse. Eine Tasse ist okay, eine Brühe mit TK-Gemüse ist genauso schnell und besser.",
+  "piece": null,
+  "n": [
+   34.0,
+   0.75,
+   0.3,
+   7.3,
+   4.09,
+   0.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G850132",
+   "name": "Gemüsecremesuppe aus Instantpulver (mit Wasser zubereitet)"
+  }
+ },
+ {
+  "name": "Chili sin Carne",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "veganes Chili",
+   "Bohnenchili",
+   "Chili vegetarisch"
+  ],
+  "alts": [
+   "Kidneybohnen (gegart)",
+   "Tomaten (Dose)"
+  ],
+  "why": "Bohnen bringen viel Eiweiß mit, deshalb nur eine kleine Portion.",
+  "piece": null,
+  "n": [
+   70.0,
+   3.3,
+   1.6,
+   12.6,
+   3.8,
+   4.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X4A8000",
+   "name": "Chili sin carne"
+  }
+ },
+ {
+  "name": "Ratatouille (fertig)",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Ratatouille",
+   "Schmorgemüse",
+   "Gemüsepfanne fertig",
+   "Letscho"
+  ],
+  "alts": [
+   "Zucchini",
+   "Aubergine",
+   "Tomaten"
+  ],
+  "why": "Eine Portion kann ein ganzes Gericht ersetzen. Fertigprodukte unterscheiden sich stark, schau bei Zucker, Sahne und Fleisch auf die Zutatenliste.",
+  "piece": null,
+  "n": [
+   58.0,
+   1.2,
+   3.36,
+   6.4,
+   4.5,
+   1.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X518543",
+   "name": "Ratatouille"
+  }
+ },
+ {
+  "name": "Sushi (vegan)",
+  "group": "suppe",
+  "groupLabel": "Suppen und fertige Gerichte",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Gemüsesushi",
+   "Maki Gurke",
+   "Avocado-Maki",
+   "Kappa Maki"
+  ],
+  "alts": [
+   "Gurke",
+   "Avocado",
+   "Nori"
+  ],
+  "why": "Gurke- oder Avocado-Maki sind pflanzlich. Der Reis ist gezuckert, deshalb nur ein paar Stück.",
+  "piece": null,
+  "n": [
+   97.0,
+   2.3,
+   1.88,
+   18.2,
+   0.83,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X8A1090",
+   "name": "Sushi vegan, gefüllt mit Gemüse"
+  }
+ },
+ {
+  "name": "Chili con Carne",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Chili mit Hackfleisch",
+   "Chili Dose"
+  ],
+  "alts": [
+   "Chili sin Carne",
+   "Kidneybohnen (gegart)"
+  ],
+  "why": "Enthält Fleisch, Fisch, Ei, Milchprodukte oder viel Weißmehl. Selbst gekocht hast Du in der Hand, was drin ist.",
+  "piece": null,
+  "n": [
+   158.0,
+   9.9,
+   7.9,
+   13.9,
+   3.1,
+   4.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X469753",
+   "name": "Chili con carne (mit Rinderhackfleisch)"
+  }
+ },
+ {
+  "name": "Gulaschsuppe",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Gulasch",
+   "Gulaschsuppe Dose",
+   "Soljanka"
+  ],
+  "alts": [
+   "Tomatensuppe",
+   "Champignons"
+  ],
+  "why": "Enthält Fleisch, Fisch, Ei, Milchprodukte oder viel Weißmehl. Selbst gekocht hast Du in der Hand, was drin ist.",
+  "piece": null,
+  "n": [
+   48.0,
+   3.5,
+   2.7,
+   2.6,
+   2.0,
+   0.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X456143",
+   "name": "Gulaschsuppe mit Rindfleisch, Zwiebeln und Paprika"
+  }
+ },
+ {
+  "name": "Hühnersuppe",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Hühnernudelsuppe",
+   "Nudelsuppe",
+   "Hühnerfrikassee"
+  ],
+  "alts": [
+   "Gemüsesuppe (klar)",
+   "Gemüsebrühe"
+  ],
+  "why": "Enthält Fleisch, Fisch, Ei, Milchprodukte oder viel Weißmehl. Selbst gekocht hast Du in der Hand, was drin ist.",
+  "piece": null,
+  "n": [
+   56.0,
+   5.5,
+   3.5,
+   0.9,
+   0.4,
+   0.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X4A1020",
+   "name": "Hühnersuppe mit Hühnerfleisch und Suppengemüse"
+  }
+ },
+ {
+  "name": "Paella",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Reispfanne",
+   "Nasi Goreng",
+   "Bami Goreng",
+   "gebratener Reis"
+  ],
+  "alts": [
+   "Vollkornreis (gegart)",
+   "Rote Paprika"
+  ],
+  "why": "Enthält Fleisch, Fisch, Ei, Milchprodukte oder viel Weißmehl. Selbst gekocht hast Du in der Hand, was drin ist.",
+  "piece": null,
+  "n": [
+   102.0,
+   8.5,
+   3.3,
+   9.9,
+   1.0,
+   0.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X890933",
+   "name": "Paella"
+  }
+ },
+ {
+  "name": "Risotto",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Risotto mit Parmesan",
+   "Pilzrisotto"
+  ],
+  "alts": [
+   "Vollkornreis (gegart)",
+   "Champignons"
+  ],
+  "why": "Mit Butter und Parmesan gekocht. Vollkornreis mit Pilzen und Olivenöl ist die Scheinfasten-Variante.",
+  "piece": null,
+  "n": [
+   163.0,
+   4.93,
+   4.9,
+   25.3,
+   0.95,
+   0.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X850133",
+   "name": "Risotto mit Butter und Parmesan"
+  }
+ },
+ {
+  "name": "Kartoffelsalat (Mayonnaise)",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kartoffelsalat mit Mayo",
+   "Nudelsalat",
+   "Fleischsalat",
+   "Eiersalat",
+   "Farmersalat"
+  ],
+  "alts": [
+   "Kartoffelsalat (mit Brühe)",
+   "Kartoffeln"
+  ],
+  "why": "Enthält Fleisch, Fisch, Ei, Milchprodukte oder viel Weißmehl. Selbst gekocht hast Du in der Hand, was drin ist.",
+  "piece": null,
+  "n": [
+   154.0,
+   1.6,
+   11.4,
+   11.54,
+   1.11,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X1A2020",
+   "name": "Kartoffelsalat mit Mayonnaise"
+  }
+ },
+ {
+  "name": "Sushi (mit Fisch)",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sushi",
+   "Lachs-Nigiri",
+   "Maki Lachs",
+   "Sashimi",
+   "California Roll"
+  ],
+  "alts": [
+   "Sushi (vegan)",
+   "Gurke",
+   "Avocado"
+  ],
+  "why": "Enthält Fleisch, Fisch, Ei, Milchprodukte oder viel Weißmehl. Selbst gekocht hast Du in der Hand, was drin ist.",
+  "piece": null,
+  "n": [
+   126.0,
+   7.3,
+   3.19,
+   17.2,
+   0.38,
+   0.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Y627112",
+   "name": "Sushi mit Lachs"
+  }
+ },
+ {
+  "name": "Frikadelle",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Bulette",
+   "Fleischpflanzerl",
+   "Fleischküchle",
+   "Hackbällchen",
+   "Köttbullar",
+   "Cevapcici"
+  ],
+  "alts": [
+   "Champignons",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Enthält Fleisch, Fisch, Ei, Milchprodukte oder viel Weißmehl. Selbst gekocht hast Du in der Hand, was drin ist.",
+  "piece": null,
+  "n": [
+   261.0,
+   18.02,
+   18.88,
+   5.09,
+   0.98,
+   0.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Y912030",
+   "name": "Frikadelle mit Senf"
+  }
+ },
+ {
+  "name": "Bolognese",
+  "group": "fertig",
+  "groupLabel": "Fertiggerichte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Bolognese-Soße",
+   "Hackfleischsoße",
+   "Spaghetti Bolognese",
+   "Lasagne",
+   "Fertiggericht",
+   "Tiefkühlgericht",
+   "Mikrowellengericht",
+   "Fertigessen"
+  ],
+  "alts": [
+   "Tomaten, passiert",
+   "Linsen (gegart)",
+   "Champignons"
+  ],
+  "why": "Hackfleischsoße, oft mit Käse überbacken. Passierte Tomaten mit Linsen oder Pilzen geben eine herzhafte pflanzliche Soße.",
+  "piece": null,
+  "n": [
+   182.0,
+   9.34,
+   14.4,
+   4.1,
+   2.9,
+   1.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Y038213",
+   "name": "Bologneser Sauce mit Rinderhackfleisch"
+  }
+ },
+ {
+  "name": "Räucherlachs",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "geräucherter Lachs",
+   "Graved Lachs",
+   "Stremellachs"
+  ],
+  "alts": [
+   "Avocado",
+   "Walnusskerne",
+   "Nori"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   170.0,
+   21.25,
+   9.2,
+   0.16,
+   0.16,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T410600",
+   "name": "Lachs geräuchert (Räucherlachs)"
+  }
+ },
+ {
+  "name": "Thunfisch in Öl",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Thunfisch Dose Öl",
+   "Thunfischsalat"
+  ],
+  "alts": [
+   "Kichererbsen (gegart)",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   207.0,
+   28.26,
+   10.45,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T121702",
+   "name": "Thunfisch in Öl, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Sardinen in Öl",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ölsardinen",
+   "Sardinen Dose",
+   "Sardellen",
+   "Anchovis"
+  ],
+  "alts": [
+   "Grüne Oliven",
+   "Kapern"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   222.0,
+   24.1,
+   13.9,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T105702",
+   "name": "Sardine in Öl, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Hering",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Bismarckhering",
+   "Matjes",
+   "Rollmops",
+   "Brathering",
+   "Heringssalat",
+   "Heringsfilet"
+  ],
+  "alts": [
+   "Gewürzgurken",
+   "Rote Bete (vorgegart)"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   225.0,
+   16.5,
+   16.0,
+   2.82,
+   2.68,
+   0.14
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T820802",
+   "name": "Bismarckhering Präserve, abgetropft"
+  }
+ },
+ {
+  "name": "Makrele (geräuchert)",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Räuchermakrele",
+   "Räucherfisch",
+   "geräucherte Forelle",
+   "Forellenfilet"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Leinöl"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   338.0,
+   18.89,
+   29.2,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T107600",
+   "name": "Makrele geräuchert"
+  }
+ },
+ {
+  "name": "Kabeljau",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Dorsch",
+   "Seelachs",
+   "Alaska-Seelachs",
+   "Pangasius",
+   "Weißfisch",
+   "Fischfilet",
+   "Zander",
+   "Forelle"
+  ],
+  "alts": [
+   "Blumenkohl",
+   "Champignons"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   79.0,
+   17.8,
+   0.84,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T204100",
+   "name": "Dorsch/Kabeljau, roh"
+  }
+ },
+ {
+  "name": "Muscheln",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Miesmuscheln",
+   "Meeresfrüchte",
+   "Jakobsmuscheln",
+   "Austern"
+  ],
+  "alts": [
+   "Austernpilze",
+   "Champignons"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   60.0,
+   10.51,
+   1.96,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T792100",
+   "name": "Miesmuschel roh"
+  }
+ },
+ {
+  "name": "Tintenfisch",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Calamari",
+   "Calamares",
+   "Oktopus",
+   "Pulpo",
+   "Sepia"
+  ],
+  "alts": [
+   "Austernpilze",
+   "Champignons"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   73.0,
+   16.1,
+   0.98,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T020100",
+   "name": "Tintenfisch roh"
+  }
+ },
+ {
+  "name": "Surimi",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Krebsfleischimitat",
+   "Krabbenstäbchen",
+   "Crab Sticks"
+  ],
+  "alts": [
+   "Palmherzen",
+   "Austernpilze"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   89.0,
+   7.77,
+   3.63,
+   6.25,
+   6.25,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "T890100",
+   "name": "Surimi (Krebsfleischimitat aus Fischmuskeleiweiß geformt)"
+  }
+ },
+ {
+  "name": "Putenbrust",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Pute",
+   "Truthahn",
+   "Putenschnitzel",
+   "Putenfilet"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   105.0,
+   24.1,
+   0.99,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "V486100",
+   "name": "Pute Brust, ohne Haut, roh"
+  }
+ },
+ {
+  "name": "Ente",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Entenbrust",
+   "Gans",
+   "Gänsebraten",
+   "Entenkeule"
+  ],
+  "alts": [
+   "Champignons",
+   "Maronen"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   227.0,
+   18.1,
+   17.2,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "V464100",
+   "name": "Ente Fleisch, mit Haut, roh"
+  }
+ },
+ {
+  "name": "Lammfleisch",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Lamm",
+   "Lammkeule",
+   "Lammkotelett",
+   "Ziege",
+   "Hammel"
+  ],
+  "alts": [
+   "Aubergine",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   121.0,
+   20.0,
+   4.6,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "U817100",
+   "name": "Lamm Nuss, roh"
+  }
+ },
+ {
+  "name": "Fleischwurst",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Lyoner",
+   "Mortadella",
+   "Bierschinken",
+   "Aufschnitt",
+   "Geflügelwurst",
+   "Jagdwurst"
+  ],
+  "alts": [
+   "Hummus",
+   "Avocado"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   306.0,
+   12.11,
+   28.3,
+   0.25,
+   0.24,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W234000",
+   "name": "Fleischwurst"
+  }
+ },
+ {
+  "name": "Leberkäse",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Fleischkäse",
+   "Leberkäs"
+  ],
+  "alts": [
+   "Champignons",
+   "Kartoffeln"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   295.0,
+   11.8,
+   27.4,
+   0.23,
+   0.0,
+   0.06
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W256100",
+   "name": "Leberkäse"
+  }
+ },
+ {
+  "name": "Wiener Würstchen",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Wiener",
+   "Frankfurter",
+   "Bockwurst",
+   "Hot Dog",
+   "Saitenwürstchen"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   289.0,
+   12.9,
+   26.15,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W211200",
+   "name": "Wiener Würstchen"
+  }
+ },
+ {
+  "name": "Putenbrust-Aufschnitt",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Putenaufschnitt",
+   "Hähnchenbrust-Aufschnitt",
+   "Geflügelaufschnitt",
+   "Truthahnbrust"
+  ],
+  "alts": [
+   "Hummus",
+   "Avocado",
+   "Gurke"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   107.0,
+   23.02,
+   1.63,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W561000",
+   "name": "Putenbrust, Kochpökelware, geräuchert"
+  }
+ },
+ {
+  "name": "Rohschinken",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Parmaschinken",
+   "Serrano",
+   "Schwarzwälder Schinken",
+   "Lachsschinken",
+   "Prosciutto"
+  ],
+  "alts": [
+   "Getrocknete Tomaten",
+   "Grüne Oliven"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   307.0,
+   26.72,
+   21.8,
+   0.13,
+   0.13,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W441000",
+   "name": "Parmaschinken"
+  }
+ },
+ {
+  "name": "Kasseler",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kassler",
+   "Rauchfleisch",
+   "Pökelfleisch",
+   "Eisbein"
+  ],
+  "alts": [
+   "Champignons",
+   "Sauerkraut"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   107.0,
+   21.97,
+   2.17,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "W510000",
+   "name": "Kasseler, Rohpökelware, geräuchert"
+  }
+ },
+ {
+  "name": "Eiklar",
+  "group": "tier",
+  "groupLabel": "Fleisch, Fisch und Ei",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Eiweiß vom Ei",
+   "Eischnee",
+   "flüssiges Eiklar"
+  ],
+  "alts": [
+   "Kichererbsen (gegart)",
+   "Seidentofu"
+  ],
+  "why": "Prof. Dr. Longos Scheinfasten ist rein pflanzlich und eiweißarm. Pilze und Hülsenfrüchte übernehmen hier den herzhaften Part.",
+  "piece": null,
+  "n": [
+   42.0,
+   9.9,
+   0.03,
+   0.41,
+   0.41,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "E113100",
+   "name": "Hühnerei Eiklar, roh"
+  }
+ },
+ {
+  "name": "Fettarme Milch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Milch 1",
+   "5 %",
+   "H-Milch",
+   "laktosefreie Milch",
+   "Magermilch",
+   "Ziegenmilch"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Haferdrink"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   44.0,
+   3.49,
+   1.54,
+   3.86,
+   3.86,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M111200",
+   "name": "Milch fettarm, frisch, 1,5 % Fett, pasteurisiert"
+  }
+ },
+ {
+  "name": "Fruchtjoghurt",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Joghurt mit Frucht",
+   "Erdbeerjoghurt",
+   "Trinkjoghurt",
+   "Actimel",
+   "Activia",
+   "Danone",
+   "Müller"
+  ],
+  "alts": [
+   "Sojajoghurt",
+   "Heidelbeeren"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   96.0,
+   3.01,
+   2.96,
+   14.15,
+   12.1,
+   1.15
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M241300",
+   "name": "Joghurt mild, max. 3,8 % Fett, mit Fruchtzubereitung, gesüßt"
+  }
+ },
+ {
+  "name": "Skyr",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "isländischer Joghurt",
+   "Proteinjoghurt",
+   "High-Protein-Joghurt",
+   "griechischer Joghurt"
+  ],
+  "alts": [
+   "Sojajoghurt",
+   "Seidentofu"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   64.0,
+   10.35,
+   0.84,
+   3.37,
+   3.14,
+   0.18
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M710100",
+   "name": "Skyr, Frischkäse < 10 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Camembert",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Brie",
+   "Weichkäse",
+   "Weißschimmelkäse",
+   "Ziegenkäse"
+  ],
+  "alts": [
+   "Avocado",
+   "Cashewkerne"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   257.0,
+   19.58,
+   19.82,
+   0.05,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M602600",
+   "name": "Camembert mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Gorgonzola",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Blauschimmelkäse",
+   "Roquefort",
+   "Edelpilzkäse"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Grüne Oliven"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   329.0,
+   18.65,
+   28.06,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M5B1600",
+   "name": "Gorgonzola mind. 48 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Halloumi",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Grillkäse",
+   "Backcamembert"
+  ],
+  "alts": [
+   "Aubergine",
+   "Austernpilze"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   315.0,
+   21.46,
+   25.06,
+   0.1,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M524500",
+   "name": "Halloumi Grillkäse"
+  }
+ },
+ {
+  "name": "Ricotta",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Molkenkäse"
+  ],
+  "alts": [
+   "Seidentofu",
+   "Cashewmus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   159.0,
+   8.58,
+   12.3,
+   3.43,
+   3.43,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M741600",
+   "name": "Ricotta, Molkeneiweißkäse, mind. 45 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Schmelzkäse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Scheibletten",
+   "Toastkäse",
+   "Kochkäse",
+   "Babybel",
+   "Streichkäse"
+  ],
+  "alts": [
+   "Hummus",
+   "Avocado"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   284.0,
+   11.8,
+   23.7,
+   5.3,
+   5.3,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M810600",
+   "name": "Schmelzkäsezubereitung 45 - 52 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Harzer Käse",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Harzer",
+   "Handkäse",
+   "Sauermilchkäse",
+   "Mainzer"
+  ],
+  "alts": [
+   "Champignons",
+   "Hummus"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   128.0,
+   30.03,
+   0.47,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M730100",
+   "name": "Sauermilchkäse < 10 % Fett i. Tr."
+  }
+ },
+ {
+  "name": "Schmand",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sauerrahm",
+   "saure Sahne",
+   "Crème fraîche",
+   "Creme fraiche"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Sojajoghurt"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   206.0,
+   2.8,
+   20.0,
+   3.0,
+   3.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M172700",
+   "name": "Sauerrahm/Schmand, mind. 20 % Fett"
+  }
+ },
+ {
+  "name": "Kondensmilch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Kaffeesahne",
+   "Kaffeemilch",
+   "Dosenmilch",
+   "Bärenmarke"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Haferdrink"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   195.0,
+   7.63,
+   10.19,
+   17.92,
+   17.75,
+   0.02
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M182500",
+   "name": "Kondensmilch 10 % Fett"
+  }
+ },
+ {
+  "name": "Milchreis",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Reisbrei",
+   "Grießbrei",
+   "Grießpudding",
+   "Müller Milchreis"
+  ],
+  "alts": [
+   "Haferbrei (mit Wasser)",
+   "Heidelbeeren"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   140.0,
+   4.89,
+   3.22,
+   23.0,
+   5.35,
+   0.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "X810033",
+   "name": "Milchreis gesüßt, mit Milch 3,5 % Fett"
+  }
+ },
+ {
+  "name": "Pudding",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Vanillepudding",
+   "Schokopudding",
+   "Dessert",
+   "Mousse au Chocolat",
+   "Dr. Oetker"
+  ],
+  "alts": [
+   "Chiasamen",
+   "Kokosmilch (vollfett)",
+   "Heidelbeeren"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   101.0,
+   3.11,
+   3.04,
+   15.37,
+   10.12,
+   0.05
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "R481132",
+   "name": "Vanillepudding, Flammeri, zubereitet aus Pulver und Milch 3,5 % Fett, gesüßt"
+  }
+ },
+ {
+  "name": "Milchshake",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Shake",
+   "Kakao",
+   "Trinkschokolade",
+   "Schokomilch",
+   "Müllermilch"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Heidelbeeren"
+  ],
+  "why": "Scheinfasten ist rein pflanzlich, Milchprodukte machen deshalb Pause.",
+  "piece": null,
+  "n": [
+   78.0,
+   3.38,
+   3.33,
+   8.5,
+   8.29,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "M2H2300",
+   "name": "Milchshake 3,5 % Fett, aromatisiert, gesüßt"
+  }
+ },
+ {
+  "name": "Sojadrink (gesüßt)",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sojamilch gesüßt",
+   "Alpro Soja Original",
+   "Sojadrink Vanille",
+   "Sojadrink Schoko"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Sojadrink"
+  ],
+  "why": "Gesüßt und aromatisiert. Nimm die ungesüßte Variante.",
+  "piece": null,
+  "n": [
+   58.0,
+   3.01,
+   2.21,
+   7.33,
+   5.68,
+   1.64
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H842400",
+   "name": "Sojadrink gesüßt, aromatisiert"
+  }
+ },
+ {
+  "name": "Haferdrink (gesüßt)",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Hafermilch gesüßt",
+   "Hafer Barista",
+   "Oatly Barista",
+   "Hafer Schoko"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Haferdrink"
+  ],
+  "why": "Gesüßt und aromatisiert. Nimm die ungesüßte Variante oder Mandeldrink.",
+  "piece": null,
+  "n": [
+   41.0,
+   0.72,
+   0.98,
+   7.62,
+   7.01,
+   0.44
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "C660300",
+   "name": "Haferdrink gesüßt, aromatisiert"
+  }
+ },
+ {
+  "name": "Mandeldrink (gesüßt)",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Mandelmilch gesüßt",
+   "Alpro Mandel Original"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt"
+  ],
+  "why": "Leicht gesüßt. Ein Schuss geht, die ungesüßte Variante passt besser.",
+  "piece": null,
+  "n": [
+   31.0,
+   0.85,
+   2.12,
+   2.12,
+   1.96,
+   0.13
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H800200",
+   "name": "Mandeldrink gesüßt, aromatisiert"
+  }
+ },
+ {
+  "name": "Sojajoghurt (gesüßt)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sojajoghurt Frucht",
+   "Alpro Joghurt Erdbeere",
+   "veganer Fruchtjoghurt",
+   "Sojajoghurt Vanille"
+  ],
+  "alts": [
+   "Sojajoghurt",
+   "Heidelbeeren"
+  ],
+  "why": "Gesüßt und aromatisiert. Ungesüßter Sojajoghurt mit frischen Beeren passt.",
+  "piece": null,
+  "n": [
+   62.0,
+   3.96,
+   2.54,
+   5.4,
+   5.2,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H844400",
+   "name": "Soja-Joghurtalternative gesüßt, aromatisiert"
+  }
+ },
+ {
+  "name": "Sojakochcreme",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 50,
+  "capWhy": "portion",
+  "syn": [
+   "Soja Cuisine",
+   "Pflanzensahne",
+   "Hafercreme",
+   "Hafer Cuisine",
+   "vegane Sahne",
+   "Kochcreme",
+   "Alpro Cuisine"
+  ],
+  "alts": [
+   "Kokosmilch (vollfett)",
+   "Cashewmus"
+  ],
+  "why": "Pflanzlich, aber verarbeitet. Ein Schuss für die Soße passt.",
+  "piece": null,
+  "n": [
+   157.0,
+   2.2,
+   15.7,
+   1.9,
+   0.0,
+   0.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H845000",
+   "name": "Sojakochcreme"
+  }
+ },
+ {
+  "name": "Veganer Pudding",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sojapudding",
+   "Alpro Dessert",
+   "pflanzlicher Pudding",
+   "Sojadessert"
+  ],
+  "alts": [
+   "Chiasamen",
+   "Kokosmilch (vollfett)",
+   "Heidelbeeren"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   89.0,
+   2.32,
+   3.78,
+   11.84,
+   10.82,
+   0.99
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H843200",
+   "name": "Dessert/Puddingalternative, pflanzlich"
+  }
+ },
+ {
+  "name": "Veganer Käse (Kokosöl)",
+  "group": "fettfrucht",
+  "groupLabel": "Oliven, Avocado, Kokos",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Käsealternative",
+   "veganer Reibekäse",
+   "vegane Scheiben",
+   "Violife",
+   "Simply V",
+   "Pflanzenkäse"
+  ],
+  "alts": [
+   "Hefeflocken",
+   "Cashewkerne",
+   "Avocado"
+  ],
+  "why": "Kokosfett und Stärke. Eine Scheibe ist okay, Hefeflocken geben den Käsegeschmack leichter.",
+  "piece": null,
+  "n": [
+   293.0,
+   0.16,
+   23.04,
+   21.42,
+   0.0,
+   0.25
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Q590000",
+   "name": "Käsealternative, Basis Pflanzenfett, vegan"
+  }
+ },
+ {
+  "name": "Veganer Käse (Cashew)",
+  "group": "nuss",
+  "groupLabel": "Nüsse und Saaten",
+  "light": "y",
+  "cap": 30,
+  "capWhy": "portion",
+  "syn": [
+   "Cashewkäse",
+   "Käsealternative Cashew",
+   "fermentierter Cashew",
+   "veganer Camembert"
+  ],
+  "alts": [
+   "Cashewkerne",
+   "Hefeflocken"
+  ],
+  "why": "Aus Cashewkernen, aber recht eiweißreich. Eine kleine Portion passt.",
+  "piece": null,
+  "n": [
+   440.0,
+   14.97,
+   33.56,
+   20.6,
+   4.38,
+   2.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H882000",
+   "name": "Käsealternative, Basis Cashewkerne, vegan"
+  }
+ },
+ {
+  "name": "Veganes Schnitzel",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Veggie-Schnitzel",
+   "vegane Nuggets",
+   "Rügenwalder",
+   "Like Meat",
+   "vegetarisches Schnitzel",
+   "veganes Hack",
+   "Beyond Meat"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   297.0,
+   15.6,
+   18.55,
+   19.37,
+   1.22,
+   5.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H910400",
+   "name": "Veganes Schnitzel"
+  }
+ },
+ {
+  "name": "Vegane Würstchen",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "vegetarische Wiener",
+   "Veggie-Würstchen",
+   "Tofuwürstchen",
+   "vegane Bratwurst"
+  ],
+  "alts": [
+   "Champignons",
+   "Austernpilze",
+   "Kichererbsen (gegart)"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   248.0,
+   21.6,
+   15.07,
+   7.25,
+   3.21,
+   1.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H910500",
+   "name": "Vegetarische Wiener Würstchen"
+  }
+ },
+ {
+  "name": "Proteinpulver",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Eiweißpulver",
+   "Whey",
+   "Sojaprotein",
+   "Erbsenprotein",
+   "Proteinshake",
+   "Eiweißshake"
+  ],
+  "alts": [
+   "Mandeldrink ungesüßt",
+   "Walnusskerne"
+  ],
+  "why": "Fast reines Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   384.0,
+   88.3,
+   3.39,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H011000",
+   "name": "Sojaproteinisolat"
+  }
+ },
+ {
+  "name": "Lupinenmehl",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Lupine",
+   "Süßlupine",
+   "Lupinenschrot",
+   "Sojamehl"
+  ],
+  "alts": [
+   "Kichererbsenmehl",
+   "Vollkornmehl"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   327.0,
+   37.72,
+   8.8,
+   41.7,
+   6.0,
+   35.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H731400",
+   "name": "Lupinenmehl"
+  }
+ },
+ {
+  "name": "Sojakerne (geröstet)",
+  "group": "eiweiss",
+  "groupLabel": "Fleischersatz und Eiweißprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sojanüsse",
+   "geröstete Sojabohnen",
+   "Edamame geröstet"
+  ],
+  "alts": [
+   "Mandeln",
+   "Kürbiskerne"
+  ],
+  "why": "Fleischersatz besteht fast nur aus Eiweiß. Genau das hält Prof. Dr. Longo in diesen Tagen niedrig.",
+  "piece": null,
+  "n": [
+   392.0,
+   38.2,
+   18.64,
+   29.11,
+   6.1,
+   22.41
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "H760600",
+   "name": "Sojabohne reif, geröstet ohne Fett (Sojakerne)"
+  }
+ },
+ {
+  "name": "Clementine",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 140,
+  "capWhy": "zucker",
+  "syn": [
+   "Clementinen",
+   "Satsuma",
+   "Tangerine"
+  ],
+  "alts": [
+   "Orange",
+   "Heidelbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": [
+   "Stück",
+   60
+  ],
+  "n": [
+   48.0,
+   0.85,
+   0.15,
+   10.89,
+   9.19,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F607100",
+   "name": "Clementine roh"
+  }
+ },
+ {
+  "name": "Pomelo",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Pampelmuse"
+  ],
+  "alts": [
+   "Orange",
+   "Heidelbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   46.0,
+   0.9,
+   0.4,
+   9.97,
+   7.77,
+   2.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F605100",
+   "name": "Pampelmuse/Pomelo, roh"
+  }
+ },
+ {
+  "name": "Kaki",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Sharon",
+   "Persimone",
+   "Sharonfrucht"
+  ],
+  "alts": [
+   "Apfel",
+   "Orange"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   67.0,
+   0.7,
+   0.3,
+   16.58,
+   14.12,
+   2.46
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F507100",
+   "name": "Kaki roh"
+  }
+ },
+ {
+  "name": "Maracuja",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Passionsfrucht"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Orange"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": [
+   "Stück",
+   20
+  ],
+  "n": [
+   57.0,
+   0.71,
+   0.2,
+   10.94,
+   9.54,
+   1.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F508100",
+   "name": "Maracuja/Passionsfrucht, roh"
+  }
+ },
+ {
+  "name": "Litschi",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Lychee",
+   "Litschis"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Himbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   83.0,
+   0.86,
+   0.3,
+   20.0,
+   17.9,
+   1.6
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F515100",
+   "name": "Litschi roh"
+  }
+ },
+ {
+  "name": "Mirabellen",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Mirabelle",
+   "Reineclauden"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Heidelbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   74.0,
+   0.73,
+   0.2,
+   18.48,
+   14.17,
+   1.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F224100",
+   "name": "Mirabelle roh"
+  }
+ },
+ {
+  "name": "Quitte",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Quitten"
+  ],
+  "alts": [
+   "Apfel",
+   "Birne"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   53.0,
+   0.42,
+   0.5,
+   14.12,
+   6.98,
+   5.92
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F140100",
+   "name": "Quitte roh"
+  }
+ },
+ {
+  "name": "Preiselbeeren (frisch)",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Preiselbeeren",
+   "Cranberries frisch",
+   "Moosbeeren frisch"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   43.0,
+   0.69,
+   0.53,
+   9.12,
+   6.11,
+   2.89
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F401100",
+   "name": "Preiselbeere roh"
+  }
+ },
+ {
+  "name": "Schwarze Johannisbeeren",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Cassis",
+   "schwarze Ribisel",
+   "Beeren"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   57.0,
+   1.38,
+   0.22,
+   12.21,
+   8.71,
+   3.5
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F323100",
+   "name": "Johannisbeere schwarz roh"
+  }
+ },
+ {
+  "name": "Guave",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Guava"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Orange"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   45.0,
+   0.9,
+   0.5,
+   11.2,
+   5.82,
+   5.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F513100",
+   "name": "Guave roh"
+  }
+ },
+ {
+  "name": "Sternfrucht",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Karambole"
+  ],
+  "alts": [],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   27.0,
+   1.2,
+   0.5,
+   5.4,
+   3.5,
+   1.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F553100",
+   "name": "Karambole/Sternfrucht, roh"
+  }
+ },
+ {
+  "name": "Jackfrucht",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 80,
+  "capWhy": "portion",
+  "syn": [
+   "Jackfruit",
+   "Jackfrucht reif"
+  ],
+  "alts": [
+   "Mango",
+   "Champignons"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   78.0,
+   1.1,
+   0.45,
+   19.46,
+   14.6,
+   4.15
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F549100",
+   "name": "Jackfrucht roh"
+  }
+ },
+ {
+  "name": "Fruchtcocktail (ungesüßt)",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Obstsalat",
+   "Fruchtmischung im eigenen Saft Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Apfel"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   34.0,
+   0.5,
+   0.3,
+   8.6,
+   5.2,
+   2.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F093902",
+   "name": "Fruchtmischung/Fruchtcocktail, ungesüßt, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Ananas (Dose, ungesüßt)",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Ananas im eigenen Saft",
+   "Ananasscheiben Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Orange"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   41.0,
+   0.7,
+   0.1,
+   9.4,
+   7.8,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F5A1902",
+   "name": "Ananas in Fruchtsaft, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Pfirsiche (Dose, ungesüßt)",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Pfirsiche ohne Zucker Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Erdbeeren",
+   "Himbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   19.0,
+   0.5,
+   0.09,
+   4.56,
+   3.02,
+   1.1
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F208902",
+   "name": "Pfirsich ungesüßt, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Sauerkirschen (Glas, ungesüßt)",
+  "group": "obst",
+  "groupLabel": "Obst",
+  "light": "y",
+  "cap": 100,
+  "capWhy": "portion",
+  "syn": [
+   "Schattenmorellen ungesüßt Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Himbeeren",
+   "Johannisbeeren"
+  ],
+  "why": "Eine kleine Menge passt prima, von mehr hält Prof. Dr. Longos Rezept nichts.",
+  "piece": null,
+  "n": [
+   31.0,
+   0.67,
+   0.39,
+   6.17,
+   5.08,
+   0.7
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F213902",
+   "name": "Sauerkirsche ungesüßt, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Pfirsiche (Dose, gezuckert)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Dosenpfirsiche",
+   "Pfirsiche in Sirup",
+   "Aprikosen Dose Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Pfirsich",
+   "Erdbeeren"
+  ],
+  "why": "In Zuckersirup eingelegt. Frisches Obst oder ungesüßte Konserven passen.",
+  "piece": null,
+  "n": [
+   65.0,
+   0.54,
+   0.0,
+   16.14,
+   14.58,
+   1.34
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F203902",
+   "name": "Pfirsich gezuckert, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Ananas (Dose, gezuckert)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ananas in Sirup Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Ananas",
+   "Erdbeeren"
+  ],
+  "why": "In Zuckersirup eingelegt. Frisches Obst oder ungesüßte Konserven passen.",
+  "piece": null,
+  "n": [
+   61.0,
+   0.4,
+   0.0,
+   15.28,
+   14.01,
+   1.27
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F501902",
+   "name": "Ananas gezuckert, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Mandarinen (Dose)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Mandarin-Orangen",
+   "Dosenmandarinen Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Mandarine",
+   "Orange"
+  ],
+  "why": "In Zuckersirup eingelegt. Frische Mandarinen passen.",
+  "piece": null,
+  "n": [
+   72.0,
+   0.51,
+   0.31,
+   16.66,
+   16.15,
+   0.51
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F606902",
+   "name": "Mandarine gezuckert, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Schattenmorellen (Glas)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Sauerkirschen gezuckert",
+   "Kirschen Konserve",
+   "Dose",
+   "Glas"
+  ],
+  "alts": [
+   "Sauerkirschen",
+   "Himbeeren"
+  ],
+  "why": "Gezuckert. Frische oder ungesüßte Kirschen passen.",
+  "piece": null,
+  "n": [
+   52.0,
+   0.84,
+   0.21,
+   12.14,
+   10.1,
+   1.08
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F212902",
+   "name": "Sauerkirsche gezuckert, Konserve, abgetropft"
+  }
+ },
+ {
+  "name": "Apfelmus (gezuckert)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Apfelkompott gezuckert",
+   "Apfelmus Glas"
+  ],
+  "alts": [
+   "Apfelmus ungesüßt",
+   "Apfel"
+  ],
+  "why": "Ein Fünftel davon ist Zucker. Ungesüßtes Apfelmark passt.",
+  "piece": null,
+  "n": [
+   86.0,
+   0.22,
+   0.1,
+   22.15,
+   19.2,
+   1.83
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F921900",
+   "name": "Apfelkompott/Apfelmus, gezuckert, Konserve"
+  }
+ },
+ {
+  "name": "Preiselbeeren (Glas)",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Wildpreiselbeeren",
+   "Preiselbeerkompott",
+   "Cranberrysauce"
+  ],
+  "alts": [
+   "Preiselbeeren (frisch)",
+   "Himbeeren"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   176.0,
+   0.3,
+   0.2,
+   43.5,
+   42.2,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F4A1900",
+   "name": "Preiselbeere gezuckert (mit Pektin) Konserve"
+  }
+ },
+ {
+  "name": "Rote Grütze",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Grütze",
+   "Kompott",
+   "Fruchtgrütze",
+   "Götterspeise"
+  ],
+  "alts": [
+   "Beerenmischung (TK)",
+   "Himbeeren"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   84.0,
+   1.1,
+   0.3,
+   19.6,
+   12.6,
+   2.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "Y855053",
+   "name": "Rote Grütze"
+  }
+ },
+ {
+  "name": "Pflaumenmus",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Powidl",
+   "Apfelkraut",
+   "Birnenkraut",
+   "Zwetschgenmus"
+  ],
+  "alts": [
+   "Apfelmus ungesüßt",
+   "Pflaumen"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   195.0,
+   0.94,
+   0.2,
+   47.59,
+   44.55,
+   1.66
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S161000",
+   "name": "Pflaumenmus"
+  }
+ },
+ {
+  "name": "Getrocknete Pflaumen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Trockenpflaumen",
+   "Backpflaumen",
+   "Dörrpflaumen",
+   "Trockenobst"
+  ],
+  "alts": [
+   "Pflaumen",
+   "Walnusskerne"
+  ],
+  "why": "Getrocknetes Obst ist konzentrierter Zucker.",
+  "piece": null,
+  "n": [
+   205.0,
+   2.29,
+   0.0,
+   50.32,
+   37.2,
+   6.12
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F220400",
+   "name": "Pflaume getrocknet"
+  }
+ },
+ {
+  "name": "Getrocknete Feigen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Trockenfeigen",
+   "Feigen getrocknet",
+   "Trockenobst"
+  ],
+  "alts": [
+   "Feigen (frisch)",
+   "Walnusskerne"
+  ],
+  "why": "Getrocknetes Obst ist konzentrierter Zucker.",
+  "piece": null,
+  "n": [
+   276.0,
+   3.54,
+   1.28,
+   68.17,
+   55.13,
+   13.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F505400",
+   "name": "Feige getrocknet"
+  }
+ },
+ {
+  "name": "Apfelringe",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "getrocknete Äpfel",
+   "Apfelchips",
+   "Trockenobst"
+  ],
+  "alts": [
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Getrocknetes Obst ist konzentrierter Zucker.",
+  "piece": null,
+  "n": [
+   242.0,
+   1.29,
+   0.0,
+   62.71,
+   51.58,
+   9.28
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F110400",
+   "name": "Apfel getrocknet"
+  }
+ },
+ {
+  "name": "Bananenchips",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "getrocknete Banane",
+   "Trockenobst"
+  ],
+  "alts": [
+   "Banane",
+   "Walnusskerne"
+  ],
+  "why": "Getrocknetes Obst ist konzentrierter Zucker, oft zusätzlich frittiert.",
+  "piece": null,
+  "n": [
+   290.0,
+   4.89,
+   1.5,
+   66.3,
+   51.49,
+   7.4
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F503400",
+   "name": "Banane getrocknet"
+  }
+ },
+ {
+  "name": "Getrocknete Mango",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Mangostreifen",
+   "Trockenmango",
+   "getrocknete Ananas",
+   "getrocknete Papaya",
+   "Trockenobst"
+  ],
+  "alts": [
+   "Mango",
+   "Orange"
+  ],
+  "why": "Getrocknetes Obst ist konzentrierter Zucker.",
+  "piece": null,
+  "n": [
+   322.0,
+   3.8,
+   2.44,
+   74.2,
+   59.8,
+   9.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F516400",
+   "name": "Mango getrocknet"
+  }
+ },
+ {
+  "name": "Fruchtschnitte",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Fruchtriegel",
+   "Dattelriegel",
+   "Rohkostriegel",
+   "Energy Balls"
+  ],
+  "alts": [
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Gepresstes Trockenobst ist konzentrierter Zucker.",
+  "piece": null,
+  "n": [
+   339.0,
+   4.9,
+   9.4,
+   60.0,
+   48.1,
+   6.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F820000",
+   "name": "Fruchtschnitte/Fruchtriegel"
+  }
+ },
+ {
+  "name": "Brauner Zucker",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Rohrzucker",
+   "Rohzucker",
+   "Kandis",
+   "Kokosblütenzucker",
+   "Vollrohrzucker",
+   "Puderzucker",
+   "Vanillezucker"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   387.0,
+   0.0,
+   0.0,
+   96.7,
+   96.7,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S112000",
+   "name": "Zucker braun (Kandisfarin/Rohzucker)"
+  }
+ },
+ {
+  "name": "Traubenzucker",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Dextrose",
+   "Dextro Energy",
+   "Glukose",
+   "Fruchtzucker"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   400.0,
+   0.0,
+   0.0,
+   100.0,
+   100.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S115100",
+   "name": "Traubenzucker (Dextrose/Glukose)"
+  }
+ },
+ {
+  "name": "Ahornsirup",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Maple Syrup",
+   "Sirup",
+   "Reissirup",
+   "Dattelsirup"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   240.0,
+   0.04,
+   0.06,
+   59.9,
+   59.9,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S151100",
+   "name": "Ahornsirup"
+  }
+ },
+ {
+  "name": "Agavendicksaft",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Agavensirup",
+   "Dicksaft",
+   "Apfeldicksaft",
+   "Birnendicksaft"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   310,
+   0.1,
+   0.5,
+   76.0,
+   68.0,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Zuckerrübensirup",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Melasse",
+   "Rübenkraut",
+   "Grafschafter Goldsaft"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   229.0,
+   1.2,
+   0.1,
+   55.9,
+   55.9,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S152000",
+   "name": "Melasse"
+  }
+ },
+ {
+  "name": "Xylit",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Birkenzucker",
+   "Xylitol",
+   "Erythrit",
+   "Zuckeralkohol",
+   "Sorbit"
+  ],
+  "alts": [
+   "Zimt",
+   "Heidelbeeren"
+  ],
+  "why": "Zuckerersatz kommt in Prof. Dr. Longos Protokoll nicht vor. Wir raten, die fünf Tage ohne Süßes auszukommen, dann lässt auch die Lust darauf nach.",
+  "piece": null,
+  "n": [
+   238.0,
+   0.0,
+   0.0,
+   99.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S163000",
+   "name": "Xylit Pulver (E 967)"
+  }
+ },
+ {
+  "name": "Süßstoff",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Stevia",
+   "Saccharin",
+   "Aspartam",
+   "Sucralose",
+   "Süßstofftabletten",
+   "Flüssigsüße",
+   "Canderel"
+  ],
+  "alts": [
+   "Zimt",
+   "Zitronensaft"
+  ],
+  "why": "Kalorienfrei, kommt aber in Prof. Dr. Longos Protokoll nicht vor. Wir raten, die fünf Tage ohne Süßes auszukommen.",
+  "piece": null,
+  "n": [
+   52.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S170000",
+   "name": "Tafelsüße Tabletten (Süßstoffe: Cyclamat, Saccharin)"
+  }
+ },
+ {
+  "name": "Zartbitterschokolade",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Halbbitterschokolade",
+   "dunkle Schokolade",
+   "Herrenschokolade",
+   "Kuvertüre"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Kakaopulver (ungesüßt)",
+   "Heidelbeeren"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   534.0,
+   6.62,
+   32.26,
+   58.87,
+   46.9,
+   9.27
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S560000",
+   "name": "Zartbitter-/Halbbitterschokolade"
+  }
+ },
+ {
+  "name": "Bitterschokolade",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Schokolade 70 %",
+   "Schokolade 85 %",
+   "Edelbitter",
+   "Lindt Excellence",
+   "Kakaonibs"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Kakaopulver (ungesüßt)",
+   "Mandeln"
+  ],
+  "why": "Auch dunkle Schokolade besteht zu rund einem Drittel aus Zucker. Nüsse mit einem Hauch ungesüßtem Kakao helfen über die Lust hinweg.",
+  "piece": null,
+  "n": [
+   563.0,
+   9.1,
+   41.33,
+   43.81,
+   30.0,
+   10.11
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S570000",
+   "name": "Bitterschokolade"
+  }
+ },
+ {
+  "name": "Weiße Schokolade",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Milka",
+   "Ritter Sport",
+   "Kinderschokolade",
+   "Vollmilchschokolade"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   554.0,
+   6.18,
+   33.44,
+   57.35,
+   56.79,
+   0.56
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S580000",
+   "name": "Schokolade weiß"
+  }
+ },
+ {
+  "name": "Schokoriegel",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Snickers",
+   "Mars",
+   "Twix",
+   "Bounty",
+   "KitKat",
+   "Duplo",
+   "Kinderriegel",
+   "Hanuta",
+   "Knoppers"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Mandeln",
+   "Apfel"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   494.0,
+   9.08,
+   25.48,
+   59.18,
+   45.54,
+   4.22
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S581100",
+   "name": "Milchschokoladen-Riegel gefüllt mit Karamell, gerösteten Erdnüssen und Candycreme"
+  }
+ },
+ {
+  "name": "Pralinen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Konfekt",
+   "Trüffel",
+   "Ferrero Rocher",
+   "Mon Cheri",
+   "Toffifee",
+   "Raffaello"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Mandeln"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   555.0,
+   6.34,
+   35.13,
+   54.53,
+   51.38,
+   2.52
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S610000",
+   "name": "Pralinen"
+  }
+ },
+ {
+  "name": "Schokokuss",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Schaumkuss",
+   "Dickmanns",
+   "Marshmallows",
+   "Mäusespeck"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Erdbeeren"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   380.0,
+   2.96,
+   8.66,
+   77.3,
+   47.5,
+   8.83
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S582200",
+   "name": "Schokoladen-Schaumkuss"
+  }
+ },
+ {
+  "name": "Marzipan",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Marzipankartoffeln",
+   "Mozartkugeln",
+   "Nougat",
+   "Persipan"
+  ],
+  "alts": [
+   "Mandeln",
+   "Mandelmus"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   407.0,
+   4.0,
+   12.4,
+   71.09,
+   68.54,
+   2.49
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S420000",
+   "name": "Marzipan"
+  }
+ },
+ {
+  "name": "Bonbons",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Hustenbonbons",
+   "Lutscher",
+   "Karamell",
+   "Toffee",
+   "Kaugummi",
+   "Werthers",
+   "Nimm2"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Minze"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   421.0,
+   0.0,
+   0.2,
+   92.8,
+   69.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S311000",
+   "name": "Hartkaramelle (Bonbon)"
+  }
+ },
+ {
+  "name": "Kandierter Ingwer",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ingwerstäbchen",
+   "kandierte Früchte",
+   "Zitronat",
+   "Orangeat"
+  ],
+  "alts": [
+   "Ingwer"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   215.0,
+   1.01,
+   0.39,
+   52.1,
+   47.78,
+   1.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S478100",
+   "name": "Ingwer kandiert"
+  }
+ },
+ {
+  "name": "Vanilleeis",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Milcheis",
+   "Schokoladeneis",
+   "Eis am Stiel",
+   "Magnum",
+   "Cornetto",
+   "Ben & Jerrys",
+   "Häagen-Dazs",
+   "Sahneeis"
+  ],
+  "alts": [
+   "Heidelbeeren",
+   "Kokosmilch (vollfett)"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   194.0,
+   2.38,
+   10.16,
+   22.98,
+   18.14,
+   0.34
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S241000",
+   "name": "Vanilleeis"
+  }
+ },
+ {
+  "name": "Sorbet",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Fruchteis",
+   "Wassereis",
+   "Zitronensorbet",
+   "Frozen Yogurt"
+  ],
+  "alts": [
+   "Beerenmischung (TK)",
+   "Himbeeren"
+  ],
+  "why": "Kein Fett, dafür viel Zucker. Angetaute TK-Beeren sind fast wie Sorbet.",
+  "piece": null,
+  "n": [
+   121.0,
+   0.7,
+   0.1,
+   27.85,
+   27.81,
+   0.04
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S201000",
+   "name": "Frucht-Sorbet"
+  }
+ },
+ {
+  "name": "Kakaogetränkepulver",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Trinkkakao",
+   "Kaba",
+   "Nesquik",
+   "Ovomaltine",
+   "Trinkschokolade",
+   "Instantkakao"
+  ],
+  "alts": [
+   "Kakaopulver (ungesüßt)",
+   "Mandeldrink ungesüßt"
+  ],
+  "why": "Besteht zu drei Vierteln aus Zucker. Ein Teelöffel ungesüßter Kakao in warmem Mandeldrink passt.",
+  "piece": null,
+  "n": [
+   377.0,
+   5.2,
+   2.36,
+   86.96,
+   78.42,
+   6.57
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "S723000",
+   "name": "Getränkepulver kakaohaltig"
+  }
+ },
+ {
+  "name": "Brownies",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Schokokuchen",
+   "Schokoladenkuchen",
+   "Muffin",
+   "Schokomuffin"
+  ],
+  "alts": [
+   "Walnusskerne",
+   "Kakaopulver (ungesüßt)"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   489.0,
+   7.26,
+   32.84,
+   43.59,
+   30.7,
+   4.89
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D4A2000",
+   "name": "Brownies"
+  }
+ },
+ {
+  "name": "Donut",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Berliner",
+   "Krapfen",
+   "Kreppel",
+   "Quarkbällchen"
+  ],
+  "alts": [
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   336.0,
+   7.3,
+   14.8,
+   44.7,
+   6.34,
+   2.8
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D741600",
+   "name": "Donut (Hefeteig) frittiert"
+  }
+ },
+ {
+  "name": "Waffeln",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Waffel",
+   "Pfannkuchen",
+   "Crêpe",
+   "Pancakes",
+   "Kaiserschmarrn"
+  ],
+  "alts": [
+   "Haferbrei (mit Wasser)",
+   "Apfelmus ungesüßt"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   459.0,
+   8.19,
+   24.83,
+   51.41,
+   24.14,
+   1.61
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D621000",
+   "name": "Waffeln, einfache (Rührmasse)"
+  }
+ },
+ {
+  "name": "Apfelstrudel",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Apfelkuchen",
+   "Apfeltasche",
+   "Strudel"
+  ],
+  "alts": [
+   "Apfel",
+   "Zimt",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   317.0,
+   3.3,
+   21.2,
+   29.6,
+   8.3,
+   2.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D4A1000",
+   "name": "Apfelstrudel (Blätterteig)"
+  }
+ },
+ {
+  "name": "Käsekuchen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Quarkkuchen",
+   "Cheesecake",
+   "Sahnetorte",
+   "Torte"
+  ],
+  "alts": [
+   "Sojajoghurt",
+   "Heidelbeeren"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   243.0,
+   9.7,
+   9.7,
+   29.3,
+   13.1,
+   1.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D461200",
+   "name": "Käsekuchen/Quarkkuchen (Hefeteig)"
+  }
+ },
+ {
+  "name": "Marmorkuchen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Rührkuchen",
+   "Sandkuchen",
+   "Napfkuchen",
+   "Gugelhupf",
+   "Zitronenkuchen"
+  ],
+  "alts": [
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   404.0,
+   8.39,
+   19.79,
+   49.5,
+   19.84,
+   2.9
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D431100",
+   "name": "Marmorkuchen (Rührmasse)"
+  }
+ },
+ {
+  "name": "Streuselkuchen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Butterkuchen",
+   "Blechkuchen",
+   "Hefekuchen",
+   "Bienenstich",
+   "Zimtschnecke",
+   "Franzbrötchen",
+   "Rosinenbrötchen",
+   "Hefezopf"
+  ],
+  "alts": [
+   "Apfel",
+   "Walnusskerne"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   425.0,
+   7.27,
+   17.97,
+   59.93,
+   18.29,
+   2.93
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D461500",
+   "name": "Streuselkuchen (Hefeteig)"
+  }
+ },
+ {
+  "name": "Lebkuchen",
+  "group": "suess",
+  "groupLabel": "Zucker und Süßes",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Pfefferkuchen",
+   "Printen",
+   "Spekulatius",
+   "Dominosteine",
+   "Stollen",
+   "Weihnachtsgebäck",
+   "Zimtsterne"
+  ],
+  "alts": [
+   "Mandeln",
+   "Zimt",
+   "Mandarine"
+  ],
+  "why": "Prof. Dr. Longos Vorgabe heißt: wenig Zucker. Zucker würde sonst schnell das ganze Tagesbudget aufbrauchen.",
+  "piece": null,
+  "n": [
+   399.0,
+   6.74,
+   11.5,
+   68.56,
+   40.79,
+   3.92
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "D650600",
+   "name": "Lebkuchen schokoliert"
+  }
+ },
+ {
+  "name": "Apfelsaft",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Saft",
+   "Direktsaft",
+   "naturtrüb"
+  ],
+  "alts": [
+   "Apfel",
+   "Kräutertee"
+  ],
+  "why": "Ein Glas enthält so viel Zucker wie drei Äpfel, aber sättigt nicht.",
+  "piece": null,
+  "n": [
+   44.0,
+   0.1,
+   0.0,
+   10.9,
+   9.59,
+   0.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F110600",
+   "name": "Apfelsaft"
+  }
+ },
+ {
+  "name": "Apfelschorle",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Saftschorle",
+   "Schorle",
+   "Rhabarberschorle",
+   "Johannisbeerschorle"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Zitronensaft",
+   "Kräutertee"
+  ],
+  "why": "Auch verdünnt bleibt es Zuckerwasser. Wasser mit einem Spritzer Zitrone erfrischt genauso.",
+  "piece": null,
+  "n": [
+   26.0,
+   0.06,
+   0.0,
+   6.32,
+   5.56,
+   0.18
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N256000",
+   "name": "Fruchtsaftschorle Apfel"
+  }
+ },
+ {
+  "name": "Traubensaft",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Saft",
+   "Kirschsaft",
+   "Johannisbeersaft",
+   "Granatapfelsaft",
+   "Hohes C"
+  ],
+  "alts": [
+   "Weintrauben",
+   "Kräutertee"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   68.0,
+   0.21,
+   0.0,
+   16.66,
+   15.35,
+   0.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F310600",
+   "name": "Traubensaft"
+  }
+ },
+ {
+  "name": "Multivitaminsaft",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Mehrfruchtsaft",
+   "Saft",
+   "Capri-Sun",
+   "Punica",
+   "Fruchtsaftgetränk",
+   "Nektar",
+   "ACE-Saft",
+   "Valensina"
+  ],
+  "alts": [
+   "Orange",
+   "Kräutertee"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   48.0,
+   0.4,
+   0.1,
+   11.03,
+   10.15,
+   0.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F010600",
+   "name": "Mehrfruchtsaft"
+  }
+ },
+ {
+  "name": "Ananassaft",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Saft",
+   "Mangosaft",
+   "Maracujasaft",
+   "Grapefruitsaft"
+  ],
+  "alts": [
+   "Ananas",
+   "Kräutertee"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   47.0,
+   0.4,
+   0.1,
+   11.02,
+   9.71,
+   0.31
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "F501600",
+   "name": "Ananassaft"
+  }
+ },
+ {
+  "name": "Tomatensaft",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Gemüsesaft Tomate"
+  ],
+  "alts": [
+   "Gemüsebrühe",
+   "Tomaten"
+  ],
+  "why": "Ein Glas passt. Im Saft fehlt aber die Sättigung von ganzen Tomaten.",
+  "piece": null,
+  "n": [
+   18.0,
+   0.76,
+   0.05,
+   3.73,
+   2.87,
+   0.76
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G560600",
+   "name": "Gemüsesaft aus Tomate, mit Salz"
+  }
+ },
+ {
+  "name": "Karottensaft",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 200,
+  "capWhy": "portion",
+  "syn": [
+   "Möhrensaft",
+   "Gemüsesaft Karotte"
+  ],
+  "alts": [
+   "Karotten",
+   "Gemüsebrühe"
+  ],
+  "why": "Ein Glas passt. Im Saft fehlt aber die Sättigung vom ganzen Gemüse.",
+  "piece": null,
+  "n": [
+   22.0,
+   0.63,
+   0.32,
+   4.02,
+   3.64,
+   0.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G620600",
+   "name": "Gemüsesaft aus Karotte/Möhre"
+  }
+ },
+ {
+  "name": "Rote-Bete-Saft",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Rote Bete Saft",
+   "Randensaft"
+  ],
+  "alts": [
+   "Rote Bete (vorgegart)",
+   "Gemüsebrühe"
+  ],
+  "why": "Recht süß. Ein kleines Glas passt.",
+  "piece": null,
+  "n": [
+   37.0,
+   1.08,
+   0.08,
+   7.96,
+   7.76,
+   0.2
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G613600",
+   "name": "Gemüsesaft aus Rote Rübe/Rote Bete"
+  }
+ },
+ {
+  "name": "Sauerkrautsaft",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 300,
+  "capWhy": "portion",
+  "syn": [
+   "Sauerkraut-Saft",
+   "Krautsaft"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   18.0,
+   0.96,
+   0.25,
+   1.0,
+   0.62,
+   0.21
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "G345600",
+   "name": "Gemüsesaft aus Sauerkraut"
+  }
+ },
+ {
+  "name": "Kombucha",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Wasserkefir",
+   "Teepilz",
+   "fermentierter Tee"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Grüner Tee"
+  ],
+  "why": "Fermentierter, gezuckerter Tee mit etwas Restzucker und Spuren von Alkohol. Ungesüßter Tee ist die Basis in diesen Tagen.",
+  "piece": null,
+  "n": [
+   17,
+   0,
+   0,
+   4.0,
+   3.6,
+   null
+  ],
+  "src": {
+   "db": "USDA",
+   "code": null,
+   "name": null
+  }
+ },
+ {
+  "name": "Eistee",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Ice Tea",
+   "Lipton",
+   "Pfanner",
+   "Volvic Tee",
+   "Eistee Pfirsich"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Früchtetee"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   25.0,
+   0.0,
+   0.0,
+   6.2,
+   6.2,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N019000",
+   "name": "Eistee mit Zitronen-/Pfirsichgeschmack, gesüßt"
+  }
+ },
+ {
+  "name": "Zitronenlimonade",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Limo",
+   "Sprite",
+   "7up",
+   "Zitronenlimo",
+   "Bionade",
+   "Almdudler",
+   "Brause"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Zitronensaft"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   38.0,
+   0.0,
+   0.0,
+   9.27,
+   9.27,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N310400",
+   "name": "Zitronenlimonade"
+  }
+ },
+ {
+  "name": "Orangenlimonade",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Fanta",
+   "Orangina",
+   "Limo",
+   "Mezzo Mix",
+   "Spezi"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Orange"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   33.0,
+   0.0,
+   0.0,
+   8.35,
+   8.35,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N310300",
+   "name": "Orangenlimonade"
+  }
+ },
+ {
+  "name": "Tonic Water",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Bitter Lemon",
+   "Ginger Ale",
+   "Ginger Beer",
+   "Schweppes"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Limettensaft"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   41.0,
+   0.0,
+   0.0,
+   9.88,
+   9.88,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N314000",
+   "name": "Limonade chininhaltig"
+  }
+ },
+ {
+  "name": "Cola Zero",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Cola light",
+   "Coke Zero",
+   "Pepsi Max",
+   "zuckerfreie Cola",
+   "Diät-Cola"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Kräutertee"
+  ],
+  "why": "Kalorienfrei, aber mit Süßstoff und Koffein. Beides kommt in Prof. Dr. Longos Protokoll nicht vor.",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N331000",
+   "name": "Colagetränk koffeinhaltig, mit Süßungsmitteln"
+  }
+ },
+ {
+  "name": "Limonade ohne Zucker",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Light-Limonade",
+   "Zero-Limo",
+   "Sprite Zero",
+   "Fanta Zero",
+   "zuckerfreie Limonade",
+   "Red Bull Sugarfree",
+   "Energy Zero"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Zitronensaft"
+  ],
+  "why": "Kalorienfrei, aber mit Süßstoff. Der kommt in Prof. Dr. Longos Protokoll nicht vor. Wasser mit Zitrone erfrischt genauso.",
+  "piece": null,
+  "n": [
+   1.0,
+   0.0,
+   0.0,
+   0.1,
+   0.1,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N311000",
+   "name": "Limonade mit Süßungsmitteln"
+  }
+ },
+ {
+  "name": "Wasser mit Geschmack (ungesüßt)",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 1500,
+  "capWhy": "portion",
+  "syn": [
+   "aromatisiertes Wasser",
+   "Near Water",
+   "Infused Water",
+   "Wasser mit Zitrone",
+   "Wasser mit Minze"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   0.0,
+   0.01,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N001000",
+   "name": "Nearwater/Aqua Plus Getränk, aromatisiert, ungesüßt"
+  }
+ },
+ {
+  "name": "Malzbier",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Malztrunk",
+   "Vitamalz",
+   "Karamalz"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Kräutertee"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   43.0,
+   0.38,
+   0.0,
+   10.32,
+   8.35,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "P122000",
+   "name": "Malzgetränk, alkoholfrei"
+  }
+ },
+ {
+  "name": "Alkoholfreies Bier",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Bier alkoholfrei",
+   "Pils alkoholfrei",
+   "Weizen alkoholfrei",
+   "0",
+   "0"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Kräutertee"
+  ],
+  "why": "Ohne Alkohol, aber mit Malzzucker. Nach den fünf Tagen schmeckt es umso besser.",
+  "piece": null,
+  "n": [
+   18.0,
+   0.42,
+   0.0,
+   3.7,
+   1.6,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "P163100",
+   "name": "Pilsner Bier, alkoholfrei"
+  }
+ },
+ {
+  "name": "Radler",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Alsterwasser",
+   "Biermischgetränk",
+   "Russ",
+   "Weizenbier",
+   "Hefeweizen"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Zitronensaft"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   38.0,
+   0.21,
+   0.0,
+   5.74,
+   4.69,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "P192000",
+   "name": "Radler (Pilsner Bier mit Zitronenlimonade)"
+  }
+ },
+ {
+  "name": "Sekt",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Prosecco",
+   "Champagner",
+   "Schaumwein",
+   "Aperol Spritz",
+   "Hugo"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Limettensaft"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   75.0,
+   0.0,
+   0.0,
+   2.09,
+   2.08,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "P2A6000",
+   "name": "Qualitätsschaumwein, Sekt, trocken"
+  }
+ },
+ {
+  "name": "Spirituosen",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Wodka",
+   "Gin",
+   "Whisky",
+   "Rum",
+   "Schnaps",
+   "Korn",
+   "Likör",
+   "Tequila",
+   "Obstbrand",
+   "Cocktail",
+   "Longdrink"
+  ],
+  "alts": [
+   "Mineralwasser",
+   "Kräutertee"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   225.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "P712000",
+   "name": "Wodka"
+  }
+ },
+ {
+  "name": "Glühwein",
+  "group": "drink",
+  "groupLabel": "Alkohol, Säfte, Softdrinks",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Punsch",
+   "Feuerzangenbowle",
+   "Kinderpunsch"
+  ],
+  "alts": [
+   "Früchtetee",
+   "Zimt"
+  ],
+  "why": "Bringt Zucker oder Alkohol mit. Wasser und ungesüßter Tee sind in diesen Tagen die Basis.",
+  "piece": null,
+  "n": [
+   96.0,
+   0.24,
+   0.0,
+   8.28,
+   8.18,
+   0.07
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "P281000",
+   "name": "Glühwein"
+  }
+ },
+ {
+  "name": "Rooibostee",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 1000,
+  "capWhy": "portion",
+  "syn": [
+   "Rotbuschtee",
+   "Roibusch",
+   "Rooibos"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N601000",
+   "name": "Roibusch-/Rooibos-/Rotbusch-Tee (Getränk)"
+  }
+ },
+ {
+  "name": "Früchtetee",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 1000,
+  "capWhy": "portion",
+  "syn": [
+   "Hagebuttentee",
+   "Hibiskustee",
+   "Malventee",
+   "Apfeltee",
+   "Teekanne",
+   "Meßmer"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N710000",
+   "name": "Früchtetee (Getränk)"
+  }
+ },
+ {
+  "name": "Pfefferminztee",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 1000,
+  "capWhy": "portion",
+  "syn": [
+   "Minztee",
+   "Kamillentee",
+   "Fencheltee",
+   "Ingwertee",
+   "Salbeitee",
+   "Melissentee"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N721000",
+   "name": "Pfefferminztee (Getränk)"
+  }
+ },
+ {
+  "name": "Mate-Tee",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 250,
+  "capWhy": "portion",
+  "syn": [
+   "Mate",
+   "Yerba Mate"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Rooibostee"
+  ],
+  "why": "Ungesüßt passt eine Tasse. Enthält Koffein, deshalb am selben Tag lieber Tee oder Kaffee, nicht beides. Gesüßte Mate-Limonade gehört nicht dazu.",
+  "piece": null,
+  "n": [
+   0.0,
+   0.1,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N611000",
+   "name": "Mate-Tee (Getränk)"
+  }
+ },
+ {
+  "name": "Espresso",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 60,
+  "capWhy": "portion",
+  "syn": [
+   "Mokka",
+   "türkischer Kaffee",
+   "Ristretto",
+   "Nespresso"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Getreidekaffee"
+  ],
+  "why": "Wenn es ohne nicht geht: ein Espresso am Tag, schwarz und ohne Zucker. So empfiehlt es der Hersteller des Fertigprodukts ProLon für Kaffee.",
+  "piece": null,
+  "n": [
+   2.0,
+   0.4,
+   0.0,
+   0.42,
+   0.0,
+   0.42
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N411100",
+   "name": "Espresso (Getränk)"
+  }
+ },
+ {
+  "name": "Kaffee (entkoffeiniert)",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Decaf",
+   "koffeinfreier Kaffee",
+   "entkoffeiniert"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Getreidekaffee"
+  ],
+  "why": "Die Herstellerempfehlung „höchstens eine kleine Tasse“ unterscheidet nicht nach Koffein. Wir behandeln entkoffeinierten Kaffee deshalb genauso.",
+  "piece": null,
+  "n": [
+   0.0,
+   0.12,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N415000",
+   "name": "Kaffee (Getränk) entkoffeiniert"
+  }
+ },
+ {
+  "name": "Getreidekaffee",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "g",
+  "cap": 500,
+  "capWhy": "portion",
+  "syn": [
+   "Malzkaffee",
+   "Caro Kaffee",
+   "Kaffeeersatz",
+   "Zichorienkaffee",
+   "Lupinenkaffee",
+   "Muckefuck"
+  ],
+  "alts": [],
+  "why": "",
+  "piece": null,
+  "n": [
+   5.0,
+   0.07,
+   0.0,
+   1.51,
+   0.14,
+   0.54
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N500100",
+   "name": "Kaffeeersatz (Getränk)"
+  }
+ },
+ {
+  "name": "Kaffee mit Haferdrink",
+  "group": "getraenk",
+  "groupLabel": "Getränke",
+  "light": "y",
+  "cap": 150,
+  "capWhy": "portion",
+  "syn": [
+   "Kaffee mit Hafermilch",
+   "Kaffee mit Mandeldrink",
+   "Kaffee mit Sojadrink",
+   "Hafer-Cappuccino klein"
+  ],
+  "alts": [
+   "Kräutertee",
+   "Getreidekaffee"
+  ],
+  "why": "Eine kleine Tasse mit einem Schuss ungesüßtem Pflanzendrink ist okay. Der Hersteller von ProLon rät zu Kaffee ohne Zusätze.",
+  "piece": null,
+  "n": [
+   2.0,
+   0.14,
+   0.03,
+   0.46,
+   0.13,
+   0.32
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N4A0000",
+   "name": "Kaffee (Getränk) mit Haferdrink, ungesüßt"
+  }
+ },
+ {
+  "name": "Kaffee mit Milch",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Milchkaffee",
+   "Kaffee weiß",
+   "Kaffee mit Kaffeesahne"
+  ],
+  "alts": [
+   "Kaffee",
+   "Kaffee mit Haferdrink"
+  ],
+  "why": "Milch macht in diesen Tagen Pause. Wenn Kaffee, dann eine kleine Tasse schwarz.",
+  "piece": null,
+  "n": [
+   3.0,
+   0.23,
+   0.12,
+   0.43,
+   0.13,
+   0.3
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N410200",
+   "name": "Kaffee (Getränk) mit Milch 3,5 % Fett"
+  }
+ },
+ {
+  "name": "Cappuccino",
+  "group": "milch",
+  "groupLabel": "Milchprodukte",
+  "light": "r",
+  "cap": 0,
+  "capWhy": "portion",
+  "syn": [
+   "Latte macchiato",
+   "Flat White",
+   "Caffè Latte",
+   "Starbucks",
+   "Eiskaffee",
+   "Instant-Cappuccino"
+  ],
+  "alts": [
+   "Kaffee",
+   "Kaffee mit Haferdrink"
+  ],
+  "why": "Besteht vor allem aus Milch. Wenn Kaffee, dann eine kleine Tasse schwarz.",
+  "piece": null,
+  "n": [
+   50.0,
+   2.9,
+   2.79,
+   3.3,
+   3.22,
+   0.08
+  ],
+  "src": {
+   "db": "BLS",
+   "code": "N414000",
+   "name": "Cappuccino (Getränk) mit Milch 3,5 % Fett"
   }
  }
 ]

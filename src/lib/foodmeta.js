@@ -4,13 +4,13 @@
 /** Einkaufskategorien in Anzeigereihenfolge: [Schlüssel, Überschrift, Icon, Gruppen aus tools/foods_src.py]. */
 export const CATS = [
   ['gemuese', 'Gemüse, Salat und Pilze', 'leaf', ['gemuese', 'blatt', 'pilze', 'knolle']],
-  ['saettig', 'Hülsenfrüchte, Getreide und Soja', 'pot', ['huelsen', 'getreide', 'soja', 'knusper']],
+  ['saettig', 'Hülsenfrüchte, Getreide, Soja und Suppen', 'pot', ['huelsen', 'getreide', 'soja', 'knusper', 'suppe']],
   ['nuss', 'Nüsse, Saaten und Oliven', 'nut', ['nuss', 'fettfrucht']],
   ['oel', 'Öle', 'oil', ['fett']],
   ['obst', 'Obst', 'apple', ['obst']],
   ['wuerze', 'Kräuter und Würzen', 'herb', ['kraeuter', 'wuerze']],
   ['trinken', 'Getränke', 'cup', ['getraenk']],
-  ['tauschen', 'Lieber tauschen', 'ban', ['tier', 'milch', 'suess', 'weissmehl', 'drink', 'eiweiss']],
+  ['tauschen', 'Lieber tauschen', 'ban', ['tier', 'milch', 'suess', 'weissmehl', 'drink', 'eiweiss', 'fertig']],
 ];
 const CAT_OF_GROUP = Object.fromEntries(CATS.flatMap(([k, , , gs]) => gs.map((g) => [g, k])));
 
