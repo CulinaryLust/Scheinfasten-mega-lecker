@@ -62,6 +62,7 @@ export const PRODUCTS = {
   tee_lose: { group: 'vorrat', img: 'tee', icon: 'cup', asin: 'B007FBCCJE', title: 'Lebensbaum Bio-Kräutertee Morgengruß, lose', why: 'Fenchel, Minze und Ysop für die Teekanne. Lose Kräuter sind ergiebiger als Beutel.', beleg: 'Lebensbaum Bio, lose 100 g.' },
   // Bücher
   buch_longo: { group: 'buch', img: 'buch', icon: 'book', asin: '3442177146', title: 'Prof. Dr. Valter Longo: Iss dich jung', why: 'Das Buch des Erfinders. Erklärt die Forschung hinter dem Scheinfasten aus erster Hand.', beleg: 'Goldmann, Taschenbuch.' },
+  buch_longo_rezepte: { group: 'buch', img: 'buch', icon: 'book', asin: '3442180775', title: 'Prof. Dr. Valter Longo: Iss dich jung, das Rezeptbuch', why: 'Über 200 Rezepte zur Longevità-Ernährung, mit kurzer Einführung ins Scheinfasten.', beleg: 'Goldmann, erschienen 29.07.2026; Bewertungslage noch dünn (3,7 bis 4,6 Sterne bei wenigen Stimmen).' },
   buch_michalsen: { group: 'buch', img: 'buch', icon: 'book', asin: '3965845101', title: 'Andreas Michalsen: Scheinfasten, mein Masterplan', why: 'Der Berliner Fastenmediziner mit Plänen für mehrere Kuren.', beleg: 'SPIEGEL-Bestseller.' },
   buch_gu: { group: 'buch', img: 'buch', icon: 'book', title: 'GU: Scheinfasten, Das Rezeptbuch', why: 'Weitere vegane Rezepte, drei pro Tag, wenn Du Abwechslung suchst.', search: 'Scheinfasten Das Rezeptbuch GU', beleg: 'ASIN noch nicht ermittelt, daher Suche.' },
 };
@@ -91,7 +92,7 @@ export function productsForRecipe(r) {
   if (r.category === 'Ofengericht' || r.category === 'Salat' || r.category === 'Pfanne') keys.push('hobel', 'messer');
   if (has('Oregano') || has('Paprikapulver') || has('Kreuzkümmel')) keys.push('gewuerze');
   keys.push('dosen');
-  return [...new Set(keys)].slice(0, 7).map((k) => ({ key: k, ...PRODUCTS[k] }));
+  return [...new Set(keys)].slice(0, 6).concat('buch_longo_rezepte').map((k) => ({ key: k, ...PRODUCTS[k] }));
 }
 
 export const pick = (...keys) => keys.map((k) => {
