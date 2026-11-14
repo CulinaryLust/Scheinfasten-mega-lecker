@@ -14,7 +14,7 @@ const PREFS = [
   ['paprika', 'Paprika'], ['kuerbis', 'Kürbis'], ['kohl', 'Kohl'], ['rotebete', 'Rote Bete'], ['suesskartoffel', 'Süßkartoffel'], ['tomate', 'Tomaten'],
   ['sesam', 'Sesam und Tahin'], ['koriander', 'Koriander'], ['scharf', 'Scharfes'],
 ];
-const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swap', 'check', 'close', 'cart', 'calendar', 'time', 'arrow', 'info', 'water', 'pot', 'leaf', 'nut', 'apple', 'herb', 'cup', 'ban'].map((k) => [k, icon(k)]));
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'oil', 'swap', 'check', 'close', 'cart', 'calendar', 'time', 'arrow', 'info', 'water', 'pot', 'leaf', 'nut', 'apple', 'herb', 'cup', 'ban', 'share', 'copy', 'bowl'].map((k) => [k, icon(k)]));
 import AffiliateBox from '../components/AffiliateBox.astro';
 import Erinnerung from '../components/Erinnerung.astro';
 import Rotator from '../components/Rotator.astro';
@@ -148,6 +148,7 @@ import { pick } from '../data/affiliate.js';
   .meal.own { border-style: dashed; }
   .meal .ownimg { width: 100%; aspect-ratio: 1; border-radius: 12px; background: var(--band); color: var(--green); display: grid; place-items: center; }
   .meal .ownimg .i { width: 40%; height: 40%; }
+  .shopacts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 4px 0 8px; }
   .ownlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: .92rem; }
   .ownlist li { display: flex; gap: 8px; align-items: center; }
   .meal .when { font-size: .75rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--green); }
@@ -194,6 +195,7 @@ import { pick } from '../data/affiliate.js';
   import { RECIPES, BY_SLUG, PLAN, nutrition, add, check, shares, amountLabel, fmt } from '../lib/nutrition.js';
   import { groupByCat, foodBadge } from '../lib/foodmeta.js';
   import { thumb } from '../lib/url.js';
+  import { planDay, withBreakfast, swapKey as swapKeyOf, candidatesFor, hits, total as planTotal } from '../lib/plan.js';
   import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml } from '../lib/uebergang.js';
   import { doneHtml } from '../lib/fortschritt.js';
   import { ownDay, ownGroceries, ownIsDone } from '../lib/eigene.js';
@@ -215,12 +217,6 @@ import { pick } from '../data/affiliate.js';
   const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   (form.start as HTMLInputElement).value = iso(d0);
 
-  const PREF_RX: Record<string, RegExp> = {
-    pilze: /Champignon|Pilz/i, huelsen: /Kichererbsen|Linsen|Bohnen|Erbsen/i, kokos: /Kokos/i, nuesse: /Walnuss|Mandel|Cashew/i,
-    aubergine: /Aubergine/i, zucchini: /Zucchini/i, paprika: /Rote Paprika/i, kuerbis: /Hokkaido/i, kohl: /kohl|Wirsing|Pak Choi/i,
-    rotebete: /Rote Bete/i, suesskartoffel: /Süßkartoffel/i, tomate: /Tomat/i, sesam: /Sesam|Tahin/i, koriander: /Koriander/i, scharf: /Chili|Currypaste|Meerrettich/i,
-  };
-  const hits = (r: any, keys: string[]) => keys.filter((k) => r.ingredients.some((i: any) => PREF_RX[k]?.test(i.name)));
   let state: any = { swaps: {} };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s) state = s; } catch {}
   state.prefs = state.prefs || { like: [], no: [] };
@@ -305,42 +301,16 @@ import { pick } from '../data/affiliate.js';
   }
 
   // Tagesplan inkl. Tauschungen. Variante „Mit Frühstück“ hat eigene Tauschungen, weil die Mahlzeiten andere sind.
-  const bf = () => !!state.breakfast && !!PLAN.breakfastDays;
-  const swapKey = () => (bf() ? 'swapsBf' : 'swaps');
-  // Grundplan, an die Vorlieben angepasst: Gerichte mit „lieber nicht“ werden getauscht, Lieblingszutaten bevorzugt, solange der Tag passt.
-  const SWAPPABLE = ['main', 'snack', 'breakfast'];
-  let autoKey = ''; let AUTO: Record<number, any[]> = {};
-  function autoPlan() {
-    const key = JSON.stringify([state.prefs, bf()]);
-    if (key === autoKey) return AUTO;
-    autoKey = key; AUTO = {};
-    const { like, no } = state.prefs; const picked = new Set<string>();
-    for (let d = 1; d <= 5; d++) {
-      const list = (bf() ? PLAN.breakfastDays : PLAN.days)[d].map((it: any) => ({ ...it }));
-      list.forEach((it: any, idx: number) => {
-        if (!SWAPPABLE.includes(it.type) || (!like.length && !no.length)) return;
-        const r = BY_SLUG[it.recipe]; const bad = hits(r, no).length > 0; const good = hits(r, like).length > 0;
-        if (!bad && (good || !like.length)) return;
-        const c = candidatesFor(d, list, idx, 1).filter((x: any) => !hits(x.r, no).length && !picked.has(x.r.slug))
-          .map((x: any) => ({ ...x, liked: hits(x.r, like).length }))
-          .sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || (b.liked - a.liked) || a.score - b.score);
-        const best = c[0];
-        if (!best) return;
-        if (bad || (best.liked && best.ok)) { list[idx] = { ...it, recipe: best.r.slug, portion: best.portion, auto: true }; picked.add(best.r.slug); }
-      });
-      AUTO[d] = list;
-    }
-    return AUTO;
+  const bf = () => withBreakfast(state);
+  const swapKey = () => swapKeyOf(state);
+  const items = (day: number) => planDay(state, day);
+  const total = planTotal;
+
+  function candidates(day: number, idx: number, f: number) {
+    const { like, no } = state.prefs;
+    return candidatesFor(day, items(day), idx, f, 30).filter((x: any) => !hits(x.r, no).length)
+      .sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || (hits(b.r, like).length - hits(a.r, like).length) || a.score - b.score).slice(0, 8);
   }
-  function baseDay(day: number) { const a = autoPlan(); return a[day] || (bf() ? PLAN.breakfastDays : PLAN.days)[day]; }
-  function items(day: number) {
-    return baseDay(day).map((it: any, idx: number) => {
-      const s = state[swapKey()]?.[day]?.[idx];
-      return s ? { ...it, recipe: s.recipe, portion: s.portion, swapped: true, auto: false } : { ...it };
-    });
-  }
-  const total = (list: any[], f: number) => list.reduce((acc, it) => add(acc, nutrition(BY_SLUG[it.recipe], it.portion * f)), ZERO);
-  const r5 = (x: number) => Math.round(x * 20) / 20;
 
   // Heute im Rechner selbst Eingetragenes zählt im Planer mit: es ersetzt die Mahlzeit an derselben Stelle,
   // Zwischenmahlzeiten kommen dazu. Gilt nur für den heutigen Plantag, wie im Rechner.
@@ -356,9 +326,11 @@ import { pick } from '../data/affiliate.js';
     const rs = readRechner();
     if (!rs?.own || rs.own.d !== today) return null;
     const meals = ownDay(rs.own, targets(k === 1 ? 1 : 2, f), k);
-    if (!meals.length) return null;
+    // Im Rechner entfernte Planmahlzeiten bleiben auch hier leer
+    const skipped: string[] = rs.own.skip?.plan || [];
+    if (!meals.length && !skipped.length) return null;
     const dd = rs.done?.[String(k)];
-    return { meals, replaced: new Set(meals.filter((m: any) => m.main).map((m: any) => m.slot)), done: dd && dd._d === today ? dd : {} };
+    return { meals, skipped, replaced: new Set([...meals.filter((m: any) => m.main).map((m: any) => m.slot), ...skipped]), done: dd && dd._d === today ? dd : {} };
   }
   /** Gerichte des Plans, die heute nicht durch Selbst Eingetragenes ersetzt sind (mit ursprünglicher Position). */
   const planItems = (k: number, f: number) => { const o = ownFor(k, f); return items(k).map((it: any, i: number) => ({ ...it, _i: i })).filter((it: any) => !o?.replaced.has(it.meal)); };
@@ -376,26 +348,6 @@ import { pick } from '../data/affiliate.js';
     try { localStorage.setItem('smlRechner', JSON.stringify(rs)); } catch {}
   }
 
-  function candidates(day: number, idx: number, f: number) {
-    const { like, no } = state.prefs;
-    return candidatesFor(day, items(day), idx, f, 30).filter((x: any) => !hits(x.r, no).length)
-      .sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || (hits(b.r, like).length - hits(a.r, like).length) || a.score - b.score).slice(0, 8);
-  }
-  function candidatesFor(day: number, list: any[], idx: number, f: number, max = 30) {
-    const cur = list[idx];
-    const curK = nutrition(BY_SLUG[cur.recipe], cur.portion).kcal;
-    const used = new Set(list.map((x: any) => x.recipe));
-    const pool = RECIPES.filter((r: any) => r.slot === cur.type && !used.has(r.slug) && !['nussmix', 'oliven'].includes(r.slug));
-    return pool.map((r: any) => {
-      const portion = r5(Math.min(1.4, Math.max(0.7, cur.portion * curK / nutrition(r).kcal)));
-      const next = list.map((x: any, i: number) => (i === idx ? { ...x, recipe: r.slug, portion } : x));
-      const c = check(day, total(next, f), f);
-      const sh = c.shares; const ref = c.ref;
-      const score = Math.abs(sh.protein - ref.protein) + Math.abs(sh.fat - ref.fat) + Math.abs(sh.carbs - ref.carbs);
-      return { r, portion, ok: c.ok, score, kcal: nutrition(r, portion * f).kcal };
-    }).sort((a: any, b: any) => (Number(b.ok) - Number(a.ok)) || a.score - b.score).slice(0, max);
-  }
-
   const addDays = (d: Date, n: number) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
   const addMonths = (d: Date, n: number) => { const x = new Date(d); x.setMonth(x.getMonth() + n); return x; };
   const WD = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
@@ -408,6 +360,7 @@ import { pick } from '../data/affiliate.js';
   const isDone = (k: number, i: number) => !!state.done?.[doneKey(k)]?.[i];
   const dayDone = (k: number) => { const f = profile().f; const o = ownFor(k, f); return planItems(k, f).every((it: any) => isDone(k, it._i)) && (!o || o.meals.every((m: any) => ownIsDone(m, o.done))); };
   let tab = 1;
+  let shopText = '';
   let openSwap = '';
 
   function render() {
@@ -472,6 +425,16 @@ import { pick } from '../data/affiliate.js';
     result.querySelectorAll<HTMLInputElement>('input[data-done]').forEach((c) => c.addEventListener('change', () => {
       const [d, i] = c.dataset.done!.split('-').map(Number); state.done = state.done || {}; (state.done[doneKey(d)] = state.done[doneKey(d)] || {})[i] = c.checked; save(); rerender();
     }));
+    const shopMsg = (txt: string) => result.querySelectorAll<HTMLElement>('[data-shopmsg]').forEach((m) => { m.textContent = txt; setTimeout(() => (m.textContent = ''), 4000); });
+    result.querySelectorAll<HTMLButtonElement>('[data-shopshare]').forEach((b) => {
+      if (!navigator.share) return;
+      b.hidden = false;
+      b.addEventListener('click', async () => { try { await navigator.share({ title: 'Einkaufsliste Scheinfasten', text: shopText }); } catch {} });
+    });
+    result.querySelectorAll<HTMLButtonElement>('[data-shopcopy]').forEach((b) => b.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(shopText); shopMsg('Kopiert. In Notizen, Erinnerungen oder Deiner Einkaufs-App einfügen.'); }
+      catch { shopMsg('Kopieren hat nicht geklappt. Markiere die Liste und kopiere sie von Hand.'); }
+    }));
     result.querySelectorAll<HTMLInputElement>('input[data-owndone]').forEach((c) => c.addEventListener('change', () => {
       const [d, key] = c.dataset.owndone!.split('|'); setOwnDone(+d, key, c.checked); rerender();
     }));
@@ -518,9 +481,13 @@ import { pick } from '../data/affiliate.js';
       }
       const ORDER = ['Frühstück', 'Mittag', 'Snack', 'Abend', 'selbst eingetragen'];
       const mtags = (n: string) => `<small class="mtags">${[...meals[n]].sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b)).join(' · ')}</small>`;
+      const cats = groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')), ([n]: [string, number]) => FM[n]);
+      // Für Teilen und Kopieren: eine Zeile je Zutat, damit Erinnerungen, Notizen und Einkaufs-Apps daraus einzelne Punkte machen
+      shopText = cats.flatMap((c) => c.items.map(([n, g]: [string, number]) => `${amountLabel(n, g)} ${n}`)).join('\n');
       return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang${ppl > 1 ? ` · ${ppl} Personen` : ''}</h3><p class="muted small">Mengen ohne Reserve${ppl > 1 ? ', für alle zusammen' : ''}. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
+        <div class="shopacts noprint"><button type="button" class="btn soft small" data-shopshare hidden>${I.share} Teilen</button><button type="button" class="btn soft small" data-shopcopy>${I.copy} Kopieren</button><span class="small muted" data-shopmsg aria-live="polite"></span></div>
         <p class="small muted maclegend">Farbe des Symbols = Hauptnährstoff: <span class="mac carbs">${I.carbs}</span>Kohlenhydrate <span class="mac protein">${I.protein}</span>Eiweiß <span class="mac fat">${I.fat}</span>Fett <span class="mac zero">${I.leaf}</span>kaum Kalorien</p>
-        <div class="shopcats">${groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')), ([n]: [string, number]) => FM[n]).map((c) => `<div class="shopcat"><h4>${I[c.icon]}${c.label}</h4>
+        <div class="shopcats">${cats.map((c) => `<div class="shopcat"><h4>${I[c.icon]}${c.label}</h4>
         <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)} ${mtags(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
     }
     if (k === 8) return `<div class="plain nextcyc">${nextCycleHtml(start, cyc, gap, I.calendar)}</div>`;
@@ -539,12 +506,12 @@ import { pick } from '../data/affiliate.js';
       </div>
       <div class="mbar" aria-hidden="true"><i class="p" style="width:${c.shares.protein}%"></i><i class="f" style="width:${c.shares.fat}%"></i><i class="c" style="width:${c.shares.carbs}%"></i></div>
       ${doneHtml(eaten, { ...c.ref, kcal: c.target, protein: c.target * c.ref.protein / 400, fat: c.target * c.ref.fat / 900, carbs: c.target * c.ref.carbs / 400 }, fmt, dayDone(k) ? ' · Tag geschafft!' : '', n)}
-      ${own ? `<p class="small muted">${I.info} Heute zählt mit, was Du im <a href="${base}rechner/">Rechner</a> selbst eingetragen hast${own.replaced.size ? `. Es ersetzt im Plan: ${[...own.replaced].map((x) => ({ Morgens: 'Morgens', Mittags: 'Mittagessen', Abends: 'Abendessen' } as any)[x]).join(', ')}` : ''}.</p>` : ''}
+      ${own ? `<p class="small muted">${I.info} Heute zählt mit, was Du im <a href="${base}rechner/">Rechner</a> eingetragen oder entfernt hast${own.replaced.size ? `. Nicht aus dem Plan: ${[...own.replaced].map((x) => ({ Morgens: 'Morgens', Mittags: 'Mittagessen', Nachmittags: 'Nachmittags', Abends: 'Abendessen' } as any)[x]).join(', ')}` : ''}.</p>` : ''}
       <p class="muted small">${I.water} Dazu über den Tag reichlich Wasser oder ungesüßten Tee.</p></div>`;
     const cards: [number, string][] = [];
     for (const m of own?.meals || []) {
       const dn = ownIsDone(m, own!.done);
-      cards.push([ORDER_T[m.slot] ?? 6, `<article class="meal own${dn ? ' isdone' : ''}">${m.recipe ? `<img src="${img(m.recipe)}" alt="" loading="lazy">` : `<div class="ownimg" aria-hidden="true">${I.cup}</div>`}<div class="info">
+      cards.push([ORDER_T[m.slot] ?? 6, `<article class="meal own${dn ? ' isdone' : ''}">${m.recipe ? `<img src="${img(m.recipe)}" alt="" loading="lazy">` : `<div class="ownimg" aria-hidden="true">${I.bowl}</div>`}<div class="info">
         <span class="when">${m.main ? ({ Morgens: 'Morgens', Mittags: 'Mittags', Abends: 'Abends' } as any)[m.slot] : 'Zwischenmahlzeit'} · selbst eingetragen</span>
         <h3>${m.recipe ? `<a href="${base}rezepte/${m.recipe.slug}/">${esc(m.recipe.title)}</a>` : esc(m.label)}</h3>
         <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.n.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.n.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.n.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.n.carbs)} g</b></span></div>
