@@ -19,7 +19,7 @@ import { pick } from '../data/affiliate.js';
     <div class="ph-text">
       <p class="kicker">Scheinfastenrechner</p>
       <h1>Do it yourself: Was koche ich heute?</h1>
-      <p class="lead">Gib ein, was Du zu Hause hast oder gern verwenden möchtest. Wir machen daraus Rezepte mit berechneten Mengen für Deinen Fastentag. Gegessenes hakst Du einfach ab.</p>
+      <p class="lead">Trag Deine Mahlzeiten selbst ein oder wähle Rezepte von uns. Den Rest rechnen wir passend zu Deinem Fastentag aus. Weißt Du nicht, was Du kochen sollst, macht der Rezept-Generator aus Deinen Vorräten passende Gerichte. Gegessenes hakst Du einfach ab.</p>
     </div>
     <Rotator images={[
       { src: 'img/menschen/paar-kocht.jpg', alt: 'Paar kocht gemeinsam mit frischem Gemüse' },
@@ -99,9 +99,16 @@ import { pick } from '../data/affiliate.js';
   <div id="pane-cook">
   <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
     <form id="f" class="card wcard" novalidate>
-      <fieldset class="block">
-        <legend><span class="num"><Icon name="pot" /></span>Was hast Du zu Hause?</legend>
-        <p class="small muted">Tipp ein, was Du da hast, ganz ohne Mengen. Wir machen daraus leckere, passende Rezepte für Deine Mahlzeiten und rechnen die Mengen für Deinen Fastentag aus.</p>
+      <fieldset class="block" id="own">
+        <legend><span class="num"><Icon name="cup" /></span>Deine Mahlzeiten</legend>
+        <p class="small muted">Trag Dein Essen selbst ein, zum Beispiel einen Sojajoghurt oder Maiswaffeln mit Avocado, oder wähle ein Rezept von uns. Beides lässt sich mischen. Alles zählt sofort in Deinen Tag. Was offen bleibt, füllen wir mit passenden Gerichten auf.</p>
+        <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Alkohol und Säfte. Kaffee höchstens eine kleine Tasse schwarz. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
+        <div class="omeals" id="omeals"></div>
+      </fieldset>
+      <details class="gen" id="gen">
+        <summary><span class="num"><Icon name="pot" /></span><span><b>Rezept-Generator</b><small>Was hast Du zu Hause? Wir machen daraus passende Scheinfasten-Rezepte und rechnen die Mengen aus.</small></span></summary>
+        <div class="genin">
+        <p class="small muted">Tipp ein, was Du da hast, ganz ohne Mengen. Der Generator baut daraus die noch offenen Mahlzeiten Deines Tages und rechnet die Mengen passend zu Prof. Dr. Longos Vorgaben aus. Selbst eingetragene Mahlzeiten bleiben, wie sie sind.</p>
         <div class="field combo">
           <label for="q" class="lbl">Lebensmittel hinzufügen</label>
           <div class="search">
@@ -115,22 +122,14 @@ import { pick } from '../data/affiliate.js';
           <span class="small muted">Schnell dazu:</span>
           {quick.map((n) => <button type="button" class="qchip" data-add={n}><Icon name="plus" />{n}</button>)}
         </div>
-        <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Alkohol und Säfte. Kaffee höchstens eine kleine Tasse schwarz. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
         <div class="picked" id="picked" aria-label="Deine Lebensmittel"></div>
         <p class="small muted legendline"><span class="lg"><span class="dot g"></span>passt gut</span><span class="lg"><span class="dot y"></span>nur kleine Menge</span><span class="lg"><span class="dot r"></span>passt nicht</span></p>
-        <p class="small muted legendline"><span>Hauptnährstoff:</span><span class="lg"><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate</span><span class="lg"><span class="mac protein"><Icon name="protein" /></span>Eiweiß</span><span class="lg"><span class="mac fat"><Icon name="fat" /></span>Fett</span></p>
-      </fieldset>
+        <p class="small muted legendline"><span>Farbe des Symbols:</span><span class="lg"><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate</span><span class="lg"><span class="mac protein"><Icon name="protein" /></span>Eiweiß</span><span class="lg"><span class="mac fat"><Icon name="fat" /></span>Fett</span><span class="lg"><span class="mac zero"><Icon name="leaf" /></span>kaum Kalorien</span></p>
+        <p class="err" id="err3" role="alert" hidden></p>
+        <div class="nav-btns"><button type="submit" class="btn">Rezepte aus meinen Lebensmitteln erstellen <Icon name="arrow" /></button></div>
+        </div>
+      </details>
 
-      <p class="err" id="err3" role="alert" hidden></p>
-      <div class="nav-btns"><button type="submit" class="btn">Jetzt daraus Rezepte erstellen <Icon name="arrow" /></button></div>
-
-      <p class="orline" aria-hidden="true"><span>oder</span></p>
-
-      <fieldset class="block" id="own">
-        <legend><span class="num"><Icon name="cup" /></span>Deine Mahlzeiten</legend>
-        <p class="small muted">Trag Dein Essen selbst ein, zum Beispiel einen Sojajoghurt oder Maiswaffeln mit Avocado, oder wähle ein Rezept von uns. Beides lässt sich mischen. Alles zählt sofort in Deinen Tag, und die übrigen Gerichte passen sich an.</p>
-        <div class="omeals" id="omeals"></div>
-      </fieldset>
       <p class="err" id="err4" role="alert" hidden></p>
       <div class="nav-btns"><button type="submit" class="btn" data-ownsubmit>Meinen Tag berechnen <Icon name="arrow" /></button></div>
       <p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
@@ -269,8 +268,18 @@ import { pick } from '../data/affiliate.js';
   .linkbtn { border: 0; background: none; color: var(--green); font: 700 .86rem var(--body); cursor: pointer; padding: 4px 0; min-height: 0; display: inline-flex; gap: 6px; align-items: center; }
   .linkbtn .i { width: 1em; height: 1em; }
   .calc .nav-btns { justify-content: flex-end; }
-  .orline { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: .8rem; }
-  .orline::before, .orline::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .gen { border: 2px dashed var(--line); border-radius: var(--radius); background: var(--band); }
+  .gen[open] { border-style: solid; }
+  .gen > summary { display: flex; gap: 12px; align-items: center; padding: 16px 18px; cursor: pointer; list-style: none; }
+  .gen > summary::-webkit-details-marker { display: none; }
+  .gen > summary > span:not(.num) { display: grid; gap: 2px; min-width: 0; }
+  .gen > summary b { font-family: var(--display); font-size: 1.3rem; font-weight: 400; }
+  .gen > summary small { color: var(--muted); }
+  .gen > summary::after { content: "+"; margin-left: auto; font: 700 1.5rem/1 var(--body); color: var(--green); flex: none; }
+  .gen[open] > summary::after { content: "\2212"; }
+  .gen > summary:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; border-radius: var(--radius); }
+  .gen .num { width: 32px; height: 32px; border-radius: 50%; background: var(--green); color: var(--on-green); display: grid; place-items: center; flex: none; }
+  .genin { display: grid; gap: 18px; padding: 0 18px 18px; min-width: 0; }
   .block .num .i { width: 18px; height: 18px; }
   .otog { border: 0; background: none; cursor: pointer; padding: 8px 12px; border-radius: 9px; font: 700 .86rem/1.2 var(--body); color: var(--muted); white-space: nowrap; min-height: 0; }
   .otog[aria-pressed="true"] { background: var(--card); color: var(--green); box-shadow: var(--shadow); }
@@ -320,7 +329,7 @@ import { pick } from '../data/affiliate.js';
 <script>
   import { FOODS, BY_NAME, search, norm, profile, targets, solve, suggestAdditions, completeDay, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
   import { fmt, PLAN, amountLabel, RECIPES, nutrition, NUTRIENTS as NUTRI } from '../lib/nutrition.js';
-  import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
+  import { groupByCat, foodBadge } from '../lib/foodmeta.js';
   import { thumb, thumbIn } from '../lib/url.js';
   import { doneHtml } from '../lib/fortschritt.js';
   import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml, addDays } from '../lib/uebergang.js';
@@ -340,13 +349,8 @@ import { pick } from '../data/affiliate.js';
   const STORE = 'smlRechner';
   const esc = (s: string) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
   const LIGHT: Record<string, string> = { g: 'passt gut', y: 'nur kleine Menge', r: 'passt nicht' };
-  // Symbol für den Hauptnährstoff (Kohlenhydrate, Eiweiß oder Fett); Kräuter, Würzen und Kalorienfreies ohne Symbol
-  const mac = (name: string) => {
-    const m = macroOf(BY_NAME[name]);
-    if (!m) return '<span class="mac none" aria-hidden="true"></span>';
-    const lbl = MACROS[m.key as keyof typeof MACROS];
-    return `<span class="mac ${m.key}" title="Liefert vor allem ${lbl} (${m.share} % der Kalorien)">${I[m.key]}<span class="sr-only">${lbl}:</span></span>`;
-  };
+  // Symbol vor jedem Lebensmittel: Bild = Lebensmittelart, Farbe = Hauptnährstoff (grau = kaum Kalorien)
+  const mac = (name: string) => BY_NAME[name] ? foodBadge(name, BY_NAME[name]) : '<span class="mac none" aria-hidden="true"></span>';
 
   type Pick = { name: string; g?: number };
   // Selbst eingetragene Mahlzeiten: Einträge wie im Tagebuch, {type: 'food', name, qty, unit} oder {type: 'recipe', slug, qty, unit: 'portion'}
@@ -489,7 +493,7 @@ import { pick } from '../data/affiliate.js';
   const plusBtn = (pos: number) => `<div class="oplus"><button type="button" data-ozadd="${pos}" aria-label="Zwischenmahlzeit ${POS_TXT[pos]} einfügen" title="Zwischenmahlzeit ${POS_TXT[pos]}">${I.plus}</button></div>`;
   function renderOwn() {
     const o = own();
-    const hint = (k: string) => (k === 'bf' ? 'Kein Frühstück. Wähle Rezept oder Selbst eintragen, wenn Du frühstückst.' : 'Wir machen ein Gericht aus Deinen Lebensmitteln.');
+    const hint = (k: string) => (k === 'bf' ? 'Kein Frühstück. Wähle Rezept oder Selbst eintragen, wenn Du frühstückst.' : 'Noch offen. Wähle ein Rezept, trag selbst ein oder nutze unten den Rezept-Generator.');
     const tog = (k: string, v: string, l: string) => `<button type="button" class="otog" data-om="${k}" data-v="${v}" aria-pressed="${o.mode[k] === v}">${l}</button>`;
     const zws = (pos: number) => o.zw.filter((z) => z.pos === pos).map((z) => `<div class="omeal on zw" data-k="${z.id}"><div class="ohead"><b>Zwischenmahlzeit${o.fin[z.id] && z.items.length ? ` <span class="ok-ic">${I.check}</span>` : ''}</b><button type="button" class="orm" data-ozrm="${z.id}">${I.close} Entfernen</button></div>${o.fin[z.id] && z.items.length ? doneHtml2(z.id) : editorHtml(z.id, 'Zwischenmahlzeit')}</div>`).join('');
     let h = '';
@@ -714,6 +718,7 @@ import { pick } from '../data/affiliate.js';
     if (state.shown) render();
   }
   function renderPicked() {
+    if (state.picks.length) (document.getElementById('gen') as HTMLDetailsElement).open = true;
     picked.innerHTML = groupByCat(state.picks, (p: Pick) => BY_NAME[p.name]).map((c) => `<div class="pgroup"><p class="catlbl">${I[c.icon]}${c.label}</p><ul>${c.items.map((p: Pick) => {
       const f = BY_NAME[p.name];
       return `<li class="pchip ${f.light}"><span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>${mac(f.name)}${esc(f.name)}<button type="button" data-remove="${esc(f.name)}" aria-label="${esc(f.name)} entfernen">${I.close}</button></li>`;
@@ -847,7 +852,7 @@ import { pick } from '../data/affiliate.js';
       ];
       const fixedRows = fixedBlocks.map((b2) => `<tbody><tr class="cat"><th colspan="3" scope="colgroup">${I.cup}${esc(b2.label)}</th></tr>${b2.items.filter((it: any) => it.g >= 0.5).map((it: any) => {
         const f = BY_NAME[it.name] || { n: (NUTRI as any)[it.name] || [0], light: 'g' };
-        return `<tr class="fixed"><td class="nm"><span class="nmrow">${BY_NAME[it.name] ? mac(it.name) : '<span class="mac none" aria-hidden="true"></span>'}<span>${esc(it.name)}${BY_NAME[it.name] ? ` <span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>` : ''}</span></span></td><td>${amount(it.name, it.g)}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
+        return `<tr class="fixed"><td class="nm"><span class="nmrow">${mac(it.name)}<span>${esc(it.name)}${BY_NAME[it.name] ? ` <span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>` : ''}</span></span></td><td>${amount(it.name, it.g)}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
       }).join('')}</tbody>`).join('');
       tableHtml = `<details class="stack plain amountsbox"><summary><b>Deine Tagesmengen im Detail</b> <span class="muted small">(ändere ruhig eine Zahl, wir passen den Rest an)</span></summary>
         <div class="tw"><table class="amounts"><thead><tr><th>Lebensmittel</th><th>Menge pro Tag</th><th>kcal</th></tr></thead>
@@ -946,7 +951,7 @@ import { pick } from '../data/affiliate.js';
           <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.kcal)} kcal</span></div>
           <h3><a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a></h3>
           <p class="small muted">${portionTxt(q)}</p>
-          <ul class="ing">${r.ingredients.map((i: any) => `<li>${BY_NAME[i.name] ? mac(i.name) : '<span class="mac none" aria-hidden="true"></span>'}<span>${amountLabel(i.name, i.amount * q)} ${esc(i.name)}</span></li>`).join('')}</ul>
+          <ul class="ing">${r.ingredients.map((i: any) => `<li>${mac(i.name)}<span>${amountLabel(i.name, i.amount * q)} ${esc(i.name)}</span></li>`).join('')}</ul>
           <p class="small muted">${I.time} etwa ${r.minutes} Minuten · Zubereitung im Rezept.</p>
           <label class="tick"><input type="checkbox" data-done="${m.key}" ${isDone ? 'checked' : ''}><span>Gegessen</span></label>
         </div></article>`;

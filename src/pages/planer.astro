@@ -187,7 +187,7 @@ import { pick } from '../data/affiliate.js';
 
 <script>
   import { RECIPES, BY_SLUG, PLAN, nutrition, add, check, shares, amountLabel, fmt } from '../lib/nutrition.js';
-  import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
+  import { groupByCat, foodBadge } from '../lib/foodmeta.js';
   import { thumb } from '../lib/url.js';
   import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml } from '../lib/uebergang.js';
   import { doneHtml } from '../lib/fortschritt.js';
@@ -196,12 +196,7 @@ import { pick } from '../data/affiliate.js';
   const base = root.dataset.base!;
   const I = JSON.parse(root.dataset.icons!);
   const FM: Record<string, any> = JSON.parse(root.dataset.foods!);
-  const mac = (name: string) => {
-    const m = macroOf(FM[name]);
-    if (!m) return '<span class="mac none" aria-hidden="true"></span>';
-    const lbl = MACROS[m.key as keyof typeof MACROS];
-    return `<span class="mac ${m.key}" title="Liefert vor allem ${lbl} (${m.share} % der Kalorien)">${I[m.key]}<span class="sr-only">${lbl}:</span></span>`;
-  };
+  const mac = (name: string) => FM[name] ? foodBadge(name, FM[name]) : '<span class="mac none" aria-hidden="true"></span>';
   const form = document.getElementById('f') as HTMLFormElement;
   const result = document.getElementById('result')!;
   const STORE = 'smlPlaner';
@@ -474,7 +469,7 @@ import { pick } from '../data/affiliate.js';
       const ORDER = ['Frühstück', 'Mittag', 'Snack', 'Abend'];
       const mtags = (n: string) => `<small class="mtags">${[...meals[n]].sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b)).join(' · ')}</small>`;
       return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang${ppl > 1 ? ` · ${ppl} Personen` : ''}</h3><p class="muted small">Mengen ohne Reserve${ppl > 1 ? ', für alle zusammen' : ''}. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
-        <p class="small muted maclegend">Hauptnährstoff: <span class="mac carbs">${I.carbs}</span>Kohlenhydrate <span class="mac protein">${I.protein}</span>Eiweiß <span class="mac fat">${I.fat}</span>Fett</p>
+        <p class="small muted maclegend">Farbe des Symbols = Hauptnährstoff: <span class="mac carbs">${I.carbs}</span>Kohlenhydrate <span class="mac protein">${I.protein}</span>Eiweiß <span class="mac fat">${I.fat}</span>Fett <span class="mac zero">${I.leaf}</span>kaum Kalorien</p>
         <div class="shopcats">${groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[0], 'de')), ([n]: [string, number]) => FM[n]).map((c) => `<div class="shopcat"><h4>${I[c.icon]}${c.label}</h4>
         <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)} ${mtags(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
     }

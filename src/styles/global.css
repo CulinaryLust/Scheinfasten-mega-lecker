@@ -199,6 +199,7 @@ footer.foot a { color: var(--muted); }
 .mac.carbs { background: color-mix(in srgb, var(--c-carbs) 18%, transparent); color: var(--c-carbs); }
 .mac.protein { background: color-mix(in srgb, var(--c-protein) 18%, transparent); color: var(--c-protein); }
 .mac.fat { background: color-mix(in srgb, var(--c-fat) 20%, transparent); color: var(--c-fat); }
+.mac.zero { background: color-mix(in srgb, var(--muted) 16%, transparent); color: var(--muted); }
 .mac.none { background: transparent; }
 
 /* Fallbacks: ohne Blur-Unterstützung, bei „Transparenz reduzieren“ oder „Mehr Kontrast“ wird Glas deckend */
