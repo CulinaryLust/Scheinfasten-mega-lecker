@@ -51,6 +51,7 @@ for x in FS.F:
     else:
         v = tuple(x['n'] or N[x['name']]) + (None,); src = {'db': 'USDA', 'code': None, 'name': None}
     cap, capWhy = FS.limit(gcap if x['cap'] is None else x['cap'], v)
+    if x['name'] in FS.PUMPKIN and cap == FS.PUMPKIN_MAX: capWhy = 'kuerbis'
     foods.append({'name': x['name'], 'group': x['group'], 'groupLabel': label, 'light': light,
                   'cap': cap, 'capWhy': capWhy, 'syn': x['syn'], 'alts': alts,
                   'why': x['why'] or FS.WHY.get(x['group']) or (FS.WHY['y'] if light == 'y' else ''),
@@ -62,6 +63,8 @@ for x in R:
     tot = {}
     for i in x['ingredients']: tot[i['name']] = tot.get(i['name'], 0) + i['amount']
     over += [f"{x['slug']}: {n} {g} g > {CAP[n]} g" for n, g in tot.items() if CAP[n] and g > CAP[n] and FS_KCAL(n) > 5]
+# Kürbis: auch die größte Portion (Faktor 1,15) bleibt unter dem Richtwert.
+over += [f"{x['slug']}: Kürbis über {FS.PUMPKIN_MAX} g bei Faktor 1,15" for x in R if sum(i['amount'] for i in x['ingredients'] if i['name'] in FS.PUMPKIN) * 1.15 > FS.PUMPKIN_MAX + 2]
 assert not over, 'Rezeptmengen über der Obergrenze:\n' + '\n'.join(over)
 json.dump(foods, open(f'{out}/foods.json', 'w'), ensure_ascii=False, indent=1)
 print(len(foods), 'Lebensmittel exportiert,', sum(f['src']['db'] == 'BLS' for f in foods), 'aus dem BLS')

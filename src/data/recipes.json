@@ -93,8 +93,13 @@
   "ingredients": [
    {
     "name": "Hokkaido-Kürbis",
-    "amount": 280,
+    "amount": 175,
     "note": "mit Schale gewürfelt"
+   },
+   {
+    "name": "Karotten",
+    "amount": 70,
+    "note": "in Scheiben"
    },
    {
     "name": "Zwiebeln",
@@ -128,7 +133,7 @@
    }
   ],
   "steps": [
-   "Zwiebel im Öl 3 Minuten anschwitzen, Ingwer und Kürbis kurz mitrösten.",
+   "Zwiebel im Öl 3 Minuten anschwitzen, Ingwer, Kürbis und Karotten kurz mitrösten.",
    "Brühe angießen und zugedeckt 15 Minuten weich kochen.",
    "Kokosmilch einrühren (1 TL zum Garnieren zurückbehalten) und fein pürieren.",
    "Kürbiskerne ohne Fett rösten, bis sie knacken.",
@@ -1839,8 +1844,13 @@
   "ingredients": [
    {
     "name": "Hokkaido-Kürbis",
-    "amount": 250,
+    "amount": 175,
     "note": "in Spalten"
+   },
+   {
+    "name": "Karotten",
+    "amount": 60,
+    "note": "in Stiften"
    },
    {
     "name": "Feldsalat",
@@ -1869,9 +1879,9 @@
    }
   ],
   "steps": [
-   "Kürbis mit der Hälfte des Öls und Salz bei 210 °C 25 Minuten rösten.",
+   "Kürbis und Karotten mit der Hälfte des Öls und Salz bei 210 °C 25 Minuten rösten.",
    "Restliches Öl mit Balsamico und Pfeffer verrühren.",
-   "Feldsalat mit Dressing mischen, Kürbis und Zwiebel daraufgeben.",
+   "Feldsalat mit Dressing mischen, Kürbis, Karotten und Zwiebel daraufgeben.",
    "Kürbiskerne rösten und darüberstreuen."
   ],
   "tip": "Der Kürbis kann lauwarm oder kalt auf den Salat.",
