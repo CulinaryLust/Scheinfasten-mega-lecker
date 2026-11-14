@@ -1,8 +1,8 @@
 // Tagesbilanz: zählt, was jemand an einem Fastentag schon gegessen hat, vergleicht es mit dem Tageslimit
 // nach Longo und schlägt vor, wie sich der Rest des Tages passend füllen lässt.
 // Läuft im Browser und in Node (Tests).
-import { BY_NAME, FOODS, search, solve, totals, verdict, norm } from './rechner.js';
-import { RECIPES, BY_SLUG, PLAN, nutrition } from './nutrition.js';
+import { BY_NAME, FOODS, search, solve, totals, verdict, norm, unit } from './rechner.js';
+import { RECIPES, BY_SLUG, PLAN, nutrition, shares } from './nutrition.js';
 
 /** Eine kleine Tasse Kaffee in ml. Mehr als eine pro Tag ist nicht vorgesehen (Empfehlung des ProLon-Herstellers). */
 export const CUP_ML = 150;
@@ -12,26 +12,70 @@ const PUMPKIN = ['Hokkaido-Kürbis', 'Gartenkürbis'];
 const COFFEE = 'Kaffee';
 const TEA_CUP = 200;
 
+// Haushaltsmengen in Gramm (bzw. ml), damit niemand seine Avocado wiegen muss. Eigene Richtwerte.
+const SEED = /Leinsamen|Chiasamen|Sesam|Hanfsamen|Mohn|Kürbiskerne|Sonnenblumenkerne|Pinienkerne|Gemahlene Mandeln/;
+const BUTTER = /mus$|Tahin|Streichcreme|Erdnussbutter/;
+const CUPLIKE = /joghurt|quark|Skyr/i;
+const SPREADY = /aufstrich|Pastete|Guacamole|Hummus|Frischkäse|Ajvar|Senf|Tomatenmark|Misopaste|Currypaste|Meerrettich|Kochcreme|Schlagcreme|Kokosmilch|Sojakochcreme|Kokosmus|Margarine|Butter|Pflanzencreme|Schmand|Sahne|Crème|Mayonnaise|Ketchup|Marmelade|Nougat|Honig|Sirup|Dicksaft/i;
+const POWDER = /pulver|Kurkuma|Kreuzkümmel|Zimt|Pfeffer|Salz|Chili|Muskat|Oregano/;
+const FLAKES = /flocken|Müsli|kleie|Weizenkeime|Kokosraspeln|Kokoschips|mehl|Stärke|gepufft/i;
+const PLURAL = { Tasse: 'Tassen', 'kleine Tasse': 'kleine Tassen', Glas: 'Gläser', Portion: 'Portionen', Waffel: 'Waffeln', Scheibe: 'Scheiben', Zehe: 'Zehen', Kern: 'Kerne', Knolle: 'Knollen', Blatt: 'Blätter', Olive: 'Oliven', Schale: 'Schalen', Kugel: 'Kugeln' };
+/** Mehrzahl einer Einheit, z. B. „2 Scheiben“. EL, TL, Becher, Handvoll und Stück bleiben gleich. */
+export const plural = (u, q) => (+q === 1 || +q < 1 ? u : PLURAL[u] || u);
+
+function household(f) {
+  const n = f.name, g = f.group, out = [];
+  const push = (key, label, grams) => { if (!out.some((x) => x[0] === key)) out.push([key, label, grams]); };
+  if (CUPLIKE.test(n) && !/Trinkjoghurt/.test(n)) { push('becher', 'Becher', 150); push('el', 'EL', 15); }
+  if (n === 'Kaffee' || n === 'Espresso' || n === 'Kaffee (entkoffeiniert)') push('cup', 'kleine Tasse', n === 'Espresso' ? 40 : CUP_ML);
+  else if (g === 'getraenk' || g === 'drink' || /drink|milch$|Milch$|Kefir|Buttermilch|Ayran|Trinkjoghurt|saft$/i.test(n) && !/Kokosmilch/.test(n)) {
+    if (/tee|Kaffee|Cappuccino/i.test(n)) push('cup', 'Tasse', TEA_CUP); else push('glas', 'Glas', 200);
+  }
+  if (g === 'suppe' || g === 'fertig') { push('teller', 'Teller', 300); push('schale', 'Schale', 200); }
+  if (f.piece) push('piece', f.piece[0], f.piece[1]);
+  if (g === 'fett') { push('tl', 'TL', 5); push('el', 'EL', 10); }
+  else if (g === 'nuss') {
+    if (BUTTER.test(n)) { push('tl', 'TL', 7); push('el', 'EL', 15); }
+    else if (SEED.test(n)) { push('tl', 'TL', 4); push('el', 'EL', 10); }
+    else { push('hand', 'Handvoll', 25); push('el', 'EL', 10); }
+  } else if (/Oliven|Oliven mit/.test(n)) { push('olive', 'Olive', 4); push('el', 'EL', 15); }
+  else if (n === 'Falafel') push('piece', 'Stück', 20);
+  else if (SPREADY.test(n)) { push('tl', 'TL', 5); push('el', 'EL', 15); }
+  else if (FLAKES.test(n)) { push('el', 'EL', 8); if (/flocken|Müsli/i.test(n)) push('portion', 'Portion', 40); }
+  else if (g === 'wuerze') { if (POWDER.test(n)) push('tl', 'TL', 2); else if (!f.piece) { push('tl', 'TL', 5); push('el', 'EL', 15); } }
+  else if (g === 'kraeuter') { push('el', 'EL', 3); push('hand', 'Handvoll', 10); }
+  else if (g === 'blatt') { push('hand', 'Handvoll', 25); push('portion', 'Portion', 60); }
+  else if (['gemuese', 'pilze', 'knolle'].includes(g)) {
+    if (/Kirschtomaten|Radieschen|Champignons$/.test(n)) push('stk', 'Stück', n === 'Champignons' ? 20 : 15);
+    push('hand', 'Handvoll', 60); push('portion', 'Portion', 150);
+  } else if (g === 'obst') { if (!f.piece) push('hand', 'Handvoll', 80); push('portion', 'Portion', 125); }
+  else if (['huelsen', 'getreide'].includes(g)) { push('el', 'EL', 20); push('portion', 'Portion', 150); }
+  else if (g === 'soja') { if (/Tofu/.test(n)) push('portion', 'Portion', 100); else if (n === 'Edamame') push('hand', 'Handvoll', 50); }
+  else if (g === 'knusper' && !f.piece) push('hand', 'Handvoll', 10);
+  else if (/Käse|Emmentaler|Edamer|Cheddar|Tilsiter|Gouda/.test(n)) push('scheibe', 'Scheibe', 20);
+  else if (['suess', 'weissmehl', 'tier', 'milch', 'eiweiss'].includes(g) && !out.length) push('portion', 'Portion', 100);
+  return out;
+}
+
 /** Einheiten, in denen sich ein Lebensmittel oder Rezept eintragen lässt: [Schlüssel, Bezeichnung, Gramm je Einheit]. */
 export function units(entry) {
   if (entry.type === 'recipe') return [['portion', 'Portion', 1]];
   const f = BY_NAME[entry.name];
-  const fluid = f.group === 'getraenk' || f.name === 'Gemüsebrühe' || /saft|essig|Balsamico|Sojasauce/i.test(f.name);
-  const out = [[fluid ? 'ml' : 'g', fluid ? 'ml' : 'g', 1]];
-  if (f.name === COFFEE) out.push(['cup', 'kleine Tasse', CUP_ML]);
-  else if (f.group === 'getraenk') out.push(['cup', 'Tasse', TEA_CUP]);
-  if (f.piece) out.push(['piece', f.piece[0], f.piece[1]]);
-  return out;
+  const fluid = unit(f.name) === 'ml' || /saft|essig|Balsamico|Sojasauce/i.test(f.name);
+  return [[fluid ? 'ml' : 'g', fluid ? 'ml' : 'g', 1], ...household(f)];
 }
 
-/** Vorschlag für die Menge, wenn jemand ein Lebensmittel neu einträgt. */
+/** Vorschlag für die Menge, wenn jemand ein Lebensmittel neu einträgt: die erste Haushaltsmenge, sonst übliche Gramm. */
 export function defaultAmount(entry) {
   if (entry.type === 'recipe') return { qty: 1, unit: 'portion' };
   const f = BY_NAME[entry.name];
-  if (f.piece && ['gemuese', 'knolle', 'obst', 'blatt', 'pilze'].includes(f.group)) return { qty: 1, unit: 'piece' };
-  if (f.group === 'getraenk') return { qty: 1, unit: 'cup' };
+  const u = units(entry);
+  // Haushaltsmenge statt Gramm, aber keine Winzlinge wie „1 Mandel“ als Startwert
+  const hh = u.slice(1).filter((x) => x[2] >= 4 && !(x[0] === 'piece' && x[2] < 8));
+  const pref = hh.find((x) => ['becher', 'cup', 'glas', 'teller'].includes(x[0])) || (f.light !== 'r' || hh.length ? hh[0] : null);
+  if (pref) return { qty: 1, unit: pref[0] };
   const g = { fett: 10, nuss: 15, kraeuter: 5, wuerze: 5, fettfrucht: 20, pflanz: 50 }[f.group] ?? 100;
-  return { qty: g, unit: units(entry)[0][0] };
+  return { qty: g, unit: u[0][0] };
 }
 
 /** Gramm eines Eintrags (bei Rezepten: Portionen). */
@@ -40,14 +84,14 @@ export function grams(entry) {
   return Math.max(0, +entry.qty || 0) * u[2];
 }
 
-/** Text für die Menge eines Eintrags, z. B. „1 Stück (200 g)“ oder „1,5 Portionen“. */
+/** Text für die Menge eines Eintrags, z. B. „1 Stück (200 g)“, „2 EL (20 g)“ oder „1,5 Portionen“. */
 export function qtyLabel(entry) {
   const q = Number(entry.qty).toLocaleString('de-DE', { maximumFractionDigits: 1 });
   if (entry.type === 'recipe') return `${q} ${+entry.qty === 1 ? 'Portion' : 'Portionen'}`;
-  const u = units(entry).find((x) => x[0] === entry.unit) || units(entry)[0];
+  const all = units(entry);
+  const u = all.find((x) => x[0] === entry.unit) || all[0];
   if (u[2] === 1) return `${q} ${u[1]}`;
-  const unit = units(entry)[0][1];
-  return `${q} ${+entry.qty === 1 || u[0] === 'piece' ? u[1] : u[1] === 'Tasse' ? 'Tassen' : u[1].replace('kleine Tasse', 'kleine Tassen')} (${Math.round(grams(entry))} ${unit})`;
+  return `${q} ${plural(u[1], entry.qty)} (${Math.round(grams(entry))} ${all[0][1]})`;
 }
 
 /** Löst Einträge in Lebensmittel mit Gramm auf. Rezepte werden in ihre Zutaten zerlegt. */
@@ -167,6 +211,35 @@ export function fillRecipes(entries, t, limit = 3, portions = [0.5, 1, 1.5, 2]) 
   }
   const base = err(eaten, t);
   return out.filter((x) => x.err < base).sort((a, b) => a.err - b.err).slice(0, limit);
+}
+
+/**
+ * Ampel für eine selbst eingetragene Mahlzeit, gemessen an Prof. Dr. Longos Tagesvorgaben.
+ * entries: wie bei status(), t: Zielwerte, day: 1 bis 5, main: Haupt- oder Zwischenmahlzeit.
+ * Fett und Kohlenhydrate einer einzelnen Mahlzeit bewerten wir nicht: Die gleicht der Rest des Tages aus.
+ * Rückgabe: { light: 'g' | 'y' | 'r', notes: [Text], sum, shares, items }
+ */
+export function mealCheck(entries, t, day, main = true) {
+  const items = expand(entries);
+  const sum = totals(items);
+  const sh = shares(sum);
+  const tolP = PLAN.reference.tolerance.proteinPoints ?? PLAN.reference.tolerance.macroPoints;
+  const sugarMax = t.kcal * PLAN.reference.sugarMaxPercent / 100 / 4;
+  const red = [], yellow = [];
+  for (const i of items) {
+    const f = BY_NAME[i.name];
+    if (f.light === 'r') red.push(`${f.name} passt nicht ins Scheinfasten. ${f.why}`);
+    else if (f.cap && i.g > f.cap + 0.5 && f.n[0] > 5) yellow.push(`Mehr ${f.name}, als wir für einen ganzen Tag empfehlen (höchstens ${Math.round(f.cap)} ${unit(f.name)}).`);
+  }
+  if (sum.kcal > t.kcal * 1.05) red.push(`Allein diese Mahlzeit hat mehr Kalorien als Dein ganzer Fastentag (Ziel ${Math.round(t.kcal)} kcal).`);
+  else if (sum.kcal > t.kcal * (main ? 0.5 : 0.3)) yellow.push(`Eine große Mahlzeit: ${Math.round(sum.kcal / t.kcal * 100)} % Deines Tagesziels. Für den Rest des Tages bleibt nur noch wenig.`);
+  if (sum.kcal >= 40 && sh.protein > t.ref.protein + tolP) yellow.push(`Viel Eiweiß: ${Math.round(sh.protein)} % der Kalorien, Prof. Dr. Longo sieht ca. ${t.ref.protein} % vor. Beim Scheinfasten bleibt Eiweiß bewusst knapp.`);
+  if (sum.sugar > sugarMax * 0.5) yellow.push(`Viel Zucker: ${Math.round(sum.sugar)} g, am ganzen Tag sind höchstens ${Math.round(sugarMax)} g vorgesehen.`);
+  const g = (n) => items.filter((i) => n.includes(i.name)).reduce((a, i) => a + i.g, 0);
+  if (day >= 2 && g(PUMPKIN) > PUMPKIN_MAX) yellow.push(`${Math.round(g(PUMPKIN))} g Kürbis. An Tag 2 bis 5 sind ca. ${PUMPKIN_MAX} g am Tag genug.`);
+  if (g([COFFEE]) > CUP_ML + 1) yellow.push('Mehr als eine kleine Tasse Kaffee. Mehr ist beim Scheinfasten nicht vorgesehen.');
+  const light = red.length ? 'r' : yellow.length ? 'y' : 'g';
+  return { light, notes: [...red, ...yellow], sum, shares: sh, items };
 }
 
 /** Zyklustag (1 bis 5) aus dem Startdatum im Planer, sonst null. */

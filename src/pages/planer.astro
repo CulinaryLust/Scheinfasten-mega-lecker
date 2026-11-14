@@ -118,8 +118,8 @@ import { pick } from '../data/affiliate.js';
   .progress { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .progress li { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; color: var(--muted); padding-bottom: 10px; border-bottom: 4px solid var(--line); }
   .progress li span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--line); color: var(--fg); font-size: .85rem; flex: none; }
-  .progress li.on { color: var(--fg); border-color: var(--tomato); }
-  .progress li.on span { background: var(--tomato); color: var(--on-tomato); }
+  .progress li.on { color: var(--fg); border-color: var(--green); }
+  .progress li.on span { background: var(--green); color: var(--on-green); }
   .wcard { padding: clamp(18px, 4vw, 30px); }
   .seg.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   @media (max-width: 560px) { .seg.four { grid-template-columns: 1fr 1fr; } }
@@ -145,7 +145,7 @@ import { pick } from '../data/affiliate.js';
   .meal { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
   @media (max-width: 560px) { .meal { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; } }
   .meal img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
-  .meal .when { font-size: .75rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--tomato); }
+  .meal .when { font-size: .75rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--green); }
   .meal h3 { font-size: 1.12rem; }
   .meal h3 a { color: inherit; text-decoration: none; } .meal h3 a:hover { text-decoration: underline; }
   .meal .info { display: grid; gap: 8px; min-width: 0; }

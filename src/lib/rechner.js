@@ -206,7 +206,10 @@ function fit(list, t, lambda, W, minShare = 0, extra = null) {
  */
 export function solve(picks, t, opt = {}) {
   // Rote Lebensmittel plant der Rechner nie ein. Hat jemand sie schon gegessen (feste Menge), zählen sie mit.
-  const list = picks.map((p) => ({ ...p, f: BY_NAME[p.name] })).filter((p) => p.f && (p.f.light !== 'r' || p.g != null));
+  // opt.used: schon selbst eingetragene Mengen je Lebensmittel. Sie verkleinern die Obergrenze (z. B. Kürbis ca. 200 g am Tag).
+  const used = opt.used || {};
+  const list = picks.map((p) => { const f = BY_NAME[p.name]; return { ...p, f: f && used[p.name] ? { ...f, cap: Math.max(0, f.cap - used[p.name]) } : f }; })
+    .filter((p) => p.f && (p.f.light !== 'r' || p.g != null));
   const W = opt.W || [1, 1, 1, 1];
   const extra = opt.extra || null;
   const lambdas = opt.lambda != null ? [opt.lambda] : [3, 1, 0.3, 0.1, 0.03];

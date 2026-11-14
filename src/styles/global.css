@@ -1,7 +1,7 @@
 :root {
   /* Farben */
   --bg: #fffdf8; --band: #f1f6ec; --card: #ffffff; --fg: #1e2a1c; --muted: #5e6b5a; --line: #e3e8dc;
-  --green: #3d7a2e; --green-d: #2a5a1f; --tomato: #cf4520; --tomato-d: #b23a1a; --on-tomato: #fff; --tomato-soft: #fde6dc; --sun: #f3b63f;
+  --green: #3d7a2e; --green-d: #2a5a1f; --tomato: #cf4520; --tomato-d: #b23a1a; --on-tomato: #fff; --tomato-soft: #fde6dc; --green-soft: #e4f0dc; --on-green: #fff; --sun: #f3b63f;
   --ok: #2f7a33; --ok-bg: #e4f2e1; --warn: #9a6400; --warn-bg: #fbf0d6; --bad: #b03a22; --bad-bg: #fbe3dc;
   /* Nährwert-Farben */
   --c-kcal: #e2522c; --c-protein: #8e4fa8; --c-fat: #6f8f1f; --c-carbs: #d08a1c; --c-sugar: #d94f86;
@@ -24,7 +24,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #141a12; --band: #1b2418; --card: #20291c; --fg: #eef3ea; --muted: #a9b6a3; --line: #33402e;
-    --green: #8fcf78; --green-d: #23401b; --tomato: #ff7a52; --tomato-d: #ff8f6c; --on-tomato: #241008; --tomato-soft: #3a2219; --sun: #f3c25f;
+    --green: #8fcf78; --green-d: #23401b; --tomato: #ff7a52; --tomato-d: #ff8f6c; --on-tomato: #241008; --tomato-soft: #3a2219; --green-soft: #22331c; --on-green: #12200e; --sun: #f3c25f;
     --ok: #8fcf78; --ok-bg: #1f3319; --warn: #e8bd62; --warn-bg: #352a12; --bad: #ff9a80; --bad-bg: #3d1d15;
     --c-kcal: #ff7a52; --c-protein: #c58ee0; --c-fat: #b4cf5a; --c-carbs: #f0b04a; --c-sugar: #f08ab3;
     --shadow: 0 10px 30px -18px rgba(0, 0, 0, .7);
@@ -53,7 +53,7 @@ a { color: var(--green); }
 .narrow { max-width: 760px; }
 .muted { color: var(--muted); }
 .small { font-size: .88rem; }
-.kicker { font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--tomato); }
+.kicker { font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--green); }
 .stack { display: grid; gap: 14px; }
 .prose { display: grid; gap: 14px; max-width: 68ch; }
 .prose ul, .prose ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
@@ -75,7 +75,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
 .top .in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
 .logo { font-family: var(--display); font-size: 1.3rem; text-decoration: none; color: var(--fg); white-space: nowrap; display: flex; align-items: center; gap: 8px; }
-.logo span { color: var(--tomato); }
+.logo span { color: var(--green); }
 .logo span.tag { color: var(--green); }
 @media (max-width: 560px) { .logo { font-size: 1.1rem; gap: 6px; } .logo span.tag { font-size: .95rem; } }
 @media (max-width: 400px) { .logo span.tag { font-size: .8rem; } }
@@ -92,7 +92,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .tabbar a { display: grid; justify-items: center; gap: 2px; padding: 7px 4px 6px; min-height: 52px; border-radius: 24px; font-size: .72rem; font-weight: 700; color: var(--muted); text-decoration: none; transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease); -webkit-tap-highlight-color: transparent; }
   .tabbar a:active { transform: scale(.94); }
   .tabbar a .i { width: 24px; height: 24px; }
-  .tabbar a[aria-current="page"] { color: var(--tomato); background: color-mix(in srgb, var(--tomato) 13%, transparent); }
+  .tabbar a[aria-current="page"] { color: var(--green); background: color-mix(in srgb, var(--green) 13%, transparent); }
   body { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
 }
 
@@ -165,12 +165,12 @@ input:focus, select:focus { border-color: var(--green); outline: none; box-shado
 .seg input:focus-visible + span { outline: 3px solid var(--sun); outline-offset: 2px; }
 .checks { display: grid; gap: 6px; }
 .checks label, .consent { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 14px; cursor: pointer; }
-.checks input, .consent input { width: 22px; height: 22px; min-height: 0; margin: 1px 0 0; accent-color: var(--tomato); flex: none; }
+.checks input, .consent input { width: 22px; height: 22px; min-height: 0; margin: 1px 0 0; accent-color: var(--green); flex: none; }
 .consent { background: var(--band); border-color: transparent; }
 .nav-btns { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .err { color: var(--bad); font-weight: 700; }
 .hint { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; color: var(--muted); background: var(--band); border-radius: 14px; padding: 12px 14px; }
-.hint .i { color: var(--tomato); margin-top: 2px; }
+.hint .i { color: var(--green); margin-top: 2px; }
 .sumbar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 12px; }
 .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: grid; gap: 2px; align-content: start; }
 .stat b { font-size: 1.45rem; font-variant-numeric: tabular-nums; }
@@ -256,6 +256,8 @@ h3.slot { font-size: 1.15rem; margin-top: 10px; color: var(--green); }
 .dm.protein .dot { background: var(--c-protein); } .dm.fat .dot { background: var(--c-fat); } .dm.carbs .dot { background: var(--c-carbs); }
 .dm::after { content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 8px); width: max-content; max-width: min(280px, 80vw); padding: 8px 10px; border-radius: 10px; background: var(--fg); color: var(--bg); font-size: .8rem; line-height: 1.35; box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; pointer-events: none; transform: translateY(4px); transition: opacity .15s, transform .15s; z-index: 10; white-space: normal; }
 .dm:hover::after, .dm:focus-visible::after, .dm:focus::after { opacity: 1; transform: none; }
+/* Unsichtbare Tooltips nicht mitlayouten, sonst wird die Seite am Handy breiter als der Bildschirm */
+.dm:not(:hover):not(:focus):not(:focus-visible)::after { display: none; }
 .donebar .dm { font-size: .85rem; }
 
 /* iOS: Datumsfeld nicht breiter als die Karte */
