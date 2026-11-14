@@ -3,6 +3,7 @@ import { solve, targets, profile, buildMeals, matchRecipes, suggestAdditions, co
 import { shares, nutrition, RECIPES } from '../src/lib/nutrition.js';
 import { mealCheck } from '../src/lib/tagebuch.js';
 import { doneHtml } from '../src/lib/fortschritt.js';
+import { ownMealsOf, ownDay } from '../src/lib/eigene.js';
 import PLAN from '../src/data/plan.json' with { type: 'json' };
 
 let failed = 0;
@@ -236,6 +237,23 @@ must(unit('Tomatensuppe') === 'ml' && unit('Sojadrink') === 'ml' && unit('Ananas
       must(!/<b>\d+ %<\/b>/.test(html), 'Abhak-Leiste zeigt wieder verwechselbare Makro-Prozente');
     }
   }
+}
+// Eigene Mahlzeiten: Rechner und Planer lesen dieselben Einträge und Nährwerte
+{
+  const t = targets(2, p.f);
+  const snack = RECIPES.find((r) => r.slot === 'snack');
+  const main = RECIPES.find((r) => r.slot === 'main');
+  const o = { d: '2026-11-14', mode: { bf: 'selbst', mi: 'rezept', ab: '', zA: 'rezept' }, items: { bf: [{ type: 'food', name: 'Sojajoghurt', qty: 150, unit: 'g' }], mi: [], ab: [] },
+    rec: { mi: { slug: main.slug, qty: 1 }, zA: { slug: snack.slug, qty: 0.5 } }, fin: {}, zw: [{ id: 'zA', pos: 2, items: [] }, { id: 'zB', pos: 3, items: [{ type: 'food', name: 'Walnusskerne', qty: 20, unit: 'g' }] }] };
+  const ms = ownMealsOf(o);
+  must(ms.map((m) => m.key).join() === 'own-bf,own-mi,own-zA,own-zB', `Eigene Mahlzeiten falsch erkannt: ${ms.map((m) => m.key)}`);
+  must(ms.find((m) => m.key === 'own-zA')?.recipe?.slug === snack.slug, 'Rezept bei der Zwischenmahlzeit fehlt');
+  must(!ms.some((m) => m.key === 'own-ab'), 'Offene Mahlzeit zählt mit');
+  for (const m of ownDay(o, t, 2)) {
+    for (const k of ['kcal', 'protein', 'fat', 'carbs']) must(Math.abs(m.n[k] - m.c.sum[k]) <= Math.max(1, m.c.sum[k] * 0.02), `${m.key}: Planer (${fmt(m.n[k])}) und Rechner (${fmt(m.c.sum[k])}) rechnen ${k} verschieden`);
+  }
+  const r1 = ownMealsOf({ ...o, mode: { ...o.mode, mi: '' } });
+  must(!r1.some((m) => m.key === 'own-mi'), 'Abgewähltes Rezept zählt weiter');
 }
 console.log(failed ? `${failed} Fehler` : 'Alles ok');
 process.exit(failed ? 1 : 0);
