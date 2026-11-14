@@ -56,7 +56,7 @@ import { pick } from '../data/affiliate.js';
   </section>
 
   <section class="in calc" id="dayb">
-    <div class="card wcard daycard">
+    <div class="card wcard daycard" id="daycard">
       <div class="dayhead"><span class="num"><Icon name="calendar" /></span><div><h2 class="dlbl">Welcher Fastentag ist heute?</h2><p class="small muted">Jeder Tag hat seine eigenen Mahlzeiten und Haken. Wechsle einfach den Tag, um ihn zu planen oder abzuhaken.</p></div></div>
       <div class="seg six" id="days">
         {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" form="pf" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small><i class="dprog" data-dprog={d} aria-hidden="true"></i></span></label>)}
@@ -179,12 +179,8 @@ import { pick } from '../data/affiliate.js';
   .dlegend .sw.ok { background: hsl(135 62% 44%); }
   .dlegend .sw.hi { background: linear-gradient(90deg, hsl(70 62% 44%), hsl(0 62% 44%)); }
   .dreset { margin: 0; }
-  .dmini { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
-  .dmini .dm { position: relative; overflow: hidden; border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 10px; padding: 6px 4px 10px; font: 700 .85rem var(--body); cursor: pointer; }
-  .dmini .dm.on { border-color: var(--green); color: var(--green); box-shadow: 0 0 0 1px var(--green) inset; }
-  .dmini .dm i { position: absolute; left: 0; bottom: 0; height: 4px; }
-  .dmini .dm { display: grid; gap: 1px; }
-  .dmini .dm small { font-weight: 500; font-size: .74rem; color: var(--muted); white-space: nowrap; }
+  #dayslot .daycard { padding: clamp(18px, 4vw, 30px); gap: 14px; }
+  #dayb[hidden] { display: none; }
   #uebergang { max-width: 820px; padding-bottom: 40px; display: grid; gap: 0; }
   .tabsw { padding-bottom: 18px; }
   .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; background: var(--band); border-radius: 18px; }
@@ -467,13 +463,6 @@ import { pick } from '../data/affiliate.js';
       }
     });
     document.getElementById('dlegend')!.hidden = !any;
-  }
-  /** Kleine Tagesleiste über dem Essensplan: alle fünf Tage mit Fortschritt, zum schnellen Wechseln. */
-  function miniDays(cur: number, f: number) {
-    return `<div class="dmini" role="group" aria-label="Fastentag wechseln">${[1, 2, 3, 4, 5].map((d) => {
-      const g = dayProg(d, f);
-      return `<button type="button" class="dm${d === cur ? ' on' : ''}" data-gotoday="${d}" aria-pressed="${d === cur}" title="Tag ${d}: ${fmt(g.e)} von ${fmt(g.t)} kcal abgehakt"><span>Tag ${d}</span><small>${g.e ? `${fmt(g.e)} kcal` : '&nbsp;'}</small><i style="width:${Math.min(100, g.r * 100)}%;background:${progBg(g.r)}"></i></button>`;
-    }).join('')}</div>`;
   }
   const LCHIP: Record<string, [string, string]> = { g: ['ok', 'Passt gut'], y: ['warn', 'Geht, aber'], r: ['bad', 'Passt nicht'] };
   /** Einträge einer Mahlzeit, auch ein ausgewähltes Rezept (als Portionen). */
@@ -1009,7 +998,7 @@ import { pick } from '../data/affiliate.js';
       state.daySum![dk] = { e: Math.round(eaten.kcal), p: Math.round(res.sum.kcal) }; save(); updateDaySums();
       const isToday = !planK || planK === +v.day;
       if (meals.length) {
-        h += `<div class="stack">${miniDays(+v.day, p.f)}<h2 style="font-size:1.6rem">${isToday ? 'Dein heutiger Essensplan' : `Dein Essensplan für Tag ${v.day}`}</h2>
+        h += `<div class="stack"><div id="dayslot"></div><h2 style="font-size:1.6rem">${isToday ? 'Dein heutiger Essensplan' : `Dein Essensplan für Tag ${v.day}`}</h2>
           <p class="muted small">Alle Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune. Hake ab, was Du gegessen hast. Selbst Eingetragenes zählt schon als gegessen. Der helle Teil im Balken ist eingeplant, aber noch nicht abgehakt.</p>
           ${doneHtml(eaten, t, fmt, eaten.kcal >= t.kcal * 0.95 ? ' · Tag geschafft!' : '', res.sum)}
           ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => m.own ? ownCard(m, isDone(m)) : `<article class="card meal${done[m.key] ? ' isdone' : ''}">
@@ -1045,7 +1034,13 @@ import { pick } from '../data/affiliate.js';
       h += `<div class="alert info"><p>Füge oben ein paar Lebensmittel hinzu, dann geht's los.</p></div>`;
     }
     h += `<p class="hint noprint">${I.info}<span>Fühlst Du Dich schwindelig oder sehr schlapp, iss einfach normal weiter. Dein Körper geht vor.</span></p>`;
+    // Der Tageskasten wandert über den Essensplan, sobald es einen gibt. Vor dem Neuzeichnen holen wir ihn zurück, damit er nicht verloren geht.
+    const dayb = document.getElementById('dayb')!; const dcard = document.getElementById('daycard')!;
+    if (dcard.parentElement !== dayb) dayb.appendChild(dcard);
     result.innerHTML = h;
+    const slot = document.getElementById('dayslot');
+    if (slot) slot.appendChild(dcard);
+    dayb.hidden = !!slot;
   }
 
   /** Karte einer selbst eingetragenen Mahlzeit im Ergebnis, mit Ampel. */
@@ -1084,8 +1079,6 @@ import { pick } from '../data/affiliate.js';
     if (mb) { result.querySelectorAll<HTMLElement>('[data-more]').forEach((x) => (x.hidden = false)); mb.remove(); return; }
     const many = t.closest<HTMLElement>('[data-addmany]');
     if (many) { for (const n of many.dataset.addmany!.split('|')) if (BY_NAME[n] && !state.picks.some((p) => p.name === n)) state.picks.push({ name: n }); resetGen(); save(); renderPicked(); render(); return; }
-    const gd = t.closest<HTMLElement>('[data-gotoday]');
-    if (gd) { const r = document.querySelector<HTMLInputElement>(`#days input[value="${gd.dataset.gotoday}"]`); if (r && !r.checked) { r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); } return; }
     const sk = t.closest<HTMLElement>('[data-skip]');
     if (sk) {
       const key = sk.dataset.skip!; const o = own(); o.skip = o.skip || { plan: [], gen: [] };
@@ -1137,7 +1130,8 @@ import { pick } from '../data/affiliate.js';
   function applyDay() {
     const six = (pf.elements.namedItem('day') as RadioNodeList).value === '6';
     trans.hidden = !six; cook.hidden = six;
-    if (six) renderTransition();
+    // Am Übergangstag ist der Essensplan ausgeblendet: der Tageskasten muss dann oben stehen, sonst kommt man nicht zurück.
+    if (six) { const dayb = document.getElementById('dayb')!; dayb.appendChild(document.getElementById('daycard')!); dayb.hidden = false; renderTransition(); }
     return six;
   }
 
