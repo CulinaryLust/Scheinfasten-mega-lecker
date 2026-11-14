@@ -28,7 +28,7 @@ import { pick } from '../data/affiliate.js';
       <h1>Dein fertiger 5-Tage-Plan</h1>
       <p class="muted">Mit möglichst wenig Aufwand: ein paar Angaben, dann steht Dein Plan. Jeden Tag leckere Gerichte, auf das Gramm genau nach den Vorgaben von Prof. Dr. Valter Longo berechnet, passend zu Deinen Vorlieben.</p>
     </div>
-    <Rotator badge="Gemeinsam fasten macht mehr Spaß" images={[
+    <Rotator badges={['Gemeinsam fasten macht mehr Spaß', 'Fünf Tage voller leckerer Gerichte', 'Satt werden und trotzdem fasten', 'Jeder Tag auf das Gramm berechnet', 'Einkaufsliste gleich dabei', 'Mit Genuss durch die fünf Tage', 'Zusammen kochen, zusammen durchhalten']} images={[
       { src: 'img/menschen/freunde-tisch.jpg', alt: 'Freunde essen gemeinsam Salate am Tisch' },
       { src: 'img/menschen/kueche-zusammen.jpg', alt: '' },
       { src: 'img/menschen/genuss-kuechentisch.jpg', alt: '' },
@@ -145,6 +145,11 @@ import { pick } from '../data/affiliate.js';
   .meal { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
   @media (max-width: 560px) { .meal { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; } }
   .meal img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+  .meal.own { border-style: dashed; }
+  .meal .ownimg { width: 100%; aspect-ratio: 1; border-radius: 12px; background: var(--band); color: var(--green); display: grid; place-items: center; }
+  .meal .ownimg .i { width: 40%; height: 40%; }
+  .ownlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: .92rem; }
+  .ownlist li { display: flex; gap: 8px; align-items: center; }
   .meal .when { font-size: .75rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--green); }
   .meal h3 { font-size: 1.12rem; }
   .meal h3 a { color: inherit; text-decoration: none; } .meal h3 a:hover { text-decoration: underline; }
@@ -191,6 +196,9 @@ import { pick } from '../data/affiliate.js';
   import { thumb } from '../lib/url.js';
   import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml } from '../lib/uebergang.js';
   import { doneHtml } from '../lib/fortschritt.js';
+  import { ownDay, ownGroceries, ownIsDone } from '../lib/eigene.js';
+  import { targets } from '../lib/rechner.js';
+  import { qtyLabel, BY_NAME } from '../lib/tagebuch.js';
 
   const root = document.getElementById('wizard')!;
   const base = root.dataset.base!;
@@ -334,6 +342,40 @@ import { pick } from '../data/affiliate.js';
   const total = (list: any[], f: number) => list.reduce((acc, it) => add(acc, nutrition(BY_SLUG[it.recipe], it.portion * f)), ZERO);
   const r5 = (x: number) => Math.round(x * 20) / 20;
 
+  // Heute im Rechner selbst Eingetragenes zählt im Planer mit: es ersetzt die Mahlzeit an derselben Stelle,
+  // Zwischenmahlzeiten kommen dazu. Gilt nur für den heutigen Plantag, wie im Rechner.
+  const isoD = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  let curStart = new Date();
+  const ORDER_T: Record<string, number> = { Z0: 0, Morgens: 1, Z1: 2, Mittags: 3, Z2: 4, Nachmittags: 4.5, Abends: 5, Z3: 6 };
+  const readRechner = () => { try { return JSON.parse(localStorage.getItem('smlRechner') || 'null'); } catch { return null; } };
+  function ownFor(k: number, f: number) {
+    if (k < 1 || k > 5) return null;
+    const today = isoD(new Date());
+    const x = new Date(curStart); x.setDate(x.getDate() + k - 1);
+    if (isoD(x) !== today) return null;
+    const rs = readRechner();
+    if (!rs?.own || rs.own.d !== today) return null;
+    const meals = ownDay(rs.own, targets(k === 1 ? 1 : 2, f), k);
+    if (!meals.length) return null;
+    const dd = rs.done?.[String(k)];
+    return { meals, replaced: new Set(meals.filter((m: any) => m.main).map((m: any) => m.slot)), done: dd && dd._d === today ? dd : {} };
+  }
+  /** Gerichte des Plans, die heute nicht durch Selbst Eingetragenes ersetzt sind (mit ursprünglicher Position). */
+  const planItems = (k: number, f: number) => { const o = ownFor(k, f); return items(k).map((it: any, i: number) => ({ ...it, _i: i })).filter((it: any) => !o?.replaced.has(it.meal)); };
+  function dayTotal(k: number, f: number) {
+    const o = ownFor(k, f);
+    let n = total(planItems(k, f), f);
+    if (o) for (const m of o.meals) n = add(n, m.n);
+    return n;
+  }
+  function setOwnDone(k: number, key: string, v: boolean) {
+    const rs = readRechner(); if (!rs) return;
+    const today = isoD(new Date()); rs.done = rs.done || {};
+    if (rs.done[String(k)]?._d !== today) rs.done[String(k)] = { _d: today };
+    rs.done[String(k)][key] = v;
+    try { localStorage.setItem('smlRechner', JSON.stringify(rs)); } catch {}
+  }
+
   function candidates(day: number, idx: number, f: number) {
     const { like, no } = state.prefs;
     return candidatesFor(day, items(day), idx, f, 30).filter((x: any) => !hits(x.r, no).length)
@@ -364,7 +406,7 @@ import { pick } from '../data/affiliate.js';
 
   const doneKey = (k: number) => `${bf() ? 'b' : ''}${k}`;
   const isDone = (k: number, i: number) => !!state.done?.[doneKey(k)]?.[i];
-  const dayDone = (k: number) => items(k).every((_: any, i: number) => isDone(k, i));
+  const dayDone = (k: number) => { const f = profile().f; const o = ownFor(k, f); return planItems(k, f).every((it: any) => isDone(k, it._i)) && (!o || o.meals.every((m: any) => ownIsDone(m, o.done))); };
   let tab = 1;
   let openSwap = '';
 
@@ -381,11 +423,12 @@ import { pick } from '../data/affiliate.js';
     const start = new Date((state.inputs.start || iso(d0)) + 'T12:00:00');
     const cyc = +state.inputs.cyc || 1, gap = +state.inputs.gap || 1;
     const f = p.f;
+    curStart = start;
 
     // Abgleich-Tabelle
     let rows = '';
     for (let d = 1; d <= 5; d++) {
-      const n = total(items(d), f); const c = check(d, n, f); const ref = c.ref;
+      const n = dayTotal(d, f); const c = check(d, n, f); const ref = c.ref;
       rows += `<tr><td><b>Tag ${d}</b></td><td class="n">${fmt(n.kcal)}<br><small class="muted">Ziel ${fmt(c.target)}</small></td>
         <td class="n">${fmt(n.protein)} g<br><small class="muted">${fmt(c.shares.protein)} % · Vorgabe ${ref.protein} %</small></td>
         <td class="n">${fmt(n.fat)} g<br><small class="muted">${fmt(c.shares.fat)} % · Vorgabe ${ref.fat} %</small></td>
@@ -429,6 +472,9 @@ import { pick } from '../data/affiliate.js';
     result.querySelectorAll<HTMLInputElement>('input[data-done]').forEach((c) => c.addEventListener('change', () => {
       const [d, i] = c.dataset.done!.split('-').map(Number); state.done = state.done || {}; (state.done[doneKey(d)] = state.done[doneKey(d)] || {})[i] = c.checked; save(); rerender();
     }));
+    result.querySelectorAll<HTMLInputElement>('input[data-owndone]').forEach((c) => c.addEventListener('change', () => {
+      const [d, key] = c.dataset.owndone!.split('|'); setOwnDone(+d, key, c.checked); rerender();
+    }));
     result.querySelectorAll<HTMLInputElement>('input[name="nextcyc"]').forEach((r) => r.addEventListener('change', () => { state.inputs.cyc = r.dataset.cyc; state.inputs.gap = r.dataset.gap; save(); rerender(); }));
     result.querySelector<HTMLInputElement>('#bf')?.addEventListener('change', (e) => { state.breakfast = (e.target as HTMLInputElement).checked; openSwap = ''; save(); rerender(); });
     result.querySelectorAll<HTMLButtonElement>('[data-swap]').forEach((b) => b.addEventListener('click', () => { openSwap = openSwap === b.dataset.swap ? '' : b.dataset.swap!; rerender(); }));
@@ -465,8 +511,12 @@ import { pick } from '../data/affiliate.js';
       const tot: Record<string, number> = {};
       const MEAL: Record<string, string> = { Morgens: 'Frühstück', Mittags: 'Mittag', Nachmittags: 'Snack', Abends: 'Abend' };
       const meals: Record<string, Set<string>> = {};
-      for (let d = 1; d <= 5; d++) for (const it of items(d)) for (const ing of BY_SLUG[it.recipe].ingredients) { tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * fAll; (meals[ing.name] = meals[ing.name] || new Set()).add(MEAL[it.meal] || it.meal); }
-      const ORDER = ['Frühstück', 'Mittag', 'Snack', 'Abend'];
+      for (let d = 1; d <= 5; d++) {
+        for (const it of planItems(d, f)) for (const ing of BY_SLUG[it.recipe].ingredients) { tot[ing.name] = (tot[ing.name] || 0) + ing.amount * it.portion * fAll; (meals[ing.name] = meals[ing.name] || new Set()).add(MEAL[it.meal] || it.meal); }
+        // Selbst Eingetragenes (nur Deine Portion)
+        for (const m of ownFor(d, f)?.meals || []) for (const g of ownGroceries(m.entries)) { tot[g.name] = (tot[g.name] || 0) + g.g; (meals[g.name] = meals[g.name] || new Set()).add('selbst eingetragen'); }
+      }
+      const ORDER = ['Frühstück', 'Mittag', 'Snack', 'Abend', 'selbst eingetragen'];
       const mtags = (n: string) => `<small class="mtags">${[...meals[n]].sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b)).join(' · ')}</small>`;
       return `<div class="plain"><h3>${I.cart} Einkaufsliste für einen Durchgang${ppl > 1 ? ` · ${ppl} Personen` : ''}</h3><p class="muted small">Mengen ohne Reserve${ppl > 1 ? ', für alle zusammen' : ''}. Dazu: Salz, Pfeffer, Kräuter, Gewürze, Kräutertee.</p>
         <p class="small muted maclegend">Farbe des Symbols = Hauptnährstoff: <span class="mac carbs">${I.carbs}</span>Kohlenhydrate <span class="mac protein">${I.protein}</span>Eiweiß <span class="mac fat">${I.fat}</span>Fett <span class="mac zero">${I.leaf}</span>kaum Kalorien</p>
@@ -474,8 +524,10 @@ import { pick } from '../data/affiliate.js';
         <ul class="shop">${c.items.map(([n, g]: [string, number]) => `<li><label><input type="checkbox">${mac(n)}<span><b>${amountLabel(n, g)}</b> ${esc(n)} ${mtags(n)}</span></label></li>`).join('')}</ul></div>`).join('')}</div></div>`;
     }
     if (k === 8) return `<div class="plain nextcyc">${nextCycleHtml(start, cyc, gap, I.calendar)}</div>`;
-    const list = items(k); const n = total(list, f); const c = check(k, n, f);
-    const eaten = list.reduce((a: any, it: any, i: number) => { if (!isDone(k, i)) return a; const m = nutrition(BY_SLUG[it.recipe], it.portion * f); return { kcal: a.kcal + m.kcal, protein: a.protein + m.protein, fat: a.fat + m.fat, carbs: a.carbs + m.carbs }; }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
+    const list = planItems(k, f); const own = ownFor(k, f); const n = dayTotal(k, f); const c = check(k, n, f);
+    const plus = (a: any, m: any) => ({ kcal: a.kcal + m.kcal, protein: a.protein + m.protein, fat: a.fat + m.fat, carbs: a.carbs + m.carbs });
+    let eaten = list.reduce((a: any, it: any) => (isDone(k, it._i) ? plus(a, nutrition(BY_SLUG[it.recipe], it.portion * f)) : a), { kcal: 0, protein: 0, fat: 0, carbs: 0 });
+    if (own) for (const m of own.meals) if (ownIsDone(m, own.done)) eaten = plus(eaten, m.n);
     const vs = (cls: string, ic: string, label: string, val: string, sub: string) => `<div class="${cls}"><span class="k">${I[ic]}${label}</span><b>${val}</b><small>${sub}</small></div>`;
     let html = `<div class="daytop"><div class="row"><h3>Tag ${k}${k === 1 ? ' (Starttag)' : ''} · ${dsl(addDays(start, k - 1))}</h3>${c.ok ? `<span class="chip ok">${I.check} passt zu Prof. Dr. Longos Vorgaben</span>` : '<span class="chip warn">knapp daneben</span>'}</div>${c.ok ? '' : `<p class="small muted knapp"><b>Knapp daneben</b> heißt: Kalorien oder Nährstoffanteile weichen an diesem Tag etwas mehr ab als erlaubt (Kalorien mehr als 5 %, Eiweiß mehr als ${PLAN.reference.tolerance.proteinPoints}, Fett oder Kohlenhydrate mehr als 5 Prozentpunkte). Tausche ein Gericht, dann passt es meist wieder.</p>`}
       <div class="vs">
@@ -486,9 +538,23 @@ import { pick } from '../data/affiliate.js';
         ${vs('carbs', 'carbs', 'Kohlenhydrate', `${fmt(n.carbs)} g`, `${fmt(c.shares.carbs)} % · Vorgabe ${c.ref.carbs} %`)}
       </div>
       <div class="mbar" aria-hidden="true"><i class="p" style="width:${c.shares.protein}%"></i><i class="f" style="width:${c.shares.fat}%"></i><i class="c" style="width:${c.shares.carbs}%"></i></div>
-      ${doneHtml(eaten, n, fmt, dayDone(k) ? ' · Tag geschafft!' : '')}
+      ${doneHtml(eaten, { ...c.ref, kcal: c.target, protein: c.target * c.ref.protein / 400, fat: c.target * c.ref.fat / 900, carbs: c.target * c.ref.carbs / 400 }, fmt, dayDone(k) ? ' · Tag geschafft!' : '', n)}
+      ${own ? `<p class="small muted">${I.info} Heute zählt mit, was Du im <a href="${base}rechner/">Rechner</a> selbst eingetragen hast${own.replaced.size ? `. Es ersetzt im Plan: ${[...own.replaced].map((x) => ({ Morgens: 'Morgens', Mittags: 'Mittagessen', Abends: 'Abendessen' } as any)[x]).join(', ')}` : ''}.</p>` : ''}
       <p class="muted small">${I.water} Dazu über den Tag reichlich Wasser oder ungesüßten Tee.</p></div>`;
-    list.forEach((it: any, idx: number) => {
+    const cards: [number, string][] = [];
+    for (const m of own?.meals || []) {
+      const dn = ownIsDone(m, own!.done);
+      cards.push([ORDER_T[m.slot] ?? 6, `<article class="meal own${dn ? ' isdone' : ''}">${m.recipe ? `<img src="${img(m.recipe)}" alt="" loading="lazy">` : `<div class="ownimg" aria-hidden="true">${I.cup}</div>`}<div class="info">
+        <span class="when">${m.main ? ({ Morgens: 'Morgens', Mittags: 'Mittags', Abends: 'Abends' } as any)[m.slot] : 'Zwischenmahlzeit'} · selbst eingetragen</span>
+        <h3>${m.recipe ? `<a href="${base}rezepte/${m.recipe.slug}/">${esc(m.recipe.title)}</a>` : esc(m.label)}</h3>
+        <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.n.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.n.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.n.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.n.carbs)} g</b></span></div>
+        <ul class="ownlist">${m.entries.map((e: any) => `<li>${e.type === 'food' && BY_NAME[e.name] ? foodBadge(e.name, BY_NAME[e.name]) : ''}<span>${esc(qtyLabel(e))} ${esc(e.type === 'recipe' ? BY_SLUG[e.slug].title : e.name)}</span></li>`).join('')}</ul>
+        <div class="acts noprint"><a class="btn soft small" href="${base}rechner/">Im Rechner ändern</a></div>
+        <label class="tick noprint"><input type="checkbox" data-owndone="${k}|${m.key}" ${dn ? 'checked' : ''}><span>Gegessen</span></label>
+      </div></article>`]);
+    }
+    list.forEach((it: any) => {
+      const idx = it._i;
       const r = BY_SLUG[it.recipe]; const por = it.portion * f; const m = nutrition(r, por);
       const agg: Record<string, number> = {};
       for (const ing of r.ingredients) agg[ing.name] = (agg[ing.name] || 0) + ing.amount * por;
@@ -501,7 +567,7 @@ import { pick } from '../data/affiliate.js';
           ${cands.map((x: any) => `<button class="alt" data-pick="${key}" data-r="${x.r.slug}" data-p="${x.portion}"><img src="${img(x.r)}" alt="" loading="lazy"><span><b>${esc(x.r.title)}</b><small>${fmt(x.kcal)} kcal · Portion ×${fmt(x.portion, 2)}</small></span>${x.ok ? `<span class="chip ok">${I.check} passt</span>` : '<span class="chip warn">knapp</span>'}</button>`).join('')}
         </div>`;
       }
-      html += `<article class="meal${isDone(k, idx) ? ' isdone' : ''}"><img src="${img(r)}" alt="" loading="lazy"><div class="info">
+      cards.push([ORDER_T[it.meal] ?? 6, `<article class="meal${isDone(k, idx) ? ' isdone' : ''}"><img src="${img(r)}" alt="" loading="lazy"><div class="info">
         <span class="when">${it.meal}</span>
         <h3>${['main', 'snack', 'breakfast'].includes(r.slot) ? `<a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a>` : esc(r.title)}</h3>
         <div class="nut"><span class="kcal">${I.kcal}<b>${fmt(m.kcal)}</b> kcal</span><span class="protein">${I.protein}<b>${fmt(m.protein)} g</b></span><span class="fat">${I.fat}<b>${fmt(m.fat)} g</b></span><span class="carbs">${I.carbs}<b>${fmt(m.carbs)} g</b></span></div>
@@ -509,8 +575,9 @@ import { pick } from '../data/affiliate.js';
         <details><summary>${ppl > 1 ? `Zutaten für alle ${ppl} Personen` : 'Zutaten in Gramm'}</summary><ul>${Object.entries(agg).map(([n2, g]) => ppl > 1 ? `<li>${amountLabel(n2, g / f * fAll)} ${esc(n2)} <small>(Deins: ${amountLabel(n2, g)})</small></li>` : `<li>${amountLabel(n2, g)} ${esc(n2)}</li>`).join('')}</ul></details>
         ${canSwap ? `<div class="acts noprint"><button class="btn soft small" data-swap="${key}" aria-expanded="${openSwap === key}">${I.swap} Tauschen</button>${it.swapped ? `<button class="btn soft small" data-reset="${key}">Original</button>` : ''}</div>` : ''}
         <label class="tick noprint"><input type="checkbox" data-done="${k}-${idx}" ${isDone(k, idx) ? 'checked' : ''}><span>Gegessen</span></label>
-      </div>${box}</article>`;
+      </div>${box}</article>`]);
     });
+    html += cards.sort((a, b) => a[0] - b[0]).map((x) => x[1]).join('');
     return html;
   }
 
