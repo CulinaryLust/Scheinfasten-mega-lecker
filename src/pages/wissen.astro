@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Rotator from '../components/Rotator.astro';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
@@ -31,7 +32,7 @@ const faq = [
   </div>
   <section class="band" style="padding-top:20px">
     <div class="in person">
-      <Rotator images={[{ src: 'img/markt.jpg', alt: 'Gemüsestand auf einem Markt' }, { src: 'img/szenen/markt-stand.jpg', alt: '' }, { src: 'img/szenen/markt-paprika.jpg', alt: '' }]} />
+      <Rotator images={fotos({ src: 'img/markt.jpg', alt: 'Gemüsestand auf einem Markt' }, ['markt','essen'], { max: 12 })} />
       <div class="prose">
         <p class="kicker">Der Kopf hinter dem Scheinfasten</p>
         <h2>Prof. Dr. Valter Longo</h2>
@@ -50,6 +51,7 @@ const faq = [
         <div class="card"><p class="kicker">Tag 2 bis 5</p><p class="big">725 kcal</p><div class="mbar"><i class="p" style="width:9%"></i><i class="f" style="width:44%"></i><i class="c" style="width:47%"></i></div><div class="legend"><span style="--dot:var(--c-protein)">9 % Eiweiß</span><span style="--dot:var(--c-fat)">44 % Fett</span><span style="--dot:var(--c-carbs)">47 % KH</span></div></div>
         <div class="card"><p class="kicker">Tag 6</p><p class="big">Übergang</p><p class="muted">In den Studien ging es danach direkt mit normaler Ernährung weiter. Unser Tipp: am ersten Tag leicht und pflanzlich starten.</p></div>
       </div>
+      <p class="hint refnote"><Icon name="info" /><span><b>Beispielangaben:</b> Die Kalorien gelten für eine Person mit rund 2.000 kcal Tagesbedarf, zum Beispiel eine Frau mit 45 Jahren, 165 cm, 60 kg und normal aktivem Alltag. Rechner und Planer passen sie an Deinen Körper an, um bis zu 10 % weniger oder 15 % mehr. Ein normal aktiver Mann mit 35 Jahren, 180 cm und 80 kg kommt so zum Beispiel auf ca. 1.250 kcal an Tag 1 und ca. 830 kcal an Tag 2 bis 5. Die Anteile von Eiweiß, Fett und Kohlenhydraten bleiben immer gleich.</span></p>
     </div>
   </section>
   <AvoidList tint />
@@ -96,4 +98,5 @@ const faq = [
   .ratlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
   .ratlist li { display: grid; gap: 2px; }
   .ratlist a { font-weight: 700; font-size: 1.05rem; }
+  .refnote { margin-top: 18px; }
 </style>

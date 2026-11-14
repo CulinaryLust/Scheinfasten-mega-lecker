@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../../data/fotos.js';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import { ARTIKEL } from '../../data/ratgeber.js';
@@ -11,10 +12,7 @@ import FotoStreifen from '../../components/FotoStreifen.astro';
     <h1>Praktisches für Deine Fastenwoche</h1>
     <p class="lead">Kurze Antworten auf die häufigsten Fragen. Bei jeder Aussage steht, ob sie aus einer Studie stammt, vom Hersteller oder von uns.</p>
   </div>
-  <FotoStreifen images={[
-    { src: 'img/szenen/picknick.jpg', alt: 'Freundinnen beim Picknick im Park' },
-    { src: 'img/szenen/zutaten.jpg', alt: '' },
-  ]} />
+  <FotoStreifen images={fotos({ src: 'img/szenen/picknick.jpg', alt: 'Freundinnen beim Picknick im Park' }, ['menschen','draussen','markt'], { max: 12, offset: 3 })} />
   <section class="band" style="padding-top:16px">
     <div class="in narrow stack">
       {ARTIKEL.map((a) => (

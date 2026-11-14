@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../../data/fotos.js';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
@@ -14,11 +15,7 @@ import FotoStreifen from '../../components/FotoStreifen.astro';
     <h1>{list.length} leckere Rezepte für Deine Fastentage</h1>
     <p class="muted">Alle für eine Portion, rein pflanzlich und durchgerechnet. Im Planer werden die Mengen auf Dich angepasst.</p>
   </div>
-  <FotoStreifen narrow={false} images={[
-    { src: 'img/szenen/oma-enkelin-salat.jpg', alt: 'Großmutter und Enkelin machen gemeinsam Salat' },
-    { src: 'img/szenen/mama-tochter.jpg', alt: '' },
-    { src: 'img/szenen/salat-schuessel.jpg', alt: '' },
-  ]} />
+  <FotoStreifen narrow={false} images={fotos({ src: 'img/szenen/oma-enkelin-salat.jpg', alt: 'Großmutter und Enkelin machen gemeinsam Salat' }, ['rezepte','menschen'], { max: 14, step: 2 })} />
   <div class="in filters noprint">
     <label class="search"><Icon name="search" /><span class="sr-only">Rezepte durchsuchen</span><input id="q" type="search" placeholder="Suchen, z. B. Kürbis oder Suppe" autocomplete="off" /></label>
     <div class="chips" role="group" aria-label="Kategorie">

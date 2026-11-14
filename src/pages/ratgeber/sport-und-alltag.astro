@@ -1,8 +1,9 @@
 ---
+import { fotos } from '../../data/fotos.js';
 import Artikel from '../../layouts/Artikel.astro';
 import { u } from '../../lib/url.js';
 ---
-<Artikel fotos={[{ src: 'img/szenen/waldweg.jpg', alt: 'Spaziergang auf einem Waldweg' }]} slug="sport-und-alltag" description="Scheinfasten und Sport, Arbeit, Autofahren: Was die Studien dazu sagen und wie Du die fünf Tage realistisch planst. Mit klarer Trennung von Beleg und Tipp." lead="Kurz gesagt: Arbeiten und Spazierengehen funktionieren für die meisten. Für hartes Training fehlen an Tag 2 bis 5 schlicht die Kalorien. Untersucht ist das Thema kaum.">
+<Artikel fotos={fotos({ src: 'img/szenen/waldweg.jpg', alt: 'Spaziergang auf einem Waldweg' }, ['draussen','menschen','markt'], { max: 10, offset: 0 })} slug="sport-und-alltag" description="Scheinfasten und Sport, Arbeit, Autofahren: Was die Studien dazu sagen und wie Du die fünf Tage realistisch planst. Mit klarer Trennung von Beleg und Tipp." lead="Kurz gesagt: Arbeiten und Spazierengehen funktionieren für die meisten. Für hartes Training fehlen an Tag 2 bis 5 schlicht die Kalorien. Untersucht ist das Thema kaum.">
   <h2>Was belegt ist und was nicht</h2>
   <div class="tw"><table>
     <thead><tr><th>Aussage</th><th>Beleg</th></tr></thead>

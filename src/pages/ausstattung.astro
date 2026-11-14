@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import AffiliateBox from '../components/AffiliateBox.astro';
@@ -13,10 +14,7 @@ import FotoStreifen from '../components/FotoStreifen.astro';
     <h1>Gut ausgestattet in die Fastenwoche</h1>
     <p class="lead">Für unsere Rezepte brauchst Du keine Spezialgeräte. Ein paar Helfer machen die fünf Tage aber deutlich leichter. Das Wichtigste zuerst: eine genaue Küchenwaage.</p>
   </div>
-  <FotoStreifen images={[
-    { src: 'img/szenen/spargel-kochen.jpg', alt: 'Gemüse wird in einer hellen Küche zubereitet' },
-    { src: 'img/szenen/salat-lachen.jpg', alt: '' },
-  ]} />
+  <FotoStreifen images={fotos({ src: 'img/szenen/spargel-kochen.jpg', alt: 'Gemüse wird in einer hellen Küche zubereitet' }, ['kueche','essen'], { max: 12 })} />
   <section class="band" style="padding-top:12px">
     <div class="in narrow stack">
       {byGroup.map((g) => <AffiliateBox items={g.items} title={g.title} lead={g.lead} show={0} />)}

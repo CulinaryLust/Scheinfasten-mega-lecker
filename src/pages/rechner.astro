@@ -1,10 +1,11 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
 import { icon } from '../lib/icons.js';
 import { PLAN, fmt } from '../lib/nutrition.js';
-const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search', 'sugar', 'leaf', 'nut', 'oil', 'apple', 'herb', 'cup', 'ban', 'calendar', 'heart'].map((k) => [k, icon(k)]));
+const icons = Object.fromEntries(['kcal', 'protein', 'fat', 'carbs', 'swap', 'check', 'close', 'plus', 'time', 'arrow', 'info', 'pot', 'search', 'sugar', 'leaf', 'nut', 'oil', 'apple', 'herb', 'cup', 'ban', 'calendar', 'heart', 'bowl'].map((k) => [k, icon(k)]));
 const quick = ['Zucchini', 'Tomaten', 'Karotten', 'Brokkoli', 'Hokkaido-Kürbis', 'Champignons', 'Kartoffeln', 'Olivenöl', 'Walnusskerne', 'Grüne Oliven'];
 const r1 = PLAN.reference.day1, r2 = PLAN.reference.day2to5;
 import AffiliateBox from '../components/AffiliateBox.astro';
@@ -21,15 +22,7 @@ import { pick } from '../data/affiliate.js';
       <h1>Do it yourself: Was koche ich heute?</h1>
       <p class="lead">Trag Deine Mahlzeiten selbst ein oder wähle Rezepte von uns. Den Rest rechnen wir passend zu Deinem Fastentag aus. Weißt Du nicht, was Du kochen sollst, macht der Rezept-Generator aus Deinen Vorräten passende Gerichte. Gegessenes hakst Du einfach ab.</p>
     </div>
-    <Rotator images={[
-      { src: 'img/menschen/paar-kocht.jpg', alt: 'Paar kocht gemeinsam mit frischem Gemüse' },
-      { src: 'img/rechner/gemuese.jpg', alt: '' },
-      { src: 'img/menschen/lachen-essen.jpg', alt: '' },
-      { src: 'img/rechner/kraeuter.jpg', alt: '' },
-      { src: 'img/szenen/kochen-kueche.jpg', alt: '' },
-      { src: 'img/szenen/korb-gemuese.jpg', alt: '' },
-      { src: 'img/szenen/paar-kueche.jpg', alt: '' },
-    ]} />
+    <Rotator images={fotos({ src: 'img/menschen/paar-kocht.jpg', alt: 'Paar kocht gemeinsam mit frischem Gemüse' }, ['kueche','essen','menschen'], { max: 14 })} />
   </div>
   <ModeNav current="diy" />
 
@@ -100,7 +93,7 @@ import { pick } from '../data/affiliate.js';
   <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
     <form id="f" class="card wcard" novalidate>
       <fieldset class="block" id="own">
-        <legend><span class="num"><Icon name="cup" /></span>Deine Mahlzeiten</legend>
+        <legend><span class="num"><Icon name="bowl" /></span>Deine Mahlzeiten</legend>
         <p class="small muted">Trag Dein Essen selbst ein, zum Beispiel einen Sojajoghurt oder Maiswaffeln mit Avocado, oder wähle ein Rezept von uns. Beides lässt sich mischen. Alles zählt sofort in Deinen Tag. Was offen bleibt, füllen wir mit passenden Gerichten auf.</p>
         <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Alkohol und Säfte. Kaffee höchstens eine kleine Tasse schwarz. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
         <div class="omeals" id="omeals"></div>
@@ -279,6 +272,9 @@ import { pick } from '../data/affiliate.js';
   .gen > summary::after { content: "+"; margin-left: auto; font: 700 1.2rem/1 var(--body); color: var(--muted); flex: none; }
   .gen[open] > summary::after { content: "\2212"; }
   .gen > summary:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; border-radius: 14px; }
+  .mfoot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .mrm { color: var(--muted); font-size: .88rem; }
+  .skipped .linkbtn { font-size: inherit; }
   .gen .btn.soft { background: var(--card); border: 1px solid var(--line); }
   .genin { display: grid; gap: 16px; padding: 4px 14px 16px; min-width: 0; }
   .block .num .i { width: 18px; height: 18px; }
@@ -328,12 +324,13 @@ import { pick } from '../data/affiliate.js';
 </style>
 
 <script>
-  import { FOODS, BY_NAME, search, norm, profile, targets, solve, suggestAdditions, completeDay, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
+  import { FOODS, BY_NAME, search, norm, profile, targets, solve, suggestAdditions, completeDay, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY, verdict } from '../lib/rechner.js';
   import { fmt, PLAN, amountLabel, RECIPES, nutrition, NUTRIENTS as NUTRI } from '../lib/nutrition.js';
   import { groupByCat, foodBadge } from '../lib/foodmeta.js';
   import { thumb, thumbIn } from '../lib/url.js';
   import { doneHtml } from '../lib/fortschritt.js';
   import { ownEntries, ownMealsOf, ownIsDone } from '../lib/eigene.js';
+  import { planDay, planDayFor } from '../lib/plan.js';
   import { TRANSITION_SLUGS, transitionHtml, nextCycleHtml, addDays } from '../lib/uebergang.js';
   import { searchAll, units, defaultAmount, qtyLabel, mealCheck, plural } from '../lib/tagebuch.js';
   const PLAN_SUGAR = PLAN.reference.sugarMaxPercent;
@@ -357,7 +354,7 @@ import { pick } from '../data/affiliate.js';
   type Pick = { name: string; g?: number };
   // Selbst eingetragene Mahlzeiten: Einträge wie im Tagebuch, {type: 'food', name, qty, unit} oder {type: 'recipe', slug, qty, unit: 'portion'}
   type Entry = { type: 'food' | 'recipe'; name?: string; slug?: string; qty: number; unit: string };
-  type Own = { d: string; mode: Record<string, string>; items: Record<string, Entry[]>; rec: Record<string, { slug: string; qty: number }>; fin: Record<string, boolean>; zw: { id: string; pos: number; items: Entry[] }[] };
+  type Own = { d: string; mode: Record<string, string>; items: Record<string, Entry[]>; rec: Record<string, { slug: string; qty: number }>; fin: Record<string, boolean>; zw: { id: string; pos: number; items: Entry[] }[]; skip?: { plan: string[]; gen: string[] } };
   let state: { inputs?: any; picks: Pick[]; shown?: boolean; done?: Record<string, Record<string, boolean>>; own?: Own } = { picks: [] };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && Array.isArray(s.picks)) state = s; } catch {}
   state.picks = state.picks.filter((p) => BY_NAME[p.name]);
@@ -697,14 +694,14 @@ import { pick } from '../data/affiliate.js';
   function addFood(name: string) {
     if (!BY_NAME[name]) return;
     if (!state.picks.some((p) => p.name === name)) state.picks.push({ name });
-    state.done = {};
+    state.done = {}; if (state.own?.skip) state.own.skip.gen = [];
     q.value = ''; sug.hidden = true; qhint.textContent = '';
     save(); renderPicked();
     if (state.shown) render();
   }
   function removeFood(name: string) {
     state.picks = state.picks.filter((p) => p.name !== name);
-    state.done = {};
+    state.done = {}; if (state.own?.skip) state.own.skip.gen = [];
     save(); renderPicked();
     if (state.shown) render();
   }
@@ -784,17 +781,52 @@ import { pick } from '../data/affiliate.js';
     const owns = ownMeals().map((m) => ({ ...m, c: mealCheck(m.entries, t, +v.day, m.main) }));
     const used: Record<string, number> = {};
     for (const m of owns) for (const it of m.c.items) used[it.name] = (used[it.name] || 0) + it.g;
-    const bk = own().mode.bf === 'rezept' && !own().rec.bf ? (() => {
+    // Entfernte Vorschläge bleiben leer (gilt für heute, wie die eigenen Mahlzeiten)
+    const skip = own().skip || (own().skip = { plan: [], gen: [] });
+    // Ohne Vorräte im Generator füllen wir offene Mahlzeiten mit dem heutigen Gericht aus Deinem Plan, genau wie der Planer.
+    const planSt = (() => { try { return JSON.parse(localStorage.getItem('smlPlaner') || 'null'); } catch { return null; } })();
+    const planK = planDayFor(planSt?.inputs?.start);
+    const replacedSlots = new Set(owns.filter((m) => m.main).map((m) => m.slot));
+    const planMeals = !ok.length && planK && planK === +v.day
+      ? planDay(planSt, planK).filter((it: any) => !replacedSlots.has(it.meal) && !skip.plan.includes(it.meal)).map((it: any) => {
+        const r = BYSLUG[it.recipe]; const portion = it.portion * p.f;
+        return { key: `plan-${it.meal}`, meal: it.meal, slot: it.meal === 'Nachmittags' ? 'Z2' : it.meal, recipe: r, portion, n: nutrition(r, portion) };
+      }) : [];
+    const bk = !planMeals.length && !skip.gen.includes('bf') && own().mode.bf === 'rezept' && !own().rec.bf ? (() => {
       const r = RECIPES.filter((x: any) => x.slot === 'breakfast').map((x: any) => ({ x, sc: x.ingredients.filter((i: any) => have.has(i.name)).length })).sort((a: any, b: any) => b.sc - a.sc)[0].x;
       const portion = Math.round((t.kcal * 0.22) / nutrition(r).kcal * 20) / 20;
       return { recipe: r, portion, n: nutrition(r, portion) };
     })() : null;
     // Das Frühstück zählt als feste Menge mit, geprüft wird immer der ganze Tag gegen Longos Ziel.
     const K = ['kcal', 'protein', 'fat', 'carbs', 'sugar'] as const;
-    const fixedSums = [...(bk ? [bk.n] : []), ...owns.map((m) => m.c.sum)];
+    const fixedSums = [...(bk ? [bk.n] : []), ...owns.map((m) => m.c.sum), ...planMeals.map((m) => m.n)];
     const extra = fixedSums.length ? Object.fromEntries(K.map((k) => [k, fixedSums.reduce((a, n: any) => a + (n[k] || 0), 0)])) : null;
     const sopt = extra ? { extra, used } : {};
-    const res = ok.length || owns.length ? solve(ok, t, sopt) : null;
+    const res = ok.length || owns.length || planMeals.length ? solve(ok, t, sopt) : null;
+    // Gerichte aus den Vorräten, auf freie Plätze verteilt. Selbst eingetragene Hauptmahlzeiten belegen ihren Platz.
+    // Ist keiner mehr frei, landen sie als Ergänzung bei den Zwischenmahlzeiten. Entfernte Gerichte zählen nicht mehr mit.
+    let gen: any[] = [];
+    if (res) {
+      gen = buildMeals(res.items).map((m: any) => ({ ...m, kcal: m.sum.kcal }));
+      const taken = (k: string) => own().mode[k] === 'selbst' || (own().mode[k] === 'rezept' && !!own().rec[k]);
+      const freeMain = (['mi', 'ab'] as const).filter((k) => !taken(k)).map((k) => (k === 'mi' ? 'Mittags' : 'Abends'));
+      let gi = 0, zi = 0;
+      for (const m of gen) {
+        if (m.slot === 'Snack') m.slot = 'Z3';
+        else { const s2 = freeMain[gi++]; if (s2) m.slot = s2; else { m.slot = 'Z3'; m.kind = `${m.kind}, zum Auffüllen`; } }
+        m.key = m.slot === 'Z3' ? `gen-Z3-${zi++}` : `gen-${m.slot}`;
+      }
+      const removed = gen.filter((m) => skip.gen.includes(m.key));
+      if (removed.length) {
+        gen = gen.filter((m) => !skip.gen.includes(m.key));
+        const rem: Record<string, number> = {};
+        for (const m of removed) for (const it of m.items) rem[it.name] = (rem[it.name] || 0) + it.g;
+        res.items = res.items.map((it: any) => ({ ...it, g: Math.max(0, Math.round(it.g - (rem[it.name] || 0))) }));
+        res.sum = { ...res.sum };
+        for (const k of K) res.sum[k] = Math.max(0, res.sum[k] - removed.reduce((a, m) => a + (m.sum[k] || 0), 0));
+        res.verdict = verdict(res.sum, t);
+      }
+    }
     const vd = res?.verdict;
     const adds = res ? suggestAdditions(ok, t, res, sopt) : [];
     // Reicht keine einzelne Zutat, schlagen wir ein kleines Paket aus bis zu vier Zutaten vor.
@@ -840,8 +872,9 @@ import { pick } from '../data/affiliate.js';
       const fixedBlocks = [
         ...(bk ? [{ label: `Frühstück: ${bk.recipe.title}`, items: bk.recipe.ingredients.map((i: any) => ({ name: i.name, g: i.amount * bk.portion })) }] : []),
         ...owns.map((m) => ({ label: m.recipe ? `${m.label}: ${m.recipe.title}` : `${m.label}, selbst eingetragen`, items: m.c.items })),
+        ...planMeals.map((m) => ({ label: `Aus Deinem Plan: ${m.recipe.title}`, items: m.recipe.ingredients.map((i: any) => ({ name: i.name, g: i.amount * m.portion })) })),
       ];
-      const fixedRows = fixedBlocks.map((b2) => `<tbody><tr class="cat"><th colspan="3" scope="colgroup">${I.cup}${esc(b2.label)}</th></tr>${b2.items.filter((it: any) => it.g >= 0.5).map((it: any) => {
+      const fixedRows = fixedBlocks.map((b2) => `<tbody><tr class="cat"><th colspan="3" scope="colgroup">${I.bowl}${esc(b2.label)}</th></tr>${b2.items.filter((it: any) => it.g >= 0.5).map((it: any) => {
         const f = BY_NAME[it.name] || { n: (NUTRI as any)[it.name] || [0], light: 'g' };
         return `<tr class="fixed"><td class="nm"><span class="nmrow">${mac(it.name)}<span>${esc(it.name)}${BY_NAME[it.name] ? ` <span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>` : ''}</span></span></td><td>${amount(it.name, it.g)}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
       }).join('')}</tbody>`).join('');
@@ -869,16 +902,9 @@ import { pick } from '../data/affiliate.js';
     }
     if (res) {
       // Gerichte aus den eigenen Zutaten, nach Mahlzeit sortiert, zum Abhaken
-      const meals: any[] = buildMeals(res.items).map((m: any, i: number) => ({ ...m, key: `m${i}`, kcal: m.sum.kcal }));
-      // Selbst eingetragene Hauptmahlzeiten belegen ihren Platz, die berechneten Gerichte rücken auf freie Plätze.
-      // Ist keiner mehr frei, landen sie als Ergänzung bei den Zwischenmahlzeiten.
-      const taken = (k: string) => own().mode[k] === 'selbst' || (own().mode[k] === 'rezept' && !!own().rec[k]);
-      const freeMain = (['mi', 'ab'] as const).filter((k) => !taken(k)).map((k) => (k === 'mi' ? 'Mittags' : 'Abends'));
-      let gi = 0;
-      for (const m of meals) {
-        if (m.slot === 'Snack') { m.slot = 'Z3'; continue; }
-        const s2 = freeMain[gi++]; if (s2) m.slot = s2; else { m.slot = 'Z3'; m.kind = `${m.kind}, zum Auffüllen`; }
-      }
+      const meals: any[] = [...gen];
+      meals.unshift(...planMeals.map((m) => ({ key: m.key, slot: m.slot, kind: 'Aus Deinem Plan', title: m.recipe.title, kcal: m.n.kcal, sum: m.n, minutes: m.recipe.minutes, recipe: m.recipe, plan: m,
+        items: m.recipe.ingredients.map((i: any) => ({ name: i.name, g: Math.round(i.amount * m.portion) })), steps: [] })));
       meals.unshift(...owns.map((m) => ({ key: m.key, slot: m.slot, kind: m.recipe ? 'Dein Rezept' : 'Selbst eingetragen', title: m.recipe ? m.recipe.title : m.label, kcal: m.c.sum.kcal, sum: m.c.sum, own: m, items: [], steps: [], minutes: 0 })));
       if (bk) meals.unshift({ key: 'bf', slot: 'Morgens', kind: 'Frühstück', title: bk.recipe.title, kcal: bk.n.kcal, sum: bk.n, minutes: bk.recipe.minutes, recipe: bk.recipe,
         items: bk.recipe.ingredients.map((i: any) => ({ name: i.name, g: Math.round(i.amount * bk.portion) })), steps: [] });
@@ -892,7 +918,7 @@ import { pick } from '../data/affiliate.js';
       const isDone = (m: any) => (m.own ? ownIsDone(m.own, done) : !!done[m.key]);
       const eaten = meals.filter(isDone).reduce((a2: any, m: any) => { const n2 = m.sum || (m.n as any); return { kcal: a2.kcal + m.kcal, protein: a2.protein + n2.protein, fat: a2.fat + n2.fat, carbs: a2.carbs + n2.carbs }; }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
       if (meals.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">Deine Rezepte für heute</h2>
+        h += `<div class="stack"><h2 style="font-size:1.6rem">Dein heutiger Essensplan</h2>
           <p class="muted small">Alle Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune. Hake ab, was Du gegessen hast. Selbst Eingetragenes zählt schon als gegessen. Der helle Teil im Balken ist eingeplant, aber noch nicht abgehakt.</p>
           ${doneHtml(eaten, t, fmt, eaten.kcal >= t.kcal * 0.95 ? ' · Tag geschafft!' : '', res.sum)}
           ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => m.own ? ownCard(m, isDone(m)) : `<article class="card meal${done[m.key] ? ' isdone' : ''}">
@@ -903,8 +929,9 @@ import { pick } from '../data/affiliate.js';
             <ul class="ing">${m.items.map((i: any) => `<li>${mac(i.name)}<span>${amount(i.name, i.g)} ${esc(i.name)}</span></li>`).join('')}</ul>
             ${m.steps.length ? `<ol>${m.steps.map((st: string) => `<li>${esc(st)}</li>`).join('')}</ol>` : '<p class="small muted">Zubereitung im Rezept.</p>'}
             <p class="small muted">${I.time} etwa ${m.minutes} Minuten</p>
-            <label class="tick"><input type="checkbox" data-done="${m.key}" ${done[m.key] ? 'checked' : ''}><span>Gegessen</span></label>
-          </div></article>`).join('')}</div>` : ''; }).join('')}</div>`;
+            <div class="mfoot"><label class="tick"><input type="checkbox" data-done="${m.key}" ${done[m.key] ? 'checked' : ''}><span>Gegessen</span></label><button type="button" class="linkbtn mrm" data-skip="${m.key}">${I.close} Entfernen</button></div>
+          </div></article>`).join('')}</div>` : ''; }).join('')}
+          ${skip.gen.length || skip.plan.length ? `<p class="small muted skipped">${I.info} Entfernt: ${[...skip.plan.map((x: string) => `${({ Morgens: 'Morgens', Mittags: 'Mittagessen', Nachmittags: 'Snack am Nachmittag', Abends: 'Abendessen' } as any)[x] || x} aus Deinem Plan`), ...skip.gen.map((x: string) => (x === 'bf' ? 'Frühstücksvorschlag' : x.startsWith('gen-Z3') ? 'Snack-Vorschlag' : x === 'gen-Mittags' ? 'Vorschlag fürs Mittagessen' : 'Vorschlag fürs Abendessen'))].join(', ')}. Die Mahlzeit bleibt leer. <button type="button" class="linkbtn" data-unskip>Wieder vorschlagen</button></p>` : ''}</div>`;
       }
       h += tipHtml + tableHtml;
       // Passende Rezepte der Seite, je 1 Portion, nach Mahlzeit
@@ -948,7 +975,7 @@ import { pick } from '../data/affiliate.js';
         </div></article>`;
     }
     return `<article class="card meal${isDone ? ' isdone' : ''}">
-      <div class="mimg ownimg" aria-hidden="true">${I.cup}</div>
+      <div class="mimg ownimg" aria-hidden="true">${I.bowl}</div>
       <div class="info">
         <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.kcal)} kcal</span><span class="chip ${cls}"><span class="dot ${c.light}" aria-hidden="true"></span>${lbl}</span></div>
         <h3>${esc(m.title)}</h3>
@@ -965,7 +992,14 @@ import { pick } from '../data/affiliate.js';
     const mb = t.closest<HTMLElement>('[data-more-btn]');
     if (mb) { result.querySelectorAll<HTMLElement>('[data-more]').forEach((x) => (x.hidden = false)); mb.remove(); return; }
     const many = t.closest<HTMLElement>('[data-addmany]');
-    if (many) { for (const n of many.dataset.addmany!.split('|')) if (BY_NAME[n] && !state.picks.some((p) => p.name === n)) state.picks.push({ name: n }); state.done = {}; save(); renderPicked(); render(); return; }
+    if (many) { for (const n of many.dataset.addmany!.split('|')) if (BY_NAME[n] && !state.picks.some((p) => p.name === n)) state.picks.push({ name: n }); state.done = {}; if (state.own?.skip) state.own.skip.gen = []; save(); renderPicked(); render(); return; }
+    const sk = t.closest<HTMLElement>('[data-skip]');
+    if (sk) {
+      const key = sk.dataset.skip!; const o = own(); o.skip = o.skip || { plan: [], gen: [] };
+      if (key.startsWith('plan-')) o.skip.plan.push(key.slice(5)); else o.skip.gen.push(key);
+      save(); const y = scrollY; render(); scrollTo({ top: y }); return;
+    }
+    if (t.closest('[data-unskip]')) { own().skip = { plan: [], gen: [] }; save(); const y = scrollY; render(); scrollTo({ top: y }); return; }
     const b = t.closest<HTMLElement>('[data-add]');
     if (b) { addFood(b.dataset.add!); return; }
     const fr = t.closest<HTMLElement>('[data-free]');
