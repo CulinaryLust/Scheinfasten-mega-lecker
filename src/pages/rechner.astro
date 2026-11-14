@@ -36,7 +36,7 @@ import { pick } from '../data/affiliate.js';
   <section class="in calc" id="prof">
     <form id="pf" class="card wcard" novalidate>
       <fieldset class="block">
-        <legend><span class="num">1</span>Über Dich</legend>
+        <legend><span class="num"><Icon name="user" /></span>Über Dich</legend>
         <div class="field"><span class="lbl">Geschlecht</span>
           <div class="seg three">
             <label><input type="radio" name="sex" value="w" checked /><span>Weiblich</span></label>
@@ -100,8 +100,8 @@ import { pick } from '../data/affiliate.js';
   <section class="in calc" id="calc" data-base={u('')} data-icons={JSON.stringify(icons)}>
     <form id="f" class="card wcard" novalidate>
       <fieldset class="block">
-        <legend><span class="num">2</span>Was hast Du zu Hause?</legend>
-        <p class="small muted">Lebensmittel eintippen, ohne Mengen. Wir rechnen aus, wie viel Du davon heute essen kannst, und machen Rezepte daraus.</p>
+        <legend><span class="num"><Icon name="pot" /></span>Was hast Du zu Hause?</legend>
+        <p class="small muted">Tipp ein, was Du da hast, ganz ohne Mengen. Wir machen daraus leckere, passende Rezepte für Deine Mahlzeiten und rechnen die Mengen für Deinen Fastentag aus.</p>
         <div class="field combo">
           <label for="q" class="lbl">Lebensmittel hinzufügen</label>
           <div class="search">
@@ -121,15 +121,19 @@ import { pick } from '../data/affiliate.js';
         <p class="small muted legendline"><span>Hauptnährstoff:</span><span class="lg"><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate</span><span class="lg"><span class="mac protein"><Icon name="protein" /></span>Eiweiß</span><span class="lg"><span class="mac fat"><Icon name="fat" /></span>Fett</span></p>
       </fieldset>
 
-      <fieldset class="block" id="own">
-        <legend><span class="num">3</span>Deine Mahlzeiten</legend>
-        <p class="small muted">Pro Mahlzeit wählst Du: Wir schlagen ein Rezept vor, oder Du trägst selbst ein, was Du gegessen hast, zum Beispiel einen Sojajoghurt oder Maiswaffeln mit Avocado. Das zählt sofort in Deinen Tag, die übrigen Rezepte passen sich an.</p>
-        <div class="omeals" id="omeals"></div>
-        <button type="button" class="qchip oaddzw" id="oaddzw"><Icon name="plus" />Zwischenmahlzeit eintragen</button>
-      </fieldset>
-
       <p class="err" id="err3" role="alert" hidden></p>
-      <div class="nav-btns"><p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p><button type="submit" class="btn">Jetzt daraus Rezepte erstellen <Icon name="arrow" /></button></div>
+      <div class="nav-btns"><button type="submit" class="btn">Jetzt daraus Rezepte erstellen <Icon name="arrow" /></button></div>
+
+      <p class="orline" aria-hidden="true"><span>oder</span></p>
+
+      <fieldset class="block" id="own">
+        <legend><span class="num"><Icon name="cup" /></span>Deine Mahlzeiten</legend>
+        <p class="small muted">Trag Dein Essen selbst ein, zum Beispiel einen Sojajoghurt oder Maiswaffeln mit Avocado, oder wähle ein Rezept von uns. Beides lässt sich mischen. Alles zählt sofort in Deinen Tag, und die übrigen Gerichte passen sich an.</p>
+        <div class="omeals" id="omeals"></div>
+      </fieldset>
+      <p class="err" id="err4" role="alert" hidden></p>
+      <div class="nav-btns"><button type="submit" class="btn" data-ownsubmit>Meinen Tag berechnen <Icon name="arrow" /></button></div>
+      <p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
     </form>
   </section>
 
@@ -264,7 +268,49 @@ import { pick } from '../data/affiliate.js';
   .osave .btn { min-height: 40px; padding: 8px 16px; }
   .linkbtn { border: 0; background: none; color: var(--green); font: 700 .86rem var(--body); cursor: pointer; padding: 4px 0; min-height: 0; display: inline-flex; gap: 6px; align-items: center; }
   .linkbtn .i { width: 1em; height: 1em; }
-  .oaddzw { justify-self: start; }
+  .calc .nav-btns { justify-content: flex-end; }
+  .orline { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: .8rem; }
+  .orline::before, .orline::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .block .num .i { width: 18px; height: 18px; }
+  .otog { border: 0; background: none; cursor: pointer; padding: 8px 12px; border-radius: 9px; font: 700 .86rem/1.2 var(--body); color: var(--muted); white-space: nowrap; min-height: 0; }
+  .otog[aria-pressed="true"] { background: var(--card); color: var(--green); box-shadow: var(--shadow); }
+  .otog:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+  .ok-ic { color: var(--green); display: inline-grid; vertical-align: -3px; }
+  .ok-ic .i { width: 1.05em; height: 1.05em; }
+  .oplus { display: flex; align-items: center; gap: 8px; margin: -4px 0; }
+  .oplus::before, .oplus::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .oplus button { width: 30px; height: 30px; min-height: 0; padding: 0; border-radius: 50%; border: 1.5px solid var(--line); background: var(--bg); color: var(--green); cursor: pointer; display: grid; place-items: center; }
+  .oplus button:hover, .oplus button:focus-visible { border-color: var(--green); background: var(--green-soft); }
+  .oplus button .i { width: 16px; height: 16px; }
+  .omeal.zw { border-style: dashed; }
+  .omeal.zw .ohead { flex-direction: row; align-items: center; }
+  .ofoot { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; }
+  .ofin { min-height: 40px; padding: 8px 18px; background: var(--green); color: var(--on-green); }
+  .ofin:hover { background: var(--green-d); }
+  .odone { display: grid; gap: 6px; }
+  .odone p { margin: 0; }
+  .odone .linkbtn { justify-self: start; }
+  .orecs { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+  .orec { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; align-items: center; text-align: left; padding: 6px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; font: inherit; min-height: 0; }
+  .orec:hover, .orec:focus-visible { border-color: var(--green); }
+  .orec img, .ochosen img { width: 64px; height: 48px; object-fit: cover; border-radius: 8px; }
+  .orec span { display: grid; gap: 2px; min-width: 0; }
+  .orec b { font-size: .9rem; line-height: 1.25; }
+  .orec small { color: var(--muted); font-size: .78rem; }
+  .ochosen { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; }
+  .ochosen > div { display: grid; gap: 6px; }
+  .ochosen select { width: auto; min-height: 38px; padding: 4px 8px; margin-left: 6px; }
+  .tipbox { border-radius: var(--radius); background: var(--warn-bg); border-left: 5px solid var(--warn); }
+  .tipbox summary { display: flex; gap: 10px; align-items: flex-start; padding: 14px 16px; cursor: pointer; list-style: none; }
+  .tipbox summary::-webkit-details-marker { display: none; }
+  .tipbox summary .i { color: var(--warn); margin-top: 3px; flex: none; }
+  .tipbox summary span { display: grid; gap: 2px; }
+  .tipbox summary small { color: var(--muted); }
+  .tipbox summary::after { content: "+"; margin-left: auto; font: 700 1.3rem/1 var(--body); color: var(--warn); }
+  .tipbox[open] summary::after { content: "\2212"; }
+  .tipin { padding: 0 16px 16px 46px; display: grid; gap: 8px; }
+  .tipin p { margin: 0; }
+  .amounts tr.fixed td { color: var(--muted); }
   .mimg.ownimg { display: grid; place-items: center; background: var(--band); color: var(--green); }
   .mimg.ownimg .i { width: 40%; height: 40%; }
   .meal .onotes { margin: 0; padding-left: 18px; font-size: .88rem; }
@@ -273,7 +319,7 @@ import { pick } from '../data/affiliate.js';
 
 <script>
   import { FOODS, BY_NAME, search, norm, profile, targets, solve, suggestAdditions, completeDay, buildMeals, matchRecipes, advice, amount, unit, CAP_WHY } from '../lib/rechner.js';
-  import { fmt, PLAN, amountLabel, RECIPES, nutrition } from '../lib/nutrition.js';
+  import { fmt, PLAN, amountLabel, RECIPES, nutrition, NUTRIENTS as NUTRI } from '../lib/nutrition.js';
   import { groupByCat, macroOf, MACROS } from '../lib/foodmeta.js';
   import { thumb, thumbIn } from '../lib/url.js';
   import { doneHtml } from '../lib/fortschritt.js';
@@ -305,7 +351,7 @@ import { pick } from '../data/affiliate.js';
   type Pick = { name: string; g?: number };
   // Selbst eingetragene Mahlzeiten: Einträge wie im Tagebuch, {type: 'food', name, qty, unit} oder {type: 'recipe', slug, qty, unit: 'portion'}
   type Entry = { type: 'food' | 'recipe'; name?: string; slug?: string; qty: number; unit: string };
-  type Own = { d: string; mode: Record<string, string>; items: Record<string, Entry[]>; zw: { id: string; items: Entry[] }[] };
+  type Own = { d: string; mode: Record<string, string>; items: Record<string, Entry[]>; rec: Record<string, { slug: string; qty: number }>; fin: Record<string, boolean>; zw: { id: string; pos: number; items: Entry[] }[] };
   let state: { inputs?: any; picks: Pick[]; shown?: boolean; done?: Record<string, Record<string, boolean>>; own?: Own } = { picks: [] };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && Array.isArray(s.picks)) state = s; } catch {}
   state.picks = state.picks.filter((p) => BY_NAME[p.name]);
@@ -315,36 +361,66 @@ import { pick } from '../data/affiliate.js';
   const isoToday = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
   // ---------- Eigene Mahlzeiten ----------
+  // Je feste Mahlzeit: '' = wir planen (Frühstück: keins, Mittag und Abend: Gericht aus Deinen Lebensmitteln),
+  // 'rezept' = Rezept der Seite auswählen, 'selbst' = selbst eintragen. Zwischenmahlzeiten über das kleine „+“.
   const bfx = document.getElementById('bfx') as HTMLInputElement;
   const omeals = document.getElementById('omeals')!;
   const SAVED = 'smlMeineMahlzeiten';
   const FIXED: [string, string, string][] = [['bf', 'Frühstück', 'Morgens'], ['mi', 'Mittagessen', 'Mittags'], ['ab', 'Abendessen', 'Abends']];
-  const validEntry = (e: Entry) => e && (e.type === 'recipe' ? !!RECIPES.find((r: any) => r.slug === e.slug) : !!BY_NAME[e.name!]);
+  const POS_TXT = ['vor dem Frühstück', 'zwischen Frühstück und Mittagessen', 'zwischen Mittag- und Abendessen', 'nach dem Abendessen'];
+  const SHARE: Record<string, number> = { bf: 0.22, mi: 0.35, ab: 0.35 };
+  const BYSLUG: Record<string, any> = Object.fromEntries(RECIPES.map((r: any) => [r.slug, r]));
+  const validEntry = (e: Entry) => e && (e.type === 'recipe' ? !!BYSLUG[e.slug!] : !!BY_NAME[e.name!]);
   // Eingetragenes gilt für den Kalendertag. Am nächsten Tag startet der Bereich leer, gespeicherte „Meine Mahlzeiten“ bleiben.
-  const freshOwn = (): Own => ({ d: isoToday(), mode: { bf: bfx.checked ? 'rezept' : 'kein', mi: 'rezept', ab: 'rezept' }, items: { bf: [], mi: [], ab: [] }, zw: [] });
+  const freshOwn = (): Own => ({ d: isoToday(), mode: { bf: bfx.checked ? 'rezept' : '', mi: '', ab: '' }, items: { bf: [], mi: [], ab: [] }, rec: {}, fin: {}, zw: [] });
   if (!state.own || state.own.d !== isoToday()) state.own = freshOwn();
   const own = () => state.own!;
-  for (const k of ['bf', 'mi', 'ab']) own().items[k] = (own().items[k] || []).filter(validEntry);
-  own().zw = (own().zw || []).map((z) => ({ ...z, items: (z.items || []).filter(validEntry) }));
+  {
+    const o = own();
+    // Ältere Stände: „Keins“ und „Rezept vorschlagen“ heißen jetzt: wir planen
+    if (o.mode.bf === 'kein') o.mode.bf = '';
+    for (const k of ['mi', 'ab']) if (o.mode[k] === 'rezept' && !o.rec?.[k]) o.mode[k] = '';
+    o.rec = Object.fromEntries(Object.entries(o.rec || {}).filter(([, r]) => r && BYSLUG[r.slug]));
+    o.fin = o.fin || {};
+    for (const k of ['bf', 'mi', 'ab']) o.items[k] = (o.items[k] || []).filter(validEntry);
+    o.zw = (o.zw || []).map((z) => ({ ...z, pos: z.pos ?? 3, items: (z.items || []).filter(validEntry) }));
+  }
   let saved: { name: string; items: Entry[] }[] = [];
   try { const x = JSON.parse(localStorage.getItem(SAVED) || '[]'); if (Array.isArray(x)) saved = x.map((m) => ({ name: String(m.name || 'Meine Mahlzeit').slice(0, 40), items: (m.items || []).filter(validEntry) })).filter((m) => m.items.length); } catch {}
   const saveSaved = () => { try { localStorage.setItem(SAVED, JSON.stringify(saved)); } catch {} };
   const entriesOf = (k: string): Entry[] => (k.startsWith('z') ? own().zw.find((z) => z.id === k)?.items || [] : own().items[k] || []);
-  const entryName = (e: Entry) => (e.type === 'recipe' ? RECIPES.find((r: any) => r.slug === e.slug)!.title : e.name!);
+  const entryName = (e: Entry) => (e.type === 'recipe' ? BYSLUG[e.slug!].title : e.name!);
   const curDay = () => +((pf.elements.namedItem('day') as RadioNodeList).value || 1);
-  const curTargets = () => {
+  const curProfile = () => {
     const fd = Object.fromEntries(new FormData(pf).entries()) as any;
-    const p = profile({ sex: fd.sex, age: +fd.age || 42, h: +fd.h || 168, w: +fd.w || 70, pal: +fd.pal || 1.6 });
-    return targets(curDay() === 1 ? 1 : 2, p.f);
+    return profile({ sex: fd.sex, age: +fd.age || 42, h: +fd.h || 168, w: +fd.w || 70, pal: +fd.pal || 1.6 });
   };
+  const curTargets = () => targets(curDay() === 1 ? 1 : 2, curProfile().f);
+  // Die Kalorien an den Tag-Knöpfen sind dieselben wie das Ziel im Ergebnis: an Deinen Körper angepasst.
+  function updateDaySums() {
+    const f = curProfile().f;
+    document.querySelectorAll<HTMLElement>('[data-daysum]').forEach((el) => {
+      const ref = el.dataset.daysum === '1' ? PLAN.reference.day1 : PLAN.reference.day2to5;
+      el.textContent = `ca. ${fmt(Math.round(ref.kcal * f / 10) * 10)} kcal`;
+    });
+  }
   const LCHIP: Record<string, [string, string]> = { g: ['ok', 'Passt gut'], y: ['warn', 'Geht, aber'], r: ['bad', 'Passt nicht'] };
-  function sumHtml(k: string) {
-    const es = entriesOf(k);
+  /** Einträge einer Mahlzeit, auch ein ausgewähltes Rezept (als Portionen). */
+  const mealEntries = (k: string): Entry[] => {
+    if (k.startsWith('z')) return entriesOf(k);
+    const o = own();
+    if (o.mode[k] === 'selbst') return o.items[k];
+    if (o.mode[k] === 'rezept' && o.rec[k]) return [{ type: 'recipe', slug: o.rec[k].slug, qty: o.rec[k].qty, unit: 'portion' }];
+    return [];
+  };
+  function sumHtml(k: string, short = false) {
+    const es = mealEntries(k);
     if (!es.length) return '<p class="small muted">Noch nichts eingetragen.</p>';
     const c = mealCheck(es, curTargets(), curDay(), !k.startsWith('z'));
     const [cls, lbl] = LCHIP[c.light];
-    return `<div class="orow"><span class="chip ${cls}"><span class="dot ${c.light}" aria-hidden="true"></span>${lbl}</span><b>${fmt(c.sum.kcal)} kcal</b><span class="muted">Eiweiß ${fmt(c.shares.protein)} % · Fett ${fmt(c.shares.fat)} % · Kohlenhydrate ${fmt(c.shares.carbs)} %</span></div>
-      ${c.notes.length ? `<ul>${c.notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul>` : '<p class="small muted">Passt zu Prof. Dr. Longos Vorgaben. Fett und Kohlenhydrate gleicht der Rest des Tages aus.</p>'}`;
+    const row = `<div class="orow"><span class="chip ${cls}"><span class="dot ${c.light}" aria-hidden="true"></span>${lbl}</span><b>${fmt(c.sum.kcal)} kcal</b>${short ? '' : `<span class="muted">Eiweiß ${fmt(c.shares.protein)} % · Fett ${fmt(c.shares.fat)} % · Kohlenhydrate ${fmt(c.shares.carbs)} %</span>`}</div>`;
+    if (short) return row;
+    return `${row}${c.notes.length ? `<ul>${c.notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul>` : '<p class="small muted">Passt zu Prof. Dr. Longos Vorgaben. Fett und Kohlenhydrate gleicht der Rest des Tages aus.</p>'}`;
   }
   function itemHtml(k: string, e: Entry, i: number) {
     const us = units(e);
@@ -357,6 +433,7 @@ import { pick } from '../data/affiliate.js';
       <select data-ou="${k}:${i}" aria-label="Einheit ${esc(entryName(e))}">${opts}</select>
       <button type="button" data-orm="${k}:${i}" aria-label="${esc(entryName(e))} entfernen">${I.close}</button></span></li>`;
   }
+  const finBtn = (k: string) => `<button type="button" class="btn small ofin" data-ofin="${k}">${I.check} Fertig</button>`;
   function editorHtml(k: string, label: string) {
     const es = entriesOf(k);
     return `<div class="oedit">
@@ -365,16 +442,66 @@ import { pick } from '../data/affiliate.js';
       <ul class="sug" id="osug-${k}" role="listbox" hidden></ul></div>
       ${es.length ? `<ul class="oitems">${es.map((e, i) => itemHtml(k, e, i)).join('')}</ul>` : ''}
       <div class="osum" data-osum="${k}">${sumHtml(k)}</div>
-      ${es.length ? `<div class="osave" data-osave="${k}"><button type="button" class="linkbtn" data-oask="${k}">${I.heart} Als „Meine Mahlzeit“ merken</button></div>` : ''}
+      ${es.length ? `<div class="ofoot"><div class="osave" data-osave="${k}"><button type="button" class="linkbtn" data-oask="${k}">${I.heart} Als „Meine Mahlzeit“ merken</button></div>${finBtn(k)}</div>` : ''}
     </div>`;
   }
+  /** Passende Portion eines Rezepts für diese Mahlzeit: ihr Anteil am Tagesziel, in Viertelschritten. */
+  const portionFor = (k: string, slug: string) => {
+    const kcal1 = nutrition(BYSLUG[slug]).kcal || 1;
+    return Math.min(2, Math.max(0.5, Math.round(curTargets().kcal * (SHARE[k] || 0.3) / kcal1 * 4) / 4));
+  };
+  const portionTxt = (q: number) => `${q.toLocaleString('de-DE', { maximumFractionDigits: 2 })} ${q === 1 ? 'Portion' : 'Portionen'}`;
+  const recQuery: Record<string, string> = {};
+  const recMore: Record<string, boolean> = {};
+  function recCards(k: string) {
+    const slot = k === 'bf' ? 'breakfast' : 'main';
+    const have = new Set(state.picks.map((p) => p.name));
+    const tq = norm(recQuery[k] || '');
+    let list = RECIPES.filter((r: any) => (tq ? norm(`${r.title} ${r.short}`).includes(tq) : r.slot === slot || (slot === 'main' && r.slot === 'side')));
+    // Rezepte mit Deinen Lebensmitteln zuerst
+    list = list.map((r: any) => ({ r, hit: r.ingredients.filter((i: any) => have.has(i.name)).length })).sort((a: any, b: any) => b.hit - a.hit || a.r.title.localeCompare(b.r.title, 'de')).map((x: any) => x.r);
+    const shown = recMore[k] || tq ? list : list.slice(0, 6);
+    if (!shown.length) return '<p class="small muted">Kein Rezept gefunden. Probier ein anderes Wort.</p>';
+    return `<div class="orecs">${shown.map((r: any) => `<button type="button" class="orec" data-orec="${k}:${r.slug}"><img src="${thumb(base, r.image)}" alt="" loading="lazy" width="80" height="60" /><span><b>${esc(r.title)}</b><small>${fmt(nutrition(r).kcal)} kcal je Portion · ${r.minutes} Min.</small></span></button>`).join('')}</div>
+      ${!tq && !recMore[k] && list.length > 6 ? `<button type="button" class="linkbtn" data-oremore="${k}">${I.plus} Alle ${list.length} Rezepte zeigen</button>` : ''}`;
+  }
+  function pickerHtml(k: string) {
+    const r0 = own().rec[k];
+    if (r0) {
+      const r = BYSLUG[r0.slug];
+      const portions = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
+      return `<div class="oedit"><div class="ochosen"><img src="${thumb(base, r.image)}" alt="" width="80" height="60" /><div><b><a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a></b>
+        <label class="small">Menge <select data-oportion="${k}">${portions.map((p) => `<option value="${p}"${p === +r0.qty ? ' selected' : ''}>${portionTxt(p)}</option>`).join('')}</select></label></div></div>
+        <div class="osum" data-osum="${k}">${sumHtml(k)}</div>
+        <div class="ofoot"><button type="button" class="linkbtn" data-orecx="${k}">${I.swap} Anderes Rezept</button>${finBtn(k)}</div></div>`;
+    }
+    return `<div class="oedit">
+      <p class="small muted">${k === 'bf' ? 'Tipp ein Frühstück an. Ohne Auswahl nehmen wir eins, das zu Deinen Lebensmitteln passt.' : 'Tipp ein Rezept an. Ohne Auswahl machen wir ein Gericht aus Deinen Lebensmitteln.'} Die Menge rechnen wir passend zu Deinem Tag aus.</p>
+      <div class="search">${I.search}<input type="search" data-orq="${k}" value="${esc(recQuery[k] || '')}" aria-label="Rezept suchen" placeholder="Rezept suchen, z. B. Minestrone" autocomplete="off" /></div>
+      <div data-orecbox="${k}">${recCards(k)}</div></div>`;
+  }
+  /** Kurzfassung einer abgeschlossenen Mahlzeit. */
+  function doneHtml2(k: string) {
+    const es = mealEntries(k);
+    const what = es.map((e) => (e.type === 'recipe' ? `${portionTxt(+e.qty)} ${BYSLUG[e.slug!].title}` : `${qtyLabel(e).replace(/ \(.*\)$/, '')} ${e.name}`)).join(', ');
+    return `<div class="odone"><p class="small">${esc(what)}</p><div data-osumshort="${k}">${sumHtml(k, true)}</div><button type="button" class="linkbtn" data-oedit="${k}">Bearbeiten</button></div>`;
+  }
+  const plusBtn = (pos: number) => `<div class="oplus"><button type="button" data-ozadd="${pos}" aria-label="Zwischenmahlzeit ${POS_TXT[pos]} einfügen" title="Zwischenmahlzeit ${POS_TXT[pos]}">${I.plus}</button></div>`;
   function renderOwn() {
     const o = own();
-    const seg = (k: string, opts: [string, string][]) => `<div class="oseg" role="radiogroup" aria-label="Wie möchtest Du planen?">${opts.map(([v, l]) => `<label><input type="radio" name="om-${k}" value="${v}" data-om="${k}"${o.mode[k] === v ? ' checked' : ''} /><span>${l}</span></label>`).join('')}</div>`;
-    let h = FIXED.map(([k, label]) => `<div class="omeal${o.mode[k] === 'selbst' ? ' on' : ''}" data-k="${k}">
-      <div class="ohead"><b>${label}</b>${seg(k, k === 'bf' ? [['kein', 'Keins'], ['rezept', 'Rezept'], ['selbst', 'Selbst eintragen']] : [['rezept', 'Rezept'], ['selbst', 'Selbst eintragen']])}</div>
-      ${o.mode[k] === 'selbst' ? editorHtml(k, label) : ''}</div>`).join('');
-    h += o.zw.map((z, i) => `<div class="omeal on" data-k="${z.id}"><div class="ohead"><b>Zwischenmahlzeit${o.zw.length > 1 ? ` ${i + 1}` : ''}</b><button type="button" class="orm" data-ozrm="${z.id}">${I.close} Entfernen</button></div>${editorHtml(z.id, 'Zwischenmahlzeit')}</div>`).join('');
+    const hint = (k: string) => (k === 'bf' ? 'Kein Frühstück. Wähle Rezept oder Selbst eintragen, wenn Du frühstückst.' : 'Wir machen ein Gericht aus Deinen Lebensmitteln.');
+    const tog = (k: string, v: string, l: string) => `<button type="button" class="otog" data-om="${k}" data-v="${v}" aria-pressed="${o.mode[k] === v}">${l}</button>`;
+    const zws = (pos: number) => o.zw.filter((z) => z.pos === pos).map((z) => `<div class="omeal on zw" data-k="${z.id}"><div class="ohead"><b>Zwischenmahlzeit${o.fin[z.id] && z.items.length ? ` <span class="ok-ic">${I.check}</span>` : ''}</b><button type="button" class="orm" data-ozrm="${z.id}">${I.close} Entfernen</button></div>${o.fin[z.id] && z.items.length ? doneHtml2(z.id) : editorHtml(z.id, 'Zwischenmahlzeit')}</div>`).join('');
+    let h = '';
+    FIXED.forEach(([k, label], idx) => {
+      h += zws(idx) + plusBtn(idx);
+      const m = o.mode[k];
+      const fin = o.fin[k] && mealEntries(k).length;
+      h += `<div class="omeal${m ? ' on' : ''}" data-k="${k}">
+        <div class="ohead"><b>${label}${fin ? ` <span class="ok-ic">${I.check}</span>` : ''}</b>${fin ? '' : `<div class="oseg" role="group" aria-label="${label}">${tog(k, 'rezept', 'Rezept')}${tog(k, 'selbst', 'Selbst eintragen')}</div>`}</div>
+        ${fin ? doneHtml2(k) : m === 'selbst' ? editorHtml(k, label) : m === 'rezept' ? pickerHtml(k) : `<p class="small muted">${hint(k)}</p>`}</div>`;
+    });
+    h += zws(3) + plusBtn(3);
     omeals.innerHTML = h;
   }
   let resTimer = 0;
@@ -386,12 +513,17 @@ import { pick } from '../data/affiliate.js';
     if (now) go(); else resTimer = window.setTimeout(go, 350);
   };
   const refreshSum = (k: string) => { const el = omeals.querySelector(`[data-osum="${k}"]`); if (el) el.innerHTML = sumHtml(k); };
+  const syncBf = () => {
+    // Der Profilwert „Mit Frühstück“ (auch im Planer genutzt) folgt dem Frühstücks-Schalter
+    bfx.checked = !!own().mode.bf;
+    try { const old = JSON.parse(localStorage.getItem('smlProfil') || 'null') || {}; localStorage.setItem('smlProfil', JSON.stringify({ ...old, bf: bfx.checked })); } catch {}
+  };
   function addEntry(k: string, hit: any) {
-    const base = hit.type === 'recipe' ? { type: 'recipe' as const, slug: hit.slug } : { type: 'food' as const, name: hit.name };
+    const base2 = hit.type === 'recipe' ? { type: 'recipe' as const, slug: hit.slug } : { type: 'food' as const, name: hit.name };
     const list = entriesOf(k);
-    const same = list.find((e) => e.type === base.type && (e.type === 'recipe' ? e.slug === (base as any).slug : e.name === (base as any).name));
-    if (same) same.qty = +same.qty + (units(same).find((u: any) => u[0] === same.unit)?.[2] === 1 ? defaultAmount(base).qty : 1);
-    else list.push({ ...base, ...defaultAmount(base) });
+    const same = list.find((e) => e.type === base2.type && (e.type === 'recipe' ? e.slug === (base2 as any).slug : e.name === (base2 as any).name));
+    if (same) same.qty = +same.qty + (units(same).find((u: any) => u[0] === same.unit)?.[2] === 1 ? defaultAmount(base2).qty : 1);
+    else list.push({ ...base2, ...defaultAmount(base2) });
     renderOwn();
     (omeals.querySelector(`[data-os="${k}"]`) as HTMLInputElement | null)?.focus();
     ownChanged(true);
@@ -414,6 +546,7 @@ import { pick } from '../data/affiliate.js';
   omeals.addEventListener('input', (e) => {
     const t = e.target as HTMLInputElement;
     if (t.dataset.os) { showOs(t); return; }
+    if (t.dataset.orq) { const k = t.dataset.orq; recQuery[k] = t.value; const box = omeals.querySelector(`[data-orecbox="${k}"]`); if (box) box.innerHTML = recCards(k); return; }
     if (t.dataset.oq) {
       const [k, i] = t.dataset.oq.split(':'); const en = entriesOf(k)[+i]; if (!en) return;
       en.qty = Math.max(0, Math.min(5000, +t.value.replace(',', '.') || 0));
@@ -423,6 +556,8 @@ import { pick } from '../data/affiliate.js';
   omeals.addEventListener('keydown', (e) => {
     const t = e.target as HTMLElement;
     if (t.dataset.oload && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); t.click(); return; }
+    if ((t as HTMLInputElement).dataset.oname && e.key === 'Enter') { e.preventDefault(); (omeals.querySelector(`[data-osv="${(t as HTMLInputElement).dataset.oname}"]`) as HTMLElement)?.click(); return; }
+    if ((t as HTMLInputElement).dataset.orq && e.key === 'Enter') { e.preventDefault(); return; }
     const inp = t as HTMLInputElement; const k = inp.dataset.os; if (!k) return;
     const hs = osHits[k] || []; const list = omeals.querySelector(`#osug-${k}`) as HTMLElement;
     const markOs = () => { list.querySelectorAll('li').forEach((li, i) => li.setAttribute('aria-selected', String(i === osAct[k]))); inp.setAttribute('aria-activedescendant', `os-${k}-${osAct[k]}`); list.querySelector(`#os-${k}-${osAct[k]}`)?.scrollIntoView({ block: 'nearest' }); };
@@ -443,17 +578,6 @@ import { pick } from '../data/affiliate.js';
   });
   omeals.addEventListener('change', (e) => {
     const t = e.target as HTMLInputElement;
-    if (t.dataset.om) {
-      const k = t.dataset.om; own().mode[k] = t.value;
-      if (k === 'bf') {
-        // Der alte Schalter „Mit Frühstück“ lebt im Profil weiter: Rezept = an, Keins oder Selbst = aus
-        bfx.checked = t.value === 'rezept';
-        try { const old = JSON.parse(localStorage.getItem('smlProfil') || 'null') || {}; localStorage.setItem('smlProfil', JSON.stringify({ ...old, bf: bfx.checked })); } catch {}
-      }
-      renderOwn();
-      if (t.value === 'selbst') (omeals.querySelector(`[data-os="${k}"]`) as HTMLInputElement | null)?.focus();
-      ownChanged(true); return;
-    }
     if (t.dataset.ou) {
       const [k, i] = t.dataset.ou.split(':'); const en = entriesOf(k)[+i]; if (!en) return;
       const us = units(en); const from = us.find((u: any) => u[0] === en.unit) || us[0]; const to = us.find((u: any) => u[0] === t.value) || us[0];
@@ -462,10 +586,38 @@ import { pick } from '../data/affiliate.js';
       en.unit = to[0]; en.qty = to[2] === 1 ? Math.round(g) : Math.max(0.5, Math.round(g / to[2] * 2) / 2);
       renderOwn(); ownChanged(true); return;
     }
+    if (t.dataset.oportion) { const r0 = own().rec[t.dataset.oportion]; if (r0) r0.qty = +t.value; refreshSum(t.dataset.oportion); ownChanged(true); return; }
     if (t.dataset.oq) { ownChanged(true); }
   });
   omeals.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;
+    const om = t.closest<HTMLElement>('[data-om]');
+    if (om) {
+      // Nochmal antippen hebt die Wahl auf: dann planen wir die Mahlzeit
+      const k = om.dataset.om!; const v = om.dataset.v!;
+      own().mode[k] = own().mode[k] === v ? '' : v; own().fin[k] = false;
+      if (k === 'bf') syncBf();
+      renderOwn();
+      if (own().mode[k] === 'selbst') (omeals.querySelector(`[data-os="${k}"]`) as HTMLInputElement | null)?.focus();
+      ownChanged(true); return;
+    }
+    const rc = t.closest<HTMLElement>('[data-orec]');
+    if (rc) { const [k, slug] = rc.dataset.orec!.split(':'); own().rec[k] = { slug, qty: portionFor(k, slug) }; renderOwn(); ownChanged(true); return; }
+    const rx = t.closest<HTMLElement>('[data-orecx]');
+    if (rx) { delete own().rec[rx.dataset.orecx!]; renderOwn(); ownChanged(true); return; }
+    const rmore = t.closest<HTMLElement>('[data-oremore]');
+    if (rmore) { recMore[rmore.dataset.oremore!] = true; const box = omeals.querySelector(`[data-orecbox="${rmore.dataset.oremore}"]`); if (box) box.innerHTML = recCards(rmore.dataset.oremore!); return; }
+    const fin = t.closest<HTMLElement>('[data-ofin]');
+    if (fin) { own().fin[fin.dataset.ofin!] = true; renderOwn(); save(); return; }
+    const ed = t.closest<HTMLElement>('[data-oedit]');
+    if (ed) { own().fin[ed.dataset.oedit!] = false; renderOwn(); save(); return; }
+    const za = t.closest<HTMLElement>('[data-ozadd]');
+    if (za) {
+      const id = `z${Date.now().toString(36)}`;
+      own().zw.push({ id, pos: +za.dataset.ozadd!, items: [] }); renderOwn();
+      (omeals.querySelector(`[data-os="${id}"]`) as HTMLInputElement | null)?.focus();
+      save(); return;
+    }
     const rm = t.closest<HTMLElement>('[data-orm]');
     if (rm) { const [k, i] = rm.dataset.orm!.split(':'); entriesOf(k).splice(+i, 1); renderOwn(); ownChanged(true); return; }
     const zr = t.closest<HTMLElement>('[data-ozrm]');
@@ -483,7 +635,7 @@ import { pick } from '../data/affiliate.js';
     if (ask) {
       const k = ask.dataset.oask!; const box = omeals.querySelector(`[data-osave="${k}"]`)!;
       const label = k === 'bf' ? 'Mein Frühstück' : k === 'mi' ? 'Mein Mittagessen' : k === 'ab' ? 'Mein Abendessen' : 'Mein Snack';
-      box.innerHTML = `<input type="text" maxlength="40" value="${label}" data-oname="${k}" aria-label="Name der Mahlzeit" /><button type="button" class="btn small" data-osv="${k}">Merken</button>`;
+      box.innerHTML = `<input type="text" maxlength="40" value="${label}" data-oname="${k}" aria-label="Name der Mahlzeit" /><button type="button" class="btn small soft" data-osv="${k}">Merken</button>`;
       const inp = box.querySelector('input') as HTMLInputElement; inp.focus(); inp.select(); return;
     }
     const sv = t.closest<HTMLElement>('[data-osv]');
@@ -494,26 +646,28 @@ import { pick } from '../data/affiliate.js';
       const at = saved.findIndex((m) => m.name.toLowerCase() === name.toLowerCase());
       if (at >= 0) saved[at] = { name, items }; else saved.unshift({ name, items });
       saved = saved.slice(0, 12); saveSaved(); renderOwn();
-      const box = omeals.querySelector(`[data-osave="${k}"]`); if (box) box.innerHTML = `<span class="small" style="color:var(--green)">${I.check} Gemerkt als „${esc(name)}“. Du findest sie bei jeder Mahlzeit unter „Meine Mahlzeiten“.</span>`;
+      const box = omeals.querySelector(`[data-osave="${k}"]`); if (box) box.innerHTML = `<span class="small" style="color:var(--green)">${I.check} Gemerkt als „${esc(name)}“.</span>`;
       return;
     }
   });
-  omeals.addEventListener('keydown', (e) => { const t = e.target as HTMLInputElement; if (t.dataset.oname && e.key === 'Enter') { e.preventDefault(); (omeals.querySelector(`[data-osv="${t.dataset.oname}"]`) as HTMLElement)?.click(); } });
-  document.getElementById('oaddzw')!.addEventListener('click', () => {
-    const id = `z${Date.now().toString(36)}`;
-    own().zw.push({ id, items: [] }); renderOwn();
-    (omeals.querySelector(`[data-os="${id}"]`) as HTMLInputElement | null)?.focus();
-    save();
+  // Ampel und Kalorien an den Tag-Knöpfen neu, wenn sich Tag oder Körperdaten ändern
+  // Nur die Ampeln auffrischen, nicht neu aufbauen: sonst ginge ein Klick verloren, der gerade das Feld verlässt.
+  pf.addEventListener('change', () => {
+    updateDaySums();
+    omeals.querySelectorAll<HTMLElement>('[data-osum]').forEach((el) => (el.innerHTML = sumHtml(el.dataset.osum!)));
+    omeals.querySelectorAll<HTMLElement>('[data-osumshort]').forEach((el) => (el.innerHTML = sumHtml(el.dataset.osumshort!, true)));
   });
-  // Ampel neu, wenn sich Tag oder Körperdaten ändern
-  pf.addEventListener('change', () => { if (own().mode.bf !== 'selbst') { const want = bfx.checked ? 'rezept' : 'kein'; if (own().mode.bf !== want) own().mode.bf = want; } renderOwn(); });
+  updateDaySums();
   renderOwn();
-  /** Alle selbst eingetragenen Mahlzeiten mit Inhalt, für Tagesrechnung und Ergebnis. */
+  /** Alle festen Mahlzeiten mit Inhalt (selbst eingetragen oder ausgewähltes Rezept), für Tagesrechnung und Ergebnis. */
   function ownMeals() {
     const o = own();
-    const out: { key: string; slot: string; label: string; main: boolean; entries: Entry[] }[] = [];
-    for (const [k, label, slot] of FIXED) if (o.mode[k] === 'selbst' && o.items[k].length) out.push({ key: `own-${k}`, slot, label, main: true, entries: o.items[k] });
-    o.zw.forEach((z, i) => { if (z.items.length) out.push({ key: `own-${z.id}`, slot: 'Snack', label: `Zwischenmahlzeit${o.zw.length > 1 ? ` ${i + 1}` : ''}`, main: false, entries: z.items }); });
+    const out: { key: string; slot: string; label: string; main: boolean; entries: Entry[]; recipe?: any }[] = [];
+    for (const [k, label, slot] of FIXED) {
+      const es = mealEntries(k);
+      if (es.length) out.push({ key: `own-${k}`, slot, label, main: true, entries: es, recipe: o.mode[k] === 'rezept' ? BYSLUG[o.rec[k].slug] : undefined });
+    }
+    o.zw.forEach((z) => { if (z.items.length) out.push({ key: `own-${z.id}`, slot: `Z${z.pos}`, label: 'Zwischenmahlzeit', main: false, entries: z.items }); });
     return out;
   }
 
@@ -590,10 +744,12 @@ import { pick } from '../data/affiliate.js';
     ev.preventDefault();
     const v = readInputs(); if (!v) { pf.scrollIntoView({ behavior: 'smooth' }); return; }
     if (applyDay()) return;
-    const e3 = document.getElementById('err3')!;
+    const fromOwn = !!(ev as SubmitEvent).submitter?.hasAttribute('data-ownsubmit');
+    const e3 = document.getElementById('err3')!, e4 = document.getElementById('err4')!;
     let msg = '';
-    if (!state.picks.length && !ownMeals().length) msg = 'Füge noch mindestens ein Lebensmittel hinzu oder trag eine Mahlzeit selbst ein.';
-    e3.textContent = msg; e3.hidden = !msg;
+    if (!state.picks.length && !ownMeals().length) msg = fromOwn ? 'Trag noch mindestens eine Mahlzeit ein oder wähle ein Rezept.' : 'Füge noch mindestens ein Lebensmittel hinzu.';
+    e3.textContent = fromOwn ? '' : msg; e3.hidden = fromOwn || !msg;
+    e4.textContent = fromOwn ? msg : ''; e4.hidden = !fromOwn || !msg;
     if (msg) return;
     state.inputs = v;
     state.shown = true;
@@ -632,7 +788,7 @@ import { pick } from '../data/affiliate.js';
     const owns = ownMeals().map((m) => ({ ...m, c: mealCheck(m.entries, t, +v.day, m.main) }));
     const used: Record<string, number> = {};
     for (const m of owns) for (const it of m.c.items) used[it.name] = (used[it.name] || 0) + it.g;
-    const bk = v.bf && own().mode.bf === 'rezept' ? (() => {
+    const bk = own().mode.bf === 'rezept' && !own().rec.bf ? (() => {
       const r = RECIPES.filter((x: any) => x.slot === 'breakfast').map((x: any) => ({ x, sc: x.ingredients.filter((i: any) => have.has(i.name)).length })).sort((a: any, b: any) => b.sc - a.sc)[0].x;
       const portion = Math.round((t.kcal * 0.22) / nutrition(r).kcal * 20) / 20;
       return { recipe: r, portion, n: nutrition(r, portion) };
@@ -649,11 +805,14 @@ import { pick } from '../data/affiliate.js';
     const pack = res && !vd!.ok && !adds.some((a) => a.ok) ? completeDay(ok, t, 4, sopt) : null;
     const dayLabel = `Tag ${v.day}`;
 
-    let tableHtml = '';
+    let tableHtml = '', tipHtml = '';
     let h = notes.length ? `<div class="alert info">${notes.map((n) => `<p>${n}</p>`).join('')}</div>` : '';
     // Kopf mit Abgleich
     if (res && vd) {
-      const status = vd.ok ? `<span class="chip ok">${I.check} Passt genau zu Prof. Dr. Longo</span>` : `<span class="chip warn">${I.info} Fast geschafft</span>`;
+      // „Fast geschafft“ nur, wenn wirklich wenig fehlt: Kalorien höchstens 15 % daneben und Makros höchstens doppelte Toleranz
+      const tolM = PLAN.reference.tolerance.macroPoints;
+      const near = Math.abs(vd.dk) <= 15 && Math.abs(vd.dev.protein) <= 2 * TOL_P && Math.abs(vd.dev.fat) <= 2 * tolM && Math.abs(vd.dev.carbs) <= 2 * tolM && vd.sugarOk;
+      const status = vd.ok ? `<span class="chip ok">${I.check} Passt genau zu Prof. Dr. Longo</span>` : near ? `<span class="chip warn">${I.info} Fast geschafft</span>` : vd.dk > 15 ? `<span class="chip bad">${I.info} Mehr als Dein Tagesziel</span>` : `<span class="chip warn">${I.info} Da fehlt noch etwas</span>`;
       h += `<div class="rtop">
         <div class="row"><h2 style="font-size:1.6rem">Dein ${dayLabel}</h2>${status}</div>
         <div class="vs">
@@ -663,7 +822,7 @@ import { pick } from '../data/affiliate.js';
           <div class="carbs"><span class="k">${I.carbs} Kohlenhydrate</span><b>${pct(vd.shares.carbs)}</b><small>Ziel ${t.ref.carbs} %, ${fmt(res.sum.carbs)} g</small></div>
           <div class="sugar"><span class="k">${I.sugar} Zucker</span><b>${fmt(res.sum.sugar)} g</b><small>höchstens ${fmt(vd.sugarMax)} g</small></div>
         </div>
-        ${owns.length ? `<p class="small muted">Darin enthalten: ${fmt(owns.reduce((a, m) => a + m.c.sum.kcal, 0))} kcal, die Du selbst eingetragen hast. Den Rest teilen wir auf Deine Lebensmittel auf.</p>` : ''}
+        ${owns.length ? `<p class="small muted">Darin enthalten: ${fmt(owns.reduce((a, m) => a + m.c.sum.kcal, 0))} kcal aus Deinen eingetragenen Mahlzeiten und ausgewählten Rezepten.${ok.length ? ' Den Rest teilen wir auf Deine Lebensmittel auf.' : ''}</p>` : ''}
         <details class="small muted"><summary>Wie wir rechnen</summary><p>„Passt“ heißt: Kalorien höchstens 5 % und Fett und Kohlenhydrate höchstens 5 Prozentpunkte und Eiweiß höchstens ${TOL_P} Prozentpunkte von Prof. Dr. Longos Vorgaben entfernt (Brandhorst et al. 2015). Beim Eiweiß rechnen wir bewusst enger, weil Prof. Dr. Longo gerade das Eiweiß niedrig hält. Zucker höchstens ${PLAN_SUGAR} % der Kalorien: Prof. Dr. Longo verlangt „wenig Zucker“ ohne Grammzahl, die Grenze ist unsere Regel. Dein Ziel ist an Deinen Körper angepasst (Faktor ${fmt(p.f, 2)}, Mifflin-St-Jeor-Formel). Diese Anpassung ist unsere eigene Regel.</p></details>
       </div>`;
       if (!vd.ok) {
@@ -676,11 +835,20 @@ import { pick } from '../data/affiliate.js';
         if (vd.dev.carbs > 5) why.push('Etwas zu viele Kohlenhydrate. Ein Schuss Olivenöl oder ein paar Nüsse gleichen das aus.');
         if (vd.dev.protein > TOL_P) why.push('Etwas zu viel Eiweiß. Beim Scheinfasten darf es davon ruhig weniger sein.');
         if (!vd.sugarOk) why.push('Etwas zu viel Zucker, meist aus süßem Gemüse wie Kürbis, Karotten oder Roter Bete. Kartoffeln oder Hirse sättigen mit weniger Zucker.');
-        h += `<div class="alert warn"><p><b>Noch ein kleiner Schritt</b></p>${why.map((w) => `<p>${w}</p>`).join('')}
+        if (vd.dk < -5 && !ok.length) why[0] = 'Für heute ist noch Platz. Ergänze Lebensmittel unter „Was hast Du zu Hause?“ oder trag eine weitere Mahlzeit ein.';
+        tipHtml = `<details class="tipbox"><summary>${I.info}<span><b>Du weißt nicht, was Du noch essen könntest, oder möchtest mehr Abwechslung?</b><small>Unser Tipp, damit Dein Tag zu Prof. Dr. Longos Vorgaben passt</small></span></summary><div class="tipin">${why.map((w) => `<p>${w}</p>`).join('')}
           ${pack?.ok ? `<p>Mit ${pack.add.length === 1 ? 'dieser Zutat' : `diesen ${pack.add.length} Zutaten`} passt Dein Tag:</p><div class="alts"><button type="button" class="alt" data-addmany="${esc(pack.add.map((a) => a.name).join('|'))}">${I.plus} ${pack.add.map((a) => `${esc(a.name)} (ca. ${amount(a.name, a.g)})`).join(', ')} ✓</button></div>` : ''}
-          ${adds.length ? `<p>${pack?.ok ? 'Oder einzeln, wir rechnen sofort neu:' : 'Tipp eins davon an, wir rechnen sofort neu:'}</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div>`;
+          ${adds.length ? `<p>${pack?.ok ? 'Oder einzeln, wir rechnen sofort neu:' : 'Tipp eins davon an, wir rechnen sofort neu:'}</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div></details>`;
       }
-      // Mengentabelle
+      // Mengentabelle: oben die berechneten Lebensmittel, darunter fest Eingetragenes und ausgewählte Rezepte (nur lesen, ändern oben)
+      const fixedBlocks = [
+        ...(bk ? [{ label: `Frühstück: ${bk.recipe.title}`, items: bk.recipe.ingredients.map((i: any) => ({ name: i.name, g: i.amount * bk.portion })) }] : []),
+        ...owns.map((m) => ({ label: m.recipe ? `${m.label}: ${m.recipe.title}` : `${m.label}, selbst eingetragen`, items: m.c.items })),
+      ];
+      const fixedRows = fixedBlocks.map((b2) => `<tbody><tr class="cat"><th colspan="3" scope="colgroup">${I.cup}${esc(b2.label)}</th></tr>${b2.items.filter((it: any) => it.g >= 0.5).map((it: any) => {
+        const f = BY_NAME[it.name] || { n: (NUTRI as any)[it.name] || [0], light: 'g' };
+        return `<tr class="fixed"><td class="nm"><span class="nmrow">${BY_NAME[it.name] ? mac(it.name) : '<span class="mac none" aria-hidden="true"></span>'}<span>${esc(it.name)}${BY_NAME[it.name] ? ` <span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>` : ''}</span></span></td><td>${amount(it.name, it.g)}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
+      }).join('')}</tbody>`).join('');
       tableHtml = `<details class="stack plain amountsbox"><summary><b>Deine Tagesmengen im Detail</b> <span class="muted small">(ändere ruhig eine Zahl, wir passen den Rest an)</span></summary>
         <div class="tw"><table class="amounts"><thead><tr><th>Lebensmittel</th><th>Menge pro Tag</th><th>kcal</th></tr></thead>
         ${groupByCat(res.items, (it: any) => BY_NAME[it.name]).map((c) => `<tbody><tr class="cat"><th colspan="3" scope="colgroup">${I[c.icon]}${c.label}</th></tr>${c.items.map((it: any) => {
@@ -691,6 +859,7 @@ import { pick } from '../data/affiliate.js';
           const input = f.n[0] === 0 ? '' : `<span class="gcell"><input type="number" inputmode="numeric" min="0" max="${f.cap}" step="5" value="${it.g}" data-g="${esc(f.name)}" aria-label="Menge ${esc(f.name)} in Gramm" /> ${unit(f.name)}</span>${it.fixed ? `<button type="button" class="reset" data-free="${esc(f.name)}">zurücksetzen</button>` : ''}`;
           return `<tr class="${it.g === 0 && f.n[0] > 0 ? 'zero' : ''}"><td class="nm"><span class="nmrow">${mac(f.name)}<span>${esc(f.name)} <span class="dot ${f.light}" title="${LIGHT[f.light]}"></span>${piece}${capNote}${zero}</span></span></td><td>${input}</td><td class="n">${fmt(f.n[0] * it.g / 100)}</td></tr>`;
         }).join('')}</tbody>`).join('')}
+        ${fixedRows}
         </table></div></details>`;
       // Gelbe Hinweise
       const yellow = ok.filter((x) => BY_NAME[x.name].light === 'y');
@@ -707,19 +876,24 @@ import { pick } from '../data/affiliate.js';
       const meals: any[] = buildMeals(res.items).map((m: any, i: number) => ({ ...m, key: `m${i}`, kcal: m.sum.kcal }));
       // Selbst eingetragene Hauptmahlzeiten belegen ihren Platz, die berechneten Gerichte rücken auf freie Plätze.
       // Ist keiner mehr frei, landen sie als Ergänzung bei den Zwischenmahlzeiten.
-      const freeMain = (['mi', 'ab'] as const).filter((k) => own().mode[k] !== 'selbst').map((k) => (k === 'mi' ? 'Mittags' : 'Abends'));
+      const taken = (k: string) => own().mode[k] === 'selbst' || (own().mode[k] === 'rezept' && !!own().rec[k]);
+      const freeMain = (['mi', 'ab'] as const).filter((k) => !taken(k)).map((k) => (k === 'mi' ? 'Mittags' : 'Abends'));
       let gi = 0;
-      for (const m of meals) if (m.slot !== 'Snack') { const s2 = freeMain[gi++]; if (s2) m.slot = s2; else { m.slot = 'Snack'; m.kind = `${m.kind}, zum Auffüllen`; } }
-      meals.unshift(...owns.map((m) => ({ key: m.key, slot: m.slot, kind: 'Selbst eingetragen', title: m.label, kcal: m.c.sum.kcal, sum: m.c.sum, own: m, items: [], steps: [], minutes: 0 })));
+      for (const m of meals) {
+        if (m.slot === 'Snack') { m.slot = 'Z3'; continue; }
+        const s2 = freeMain[gi++]; if (s2) m.slot = s2; else { m.slot = 'Z3'; m.kind = `${m.kind}, zum Auffüllen`; }
+      }
+      meals.unshift(...owns.map((m) => ({ key: m.key, slot: m.slot, kind: m.recipe ? 'Dein Rezept' : 'Selbst eingetragen', title: m.recipe ? m.recipe.title : m.label, kcal: m.c.sum.kcal, sum: m.c.sum, own: m, items: [], steps: [], minutes: 0 })));
       if (bk) meals.unshift({ key: 'bf', slot: 'Morgens', kind: 'Frühstück', title: bk.recipe.title, kcal: bk.n.kcal, sum: bk.n, minutes: bk.recipe.minutes, recipe: bk.recipe,
         items: bk.recipe.ingredients.map((i: any) => ({ name: i.name, g: Math.round(i.amount * bk.portion) })), steps: [] });
-      const SLOTS: [string, string][] = [['Morgens', 'Frühstück'], ['Mittags', 'Mittagessen'], ['Abends', 'Abendessen'], ['Snack', owns.some((m) => m.slot === 'Snack') ? 'Zwischenmahlzeiten und Snacks' : 'Snack']];
+      const z3gen = meals.some((m) => m.slot === 'Z3' && !m.own);
+      const SLOTS: [string, string][] = [['Z0', 'Zwischenmahlzeit'], ['Morgens', 'Frühstück'], ['Z1', 'Zwischenmahlzeit'], ['Mittags', 'Mittagessen'], ['Z2', 'Zwischenmahlzeit'], ['Abends', 'Abendessen'], ['Z3', z3gen ? 'Snacks und Zwischenmahlzeiten' : 'Zwischenmahlzeit']];
       // Abgehakt gilt nur für heute: ein neuer Kalendertag (z. B. der nächste Zyklus) startet ohne Haken.
       const dk = String(v.day); const today = isoToday(); state.done = state.done || {};
       if (state.done[dk]?._d !== today) state.done[dk] = { _d: today };
       const done = state.done[dk];
       // Selbst Eingetragenes gilt als gegessen, bis jemand den Haken entfernt
-      const isDone = (m: any) => (m.own ? done[m.key] !== false : !!done[m.key]);
+      const isDone = (m: any) => (m.own && !m.own.recipe ? done[m.key] !== false : !!done[m.key]);
       const eaten = meals.filter(isDone).reduce((a2: any, m: any) => { const n2 = m.sum || (m.n as any); return { kcal: a2.kcal + m.kcal, protein: a2.protein + n2.protein, fat: a2.fat + n2.fat, carbs: a2.carbs + n2.carbs }; }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
       if (meals.length) {
         h += `<div class="stack"><h2 style="font-size:1.6rem">Deine Rezepte für heute</h2>
@@ -736,7 +910,7 @@ import { pick } from '../data/affiliate.js';
             <label class="tick"><input type="checkbox" data-done="${m.key}" ${done[m.key] ? 'checked' : ''}><span>Gegessen</span></label>
           </div></article>`).join('')}</div>` : ''; }).join('')}</div>`;
       }
-      h += tableHtml;
+      h += tipHtml + tableHtml;
       // Passende Rezepte der Seite, je 1 Portion, nach Mahlzeit
       const rec = matchRecipes(ok.map((x) => x.name), 24);
       if (rec.length) {
@@ -763,6 +937,20 @@ import { pick } from '../data/affiliate.js';
   /** Karte einer selbst eingetragenen Mahlzeit im Ergebnis, mit Ampel. */
   function ownCard(m: any, isDone: boolean) {
     const c = m.own.c; const [cls, lbl] = LCHIP[c.light];
+    const r = m.own.recipe;
+    if (r) {
+      const q = +m.own.entries[0].qty;
+      return `<article class="card meal${isDone ? ' isdone' : ''}">
+        <img class="mimg" src="${thumb(base, r.image)}" alt="" loading="lazy" width="400" height="300" />
+        <div class="info">
+          <div class="meta"><span class="kicker">${m.kind}</span><span class="chip ok">${fmt(m.kcal)} kcal</span></div>
+          <h3><a href="${base}rezepte/${r.slug}/">${esc(r.title)}</a></h3>
+          <p class="small muted">${portionTxt(q)}</p>
+          <ul class="ing">${r.ingredients.map((i: any) => `<li>${BY_NAME[i.name] ? mac(i.name) : '<span class="mac none" aria-hidden="true"></span>'}<span>${amountLabel(i.name, i.amount * q)} ${esc(i.name)}</span></li>`).join('')}</ul>
+          <p class="small muted">${I.time} etwa ${r.minutes} Minuten · Zubereitung im Rezept.</p>
+          <label class="tick"><input type="checkbox" data-done="${m.key}" ${isDone ? 'checked' : ''}><span>Gegessen</span></label>
+        </div></article>`;
+    }
     return `<article class="card meal${isDone ? ' isdone' : ''}">
       <div class="mimg ownimg" aria-hidden="true">${I.cup}</div>
       <div class="info">
