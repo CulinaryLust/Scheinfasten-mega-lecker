@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
@@ -28,17 +29,7 @@ import { pick } from '../data/affiliate.js';
       <h1>Dein fertiger 5-Tage-Plan</h1>
       <p class="muted">Mit möglichst wenig Aufwand: ein paar Angaben, dann steht Dein Plan. Jeden Tag leckere Gerichte, auf das Gramm genau nach den Vorgaben von Prof. Dr. Valter Longo berechnet, passend zu Deinen Vorlieben.</p>
     </div>
-    <Rotator badges={['Gemeinsam fasten macht mehr Spaß', 'Fünf Tage voller leckerer Gerichte', 'Satt werden und trotzdem fasten', 'Jeder Tag auf das Gramm berechnet', 'Einkaufsliste gleich dabei', 'Mit Genuss durch die fünf Tage', 'Zusammen kochen, zusammen durchhalten']} images={[
-      { src: 'img/menschen/freunde-tisch.jpg', alt: 'Freunde essen gemeinsam Salate am Tisch' },
-      { src: 'img/menschen/kueche-zusammen.jpg', alt: '' },
-      { src: 'img/menschen/genuss-kuechentisch.jpg', alt: '' },
-      { src: 'img/menschen/schale-gemuese.jpg', alt: '' },
-      { src: 'img/szenen/runde-salat.jpg', alt: '' },
-      { src: 'img/szenen/schalen-reichen.jpg', alt: '' },
-      { src: 'img/szenen/grosser-tisch.jpg', alt: '' },
-      { src: 'img/szenen/anstossen.jpg', alt: '' },
-      { src: 'img/szenen/freundinnen-teller.jpg', alt: '' },
-    ]} />
+    <Rotator badges={['Gemeinsam fasten macht mehr Spaß', 'Fünf Tage voller leckerer Gerichte', 'Satt werden und trotzdem fasten', 'Jeder Tag auf das Gramm berechnet', 'Einkaufsliste gleich dabei', 'Mit Genuss durch die fünf Tage', 'Zusammen kochen, zusammen durchhalten']} images={fotos({ src: 'img/menschen/freunde-tisch.jpg', alt: 'Freunde essen gemeinsam Salate am Tisch' }, ['menschen'], { max: 16 })} />
   </div>
   <ModeNav current="plan" />
 

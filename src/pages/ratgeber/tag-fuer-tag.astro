@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../../data/fotos.js';
 // Ablauf Tag 1 bis 5: Mahlzeiten und Werte kommen bei jedem Build aus dem Standardplan.
 import Artikel from '../../layouts/Artikel.astro';
 import { PLAN, BY_SLUG, nutrition, dayTotal, shares, fmt } from '../../lib/nutrition.js';
@@ -16,7 +17,7 @@ const text = {
   5: ['Der letzte Tag', 'Noch einmal rund 725 kcal. Überlege Dir heute schon, was Du morgen isst, damit der Übergang ruhig bleibt.'],
 };
 ---
-<Artikel fotos={[{ src: 'img/szenen/familie-tisch.jpg', alt: 'Vater und Tochter essen gemeinsam' }, { src: 'img/szenen/abendessen.jpg', alt: '' }]} slug="tag-fuer-tag" description="Scheinfasten Tag für Tag: was Du an Tag 1 bis 5 isst, wie viele Kalorien es sind und womit viele an den einzelnen Tagen rechnen. Mit klarer Trennung von Studienlage und Erfahrungswerten." lead="Fünf Tage, zwei Kalorienstufen: Tag 1 mit rund 1.100 kcal, Tag 2 bis 5 mit rund 725 kcal. Hier siehst Du jeden Tag mit konkreten Gerichten aus unserem Standardplan.">
+<Artikel fotos={fotos({ src: 'img/szenen/familie-tisch.jpg', alt: 'Vater und Tochter essen gemeinsam' }, ['menschen','rezepte'], { max: 12, step: 3, offset: 1 })} slug="tag-fuer-tag" description="Scheinfasten Tag für Tag: was Du an Tag 1 bis 5 isst, wie viele Kalorien es sind und womit viele an den einzelnen Tagen rechnen. Mit klarer Trennung von Studienlage und Erfahrungswerten." lead="Fünf Tage, zwei Kalorienstufen: Tag 1 mit rund 1.100 kcal, Tag 2 bis 5 mit rund 725 kcal. Hier siehst Du jeden Tag mit konkreten Gerichten aus unserem Standardplan.">
   <h2>Der Ablauf auf einen Blick</h2>
   <div class="tw"><table>
     <thead><tr><th>Tag</th><th>Kalorien</th><th>Eiweiß</th><th>Fett</th><th>Kohlenhydrate</th></tr></thead>

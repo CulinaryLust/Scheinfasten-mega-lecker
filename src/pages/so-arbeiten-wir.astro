@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 // Redaktionelle Grundsätze: ersetzt eine „Über uns“-Seite mit Person und ärztlichem Prüfer (Entscheidung 12.11.2026).
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
@@ -16,9 +17,7 @@ import FotoStreifen from '../components/FotoStreifen.astro';
     <h1>So arbeiten wir</h1>
     <p class="lead">{SITE_NAME} ist ein unabhängiges Projekt. Wir sind keine Ärztinnen oder Ärzte und geben keine medizinische Beratung. Was wir können: sauber rechnen, Quellen offenlegen und ehrlich sagen, was belegt ist und was nicht.</p>
   </div>
-  <FotoStreifen images={[
-    { src: 'img/szenen/kuerbisse.jpg', alt: 'Bunte Kürbisse auf dem Markt' },
-  ]} />
+  <FotoStreifen images={fotos({ src: 'img/szenen/kuerbisse.jpg', alt: 'Bunte Kürbisse auf dem Markt' }, ['markt','kueche','rezepte'], { max: 12, step: 3, offset: 2 })} />
   <section class="band" style="padding-top:16px">
     <div class="in narrow stack">
       <div class="grid3 saw">

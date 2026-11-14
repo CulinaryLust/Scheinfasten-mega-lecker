@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Rotator from '../components/Rotator.astro';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
@@ -31,7 +32,7 @@ const faq = [
   </div>
   <section class="band" style="padding-top:20px">
     <div class="in person">
-      <Rotator images={[{ src: 'img/markt.jpg', alt: 'Gemüsestand auf einem Markt' }, { src: 'img/szenen/markt-stand.jpg', alt: '' }, { src: 'img/szenen/markt-paprika.jpg', alt: '' }]} />
+      <Rotator images={fotos({ src: 'img/markt.jpg', alt: 'Gemüsestand auf einem Markt' }, ['markt','essen'], { max: 12 })} />
       <div class="prose">
         <p class="kicker">Der Kopf hinter dem Scheinfasten</p>
         <h2>Prof. Dr. Valter Longo</h2>

@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import AffiliateBox from '../components/AffiliateBox.astro';
@@ -23,10 +24,7 @@ import FotoStreifen from '../components/FotoStreifen.astro';
     <h1>ProLon oder selbst kochen?</h1>
     <p class="lead">ProLon ist das Fertigpaket zum Scheinfasten, entwickelt von Prof. Dr. Valter Longo und verkauft von seiner Firma L-Nutra. Unsere Rezepte folgen denselben veröffentlichten Werten. Was passt besser zu Dir?</p>
   </div>
-  <FotoStreifen images={[
-    { src: 'img/szenen/oma-enkelin.jpg', alt: 'Großmutter und Enkelin kochen zusammen' },
-    { src: 'img/szenen/blaue-kueche.jpg', alt: '' },
-  ]} />
+  <FotoStreifen images={fotos({ src: 'img/szenen/oma-enkelin.jpg', alt: 'Großmutter und Enkelin kochen zusammen' }, ['kueche','menschen','rezepte'], { max: 12, step: 2 })} />
   <section class="band" style="padding-top:12px">
     <div class="in narrow stack">
       <div class="tw"><table>

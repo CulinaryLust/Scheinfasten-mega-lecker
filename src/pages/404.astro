@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
@@ -15,6 +16,6 @@ import FotoStreifen from '../components/FotoStreifen.astro';
       <a class="btn soft" href={u('')}>Zur Startseite</a>
     </div>
   </div>
-  <FotoStreifen images={[{ src: 'img/szenen/markt-platz.jpg', alt: 'Buntes Treiben auf einem Wochenmarkt' }]} />
+  <FotoStreifen images={fotos({ src: 'img/szenen/markt-platz.jpg', alt: 'Buntes Treiben auf einem Wochenmarkt' }, ['markt','rezepte'], { max: 10, step: 4 })} />
   <div style="height:48px"></div>
 </Base>

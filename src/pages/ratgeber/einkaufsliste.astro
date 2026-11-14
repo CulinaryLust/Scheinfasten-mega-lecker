@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../../data/fotos.js';
 // Einkaufsliste des Standardplans, bei jedem Build aus plan.json und recipes.json neu berechnet.
 import Artikel from '../../layouts/Artikel.astro';
 import Icon from '../../components/Icon.astro';
@@ -15,7 +16,7 @@ const cats = groupByCat(Object.entries(tot).sort((a, b) => a[0].localeCompare(b[
 const count = Object.keys(tot).length;
 const mains = [...new Set([1, 2, 3, 4, 5].flatMap((d) => PLAN.days[d]).filter((x) => x.type === 'main').map((x) => x.recipe))].map((s) => BY_SLUG[s]);
 ---
-<Artikel fotos={[{ src: 'img/szenen/markt-menge.jpg', alt: 'Menschen kaufen auf einem Wochenmarkt Gemüse ein' }, { src: 'img/szenen/markt-fahrrad.jpg', alt: '' }, { src: 'img/szenen/markt-kuerbis.jpg', alt: '' }]} slug="einkaufsliste" description={`Scheinfasten-Einkaufsliste für 5 Tage und eine Person: ${count} Zutaten mit Mengen in Gramm, sortiert nach Abteilung im Supermarkt. Passend zu Prof. Dr. Longos Vorgaben berechnet.`} lead={`Diese Liste reicht für einen kompletten Durchgang für eine Person: ${count} Zutaten, sortiert nach Abteilung. Die Mengen stammen direkt aus unserem Standardplan.`}>
+<Artikel fotos={fotos({ src: 'img/szenen/markt-menge.jpg', alt: 'Menschen kaufen auf einem Wochenmarkt Gemüse ein' }, ['markt','kueche'], { max: 12 })} slug="einkaufsliste" description={`Scheinfasten-Einkaufsliste für 5 Tage und eine Person: ${count} Zutaten mit Mengen in Gramm, sortiert nach Abteilung im Supermarkt. Passend zu Prof. Dr. Longos Vorgaben berechnet.`} lead={`Diese Liste reicht für einen kompletten Durchgang für eine Person: ${count} Zutaten, sortiert nach Abteilung. Die Mengen stammen direkt aus unserem Standardplan.`}>
   <h2>Die Liste für fünf Tage</h2>
   <p>Die Mengen sind ohne Reserve gerechnet und gelten für eine Person mit durchschnittlichem Bedarf. Der <a href={u('planer/')}>Planer</a> rechnet dieselbe Liste passend zu Deiner Größe und Deinem Gewicht aus, auch für bis zu vier Personen, und zum Abhaken am Handy.</p>
   <div class="ekl">

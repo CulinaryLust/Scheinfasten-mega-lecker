@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import RecipeCard from '../components/RecipeCard.astro';
@@ -15,14 +16,7 @@ const count = RECIPES.filter((r) => ['main', 'snack', 'breakfast'].includes(r.sl
 ---
 <Base title="Start" active="start" jsonLd={{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: new URL(u(''), Astro.site).toString(), inLanguage: 'de-DE' }}>
   <section class="hero">
-    <Rotator mode="bg" first="eager" sizes="100vw" images={[
-      { src: 'img/hero.jpg', alt: '' },
-      { src: 'img/hero/gemueseplatte.jpg', alt: '' },
-      { src: 'img/hero/gemuesesuppe.jpg', alt: '' },
-      { src: 'img/hero/schneidebrett.jpg', alt: '' },
-      { src: 'img/hero/gemuese-brett.jpg', alt: '' },
-      { src: 'img/hero/wurzelgemuese.jpg', alt: '' },
-    ]} />
+    <Rotator mode="bg" first="eager" sizes="100vw" images={fotos({ src: 'img/hero.jpg', alt: '' }, ['hero'], { max: 12 })} />
     <div class="in">
       <p class="kicker">Das Prinzip von Scheinfasten nach Prof. Dr. Valter Longo</p>
       <h1>Fasten, ohne aufs Essen zu verzichten.</h1>

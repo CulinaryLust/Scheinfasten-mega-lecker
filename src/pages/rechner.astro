@@ -1,4 +1,5 @@
 ---
+import { fotos } from '../data/fotos.js';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { u } from '../lib/url.js';
@@ -21,15 +22,7 @@ import { pick } from '../data/affiliate.js';
       <h1>Do it yourself: Was koche ich heute?</h1>
       <p class="lead">Trag Deine Mahlzeiten selbst ein oder wähle Rezepte von uns. Den Rest rechnen wir passend zu Deinem Fastentag aus. Weißt Du nicht, was Du kochen sollst, macht der Rezept-Generator aus Deinen Vorräten passende Gerichte. Gegessenes hakst Du einfach ab.</p>
     </div>
-    <Rotator images={[
-      { src: 'img/menschen/paar-kocht.jpg', alt: 'Paar kocht gemeinsam mit frischem Gemüse' },
-      { src: 'img/rechner/gemuese.jpg', alt: '' },
-      { src: 'img/menschen/lachen-essen.jpg', alt: '' },
-      { src: 'img/rechner/kraeuter.jpg', alt: '' },
-      { src: 'img/szenen/kochen-kueche.jpg', alt: '' },
-      { src: 'img/szenen/korb-gemuese.jpg', alt: '' },
-      { src: 'img/szenen/paar-kueche.jpg', alt: '' },
-    ]} />
+    <Rotator images={fotos({ src: 'img/menschen/paar-kocht.jpg', alt: 'Paar kocht gemeinsam mit frischem Gemüse' }, ['kueche','essen','menschen'], { max: 14 })} />
   </div>
   <ModeNav current="diy" />
 
