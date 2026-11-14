@@ -105,8 +105,10 @@ import { pick } from '../data/affiliate.js';
         <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Alkohol und Säfte. Kaffee höchstens eine kleine Tasse schwarz. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
         <div class="omeals" id="omeals"></div>
       </fieldset>
+      <p class="err" id="err4" role="alert" hidden></p>
+      <div class="nav-btns"><button type="submit" class="btn" data-ownsubmit>Meinen Tag berechnen <Icon name="arrow" /></button></div>
       <details class="gen" id="gen">
-        <summary><span class="num"><Icon name="pot" /></span><span><b>Rezept-Generator</b><small>Was hast Du zu Hause? Wir machen daraus passende Scheinfasten-Rezepte und rechnen die Mengen aus.</small></span></summary>
+        <summary><span class="genic"><Icon name="pot" /></span><span><small class="genk">Zusatzoption</small><b>Rezept-Generator: Was hast Du zu Hause?</b><small>Aus Deinen Vorräten schlagen wir passende Rezepte mit Mengen vor.</small></span></summary>
         <div class="genin">
         <p class="small muted">Tipp ein, was Du da hast, ganz ohne Mengen. Der Generator baut daraus die noch offenen Mahlzeiten Deines Tages und rechnet die Mengen passend zu Prof. Dr. Longos Vorgaben aus. Selbst eingetragene Mahlzeiten bleiben, wie sie sind.</p>
         <div class="field combo">
@@ -126,12 +128,9 @@ import { pick } from '../data/affiliate.js';
         <p class="small muted legendline"><span class="lg"><span class="dot g"></span>passt gut</span><span class="lg"><span class="dot y"></span>nur kleine Menge</span><span class="lg"><span class="dot r"></span>passt nicht</span></p>
         <p class="small muted legendline"><span>Farbe des Symbols:</span><span class="lg"><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate</span><span class="lg"><span class="mac protein"><Icon name="protein" /></span>Eiweiß</span><span class="lg"><span class="mac fat"><Icon name="fat" /></span>Fett</span><span class="lg"><span class="mac zero"><Icon name="leaf" /></span>kaum Kalorien</span></p>
         <p class="err" id="err3" role="alert" hidden></p>
-        <div class="nav-btns"><button type="submit" class="btn">Rezepte aus meinen Lebensmitteln erstellen <Icon name="arrow" /></button></div>
+        <div class="nav-btns"><button type="submit" class="btn soft">Rezepte vorschlagen <Icon name="arrow" /></button></div>
         </div>
       </details>
-
-      <p class="err" id="err4" role="alert" hidden></p>
-      <div class="nav-btns"><button type="submit" class="btn" data-ownsubmit>Meinen Tag berechnen <Icon name="arrow" /></button></div>
       <p class="hint"><Icon name="heart" /><span>Kurz zur Sicherheit: Wenn Du schwanger bist, stillst, Medikamente nimmst oder eine ernste Erkrankung hast, sprich vorher kurz mit Deiner Ärztin oder Deinem Arzt. <a href={u('fuer-wen-nicht/')}>Mehr dazu</a></span></p>
     </form>
   </section>
@@ -268,18 +267,20 @@ import { pick } from '../data/affiliate.js';
   .linkbtn { border: 0; background: none; color: var(--green); font: 700 .86rem var(--body); cursor: pointer; padding: 4px 0; min-height: 0; display: inline-flex; gap: 6px; align-items: center; }
   .linkbtn .i { width: 1em; height: 1em; }
   .calc .nav-btns { justify-content: flex-end; }
-  .gen { border: 2px dashed var(--line); border-radius: var(--radius); background: var(--band); }
-  .gen[open] { border-style: solid; }
-  .gen > summary { display: flex; gap: 12px; align-items: center; padding: 16px 18px; cursor: pointer; list-style: none; }
+  .gen { border: 1px dashed var(--line); border-radius: 14px; background: transparent; }
+  .gen[open] { background: var(--band); border-style: solid; }
+  .gen > summary { display: flex; gap: 10px; align-items: center; padding: 10px 14px; cursor: pointer; list-style: none; color: var(--muted); }
   .gen > summary::-webkit-details-marker { display: none; }
-  .gen > summary > span:not(.num) { display: grid; gap: 2px; min-width: 0; }
-  .gen > summary b { font-family: var(--display); font-size: 1.3rem; font-weight: 400; }
-  .gen > summary small { color: var(--muted); }
-  .gen > summary::after { content: "+"; margin-left: auto; font: 700 1.5rem/1 var(--body); color: var(--green); flex: none; }
+  .gen > summary > span:not(.genic) { display: grid; gap: 1px; min-width: 0; }
+  .gen > summary b { font-size: .95rem; color: var(--fg); }
+  .gen > summary small { font-size: .82rem; }
+  .gen .genk { text-transform: uppercase; letter-spacing: .08em; font-size: .7rem !important; font-weight: 700; }
+  .gen .genic { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; flex: none; color: var(--muted); }
+  .gen > summary::after { content: "+"; margin-left: auto; font: 700 1.2rem/1 var(--body); color: var(--muted); flex: none; }
   .gen[open] > summary::after { content: "\2212"; }
-  .gen > summary:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; border-radius: var(--radius); }
-  .gen .num { width: 32px; height: 32px; border-radius: 50%; background: var(--green); color: var(--on-green); display: grid; place-items: center; flex: none; }
-  .genin { display: grid; gap: 18px; padding: 0 18px 18px; min-width: 0; }
+  .gen > summary:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; border-radius: 14px; }
+  .gen .btn.soft { background: var(--card); border: 1px solid var(--line); }
+  .genin { display: grid; gap: 16px; padding: 4px 14px 16px; min-width: 0; }
   .block .num .i { width: 18px; height: 18px; }
   .otog { border: 0; background: none; cursor: pointer; padding: 8px 12px; border-radius: 9px; font: 700 .86rem/1.2 var(--body); color: var(--muted); white-space: nowrap; min-height: 0; }
   .otog[aria-pressed="true"] { background: var(--card); color: var(--green); box-shadow: var(--shadow); }
@@ -493,7 +494,7 @@ import { pick } from '../data/affiliate.js';
   const plusBtn = (pos: number) => `<div class="oplus"><button type="button" data-ozadd="${pos}" aria-label="Zwischenmahlzeit ${POS_TXT[pos]} einfügen" title="Zwischenmahlzeit ${POS_TXT[pos]}">${I.plus}</button></div>`;
   function renderOwn() {
     const o = own();
-    const hint = (k: string) => (k === 'bf' ? 'Kein Frühstück. Wähle Rezept oder Selbst eintragen, wenn Du frühstückst.' : 'Noch offen. Wähle ein Rezept, trag selbst ein oder nutze unten den Rezept-Generator.');
+    const hint = (k: string) => (k === 'bf' ? 'Kein Frühstück. Wähle Rezept oder Selbst eintragen, wenn Du frühstückst.' : 'Noch offen. Wähle ein Rezept oder trag selbst ein. Sonst planen wir ein passendes Gericht für Dich.');
     const tog = (k: string, v: string, l: string) => `<button type="button" class="otog" data-om="${k}" data-v="${v}" aria-pressed="${o.mode[k] === v}">${l}</button>`;
     const zws = (pos: number) => o.zw.filter((z) => z.pos === pos).map((z) => `<div class="omeal on zw" data-k="${z.id}"><div class="ohead"><b>Zwischenmahlzeit${o.fin[z.id] && z.items.length ? ` <span class="ok-ic">${I.check}</span>` : ''}</b><button type="button" class="orm" data-ozrm="${z.id}">${I.close} Entfernen</button></div>${o.fin[z.id] && z.items.length ? doneHtml2(z.id) : editorHtml(z.id, 'Zwischenmahlzeit')}</div>`).join('');
     let h = '';
@@ -840,7 +841,7 @@ import { pick } from '../data/affiliate.js';
         if (vd.dev.carbs > 5) why.push('Etwas zu viele Kohlenhydrate. Ein Schuss Olivenöl oder ein paar Nüsse gleichen das aus.');
         if (vd.dev.protein > TOL_P) why.push('Etwas zu viel Eiweiß. Beim Scheinfasten darf es davon ruhig weniger sein.');
         if (!vd.sugarOk) why.push('Etwas zu viel Zucker, meist aus süßem Gemüse wie Kürbis, Karotten oder Roter Bete. Kartoffeln oder Hirse sättigen mit weniger Zucker.');
-        if (vd.dk < -5 && !ok.length) why[0] = 'Für heute ist noch Platz. Ergänze Lebensmittel unter „Was hast Du zu Hause?“ oder trag eine weitere Mahlzeit ein.';
+        if (vd.dk < -5 && !ok.length) why[0] = 'Für heute ist noch Platz. Trag eine weitere Mahlzeit ein oder lass Dir im Rezept-Generator etwas aus Deinen Vorräten vorschlagen.';
         tipHtml = `<details class="tipbox"><summary>${I.info}<span><b>Du weißt nicht, was Du noch essen könntest, oder möchtest mehr Abwechslung?</b><small>Unser Tipp, damit Dein Tag zu Prof. Dr. Longos Vorgaben passt</small></span></summary><div class="tipin">${why.map((w) => `<p>${w}</p>`).join('')}
           ${pack?.ok ? `<p>Mit ${pack.add.length === 1 ? 'dieser Zutat' : `diesen ${pack.add.length} Zutaten`} passt Dein Tag:</p><div class="alts"><button type="button" class="alt" data-addmany="${esc(pack.add.map((a) => a.name).join('|'))}">${I.plus} ${pack.add.map((a) => `${esc(a.name)} (ca. ${amount(a.name, a.g)})`).join(', ')} ✓</button></div>` : ''}
           ${adds.length ? `<p>${pack?.ok ? 'Oder einzeln, wir rechnen sofort neu:' : 'Tipp eins davon an, wir rechnen sofort neu:'}</p><div class="alts">${adds.map((a) => `<button type="button" class="alt" data-add="${esc(a.name)}">${I.plus} ${esc(a.name)} (ca. ${amount(a.name, a.g)})${a.ok ? ' ✓' : ''}</button>`).join('')}</div>` : ''}</div></details>`;
@@ -902,8 +903,8 @@ import { pick } from '../data/affiliate.js';
       const eaten = meals.filter(isDone).reduce((a2: any, m: any) => { const n2 = m.sum || (m.n as any); return { kcal: a2.kcal + m.kcal, protein: a2.protein + n2.protein, fat: a2.fat + n2.fat, carbs: a2.carbs + n2.carbs }; }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
       if (meals.length) {
         h += `<div class="stack"><h2 style="font-size:1.6rem">Deine Rezepte für heute</h2>
-          <p class="muted small">Aus Deinen Lebensmitteln, die Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune. Hake ab, was Du gegessen hast.</p>
-          ${doneHtml(eaten, t, fmt, eaten.kcal >= t.kcal * 0.95 ? ' · Tag geschafft!' : '')}
+          <p class="muted small">Alle Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune. Hake ab, was Du gegessen hast. Selbst Eingetragenes zählt schon als gegessen. Der helle Teil im Balken ist eingeplant, aber noch nicht abgehakt.</p>
+          ${doneHtml(eaten, t, fmt, eaten.kcal >= t.kcal * 0.95 ? ' · Tag geschafft!' : '', res.sum)}
           ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => m.own ? ownCard(m, isDone(m)) : `<article class="card meal${done[m.key] ? ' isdone' : ''}">
             <img class="mimg" src="${m.recipe ? thumb(base, m.recipe.image) : thumbIn(base, 'diy', m.tpl === 'fertig' ? 'suppe' : m.tpl || 'pfanne')}" alt="" loading="lazy" width="400" height="300" />
             <div class="info">

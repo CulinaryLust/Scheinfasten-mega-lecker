@@ -251,6 +251,7 @@ h3.slot { font-size: 1.15rem; margin-top: 10px; color: var(--green); }
 .donebar .bar.stacked { display: flex; }
 .donebar .bar.stacked i { border-radius: 0; background: none; flex: none; }
 .donebar .bar.stacked i.p { background: var(--c-protein); } .donebar .bar.stacked i.f { background: var(--c-fat); } .donebar .bar.stacked i.c { background: var(--c-carbs); }
+.donebar .bar.stacked i.pl { background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--green) 28%, transparent) 0 6px, color-mix(in srgb, var(--green) 14%, transparent) 6px 12px); }
 .donemac { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .85rem; font-variant-numeric: tabular-nums; }
 .dm { position: relative; display: inline-block; cursor: help; border-radius: 6px; outline-offset: 2px; }
 .dm .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: 0; }

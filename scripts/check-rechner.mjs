@@ -1,6 +1,9 @@
 // Prüft den Lebensmittel-Rechner mit typischen Kühlschrank-Inhalten.
 import { solve, targets, profile, buildMeals, matchRecipes, suggestAdditions, completeDay, search, totals, unit, FOODS, BY_NAME } from '../src/lib/rechner.js';
 import { shares, nutrition, RECIPES } from '../src/lib/nutrition.js';
+import { mealCheck } from '../src/lib/tagebuch.js';
+import { doneHtml } from '../src/lib/fortschritt.js';
+import PLAN from '../src/data/plan.json' with { type: 'json' };
 
 let failed = 0;
 const must = (cond, msg) => { if (!cond) { failed++; console.log('FEHLER:', msg); } };
@@ -205,6 +208,34 @@ must(unit('Tomatensuppe') === 'ml' && unit('Sojadrink') === 'ml' && unit('Ananas
   must(!r.verdict.ok && r.verdict.dk > 5, 'Zu viel Fett müsste über dem Ziel liegen');
   must(solve([], t).sum.kcal === 0 && !solve([], t).verdict.ok, 'Leere Auswahl');
   must(solve([{ name: 'Gibt es nicht' }, { name: 'Zucchini' }], t).items.length === 1, 'Unbekanntes Lebensmittel');
+}
+// Eine Rechenquelle: Tag-Knöpfe, „Dein Tag“, Gerichte, Abhak-Leiste und Mengentabelle zeigen dieselben Werte
+{
+  const K = ['kcal', 'protein', 'fat', 'carbs'];
+  for (const day of [1, 2]) {
+    const t = targets(day, p.f);
+    const ref = day === 1 ? PLAN.reference.day1 : PLAN.reference.day2to5;
+    must(Math.abs(Math.round(ref.kcal * p.f / 10) * 10 - t.kcal) <= 5, `Tag-Knopf ${day} weicht vom Ziel ab`);
+    // Selbst eingetragenes Frühstück und ein Snack als feste Mengen, Rest aus den Lebensmitteln
+    const owns = [
+      mealCheck([{ type: 'food', name: 'Sojajoghurt', qty: 150, unit: 'g' }, { type: 'food', name: 'Heidelbeeren', qty: 80, unit: 'g' }], t, day, true),
+      mealCheck([{ type: 'food', name: 'Walnusskerne', qty: 20, unit: 'g' }], t, day, false),
+    ];
+    const extra = Object.fromEntries([...K, 'sugar'].map((k) => [k, owns.reduce((a, c) => a + (c.sum[k] || 0), 0)]));
+    for (const [name, list] of cases.slice(0, 6)) {
+      const r = solve(list.map((n) => ({ name: n })), t, { extra, used: {} });
+      const meals = buildMeals(r.items);
+      for (const k of K) {
+        const viaMeals = meals.reduce((a, m) => a + m.sum[k], 0) + extra[k];
+        must(Math.abs(viaMeals - r.sum[k]) < 0.5, `${name} Tag ${day}: Gerichte + Eingetragenes (${fmt(viaMeals)}) ≠ Tag (${fmt(r.sum[k])}) bei ${k}`);
+        const viaTable = totals(r.items)[k] + extra[k];
+        must(Math.abs(viaTable - r.sum[k]) < 0.5, `${name} Tag ${day}: Tabelle ≠ Tag bei ${k}`);
+      }
+      const html = doneHtml(extra, t, fmt, '', r.sum);
+      must(html.includes(`eingeplant ${fmt(r.sum.kcal)} kcal`) && html.includes(`<b>${fmt(extra.kcal)}</b> von ${fmt(t.kcal)} kcal`), `${name}: Abhak-Leiste zeigt andere Werte`);
+      must(!/<b>\d+ %<\/b>/.test(html), 'Abhak-Leiste zeigt wieder verwechselbare Makro-Prozente');
+    }
+  }
 }
 console.log(failed ? `${failed} Fehler` : 'Alles ok');
 process.exit(failed ? 1 : 0);
