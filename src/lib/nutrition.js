@@ -27,10 +27,16 @@ export function add(a, b) {
   return out;
 }
 
-/** Anteile von Eiweiß, Fett und Kohlenhydraten an den Kalorien in Prozent. */
+/**
+ * Anteile von Eiweiß, Fett und Kohlenhydraten an der Energie der drei Makros in Prozent (Summe immer 100).
+ * Kohlenhydrate sind inklusive Ballaststoffen angegeben und zählen wie in den US-Angaben, auf denen
+ * Prof. Dr. Longos Verteilung beruht, mit 4 kcal je Gramm. Bezogen auf die BLS-Kalorien (Ballaststoffe dort
+ * 2 kcal/g) ergäben die drei Anteile zusammen 103 bis 106 % und Longos 9/44/47 % wären nie gleichzeitig erreichbar.
+ */
 export function shares(n) {
-  if (!n.kcal) return { protein: 0, fat: 0, carbs: 0 };
-  return { protein: (n.protein * 4 / n.kcal) * 100, fat: (n.fat * 9 / n.kcal) * 100, carbs: (n.carbs * 4 / n.kcal) * 100 };
+  const e = n.protein * 4 + n.fat * 9 + n.carbs * 4;
+  if (!n.kcal || !e) return { protein: 0, fat: 0, carbs: 0 };
+  return { protein: (n.protein * 4 / e) * 100, fat: (n.fat * 9 / e) * 100, carbs: (n.carbs * 4 / e) * 100 };
 }
 
 export function reference(day) {

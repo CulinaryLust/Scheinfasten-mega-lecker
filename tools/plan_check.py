@@ -12,7 +12,10 @@ def day(items):
     return s
 def ok(d,items):
     s=day(items); r=REF[1 if d==1 else 2]; k=s[0]
-    p=(s[1]*4/k*100,s[2]*9/k*100,s[3]*4/k*100)
+    # Anteile an der Energie der drei Makros (Summe 100 %), Kohlenhydrate inkl. Ballaststoffen mit 4 kcal/g wie in Longos US-Angaben.
+    # Bezogen auf die BLS-Kalorien (Ballaststoffe 2 kcal/g) ergäben sie zusammen 103 bis 106 %. Gleiche Rechnung wie shares() in src/lib/nutrition.js.
+    e=s[1]*4+s[2]*9+s[3]*4
+    p=(s[1]*4/e*100,s[2]*9/e*100,s[3]*4/e*100)
     sugar_ok=s[4]*4/k*100<=SUGAR_MAX_PCT
     return s,p,abs(k-r[0])/r[0]<=.05 and all(abs(a-b)<=t for a,b,t in zip(p,r[1:],TOL)) and sugar_ok
 PLAN={

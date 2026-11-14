@@ -9,7 +9,7 @@ export const BY_NAME = Object.fromEntries(FOODS.map((f) => [f.name, f]));
 // Übliche Portion je Gruppe in Gramm. Der Rechner bleibt in der Nähe dieser Mengen, solange Longos Werte das zulassen.
 const TYPICAL = {
   gemuese: 150, blatt: 60, pilze: 150, kraeuter: 8, wuerze: 10, fett: 10, nuss: 15, fettfrucht: 30,
-  knolle: 100, huelsen: 50, getreide: 60, obst: 80, soja: 40, getraenk: 150, knusper: 10,
+  knolle: 100, huelsen: 50, getreide: 60, obst: 80, soja: 40, getraenk: 150, knusper: 10, suppe: 300,
 };
 const TYPICAL_FOOD = {
   Knoblauch: 4, Ingwer: 6, Kapern: 5, Gemüsebrühe: 300, 'Tomaten, passiert': 150, Tomatenmark: 15,
@@ -21,6 +21,14 @@ const TYPICAL_FOOD = {
   Zitrone: 30, Limette: 20, Mohn: 5, Hummus: 30, Popcorn: 10, 'Getrocknete Tomaten': 10, Wasser: 1500, Mineralwasser: 1000,
   Haferdrink: 100, Reisdrink: 100, Sojadrink: 100, Sojajoghurt: 60, Seidentofu: 60, Kokosraspeln: 5, 'Kokosnuss (frisch)': 20,
   'Apfelmus ungesüßt': 60, 'Peperoni (eingelegt)': 20, Alfalfasprossen: 20,
+  'Gemüsebrühe (Pulver)': 5, Ajvar: 20, 'Sambal Oelek': 3, Wasabi: 2, 'Meerrettich (Glas)': 8, 'Sushi-Ingwer': 10, 'Süßer Senf': 5,
+  'Kakaopulver (ungesüßt)': 5, Sriracha: 5, Worcestersauce: 3, 'Knoblauch (eingelegt)': 8, Vollkornmehl: 20, Kichererbsenmehl: 20, Speisestärke: 5,
+  Haferkleie: 15, Weizenkleie: 10, Weizenkeime: 5, Hirseflocken: 20, Dinkelflocken: 20, 'Müsli (ungesüßt)': 20, 'Haferbrei (mit Wasser)': 150,
+  'Kartoffelpüree (mit Wasser)': 150, 'Kartoffelsalat (mit Brühe)': 120, Vollkornbrötchen: 30, Roggenbrot: 40, Maronen: 40,
+  'Steinpilze (getrocknet)': 8, 'Mischpilze (getrocknet)': 8, 'Getrocknete Tomaten in Öl': 10, Silberzwiebeln: 20, Cornichons: 40, 'Mixed Pickles': 50,
+  Guacamole: 40, Sonnenblumenkernaufstrich: 20, Gemüseaufstrich: 20, 'Vegetarische Pastete': 20, 'Mandel-Streichcreme': 25, Sojakochcreme: 30,
+  'Veganer Käse (Kokosöl)': 20, 'Veganer Käse (Cashew)': 20, 'Artischocken in Öl': 40, Kimchi: 60, 'Sushi (vegan)': 120, Misosuppe: 250,
+  'Wasser mit Geschmack (ungesüßt)': 500, Getreidekaffee: 200, Espresso: 40, Rooibostee: 300, Früchtetee: 300, Pfefferminztee: 300, Sauerkrautsaft: 100,
 };
 
 /** Grund, warum die Obergrenze eines Lebensmittels so liegt (Regel siehe tools/foods_src.py). */
@@ -32,23 +40,43 @@ export const CAP_WHY = {
 /** Normalisiert Suchtext: klein, ohne Akzente, ß als ss. */
 export const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss').trim();
 
-/** Sucht Lebensmittel nach Name und Synonymen. Treffer am Wortanfang zuerst. */
+// Suchschlüssel je Lebensmittel einmal vorbereiten: Name und Synonyme, normalisiert und in Wörter zerlegt
+const KEYS = FOODS.map((f) => [f.name, ...f.syn].map((k) => { const n = norm(k); return { n, words: n.split(/[\s,()\-/]+/).filter(Boolean) }; }));
+// Treffergüte eines Suchworts in einem Schlüssel: 4 = genau, 3 = Anfang, 2 = Wortanfang, 1,5 = Wortende (z. B. „saft“ in Apfelsaft), 1 = mittendrin
+function hit(key, t) {
+  if (key.n === t) return 4;
+  if (key.n.startsWith(t)) return 3;
+  if (key.words.some((w) => w.startsWith(t))) return 2;
+  if (key.words.some((w) => w.endsWith(t))) return 1.5;
+  return key.n.includes(t) ? 1 : 0;
+}
+
+/**
+ * Sucht Lebensmittel nach Name und Synonymen (auch Markennamen). Treffer am Wortanfang zuerst.
+ * Mehrere Wörter müssen alle passen („tk brokkoli“, „bohnen dose“). Treffer mitten im Wort („cola“ in Chocolat)
+ * zählen nur, wenn es sonst kaum Treffer gibt.
+ */
 export function search(q, limit = 8) {
   const t = norm(q);
   if (t.length < 2) return [];
+  const tokens = t.split(/[\s,()\-/]+/).filter(Boolean);
   const scored = [];
-  for (const f of FOODS) {
-    const keys = [f.name, ...f.syn].map(norm);
+  FOODS.forEach((f, i) => {
+    const keys = KEYS[i];
+    // ganzer Suchtext gegen jeden Schlüssel
     let best = 0;
-    for (const k of keys) {
-      if (k === t) best = Math.max(best, 4);
-      else if (k.startsWith(t)) best = Math.max(best, 3);
-      else if (k.split(/[\s,()-]+/).some((w) => w.startsWith(t))) best = Math.max(best, 2);
-      else if (k.includes(t)) best = Math.max(best, 1);
+    for (const k of keys) best = Math.max(best, hit(k, t));
+    // sonst: jedes Wort muss in irgendeinem Schlüssel vorkommen, es zählt das schwächste Wort
+    if (!best && tokens.length > 1) {
+      let min = 9;
+      for (const tok of tokens) { let b = 0; for (const k of keys) b = Math.max(b, hit(k, tok)); min = Math.min(min, b); }
+      best = min >= 1.5 ? min - 0.25 : 0;
     }
-    if (best) scored.push([best + (keys[0].startsWith(t) ? 0.5 : 0), f]);
-  }
-  return scored.sort((a, b) => b[0] - a[0] || a[1].name.localeCompare(b[1].name, 'de')).slice(0, limit).map((x) => x[1]);
+    if (best) scored.push([best + (keys[0].n.startsWith(t) ? 0.5 : 0), f]);
+  });
+  const good = scored.filter((x) => x[0] > 1);
+  const pool = good.length >= 3 ? good : scored;
+  return pool.sort((a, b) => b[0] - a[0] || a[1].name.localeCompare(b[1].name, 'de')).slice(0, limit).map((x) => x[1]);
 }
 
 /** Portionsfaktor wie im Planer: Bedarf nach Mifflin-St Jeor geteilt durch 2.000 kcal, begrenzt auf 0,9 bis 1,15. */
@@ -94,13 +122,29 @@ export function verdict(sum, t) {
   return { ok: kcalOk && macrosOk && sugarOk, kcalOk, macrosOk, sugarOk, sugarMax, dk, dev, shares: sh };
 }
 
-/** Ein Lösungslauf: Koordinatenabstieg mit Schranken auf einer quadratischen Zielfunktion. */
-function fit(list, t, lambda, W, minShare = 0) {
+/**
+ * Ein Lösungslauf: Koordinatenabstieg mit Schranken auf einer quadratischen Zielfunktion.
+ * Jede Abweichung wird in Vielfachen ihrer Toleranz gemessen: Kalorien in 5 %, Eiweiß in 3 Prozentpunkten,
+ * Fett und Kohlenhydrate in 5 Prozentpunkten. Die Makroanteile sind linear in den Mengen:
+ * Anteil_k = Ziel_k genau dann, wenn Summe_i x_i (e_ik - Ziel_k * E_i) = 0 (e = Energie des Makros, E = Summe).
+ */
+function fit(list, t, lambda, W, minShare = 0, extra = null) {
   const free = list.filter((p) => p.g == null && !p.off && p.f.n[0] > 5);
-  const T = [t.kcal, t.protein, t.fat, t.carbs];
-  const row = (f) => [f.n[0] / 100, f.n[1] / 100, f.n[2] / 100, f.n[3] / 100, f.n[4] / 100];
+  const tol = PLAN.reference.tolerance;
+  const tolK = [tol.kcalPercent, tol.proteinPoints ?? tol.macroPoints, tol.macroPoints, tol.macroPoints];
+  const share = [t.ref.protein / 100, t.ref.fat / 100, t.ref.carbs / 100];
+  // Zeile je Gramm: [kcal, Eiweißabweichung, Fettabweichung, KH-Abweichung (jeweils kcal), Zucker g]
+  const row = (f) => {
+    const e = [f.n[1] * 4 / 100, f.n[2] * 9 / 100, f.n[3] * 4 / 100];
+    const E = e[0] + e[1] + e[2];
+    return [f.n[0] / 100, e[0] - share[0] * E, e[1] - share[1] * E, e[2] - share[2] * E, f.n[4] / 100];
+  };
+  const T = [t.kcal, 0, 0, 0];
+  // Skala je Zeile: eine Toleranz Abweichung ergibt 1
+  const S = tolK.map((v) => t.kcal * v / 100);
   const SMAX = t.kcal * PLAN.reference.sugarMaxPercent / 100 / 4 * 0.98;
   const base = [0, 0, 0, 0, 0];
+  if (extra) row({ n: [extra.kcal * 100, extra.protein * 100, extra.fat * 100, extra.carbs * 100, extra.sugar * 100] }).forEach((v, k) => (base[k] += v));
   for (const p of list) {
     if (free.includes(p)) continue;
     p.x = p.off ? 0 : p.g ?? (p.f.n[0] <= 5 ? typical(p.f) : 0);
@@ -113,17 +157,17 @@ function fit(list, t, lambda, W, minShare = 0) {
   const x = tp.slice();
   const sum = base.slice();
   A.forEach((a, i) => a.forEach((v, k) => (sum[k] += v * x[i])));
-  for (let it = 0; it < 500; it++) {
+  for (let it = 0; it < 800; it++) {
     let moved = 0;
     for (let i = 0; i < free.length; i++) {
-      // Zielfunktion in x_i: sum_k W_k ((Rest_k + a_ik x_i - T_k) / T_k)^2 + lambda ((x_i - tp_i) / tp_i)^2
+      // Zielfunktion in x_i: sum_k W_k ((Rest_k + a_ik x_i - T_k) / S_k)^2 + lambda ((x_i - tp_i) / tp_i)^2
       let num = lambda / tp[i], den = lambda / (tp[i] * tp[i]);
       for (let k = 0; k < 4; k++) {
         const a = A[i][k];
         if (!a) continue;
         const r = sum[k] - a * x[i] - T[k];
-        num -= W[k] * a * r / (T[k] * T[k]);
-        den += W[k] * a * a / (T[k] * T[k]);
+        num -= W[k] * a * r / (S[k] * S[k]);
+        den += W[k] * a * a / (S[k] * S[k]);
       }
       // Zucker über der Grenze wird stark bestraft (einseitig, nur wenn die Grenze sonst überschritten wäre)
       const sa = A[i][4];
@@ -131,9 +175,9 @@ function fit(list, t, lambda, W, minShare = 0) {
         const rs = sum[4] - sa * x[i];
         const cand = Math.min(free[i].f.cap, Math.max(lo[i], num / den));
         if (rs + sa * cand > SMAX) {
-          const WS = 40;
-          num -= WS * sa * (rs - SMAX) / (SMAX * SMAX);
-          den += WS * sa * sa / (SMAX * SMAX);
+          const WS = 50, SS = SMAX * 0.05;
+          num -= WS * sa * (rs - SMAX) / (SS * SS);
+          den += WS * sa * sa / (SS * SS);
         }
       }
       const nx = Math.min(free[i].f.cap, Math.max(lo[i], num / den));
@@ -145,6 +189,7 @@ function fit(list, t, lambda, W, minShare = 0) {
   free.forEach((p, i) => (p.x = x[i]));
   const items = list.map((p) => ({ name: p.name, g: roundG(p.f, p.x), fixed: p.g != null, cap: p.f.cap, light: p.f.light }));
   const sum2 = totals(items);
+  if (extra) for (const k of Object.keys(sum2)) sum2[k] += extra[k] || 0;
   return { items, sum: sum2, verdict: verdict(sum2, t) };
 }
 
@@ -158,25 +203,26 @@ function fit(list, t, lambda, W, minShare = 0) {
 export function solve(picks, t, opt = {}) {
   // Rote Lebensmittel plant der Rechner nie ein. Hat jemand sie schon gegessen (feste Menge), zählen sie mit.
   const list = picks.map((p) => ({ ...p, f: BY_NAME[p.name] })).filter((p) => p.f && (p.f.light !== 'r' || p.g != null));
-  const W = opt.W || [3, 1, 2, 2];
-  const lambdas = opt.lambda != null ? [opt.lambda] : [0.03, 0.01, 0.003, 0.001];
+  const W = opt.W || [1, 1, 1, 1];
+  const extra = opt.extra || null;
+  const lambdas = opt.lambda != null ? [opt.lambda] : [3, 1, 0.3, 0.1, 0.03];
   // Erst mit Mindestmengen (ein Drittel der üblichen Portion je gewähltem Lebensmittel) rechnen,
   // nur wenn das Longos Werte nicht trifft, dürfen einzelne Lebensmittel auf 0 g fallen.
   for (const lambda of lambdas) {
     list.forEach((p) => (p.off = false));
-    const res = fit(list, t, lambda, W, 1 / 3);
+    const res = fit(list, t, lambda, W, 1 / 3, extra);
     if (res.verdict.ok) return res;
   }
   let res;
   for (const lambda of lambdas) {
     list.forEach((p) => (p.off = false));
-    res = fit(list, t, lambda, W);
+    res = fit(list, t, lambda, W, 0, extra);
     // Mengen unter einem Viertel der üblichen Portion streichen und neu rechnen
     for (let round = 0; round < 3; round++) {
       const tiny = list.filter((p, i) => p.g == null && !p.off && p.f.n[0] > 5 && res.items[i].g < typical(p.f) / 4);
       if (!tiny.length) break;
       tiny.forEach((p) => (p.off = true));
-      res = fit(list, t, lambda, W);
+      res = fit(list, t, lambda, W, 0, extra);
     }
     if (res.verdict.ok) break;
   }
@@ -198,25 +244,63 @@ const FIX = {
   lowSugar: ['Kartoffeln', 'Hirse (gegart)', 'Kichererbsen (gegart)', 'Zucchini', 'Blumenkohl', 'Olivenöl', 'Walnusskerne'],
 };
 
-/** Schlägt bis zu drei Lebensmittel vor, mit denen der Tag (besser) in Longos Fenster passt. */
-export function suggestAdditions(picks, t, res = solve(picks, t)) {
-  if (res.verdict.ok) return [];
-  const v = res.verdict;
-  const have = new Set(picks.map((p) => p.name));
-  let pool = [];
-  if (v.dev.fat < -5) pool.push(...FIX.fat);
-  if (v.dev.carbs < -5) pool.push(...FIX.carbs);
-  if (v.dev.protein > (PLAN.reference.tolerance.proteinPoints ?? 5)) pool.push(...FIX.lessProtein);
-  if (v.dk < -5) pool.push(...FIX.kcal);
+// Abstand eines Ergebnisses zu Longos Fenster in Toleranz-Einheiten (0 = alles genau getroffen).
+const gap = (r) => {
+  const v = r.verdict, tol = PLAN.reference.tolerance, tp = tol.proteinPoints ?? tol.macroPoints;
+  const out = (d, t) => Math.max(0, Math.abs(d) - t) / t;
+  return out(v.dk, tol.kcalPercent) * 2 + out(v.dev.protein, tp) + out(v.dev.fat, tol.macroPoints) + out(v.dev.carbs, tol.macroPoints)
+    + Math.max(0, r.sum.sugar - v.sugarMax) / 2 + (Math.abs(v.dk) + Math.abs(v.dev.protein) + Math.abs(v.dev.fat) + Math.abs(v.dev.carbs)) / 100;
+};
+
+function poolFor(v) {
+  const pool = [];
+  if (v.dev.fat < -2) pool.push(...FIX.fat);
+  if (v.dev.carbs < -2) pool.push(...FIX.carbs);
+  if (v.dev.protein > 1) pool.push(...FIX.lessProtein);
+  if (v.dk < -3) pool.push(...FIX.kcal);
   if (!v.sugarOk) pool.push(...FIX.lowSugar);
-  if (!pool.length) pool = [...FIX.fat, ...FIX.carbs];
-  const err = (r) => Math.abs(r.verdict.dk) / 5 + Object.values(r.verdict.dev).reduce((a, d) => a + Math.abs(d), 0) / 5 + Math.max(0, r.sum.sugar - r.verdict.sugarMax) / 2;
-  const base = err(res);
-  return [...new Set(pool)].filter((n) => !have.has(n))
-    .map((n) => { const r = solve([...picks, { name: n }], t); return { name: n, g: r.items.find((i) => i.name === n).g, ok: r.verdict.ok, gain: base - err(r) }; })
-    .filter((s) => s.gain > 0.2 && s.g > 0)
+  return pool.length ? pool : [...FIX.fat, ...FIX.carbs];
+}
+
+/** Schlägt bis zu drei einzelne Lebensmittel vor, mit denen der Tag (besser) in Longos Fenster passt. */
+export function suggestAdditions(picks, t, res = solve(picks, t), opt = {}) {
+  if (res.verdict.ok) return [];
+  const have = new Set(picks.map((p) => p.name));
+  const base = gap(res);
+  return [...new Set(poolFor(res.verdict))].filter((n) => !have.has(n))
+    .map((n) => { const r = solve([...picks, { name: n }], t, opt); return { name: n, g: r.items.find((i) => i.name === n).g, ok: r.verdict.ok, gain: base - gap(r) }; })
+    .filter((s) => s.gain > 0.05 && s.g > 0)
     .sort((a, b) => Number(b.ok) - Number(a.ok) || b.gain - a.gain)
     .slice(0, 3);
+}
+
+/**
+ * Ergänzt den Tag Schritt für Schritt um bis zu max Lebensmittel (Tag 1 braucht mit seinen 56 % Fett oft Öl, Nüsse und etwas Sättigendes zugleich), bis er in Longos Fenster passt.
+ * Reicht eine einzelne Zutat nicht (z. B. nur Gemüse ausgewählt), entsteht so ein kleines Paket aus Fett und Sättigendem.
+ * Rückgabe: { add: [{name, g}], res, ok } oder null, wenn nichts hilft.
+ */
+export function completeDay(picks, t, max = 4, opt = {}) {
+  let cur = [...picks];
+  let res = solve(cur, t, opt);
+  if (res.verdict.ok) return null;
+  const added = [];
+  for (let step = 0; step < max && !res.verdict.ok; step++) {
+    const have = new Set(cur.map((p) => p.name));
+    const base = gap(res);
+    let best = null;
+    for (const n of new Set(poolFor(res.verdict))) {
+      if (have.has(n)) continue;
+      const r = solve([...cur, { name: n }], t, opt);
+      const gain = base - gap(r);
+      if (gain > 0.05 && (!best || Number(r.verdict.ok) > Number(best.r.verdict.ok) || (r.verdict.ok === best.r.verdict.ok && gain > best.gain))) best = { n, r, gain };
+    }
+    if (!best) break;
+    cur.push({ name: best.n }); added.push(best.n); res = best.r;
+  }
+  if (!added.length) return null;
+  // Zutaten, die am Ende bei 0 g landen, gehören nicht ins Paket
+  const add = added.map((n) => ({ name: n, g: res.items.find((i) => i.name === n).g })).filter((a) => a.g > 0);
+  return add.length ? { add, res, ok: res.verdict.ok } : null;
 }
 
 // Austauschbare Zutaten für den Abgleich mit den Rezepten
@@ -245,6 +329,8 @@ export function matchRecipes(names, limit = 6) {
 }
 
 // Mahlzeiten aus den eigenen Lebensmitteln bauen
+// Flüssige Basis für Suppe und Soße
+const LIQUID = new Set(['Gemüsebrühe', 'Kokosmilch (vollfett)', 'Tomaten, passiert', 'Sojakochcreme']);
 const RAW = new Set(['Gurke', 'Tomaten', 'Kirschtomaten', 'Radieschen', 'Rettich', 'Kresse', 'Avocado', 'Rote Bete (vorgegart)',
   'Frühlingszwiebeln', 'Kohlrabi', 'Fenchel', 'Rote Paprika', 'Gelbe Paprika', 'Karotten', 'Rotkohl', 'Gewürzgurken', 'Sauerkraut']);
 const SOUP = new Set(['Hokkaido-Kürbis', 'Gartenkürbis', 'Karotten', 'Lauch', 'Kartoffeln', 'Süßkartoffel', 'Blumenkohl', 'Brokkoli',
@@ -255,7 +341,9 @@ const OVEN = new Set(['Hokkaido-Kürbis', 'Gartenkürbis', 'Karotten', 'Kartoffe
   'Fenchel', 'Rote Bete (vorgegart)', 'Kichererbsen (gegart)', 'Grünkohl', 'Tomaten', 'Kirschtomaten', 'Champignons', 'Steckrübe']);
 // Saaten und Muse kommen in die Gerichte (bestreuen, Dressing), ganze Nüsse höchstens als Handvoll pur.
 const SEEDS = new Set(['Leinsamen', 'Sesam', 'Kürbiskerne', 'Sonnenblumenkerne', 'Chiasamen', 'Hanfsamen', 'Mohn', 'Pinienkerne']);
-const NUT_BUTTER = /mus$|Tahin/;
+const NUT_BUTTER = /mus$|Tahin|Streichcreme|Erdnussbutter/;
+// Aufstriche und Dips kommen als Klecks ans Gericht
+const SPREAD = /aufstrich|Pastete|Guacamole|Hummus/i;
 const HANDFUL = 20;
 
 const TEMPLATES = {
@@ -287,6 +375,8 @@ const TEMPLATES = {
     m.liquid ? `${m.liquid} angießen und 5 Minuten köcheln lassen.` : null,
     m.base.length ? `${list(m.base)} unterheben und heiß werden lassen.` : null,
     `Mit Salz, Pfeffer${m.acid.length ? ` und ${list(m.acid)}` : ''} abschmecken${m.top.length || m.herb.length ? `, mit ${list([...m.top, ...m.herb])} anrichten` : ''}.`] },
+  fertig: { title: 'Fertig', kind: 'Fertig gekauft', min: 10, steps: (m) => [
+    `${list(m.veg)} nach Packungsangabe erwärmen oder kalt genießen.`, 'Wirf vorher einen Blick auf die Zutatenliste: ohne Fleisch, Sahne und Zuckerzusatz passt es am besten.'] },
   snack: { title: 'Snack', kind: 'Snack', min: 5, steps: (m) => [
     `${list([...m.veg, ...m.top])} portionieren.`, 'Langsam essen, dazu ein großes Glas Wasser oder Kräutertee.'] },
 };
@@ -299,7 +389,7 @@ const list = (items) => {
 /** Einheit für die Mengenangabe: Flüssiges in ml, alles andere in g. */
 export function unit(name) {
   const f = BY_NAME[name];
-  return f?.group === 'getraenk' || name === 'Gemüsebrühe' || /saft|essig|Balsamico|Sojasauce/i.test(name) ? 'ml' : 'g';
+  return f?.group === 'getraenk' || f?.group === 'drink' || name === 'Gemüsebrühe' || (f?.group === 'wuerze' && /saft|essig|Balsamico|Sojasauce|sauce$/i.test(name)) || /suppe|brühe$|Gazpacho|drink/i.test(name) ? 'ml' : 'g';
 }
 export function amount(name, g) {
   if (unit(name) === 'ml') return `${g >= 100 ? Math.round(g / 10) * 10 : Math.round(g)} ml`;
@@ -322,25 +412,31 @@ const names = (xs) => [...new Set(xs.map((i) => short(i.name)))];
  */
 export function buildMeals(items) {
   const f = (i) => BY_NAME[i.name];
-  const use = items.filter((i) => i.g > 0 && f(i).n[0] > 0);
+  const use = items.filter((i) => i.g > 0 && f(i).n[0] > 0).map((i) => ({ ...i }));
   // Snacks sind nur Lückenfüller: Nüsse, Saaten, Oliven und Obst wandern zuerst in die Gerichte.
   // Als Snack bleiben nur echte Snacks (Waffeln, Popcorn, eine Handvoll Nüsse) und Obst, wenn es keinen Salat gibt.
   const g = (i) => f(i).group;
   const drink = use.filter((i) => g(i) === 'getraenk');
-  const plantMilk = drink.filter((i) => f(i).n[0] > 5); // Pflanzendrinks: in die Suppe oder als Snack; Tee, Kaffee, Wasser gehören in keine Mahlzeit
+  // Pflanzendrinks: in die Suppe oder als Snack. Säfte und Kokoswasser: zum Snack. Tee, Kaffee, Wasser gehören in keine Mahlzeit.
+  const plantMilk = drink.filter((i) => f(i).n[0] > 5 && /drink/i.test(i.name));
+  const sips = drink.filter((i) => f(i).n[0] > 5 && !plantMilk.includes(i));
   const crisp = use.filter((i) => g(i) === 'knusper');
   const fruit = use.filter((i) => g(i) === 'obst');
   const seeds = use.filter((i) => g(i) === 'nuss' && (SEEDS.has(i.name) || NUT_BUTTER.test(i.name)));
   const nuts = use.filter((i) => g(i) === 'nuss' && !seeds.includes(i));
-  const toppers = use.filter((i) => g(i) === 'fettfrucht' && !['Avocado', 'Kokosmilch (vollfett)'].includes(i.name));
-  const taken = new Set([...drink, ...crisp, ...fruit, ...seeds, ...nuts, ...toppers]);
+  const toppers = use.filter((i) => g(i) === 'fettfrucht' && !['Avocado', 'Kokosmilch (vollfett)', 'Sojakochcreme'].includes(i.name) && !SPREAD.test(i.name));
+  const spreads = use.filter((i) => SPREAD.test(i.name));
+  // Fertige Suppen und Gerichte bleiben, was sie sind: ein eigenes Gericht zum Aufwärmen
+  const ready = use.filter((i) => g(i) === 'suppe');
+  const taken = new Set([...drink, ...crisp, ...fruit, ...seeds, ...nuts, ...toppers, ...spreads, ...ready]);
   const rest = use.filter((i) => !taken.has(i));
-  const veg = rest.filter((i) => ['gemuese', 'blatt', 'pilze', 'knolle'].includes(f(i).group) || i.name === 'Avocado');
+  const liquid = rest.filter((i) => LIQUID.has(i.name));
+  // Flüssiges (passierte Tomaten, Brühe, Kokosmilch) zählt nur als Flüssigkeit, sonst stünde es doppelt im Rezept
+  const veg = rest.filter((i) => !liquid.includes(i) && (['gemuese', 'blatt', 'pilze', 'knolle'].includes(f(i).group) || i.name === 'Avocado'));
   const base = rest.filter((i) => ['huelsen', 'getreide', 'soja'].includes(f(i).group));
   const oil = rest.filter((i) => f(i).group === 'fett');
   const herb = rest.filter((i) => f(i).group === 'kraeuter');
-  const acid = rest.filter((i) => /saft|essig|Balsamico/i.test(i.name));
-  const liquid = rest.filter((i) => ['Gemüsebrühe', 'Kokosmilch (vollfett)', 'Tomaten, passiert'].includes(i.name));
+  const acid = rest.filter((i) => f(i).group === 'wuerze' && /saft|essig|Balsamico/i.test(i.name));
   const aroma = rest.filter((i) => f(i).group === 'wuerze' && !acid.includes(i) && !liquid.includes(i));
 
   const salad = veg.filter((i) => f(i).group === 'blatt' || (RAW.has(i.name) && !SOUP.has(i.name) && !OVEN.has(i.name)));
@@ -380,7 +476,7 @@ export function buildMeals(items) {
   });
   // Übrige Zutaten den Gerichten zuordnen, in denen sie üblich sind
   const at = (...tpls) => { for (const t of tpls) { const m = meals.find((x) => x.tpl === t); if (m) return m; } return meals[0]; };
-  const snackItems = { veg: [...crisp], top: [] };
+  const snackItems = { veg: [...crisp, ...sips], top: [] };
   // Eine Handvoll Nüsse (höchstens 20 g, eine Sorte) bleibt Snack, der Rest kommt als Topping in die Gerichte
   const nutsSorted = [...nuts].sort((a, b) => b.g - a.g);
   if (nutsSorted.length && (meals.length === 0 || nutsSorted[0].g >= 8)) {
@@ -397,6 +493,7 @@ export function buildMeals(items) {
       else at('salat', 'suppe', 'ofen', 'pfanne').top.push(i);
     }
     for (const i of toppers) at('salat', 'ofen', 'pfanne', 'suppe').top.push(i);
+    for (const i of spreads) at('ofen', 'pfanne', 'salat', 'suppe').dip = [...(at('ofen', 'pfanne', 'salat', 'suppe').dip || []), i];
     const salad = meals.find((x) => x.tpl === 'salat');
     // Obst: in den Salat, sonst ein Stück als Snack und der Rest als Nachtisch zum letzten Gericht
     if (salad) salad.veg.push(...fruit);
@@ -408,22 +505,40 @@ export function buildMeals(items) {
     const soup = meals.find((x) => x.tpl === 'suppe');
     if (soup) soup.liq.push(...plantMilk); else snackItems.veg.push(...plantMilk);
   } else {
-    snackItems.top.push(...nutsSorted, ...seeds, ...toppers);
+    snackItems.top.push(...nutsSorted, ...seeds, ...toppers, ...spreads);
     snackItems.veg.push(...fruit, ...plantMilk);
   }
   if (snackItems.veg.length || snackItems.top.length) meals.push({ tpl: 'snack', ...snackItems, base: [], oils: [], herb: [], acid: [], aroma: [], liq: [] });
+  // Fertige Suppen und Gerichte zuerst: Sie ersetzen eine Hauptmahlzeit
+  for (const r of [...ready].reverse()) meals.unshift({ tpl: 'fertig', veg: [r], base: [], oils: [], herb: [], acid: [], aroma: [], liq: [], top: [] });
+
+  // Geteilte Mengen auf ganze Gramm runden, sodass die Summe je Zutat genau der Tagesmenge entspricht
+  // (größter Rest zuerst). Sonst würde z. B. 35 g Öl auf 2 × 18 g = 36 g und läge über der Obergrenze.
+  const parts = new Map();
+  for (const m of meals) for (const k of ['veg', 'base', 'oils', 'herb', 'acid', 'aroma', 'liq', 'top', 'dessert', 'dip']) for (const it of m[k] || []) {
+    if (!parts.has(it.name)) parts.set(it.name, []);
+    parts.get(it.name).push(it);
+  }
+  for (const [name, xs] of parts) {
+    const total = Math.round(use.find((i) => i.name === name)?.g ?? xs.reduce((a, x) => a + x.g, 0));
+    const fl = xs.map((x) => Math.floor(x.g + 1e-9));
+    let left = total - fl.reduce((a, b) => a + b, 0);
+    const order = xs.map((x, j) => [x.g - fl[j], j]).sort((a, b) => b[0] - a[0]);
+    for (const [, j] of order) { if (left <= 0) break; fl[j]++; left--; }
+    xs.forEach((x, j) => (x.g = fl[j]));
+  }
 
   return meals.map((m, idx) => {
     const t = TEMPLATES[m.tpl];
     const big = (xs) => xs.filter((i) => Math.round(i.g) >= 1);
     const main = names([...m.veg].sort((a, b) => f(b).n[0] * b.g - f(a).n[0] * a.g || b.g - a.g)).slice(0, 3);
-    const title = m.tpl === 'snack' ? `Snack mit ${list(names([...m.top, ...m.veg]))}`
+    const title = m.tpl === 'fertig' ? short(m.veg[0].name) : m.tpl === 'snack' ? `Snack mit ${list(names([...m.top, ...m.veg]))}`
       : `${t.title} mit ${list(main.length ? main : names(m.base))}`;
     const ctx = { veg: big(m.veg), base: big(m.base), oil: Math.round(m.oils.reduce((a, o) => a + o.g, 0)), acid: big(m.acid),
       aroma: big(m.aroma), herb: big(m.herb), top: big(m.top), liquid: big(m.liq).map(label).join(' und ') };
-    const merged = mergeItems([...m.veg, ...m.base, ...m.oils, ...m.herb, ...m.acid, ...m.liq, ...m.aroma, ...m.top, ...(m.dessert || [])]);
+    const merged = mergeItems([...m.veg, ...m.base, ...m.oils, ...m.herb, ...m.acid, ...m.liq, ...m.aroma, ...m.top, ...(m.dessert || []), ...(m.dip || [])]);
     return { tpl: m.tpl, slot: m.tpl === 'snack' ? 'Snack' : idx === 0 ? 'Mittags' : 'Abends', kind: t.kind, minutes: t.min, title,
-      items: merged, steps: [...t.steps(ctx), m.dessert?.length ? `Als Nachtisch: ${list(big(m.dessert))}, in Spalten oder Stücke geschnitten.` : null].filter(Boolean), sum: totals(merged) };
+      items: merged, steps: [...t.steps(ctx), m.dip?.length ? `Dazu einen Klecks ${list(big(m.dip))}.` : null, m.dessert?.length ? `Als Nachtisch: ${list(big(m.dessert))}, in Spalten oder Stücke geschnitten.` : null].filter(Boolean), sum: totals(merged) };
   });
 }
 
