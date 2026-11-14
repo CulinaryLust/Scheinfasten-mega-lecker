@@ -5,13 +5,14 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/bilder.mjs && node scripts/pins.mjs && node scripts/check-links.mjs",
+    "build": "astro build && node scripts/bilder.mjs && node scripts/pins.mjs && node scripts/check-links.mjs && node scripts/check-partner.mjs",
     "preview": "astro preview",
     "check:plans": "node scripts/check-plans.mjs",
     "check:launch": "node scripts/check-launch.mjs",
     "check:rechner": "node scripts/check-rechner.mjs && node scripts/check-tagebuch.mjs && node scripts/check-sicherung.mjs && node scripts/audit-foods.mjs",
     "check:links": "node scripts/check-links.mjs --extern",
-    "check:frische": "node scripts/check-frische.mjs"
+    "check:frische": "node scripts/check-frische.mjs",
+    "check:partner": "node scripts/check-partner.mjs --live"
   },
   "dependencies": {
     "@fontsource-variable/figtree": "^5.1.1",
