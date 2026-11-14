@@ -117,7 +117,7 @@ import { pick } from '../data/affiliate.js';
         </div>
         <p class="taboo small"><Icon name="ban" /><span><b>Diese fünf Tage tabu:</b> Fleisch, Fisch und Eier · Milchprodukte · Zucker und Süßes · Brot, Nudeln und Weißmehl · Alkohol und Säfte. Kaffee höchstens eine kleine Tasse schwarz. <a href={u('wissen/#weglassen')}>Ganze Liste</a></span></p>
         <div class="picked" id="picked" aria-label="Deine Lebensmittel"></div>
-        <p class="small muted legendline"><span class="lg"><span class="dot g"></span>passt gut</span><span class="lg"><span class="dot y"></span>nur kleine Menge</span><span class="lg"><span class="dot r"></span>lieber tauschen</span></p>
+        <p class="small muted legendline"><span class="lg"><span class="dot g"></span>passt gut</span><span class="lg"><span class="dot y"></span>nur kleine Menge</span><span class="lg"><span class="dot r"></span>passt nicht</span></p>
         <p class="small muted legendline"><span>Hauptnährstoff:</span><span class="lg"><span class="mac carbs"><Icon name="carbs" /></span>Kohlenhydrate</span><span class="lg"><span class="mac protein"><Icon name="protein" /></span>Eiweiß</span><span class="lg"><span class="mac fat"><Icon name="fat" /></span>Fett</span></p>
       </fieldset>
 
@@ -133,7 +133,7 @@ import { pick } from '../data/affiliate.js';
   <div class="in narrow" style="padding-block:24px 56px"><AffiliateBox items={pick('waage', 'oel', 'oel_manira', 'nuesse', 'kuerbiskerne', 'tahin')} title="Gut abgewogen" lead="Öl und Nüsse machen den größten Teil der Kalorien aus. Schon 5 g mehr verschieben die Werte deutlich." /></div>
 
   <div class="in narrow small muted srcnote">
-    <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben und zählen wie in Prof. Dr. Longos US-Angaben mit 4 kcal je Gramm. Die Prozente beziehen sich deshalb auf die Energie aus Eiweiß, Fett und Kohlenhydraten und ergeben zusammen 100 %. Für einige Kräuter, Gewürze und Spezialprodukte ohne BLS-Eintrag nutzen wir Richtwerte aus der USDA-Datenbank.</p>
+    <p>Nährwerte: Max Rubner-Institut (2025), Bundeslebensmittelschlüssel (BLS) Version 4.0, <a href="https://doi.org/10.25826/Data20251217-134202-0" rel="noopener">DOI 10.25826/Data20251217-134202-0</a>, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener">CC BY 4.0</a>. Wir haben die Werte auf vier Kennzahlen reduziert. Kohlenhydrate sind inklusive Ballaststoffe angegeben und zählen wie in Prof. Dr. Longos US-Angaben mit 4 kcal je Gramm. Die Prozente beziehen sich deshalb auf die Energie aus Eiweiß, Fett und Kohlenhydraten und ergeben zusammen 100 %. Für einige Kräuter, Gewürze und Spezialprodukte ohne BLS-Eintrag nutzen wir Richtwerte aus der USDA-Datenbank. Für pflanzliche Joghurts, Drinks und Kochcremes, die im BLS fehlen, nutzen wir Mittelwerte aus den Nährwertangaben mehrerer Hersteller. Einzelne Marken weichen davon ab, ein Blick auf die Packung lohnt sich.</p>
     <p>Sollwerte: Brandhorst S et al., Cell Metab 2015, Methoden (Labor von Prof. Dr. Longo). Wei M et al., Sci Transl Med 2017 nennt für Tag 2 bis 5 dieselben Anteile bei ca. 3.000 kJ (ca. 717 kcal). Kaffee höchstens eine kleine Tasse: Empfehlung des ProLon-Herstellers L-Nutra, nicht aus den Studien. Die Zuckergrenze von höchstens 15 % der Kalorien ist unsere eigene Regel, weil Prof. Dr. Longo nur „wenig Zucker“ ohne Grammzahl angibt. Die Obergrenzen je Lebensmittel und die Einteilung in Ampelfarben sind unsere eigenen Richtwerte, abgeleitet aus Prof. Dr. Longos Makroverteilung. Diese Seite wird von Prof. Dr. Longo weder geprüft noch unterstützt.</p>
   </div>
 </Base>
@@ -244,7 +244,7 @@ import { pick } from '../data/affiliate.js';
   const picked = document.getElementById('picked')!;
   const STORE = 'smlRechner';
   const esc = (s: string) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
-  const LIGHT: Record<string, string> = { g: 'passt gut', y: 'nur kleine Menge', r: 'lieber tauschen' };
+  const LIGHT: Record<string, string> = { g: 'passt gut', y: 'nur kleine Menge', r: 'passt nicht' };
   // Symbol für den Hauptnährstoff (Kohlenhydrate, Eiweiß oder Fett); Kräuter, Würzen und Kalorienfreies ohne Symbol
   const mac = (name: string) => {
     const m = macroOf(BY_NAME[name]);
@@ -289,9 +289,8 @@ import { pick } from '../data/affiliate.js';
   sug.addEventListener('mousedown', (e) => { const li = (e.target as HTMLElement).closest('li'); if (li) { e.preventDefault(); addFood(li.dataset.name!); } });
   q.addEventListener('blur', () => setTimeout(() => { sug.hidden = true; q.setAttribute('aria-expanded', 'false'); }, 120));
 
-  function addFood(name: string, replace?: string) {
+  function addFood(name: string) {
     if (!BY_NAME[name]) return;
-    if (replace) state.picks = state.picks.filter((p) => p.name !== replace);
     if (!state.picks.some((p) => p.name === name)) state.picks.push({ name });
     state.done = {};
     q.value = ''; sug.hidden = true; qhint.textContent = '';
@@ -433,12 +432,12 @@ import { pick } from '../data/affiliate.js';
       // Gelbe Hinweise
       const yellow = ok.filter((x) => BY_NAME[x.name].light === 'y');
       if (yellow.length) {
-        h += `<div class="badlist">${yellow.map((x) => { const a = advice(x.name); return `<div class="alert info"><p><b>${esc(x.name)}: gern, aber nur ein bisschen.</b> ${esc(a.why)}</p>${a.alts.length ? `<div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} Lieber ${esc(n)}</button>`).join('')}</div>` : ''}</div>`; }).join('')}</div>`;
+        h += `<div class="badlist">${yellow.map((x) => { const a = advice(x.name); return `<div class="alert info"><p><b>${esc(x.name)}: gern, aber nur ein bisschen.</b> ${esc(a.why)}</p></div>`; }).join('')}</div>`;
       }
     }
     // Rote Lebensmittel
     if (red.length) {
-      h += `<div class="stack"><h2 style="font-size:1.6rem">Lieber tauschen</h2><p class="muted small">Diese Lebensmittel heben den Fasteneffekt auf. Mit einem Tipp tauschst Du sie gegen etwas, das genauso gut schmeckt.</p><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}</b>: ${esc(a.why)}</p><p class="small">Probier stattdessen:</p><div class="alts">${a.alts.map((n) => `<button type="button" class="alt" data-add="${esc(n)}" data-replace="${esc(x.name)}">${I.swap} ${esc(n)}</button>`).join('')}</div></div>`; }).join('')}</div></div>`;
+      h += `<div class="stack"><h2 style="font-size:1.6rem">Passt nicht ins Scheinfasten</h2><p class="muted small">Diese Lebensmittel heben den Fasteneffekt auf. Wir rechnen sie deshalb nicht in Deinen Tag ein.</p><div class="badlist">${red.map((x) => { const a = advice(x.name); return `<div class="alert warn"><p><b>${esc(x.name)}</b>: ${esc(a.why)}</p></div>`; }).join('')}</div></div>`;
     }
     if (res) {
       // Gerichte aus den eigenen Zutaten, nach Mahlzeit sortiert, zum Abhaken
@@ -498,7 +497,7 @@ import { pick } from '../data/affiliate.js';
     const many = t.closest<HTMLElement>('[data-addmany]');
     if (many) { for (const n of many.dataset.addmany!.split('|')) if (BY_NAME[n] && !state.picks.some((p) => p.name === n)) state.picks.push({ name: n }); state.done = {}; save(); renderPicked(); render(); return; }
     const b = t.closest<HTMLElement>('[data-add]');
-    if (b) { addFood(b.dataset.add!, b.dataset.replace); return; }
+    if (b) { addFood(b.dataset.add!); return; }
     const fr = t.closest<HTMLElement>('[data-free]');
     if (fr) { const p = state.picks.find((x) => x.name === fr.dataset.free); if (p) delete p.g; save(); render(); }
   });

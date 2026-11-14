@@ -9,12 +9,15 @@ export const BY_NAME = Object.fromEntries(FOODS.map((f) => [f.name, f]));
 // Übliche Portion je Gruppe in Gramm. Der Rechner bleibt in der Nähe dieser Mengen, solange Longos Werte das zulassen.
 const TYPICAL = {
   gemuese: 150, blatt: 60, pilze: 150, kraeuter: 8, wuerze: 10, fett: 10, nuss: 15, fettfrucht: 30,
-  knolle: 100, huelsen: 50, getreide: 60, obst: 80, soja: 40, getraenk: 150, knusper: 10, suppe: 300,
+  knolle: 100, huelsen: 50, getreide: 60, obst: 80, soja: 40, getraenk: 150, knusper: 10, suppe: 300, pflanz: 50,
 };
 const TYPICAL_FOOD = {
   Knoblauch: 4, Ingwer: 6, Kapern: 5, Gemüsebrühe: 300, 'Tomaten, passiert': 150, Tomatenmark: 15,
   'Paprikapulver, geräuchert': 1, 'Helle Misopaste': 8, 'Rote Currypaste': 8, Zitronensaft: 15, Limettensaft: 15,
-  Balsamico: 8, Apfelessig: 10, Meerrettich: 8, Avocado: 60, 'Kokosmilch (vollfett)': 40, Haferflocken: 20,
+  Balsamico: 8, Apfelessig: 10, Meerrettich: 8, Avocado: 60, 'Kokosmilch (vollfett)': 40, 'Kokosmilch (fettreduziert)': 60, Kokosjoghurt: 60, Mandeljoghurt: 60, Cashewjoghurt: 60, Haferjoghurt: 50, Lupinenjoghurt: 60, Sojaquark: 40,
+  Haferkochcreme: 30, Kokoskochcreme: 30, Mandelkochcreme: 30, 'Vegane Schlagcreme': 15, 'Veganer Frischkäse': 20, Kokosmus: 8, Kokoschips: 8, Kokosmehl: 10,
+  'Cashewdrink ungesüßt': 100, 'Kokosdrink ungesüßt': 100, 'Macadamiadrink ungesüßt': 100, 'Hanfdrink ungesüßt': 100, Haselnussdrink: 100, 'Erbsendrink ungesüßt': 100,
+  Dinkeldrink: 100, 'Reis-Kokos-Drink': 100, 'Haferdrink Barista': 50, Räuchertofu: 30, Reisessig: 10, 'Balsamico bianco': 8, 'Crema di Balsamico': 5, Haferflocken: 20,
   Leinsamen: 8, Chiasamen: 8, Paranüsse: 5, Kresse: 5, 'Mandeldrink ungesüßt': 100,
   Salz: 3, Pfeffer: 1, Kurkuma: 1, Kreuzkümmel: 1, Currypulver: 2, Zimt: 1, Chiliflocken: 0.5, Muskatnuss: 0.5,
   'Oregano (getrocknet)': 1, Thymian: 2, Rosmarin: 2, Nori: 3, Chili: 5, Senf: 8, Sojasauce: 8, Hefeflocken: 5,
@@ -331,7 +334,7 @@ export function matchRecipes(names, limit = 6) {
 
 // Mahlzeiten aus den eigenen Lebensmitteln bauen
 // Flüssige Basis für Suppe und Soße
-const LIQUID = new Set(['Gemüsebrühe', 'Kokosmilch (vollfett)', 'Tomaten, passiert', 'Sojakochcreme']);
+const LIQUID = new Set(['Gemüsebrühe', 'Kokosmilch (vollfett)', 'Kokosmilch (fettreduziert)', 'Tomaten, passiert', 'Sojakochcreme']);
 const RAW = new Set(['Gurke', 'Tomaten', 'Kirschtomaten', 'Radieschen', 'Rettich', 'Kresse', 'Avocado', 'Rote Bete (vorgegart)',
   'Frühlingszwiebeln', 'Kohlrabi', 'Fenchel', 'Rote Paprika', 'Gelbe Paprika', 'Karotten', 'Rotkohl', 'Gewürzgurken', 'Sauerkraut']);
 const SOUP = new Set(['Hokkaido-Kürbis', 'Gartenkürbis', 'Karotten', 'Lauch', 'Kartoffeln', 'Süßkartoffel', 'Blumenkohl', 'Brokkoli',
@@ -341,10 +344,10 @@ const OVEN = new Set(['Hokkaido-Kürbis', 'Gartenkürbis', 'Karotten', 'Kartoffe
   'Aubergine', 'Rote Paprika', 'Gelbe Paprika', 'Grüne Paprika', 'Zucchini', 'Pastinaken', 'Knollensellerie', 'Rote Zwiebel',
   'Fenchel', 'Rote Bete (vorgegart)', 'Kichererbsen (gegart)', 'Grünkohl', 'Tomaten', 'Kirschtomaten', 'Champignons', 'Steckrübe']);
 // Saaten und Muse kommen in die Gerichte (bestreuen, Dressing), ganze Nüsse höchstens als Handvoll pur.
-const SEEDS = new Set(['Leinsamen', 'Sesam', 'Kürbiskerne', 'Sonnenblumenkerne', 'Chiasamen', 'Hanfsamen', 'Mohn', 'Pinienkerne']);
+const SEEDS = new Set(['Leinsamen', 'Sesam', 'Kürbiskerne', 'Sonnenblumenkerne', 'Chiasamen', 'Hanfsamen', 'Mohn', 'Pinienkerne', 'Gemahlene Mandeln']);
 const NUT_BUTTER = /mus$|Tahin|Streichcreme|Erdnussbutter/;
 // Aufstriche und Dips kommen als Klecks ans Gericht
-const SPREAD = /aufstrich|Pastete|Guacamole|Hummus/i;
+const SPREAD = /aufstrich|Pastete|Guacamole|Hummus|joghurt|quark|Frischkäse|Schlagcreme/i;
 const HANDFUL = 20;
 
 const TEMPLATES = {
@@ -425,13 +428,14 @@ export function buildMeals(items) {
   const fruit = use.filter((i) => g(i) === 'obst');
   const seeds = use.filter((i) => g(i) === 'nuss' && (SEEDS.has(i.name) || NUT_BUTTER.test(i.name)));
   const nuts = use.filter((i) => g(i) === 'nuss' && !seeds.includes(i));
-  const toppers = use.filter((i) => g(i) === 'fettfrucht' && !['Avocado', 'Kokosmilch (vollfett)', 'Sojakochcreme'].includes(i.name) && !SPREAD.test(i.name));
+  const toppers = use.filter((i) => g(i) === 'fettfrucht' && i.name !== 'Avocado' && !LIQUID.has(i.name) && !SPREAD.test(i.name));
   const spreads = use.filter((i) => SPREAD.test(i.name));
   // Fertige Suppen und Gerichte bleiben, was sie sind: ein eigenes Gericht zum Aufwärmen
   const ready = use.filter((i) => g(i) === 'suppe');
   const taken = new Set([...drink, ...crisp, ...fruit, ...seeds, ...nuts, ...toppers, ...spreads, ...ready]);
   const rest = use.filter((i) => !taken.has(i));
-  const liquid = rest.filter((i) => LIQUID.has(i.name));
+  // Pflanzliche Kochcremes (Gruppe pflanz, kein Joghurt oder Aufstrich) sind ebenfalls Flüssigkeit für Suppe und Soße
+  const liquid = rest.filter((i) => LIQUID.has(i.name) || g(i) === 'pflanz');
   // Flüssiges (passierte Tomaten, Brühe, Kokosmilch) zählt nur als Flüssigkeit, sonst stünde es doppelt im Rezept
   const veg = rest.filter((i) => !liquid.includes(i) && (['gemuese', 'blatt', 'pilze', 'knolle'].includes(f(i).group) || i.name === 'Avocado'));
   const base = rest.filter((i) => ['huelsen', 'getreide', 'soja'].includes(f(i).group));

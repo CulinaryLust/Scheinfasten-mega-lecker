@@ -49,7 +49,7 @@ for x in FS.F:
     if x['bls']:
         v = bt[x['name']]; src = {'db': 'BLS', 'code': x['bls'], 'name': bls[x['bls']]['name']}
     else:
-        v = tuple(x['n'] or N[x['name']]) + (None,); src = {'db': 'USDA', 'code': None, 'name': None}
+        v = tuple(x['n'] or N[x['name']]) + (None,); src = {'db': x.get('db') or 'USDA', 'code': None, 'name': None}
     cap, capWhy = FS.limit(gcap if x['cap'] is None else x['cap'], v)
     if x['name'] in FS.PUMPKIN and cap == FS.PUMPKIN_MAX: capWhy = 'kuerbis'
     foods.append({'name': x['name'], 'group': x['group'], 'groupLabel': label, 'light': light,

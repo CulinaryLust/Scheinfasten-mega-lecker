@@ -30,7 +30,7 @@ export function defaultAmount(entry) {
   const f = BY_NAME[entry.name];
   if (f.piece && ['gemuese', 'knolle', 'obst', 'blatt', 'pilze'].includes(f.group)) return { qty: 1, unit: 'piece' };
   if (f.group === 'getraenk') return { qty: 1, unit: 'cup' };
-  const g = { fett: 10, nuss: 15, kraeuter: 5, wuerze: 5, fettfrucht: 20 }[f.group] ?? 100;
+  const g = { fett: 10, nuss: 15, kraeuter: 5, wuerze: 5, fettfrucht: 20, pflanz: 50 }[f.group] ?? 100;
   return { qty: g, unit: units(entry)[0][0] };
 }
 
