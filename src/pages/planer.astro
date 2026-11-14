@@ -92,6 +92,13 @@ import { pick } from '../data/affiliate.js';
         <h3 class="sub">Deine Vorlieben <span class="muted small">(freiwillig)</span></h3>
         <p class="muted small">Tippe einmal für <b>mag ich besonders</b>, zweimal für <b>lieber nicht</b>. Wir tauschen die Gerichte dann passend aus und rechnen alles neu.</p>
         <div class="prefs" id="prefs">{PREFS.map(([k, l]) => <button type="button" class="pref" data-pref={k} aria-pressed="false"><span class="pi" aria-hidden="true"></span>{l}</button>)}</div>
+        <div class="field combo prefsearch">
+          <label for="pq" class="lbl">Weitere Lebensmittel</label>
+          <input id="pq" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="psug" autocomplete="off" placeholder="z. B. Fenchel, Linsen, Avocado" />
+          <ul id="psug" class="sug" role="listbox" hidden></ul>
+          <p class="small muted" id="pqhint" aria-live="polite"></p>
+        </div>
+        <div class="prefs" id="prefs2"></div>
         <h3 class="sub">Start</h3>
         <p class="muted small">Gefastet wird immer 5 Tage. Dazu kommen ein Vorbereitungstag davor und ein Übergangstag danach.</p>
         <div class="field"><label for="start" class="lbl">Wann startest Du? (Tag 1)</label><input id="start" name="start" type="date" required /></div>
@@ -175,6 +182,11 @@ import { pick } from '../data/affiliate.js';
   .shop input:checked + span { opacity: .45; text-decoration: line-through; }
   .mtags { display: block; color: var(--muted); font-size: .76rem; }
   .prefs { display: flex; flex-wrap: wrap; gap: 8px; }
+  #prefs2:empty { display: none; }
+  .prefsearch { position: relative; margin-top: 4px; }
+  .prefsearch .sug { list-style: none; margin: 0; padding: 6px; position: absolute; left: 0; right: 0; top: calc(100% - 22px); z-index: 20; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); max-height: 300px; overflow-y: auto; }
+  .prefsearch .sug li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; cursor: pointer; }
+  .prefsearch .sug li[aria-selected="true"], .prefsearch .sug li:hover { background: var(--band); }
   .pref { display: inline-flex; gap: 6px; align-items: center; border: 1.5px solid var(--line); background: var(--card); color: var(--fg); border-radius: 999px; padding: 7px 14px; font: inherit; font-weight: 600; cursor: pointer; }
   .pref .pi::before { content: "+"; color: var(--muted); }
   .pref.like { border-color: var(--green); background: var(--ok-bg); }
@@ -220,18 +232,50 @@ import { pick } from '../data/affiliate.js';
   let state: any = { swaps: {} };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s) state = s; } catch {}
   state.prefs = state.prefs || { like: [], no: [] };
-  const prefBtns = [...document.querySelectorAll<HTMLButtonElement>('.pref')];
-  const paintPrefs = () => prefBtns.forEach((b) => {
+  // Eigene Lebensmittel als Vorliebe (Schlüssel „f:Name“), gesucht in allen Zutaten der Rezepte
+  const prefs2 = document.getElementById('prefs2')!;
+  const pq = document.getElementById('pq') as HTMLInputElement; const psug = document.getElementById('psug')!; const pqhint = document.getElementById('pqhint')!;
+  const escP = (x: string) => x.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const nrm = (x: string) => x.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ß/g, 'ss');
+  const ING = Object.keys(FM).sort((a, b) => a.localeCompare(b, 'de'));
+  const customKeys = () => [...new Set([...state.prefs.like, ...state.prefs.no].filter((k: string) => k.startsWith('f:')))];
+  const renderCustom = () => {
+    prefs2.innerHTML = customKeys().map((k: string) => `<button type="button" class="pref" data-pref="${escP(k)}" aria-pressed="false"><span class="pi" aria-hidden="true"></span>${escP(k.slice(2))}</button>`).join('');
+    paintPrefs();
+  };
+  let pHits: string[] = []; let pAct = -1;
+  const showP = () => {
+    const q2 = nrm(pq.value.trim());
+    pHits = q2.length < 2 ? [] : ING.filter((n) => nrm(n).includes(q2) && !customKeys().includes(`f:${n}`)).sort((a, b) => Number(!nrm(b).startsWith(q2)) - Number(!nrm(a).startsWith(q2)) || 0).slice(0, 8);
+    pAct = pHits.length ? 0 : -1;
+    psug.innerHTML = pHits.map((n, i) => `<li role="option" id="ps${i}" aria-selected="${i === 0}" data-pn="${escP(n)}">${mac(n)}${escP(n)}</li>`).join('');
+    psug.hidden = !pHits.length; pq.setAttribute('aria-expanded', String(!!pHits.length));
+    pqhint.textContent = q2.length >= 2 && !pHits.length ? 'Kommt in unseren Rezepten nicht vor, deshalb ändert es den Plan nicht.' : '';
+  };
+  const addP = (n: string) => { state.prefs.like.push(`f:${n}`); pq.value = ''; showP(); renderCustom(); save(); pq.focus(); };
+  pq.addEventListener('input', showP);
+  pq.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!pHits.length) return; pAct = (pAct + (e.key === 'ArrowDown' ? 1 : pHits.length - 1)) % pHits.length; psug.querySelectorAll('li').forEach((li, i) => li.setAttribute('aria-selected', String(i === pAct))); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (pAct >= 0) addP(pHits[pAct]); }
+    else if (e.key === 'Escape') { psug.hidden = true; }
+  });
+  psug.addEventListener('mousedown', (e) => { const li = (e.target as HTMLElement).closest<HTMLElement>('[data-pn]'); if (li) { e.preventDefault(); addP(li.dataset.pn!); } });
+  pq.addEventListener('blur', () => setTimeout(() => (psug.hidden = true), 150));
+  const allPrefBtns = () => [...document.querySelectorAll<HTMLButtonElement>('.pref')];
+  const paintPrefs = () => allPrefBtns().forEach((b) => {
     const k = b.dataset.pref!; const st = state.prefs.like.includes(k) ? 'like' : state.prefs.no.includes(k) ? 'no' : '';
     b.classList.toggle('like', st === 'like'); b.classList.toggle('no', st === 'no');
     b.setAttribute('aria-pressed', String(!!st)); b.title = st === 'like' ? 'mag ich besonders' : st === 'no' ? 'lieber nicht' : '';
   });
-  prefBtns.forEach((b) => b.addEventListener('click', () => {
+  // Antippen: mag ich, lieber nicht, aus. Eigene Lebensmittel verschwinden beim dritten Antippen.
+  document.getElementById('prefs')!.parentElement!.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.pref'); if (!b) return;
     const k = b.dataset.pref!; const { like, no } = state.prefs;
     if (like.includes(k)) { like.splice(like.indexOf(k), 1); no.push(k); } else if (no.includes(k)) no.splice(no.indexOf(k), 1); else like.push(k);
-    paintPrefs(); save();
-  }));
-  paintPrefs();
+    if (k.startsWith('f:') && !like.includes(k) && !no.includes(k)) renderCustom(); else paintPrefs();
+    save();
+  });
+  renderCustom();
   if (state.inputs) {
     for (const [k, v] of Object.entries(state.inputs)) {
       const el = form.elements.namedItem(k) as any;

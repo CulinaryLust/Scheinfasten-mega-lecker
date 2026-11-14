@@ -7,7 +7,8 @@ export const PREF_RX = {
   aubergine: /Aubergine/i, zucchini: /Zucchini/i, paprika: /Rote Paprika/i, kuerbis: /Hokkaido/i, kohl: /kohl|Wirsing|Pak Choi/i,
   rotebete: /Rote Bete/i, suesskartoffel: /Süßkartoffel/i, tomate: /Tomat/i, sesam: /Sesam|Tahin/i, koriander: /Koriander/i, scharf: /Chili|Currypaste|Meerrettich/i,
 };
-export const hits = (r, keys) => keys.filter((k) => r.ingredients.some((i) => PREF_RX[k]?.test(i.name)));
+// Schlüssel „f:Name“: ein einzelnes Lebensmittel aus der Suche bei den Vorlieben
+export const hits = (r, keys) => keys.filter((k) => r.ingredients.some((i) => (k.startsWith('f:') ? i.name === k.slice(2) : PREF_RX[k]?.test(i.name))));
 const ZERO = nutrition({ ingredients: [] });
 export const total = (list, f) => list.reduce((acc, it) => add(acc, nutrition(BY_SLUG[it.recipe], it.portion * f)), ZERO);
 const r5 = (x) => Math.round(x * 20) / 20;

@@ -1,9 +1,10 @@
 // Prüft den Lebensmittel-Rechner mit typischen Kühlschrank-Inhalten.
 import { solve, targets, profile, buildMeals, matchRecipes, suggestAdditions, completeDay, search, totals, unit, FOODS, BY_NAME } from '../src/lib/rechner.js';
-import { shares, nutrition, RECIPES } from '../src/lib/nutrition.js';
+import { shares, nutrition, RECIPES, BY_SLUG as BY_SLUG_R } from '../src/lib/nutrition.js';
 import { mealCheck } from '../src/lib/tagebuch.js';
 import { doneHtml } from '../src/lib/fortschritt.js';
 import { ownMealsOf, ownDay } from '../src/lib/eigene.js';
+import { planDay } from '../src/lib/plan.js';
 import PLAN from '../src/data/plan.json' with { type: 'json' };
 
 let failed = 0;
@@ -254,6 +255,12 @@ must(unit('Tomatensuppe') === 'ml' && unit('Sojadrink') === 'ml' && unit('Ananas
   }
   const r1 = ownMealsOf({ ...o, mode: { ...o.mode, mi: '' } });
   must(!r1.some((m) => m.key === 'own-mi'), 'Abgewähltes Rezept zählt weiter');
+}
+// Vorlieben aus der Suche (f:Name) tauschen Gerichte genauso wie die festen Gruppen
+{
+  const has = (st, n) => [1, 2, 3, 4, 5].flatMap((d) => planDay(st, d)).filter((it) => it.type === 'main' && BY_SLUG_R[it.recipe].ingredients.some((i) => i.name === n)).length;
+  const before = has({}, 'Zucchini'), after = has({ prefs: { like: [], no: ['f:Zucchini'] } }, 'Zucchini');
+  must(before > 0 && after < before, `Vorliebe „lieber nicht Zucchini“ wirkt nicht (${before} -> ${after})`);
 }
 console.log(failed ? `${failed} Fehler` : 'Alles ok');
 process.exit(failed ? 1 : 0);
