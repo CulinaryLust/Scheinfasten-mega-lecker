@@ -49,17 +49,23 @@ import { pick } from '../data/affiliate.js';
             <label><input type="radio" name="pal" value="1.8" /><span>Sehr aktiv</span></label>
           </div>
         </div>
-        <div class="field"><span class="lbl">Welcher Fastentag ist heute?</span>
-          <div class="seg six" id="days">
-            {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small></span></label>)}
-            <label><input type="radio" name="day" value="6" /><span>Übergang<small>leicht essen</small></span></label>
-          </div>
-          <p class="small muted" id="dayhint" aria-live="polite"></p>
-        </div>
         <input type="checkbox" name="bf" value="1" id="bfx" hidden />
         <p class="err" id="err1" role="alert" hidden></p>
       </fieldset>
     </form>
+  </section>
+
+  <section class="in calc" id="dayb">
+    <div class="card wcard daycard">
+      <div class="dayhead"><span class="num"><Icon name="calendar" /></span><div><h2 class="dlbl">Welcher Fastentag ist heute?</h2><p class="small muted">Jeder Tag hat seine eigenen Mahlzeiten und Haken. Wechsle einfach den Tag, um ihn zu planen oder abzuhaken.</p></div></div>
+      <div class="seg six" id="days">
+        {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" form="pf" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small><i class="dprog" data-dprog={d} aria-hidden="true"></i></span></label>)}
+        <label><input type="radio" name="day" form="pf" value="6" /><span>Übergang<small>leicht essen</small></span></label>
+      </div>
+      <p class="small muted dlegend" id="dlegend" hidden><span class="lg"><i class="sw lo"></i>noch Platz</span><span class="lg"><i class="sw ok"></i>passt</span><span class="lg"><i class="sw hi"></i>zu viel</span><span>Der Balken zeigt, wie viel vom Tagesziel abgehakt ist.</span></p>
+      <p class="small muted" id="dayhint" aria-live="polite"></p>
+      <p class="small dreset"><button type="button" class="linkbtn" id="dreset">Neuer Durchgang: alle Tage leeren</button></p>
+    </div>
     <script is:inline>
       // Eingaben sofort beim Laden wiederherstellen, bevor die Reiter rechnen: erst eigene, sonst aus Rechner oder Planer.
       (function () {
@@ -81,7 +87,7 @@ import { pick } from '../data/affiliate.js';
           if (n >= 1 && n <= 6) { day = n; pf.dataset.fromPlan = String(n); }
         }
         if (!day && prof && prof.day) day = +prof.day;
-        if (day) { var r = pf.querySelector('input[name="day"][value="' + day + '"]'); if (r) r.checked = true; }
+        if (day) { var r = document.querySelector('#days input[name="day"][value="' + day + '"]'); if (r) r.checked = true; }
         if (pf.dataset.fromPlan) document.getElementById('dayhint').textContent = pf.dataset.fromPlan === '6' ? 'Laut Deinem Plan ist heute der Übergangstag.' : 'Laut Deinem Plan ist heute Tag ' + pf.dataset.fromPlan + '.';
         if ((prof && prof.bf) || (plan && plan.breakfast)) document.getElementById('bfx').checked = true;
       })();
@@ -150,8 +156,36 @@ import { pick } from '../data/affiliate.js';
   .seg.six { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .seg.six label > span { height: 100%; padding-inline: 4px; }
   @media (max-width: 640px) { .seg.six { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  #uebergang { max-width: 820px; padding-bottom: 40px; display: grid; gap: 0; }
+  /* Tagesleiste: eigener Kasten über „Deine Mahlzeiten“, mit Fortschritt je Tag */
   #prof { padding-bottom: 18px; }
+  #dayb { padding-bottom: 18px; }
+  #dayb .daycard { gap: 14px; }
+  .dayhead { display: flex; gap: 10px; align-items: flex-start; }
+  .dayhead .num { width: 32px; height: 32px; border-radius: 50%; background: var(--green); color: var(--on-green); display: grid; place-items: center; flex: none; }
+  .dayhead .num svg { width: 18px; height: 18px; }
+  .dayhead .dlbl { font-family: var(--display); font-size: 1.5rem; margin: 0 0 2px; line-height: 1.25; }
+  .dayhead p { margin: 0; }
+  @media (max-width: 560px) { .dayhead .dlbl { font-size: 1.3rem; } }
+  #days label > span { position: relative; overflow: hidden; padding-bottom: 14px; }
+  #days small { white-space: nowrap; font-size: .76rem; }
+  .dprog { position: absolute; left: 0; bottom: 0; height: 6px; border-radius: 0 3px 3px 0; transition: width .3s; }
+  .dprog[hidden] { display: none; }
+  #days [data-prog="ok"] small { color: var(--ok); font-weight: 700; }
+  #days [data-prog="hi"] small { color: var(--bad); font-weight: 700; }
+  .dlegend { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 0; }
+  .dlegend .lg { display: inline-flex; gap: 6px; align-items: center; }
+  .dlegend .sw { width: 22px; height: 6px; border-radius: 3px; display: inline-block; }
+  .dlegend .sw.lo { background: linear-gradient(90deg, hsl(45 62% 50%), hsl(95 62% 44%)); }
+  .dlegend .sw.ok { background: hsl(135 62% 44%); }
+  .dlegend .sw.hi { background: linear-gradient(90deg, hsl(70 62% 44%), hsl(0 62% 44%)); }
+  .dreset { margin: 0; }
+  .dmini { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .dmini .dm { position: relative; overflow: hidden; border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 10px; padding: 6px 4px 10px; font: 700 .85rem var(--body); cursor: pointer; }
+  .dmini .dm.on { border-color: var(--green); color: var(--green); box-shadow: 0 0 0 1px var(--green) inset; }
+  .dmini .dm i { position: absolute; left: 0; bottom: 0; height: 4px; }
+  .dmini .dm { display: grid; gap: 1px; }
+  .dmini .dm small { font-weight: 500; font-size: .74rem; color: var(--muted); white-space: nowrap; }
+  #uebergang { max-width: 820px; padding-bottom: 40px; display: grid; gap: 0; }
   .tabsw { padding-bottom: 18px; }
   .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; background: var(--band); border-radius: 18px; }
   .tabs button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; border: 0; border-radius: 13px; padding: 12px 10px; min-height: 48px; font: 700 .98rem/1.2 var(--body); background: none; color: var(--muted); cursor: pointer; }
@@ -355,7 +389,7 @@ import { pick } from '../data/affiliate.js';
   // Selbst eingetragene Mahlzeiten: Einträge wie im Tagebuch, {type: 'food', name, qty, unit} oder {type: 'recipe', slug, qty, unit: 'portion'}
   type Entry = { type: 'food' | 'recipe'; name?: string; slug?: string; qty: number; unit: string };
   type Own = { d: string; mode: Record<string, string>; items: Record<string, Entry[]>; rec: Record<string, { slug: string; qty: number }>; fin: Record<string, boolean>; zw: { id: string; pos: number; items: Entry[] }[]; skip?: { plan: string[]; gen: string[] } };
-  let state: { inputs?: any; picks: Pick[]; shown?: boolean; done?: Record<string, Record<string, boolean>>; own?: Own } = { picks: [] };
+  let state: { inputs?: any; picks: Pick[]; shown?: boolean; done?: Record<string, Record<string, any>>; own?: Own; ownDays?: Record<string, Own>; daySum?: Record<string, { e: number; p: number }> } = { picks: [] };
   try { const s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && Array.isArray(s.picks)) state = s; } catch {}
   state.picks = state.picks.filter((p) => BY_NAME[p.name]);
   // Körperdaten und Fastentag stehen im gemeinsamen Formular oben (#pf), für beide Reiter.
@@ -374,12 +408,17 @@ import { pick } from '../data/affiliate.js';
   const SHARE: Record<string, number> = { bf: 0.22, mi: 0.35, ab: 0.35 };
   const BYSLUG: Record<string, any> = Object.fromEntries(RECIPES.map((r: any) => [r.slug, r]));
   const validEntry = (e: Entry) => e && (e.type === 'recipe' ? !!BYSLUG[e.slug!] : !!BY_NAME[e.name!]);
-  // Eingetragenes gilt für den Kalendertag. Am nächsten Tag startet der Bereich leer, gespeicherte „Meine Mahlzeiten“ bleiben.
+  // Jeder Fastentag (1 bis 5) hat seine eigenen Mahlzeiten und Haken. „Neuer Durchgang“ leert alle Tage, gespeicherte „Meine Mahlzeiten“ bleiben.
   const freshOwn = (): Own => ({ d: isoToday(), mode: { bf: bfx.checked ? 'rezept' : '', mi: '', ab: '' }, items: { bf: [], mi: [], ab: [] }, rec: {}, fin: {}, zw: [] });
-  if (!state.own || state.own.d !== isoToday()) state.own = freshOwn();
-  const own = () => state.own!;
-  {
-    const o = own();
+  const curDay = () => +((pf.elements.namedItem('day') as RadioNodeList).value || 1);
+  state.ownDays = state.ownDays || {};
+  state.done = state.done || {};
+  state.daySum = state.daySum || {};
+  // Älterer Stand: ein gemeinsamer Bereich für alle Tage. Er gehört ab jetzt zum gewählten Tag.
+  if (state.own) { if (!state.ownDays[String(curDay())]) state.ownDays[String(curDay())] = state.own; delete state.own; }
+  for (const dk of Object.keys(state.done)) delete state.done[dk]._d;
+  const own = () => { const dk = String(curDay()); return state.ownDays![dk] || (state.ownDays![dk] = freshOwn()); };
+  for (const o of Object.values(state.ownDays)) {
     // Ältere Stände: „Keins“ und „Rezept vorschlagen“ heißen jetzt: wir planen
     if (o.mode.bf === 'kein') o.mode.bf = '';
     for (const k of ['mi', 'ab']) if (o.mode[k] === 'rezept' && !o.rec?.[k]) o.mode[k] = '';
@@ -393,19 +432,48 @@ import { pick } from '../data/affiliate.js';
   const saveSaved = () => { try { localStorage.setItem(SAVED, JSON.stringify(saved)); } catch {} };
   const entriesOf = (k: string): Entry[] => (k.startsWith('z') ? own().zw.find((z) => z.id === k)?.items || [] : own().items[k] || []);
   const entryName = (e: Entry) => (e.type === 'recipe' ? BYSLUG[e.slug!].title : e.name!);
-  const curDay = () => +((pf.elements.namedItem('day') as RadioNodeList).value || 1);
   const curProfile = () => {
     const fd = Object.fromEntries(new FormData(pf).entries()) as any;
     return profile({ sex: fd.sex, age: +fd.age || 42, h: +fd.h || 168, w: +fd.w || 70, pal: +fd.pal || 1.6 });
   };
   const curTargets = () => targets(curDay() === 1 ? 1 : 2, curProfile().f);
   // Die Kalorien an den Tag-Knöpfen sind dieselben wie das Ziel im Ergebnis: an Deinen Körper angepasst.
+  // Farbe nach Anteil am Tagesziel: unter dem Ziel von Gelb nach Grün, im Zielbereich (±5 %) Grün, darüber über Orange nach Rot.
+  const progColor = (r: number) => {
+    const h = r < 0.95 ? 45 + (r / 0.95) * 90 : r <= 1.05 ? 135 : Math.max(0, 135 - ((r - 1.05) / 0.2) * 135);
+    return `hsl(${Math.round(h)} 62% 44%)`;
+  };
+  const progBg = (r: number) => (r <= 1.05 ? `linear-gradient(90deg, hsl(45 62% 50%), ${progColor(r)})` : `linear-gradient(90deg, hsl(45 62% 50%), hsl(135 62% 44%) ${Math.round(100 / r)}%, ${progColor(r)})`);
+  const progState = (r: number) => (r < 0.95 ? 'lo' : r <= 1.05 ? 'ok' : 'hi');
+  function dayProg(d: number, f: number) {
+    const ref = d === 1 ? PLAN.reference.day1 : PLAN.reference.day2to5;
+    const t = Math.round(ref.kcal * f); const x = state.daySum?.[String(d)];
+    return { t, e: x?.e || 0, r: t ? (x?.e || 0) / t : 0 };
+  }
   function updateDaySums() {
-    const f = curProfile().f;
+    const f = curProfile().f; let any = false;
     document.querySelectorAll<HTMLElement>('[data-daysum]').forEach((el) => {
-      const ref = el.dataset.daysum === '1' ? PLAN.reference.day1 : PLAN.reference.day2to5;
-      el.textContent = `ca. ${fmt(Math.round(ref.kcal * f / 10) * 10)} kcal`;
+      const d = +el.dataset.daysum!; const g = dayProg(d, f);
+      const bar = document.querySelector<HTMLElement>(`[data-dprog="${d}"]`)!;
+      if (g.e > 0) {
+        any = true;
+        el.textContent = `${fmt(g.e)}/${fmt(Math.round(g.t / 10) * 10)} kcal`;
+        bar.style.width = `${Math.min(100, g.r * 100)}%`; bar.style.background = progBg(g.r); bar.hidden = false;
+        bar.parentElement!.dataset.prog = progState(g.r);
+        bar.parentElement!.title = `Tag ${d}: ${fmt(g.e)} von ${fmt(g.t)} kcal abgehakt (${fmt(g.r * 100)} %)`;
+      } else {
+        el.textContent = `ca. ${fmt(Math.round(g.t / 10) * 10)} kcal`;
+        bar.hidden = true; delete bar.parentElement!.dataset.prog; bar.parentElement!.removeAttribute('title');
+      }
     });
+    document.getElementById('dlegend')!.hidden = !any;
+  }
+  /** Kleine Tagesleiste über dem Essensplan: alle fünf Tage mit Fortschritt, zum schnellen Wechseln. */
+  function miniDays(cur: number, f: number) {
+    return `<div class="dmini" role="group" aria-label="Fastentag wechseln">${[1, 2, 3, 4, 5].map((d) => {
+      const g = dayProg(d, f);
+      return `<button type="button" class="dm${d === cur ? ' on' : ''}" data-gotoday="${d}" aria-pressed="${d === cur}" title="Tag ${d}: ${fmt(g.e)} von ${fmt(g.t)} kcal abgehakt"><span>Tag ${d}</span><small>${g.e ? `${fmt(g.e)} kcal` : '&nbsp;'}</small><i style="width:${Math.min(100, g.r * 100)}%;background:${progBg(g.r)}"></i></button>`;
+    }).join('')}</div>`;
   }
   const LCHIP: Record<string, [string, string]> = { g: ['ok', 'Passt gut'], y: ['warn', 'Geht, aber'], r: ['bad', 'Passt nicht'] };
   /** Einträge einer Mahlzeit, auch ein ausgewähltes Rezept (als Portionen). */
@@ -653,13 +721,28 @@ import { pick } from '../data/affiliate.js';
   });
   // Ampel und Kalorien an den Tag-Knöpfen neu, wenn sich Tag oder Körperdaten ändern
   // Nur die Ampeln auffrischen, nicht neu aufbauen: sonst ginge ein Klick verloren, der gerade das Feld verlässt.
+  // Die Tag-Knöpfe stehen außerhalb des Formulars (form="pf"), ihre Änderungen leiten wir an das Formular weiter.
+  document.getElementById('days')!.addEventListener('change', () => pf.dispatchEvent(new Event('change')));
+  let shownDay = curDay();
   pf.addEventListener('change', () => {
     updateDaySums();
+    if (curDay() !== shownDay) { shownDay = curDay(); if (curDay() <= 5) renderOwn(); }
     omeals.querySelectorAll<HTMLElement>('[data-osum]').forEach((el) => (el.innerHTML = sumHtml(el.dataset.osum!)));
     omeals.querySelectorAll<HTMLElement>('[data-osumshort]').forEach((el) => (el.innerHTML = sumHtml(el.dataset.osumshort!, true)));
   });
   updateDaySums();
   renderOwn();
+  // Neuer Durchgang: alle fünf Tage leeren, mit Rückfrage direkt am Knopf
+  const dreset = document.getElementById('dreset') as HTMLButtonElement;
+  let resetArm = 0;
+  dreset.addEventListener('click', () => {
+    if (!resetArm) { dreset.textContent = 'Wirklich alle Tage leeren? Nochmal tippen'; resetArm = window.setTimeout(() => { resetArm = 0; dreset.textContent = 'Neuer Durchgang: alle Tage leeren'; }, 5000); return; }
+    clearTimeout(resetArm); resetArm = 0; dreset.textContent = 'Alle Tage sind leer. Viel Erfolg beim neuen Durchgang!';
+    state.ownDays = {}; state.done = {}; state.daySum = {};
+    save(); renderOwn(); updateDaySums();
+    if (state.shown && curDay() <= 5) { const v = readInputs(); if (v) { state.inputs = v; render(); } }
+    setTimeout(() => (dreset.textContent = 'Neuer Durchgang: alle Tage leeren'), 4000);
+  });
   /** Alle festen Mahlzeiten mit Inhalt (selbst eingetragen oder ausgewähltes Rezept), für Tagesrechnung und Ergebnis. */
   function ownMeals(): { key: string; slot: string; label: string; main: boolean; entries: Entry[]; recipe?: any }[] { return ownMealsOf(own()); }
 
@@ -691,17 +774,23 @@ import { pick } from '../data/affiliate.js';
   sug.addEventListener('mousedown', (e) => { const li = (e.target as HTMLElement).closest('li'); if (li) { e.preventDefault(); addFood(li.dataset.name!); } });
   q.addEventListener('blur', () => setTimeout(() => { sug.hidden = true; q.setAttribute('aria-expanded', 'false'); }, 120));
 
+  // Neue Vorräte ergeben neue Vorschläge: Haken und Entfernt-Liste der Vorschläge gelten nur für den gewählten Tag und starten neu.
+  function resetGen() {
+    const dd = state.done![String(curDay())];
+    if (dd) for (const k of Object.keys(dd)) if (k.startsWith('gen-')) delete dd[k];
+    const o = own(); if (o.skip) o.skip.gen = [];
+  }
   function addFood(name: string) {
     if (!BY_NAME[name]) return;
     if (!state.picks.some((p) => p.name === name)) state.picks.push({ name });
-    state.done = {}; if (state.own?.skip) state.own.skip.gen = [];
+    resetGen();
     q.value = ''; sug.hidden = true; qhint.textContent = '';
     save(); renderPicked();
     if (state.shown) render();
   }
   function removeFood(name: string) {
     state.picks = state.picks.filter((p) => p.name !== name);
-    state.done = {}; if (state.own?.skip) state.own.skip.gen = [];
+    resetGen();
     save(); renderPicked();
     if (state.shown) render();
   }
@@ -783,12 +872,12 @@ import { pick } from '../data/affiliate.js';
     for (const m of owns) for (const it of m.c.items) used[it.name] = (used[it.name] || 0) + it.g;
     // Entfernte Vorschläge bleiben leer (gilt für heute, wie die eigenen Mahlzeiten)
     const skip = own().skip || (own().skip = { plan: [], gen: [] });
-    // Ohne Vorräte im Generator füllen wir offene Mahlzeiten mit dem heutigen Gericht aus Deinem Plan, genau wie der Planer.
+    // Ohne Vorräte im Generator füllen wir offene Mahlzeiten mit dem Gericht dieses Tages aus Deinem Plan, genau wie der Planer.
     const planSt = (() => { try { return JSON.parse(localStorage.getItem('smlPlaner') || 'null'); } catch { return null; } })();
     const planK = planDayFor(planSt?.inputs?.start);
     const replacedSlots = new Set(owns.filter((m) => m.main).map((m) => m.slot));
-    const planMeals = !ok.length && planK && planK === +v.day
-      ? planDay(planSt, planK).filter((it: any) => !replacedSlots.has(it.meal) && !skip.plan.includes(it.meal)).map((it: any) => {
+    const planMeals = !ok.length && planSt?.inputs && +v.day >= 1 && +v.day <= 5
+      ? planDay(planSt, +v.day).filter((it: any) => !replacedSlots.has(it.meal) && !skip.plan.includes(it.meal)).map((it: any) => {
         const r = BYSLUG[it.recipe]; const portion = it.portion * p.f;
         return { key: `plan-${it.meal}`, meal: it.meal, slot: it.meal === 'Nachmittags' ? 'Z2' : it.meal, recipe: r, portion, n: nutrition(r, portion) };
       }) : [];
@@ -910,15 +999,17 @@ import { pick } from '../data/affiliate.js';
         items: bk.recipe.ingredients.map((i: any) => ({ name: i.name, g: Math.round(i.amount * bk.portion) })), steps: [] });
       const z3gen = meals.some((m) => m.slot === 'Z3' && !m.own);
       const SLOTS: [string, string][] = [['Z0', 'Zwischenmahlzeit'], ['Morgens', 'Frühstück'], ['Z1', 'Zwischenmahlzeit'], ['Mittags', 'Mittagessen'], ['Z2', 'Zwischenmahlzeit'], ['Abends', 'Abendessen'], ['Z3', z3gen ? 'Snacks und Zwischenmahlzeiten' : 'Zwischenmahlzeit']];
-      // Abgehakt gilt nur für heute: ein neuer Kalendertag (z. B. der nächste Zyklus) startet ohne Haken.
-      const dk = String(v.day); const today = isoToday(); state.done = state.done || {};
-      if (state.done[dk]?._d !== today) state.done[dk] = { _d: today };
-      const done = state.done[dk];
+      // Haken gelten je Fastentag, bis Du einen neuen Durchgang startest.
+      const dk = String(v.day);
+      const done = state.done![dk] || (state.done![dk] = {});
       // Selbst Eingetragenes gilt als gegessen, bis jemand den Haken entfernt
       const isDone = (m: any) => (m.own ? ownIsDone(m.own, done) : !!done[m.key]);
       const eaten = meals.filter(isDone).reduce((a2: any, m: any) => { const n2 = m.sum || (m.n as any); return { kcal: a2.kcal + m.kcal, protein: a2.protein + n2.protein, fat: a2.fat + n2.fat, carbs: a2.carbs + n2.carbs }; }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
+      // Fortschritt dieses Tages für die Tagesleiste merken
+      state.daySum![dk] = { e: Math.round(eaten.kcal), p: Math.round(res.sum.kcal) }; save(); updateDaySums();
+      const isToday = !planK || planK === +v.day;
       if (meals.length) {
-        h += `<div class="stack"><h2 style="font-size:1.6rem">Dein heutiger Essensplan</h2>
+        h += `<div class="stack">${miniDays(+v.day, p.f)}<h2 style="font-size:1.6rem">${isToday ? 'Dein heutiger Essensplan' : `Dein Essensplan für Tag ${v.day}`}</h2>
           <p class="muted small">Alle Mengen sind genau auf Deinen Fastentag berechnet. Salz, Pfeffer und Kräuter nach Lust und Laune. Hake ab, was Du gegessen hast. Selbst Eingetragenes zählt schon als gegessen. Der helle Teil im Balken ist eingeplant, aber noch nicht abgehakt.</p>
           ${doneHtml(eaten, t, fmt, eaten.kcal >= t.kcal * 0.95 ? ' · Tag geschafft!' : '', res.sum)}
           ${SLOTS.map(([k, lbl]) => { const ms = meals.filter((m) => m.slot === k); return ms.length ? `<h3 class="slot">${lbl}</h3><div class="meals">${ms.map((m) => m.own ? ownCard(m, isDone(m)) : `<article class="card meal${done[m.key] ? ' isdone' : ''}">
@@ -992,7 +1083,9 @@ import { pick } from '../data/affiliate.js';
     const mb = t.closest<HTMLElement>('[data-more-btn]');
     if (mb) { result.querySelectorAll<HTMLElement>('[data-more]').forEach((x) => (x.hidden = false)); mb.remove(); return; }
     const many = t.closest<HTMLElement>('[data-addmany]');
-    if (many) { for (const n of many.dataset.addmany!.split('|')) if (BY_NAME[n] && !state.picks.some((p) => p.name === n)) state.picks.push({ name: n }); state.done = {}; if (state.own?.skip) state.own.skip.gen = []; save(); renderPicked(); render(); return; }
+    if (many) { for (const n of many.dataset.addmany!.split('|')) if (BY_NAME[n] && !state.picks.some((p) => p.name === n)) state.picks.push({ name: n }); resetGen(); save(); renderPicked(); render(); return; }
+    const gd = t.closest<HTMLElement>('[data-gotoday]');
+    if (gd) { const r = document.querySelector<HTMLInputElement>(`#days input[value="${gd.dataset.gotoday}"]`); if (r && !r.checked) { r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); } return; }
     const sk = t.closest<HTMLElement>('[data-skip]');
     if (sk) {
       const key = sk.dataset.skip!; const o = own(); o.skip = o.skip || { plan: [], gen: [] };
@@ -1007,7 +1100,7 @@ import { pick } from '../data/affiliate.js';
   });
   result.addEventListener('change', (e) => {
     const t = e.target as HTMLInputElement;
-    if (t.dataset.done) { const dk = String(state.inputs.day); state.done = state.done || {}; if (state.done[dk]?._d !== isoToday()) state.done[dk] = { _d: isoToday() }; state.done[dk][t.dataset.done] = t.checked; save(); const y = scrollY; render(); scrollTo({ top: y }); return; }
+    if (t.dataset.done) { const dk = String(state.inputs.day); (state.done![dk] ||= {})[t.dataset.done] = t.checked; save(); const y = scrollY; render(); scrollTo({ top: y }); return; }
     if (!t.dataset.g) return;
     const p = state.picks.find((x) => x.name === t.dataset.g);
     if (!p) return;
