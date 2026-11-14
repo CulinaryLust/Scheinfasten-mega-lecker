@@ -1,6 +1,6 @@
 // Prüft die Tagesbilanz (Reiter „Was habe ich gegessen?“) mit typischen Tagen.
-import { status, fillFoods, fillRecipes, expand, grams, qtyLabel, searchAll, dayFromStart, defaultAmount, PUMPKIN_MAX } from '../src/lib/tagebuch.js';
-import { targets, profile, BY_NAME } from '../src/lib/rechner.js';
+import { mealCheck, status, fillFoods, fillRecipes, expand, grams, qtyLabel, searchAll, dayFromStart, defaultAmount, PUMPKIN_MAX } from '../src/lib/tagebuch.js';
+import { targets, profile, BY_NAME, solve } from '../src/lib/rechner.js';
 
 let failed = 0;
 const must = (cond, msg) => { if (!cond) { failed++; console.log('FEHLER:', msg); } };
@@ -14,7 +14,7 @@ const rec = (slug, qty = 1) => ({ type: 'recipe', slug, qty, unit: 'portion' });
 must(grams(food('Zucchini', 1, 'piece')) === 200, 'Stück Zucchini');
 must(grams(food('Kaffee', 1, 'cup')) === 150, 'Tasse Kaffee');
 must(qtyLabel(food('Zucchini', 1, 'piece')).includes('200 g'), `Label ${qtyLabel(food('Zucchini', 1, 'piece'))}`);
-must(defaultAmount({ type: 'food', name: 'Olivenöl' }).qty === 10, 'Standardmenge Öl');
+must(grams({ type: 'food', name: 'Olivenöl', ...defaultAmount({ type: 'food', name: 'Olivenöl' }) }) === 5, 'Standardmenge Öl (1 TL)');
 // Suche findet Rezepte und Lebensmittel
 must(searchAll('minestrone')[0]?.type === 'recipe', 'Suche Rezept');
 must(searchAll('möhre').some((h) => h.name === 'Karotten'), 'Suche Lebensmittel');
@@ -57,5 +57,15 @@ must(s4.over && fillRecipes([food('Olivenöl', 80), food('Walnusskerne', 40)], t
 // Zyklustag aus dem Startdatum
 must(dayFromStart('2026-11-02', new Date('2026-11-04T09:00:00')) === 3, 'Tag aus Start');
 must(dayFromStart('2026-11-02', new Date('2026-11-10T09:00:00')) === null, 'Außerhalb des Zyklus');
+// Selbst eingetragene Mahlzeiten (Rechner, „Deine Mahlzeiten“)
+must(grams(food('Sojajoghurt', 1, 'becher')) === 150, 'Becher Sojajoghurt');
+must(grams(food('Olivenöl', 1, 'el')) === 10, 'EL Öl');
+must(mealCheck([food('Maiswaffeln', 2, 'piece'), food('Avocado', 0.5, 'piece')], t2, 2).light === 'g', 'Maiswaffeln mit Avocado grün');
+must(mealCheck([food('Joghurt', 1, 'becher')], t2, 2).light === 'r', 'Kuhmilchjoghurt rot');
+must(mealCheck([food('Olivenöl', 50)], t2, 2, false).light === 'y', 'Große Zwischenmahlzeit gelb');
+must(mealCheck([food('Hokkaido-Kürbis', 250)], t2, 3).notes.some((n) => n.includes('Kürbis')), 'Kürbis je Mahlzeit');
+// Schon gegessener Kürbis verkleinert die Obergrenze für den Rest des Tages
+const rk = solve([{ name: 'Hokkaido-Kürbis' }, { name: 'Olivenöl' }], t2, { extra: { kcal: 52, protein: 2, fat: 0.4, carbs: 10, sugar: 8 }, used: { 'Hokkaido-Kürbis': 150 } });
+must(rk.items.find((i) => i.name === 'Hokkaido-Kürbis').g <= 50, `Kürbis-Rest ${rk.items.find((i) => i.name === 'Hokkaido-Kürbis').g} g`);
 console.log(failed ? `${failed} Fehler` : 'Alles ok');
 process.exit(failed ? 1 : 0);
