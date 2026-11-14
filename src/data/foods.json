@@ -374,8 +374,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 290,
-  "capWhy": "zucker",
+  "cap": 200,
+  "capWhy": "kuerbis",
   "syn": [
    "Kürbis",
    "Hokkaido"
@@ -402,8 +402,8 @@
   "group": "gemuese",
   "groupLabel": "Gemüse",
   "light": "g",
-  "cap": 260,
-  "capWhy": "zucker",
+  "cap": 200,
+  "capWhy": "kuerbis",
   "syn": [
    "Butternut",
    "Muskatkürbis",

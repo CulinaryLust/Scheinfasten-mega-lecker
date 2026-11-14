@@ -35,6 +35,7 @@ const TYPICAL_FOOD = {
 export const CAP_WHY = {
   zucker: 'sonst geht zu viel vom Zuckerbudget drauf',
   eiweiss: 'sonst geht zu viel vom Eiweißbudget drauf',
+  kuerbis: 'Richtwert für Kürbis, sonst geht zu viel vom Zuckerbudget drauf',
 };
 
 /** Normalisiert Suchtext: klein, ohne Akzente, ß als ss. */

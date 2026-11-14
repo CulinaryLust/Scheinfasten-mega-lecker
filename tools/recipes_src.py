@@ -37,8 +37,8 @@ r('minestrone','Toskanische Minestrone mit Basilikumöl','Minestrone','Suppe','m
  'Gleich die vierfache Menge kochen. Ohne Basilikumöl hält die Suppe 3 Tage im Kühlschrank.')
 r('kuerbissuppe','Hokkaido-Kokos-Suppe mit Ingwer und gerösteten Kürbiskernen','Kürbissuppe','Suppe','main',30,'kuerbissuppe',
  'Samtig, leicht scharf und richtig sättigend. Die Kokosmilch liefert genau die Fette, die das Konzept vorsieht.',
- [('Hokkaido-Kürbis',280,'mit Schale gewürfelt'),('Zwiebeln',40,''),('Ingwer',5,'frisch gerieben'),('Olivenöl',3,''),('Gemüsebrühe',250,''),('Kokosmilch (vollfett)',40,''),('Kürbiskerne',8,'1 EL')],
- ['Zwiebel im Öl 3 Minuten anschwitzen, Ingwer und Kürbis kurz mitrösten.','Brühe angießen und zugedeckt 15 Minuten weich kochen.','Kokosmilch einrühren (1 TL zum Garnieren zurückbehalten) und fein pürieren.','Kürbiskerne ohne Fett rösten, bis sie knacken.','Mit Salz, Pfeffer und Limette abschmecken und mit Kernen servieren.'],
+ [('Hokkaido-Kürbis',175,'mit Schale gewürfelt'),('Karotten',70,'in Scheiben'),('Zwiebeln',40,''),('Ingwer',5,'frisch gerieben'),('Olivenöl',3,''),('Gemüsebrühe',250,''),('Kokosmilch (vollfett)',40,''),('Kürbiskerne',8,'1 EL')],
+ ['Zwiebel im Öl 3 Minuten anschwitzen, Ingwer, Kürbis und Karotten kurz mitrösten.','Brühe angießen und zugedeckt 15 Minuten weich kochen.','Kokosmilch einrühren (1 TL zum Garnieren zurückbehalten) und fein pürieren.','Kürbiskerne ohne Fett rösten, bis sie knacken.','Mit Salz, Pfeffer und Limette abschmecken und mit Kernen servieren.'],
  'Eine Messerspitze Kurkuma und Kreuzkümmel machen die Suppe noch runder.')
 r('ofen-blumenkohl','Ofen-Blumenkohl und Süßkartoffel mit Tahin-Zitronen-Sauce','Ofen-Blumenkohl','Ofengericht','main',35,'blumenkohl',
  'Röstaromen statt Verzicht. Die Tahin-Sauce macht alles cremig, ganz ohne Milchprodukte.',
@@ -174,8 +174,8 @@ r('aubergine-salsa','Gegrillte Aubergine mit Tomaten-Kräuter-Salsa','Aubergine 
  ['Auberginenscheiben dünn mit Öl bestreichen und in einer Grillpfanne von beiden Seiten 4 Minuten braten.','Tomaten, Zwiebel, Petersilie, Zitronensaft und Salz mischen.','Salsa auf die Aubergine geben und mit Kartoffeln servieren.'],'Aubergine nicht ertränken: wenig Öl mit dem Pinsel reicht.')
 r('feldsalat-ofenkuerbis','Feldsalat mit Ofen-Kürbis und Kürbiskernen','Kürbis-Feldsalat','Salat','main',30,'kuerbissalat',
  'Herbst auf dem Teller: süßer Ofenkürbis, nussiger Feldsalat, ein Hauch Balsamico.',
- [('Hokkaido-Kürbis',250,'in Spalten'),('Feldsalat',50,''),('Kürbiskerne',8,''),('Olivenöl',8,''),('Balsamico',10,''),('Rote Zwiebel',20,'in Ringen')],
- ['Kürbis mit der Hälfte des Öls und Salz bei 210 °C 25 Minuten rösten.','Restliches Öl mit Balsamico und Pfeffer verrühren.','Feldsalat mit Dressing mischen, Kürbis und Zwiebel daraufgeben.','Kürbiskerne rösten und darüberstreuen.'],'Der Kürbis kann lauwarm oder kalt auf den Salat.')
+ [('Hokkaido-Kürbis',175,'in Spalten'),('Karotten',60,'in Stiften'),('Feldsalat',50,''),('Kürbiskerne',8,''),('Olivenöl',8,''),('Balsamico',10,''),('Rote Zwiebel',20,'in Ringen')],
+ ['Kürbis und Karotten mit der Hälfte des Öls und Salz bei 210 °C 25 Minuten rösten.','Restliches Öl mit Balsamico und Pfeffer verrühren.','Feldsalat mit Dressing mischen, Kürbis, Karotten und Zwiebel daraufgeben.','Kürbiskerne rösten und darüberstreuen.'],'Der Kürbis kann lauwarm oder kalt auf den Salat.')
 r('pak-choi-sesam','Gebratener Pak Choi mit Ingwer und Sesam','Pak Choi','Pfanne','main',15,'pakchoi',
  'In zehn Minuten fertig, knackig und voller Aroma.',
  [('Pak Choi',250,'halbiert'),('Ingwer',5,''),('Knoblauch',2,''),('Sesamöl',6,''),('Sesam',5,''),('Süßkartoffel',120,'gedämpft'),('Limettensaft',10,'')],

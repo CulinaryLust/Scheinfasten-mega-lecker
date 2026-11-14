@@ -144,8 +144,9 @@ for (const f of FOODS) {
   // Obergrenze hält die Budgetregel ein: höchstens halbes Zucker- und Eiweißbudget von Tag 2 bis 5
   if (f.light !== 'r') must(f.n[4] * f.cap / 100 <= 13.7 && f.n[1] * f.cap / 100 <= 8.2, `${f.name}: Obergrenze ${f.cap} g sprengt Zucker- oder Eiweißbudget`);
 }
-// Kürbis: Obergrenze aus der Zuckerregel (halbes Zuckerbudget von Tag 2 bis 5), nie mehr als 300 g
-must(BY_NAME['Hokkaido-Kürbis'].cap <= 300 && BY_NAME['Gartenkürbis'].cap <= 300 && BY_NAME['Hokkaido-Kürbis'].capWhy === 'zucker', 'Kürbis-Obergrenze');
+// Kürbis: Richtwert ca. 200 g, gleiche Zahl wie im Tagebuch, und kein Rezept liegt auch bei Faktor 1,15 darüber
+for (const k of ['Hokkaido-Kürbis', 'Gartenkürbis']) must(BY_NAME[k].cap === 200 && BY_NAME[k].capWhy === 'kuerbis', `Kürbis-Obergrenze ${k}`);
+for (const r of RECIPES) must(r.ingredients.filter((i) => /Kürbis$/.test(i.name)).reduce((a, i) => a + i.amount, 0) * 1.15 <= 202, `Rezept ${r.slug}: zu viel Kürbis`);
 // Einheiten: Flüssiges in ml
 must(unit('Tomatensuppe') === 'ml' && unit('Sojadrink') === 'ml' && unit('Ananas (Dose, ungesüßt)') === 'g' && unit('Olivenöl') === 'g', 'Einheiten');
 // Ergänzungspaket: nur Gemüse wird mit bis zu drei Zutaten passend

@@ -45,6 +45,10 @@ ALTS = {
 
 # name, BLS-Code, Gruppe, Ampel (None = Gruppe), cap (None = Gruppe), Suchbegriffe, Alternativen, Begründung, Stück (Bezeichnung, g)
 F = []
+# Kürbis: Richtwert ca. 200 g am Tag (Tag 2 bis 5), gleiche Zahl wie PUMPKIN_MAX in src/lib/tagebuch.js.
+# Rezepte bleiben bei 175 g, damit auch die größte Portion (Faktor 1,15) darunter liegt.
+PUMPKIN_MAX = 200
+PUMPKIN = ('Hokkaido-Kürbis', 'Gartenkürbis')
 def f(name, bls, group, light=None, cap=None, syn='', alts='', why='', piece=None, n=None):
     # n: nur für Einträge ohne BLS-Code, Richtwerte (kcal, Eiweiß, Fett, Kohlenhydrate gesamt, Zucker) je 100 g nach USDA FoodData Central
     F.append(dict(name=name, bls=bls, group=group, light=light, cap=cap, syn=[s.strip() for s in syn.split(',') if s.strip()],
@@ -64,8 +68,8 @@ f('Rote Zwiebel', 'G480100', 'gemuese', cap=150, syn='rote Zwiebeln')
 f('Frühlingszwiebeln', 'G482100', 'gemuese', cap=150, syn='Lauchzwiebel, Frühlingszwiebel')
 f('Schalotten', 'G485100', 'gemuese', cap=100, syn='Schalotte')
 f('Lauch', 'G470100', 'gemuese', syn='Porree')
-f('Hokkaido-Kürbis', 'G581000', 'gemuese', syn='Kürbis, Hokkaido')
-f('Gartenkürbis', 'G581100', 'gemuese', syn='Butternut, Muskatkürbis, Kürbis')
+f('Hokkaido-Kürbis', 'G581000', 'gemuese', cap=PUMPKIN_MAX, syn='Kürbis, Hokkaido')
+f('Gartenkürbis', 'G581100', 'gemuese', cap=PUMPKIN_MAX, syn='Butternut, Muskatkürbis, Kürbis')
 f('Blumenkohl', 'G311100', 'gemuese', syn='Karfiol')
 f('Brokkoli', 'G312100', 'gemuese', syn='Broccoli')
 f('Rosenkohl', 'G332100', 'gemuese', syn='Kohlsprossen')
