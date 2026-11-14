@@ -19,7 +19,7 @@ import FotoStreifen from '../components/FotoStreifen.astro';
   ]} />
   <section class="band" style="padding-top:12px">
     <div class="in narrow stack">
-      {byGroup.map((g) => <AffiliateBox items={g.items} title={g.title} lead={g.lead} />)}
+      {byGroup.map((g) => <AffiliateBox items={g.items} title={g.title} lead={g.lead} show={0} />)}
       <div class="card">
         <h2 style="font-size:1.35rem">Lieber das Fertigpaket?</h2>
         <p>Wenn Du keine Zeit zum Kochen hast, gibt es das Original als Box. Wir haben beides ehrlich verglichen.</p>

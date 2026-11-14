@@ -61,7 +61,6 @@ rezepte/chiapudding 1651256785555-4d9adcd06e1d
 rezepte/suesskartoffel-toast 1641283339694-f7bc5b3673ca
 rezepte/roesti 1607095591644-9f97a2099c92
 produkte/waage 1772683709393-f0cf8c226872
-produkte/loeffel 1781082623500-d5ab13ab4c4b
 produkte/dosen 1543352632-5a4b24e4d2a6
 produkte/stab 1603208422113-48a0be6a3879
 produkte/spirale 1546637637-b7bf7831cade

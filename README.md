@@ -34,7 +34,7 @@ npm run dev
 
 - `src/data/site.js`: eigene Domain in `DOMAIN`. Der Build setzt dann Adresse, Pfad, Sitemap, robots.txt und die `.htaccess` (HTTPS, www-Umleitung, 404, Cache).
 - `src/data/betreiber.js`: Name, Anschrift, E-Mail für Impressum und Datenschutzerklärung.
-- `src/data/affiliate.js`: Amazon-Tracking-ID und ProLon-Partnerlink.
+- `src/data/affiliate.js`: Amazon-Tracking-ID (`einfachleckerfasten-21`), Produktliste mit ASIN und internem Testbeleg, ProLon-Partnerlink.
 - Werbeanzeigen erst mit Einwilligungsbanner einschalten (`ADS_ENABLED`).
 - Nach dem Umzug: Domain in der Google Search Console und den Bing Webmaster Tools anmelden und `sitemap.xml` einreichen.
 
@@ -63,6 +63,9 @@ Ziel: möglichst keine wiederkehrende Handarbeit. Einmal einrichten, danach läu
 | Pinterest-Grafiken | `scripts/pins.mjs` baut pro Rezept ein Hochformat-Bild nach `pins/` | erledigt |
 | Pins veröffentlichen | Feed `pins.xml`, Pinterest holt alle 2 Tage ein neues Rezept ab | siehe „Pinterest automatisch“ |
 | Externe Links, ProLon-Preis, Artikel-Alter | `wartung.yml` am 1. jedes Monats, bei Befund E-Mail von GitHub | GitHub-Benachrichtigungen für fehlgeschlagene Actions anlassen (Standard) |
+| Amazon-Produkte prüfen | Bei jedem Build: Tracking-ID, ASIN-Format, Dubletten, Bilder (`scripts/check-partner.mjs`). Monatlich in `wartung.yml`: jede Produktseite abrufen, gelöschte Produkte lösen eine E-Mail aus | erledigt |
+| Anzeigen abwechseln | Jede Box hat einen Pool passender Produkte, der Browser zeigt bei jedem Aufruf zufällig 3 (`AffiliateBox`, Prop `show`) | erledigt |
+| Produktliste auffrischen | `check:frische` erinnert nach 180 Tagen (`PRODUCTS_CHECKED`) per Wartungs-E-Mail | Produkte tauschen bleibt Handarbeit: neue Tests lesen, ASIN in `src/data/affiliate.js` eintragen |
 | Einkaufsliste und „Tag für Tag“ im Ratgeber | Werden aus dem Standardplan berechnet, ändern sich mit dem Plan | erledigt |
 | Sitemap für Google und Bing | Entsteht bei jedem Build, Suchmaschinen holen sie selbst ab | Sitemap einmal in Search Console und Bing eintragen |
 | Erinnerungs-Mails | Brevo-Automationen, Texte in `docs/mails.md` | siehe „Zyklus-Erinnerung“ |

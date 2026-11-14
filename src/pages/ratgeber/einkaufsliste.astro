@@ -39,7 +39,7 @@ const mains = [...new Set([1, 2, 3, 4, 5].flatMap((d) => PLAN.days[d]).filter((x
     <li><b>Zutatenliste lesen.</b> Gemüsebrühe, Oliven und Tomaten aus der Dose enthalten oft zugesetzten Zucker. Nimm Sorten ohne.</li>
     <li><b>Abwiegen statt schätzen.</b> Ein Esslöffel Öl mehr sind rund 90 kcal, das ist an Tag 2 bis 5 ein Achtel des Tages. Eine Küchenwaage ist das einzige Gerät, das Du wirklich brauchst.</li>
   </ul>
-  <AffiliateBox items={pick('waage', 'dosen', 'bruehe')} title="Hilft beim Einkauf und Vorkochen" />
+  <AffiliateBox items={pick('waage', 'dosen', 'bruehe', 'oel', 'nuesse', 'hirse', 'kokos', 'gewuerze')} title="Hilft beim Einkauf und Vorkochen" />
 
   <Fragment slot="quellen">
     <p>Die Mengen berechnet die Seite bei jeder Änderung neu aus dem Standardplan. Die Tageswerte des Plans folgen Brandhorst S et al., Cell Metabolism 2015. Dass Zuckerzusatz zu meiden ist, ist unsere Regel, abgeleitet aus Prof. Dr. Longos Vorgabe „wenig Zucker“ (Wei M et al., Sci Transl Med 2017). Alle Details auf der Seite <a href={u('transparenz/')}>Transparenz</a>.</p>

@@ -1,6 +1,6 @@
 name: Monatliche Wartung
 
-# Am 1. jedes Monats: prüft alle externen Links (Quellen, Partner) und ob Preis und Artikel noch aktuell sind.
+# Am 1. jedes Monats: prüft alle externen Links (Quellen, Partner), ob die Amazon-Produkte noch existieren und ob Preis und Artikel noch aktuell sind.
 # Findet die Prüfung etwas, schlägt der Lauf fehl und GitHub schickt eine E-Mail mit der Liste.
 on:
   schedule:
@@ -24,6 +24,9 @@ jobs:
       - name: Externe Links
         if: always()
         run: npm run --silent check:links | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Amazon-Produkte
+        if: always()
+        run: npm run --silent check:partner | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Preise und Prüfdaten
         if: always()
         run: npm run --silent check:frische | tee -a "$GITHUB_STEP_SUMMARY"
