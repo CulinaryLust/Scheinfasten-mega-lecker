@@ -59,7 +59,7 @@ import { pick } from '../data/affiliate.js';
         <div class="field"><span class="lbl">Welcher Fastentag ist heute?</span>
           <div class="seg six" id="days">
             {[1, 2, 3, 4, 5].map((d) => <label><input type="radio" name="day" value={String(d)} checked={d === 1} /><span>Tag {d}<small data-daysum={d}>ca. {fmt(d === 1 ? r1.kcal : r2.kcal)} kcal</small></span></label>)}
-            <label><input type="radio" name="day" value="6" /><span>Übergangs&shy;tag</span></label>
+            <label><input type="radio" name="day" value="6" /><span>Übergang<small>leicht essen</small></span></label>
           </div>
           <p class="small muted" id="dayhint" aria-live="polite"></p>
         </div>
@@ -154,9 +154,9 @@ import { pick } from '../data/affiliate.js';
   .block legend { font-family: var(--display); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; padding: 0; margin-bottom: 4px; }
   .block .num { width: 32px; height: 32px; border-radius: 50%; background: var(--green); color: var(--on-green); display: grid; place-items: center; font: 700 .95rem var(--body); flex: none; }
   .seg.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .seg.six { grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(0, 1.5fr); }
-  .seg.six label:last-child span { padding-inline: 4px; }
-  @media (max-width: 640px) { .seg.six { grid-template-columns: repeat(3, minmax(0, 1fr)); } .seg.six label:last-child span { font-size: .92rem; padding-inline: 2px; hyphens: manual; -webkit-hyphens: manual; } }
+  .seg.six { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .seg.six label > span { height: 100%; padding-inline: 4px; }
+  @media (max-width: 640px) { .seg.six { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   #uebergang { max-width: 820px; padding-bottom: 40px; display: grid; gap: 0; }
   #prof { padding-bottom: 18px; }
   .tabsw { padding-bottom: 18px; }
